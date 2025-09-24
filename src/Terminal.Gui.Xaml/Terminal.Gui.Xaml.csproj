@@ -18,7 +18,7 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <PackageVersion>1.0.0</PackageVersion>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -34,18 +34,17 @@
     <PackageReference Include="Terminal.Gui" Version="2.0.0-develop.4559" />
 
     <!-- Microsoft.CodeAnalysis for Roslyn integration -->
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
 
 
     <!-- Performance monitoring -->
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.9" />
 
   <!-- DocFX for documentation generation -->
-  <PackageReference Include="docfx.console" Version="2.59.4" />
   </ItemGroup>
 
   <ItemGroup>

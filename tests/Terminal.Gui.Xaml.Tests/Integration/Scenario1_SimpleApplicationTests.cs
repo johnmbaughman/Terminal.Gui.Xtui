@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using System.Threading.Tasks;
 
 namespace Terminal.Gui.Xaml.Tests.Integration;
@@ -14,47 +13,37 @@ namespace Terminal.Gui.Xaml.Tests.Integration;
 public class Scenario1_SimpleApplicationTests
 {
     [Fact]
-#pragma warning disable CA1822 // Mark members as static
     public async Task SimpleWorkflow_ParsesAndGeneratesUI()
-#pragma warning restore CA1822 // Mark members as static
     {
         // TODO: Simulate XAML → Parsing → Code Generation → Runtime
-        // Assert success
+        await Task.CompletedTask;
     }
 
     [Fact]
-#pragma warning disable CA1822 // Mark members as static
     public void BasicControls_AreSupported()
-#pragma warning restore CA1822 // Mark members as static
     {
         // TODO: Test Window, StackView, Label, Button, TextField
         // Assert success
     }
 
     [Fact]
-#pragma warning disable CA1822 // Mark members as static
     public void EventHandlerBinding_Works()
-#pragma warning restore CA1822 // Mark members as static
     {
         // TODO: Test event handler binding
         // Assert success
     }
 
     [Fact]
-#pragma warning disable CA1822 // Mark members as static
     public void BasicDataBinding_Works()
-#pragma warning restore CA1822 // Mark members as static
     {
         // TODO: Test basic data binding
         // Assert success
     }
 
     [Fact]
-#pragma warning disable CA1822 // Mark members as static
     public async Task PerformanceRequirements_AreMet()
-#pragma warning restore CA1822 // Mark members as static
     {
         // TODO: Validate constitutional performance requirements
-        // Assert success
+        await Task.CompletedTask;
     }
 }

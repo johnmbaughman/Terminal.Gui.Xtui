@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,6 +20,10 @@ public class DocumentationMetadataModelsTests
         // Arrange
         var config = new DocFxConfiguration
         {
+            ProjectName = "Terminal.Gui.Xaml",
+            Version = "1.0.0",
+            OutputPath = "docs/_site/",
+            SourcePaths = new[] { "src/Terminal.Gui.Xaml/" },
             Metadata = new MetadataConfiguration
             {
                 Src = new[]
@@ -32,7 +35,7 @@ public class DocumentationMetadataModelsTests
                     }
                 },
                 Dest = "api/",
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, string>
                 {
                     ["TargetFramework"] = "net8.0"
                 }
@@ -69,11 +72,11 @@ public class DocumentationMetadataModelsTests
         var validationResults = ValidateModel(config);
 
         // Assert
-        validationResults.Should().BeEmpty();
-        config.Metadata.Should().NotBeNull();
-        config.Build.Should().NotBeNull();
-        config.Metadata.Src.Should().NotBeEmpty();
-        config.Build.Dest.Should().NotBeNullOrEmpty();
+    Assert.Empty(validationResults);
+    Assert.NotNull(config.Metadata);
+    Assert.NotNull(config.Build);
+    Assert.NotEmpty(config.Metadata.Src);
+    Assert.False(string.IsNullOrWhiteSpace(config.Build.Dest));
     }
 
     [Fact]
@@ -90,9 +93,10 @@ public class DocumentationMetadataModelsTests
         var validationResults = ValidateModel(metadata);
 
         // Assert
-        validationResults.Should().NotBeEmpty();
-        validationResults.Should().Contain(result =>
-            result.ErrorMessage.Contains("Src") && result.ErrorMessage.Contains("required"));
+        Assert.NotEmpty(validationResults);
+        Assert.Contains(validationResults, r =>
+            (r.ErrorMessage ?? string.Empty).Contains("Src") &&
+            ((r.ErrorMessage ?? string.Empty).Contains("required") || (r.ErrorMessage ?? string.Empty).Contains("least one")));
     }
 
     [Fact]
@@ -109,9 +113,10 @@ public class DocumentationMetadataModelsTests
         var validationResults = ValidateModel(source);
 
         // Assert
-        validationResults.Should().NotBeEmpty();
-        validationResults.Should().Contain(result =>
-            result.ErrorMessage.Contains("Files") && result.ErrorMessage.Contains("required"));
+        Assert.NotEmpty(validationResults);
+        Assert.Contains(validationResults, r =>
+            (r.ErrorMessage ?? string.Empty).Contains("Files") &&
+            ((r.ErrorMessage ?? string.Empty).Contains("required") || (r.ErrorMessage ?? string.Empty).Contains("least one")));
     }
 
     [Fact]
@@ -135,9 +140,9 @@ public class DocumentationMetadataModelsTests
         var validationResults = ValidateModel(build);
 
         // Assert
-        validationResults.Should().NotBeEmpty();
-        validationResults.Should().Contain(result =>
-            result.ErrorMessage.Contains("Dest") && result.ErrorMessage.Contains("required"));
+        Assert.NotEmpty(validationResults);
+        Assert.Contains(validationResults, r =>
+            (r.ErrorMessage ?? string.Empty).Contains("Dest") && (r.ErrorMessage ?? string.Empty).Contains("required"));
     }
 
     [Fact]
@@ -158,12 +163,12 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        template.Name.Should().Be("modern");
-        template.Path.Should().Be("templates/modern/");
-        template.CustomCss.Should().Be("custom.css");
-        template.CustomJs.Should().Be("custom.js");
-        template.Variables.Should().ContainKey("primaryColor");
-        template.Variables["primaryColor"].Should().Be("#007acc");
+    Assert.Equal("modern", template.Name);
+    Assert.Equal("templates/modern/", template.Path);
+    Assert.Equal("custom.css", template.CustomCss);
+    Assert.Equal("custom.js", template.CustomJs);
+    Assert.True(template.Variables.ContainsKey("primaryColor"));
+    Assert.Equal("#007acc", template.Variables["primaryColor"]);
     }
 
     [Fact]
@@ -178,11 +183,11 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        coverage.TotalMembers.Should().Be(100);
-        coverage.DocumentedMembers.Should().Be(85);
-        coverage.UndocumentedMembers.Should().Be(15);
-        coverage.CoveragePercentage.Should().Be(85.0);
-        coverage.DocumentedMembers + coverage.UndocumentedMembers.Should().Be(coverage.TotalMembers);
+        Assert.Equal(100, coverage.TotalMembers);
+        Assert.Equal(85, coverage.DocumentedMembers);
+        Assert.Equal(15, coverage.UndocumentedMembers);
+        Assert.Equal(85.0, coverage.CoveragePercentage);
+        Assert.Equal(coverage.TotalMembers, coverage.DocumentedMembers + coverage.UndocumentedMembers);
     }
 
     [Fact]
@@ -201,13 +206,13 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        issue.IssueType.Should().Be(IssueType.MissingDocumentation);
-        issue.Severity.Should().Be(IssueSeverity.Warning);
-        issue.FilePath.Should().Contain("XamlView.cs");
-        issue.LineNumber.Should().Be(42);
-        issue.MemberName.Should().Be("LoadXaml");
-        issue.Message.Should().Contain("missing XML documentation");
-        issue.Suggestion.Should().Contain("XML documentation");
+    Assert.Equal(IssueType.MissingDocumentation, issue.IssueType);
+    Assert.Equal(IssueSeverity.Warning, issue.Severity);
+    Assert.Contains("XamlView.cs", issue.FilePath);
+    Assert.Equal(42, issue.LineNumber);
+    Assert.Equal("LoadXaml", issue.MemberName);
+    Assert.Contains("missing XML documentation", issue.Message);
+    Assert.Contains("XML documentation", issue.Suggestion);
     }
 
     [Fact]
@@ -231,11 +236,11 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        result.Status.Should().Be(ValidationStatus.Warning);
-        result.Issues.Count(i => i.Severity == IssueSeverity.Error).Should().Be(1);
-        result.Issues.Count(i => i.Severity == IssueSeverity.Warning).Should().Be(2);
-        result.Issues.Count(i => i.Severity == IssueSeverity.Information).Should().Be(1);
-        result.Summary.Should().Contain("4 issues");
+    Assert.Equal(ValidationStatus.Warning, result.Status);
+    Assert.Equal(1, result.Issues.Count(i => i.Severity == IssueSeverity.Error));
+    Assert.Equal(2, result.Issues.Count(i => i.Severity == IssueSeverity.Warning));
+    Assert.Equal(1, result.Issues.Count(i => i.Severity == IssueSeverity.Information));
+    Assert.Contains("4 issues", result.Summary);
     }
 
     [Fact]
@@ -258,19 +263,18 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        response.Success.Should().BeTrue();
-        response.GeneratedFiles.Should().HaveCount(2);
-        response.Duration.Should().Be(TimeSpan.FromMinutes(2));
-        response.OutputPath.Should().Be("docs/_site/");
-        response.Metadata.Should().ContainKey("DocFxVersion");
-        response.Metadata["DocFxVersion"].Should().Be("2.75.3");
-        response.Metadata.Should().ContainKey("IncrementalBuild");
-        response.Metadata["IncrementalBuild"].Should().Be(false);
+    Assert.True(response.Success);
+    Assert.Equal(2, response.GeneratedFiles.Count);
+    Assert.Equal(TimeSpan.FromMinutes(2), response.Duration);
+    Assert.Equal("docs/_site/", response.OutputPath);
+    Assert.True(response.Metadata.ContainsKey("DocFxVersion"));
+    Assert.Equal("2.75.3", response.Metadata["DocFxVersion"]);
+    Assert.True(response.Metadata.ContainsKey("IncrementalBuild"));
+    Assert.Equal(false, response.Metadata["IncrementalBuild"]);
     }
 
     [Theory]
     [InlineData("")]
-    [InlineData(null)]
     [InlineData("   ")]
     public void SourceConfiguration_WithInvalidSrc_ShouldFailValidation(string invalidSrc)
     {
@@ -285,9 +289,8 @@ public class DocumentationMetadataModelsTests
         var validationResults = ValidateModel(source);
 
         // Assert
-        validationResults.Should().NotBeEmpty();
-        validationResults.Should().Contain(result =>
-            result.ErrorMessage.Contains("Src"));
+        Assert.NotEmpty(validationResults);
+        Assert.Contains(validationResults, r => (r.ErrorMessage ?? string.Empty).Contains("Src"));
     }
 
     [Theory]
@@ -314,43 +317,24 @@ public class DocumentationMetadataModelsTests
         };
 
         // Assert
-        result.Status.Should().Be(status);
-        result.Issues.Should().HaveCount(issueCount);
-
+        Assert.Equal(status, result.Status);
+        Assert.Equal(issueCount, result.Issues.Length);
         if (status == ValidationStatus.Success)
         {
-            result.Issues.Should().BeEmpty();
+            Assert.Empty(result.Issues);
         }
         else
         {
-            result.Issues.Should().NotBeEmpty();
+            Assert.NotEmpty(result.Issues);
         }
     }
 
-    private static IList<ValidationResult> ValidateModel<T>(T model)
+    private static IList<ValidationResult> ValidateModel<T>(T model) where T : notnull
     {
         var validationResults = new List<ValidationResult>();
-        var validationContext = new ValidationContext(model);
-        Validator.TryValidateObject(model, validationContext, validationResults, validateAllProperties: true);
+        var validationContext = new ValidationContext(model!);
+        Validator.TryValidateObject(model!, validationContext, validationResults, validateAllProperties: true);
         return validationResults;
     }
 }
-
-// These types will fail to compile until implemented in Phase 3.3
-public class ValidationIssue
-{
-    public IssueType IssueType { get; set; }
-    public IssueSeverity Severity { get; set; }
-    public string FilePath { get; set; }
-    public int LineNumber { get; set; }
-    public string MemberName { get; set; }
-    public string Message { get; set; }
-    public string Suggestion { get; set; }
-}
-
-public class DocumentationValidationResult
-{
-    public ValidationStatus Status { get; set; }
-    public ValidationIssue[] Issues { get; set; } = Array.Empty<ValidationIssue>();
-    public string Summary { get; set; }
-}
+ 

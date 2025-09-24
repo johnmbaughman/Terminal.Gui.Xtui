@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Parsing;
 using System.Threading.Tasks;
 
@@ -18,47 +17,46 @@ public class XamlParserContractTests
     public async Task ParseAsync_ValidXaml_ReturnsViewHierarchy()
     {
         // Arrange
-        var parser = GetParser();
+        var parser = GetParser ();
         var xaml = "<Window><Label Text=\"Hello\" /></Window>";
 
         // Act
         var view = await parser.ParseAsync(xaml);
 
         // Assert
-        view.Should().NotBeNull();
-        view.GetType().Name.Should().Be("Window");
+    Assert.NotNull(view);
+    Assert.Equal("Window", view.GetType().Name);
     }
 
     [Fact]
     public async Task ParseAsync_InvalidXaml_ThrowsXamlParseException()
     {
-        var parser = GetParser();
+        var parser = GetParser ();
         var xaml = "<Window><Label></Window>"; // Malformed
-        await FluentActions.Invoking(() => parser.ParseAsync(xaml))
-            .Should().ThrowAsync<Terminal.Gui.Xaml.Exceptions.XamlParseException>();
+        await Assert.ThrowsAsync<Terminal.Gui.Xaml.Exceptions.XamlParseException>(() => parser.ParseAsync(xaml));
     }
 
     [Fact]
     public async Task ParseFileAsync_ValidFile_ReturnsViewHierarchy()
     {
-        var parser = GetParser();
+        var parser = GetParser ();
         var filePath = "TestAssets/SimpleApp.xaml";
         var view = await parser.ParseFileAsync(filePath);
-        view.Should().NotBeNull();
+    Assert.NotNull(view);
     }
 
     [Fact]
     public void Validate_ValidXaml_ReturnsTrue()
     {
-        var parser = GetParser();
+        var parser = GetParser ();
         var xaml = "<Window><Label Text=\"Hello\" /></Window>";
-        parser.Validate(xaml).Should().BeTrue();
+    Assert.True(parser.Validate(xaml));
     }
 
     [Fact]
     public void RegisterControl_CustomControl_Succeeds()
     {
-        var parser = GetParser();
+        var parser = GetParser ();
         parser.RegisterControl("CustomControl", typeof(object));
         // No exception means success
     }
@@ -66,19 +64,16 @@ public class XamlParserContractTests
     [Fact]
     public async Task ParseAsync_PerformanceRequirement()
     {
-        var parser = GetParser();
+        var parser = GetParser ();
         var xaml = "<Window>" + string.Concat(Enumerable.Repeat("<Label Text=\"X\" />", 1000)) + "</Window>";
         var sw = System.Diagnostics.Stopwatch.StartNew();
         await parser.ParseAsync(xaml);
         sw.Stop();
-        sw.ElapsedMilliseconds.Should().BeLessThan(100);
+    Assert.True(sw.ElapsedMilliseconds < 100, $"Expected <100ms, actual {sw.ElapsedMilliseconds}ms");
     }
 
-#pragma warning disable CA1822 // Mark members as static
-    private IXamlParser GetParser()
-#pragma warning restore CA1822 // Mark members as static
+    private static IXamlParser GetParser()
     {
-        // TODO: Provide a test implementation or mock
-        throw new NotImplementedException();
+        return new SimpleXamlParser();
     }
 }
