@@ -1,0 +1,859 @@
+{
+  "source_base_path": "C:/Personal/Files/source/repos/Terminal.Gui.Xaml/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.yml\" sourcestartlinenumber=\"1\">Represents generated API documentation metadata.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.yml\" sourcestartlinenumber=\"1\">Represents build-specific documentation settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.yml\" sourcestartlinenumber=\"1\">Represents DocFX build configuration content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.yml\" sourcestartlinenumber=\"1\">Represents documentation coverage statistics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.yml\" sourcestartlinenumber=\"1\">Represents the DocFX project configuration settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.yml\" sourcestartlinenumber=\"1\">Specifies the documentation build mode.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.yml\" sourcestartlinenumber=\"1\">Represents validation results for documentation quality.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.IssueSeverity",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.yml\" sourcestartlinenumber=\"1\">Specifies the severity of a documentation issue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.IssueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.IssueType",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.IssueType.yml\" sourcestartlinenumber=\"1\">Specifies the type of documentation issue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.yml\" sourcestartlinenumber=\"1\">Represents DocFX metadata configuration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.yml\" sourcestartlinenumber=\"1\">Represents DocFX resource configuration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.yml\" sourcestartlinenumber=\"1\">Represents a source configuration for DocFX.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.yml\" sourcestartlinenumber=\"1\">Represents DocFX template customization settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.ValidationIssue",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.yml\" sourcestartlinenumber=\"1\">Represents a specific documentation validation issue.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models.ValidationStatus",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.yml\" sourcestartlinenumber=\"1\">Specifies the validation status.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Documentation.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Documentation.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Exceptions.BindingException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Exceptions.BindingException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Exceptions.BindingException",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Exceptions.BindingException.yml\" sourcestartlinenumber=\"1\">The exception that is thrown when a data binding error occurs in the XAML framework.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Exceptions.CodeGenerationException",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.yml\" sourcestartlinenumber=\"1\">The exception that is thrown when an error occurs during code generation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Exceptions.XamlException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Exceptions.XamlException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Exceptions.XamlException",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Exceptions.XamlException.yml\" sourcestartlinenumber=\"1\">The base exception class for all Terminal.Gui XAML framework exceptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Exceptions.XamlParseException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Exceptions.XamlParseException",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Exceptions.XamlParseException.yml\" sourcestartlinenumber=\"1\">The exception that is thrown when an error occurs during XAML parsing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.yml\" sourcestartlinenumber=\"1\">Logger that emits events to DiagnosticSource for advanced tracing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.IXamlLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.IXamlLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging.IXamlLogger",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Logging.IXamlLogger.yml\" sourcestartlinenumber=\"1\">Provides structured logging capabilities for XAML framework operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.LogLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging.LogLevel",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Logging.LogLevel.yml\" sourcestartlinenumber=\"1\">Defines log levels for filtering log output.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.yml\" sourcestartlinenumber=\"1\">Adapter to bridge IXamlLogger with Microsoft.Extensions.Logging.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging.XamlLoggerExtensions",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.yml\" sourcestartlinenumber=\"1\">Provides extension methods for <xref href=\"Terminal.Gui.Xaml.Logging.IXamlLogger\" data-throw-if-not-resolved=\"false\"></xref> to simplify logging operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Logging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Logging",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Model.PropertyInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Model.PropertyInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Model.PropertyInfo",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Model.PropertyInfo.yml\" sourcestartlinenumber=\"1\">Provides metadata and binding support for a property in a XAML model.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Model.XamlDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Model.XamlDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Model.XamlDocument",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Model.XamlDocument.yml\" sourcestartlinenumber=\"1\">Represents a XAML document and provides validation logic.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Model.XamlNamespace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Model.XamlNamespace.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Model.XamlNamespace",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Model.XamlNamespace.yml\" sourcestartlinenumber=\"1\">Represents a XAML namespace.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Model.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Model",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Performance.MemoryMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Performance.MemoryMonitor",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Performance.MemoryMonitor.yml\" sourcestartlinenumber=\"1\">Monitors memory usage for constitutional compliance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Performance.PerformanceCounters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Performance.PerformanceCounters",
+      "Summary": "<p sourcefile=\"api/Terminal.Gui.Xaml.Performance.PerformanceCounters.yml\" sourcestartlinenumber=\"1\">Provides performance counters for constitutional compliance monitoring.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Terminal.Gui.Xaml.Performance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Terminal.Gui.Xaml.Performance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Terminal.Gui.Xaml.Performance",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/accessibility.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/accessibility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/changelog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/concepts/binding.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/concepts/binding.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/concepts/events.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/concepts/events.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/concepts/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/concepts/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/concepts/layout.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/concepts/layout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/concepts/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/concepts/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/concepts/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/contributing/docs-style-guide.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/docs-style-guide.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/contributing/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/contributing/offline.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/offline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/contributing/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/contributing/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/basic-layout.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/basic-layout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/button-click.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/button-click.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/hello-world.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/hello-world.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/examples/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/examples/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/faq.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/faq.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/glossary.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/glossary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/bind-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/bind-data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/create-window.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/create-window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/handle-input.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/handle-input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/legacy-binding-syntax.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/legacy-binding-syntax.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/navigation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/navigation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/guides/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/guides/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/tutorials/build-a-mini-app.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorials/build-a-mini-app.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/tutorials/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorials/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/tutorials/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "constitutional-compliance.md",
+      "output": {
+        ".html": {
+          "relative_path": "constitutional-compliance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

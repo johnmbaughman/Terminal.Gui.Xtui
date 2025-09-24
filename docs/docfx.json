@@ -3,11 +3,9 @@
     {
       "src": [
         {
-          "files": ["src/Terminal.Gui.Xaml/**/*.cs"],
-          "exclude": [
-            "src/Terminal.Gui.Xaml/**/Internal/**",
-            "src/Terminal.Gui.Xaml/**/*.Designer.cs",
-            "tests/**/*.cs"
+          "src": "../src/Terminal.Gui.Xaml",
+          "files": [
+            "Terminal.Gui.Xaml.csproj"
           ]
         }
       ],
@@ -17,7 +15,9 @@
       "disableDefaultFilter": false,
       "properties": {
         "TargetFramework": "net8.0"
-      }
+      },
+      "shouldSkipMarkup": false,
+      "namespaceLayout": "flattened"
     }
   ],
   "build": {
@@ -40,7 +40,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "favicon.ico"
         ]
       }
     ],
@@ -56,14 +57,46 @@
       "_enableNewTab": true,
       "_disableContribution": false,
       "_gitContribute": {
-        "repo": "https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml",
-        "branch": "main"
+        "repo": "https://github.com/johnmbaughman/Terminal.Gui.Xaml",
+        "branch": "main",
+        "path": "docs"
       },
-      "_gitUrlPattern": "github"
+      "_gitUrlPattern": "github",
+      "_copyrightFooter": "© 2025 Terminal.Gui.Xaml Contributors",
+      "_lang": "en-us"
     },
     "fileMetadata": {
-      "_displayLangs": ["csharp"]
+      "_displayLangs": {
+        "*": ["csharp"]
+      },
+      "_appTitle": {
+        "api/**/**.md": "Terminal.Gui.Xaml API Reference",
+        "articles/concepts/**.md": "Terminal.Gui.Xaml Concepts",
+        "articles/guides/**.md": "Terminal.Gui.Xaml Guides",
+        "articles/examples/**.md": "Terminal.Gui.Xaml Examples"
+      }
     },
-    "postProcessors": ["ExtractSearchIndex"]
+    "postProcessors": [
+      "ExtractSearchIndex"
+    ],
+    "markdownEngineName": "dfm",
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "maxParallelism": 0,
+    "intermediateFolder": "obj",
+    "noLangKeyword": false,
+    "enableTabsByOrder": false,
+    "validationRules": {
+      "inputParameters": "warning",
+      "fileNotFound": "error",
+      "invalidFileLink": "error",
+      "invalidBookmark": "error",
+      "invalidCrossReference": "warning",
+      "missingAttribute": "warning"
+    }
+  },
+  "serve": {
+    "port": 8080,
+    "host": "localhost"
   }
 }

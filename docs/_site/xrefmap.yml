@@ -1,0 +1,2643 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  name: Terminal.Gui.Xaml.Documentation.Models
+  href: api/Terminal.Gui.Xaml.Documentation.Models.html
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  name: ApiDocumentation
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  nameWithType: ApiDocumentation
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName
+  name: AssemblyName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_AssemblyName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName
+  nameWithType: ApiDocumentation.AssemblyName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName*
+  name: AssemblyName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_AssemblyName_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.AssemblyName
+  nameWithType: ApiDocumentation.AssemblyName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage
+  name: DocumentationCoverage
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_DocumentationCoverage
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage
+  nameWithType: ApiDocumentation.DocumentationCoverage
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage*
+  name: DocumentationCoverage
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_DocumentationCoverage_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.DocumentationCoverage
+  nameWithType: ApiDocumentation.DocumentationCoverage
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath
+  name: GeneratedPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_GeneratedPath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath
+  nameWithType: ApiDocumentation.GeneratedPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath*
+  name: GeneratedPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_GeneratedPath_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.GeneratedPath
+  nameWithType: ApiDocumentation.GeneratedPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated
+  name: LastGenerated
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_LastGenerated
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated
+  nameWithType: ApiDocumentation.LastGenerated
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated*
+  name: LastGenerated
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_LastGenerated_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.LastGenerated
+  nameWithType: ApiDocumentation.LastGenerated
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName
+  name: MemberName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_MemberName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName
+  nameWithType: ApiDocumentation.MemberName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName*
+  name: MemberName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_MemberName_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.MemberName
+  nameWithType: ApiDocumentation.MemberName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace
+  name: Namespace
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_Namespace
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace
+  nameWithType: ApiDocumentation.Namespace
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace*
+  name: Namespace
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_Namespace_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.Namespace
+  nameWithType: ApiDocumentation.Namespace
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName
+  name: TypeName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_TypeName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName
+  nameWithType: ApiDocumentation.TypeName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName*
+  name: TypeName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html#Terminal_Gui_Xaml_Documentation_Models_ApiDocumentation_TypeName_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.TypeName
+  nameWithType: ApiDocumentation.TypeName
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  name: BuildConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  nameWithType: BuildConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode
+  name: BuildMode
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_BuildMode
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode
+  nameWithType: BuildConfiguration.BuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode*
+  name: BuildMode
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_BuildMode_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.BuildMode
+  nameWithType: BuildConfiguration.BuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled
+  name: CacheEnabled
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_CacheEnabled
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled
+  nameWithType: BuildConfiguration.CacheEnabled
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled*
+  name: CacheEnabled
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_CacheEnabled_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.CacheEnabled
+  nameWithType: BuildConfiguration.CacheEnabled
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content
+  name: Content
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Content
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content
+  nameWithType: BuildConfiguration.Content
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content*
+  name: Content
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Content_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Content
+  nameWithType: BuildConfiguration.Content
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Dest
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest
+  nameWithType: BuildConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest*
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Dest_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Dest
+  nameWithType: BuildConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata
+  name: GlobalMetadata
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_GlobalMetadata
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata
+  nameWithType: BuildConfiguration.GlobalMetadata
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata*
+  name: GlobalMetadata
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_GlobalMetadata_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.GlobalMetadata
+  nameWithType: BuildConfiguration.GlobalMetadata
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency
+  name: MaxConcurrency
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_MaxConcurrency
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency
+  nameWithType: BuildConfiguration.MaxConcurrency
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency*
+  name: MaxConcurrency
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_MaxConcurrency_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.MaxConcurrency
+  nameWithType: BuildConfiguration.MaxConcurrency
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild
+  name: ParallelBuild
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_ParallelBuild
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild
+  nameWithType: BuildConfiguration.ParallelBuild
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild*
+  name: ParallelBuild
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_ParallelBuild_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.ParallelBuild
+  nameWithType: BuildConfiguration.ParallelBuild
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource
+  name: Resource
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Resource
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource
+  nameWithType: BuildConfiguration.Resource
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource*
+  name: Resource
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Resource_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Resource
+  nameWithType: BuildConfiguration.Resource
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template
+  name: Template
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Template
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template
+  nameWithType: BuildConfiguration.Template
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template*
+  name: Template
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_Template_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.Template
+  nameWithType: BuildConfiguration.Template
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging
+  name: VerboseLogging
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_VerboseLogging
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging
+  nameWithType: BuildConfiguration.VerboseLogging
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging*
+  name: VerboseLogging
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_VerboseLogging_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.VerboseLogging
+  nameWithType: BuildConfiguration.VerboseLogging
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors
+  name: WarningsAsErrors
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_WarningsAsErrors
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors
+  nameWithType: BuildConfiguration.WarningsAsErrors
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors*
+  name: WarningsAsErrors
+  href: api/Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_BuildConfiguration_WarningsAsErrors_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.WarningsAsErrors
+  nameWithType: BuildConfiguration.WarningsAsErrors
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  name: ContentConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  nameWithType: ContentConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Dest
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest
+  nameWithType: ContentConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest*
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Dest_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Dest
+  nameWithType: ContentConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Files
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files
+  nameWithType: ContentConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files*
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Files_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Files
+  nameWithType: ContentConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Src
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src
+  nameWithType: ContentConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src*
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ContentConfiguration_Src_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.Src
+  nameWithType: ContentConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  name: CoverageMetrics
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  nameWithType: CoverageMetrics
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage
+  name: CoveragePercentage
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_CoveragePercentage
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage
+  nameWithType: CoverageMetrics.CoveragePercentage
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage*
+  name: CoveragePercentage
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_CoveragePercentage_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.CoveragePercentage
+  nameWithType: CoverageMetrics.CoveragePercentage
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers
+  name: DocumentedMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_DocumentedMembers
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers
+  nameWithType: CoverageMetrics.DocumentedMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers*
+  name: DocumentedMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_DocumentedMembers_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.DocumentedMembers
+  nameWithType: CoverageMetrics.DocumentedMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers
+  name: TotalMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_TotalMembers
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers
+  nameWithType: CoverageMetrics.TotalMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers*
+  name: TotalMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_TotalMembers_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.TotalMembers
+  nameWithType: CoverageMetrics.TotalMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers
+  name: UndocumentedMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_UndocumentedMembers
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers
+  nameWithType: CoverageMetrics.UndocumentedMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers*
+  name: UndocumentedMembers
+  href: api/Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html#Terminal_Gui_Xaml_Documentation_Models_CoverageMetrics_UndocumentedMembers_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.UndocumentedMembers
+  nameWithType: CoverageMetrics.UndocumentedMembers
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  name: DocFxConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  nameWithType: DocFxConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  name: Build
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Build
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  nameWithType: DocFxConfiguration.Build
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build*
+  name: Build
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Build_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  nameWithType: DocFxConfiguration.Build
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  name: BuildSettings
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_BuildSettings
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  nameWithType: DocFxConfiguration.BuildSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings*
+  name: BuildSettings
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_BuildSettings_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  nameWithType: DocFxConfiguration.BuildSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  name: ExcludePatterns
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ExcludePatterns
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  nameWithType: DocFxConfiguration.ExcludePatterns
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns*
+  name: ExcludePatterns
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ExcludePatterns_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  nameWithType: DocFxConfiguration.ExcludePatterns
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  name: Metadata
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Metadata
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  nameWithType: DocFxConfiguration.Metadata
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata*
+  name: Metadata
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Metadata_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  nameWithType: DocFxConfiguration.Metadata
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  name: OutputPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_OutputPath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  nameWithType: DocFxConfiguration.OutputPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath*
+  name: OutputPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_OutputPath_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  nameWithType: DocFxConfiguration.OutputPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  name: ProjectName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ProjectName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  nameWithType: DocFxConfiguration.ProjectName
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName*
+  name: ProjectName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ProjectName_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  nameWithType: DocFxConfiguration.ProjectName
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  name: SourcePaths
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_SourcePaths
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  nameWithType: DocFxConfiguration.SourcePaths
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths*
+  name: SourcePaths
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_SourcePaths_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  nameWithType: DocFxConfiguration.SourcePaths
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  name: TemplateSettings
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_TemplateSettings
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  nameWithType: DocFxConfiguration.TemplateSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings*
+  name: TemplateSettings
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_TemplateSettings_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  nameWithType: DocFxConfiguration.TemplateSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  name: Version
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Version
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  nameWithType: DocFxConfiguration.Version
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version*
+  name: Version
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Version_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  nameWithType: DocFxConfiguration.Version
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  name: DocumentationBuildMode
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  nameWithType: DocumentationBuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  name: Full
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationBuildMode_Full
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  nameWithType: DocumentationBuildMode.Full
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  name: Incremental
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationBuildMode_Incremental
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  nameWithType: DocumentationBuildMode.Incremental
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  name: MetadataOnly
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationBuildMode_MetadataOnly
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  nameWithType: DocumentationBuildMode.MetadataOnly
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  name: DocumentationValidationResult
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  nameWithType: DocumentationValidationResult
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
+  name: CoverageMetrics
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_CoverageMetrics
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
+  nameWithType: DocumentationValidationResult.CoverageMetrics
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics*
+  name: CoverageMetrics
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_CoverageMetrics_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
+  nameWithType: DocumentationValidationResult.CoverageMetrics
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
+  name: Issues
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Issues
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
+  nameWithType: DocumentationValidationResult.Issues
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues*
+  name: Issues
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Issues_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
+  nameWithType: DocumentationValidationResult.Issues
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
+  name: Status
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Status
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
+  nameWithType: DocumentationValidationResult.Status
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status*
+  name: Status
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Status_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
+  nameWithType: DocumentationValidationResult.Status
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  name: Summary
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Summary
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  nameWithType: DocumentationValidationResult.Summary
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary*
+  name: Summary
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Summary_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  nameWithType: DocumentationValidationResult.Summary
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  name: ValidationTarget
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTarget
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  nameWithType: DocumentationValidationResult.ValidationTarget
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget*
+  name: ValidationTarget
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTarget_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  nameWithType: DocumentationValidationResult.ValidationTarget
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
+  name: ValidationTime
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTime
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
+  nameWithType: DocumentationValidationResult.ValidationTime
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime*
+  name: ValidationTime
+  href: api/Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTime_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
+  nameWithType: DocumentationValidationResult.ValidationTime
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  name: IssueSeverity
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  nameWithType: IssueSeverity
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  name: Error
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html#Terminal_Gui_Xaml_Documentation_Models_IssueSeverity_Error
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  nameWithType: IssueSeverity.Error
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  name: Information
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html#Terminal_Gui_Xaml_Documentation_Models_IssueSeverity_Information
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  nameWithType: IssueSeverity.Information
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  name: Warning
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html#Terminal_Gui_Xaml_Documentation_Models_IssueSeverity_Warning
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  nameWithType: IssueSeverity.Warning
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  name: IssueType
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueType
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  nameWithType: IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  name: InvalidExample
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_InvalidExample
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  nameWithType: IssueType.InvalidExample
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  name: InvalidLink
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_InvalidLink
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  nameWithType: IssueType.InvalidLink
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  name: MalformedXml
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_MalformedXml
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  nameWithType: IssueType.MalformedXml
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  name: MissingDocumentation
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_MissingDocumentation
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  nameWithType: IssueType.MissingDocumentation
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  name: MissingParameterDoc
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_MissingParameterDoc
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  nameWithType: IssueType.MissingParameterDoc
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  name: MissingReturnDoc
+  href: api/Terminal.Gui.Xaml.Documentation.Models.IssueType.html#Terminal_Gui_Xaml_Documentation_Models_IssueType_MissingReturnDoc
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  nameWithType: IssueType.MissingReturnDoc
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  name: MetadataConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  nameWithType: MetadataConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Dest
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest
+  nameWithType: MetadataConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest*
+  name: Dest
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Dest_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Dest
+  nameWithType: MetadataConfiguration.Dest
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties
+  name: Properties
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Properties
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties
+  nameWithType: MetadataConfiguration.Properties
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties*
+  name: Properties
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Properties_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Properties
+  nameWithType: MetadataConfiguration.Properties
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Src
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src
+  nameWithType: MetadataConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src*
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_MetadataConfiguration_Src_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.Src
+  nameWithType: MetadataConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  name: ResourceConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  nameWithType: ResourceConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ResourceConfiguration_Files
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files
+  nameWithType: ResourceConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files*
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ResourceConfiguration_Files_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Files
+  nameWithType: ResourceConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ResourceConfiguration_Src
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src
+  nameWithType: ResourceConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src*
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_ResourceConfiguration_Src_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.Src
+  nameWithType: ResourceConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  name: SourceConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  nameWithType: SourceConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude
+  name: Exclude
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Exclude
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude
+  nameWithType: SourceConfiguration.Exclude
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude*
+  name: Exclude
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Exclude_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Exclude
+  nameWithType: SourceConfiguration.Exclude
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Files
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files
+  nameWithType: SourceConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files*
+  name: Files
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Files_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Files
+  nameWithType: SourceConfiguration.Files
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Src
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src
+  nameWithType: SourceConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src*
+  name: Src
+  href: api/Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_SourceConfiguration_Src_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.Src
+  nameWithType: SourceConfiguration.Src
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  name: TemplateConfiguration
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  nameWithType: TemplateConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor
+  name: BrandingColor
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_BrandingColor
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor
+  nameWithType: TemplateConfiguration.BrandingColor
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor*
+  name: BrandingColor
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_BrandingColor_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.BrandingColor
+  nameWithType: TemplateConfiguration.BrandingColor
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss
+  name: CustomCss
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_CustomCss
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss
+  nameWithType: TemplateConfiguration.CustomCss
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss*
+  name: CustomCss
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_CustomCss_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomCss
+  nameWithType: TemplateConfiguration.CustomCss
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs
+  name: CustomJs
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_CustomJs
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs
+  nameWithType: TemplateConfiguration.CustomJs
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs*
+  name: CustomJs
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_CustomJs_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.CustomJs
+  nameWithType: TemplateConfiguration.CustomJs
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode
+  name: EnableDarkMode
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_EnableDarkMode
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode
+  nameWithType: TemplateConfiguration.EnableDarkMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode*
+  name: EnableDarkMode
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_EnableDarkMode_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableDarkMode
+  nameWithType: TemplateConfiguration.EnableDarkMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch
+  name: EnableSearch
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_EnableSearch
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch
+  nameWithType: TemplateConfiguration.EnableSearch
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch*
+  name: EnableSearch
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_EnableSearch_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.EnableSearch
+  nameWithType: TemplateConfiguration.EnableSearch
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath
+  name: FaviconPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_FaviconPath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath
+  nameWithType: TemplateConfiguration.FaviconPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath*
+  name: FaviconPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_FaviconPath_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.FaviconPath
+  nameWithType: TemplateConfiguration.FaviconPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath
+  name: LogoPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_LogoPath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath
+  nameWithType: TemplateConfiguration.LogoPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath*
+  name: LogoPath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_LogoPath_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.LogoPath
+  nameWithType: TemplateConfiguration.LogoPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name
+  name: Name
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Name
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name
+  nameWithType: TemplateConfiguration.Name
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name*
+  name: Name
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Name_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Name
+  nameWithType: TemplateConfiguration.Name
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path
+  name: Path
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Path
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path
+  nameWithType: TemplateConfiguration.Path
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path*
+  name: Path
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Path_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Path
+  nameWithType: TemplateConfiguration.Path
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables
+  name: Variables
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Variables
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables
+  nameWithType: TemplateConfiguration.Variables
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables*
+  name: Variables
+  href: api/Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_TemplateConfiguration_Variables_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.Variables
+  nameWithType: TemplateConfiguration.Variables
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  name: ValidationIssue
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  nameWithType: ValidationIssue
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath
+  name: FilePath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_FilePath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath
+  nameWithType: ValidationIssue.FilePath
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath*
+  name: FilePath
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_FilePath_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.FilePath
+  nameWithType: ValidationIssue.FilePath
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType
+  name: IssueType
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_IssueType
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType
+  nameWithType: ValidationIssue.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType*
+  name: IssueType
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_IssueType_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.IssueType
+  nameWithType: ValidationIssue.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber
+  name: LineNumber
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_LineNumber
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber
+  nameWithType: ValidationIssue.LineNumber
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber*
+  name: LineNumber
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_LineNumber_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.LineNumber
+  nameWithType: ValidationIssue.LineNumber
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName
+  name: MemberName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_MemberName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName
+  nameWithType: ValidationIssue.MemberName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName*
+  name: MemberName
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_MemberName_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.MemberName
+  nameWithType: ValidationIssue.MemberName
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message
+  name: Message
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Message
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message
+  nameWithType: ValidationIssue.Message
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message*
+  name: Message
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Message_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Message
+  nameWithType: ValidationIssue.Message
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity
+  name: Severity
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Severity
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity
+  nameWithType: ValidationIssue.Severity
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity*
+  name: Severity
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Severity_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Severity
+  nameWithType: ValidationIssue.Severity
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion
+  name: Suggestion
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Suggestion
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion
+  nameWithType: ValidationIssue.Suggestion
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion*
+  name: Suggestion
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html#Terminal_Gui_Xaml_Documentation_Models_ValidationIssue_Suggestion_
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.Suggestion
+  nameWithType: ValidationIssue.Suggestion
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  name: ValidationStatus
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  nameWithType: ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  name: Error
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html#Terminal_Gui_Xaml_Documentation_Models_ValidationStatus_Error
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  nameWithType: ValidationStatus.Error
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  name: Success
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html#Terminal_Gui_Xaml_Documentation_Models_ValidationStatus_Success
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  nameWithType: ValidationStatus.Success
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  name: Warning
+  href: api/Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html#Terminal_Gui_Xaml_Documentation_Models_ValidationStatus_Warning
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  nameWithType: ValidationStatus.Warning
+- uid: Terminal.Gui.Xaml.Exceptions
+  name: Terminal.Gui.Xaml.Exceptions
+  href: api/Terminal.Gui.Xaml.Exceptions.html
+  commentId: N:Terminal.Gui.Xaml.Exceptions
+  fullName: Terminal.Gui.Xaml.Exceptions
+  nameWithType: Terminal.Gui.Xaml.Exceptions
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException
+  name: BindingException
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html
+  commentId: T:Terminal.Gui.Xaml.Exceptions.BindingException
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException
+  nameWithType: BindingException
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.#ctor
+  name: BindingException()
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException__ctor
+  commentId: M:Terminal.Gui.Xaml.Exceptions.BindingException.#ctor
+  name.vb: New()
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingException()
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.BindingException.New()
+  nameWithType: BindingException.BindingException()
+  nameWithType.vb: BindingException.New()
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.#ctor(System.String)
+  name: BindingException(string)
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException__ctor_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.BindingException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingException(string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.BindingException.New(String)
+  nameWithType: BindingException.BindingException(string)
+  nameWithType.vb: BindingException.New(String)
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.#ctor(System.String,System.Exception)
+  name: BindingException(string, Exception)
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException__ctor_System_String_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.BindingException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingException(string, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.BindingException.New(String, System.Exception)
+  nameWithType: BindingException.BindingException(string, Exception)
+  nameWithType.vb: BindingException.New(String, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.#ctor*
+  name: BindingException
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.BindingException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingException
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.BindingException.New
+  nameWithType: BindingException.BindingException
+  nameWithType.vb: BindingException.New
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression
+  name: BindingExpression
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException_BindingExpression
+  commentId: P:Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression
+  nameWithType: BindingException.BindingExpression
+- uid: Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression*
+  name: BindingExpression
+  href: api/Terminal.Gui.Xaml.Exceptions.BindingException.html#Terminal_Gui_Xaml_Exceptions_BindingException_BindingExpression_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.BindingException.BindingExpression
+  nameWithType: BindingException.BindingExpression
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException
+  name: CodeGenerationException
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html
+  commentId: T:Terminal.Gui.Xaml.Exceptions.CodeGenerationException
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException
+  nameWithType: CodeGenerationException
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor
+  name: CodeGenerationException()
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException__ctor
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor
+  name.vb: New()
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CodeGenerationException()
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.New()
+  nameWithType: CodeGenerationException.CodeGenerationException()
+  nameWithType.vb: CodeGenerationException.New()
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor(System.String)
+  name: CodeGenerationException(string)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException__ctor_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CodeGenerationException(string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.New(String)
+  nameWithType: CodeGenerationException.CodeGenerationException(string)
+  nameWithType.vb: CodeGenerationException.New(String)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor(System.String,System.Exception)
+  name: CodeGenerationException(string, Exception)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException__ctor_System_String_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CodeGenerationException(string, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.New(String, System.Exception)
+  nameWithType: CodeGenerationException.CodeGenerationException(string, Exception)
+  nameWithType.vb: CodeGenerationException.New(String, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor*
+  name: CodeGenerationException
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CodeGenerationException
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.New
+  nameWithType: CodeGenerationException.CodeGenerationException
+  nameWithType.vb: CodeGenerationException.New
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName
+  name: ClassName
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_ClassName
+  commentId: P:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName
+  nameWithType: CodeGenerationException.ClassName
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName*
+  name: ClassName
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_ClassName_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ClassName
+  nameWithType: CodeGenerationException.ClassName
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError(System.String,System.String,System.String)
+  name: CompilationError(string, string, string)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_CompilationError_System_String_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError(System.String,System.String,System.String)
+  name.vb: CompilationError(String, String, String)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError(string, string, string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError(String, String, String)
+  nameWithType: CodeGenerationException.CompilationError(string, string, string)
+  nameWithType.vb: CodeGenerationException.CompilationError(String, String, String)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError*
+  name: CompilationError
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_CompilationError_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.CompilationError
+  nameWithType: CodeGenerationException.CompilationError
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode
+  name: ErrorCode
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_ErrorCode
+  commentId: P:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode
+  nameWithType: CodeGenerationException.ErrorCode
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode*
+  name: ErrorCode
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_ErrorCode_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.ErrorCode
+  nameWithType: CodeGenerationException.ErrorCode
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode
+  name: GeneratedCode
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_GeneratedCode
+  commentId: P:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode
+  nameWithType: CodeGenerationException.GeneratedCode
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode*
+  name: GeneratedCode
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_GeneratedCode_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GeneratedCode
+  nameWithType: CodeGenerationException.GeneratedCode
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType: CodeGenerationException.GetObjectData(SerializationInfo, StreamingContext)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData*
+  name: GetObjectData
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_GetObjectData_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.GetObjectData
+  nameWithType: CodeGenerationException.GetObjectData
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType(System.String,System.String)
+  name: InvalidType(string, string)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_InvalidType_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType(System.String,System.String)
+  name.vb: InvalidType(String, String)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType(string, string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType(String, String)
+  nameWithType: CodeGenerationException.InvalidType(string, string)
+  nameWithType.vb: CodeGenerationException.InvalidType(String, String)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType*
+  name: InvalidType
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_InvalidType_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.InvalidType
+  nameWithType: CodeGenerationException.InvalidType
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage
+  name: LocalizedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_LocalizedMessage
+  commentId: P:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage
+  nameWithType: CodeGenerationException.LocalizedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage*
+  name: LocalizedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_LocalizedMessage_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.LocalizedMessage
+  nameWithType: CodeGenerationException.LocalizedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName
+  name: MethodName
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_MethodName
+  commentId: P:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName
+  nameWithType: CodeGenerationException.MethodName
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName*
+  name: MethodName
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_MethodName_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.MethodName
+  nameWithType: CodeGenerationException.MethodName
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError(System.String,System.String,System.String)
+  name: TemplateError(string, string, string)
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_TemplateError_System_String_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError(System.String,System.String,System.String)
+  name.vb: TemplateError(String, String, String)
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError(string, string, string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError(String, String, String)
+  nameWithType: CodeGenerationException.TemplateError(string, string, string)
+  nameWithType.vb: CodeGenerationException.TemplateError(String, String, String)
+- uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError*
+  name: TemplateError
+  href: api/Terminal.Gui.Xaml.Exceptions.CodeGenerationException.html#Terminal_Gui_Xaml_Exceptions_CodeGenerationException_TemplateError_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.CodeGenerationException.TemplateError
+  nameWithType: CodeGenerationException.TemplateError
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException
+  name: XamlException
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html
+  commentId: T:Terminal.Gui.Xaml.Exceptions.XamlException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException
+  nameWithType: XamlException
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  name: XamlException()
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException__ctor
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  name.vb: New()
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException()
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New()
+  nameWithType: XamlException.XamlException()
+  nameWithType.vb: XamlException.New()
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String)
+  name: XamlException(string)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException__ctor_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException(string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New(String)
+  nameWithType: XamlException.XamlException(string)
+  nameWithType.vb: XamlException.New(String)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String,System.Exception)
+  name: XamlException(string, Exception)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException__ctor_System_String_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException(string, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New(String, System.Exception)
+  nameWithType: XamlException.XamlException(string, Exception)
+  nameWithType.vb: XamlException.New(String, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor*
+  name: XamlException
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New
+  nameWithType: XamlException.XamlException
+  nameWithType.vb: XamlException.New
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  name: ColumnNumber
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ColumnNumber
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  nameWithType: XamlException.ColumnNumber
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber*
+  name: ColumnNumber
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ColumnNumber_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  nameWithType: XamlException.ColumnNumber
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  name: DetailedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_DetailedMessage
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  nameWithType: XamlException.DetailedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage*
+  name: DetailedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_DetailedMessage_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  nameWithType: XamlException.DetailedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  name: ErrorCode
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ErrorCode
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  nameWithType: XamlException.ErrorCode
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode*
+  name: ErrorCode
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ErrorCode_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  nameWithType: XamlException.ErrorCode
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  name: LineNumber
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LineNumber
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  nameWithType: XamlException.LineNumber
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber*
+  name: LineNumber
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LineNumber_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  nameWithType: XamlException.LineNumber
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  name: LocalizedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LocalizedMessage
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  nameWithType: XamlException.LocalizedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage*
+  name: LocalizedMessage
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LocalizedMessage_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  nameWithType: XamlException.LocalizedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  name: ToJson()
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ToJson
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson()
+  nameWithType: XamlException.ToJson()
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson*
+  name: ToJson
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ToJson_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  nameWithType: XamlException.ToJson
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  name: XamlFilePath
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_XamlFilePath
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  nameWithType: XamlException.XamlFilePath
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath*
+  name: XamlFilePath
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_XamlFilePath_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  nameWithType: XamlException.XamlFilePath
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException
+  name: XamlParseException
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html
+  commentId: T:Terminal.Gui.Xaml.Exceptions.XamlParseException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException
+  nameWithType: XamlParseException
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor
+  name: XamlParseException()
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor
+  name.vb: New()
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException()
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New()
+  nameWithType: XamlParseException.XamlParseException()
+  nameWithType.vb: XamlParseException.New()
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String)
+  name: XamlParseException(string)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor_System_String_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException(string)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New(String)
+  nameWithType: XamlParseException.XamlParseException(string)
+  nameWithType.vb: XamlParseException.New(String)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.Exception)
+  name: XamlParseException(string, Exception)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor_System_String_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.Exception)
+  name.vb: New(String, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException(string, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New(String, System.Exception)
+  nameWithType: XamlParseException.XamlParseException(string, Exception)
+  nameWithType.vb: XamlParseException.New(String, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.String,System.Int32,System.Int32)
+  name: XamlParseException(string, string, int, int)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor_System_String_System_String_System_Int32_System_Int32_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.String,System.Int32,System.Int32)
+  name.vb: New(String, String, Integer, Integer)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException(string, string, int, int)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New(String, String, Integer, Integer)
+  nameWithType: XamlParseException.XamlParseException(string, string, int, int)
+  nameWithType.vb: XamlParseException.New(String, String, Integer, Integer)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.String,System.Int32,System.Int32,System.Exception)
+  name: XamlParseException(string, string, int, int, Exception)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor_System_String_System_String_System_Int32_System_Int32_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor(System.String,System.String,System.Int32,System.Int32,System.Exception)
+  name.vb: New(String, String, Integer, Integer, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException(string, string, int, int, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New(String, String, Integer, Integer, System.Exception)
+  nameWithType: XamlParseException.XamlParseException(string, string, int, int, Exception)
+  nameWithType.vb: XamlParseException.New(String, String, Integer, Integer, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor*
+  name: XamlParseException
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.XamlParseException
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.New
+  nameWithType: XamlParseException.XamlParseException
+  nameWithType.vb: XamlParseException.New
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual
+  name: Actual
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_Actual
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual
+  nameWithType: XamlParseException.Actual
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual*
+  name: Actual
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_Actual_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.Actual
+  nameWithType: XamlParseException.Actual
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName
+  name: AttributeName
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_AttributeName
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName
+  nameWithType: XamlParseException.AttributeName
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName*
+  name: AttributeName
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_AttributeName_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.AttributeName
+  nameWithType: XamlParseException.AttributeName
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName
+  name: ElementName
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_ElementName
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName
+  nameWithType: XamlParseException.ElementName
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName*
+  name: ElementName
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_ElementName_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.ElementName
+  nameWithType: XamlParseException.ElementName
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected
+  name: Expected
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_Expected
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected
+  nameWithType: XamlParseException.Expected
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected*
+  name: Expected
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_Expected_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.Expected
+  nameWithType: XamlParseException.Expected
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute(System.String,System.String,System.String,System.Int32,System.Int32)
+  name: InvalidAttribute(string, string, string, int, int)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_InvalidAttribute_System_String_System_String_System_String_System_Int32_System_Int32_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute(System.String,System.String,System.String,System.Int32,System.Int32)
+  name.vb: InvalidAttribute(String, String, String, Integer, Integer)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute(string, string, string, int, int)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute(String, String, String, Integer, Integer)
+  nameWithType: XamlParseException.InvalidAttribute(string, string, string, int, int)
+  nameWithType.vb: XamlParseException.InvalidAttribute(String, String, String, Integer, Integer)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute*
+  name: InvalidAttribute
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_InvalidAttribute_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidAttribute
+  nameWithType: XamlParseException.InvalidAttribute
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement(System.String,System.String,System.Int32,System.Int32)
+  name: InvalidElement(string, string, int, int)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_InvalidElement_System_String_System_String_System_Int32_System_Int32_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement(System.String,System.String,System.Int32,System.Int32)
+  name.vb: InvalidElement(String, String, Integer, Integer)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement(string, string, int, int)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement(String, String, Integer, Integer)
+  nameWithType: XamlParseException.InvalidElement(string, string, int, int)
+  nameWithType.vb: XamlParseException.InvalidElement(String, String, Integer, Integer)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement*
+  name: InvalidElement
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_InvalidElement_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.InvalidElement
+  nameWithType: XamlParseException.InvalidElement
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax(System.String,System.String,System.String,System.Int32,System.Int32)
+  name: MalformedSyntax(string, string, string, int, int)
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_MalformedSyntax_System_String_System_String_System_String_System_Int32_System_Int32_
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax(System.String,System.String,System.String,System.Int32,System.Int32)
+  name.vb: MalformedSyntax(String, String, String, Integer, Integer)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax(string, string, string, int, int)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax(String, String, String, Integer, Integer)
+  nameWithType: XamlParseException.MalformedSyntax(string, string, string, int, int)
+  nameWithType.vb: XamlParseException.MalformedSyntax(String, String, String, Integer, Integer)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax*
+  name: MalformedSyntax
+  href: api/Terminal.Gui.Xaml.Exceptions.XamlParseException.html#Terminal_Gui_Xaml_Exceptions_XamlParseException_MalformedSyntax_
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException.MalformedSyntax
+  nameWithType: XamlParseException.MalformedSyntax
+- uid: Terminal.Gui.Xaml.Logging
+  name: Terminal.Gui.Xaml.Logging
+  href: api/Terminal.Gui.Xaml.Logging.html
+  commentId: N:Terminal.Gui.Xaml.Logging
+  fullName: Terminal.Gui.Xaml.Logging
+  nameWithType: Terminal.Gui.Xaml.Logging
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger
+  name: DiagnosticSourceLogger
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html
+  commentId: T:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger
+  nameWithType: DiagnosticSourceLogger
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.#ctor(System.String)
+  name: DiagnosticSourceLogger(string)
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger__ctor_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.DiagnosticSourceLogger(string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.New(String)
+  nameWithType: DiagnosticSourceLogger.DiagnosticSourceLogger(string)
+  nameWithType.vb: DiagnosticSourceLogger.New(String)
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.#ctor*
+  name: DiagnosticSourceLogger
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.DiagnosticSourceLogger
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.New
+  nameWithType: DiagnosticSourceLogger.DiagnosticSourceLogger
+  nameWithType.vb: DiagnosticSourceLogger.New
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope(System.String)
+  name: BeginScope(string)
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_BeginScope_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope(System.String)
+  name.vb: BeginScope(String)
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope(string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope(String)
+  nameWithType: DiagnosticSourceLogger.BeginScope(string)
+  nameWithType.vb: DiagnosticSourceLogger.BeginScope(String)
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope*
+  name: BeginScope
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_BeginScope_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.BeginScope
+  nameWithType: DiagnosticSourceLogger.BeginScope
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  name: IsEnabled(LogLevel)
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_IsEnabled_Terminal_Gui_Xaml_Logging_LogLevel_
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  nameWithType: DiagnosticSourceLogger.IsEnabled(LogLevel)
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled*
+  name: IsEnabled
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_IsEnabled_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.IsEnabled
+  nameWithType: DiagnosticSourceLogger.IsEnabled
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.Exception,System.String,System.Object[])
+  name: LogCritical(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogCritical_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.Exception,System.String,System.Object[])
+  name.vb: LogCritical(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.Exception, String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogCritical(Exception, string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogCritical(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.String,System.Object[])
+  name: LogCritical(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogCritical_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(System.String,System.Object[])
+  name.vb: LogCritical(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogCritical(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogCritical(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical*
+  name: LogCritical
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogCritical_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogCritical
+  nameWithType: DiagnosticSourceLogger.LogCritical
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug(System.String,System.Object[])
+  name: LogDebug(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogDebug_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug(System.String,System.Object[])
+  name.vb: LogDebug(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogDebug(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogDebug(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug*
+  name: LogDebug
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogDebug_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogDebug
+  nameWithType: DiagnosticSourceLogger.LogDebug
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.Exception,System.String,System.Object[])
+  name: LogError(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogError_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.Exception,System.String,System.Object[])
+  name.vb: LogError(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.Exception, String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogError(Exception, string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogError(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.String,System.Object[])
+  name: LogError(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogError_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(System.String,System.Object[])
+  name.vb: LogError(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogError(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogError(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError*
+  name: LogError
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogError_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogError
+  nameWithType: DiagnosticSourceLogger.LogError
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation(System.String,System.Object[])
+  name: LogInformation(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogInformation_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation(System.String,System.Object[])
+  name.vb: LogInformation(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogInformation(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogInformation(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation*
+  name: LogInformation
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogInformation_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogInformation
+  nameWithType: DiagnosticSourceLogger.LogInformation
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name: LogPerformanceMetric(string, double, long)
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogPerformanceMetric_System_String_System_Double_System_Int64_
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name.vb: LogPerformanceMetric(String, Double, Long)
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric(string, double, long)
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric(String, Double, Long)
+  nameWithType: DiagnosticSourceLogger.LogPerformanceMetric(string, double, long)
+  nameWithType.vb: DiagnosticSourceLogger.LogPerformanceMetric(String, Double, Long)
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric*
+  name: LogPerformanceMetric
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogPerformanceMetric_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogPerformanceMetric
+  nameWithType: DiagnosticSourceLogger.LogPerformanceMetric
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace(System.String,System.Object[])
+  name: LogTrace(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogTrace_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace(System.String,System.Object[])
+  name.vb: LogTrace(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogTrace(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogTrace(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace*
+  name: LogTrace
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogTrace_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogTrace
+  nameWithType: DiagnosticSourceLogger.LogTrace
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning(System.String,System.Object[])
+  name: LogWarning(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogWarning_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning(System.String,System.Object[])
+  name.vb: LogWarning(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning(String, ParamArray Object())
+  nameWithType: DiagnosticSourceLogger.LogWarning(string, params object[])
+  nameWithType.vb: DiagnosticSourceLogger.LogWarning(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning*
+  name: LogWarning
+  href: api/Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.html#Terminal_Gui_Xaml_Logging_DiagnosticSourceLogger_LogWarning_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger.LogWarning
+  nameWithType: DiagnosticSourceLogger.LogWarning
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger
+  name: IXamlLogger
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html
+  commentId: T:Terminal.Gui.Xaml.Logging.IXamlLogger
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger
+  nameWithType: IXamlLogger
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(System.String)
+  name: BeginScope(string)
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_BeginScope_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(System.String)
+  name.vb: BeginScope(String)
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(String)
+  nameWithType: IXamlLogger.BeginScope(string)
+  nameWithType.vb: IXamlLogger.BeginScope(String)
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope*
+  name: BeginScope
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_BeginScope_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope
+  nameWithType: IXamlLogger.BeginScope
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  name: IsEnabled(LogLevel)
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_IsEnabled_Terminal_Gui_Xaml_Logging_LogLevel_
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  nameWithType: IXamlLogger.IsEnabled(LogLevel)
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled*
+  name: IsEnabled
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_IsEnabled_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled
+  nameWithType: IXamlLogger.IsEnabled
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception,System.String,System.Object[])
+  name: LogCritical(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception,System.String,System.Object[])
+  name.vb: LogCritical(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception, String, ParamArray Object())
+  nameWithType: IXamlLogger.LogCritical(Exception, string, params object[])
+  nameWithType.vb: IXamlLogger.LogCritical(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.String,System.Object[])
+  name: LogCritical(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.String,System.Object[])
+  name.vb: LogCritical(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogCritical(string, params object[])
+  nameWithType.vb: IXamlLogger.LogCritical(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical*
+  name: LogCritical
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical
+  nameWithType: IXamlLogger.LogCritical
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(System.String,System.Object[])
+  name: LogDebug(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogDebug_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(System.String,System.Object[])
+  name.vb: LogDebug(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogDebug(string, params object[])
+  nameWithType.vb: IXamlLogger.LogDebug(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug*
+  name: LogDebug
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogDebug_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug
+  nameWithType: IXamlLogger.LogDebug
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception,System.String,System.Object[])
+  name: LogError(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception,System.String,System.Object[])
+  name.vb: LogError(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception, String, ParamArray Object())
+  nameWithType: IXamlLogger.LogError(Exception, string, params object[])
+  nameWithType.vb: IXamlLogger.LogError(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.String,System.Object[])
+  name: LogError(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.String,System.Object[])
+  name.vb: LogError(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogError(string, params object[])
+  nameWithType.vb: IXamlLogger.LogError(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError*
+  name: LogError
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogError
+  nameWithType: IXamlLogger.LogError
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(System.String,System.Object[])
+  name: LogInformation(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogInformation_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(System.String,System.Object[])
+  name.vb: LogInformation(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogInformation(string, params object[])
+  nameWithType.vb: IXamlLogger.LogInformation(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation*
+  name: LogInformation
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogInformation_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation
+  nameWithType: IXamlLogger.LogInformation
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name: LogPerformanceMetric(string, double, long)
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogPerformanceMetric_System_String_System_Double_System_Int64_
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name.vb: LogPerformanceMetric(String, Double, Long)
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(string, double, long)
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(String, Double, Long)
+  nameWithType: IXamlLogger.LogPerformanceMetric(string, double, long)
+  nameWithType.vb: IXamlLogger.LogPerformanceMetric(String, Double, Long)
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric*
+  name: LogPerformanceMetric
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogPerformanceMetric_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric
+  nameWithType: IXamlLogger.LogPerformanceMetric
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(System.String,System.Object[])
+  name: LogTrace(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogTrace_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(System.String,System.Object[])
+  name.vb: LogTrace(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogTrace(string, params object[])
+  nameWithType.vb: IXamlLogger.LogTrace(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace*
+  name: LogTrace
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogTrace_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace
+  nameWithType: IXamlLogger.LogTrace
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(System.String,System.Object[])
+  name: LogWarning(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogWarning_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(System.String,System.Object[])
+  name.vb: LogWarning(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(String, ParamArray Object())
+  nameWithType: IXamlLogger.LogWarning(string, params object[])
+  nameWithType.vb: IXamlLogger.LogWarning(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning*
+  name: LogWarning
+  href: api/Terminal.Gui.Xaml.Logging.IXamlLogger.html#Terminal_Gui_Xaml_Logging_IXamlLogger_LogWarning_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning
+  nameWithType: IXamlLogger.LogWarning
+- uid: Terminal.Gui.Xaml.Logging.LogLevel
+  name: LogLevel
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html
+  commentId: T:Terminal.Gui.Xaml.Logging.LogLevel
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel
+  nameWithType: LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  name: Critical
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Critical
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  nameWithType: LogLevel.Critical
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  name: Debug
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Debug
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  nameWithType: LogLevel.Debug
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Error
+  name: Error
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Error
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Error
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Error
+  nameWithType: LogLevel.Error
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Information
+  name: Information
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Information
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Information
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Information
+  nameWithType: LogLevel.Information
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.None
+  name: None
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_None
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.None
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.None
+  nameWithType: LogLevel.None
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  name: Trace
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Trace
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  nameWithType: LogLevel.Trace
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  name: Warning
+  href: api/Terminal.Gui.Xaml.Logging.LogLevel.html#Terminal_Gui_Xaml_Logging_LogLevel_Warning
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  nameWithType: LogLevel.Warning
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter
+  name: MicrosoftLoggerAdapter
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html
+  commentId: T:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter
+  nameWithType: MicrosoftLoggerAdapter
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.#ctor(Microsoft.Extensions.Logging.ILogger)
+  name: MicrosoftLoggerAdapter(ILogger)
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter__ctor_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.#ctor(Microsoft.Extensions.Logging.ILogger)
+  name.vb: New(ILogger)
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.MicrosoftLoggerAdapter(Microsoft.Extensions.Logging.ILogger)
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.New(Microsoft.Extensions.Logging.ILogger)
+  nameWithType: MicrosoftLoggerAdapter.MicrosoftLoggerAdapter(ILogger)
+  nameWithType.vb: MicrosoftLoggerAdapter.New(ILogger)
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.#ctor*
+  name: MicrosoftLoggerAdapter
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.MicrosoftLoggerAdapter
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.New
+  nameWithType: MicrosoftLoggerAdapter.MicrosoftLoggerAdapter
+  nameWithType.vb: MicrosoftLoggerAdapter.New
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope(System.String)
+  name: BeginScope(string)
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_BeginScope_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope(System.String)
+  name.vb: BeginScope(String)
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope(string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope(String)
+  nameWithType: MicrosoftLoggerAdapter.BeginScope(string)
+  nameWithType.vb: MicrosoftLoggerAdapter.BeginScope(String)
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope*
+  name: BeginScope
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_BeginScope_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.BeginScope
+  nameWithType: MicrosoftLoggerAdapter.BeginScope
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  name: IsEnabled(LogLevel)
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_IsEnabled_Terminal_Gui_Xaml_Logging_LogLevel_
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)
+  nameWithType: MicrosoftLoggerAdapter.IsEnabled(LogLevel)
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled*
+  name: IsEnabled
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_IsEnabled_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.IsEnabled
+  nameWithType: MicrosoftLoggerAdapter.IsEnabled
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.Exception,System.String,System.Object[])
+  name: LogCritical(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogCritical_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.Exception,System.String,System.Object[])
+  name.vb: LogCritical(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.Exception, String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogCritical(Exception, string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogCritical(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.String,System.Object[])
+  name: LogCritical(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogCritical_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(System.String,System.Object[])
+  name.vb: LogCritical(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogCritical(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogCritical(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical*
+  name: LogCritical
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogCritical_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogCritical
+  nameWithType: MicrosoftLoggerAdapter.LogCritical
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug(System.String,System.Object[])
+  name: LogDebug(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogDebug_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug(System.String,System.Object[])
+  name.vb: LogDebug(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogDebug(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogDebug(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug*
+  name: LogDebug
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogDebug_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogDebug
+  nameWithType: MicrosoftLoggerAdapter.LogDebug
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.Exception,System.String,System.Object[])
+  name: LogError(Exception, string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogError_System_Exception_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.Exception,System.String,System.Object[])
+  name.vb: LogError(Exception, String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.Exception, string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.Exception, String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogError(Exception, string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogError(Exception, String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.String,System.Object[])
+  name: LogError(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogError_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(System.String,System.Object[])
+  name.vb: LogError(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogError(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogError(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError*
+  name: LogError
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogError_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogError
+  nameWithType: MicrosoftLoggerAdapter.LogError
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation(System.String,System.Object[])
+  name: LogInformation(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogInformation_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation(System.String,System.Object[])
+  name.vb: LogInformation(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogInformation(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogInformation(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation*
+  name: LogInformation
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogInformation_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogInformation
+  nameWithType: MicrosoftLoggerAdapter.LogInformation
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name: LogPerformanceMetric(string, double, long)
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogPerformanceMetric_System_String_System_Double_System_Int64_
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric(System.String,System.Double,System.Int64)
+  name.vb: LogPerformanceMetric(String, Double, Long)
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric(string, double, long)
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric(String, Double, Long)
+  nameWithType: MicrosoftLoggerAdapter.LogPerformanceMetric(string, double, long)
+  nameWithType.vb: MicrosoftLoggerAdapter.LogPerformanceMetric(String, Double, Long)
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric*
+  name: LogPerformanceMetric
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogPerformanceMetric_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogPerformanceMetric
+  nameWithType: MicrosoftLoggerAdapter.LogPerformanceMetric
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace(System.String,System.Object[])
+  name: LogTrace(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogTrace_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace(System.String,System.Object[])
+  name.vb: LogTrace(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogTrace(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogTrace(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace*
+  name: LogTrace
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogTrace_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogTrace
+  nameWithType: MicrosoftLoggerAdapter.LogTrace
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning(System.String,System.Object[])
+  name: LogWarning(string, params object[])
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogWarning_System_String_System_Object___
+  commentId: M:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning(System.String,System.Object[])
+  name.vb: LogWarning(String, ParamArray Object())
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning(string, params object[])
+  fullName.vb: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning(String, ParamArray Object())
+  nameWithType: MicrosoftLoggerAdapter.LogWarning(string, params object[])
+  nameWithType.vb: MicrosoftLoggerAdapter.LogWarning(String, ParamArray Object())
+- uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning*
+  name: LogWarning
+  href: api/Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.html#Terminal_Gui_Xaml_Logging_MicrosoftLoggerAdapter_LogWarning_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter.LogWarning
+  nameWithType: MicrosoftLoggerAdapter.LogWarning
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  name: XamlLoggerExtensions
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html
+  commentId: T:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  nameWithType: XamlLoggerExtensions
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  name: BeginPerformanceScope(IXamlLogger, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_BeginPerformanceScope_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  name.vb: BeginPerformanceScope(IXamlLogger, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger, String)
+  nameWithType: XamlLoggerExtensions.BeginPerformanceScope(IXamlLogger, string)
+  nameWithType.vb: XamlLoggerExtensions.BeginPerformanceScope(IXamlLogger, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope*
+  name: BeginPerformanceScope
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_BeginPerformanceScope_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope
+  nameWithType: XamlLoggerExtensions.BeginPerformanceScope
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  name: LogCodeGenerationComplete(IXamlLogger, string, double, int, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  name.vb: LogCodeGenerationComplete(IXamlLogger, String, Double, Integer, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double, int, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double, Integer, String)
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationComplete(IXamlLogger, string, double, int, string)
+  nameWithType.vb: XamlLoggerExtensions.LogCodeGenerationComplete(IXamlLogger, String, Double, Integer, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete*
+  name: LogCodeGenerationComplete
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationComplete_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationComplete
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  name: LogCodeGenerationStart(IXamlLogger, string, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  name.vb: LogCodeGenerationStart(IXamlLogger, String, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String)
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationStart(IXamlLogger, string, string)
+  nameWithType.vb: XamlLoggerExtensions.LogCodeGenerationStart(IXamlLogger, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart*
+  name: LogCodeGenerationStart
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationStart_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationStart
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  name: LogConstitutionalCheck(IXamlLogger, string, bool, string?)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogConstitutionalCheck_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Boolean_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  name.vb: LogConstitutionalCheck(IXamlLogger, String, Boolean, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger, string, bool, string?)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Boolean, String)
+  nameWithType: XamlLoggerExtensions.LogConstitutionalCheck(IXamlLogger, string, bool, string?)
+  nameWithType.vb: XamlLoggerExtensions.LogConstitutionalCheck(IXamlLogger, String, Boolean, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck*
+  name: LogConstitutionalCheck
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogConstitutionalCheck_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck
+  nameWithType: XamlLoggerExtensions.LogConstitutionalCheck
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  name: LogDataBinding(IXamlLogger, string, string, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBinding_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  name.vb: LogDataBinding(IXamlLogger, String, String, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String, String)
+  nameWithType: XamlLoggerExtensions.LogDataBinding(IXamlLogger, string, string, string)
+  nameWithType.vb: XamlLoggerExtensions.LogDataBinding(IXamlLogger, String, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding*
+  name: LogDataBinding
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBinding_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding
+  nameWithType: XamlLoggerExtensions.LogDataBinding
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  name: LogDataBindingError(IXamlLogger, string, Exception)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBindingError_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Exception_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  name.vb: LogDataBindingError(IXamlLogger, String, Exception)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger, string, System.Exception)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger, String, System.Exception)
+  nameWithType: XamlLoggerExtensions.LogDataBindingError(IXamlLogger, string, Exception)
+  nameWithType.vb: XamlLoggerExtensions.LogDataBindingError(IXamlLogger, String, Exception)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError*
+  name: LogDataBindingError
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBindingError_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError
+  nameWithType: XamlLoggerExtensions.LogDataBindingError
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  name: LogMemoryUsage(IXamlLogger, string, double)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogMemoryUsage_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  name.vb: LogMemoryUsage(IXamlLogger, String, Double)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double)
+  nameWithType: XamlLoggerExtensions.LogMemoryUsage(IXamlLogger, string, double)
+  nameWithType.vb: XamlLoggerExtensions.LogMemoryUsage(IXamlLogger, String, Double)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage*
+  name: LogMemoryUsage
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogMemoryUsage_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage
+  nameWithType: XamlLoggerExtensions.LogMemoryUsage
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  name: LogXamlParsingComplete(IXamlLogger, string, double, int, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  name.vb: LogXamlParsingComplete(IXamlLogger, String, Double, Integer, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double, int, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double, Integer, String)
+  nameWithType: XamlLoggerExtensions.LogXamlParsingComplete(IXamlLogger, string, double, int, string)
+  nameWithType.vb: XamlLoggerExtensions.LogXamlParsingComplete(IXamlLogger, String, Double, Integer, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete*
+  name: LogXamlParsingComplete
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingComplete_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete
+  nameWithType: XamlLoggerExtensions.LogXamlParsingComplete
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  name: LogXamlParsingStart(IXamlLogger, string, string)
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  name.vb: LogXamlParsingStart(IXamlLogger, String, String)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String)
+  nameWithType: XamlLoggerExtensions.LogXamlParsingStart(IXamlLogger, string, string)
+  nameWithType.vb: XamlLoggerExtensions.LogXamlParsingStart(IXamlLogger, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart*
+  name: LogXamlParsingStart
+  href: api/Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingStart_
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart
+  nameWithType: XamlLoggerExtensions.LogXamlParsingStart
+- uid: Terminal.Gui.Xaml.Model
+  name: Terminal.Gui.Xaml.Model
+  href: api/Terminal.Gui.Xaml.Model.html
+  commentId: N:Terminal.Gui.Xaml.Model
+  fullName: Terminal.Gui.Xaml.Model
+  nameWithType: Terminal.Gui.Xaml.Model
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo
+  name: PropertyInfo
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html
+  commentId: T:Terminal.Gui.Xaml.Model.PropertyInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo
+  nameWithType: PropertyInfo
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.#ctor(System.String,System.Type,System.Reflection.PropertyInfo)
+  name: PropertyInfo(string, Type, PropertyInfo?)
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo__ctor_System_String_System_Type_System_Reflection_PropertyInfo_
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.#ctor(System.String,System.Type,System.Reflection.PropertyInfo)
+  name.vb: New(String, Type, PropertyInfo)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyInfo(string, System.Type, System.Reflection.PropertyInfo?)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.New(String, System.Type, System.Reflection.PropertyInfo)
+  nameWithType: PropertyInfo.PropertyInfo(string, Type, PropertyInfo?)
+  nameWithType.vb: PropertyInfo.New(String, Type, PropertyInfo)
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.#ctor*
+  name: PropertyInfo
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyInfo
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.New
+  nameWithType: PropertyInfo.PropertyInfo
+  nameWithType.vb: PropertyInfo.New
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  name: BindingExpression
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_BindingExpression
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  nameWithType: PropertyInfo.BindingExpression
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression*
+  name: BindingExpression
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_BindingExpression_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  nameWithType: PropertyInfo.BindingExpression
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(System.Object)
+  name: GetValue(object)
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_GetValue_System_Object_
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(System.Object)
+  name.vb: GetValue(Object)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(object)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(Object)
+  nameWithType: PropertyInfo.GetValue(object)
+  nameWithType.vb: PropertyInfo.GetValue(Object)
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue*
+  name: GetValue
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_GetValue_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.GetValue
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue
+  nameWithType: PropertyInfo.GetValue
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  name: IsTwoWay
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_IsTwoWay
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  nameWithType: PropertyInfo.IsTwoWay
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay*
+  name: IsTwoWay
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_IsTwoWay_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  nameWithType: PropertyInfo.IsTwoWay
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  name: Name
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_Name
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  nameWithType: PropertyInfo.Name
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.Name*
+  name: Name
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_Name_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  nameWithType: PropertyInfo.Name
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  name: PropertyType
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_PropertyType
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  nameWithType: PropertyInfo.PropertyType
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType*
+  name: PropertyType
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_PropertyType_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  nameWithType: PropertyInfo.PropertyType
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  name: ReflectionInfo
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ReflectionInfo
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  nameWithType: PropertyInfo.ReflectionInfo
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo*
+  name: ReflectionInfo
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ReflectionInfo_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  nameWithType: PropertyInfo.ReflectionInfo
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(System.Object,System.Object)
+  name: SetValue(object, object?)
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_SetValue_System_Object_System_Object_
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(System.Object,System.Object)
+  name.vb: SetValue(Object, Object)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(object, object?)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(Object, Object)
+  nameWithType: PropertyInfo.SetValue(object, object?)
+  nameWithType.vb: PropertyInfo.SetValue(Object, Object)
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue*
+  name: SetValue
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_SetValue_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.SetValue
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue
+  nameWithType: PropertyInfo.SetValue
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  name: ValidateBindingExpression()
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ValidateBindingExpression
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression()
+  nameWithType: PropertyInfo.ValidateBindingExpression()
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression*
+  name: ValidateBindingExpression
+  href: api/Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ValidateBindingExpression_
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  nameWithType: PropertyInfo.ValidateBindingExpression
+- uid: Terminal.Gui.Xaml.Model.XamlDocument
+  name: XamlDocument
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html
+  commentId: T:Terminal.Gui.Xaml.Model.XamlDocument
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument
+  nameWithType: XamlDocument
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.FilePath
+  name: FilePath
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_FilePath
+  commentId: P:Terminal.Gui.Xaml.Model.XamlDocument.FilePath
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.FilePath
+  nameWithType: XamlDocument.FilePath
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.FilePath*
+  name: FilePath
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_FilePath_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.FilePath
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.FilePath
+  nameWithType: XamlDocument.FilePath
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.Namespaces
+  name: Namespaces
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_Namespaces
+  commentId: P:Terminal.Gui.Xaml.Model.XamlDocument.Namespaces
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.Namespaces
+  nameWithType: XamlDocument.Namespaces
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.Namespaces*
+  name: Namespaces
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_Namespaces_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.Namespaces
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.Namespaces
+  nameWithType: XamlDocument.Namespaces
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace
+  name: RootNamespace
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_RootNamespace
+  commentId: P:Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace
+  nameWithType: XamlDocument.RootNamespace
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace*
+  name: RootNamespace
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_RootNamespace_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.RootNamespace
+  nameWithType: XamlDocument.RootNamespace
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.ToString
+  name: ToString()
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_ToString
+  commentId: M:Terminal.Gui.Xaml.Model.XamlDocument.ToString
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.ToString()
+  nameWithType: XamlDocument.ToString()
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.ToString*
+  name: ToString
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_ToString_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.ToString
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.ToString
+  nameWithType: XamlDocument.ToString
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.Validate
+  name: Validate()
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_Validate
+  commentId: M:Terminal.Gui.Xaml.Model.XamlDocument.Validate
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.Validate()
+  nameWithType: XamlDocument.Validate()
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.Validate*
+  name: Validate
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_Validate_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.Validate
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.Validate
+  nameWithType: XamlDocument.Validate
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.XamlText
+  name: XamlText
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_XamlText
+  commentId: P:Terminal.Gui.Xaml.Model.XamlDocument.XamlText
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.XamlText
+  nameWithType: XamlDocument.XamlText
+- uid: Terminal.Gui.Xaml.Model.XamlDocument.XamlText*
+  name: XamlText
+  href: api/Terminal.Gui.Xaml.Model.XamlDocument.html#Terminal_Gui_Xaml_Model_XamlDocument_XamlText_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlDocument.XamlText
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument.XamlText
+  nameWithType: XamlDocument.XamlText
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace
+  name: XamlNamespace
+  href: api/Terminal.Gui.Xaml.Model.XamlNamespace.html
+  commentId: T:Terminal.Gui.Xaml.Model.XamlNamespace
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace
+  nameWithType: XamlNamespace
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace.#ctor(System.Uri)
+  name: XamlNamespace(Uri)
+  href: api/Terminal.Gui.Xaml.Model.XamlNamespace.html#Terminal_Gui_Xaml_Model_XamlNamespace__ctor_System_Uri_
+  commentId: M:Terminal.Gui.Xaml.Model.XamlNamespace.#ctor(System.Uri)
+  name.vb: New(Uri)
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace.XamlNamespace(System.Uri)
+  fullName.vb: Terminal.Gui.Xaml.Model.XamlNamespace.New(System.Uri)
+  nameWithType: XamlNamespace.XamlNamespace(Uri)
+  nameWithType.vb: XamlNamespace.New(Uri)
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace.#ctor*
+  name: XamlNamespace
+  href: api/Terminal.Gui.Xaml.Model.XamlNamespace.html#Terminal_Gui_Xaml_Model_XamlNamespace__ctor_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlNamespace.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace.XamlNamespace
+  fullName.vb: Terminal.Gui.Xaml.Model.XamlNamespace.New
+  nameWithType: XamlNamespace.XamlNamespace
+  nameWithType.vb: XamlNamespace.New
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace.Uri
+  name: Uri
+  href: api/Terminal.Gui.Xaml.Model.XamlNamespace.html#Terminal_Gui_Xaml_Model_XamlNamespace_Uri
+  commentId: P:Terminal.Gui.Xaml.Model.XamlNamespace.Uri
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace.Uri
+  nameWithType: XamlNamespace.Uri
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace.Uri*
+  name: Uri
+  href: api/Terminal.Gui.Xaml.Model.XamlNamespace.html#Terminal_Gui_Xaml_Model_XamlNamespace_Uri_
+  commentId: Overload:Terminal.Gui.Xaml.Model.XamlNamespace.Uri
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace.Uri
+  nameWithType: XamlNamespace.Uri
+- uid: Terminal.Gui.Xaml.Performance
+  name: Terminal.Gui.Xaml.Performance
+  href: api/Terminal.Gui.Xaml.Performance.html
+  commentId: N:Terminal.Gui.Xaml.Performance
+  fullName: Terminal.Gui.Xaml.Performance
+  nameWithType: Terminal.Gui.Xaml.Performance
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor
+  name: MemoryMonitor
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html
+  commentId: T:Terminal.Gui.Xaml.Performance.MemoryMonitor
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor
+  nameWithType: MemoryMonitor
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB
+  name: CurrentMemoryUsageMB
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_CurrentMemoryUsageMB
+  commentId: P:Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB
+  nameWithType: MemoryMonitor.CurrentMemoryUsageMB
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB*
+  name: CurrentMemoryUsageMB
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_CurrentMemoryUsageMB_
+  commentId: Overload:Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.CurrentMemoryUsageMB
+  nameWithType: MemoryMonitor.CurrentMemoryUsageMB
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage
+  name: GetCurrentMemoryUsage()
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_GetCurrentMemoryUsage
+  commentId: M:Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage()
+  nameWithType: MemoryMonitor.GetCurrentMemoryUsage()
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage*
+  name: GetCurrentMemoryUsage
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_GetCurrentMemoryUsage_
+  commentId: Overload:Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.GetCurrentMemoryUsage
+  nameWithType: MemoryMonitor.GetCurrentMemoryUsage
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant
+  name: IsMemoryUsageCompliant()
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_IsMemoryUsageCompliant
+  commentId: M:Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant()
+  nameWithType: MemoryMonitor.IsMemoryUsageCompliant()
+- uid: Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant*
+  name: IsMemoryUsageCompliant
+  href: api/Terminal.Gui.Xaml.Performance.MemoryMonitor.html#Terminal_Gui_Xaml_Performance_MemoryMonitor_IsMemoryUsageCompliant_
+  commentId: Overload:Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Performance.MemoryMonitor.IsMemoryUsageCompliant
+  nameWithType: MemoryMonitor.IsMemoryUsageCompliant
+- uid: Terminal.Gui.Xaml.Performance.PerformanceCounters
+  name: PerformanceCounters
+  href: api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html
+  commentId: T:Terminal.Gui.Xaml.Performance.PerformanceCounters
+  fullName: Terminal.Gui.Xaml.Performance.PerformanceCounters
+  nameWithType: PerformanceCounters
+- uid: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs(System.Action)
+  name: MeasureElapsedMs(Action)
+  href: api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html#Terminal_Gui_Xaml_Performance_PerformanceCounters_MeasureElapsedMs_System_Action_
+  commentId: M:Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs(System.Action)
+  fullName: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs(System.Action)
+  nameWithType: PerformanceCounters.MeasureElapsedMs(Action)
+- uid: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs*
+  name: MeasureElapsedMs
+  href: api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html#Terminal_Gui_Xaml_Performance_PerformanceCounters_MeasureElapsedMs_
+  commentId: Overload:Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureElapsedMs
+  nameWithType: PerformanceCounters.MeasureElapsedMs
+- uid: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage(System.Action)
+  name: MeasureMemoryUsage(Action)
+  href: api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html#Terminal_Gui_Xaml_Performance_PerformanceCounters_MeasureMemoryUsage_System_Action_
+  commentId: M:Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage(System.Action)
+  fullName: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage(System.Action)
+  nameWithType: PerformanceCounters.MeasureMemoryUsage(Action)
+- uid: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage*
+  name: MeasureMemoryUsage
+  href: api/Terminal.Gui.Xaml.Performance.PerformanceCounters.html#Terminal_Gui_Xaml_Performance_PerformanceCounters_MeasureMemoryUsage_
+  commentId: Overload:Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage
+  isSpec: "True"
+  fullName: Terminal.Gui.Xaml.Performance.PerformanceCounters.MeasureMemoryUsage
+  nameWithType: PerformanceCounters.MeasureMemoryUsage

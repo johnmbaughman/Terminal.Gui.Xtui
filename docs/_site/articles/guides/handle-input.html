@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Guide: Handle Input | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Guide: Handle Input | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="guide-handle-input">Guide: Handle Input</h1>
+
+<h1 id="handle-user-input">Handle User Input</h1>
+<p>This guide covers input handling, validation, keyboard shortcuts, and user interaction patterns in Terminal.Gui.Xaml.</p>
+<h2 id="related-apis">Related APIs</h2>
+<p>This guide demonstrates these key input handling APIs and patterns:</p>
+<h3 id="input-events-and-handling">Input Events and Handling</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.KeyEventArgs.yml">KeyEventArgs</a></strong> - Keyboard input event data</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.MouseEventArgs.yml">MouseEventArgs</a></strong> - Mouse input event data</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml">TextChangedEventArgs</a></strong> - Text input change notifications</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.FocusEventArgs.yml">FocusEventArgs</a></strong> - Focus change event data</li>
+</ul>
+<h3 id="keyboard-and-shortcuts">Keyboard and Shortcuts</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcut definitions</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.Key.yml">Key</a></strong> - Key enumeration and modifiers</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyGesture.yml">KeyGesture</a></strong> - Complex key combinations</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.InputGesture.yml">InputGesture</a></strong> - Base input gesture handling</li>
+</ul>
+<h3 id="commands-and-actions">Commands and Actions</h3>
+<ul>
+<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern interface</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml">RelayCommand</a></strong> - Simple command implementation</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.CommandBinding.yml">CommandBinding</a></strong> - Connect commands to handlers</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.RoutedCommand.yml">RoutedCommand</a></strong> - Commands with routing support</li>
+</ul>
+<h3 id="validation">Validation</h3>
+<ul>
+<li><strong><a href="../../api/System.ComponentModel.IDataErrorInfo.yml">IDataErrorInfo</a></strong> - Object-level validation interface</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml">ValidationRule</a></strong> - Custom validation logic</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.Validation.yml">Validation</a></strong> - Validation helper methods</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.BindingValidationError.yml">BindingValidationError</a></strong> - Validation error details</li>
+</ul>
+<blockquote>
+<p><strong>💡 Pro Tip</strong>: Use command binding for complex logic and direct event handlers for simple UI interactions. Keyboard shortcuts work globally within a window.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completed <a href="create-window.html">Create a Window Guide</a></li>
+<li>Understanding of <a href="../concepts/events.html">Events Concepts</a></li>
+<li>Familiarity with command patterns</li>
+</ul>
+<h2 id="step-1-basic-input-handling">Step 1: Basic Input Handling</h2>
+<p>Create <code>InputDemoWindow.xaml</code>:</p>
+<pre><code class="lang-xml">&lt;Window x:Class=&quot;MyTerminalApp.InputDemoWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;Input Handling Demo&quot;
+        Width=&quot;80&quot; Height=&quot;25&quot;&gt;
+    
+    &lt;!-- Global key bindings --&gt;
+    &lt;Window.KeyBindings&gt;
+        &lt;KeyBinding Key=&quot;Ctrl+N&quot; Command=&quot;{Binding NewCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;Ctrl+S&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;F1&quot; Command=&quot;{Binding ShowHelpCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;Escape&quot; Command=&quot;{Binding CancelCommand}&quot; /&gt;
+    &lt;/Window.KeyBindings&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+        &lt;!-- Menu bar for quick access --&gt;
+        &lt;MenuBar&gt;
+            &lt;MenuBarItem Title=&quot;File&quot;&gt;
+                &lt;MenuItem Title=&quot;New&quot; Shortcut=&quot;Ctrl+N&quot; Command=&quot;{Binding NewCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Save&quot; Shortcut=&quot;Ctrl+S&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+                &lt;MenuSeparator /&gt;
+                &lt;MenuItem Title=&quot;Exit&quot; Shortcut=&quot;Alt+F4&quot; Command=&quot;{Binding ExitCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+            &lt;MenuBarItem Title=&quot;Help&quot;&gt;
+                &lt;MenuItem Title=&quot;About&quot; Shortcut=&quot;F1&quot; Command=&quot;{Binding ShowHelpCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+        &lt;/MenuBar&gt;
+        
+        &lt;!-- Text input with validation --&gt;
+        &lt;FrameView Title=&quot;Text Input&quot; Height=&quot;8&quot;&gt;
+            &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot; Margin=&quot;1&quot;&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Name:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;nameField&quot;
+                               Text=&quot;{Binding Name, Mode=TwoWay}&quot;
+                               PlaceholderText=&quot;Enter your name...&quot;
+                               Width=&quot;Dim.Fill()&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Age (18-120):&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;ageField&quot;
+                               Text=&quot;{Binding AgeText, Mode=TwoWay}&quot;
+                               Width=&quot;10&quot; /&gt;
+                    &lt;Label Text=&quot;{Binding AgeValidationMessage}&quot; 
+                           ForegroundColor=&quot;Red&quot; 
+                           Visible=&quot;{Binding HasAgeError}&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Password:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;passwordField&quot;
+                               Text=&quot;{Binding Password, Mode=TwoWay}&quot;
+                               IsPassword=&quot;true&quot;
+                               Width=&quot;20&quot; /&gt;
+                    &lt;Label Text=&quot;Strength:&quot; Width=&quot;10&quot; /&gt;
+                    &lt;Label Text=&quot;{Binding PasswordStrength}&quot; 
+                           ForegroundColor=&quot;{Binding PasswordStrengthColor}&quot; /&gt;
+                &lt;/StackView&gt;
+            &lt;/StackView&gt;
+        &lt;/FrameView&gt;
+        
+        &lt;!-- Choice controls --&gt;
+        &lt;FrameView Title=&quot;Choices&quot; Height=&quot;6&quot;&gt;
+            &lt;StackView Orientation=&quot;Vertical&quot; Margin=&quot;1&quot;&gt;
+                &lt;RadioGroup Name=&quot;genderGroup&quot; 
+                            SelectedIndex=&quot;{Binding GenderIndex, Mode=TwoWay}&quot;&gt;
+                    &lt;RadioButton Text=&quot;Male&quot; /&gt;
+                    &lt;RadioButton Text=&quot;Female&quot; /&gt;
+                    &lt;RadioButton Text=&quot;Other&quot; /&gt;
+                &lt;/RadioGroup&gt;
+                
+                &lt;CheckBox Text=&quot;I agree to the terms and conditions&quot;
+                          Checked=&quot;{Binding AcceptTerms, Mode=TwoWay}&quot; /&gt;
+            &lt;/StackView&gt;
+        &lt;/FrameView&gt;
+        
+        &lt;!-- Action buttons --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; HorizontalAlignment=&quot;Center&quot; Spacing=&quot;2&quot;&gt;
+            &lt;Button Text=&quot;Submit&quot; 
+                    Command=&quot;{Binding SubmitCommand}&quot;
+                    IsDefault=&quot;true&quot; 
+                    Width=&quot;12&quot; /&gt;
+            &lt;Button Text=&quot;Reset&quot; 
+                    Command=&quot;{Binding ResetCommand}&quot; 
+                    Width=&quot;12&quot; /&gt;
+            &lt;Button Text=&quot;Cancel&quot; 
+                    Command=&quot;{Binding CancelCommand}&quot;
+                    IsCancel=&quot;true&quot; 
+                    Width=&quot;12&quot; /&gt;
+        &lt;/StackView&gt;
+        
+        &lt;!-- Status and help --&gt;
+        &lt;Label Text=&quot;{Binding StatusMessage}&quot; 
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;{Binding StatusColor}&quot; /&gt;
+        
+        &lt;Label Text=&quot;Shortcuts: Ctrl+N=New, Ctrl+S=Save, F1=Help, Esc=Cancel&quot; 
+               HorizontalAlignment=&quot;Center&quot; 
+               ForegroundColor=&quot;DarkGray&quot; /&gt;
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="step-2-create-the-input-view-model">Step 2: Create the Input View Model</h2>
+<p>Create <code>InputDemoViewModel.cs</code>:</p>
+<pre><code class="lang-csharp">using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
+using Terminal.Gui;
+
+namespace MyTerminalApp.ViewModels;
+
+public class InputDemoViewModel : INotifyPropertyChanged
+{
+    private string _name = &quot;&quot;;
+    private string _ageText = &quot;&quot;;
+    private string _password = &quot;&quot;;
+    private int _genderIndex = 0;
+    private bool _acceptTerms = false;
+    private string _statusMessage = &quot;Ready&quot;;
+    private Color _statusColor = Color.Green;
+    
+    // Basic properties
+    public string Name
+    {
+        get =&gt; _name;
+        set =&gt; SetProperty(ref _name, value);
+    }
+    
+    public string AgeText
+    {
+        get =&gt; _ageText;
+        set 
+        { 
+            SetProperty(ref _ageText, value);
+            OnPropertyChanged(nameof(Age));
+            OnPropertyChanged(nameof(IsAgeValid));
+            OnPropertyChanged(nameof(AgeValidationMessage));
+            OnPropertyChanged(nameof(HasAgeError));
+        }
+    }
+    
+    public string Password
+    {
+        get =&gt; _password;
+        set 
+        { 
+            SetProperty(ref _password, value);
+            OnPropertyChanged(nameof(PasswordStrength));
+            OnPropertyChanged(nameof(PasswordStrengthColor));
+        }
+    }
+    
+    public int GenderIndex
+    {
+        get =&gt; _genderIndex;
+        set =&gt; SetProperty(ref _genderIndex, value);
+    }
+    
+    public bool AcceptTerms
+    {
+        get =&gt; _acceptTerms;
+        set =&gt; SetProperty(ref _acceptTerms, value);
+    }
+    
+    public string StatusMessage
+    {
+        get =&gt; _statusMessage;
+        set =&gt; SetProperty(ref _statusMessage, value);
+    }
+    
+    public Color StatusColor
+    {
+        get =&gt; _statusColor;
+        set =&gt; SetProperty(ref _statusColor, value);
+    }
+    
+    // Computed validation properties
+    public int? Age =&gt; int.TryParse(AgeText, out var age) ? age : null;
+    
+    public bool IsAgeValid =&gt; Age is &gt;= 18 and &lt;= 120;
+    
+    public bool HasAgeError =&gt; !string.IsNullOrEmpty(AgeText) &amp;&amp; !IsAgeValid;
+    
+    public string AgeValidationMessage =&gt; HasAgeError 
+        ? &quot;Age must be between 18 and 120&quot; 
+        : &quot;&quot;;
+    
+    public string PasswordStrength
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Password)) return &quot;&quot;;
+            
+            var score = 0;
+            if (Password.Length &gt;= 8) score++;
+            if (Regex.IsMatch(Password, @&quot;[A-Z]&quot;)) score++;
+            if (Regex.IsMatch(Password, @&quot;[a-z]&quot;)) score++;
+            if (Regex.IsMatch(Password, @&quot;\d&quot;)) score++;
+            if (Regex.IsMatch(Password, @&quot;[^a-zA-Z0-9]&quot;)) score++;
+            
+            return score switch
+            {
+                0 or 1 =&gt; &quot;Weak&quot;,
+                2 or 3 =&gt; &quot;Medium&quot;,
+                4 =&gt; &quot;Strong&quot;,
+                5 =&gt; &quot;Very Strong&quot;,
+                _ =&gt; &quot;Unknown&quot;
+            };
+        }
+    }
+    
+    public Color PasswordStrengthColor
+    {
+        get
+        {
+            return PasswordStrength switch
+            {
+                &quot;Weak&quot; =&gt; Color.Red,
+                &quot;Medium&quot; =&gt; Color.Yellow,
+                &quot;Strong&quot; =&gt; Color.Green,
+                &quot;Very Strong&quot; =&gt; Color.Cyan,
+                _ =&gt; Color.Gray
+            };
+        }
+    }
+    
+    public bool CanSubmit =&gt; 
+        !string.IsNullOrWhiteSpace(Name) &amp;&amp;
+        IsAgeValid &amp;&amp;
+        !string.IsNullOrEmpty(Password) &amp;&amp;
+        AcceptTerms;
+    
+    // Commands
+    public ICommand SubmitCommand { get; }
+    public ICommand ResetCommand { get; }
+    public ICommand CancelCommand { get; }
+    public ICommand NewCommand { get; }
+    public ICommand SaveCommand { get; }
+    public ICommand ShowHelpCommand { get; }
+    public ICommand ExitCommand { get; }
+    
+    public InputDemoViewModel()
+    {
+        SubmitCommand = new RelayCommand(Submit, () =&gt; CanSubmit);
+        ResetCommand = new RelayCommand(Reset);
+        CancelCommand = new RelayCommand(Cancel);
+        NewCommand = new RelayCommand(NewForm);
+        SaveCommand = new RelayCommand(Save, () =&gt; CanSubmit);
+        ShowHelpCommand = new RelayCommand(ShowHelp);
+        ExitCommand = new RelayCommand(Exit);
+        
+        // Update command states when validation changes
+        PropertyChanged += (s, e) =&gt;
+        {
+            if (e.PropertyName is nameof(Name) or nameof(IsAgeValid) or 
+                nameof(Password) or nameof(AcceptTerms))
+            {
+                ((RelayCommand)SubmitCommand).RaiseCanExecuteChanged();
+                ((RelayCommand)SaveCommand).RaiseCanExecuteChanged();
+            }
+        };
+    }
+    
+    private void Submit()
+    {
+        if (!CanSubmit) return;
+        
+        var gender = GenderIndex switch
+        {
+            0 =&gt; &quot;Male&quot;,
+            1 =&gt; &quot;Female&quot;, 
+            2 =&gt; &quot;Other&quot;,
+            _ =&gt; &quot;Unknown&quot;
+        };
+        
+        StatusMessage = $&quot;Submitted: {Name}, Age {Age}, Gender: {gender}&quot;;
+        StatusColor = Color.Green;
+    }
+    
+    private void Reset()
+    {
+        Name = &quot;&quot;;
+        AgeText = &quot;&quot;;
+        Password = &quot;&quot;;
+        GenderIndex = 0;
+        AcceptTerms = false;
+        StatusMessage = &quot;Form reset&quot;;
+        StatusColor = Color.Yellow;
+    }
+    
+    private void Cancel()
+    {
+        // In a real app, this might close the window or navigate back
+        StatusMessage = &quot;Operation cancelled&quot;;
+        StatusColor = Color.Red;
+    }
+    
+    private void NewForm()
+    {
+        Reset();
+        StatusMessage = &quot;New form created (Ctrl+N)&quot;;
+        StatusColor = Color.Cyan;
+    }
+    
+    private void Save()
+    {
+        if (!CanSubmit) return;
+        
+        StatusMessage = &quot;Form saved (Ctrl+S)&quot;;
+        StatusColor = Color.Blue;
+    }
+    
+    private void ShowHelp()
+    {
+        var message = @&quot;Input Demo Help (F1)
+
+Keyboard Shortcuts:
+• Ctrl+N - New form
+• Ctrl+S - Save form  
+• F1 - Show this help
+• Esc - Cancel operation
+• Enter - Submit (when valid)
+• Tab - Navigate between fields
+
+Validation Rules:
+• Name: Required
+• Age: Must be 18-120
+• Password: Required for submission
+• Terms: Must be accepted&quot;;
+
+        MessageBox.Query(&quot;Help&quot;, message, &quot;OK&quot;);
+    }
+    
+    private void Exit()
+    {
+        Application.RequestStop();
+    }
+    
+    // Property change notification
+    protected bool SetProperty&lt;T&gt;(ref T field, T value, [CallerMemberName] string propertyName = &quot;&quot;)
+    {
+        if (EqualityComparer&lt;T&gt;.Default.Equals(field, value))
+            return false;
+            
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+    
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = &quot;&quot;)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+</code></pre>
+<h2 id="step-3-create-the-code-behind-with-advanced-input-handling">Step 3: Create the Code-Behind with Advanced Input Handling</h2>
+<p>Create <code>InputDemoWindow.xaml.cs</code>:</p>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+using MyTerminalApp.ViewModels;
+
+namespace MyTerminalApp;
+
+public partial class InputDemoWindow : Window
+{
+    public InputDemoViewModel ViewModel { get; }
+    
+    public InputDemoWindow()
+    {
+        ViewModel = new InputDemoViewModel();
+        DataContext = ViewModel;
+        
+        InitializeComponent();
+        SetupAdvancedInputHandling();
+    }
+    
+    private void SetupAdvancedInputHandling()
+    {
+        // Custom validation on field focus changes
+        nameField.Leave += ValidateNameField;
+        ageField.Leave += ValidateAgeField;
+        passwordField.Leave += ValidatePasswordField;
+        
+        // Input formatting and constraints
+        ageField.TextChanging += FilterNumericInput;
+        
+        // Context menus
+        SetupContextMenus();
+        
+        // Focus management
+        SetupFocusManagement();
+    }
+    
+    private void ValidateNameField(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(nameField.Text?.ToString()))
+        {
+            ViewModel.StatusMessage = &quot;Name is required&quot;;
+            ViewModel.StatusColor = Color.Red;
+        }
+    }
+    
+    private void ValidateAgeField(object sender, EventArgs e)
+    {
+        if (ViewModel.HasAgeError)
+        {
+            ViewModel.StatusMessage = ViewModel.AgeValidationMessage;
+            ViewModel.StatusColor = Color.Red;
+        }
+    }
+    
+    private void ValidatePasswordField(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(passwordField.Text?.ToString()))
+        {
+            ViewModel.StatusMessage = &quot;Password is required for submission&quot;;
+            ViewModel.StatusColor = Color.Yellow;
+        }
+    }
+    
+    private void FilterNumericInput(object sender, TextChangingEventArgs e)
+    {
+        // Only allow numeric input for age field
+        if (sender == ageField)
+        {
+            var newText = e.NewText?.ToString() ?? &quot;&quot;;
+            if (!string.IsNullOrEmpty(newText) &amp;&amp; !newText.All(char.IsDigit))
+            {
+                e.Cancel = true;
+                ViewModel.StatusMessage = &quot;Age must be numeric&quot;;
+                ViewModel.StatusColor = Color.Red;
+            }
+        }
+    }
+    
+    private void SetupContextMenus()
+    {
+        // Right-click context menu for text fields
+        var contextMenu = new ContextMenu();
+        contextMenu.MenuItems.Add(new MenuItem(&quot;Cut&quot;, &quot;&quot;, CutText, null, null, Key.CtrlMask | Key.X));
+        contextMenu.MenuItems.Add(new MenuItem(&quot;Copy&quot;, &quot;&quot;, CopyText, null, null, Key.CtrlMask | Key.C));
+        contextMenu.MenuItems.Add(new MenuItem(&quot;Paste&quot;, &quot;&quot;, PasteText, null, null, Key.CtrlMask | Key.V));
+        contextMenu.MenuItems.Add(new MenuSeparator());
+        contextMenu.MenuItems.Add(new MenuItem(&quot;Select All&quot;, &quot;&quot;, SelectAllText, null, null, Key.CtrlMask | Key.A));
+        
+        nameField.ContextMenu = contextMenu;
+        ageField.ContextMenu = contextMenu;
+        passwordField.ContextMenu = contextMenu;
+    }
+    
+    private void CutText()
+    {
+        if (Focused is TextField field)
+        {
+            Clipboard.Contents = field.SelectedText;
+            field.DeleteSelectedText();
+        }
+    }
+    
+    private void CopyText()
+    {
+        if (Focused is TextField field)
+        {
+            Clipboard.Contents = field.SelectedText;
+        }
+    }
+    
+    private void PasteText()
+    {
+        if (Focused is TextField field)
+        {
+            field.InsertText(Clipboard.Contents);
+        }
+    }
+    
+    private void SelectAllText()
+    {
+        if (Focused is TextField field)
+        {
+            field.SelectAll();
+        }
+    }
+    
+    private void SetupFocusManagement()
+    {
+        // Auto-advance to next field on Enter for single-line inputs
+        nameField.KeyDown += (s, e) =&gt;
+        {
+            if (e.KeyEvent.Key == Key.Enter)
+            {
+                ageField.SetFocus();
+                e.Handled = true;
+            }
+        };
+        
+        ageField.KeyDown += (s, e) =&gt;
+        {
+            if (e.KeyEvent.Key == Key.Enter)
+            {
+                passwordField.SetFocus();
+                e.Handled = true;
+            }
+        };
+        
+        // Auto-submit on Enter if form is valid
+        passwordField.KeyDown += (s, e) =&gt;
+        {
+            if (e.KeyEvent.Key == Key.Enter &amp;&amp; ViewModel.CanSubmit)
+            {
+                ViewModel.SubmitCommand.Execute(null);
+                e.Handled = true;
+            }
+        };
+    }
+}
+</code></pre>
+<h2 id="step-4-test-the-input-handling">Step 4: Test the Input Handling</h2>
+<p>Run the application:</p>
+<pre><code class="lang-powershell">dotnet build
+dotnet run
+</code></pre>
+<p>Test these features:</p>
+<ul>
+<li><strong>Real-time validation</strong>: Age field only accepts numbers, shows validation messages</li>
+<li><strong>Password strength</strong>: Updates as you type</li>
+<li><strong>Keyboard shortcuts</strong>: Ctrl+N, Ctrl+S, F1, Esc</li>
+<li><strong>Auto-focus</strong>: Enter key moves to next field</li>
+<li><strong>Context menus</strong>: Right-click on text fields</li>
+<li><strong>Command states</strong>: Submit/Save buttons enable/disable based on form validity</li>
+</ul>
+<h2 id="understanding-input-handling-patterns">Understanding Input Handling Patterns</h2>
+<h3 id="input-validation">Input Validation</h3>
+<pre><code class="lang-csharp">public bool IsAgeValid =&gt; Age is &gt;= 18 and &lt;= 120;
+public bool HasAgeError =&gt; !string.IsNullOrEmpty(AgeText) &amp;&amp; !IsAgeValid;
+</code></pre>
+<h3 id="real-time-feedback">Real-time Feedback</h3>
+<pre><code class="lang-csharp">public string PasswordStrength { get; }
+public Color PasswordStrengthColor { get; }
+</code></pre>
+<h3 id="input-filtering">Input Filtering</h3>
+<pre><code class="lang-csharp">private void FilterNumericInput(object sender, TextChangingEventArgs e)
+{
+    if (!newText.All(char.IsDigit))
+        e.Cancel = true; // Prevent non-numeric input
+}
+</code></pre>
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<pre><code class="lang-xml">&lt;Window.KeyBindings&gt;
+    &lt;KeyBinding Key=&quot;Ctrl+S&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+&lt;/Window.KeyBindings&gt;
+</code></pre>
+<h3 id="context-menus">Context Menus</h3>
+<pre><code class="lang-csharp">nameField.ContextMenu = contextMenu;
+</code></pre>
+<h2 id="advanced-input-scenarios">Advanced Input Scenarios</h2>
+<h3 id="custom-input-controls">Custom Input Controls</h3>
+<pre><code class="lang-csharp">public class DatePickerField : TextField
+{
+    protected override bool ProcessKey(KeyEvent keyEvent)
+    {
+        // Custom date input handling
+        if (keyEvent.Key == Key.F4)
+        {
+            ShowDatePicker();
+            return true;
+        }
+        return base.ProcessKey(keyEvent);
+    }
+}
+</code></pre>
+<h3 id="input-masking">Input Masking</h3>
+<pre><code class="lang-csharp">private void ApplyPhoneMask(object sender, TextChangingEventArgs e)
+{
+    var text = e.NewText?.ToString() ?? &quot;&quot;;
+    var digits = new string(text.Where(char.IsDigit).ToArray());
+    
+    if (digits.Length &lt;= 10)
+    {
+        e.NewText = digits.Length switch
+        {
+            &gt;= 7 =&gt; $&quot;({digits[..3]}) {digits[3..6]}-{digits[6..]}&quot;,
+            &gt;= 4 =&gt; $&quot;({digits[..3]}) {digits[3..]}&quot;,
+            &gt;= 1 =&gt; $&quot;({digits}&quot;,
+            _ =&gt; &quot;&quot;
+        };
+    }
+}
+</code></pre>
+<h3 id="async-validation">Async Validation</h3>
+<pre><code class="lang-csharp">public async Task ValidateEmailAsync(string email)
+{
+    IsValidating = true;
+    try
+    {
+        var isValid = await emailValidationService.ValidateAsync(email);
+        EmailValidationResult = isValid ? &quot;Valid&quot; : &quot;Invalid email address&quot;;
+    }
+    finally
+    {
+        IsValidating = false;
+    }
+}
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li><p><strong>Add Navigation</strong>: Create multi-step forms or wizards</p>
+<ul>
+<li>See <a href="navigation.html">Navigation Guide</a></li>
+</ul>
+</li>
+<li><p><strong>Improve Accessibility</strong>: Screen reader support, high contrast</p>
+<ul>
+<li>See <a href="../accessibility.html">Accessibility Guide</a></li>
+</ul>
+</li>
+<li><p><strong>Data Persistence</strong>: Save and restore form state</p>
+<ul>
+<li>See <a href="bind-data.html">Bind Data Guide</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="input-not-working">Input Not Working</h3>
+<p><strong>Keys not registering</strong></p>
+<ul>
+<li>Check <code>KeyBindings</code> are at the right level (Window, Control)</li>
+<li>Ensure event handlers return <code>true</code> for <code>Handled</code> property</li>
+<li>Verify focus is on the correct control</li>
+</ul>
+<p><strong>Validation not updating</strong></p>
+<ul>
+<li>Check <code>PropertyChanged</code> notifications are fired</li>
+<li>Ensure computed properties update dependent properties</li>
+<li>Verify <code>CanExecute</code> logic includes all validation rules</li>
+</ul>
+<h3 id="performance-issues">Performance Issues</h3>
+<p><strong>Slow validation</strong></p>
+<ul>
+<li>Avoid expensive operations in property getters</li>
+<li>Use async validation for network calls</li>
+<li>Debounce rapid input changes</li>
+</ul>
+<p><strong>Memory leaks</strong></p>
+<ul>
+<li>Unsubscribe from events in <code>Dispose()</code></li>
+<li>Use weak event patterns for long-lived objects</li>
+<li>Clear event handlers when removing controls</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="api-reference">API Reference</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.KeyEventArgs.yml">KeyEventArgs</a></strong> - Keyboard event handling</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.MouseEventArgs.yml">MouseEventArgs</a></strong> - Mouse interaction events</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcuts</li>
+<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern interface</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml">ValidationRule</a></strong> - Custom validation</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml">TextChangedEventArgs</a></strong> - Text change notifications</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><strong><a href="../concepts/events.html">Event Handling</a></strong> - Understanding event patterns</li>
+<li><strong><a href="../concepts/commands.md">Command Pattern</a></strong> - Implementing commands</li>
+<li><strong><a href="../concepts/input.md">Input System</a></strong> - Keyboard and mouse handling</li>
+<li><strong><a href="../concepts/validation.md">Validation</a></strong> - Data validation concepts</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><strong><a href="../examples/button-click.html">Button Click</a></strong> - Basic event handling</li>
+<li><strong><a href="../examples/form-validation.md">Form Validation</a></strong> - Input validation example</li>
+<li><strong><a href="../examples/keyboard-shortcuts.md">Keyboard Shortcuts</a></strong> - Key binding examples</li>
+</ul>
+<h3 id="related-guides">Related Guides</h3>
+<ul>
+<li><strong><a href="create-window.html">Create a Window</a></strong> - Basic UI setup and event handling</li>
+<li><strong><a href="bind-data.html">Bind Data</a></strong> - Connecting data to UI with validation</li>
+<li><strong><a href="navigation.html">Navigation</a></strong> - Managing focus and view transitions</li>
+</ul>
+<h3 id="external-resources">External Resources</h3>
+<ul>
+<li><strong><a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.input.icommand">ICommand Interface</a></strong> - .NET command pattern</li>
+<li><strong><a href="https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.idataerrorinfo">IDataErrorInfo Interface</a></strong> - Validation interface</li>
+<li><strong><a href="https://docs.microsoft.com/en-us/dotnet/csharp/events-overview">Event Patterns</a></strong> - C# event handling</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

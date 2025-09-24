@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Hello World Example | Terminal.Gui.Xaml Examples </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Hello World Example | Terminal.Gui.Xaml Examples ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="hello-world-example">Hello World Example</h1>
+
+<p>A minimal Terminal.Gui.Xaml application showing the basic window structure and XAML rendering.</p>
+<blockquote>
+<p><strong>Introduced in</strong>: Terminal.Gui.Xaml v1.0 (September 2025)<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Status</strong>: Stable<br>
+<strong>Tested With</strong>: .NET 8.0, Windows 11, PowerShell 7.4</p>
+</blockquote>
+<h2 id="related-apis">Related APIs</h2>
+<p>This example demonstrates these fundamental APIs:</p>
+<h3 id="application-framework">Application Framework</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Application.yml">Application</a></strong> - Framework initialization (<code>Init</code>, <code>Run</code>, <code>Shutdown</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_Top">Application.Top</a></strong> - Top-level application container</li>
+<li><strong><a href="../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_MainLoop">Application.MainLoop</a></strong> - Event loop management</li>
+</ul>
+<h3 id="window-and-layout">Window and Layout</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Primary container with title and sizing</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Vertical layout container</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display control</li>
+</ul>
+<h3 id="xaml-integration">XAML Integration</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.XamlLoader.yml">XamlLoader</a></strong> - XAML parsing and loading</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.IXamlParser.yml">IXamlParser</a></strong> - XAML parsing interface</li>
+</ul>
+<blockquote>
+<p><strong>💡 Pro Tip</strong>: This is the minimum viable Terminal.Gui.Xaml application. Always call <code>Application.Init()</code> before creating windows and <code>Application.Shutdown()</code> in a <code>finally</code> block.</p>
+</blockquote>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Basic Terminal.Gui.Xaml project setup</li>
+<li>XAML window definition with simple controls</li>
+<li>Application lifecycle management (Init/Run/Shutdown)</li>
+<li>Cross-platform terminal compatibility</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET 8+ SDK installed</li>
+<li>Terminal.Gui.Xaml package (latest version)</li>
+<li>Basic understanding of console applications</li>
+<li>No prior XAML experience required</li>
+</ul>
+<h2 id="complete-example">Complete Example</h2>
+<h3 id="project-setup">Project Setup</h3>
+<p>Create a new console application:</p>
+<pre><code class="lang-powershell"># Create new project
+dotnet new console -n HelloWorldApp
+cd HelloWorldApp
+
+# Add Terminal.Gui.Xaml package
+dotnet add package Terminal.Gui.Xaml
+
+# Verify project structure
+dir
+</code></pre>
+<h3 id="programcs">Program.cs</h3>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+
+namespace HelloWorldApp;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Initialize Terminal.Gui framework
+        Application.Init();
+        
+        try
+        {
+            // Create and show the main window
+            var window = new HelloWorldWindow();
+            Application.Run(window);
+        }
+        finally
+        {
+            // Clean up resources
+            Application.Shutdown();
+        }
+    }
+}
+</code></pre>
+<h3 id="helloworldwindowxaml">HelloWorldWindow.xaml</h3>
+<pre><code class="lang-xml">&lt;Window x:Class=&quot;HelloWorldApp.HelloWorldWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;Hello World - Terminal.Gui.Xaml&quot;
+        Width=&quot;50&quot; Height=&quot;10&quot;&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot; 
+               HorizontalAlignment=&quot;Center&quot; 
+               VerticalAlignment=&quot;Center&quot;
+               Spacing=&quot;1&quot;&gt;
+        
+        &lt;Label Text=&quot;Hello, Terminal.Gui.Xaml!&quot;
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;Green&quot; /&gt;
+        
+        &lt;Label Text=&quot;Welcome to declarative terminal UI development&quot;
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;Cyan&quot; /&gt;
+        
+        &lt;Label Text=&quot;Press Ctrl+C to exit&quot;
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;Gray&quot; /&gt;
+        
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="helloworldwindowxamlcs">HelloWorldWindow.xaml.cs</h3>
+<pre><code class="lang-csharp">using Terminal.Gui.Xaml;
+
+namespace HelloWorldApp;
+
+public partial class HelloWorldWindow : Window
+{
+    public HelloWorldWindow()
+    {
+        InitializeComponent();
+    }
+}
+</code></pre>
+<h3 id="project-file">Project File</h3>
+<p>Ensure your <code>HelloWorldApp.csproj</code> includes the necessary configuration:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+    &lt;Nullable&gt;enable&lt;/Nullable&gt;
+    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;Terminal.Gui.Xaml&quot; Version=&quot;1.0.0&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;EmbeddedResource Include=&quot;**/*.xaml&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<h2 id="running-the-example">Running the Example</h2>
+<h3 id="windows-powershell">Windows (PowerShell)</h3>
+<pre><code class="lang-powershell"># Build the application
+dotnet build
+
+# Run the application  
+dotnet run
+</code></pre>
+<h3 id="linuxmacos-bash">Linux/macOS (Bash)</h3>
+<pre><code class="lang-bash"># Build the application
+dotnet build
+
+# Run the application
+dotnet run
+</code></pre>
+<h2 id="expected-output">Expected Output</h2>
+<p>When you run the application, you should see:</p>
+<pre><code>┌─ Hello World - Terminal.Gui.Xaml ─────────┐
+│                                           │
+│                                           │
+│          Hello, Terminal.Gui.Xaml!       │
+│                                           │
+│    Welcome to declarative terminal UI     │
+│           development                     │
+│                                           │
+│           Press Ctrl+C to exit            │
+│                                           │
+│                                           │
+└───────────────────────────────────────────┘
+</code></pre>
+<h2 id="step-by-step-explanation">Step-by-Step Explanation</h2>
+<h3 id="1-application-initialization">1. Application Initialization</h3>
+<pre><code class="lang-csharp">Application.Init();
+</code></pre>
+<ul>
+<li>Initializes Terminal.Gui framework</li>
+<li>Sets up terminal display and input handling</li>
+<li>Must be called before creating any UI elements</li>
+</ul>
+<h3 id="2-window-definition">2. Window Definition</h3>
+<pre><code class="lang-xml">&lt;Window Title=&quot;...&quot; Width=&quot;50&quot; Height=&quot;10&quot;&gt;
+</code></pre>
+<ul>
+<li>Defines a bordered window container</li>
+<li>Size in character cells (50 columns × 10 rows)</li>
+<li>Title appears in the window's top border</li>
+</ul>
+<h3 id="3-layout-container">3. Layout Container</h3>
+<pre><code class="lang-xml">&lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+</code></pre>
+<ul>
+<li>Arranges child controls vertically</li>
+<li>Centers content both horizontally and vertically</li>
+<li>Adds 1 character space between items</li>
+</ul>
+<h3 id="4-text-display">4. Text Display</h3>
+<pre><code class="lang-xml">&lt;Label Text=&quot;Hello, Terminal.Gui.Xaml!&quot; ForegroundColor=&quot;Green&quot; /&gt;
+</code></pre>
+<ul>
+<li>Displays static text</li>
+<li>Supports color styling for terminal compatibility</li>
+<li>Automatically handles text alignment</li>
+</ul>
+<h3 id="5-resource-cleanup">5. Resource Cleanup</h3>
+<pre><code class="lang-csharp">Application.Shutdown();
+</code></pre>
+<ul>
+<li>Restores terminal to original state</li>
+<li>Releases framework resources</li>
+<li>Always call in a finally block</li>
+</ul>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="xaml-structure">XAML Structure</h3>
+<ul>
+<li><strong>Declarative UI</strong>: Define layout and controls in XAML markup</li>
+<li><strong>Namespaces</strong>: Standard XAML namespaces for Terminal.Gui.Xaml</li>
+<li><strong>Properties</strong>: Set control properties as XML attributes</li>
+</ul>
+<h3 id="terminal-compatibility">Terminal Compatibility</h3>
+<ul>
+<li><strong>Character-based</strong>: All sizes and positions in character cells</li>
+<li><strong>Color Support</strong>: Uses terminal color capabilities</li>
+<li><strong>Cross-platform</strong>: Works on Windows, Linux, macOS terminals</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li><strong>Fast Parsing</strong>: XAML parsing completes in milliseconds</li>
+<li><strong>Efficient Rendering</strong>: Optimized for terminal display updates</li>
+<li><strong>Low Memory</strong>: Minimal memory footprint for simple applications</li>
+</ul>
+<h2 id="platform-differences">Platform Differences</h2>
+<h3 id="terminal-emulators">Terminal Emulators</h3>
+<p>Different terminal applications may render colors slightly differently:</p>
+<ul>
+<li><strong>Windows Terminal</strong>: Full color support, Unicode characters</li>
+<li><strong>PowerShell</strong>: Good color support, basic Unicode</li>
+<li><strong>Command Prompt</strong>: Limited color support</li>
+<li><strong>Linux terminals</strong>: Varies by terminal (gnome-terminal, xterm, etc.)</li>
+<li><strong>macOS Terminal</strong>: Good color support, Unicode characters</li>
+</ul>
+<h3 id="font-considerations">Font Considerations</h3>
+<ul>
+<li>Use standard ASCII characters for maximum compatibility</li>
+<li>Unicode characters may not display consistently across terminals</li>
+<li>Test in your target deployment environment</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have a basic window working:</p>
+<ol>
+<li><strong>Add Interaction</strong>: Try the <a href="button-click.html">Button Click Example</a></li>
+<li><strong>Learn Layout</strong>: Explore <a href="basic-layout.html">Basic Layout Example</a></li>
+<li><strong>Understand Concepts</strong>: Read <a href="../concepts/layout.html">Layout Concepts</a></li>
+<li><strong>Build More</strong>: Follow the <a href="../guides/create-window.html">Create a Window Guide</a></li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="application-doesnt-start">Application Doesn't Start</h3>
+<p><strong>Issue</strong>: Nothing appears when running <code>dotnet run</code></p>
+<pre><code>Solution: Check that Application.Init() is called before creating windows
+</code></pre>
+<p><strong>Issue</strong>: Exception on startup</p>
+<pre><code>Solution: Verify Terminal.Gui.Xaml package is installed and referenced
+</code></pre>
+<h3 id="display-problems">Display Problems</h3>
+<p><strong>Issue</strong>: Window appears but controls are missing</p>
+<pre><code>Solution: Ensure XAML files are marked as EmbeddedResource in the project file
+</code></pre>
+<p><strong>Issue</strong>: Colors don't display correctly</p>
+<pre><code>Solution: Test in different terminal applications; some have limited color support
+</code></pre>
+<h3 id="build-errors">Build Errors</h3>
+<p><strong>Issue</strong>: XAML compilation errors</p>
+<pre><code>Solution: Check XAML syntax, ensure proper namespace declarations
+</code></pre>
+<p><strong>Issue</strong>: InitializeComponent() not found</p>
+<pre><code>Solution: Verify code-behind class inherits from Window and uses partial class modifier
+</code></pre>
+<h3 id="performance-issues">Performance Issues</h3>
+<p><strong>Issue</strong>: Slow startup or high memory usage</p>
+<pre><code>Solution: This should not occur with this simple example. Check for:
+- Correct Terminal.Gui.Xaml version
+- No infinite loops in constructor
+- Proper resource disposal
+</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="more-examples">More Examples</h3>
+<ul>
+<li><strong><a href="basic-layout.html">Basic Layout</a></strong> - Form controls and layout containers</li>
+<li><strong><a href="button-click.html">Button Click</a></strong> - Event handling and user interaction</li>
+<li><strong><a href="multi-window.md">Multi-Window App</a></strong> - Complex application structure</li>
+</ul>
+<h3 id="learning-path">Learning Path</h3>
+<ul>
+<li><strong><a href="../guides/create-window.html">Create a Window Guide</a></strong> - Detailed window creation tutorial</li>
+<li><strong><a href="../guides/handle-input.html">Handle Input Guide</a></strong> - User interaction patterns</li>
+<li><strong><a href="../guides/bind-data.html">Data Binding Guide</a></strong> - MVVM pattern implementation</li>
+</ul>
+<h3 id="api-reference">API Reference</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Application.yml">Application</a></strong> - Framework initialization and lifecycle</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Main container with properties and events</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Layout container for vertical/horizontal arrangement</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display control with styling options</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.XamlLoader.yml">XamlLoader</a></strong> - XAML parsing and object creation</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><strong><a href="../concepts/application.md">Application Lifecycle</a></strong> - Understanding Init/Run/Shutdown patterns</li>
+<li><strong><a href="../concepts/windows.md">Window Management</a></strong> - Window lifecycle and properties</li>
+<li><strong><a href="../concepts/xaml.md">XAML Basics</a></strong> - XAML syntax and structure</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

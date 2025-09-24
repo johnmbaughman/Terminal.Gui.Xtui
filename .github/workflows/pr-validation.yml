@@ -134,7 +134,7 @@ jobs:
         path: ./benchmarks/
 
   documentation:
-    name: Documentation Build
+    name: Documentation Build & Link Validation
     runs-on: ubuntu-latest
 
     steps:
@@ -146,10 +146,32 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Build documentation
+    - name: Install DocFX
+      run: dotnet tool update -g docfx
+
+    - name: Build solution for XML docs
       run: dotnet build --configuration Release
+
+    - name: Build and validate documentation
+      shell: pwsh
+      run: ./scripts/test.ps1 -StrictLinkValidation -ValidateExamples -VerboseOutput
+
+    - name: Upload documentation artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentation-site
+        path: docs/_site/
+        if-no-files-found: warn
 
     - name: Check documentation coverage
       run: |
-        echo "Documentation coverage check (placeholder)"
-        # Future: Add actual documentation coverage validation
+        echo "Documentation coverage check"
+        # Count generated API docs
+        api_files=$(find docs/_site/api -name "*.html" -type f | wc -l)
+        echo "Generated API documentation files: $api_files"
+        if [ $api_files -lt 10 ]; then
+          echo "Warning: Low API documentation coverage ($api_files files)"
+        else
+          echo "✅ API documentation coverage looks good ($api_files files)"
+        fi

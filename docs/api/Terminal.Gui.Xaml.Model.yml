@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Model
+  commentId: N:Terminal.Gui.Xaml.Model
+  id: Terminal.Gui.Xaml.Model
+  children:
+  - Terminal.Gui.Xaml.Model.PropertyInfo
+  - Terminal.Gui.Xaml.Model.XamlDocument
+  - Terminal.Gui.Xaml.Model.XamlNamespace
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Model
+  nameWithType: Terminal.Gui.Xaml.Model
+  fullName: Terminal.Gui.Xaml.Model
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo
+  commentId: T:Terminal.Gui.Xaml.Model.PropertyInfo
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo
+- uid: Terminal.Gui.Xaml.Model.XamlDocument
+  commentId: T:Terminal.Gui.Xaml.Model.XamlDocument
+  href: Terminal.Gui.Xaml.Model.XamlDocument.html
+  name: XamlDocument
+  nameWithType: XamlDocument
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument
+- uid: Terminal.Gui.Xaml.Model.XamlNamespace
+  commentId: T:Terminal.Gui.Xaml.Model.XamlNamespace
+  parent: Terminal.Gui.Xaml.Model
+  href: Terminal.Gui.Xaml.Model.XamlNamespace.html
+  name: XamlNamespace
+  nameWithType: XamlNamespace
+  fullName: Terminal.Gui.Xaml.Model.XamlNamespace
+- uid: Terminal.Gui.Xaml.Model
+  commentId: N:Terminal.Gui.Xaml.Model
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Model
+  nameWithType: Terminal.Gui.Xaml.Model
+  fullName: Terminal.Gui.Xaml.Model
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html

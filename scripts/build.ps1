@@ -26,7 +26,10 @@ param(
     [switch]$SkipTests,
 
     [Parameter()]
-    [switch]$VerboseOutput
+    [switch]$VerboseOutput,
+
+    [Parameter()]
+    [switch]$SkipDocs
 )Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
@@ -148,6 +151,40 @@ function Invoke-RunTests {
     }
 }
 
+function Invoke-BuildDocs {
+    if ($SkipDocs) {
+        Write-Warning "Skipping documentation build as requested"
+        return
+    }
+
+    Write-Header "Building Documentation (DocFX)"
+
+    $docfxConfig = Join-Path $PSScriptRoot '..' | Join-Path -ChildPath 'docs/docfx.json'
+    $docfxConfig = [System.IO.Path]::GetFullPath($docfxConfig)
+    if (-not (Test-Path $docfxConfig)) {
+        Write-Warning "DocFX config not found at $docfxConfig; skipping docs build"
+        return
+    }
+
+    $docfx = Get-Command docfx -ErrorAction SilentlyContinue
+    if (-not $docfx) {
+        Write-Warning "DocFX CLI not found. Install with: dotnet tool update -g docfx; skipping docs build"
+        return
+    }
+
+    try {
+        $args = @('build', $docfxConfig, '--warningsAsErrors')
+        if ($VerboseOutput) { $args += '--logLevel'; $args += 'Verbose' }
+        & $docfx.Source $args
+        if ($LASTEXITCODE -ne 0) { throw "DocFX build failed with exit code $LASTEXITCODE" }
+        Write-Success "Documentation built successfully (warnings treated as errors)"
+    }
+    catch {
+        Write-Error "Documentation build failed: $($_.Exception.Message)"
+        exit 1
+    }
+}
+
 function Test-ConstitutionalCompliance {
     Write-Header "Constitutional Compliance Validation"
 
@@ -171,6 +208,7 @@ try {
     Invoke-BuildProjects
     Invoke-RunTests
     Test-ConstitutionalCompliance
+    Invoke-BuildDocs
 
     Write-Header "Build Completed Successfully"
     Write-Success "Terminal.Gui XAML Framework build completed"

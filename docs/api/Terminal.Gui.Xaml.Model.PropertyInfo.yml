@@ -1,0 +1,758 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo
+  commentId: T:Terminal.Gui.Xaml.Model.PropertyInfo
+  id: PropertyInfo
+  parent: Terminal.Gui.Xaml.Model
+  children:
+  - Terminal.Gui.Xaml.Model.PropertyInfo.#ctor(System.String,System.Type,System.Reflection.PropertyInfo)
+  - Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  - Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(System.Object)
+  - Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  - Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  - Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  - Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  - Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(System.Object,System.Object)
+  - Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  langs:
+  - csharp
+  - vb
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: PropertyInfo
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 18
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Provides metadata and binding support for a property in a XAML model.
+  remarks: Initializes a new instance of the <xref href="Terminal.Gui.Xaml.Model.PropertyInfo" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public class PropertyInfo
+    content.vb: Public Class PropertyInfo
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.#ctor(System.String,System.Type,System.Reflection.PropertyInfo)
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.#ctor(System.String,System.Type,System.Reflection.PropertyInfo)
+  id: '#ctor(System.String,System.Type,System.Reflection.PropertyInfo)'
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: PropertyInfo(string, Type, PropertyInfo?)
+  nameWithType: PropertyInfo.PropertyInfo(string, Type, PropertyInfo?)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyInfo(string, System.Type, System.Reflection.PropertyInfo?)
+  type: Constructor
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: .ctor
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 18
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Provides metadata and binding support for a property in a XAML model.
+  remarks: Initializes a new instance of the <xref href="Terminal.Gui.Xaml.Model.PropertyInfo" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public PropertyInfo(string name, Type propertyType, PropertyInfo? reflectionInfo = null)
+    parameters:
+    - id: name
+      type: System.String
+      description: The property name.
+    - id: propertyType
+      type: System.Type
+      description: The property type.
+    - id: reflectionInfo
+      type: System.Reflection.PropertyInfo
+      description: The reflection PropertyInfo.
+    content.vb: Public Sub New(name As String, propertyType As Type, reflectionInfo As PropertyInfo = Nothing)
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.#ctor*
+  nameWithType.vb: PropertyInfo.New(String, Type, PropertyInfo)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.New(String, System.Type, System.Reflection.PropertyInfo)
+  name.vb: New(String, Type, PropertyInfo)
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  id: Name
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: PropertyInfo.Name
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Name
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 24
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets the property name.
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.Name*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  id: PropertyType
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: PropertyType
+  nameWithType: PropertyInfo.PropertyType
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: PropertyType
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 29
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets the property type.
+  example: []
+  syntax:
+    content: public Type PropertyType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: Public ReadOnly Property PropertyType As Type
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  id: ReflectionInfo
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: ReflectionInfo
+  nameWithType: PropertyInfo.ReflectionInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ReflectionInfo
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 34
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets the underlying PropertyInfo from reflection.
+  example: []
+  syntax:
+    content: public PropertyInfo? ReflectionInfo { get; }
+    parameters: []
+    return:
+      type: System.Reflection.PropertyInfo
+    content.vb: Public ReadOnly Property ReflectionInfo As PropertyInfo
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  id: BindingExpression
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: BindingExpression
+  nameWithType: PropertyInfo.BindingExpression
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BindingExpression
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 39
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets or sets the binding expression for this property.
+  example: []
+  syntax:
+    content: public string? BindingExpression { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BindingExpression As String
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  commentId: P:Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  id: IsTwoWay
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: IsTwoWay
+  nameWithType: PropertyInfo.IsTwoWay
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IsTwoWay
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 44
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets or sets a value indicating whether two-way binding is enabled.
+  example: []
+  syntax:
+    content: public bool IsTwoWay { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsTwoWay As Boolean
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  id: ValidateBindingExpression
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: ValidateBindingExpression()
+  nameWithType: PropertyInfo.ValidateBindingExpression()
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateBindingExpression
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 50
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Parses and validates the binding expression.
+  example: []
+  syntax:
+    content: public bool ValidateBindingExpression()
+    return:
+      type: System.Boolean
+      description: True if the expression is valid; otherwise, false.
+    content.vb: Public Function ValidateBindingExpression() As Boolean
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression*
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(System.Object)
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(System.Object)
+  id: GetValue(System.Object)
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: GetValue(object)
+  nameWithType: PropertyInfo.GetValue(object)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(object)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetValue
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 61
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Gets the value of the property from the specified target object.
+  example: []
+  syntax:
+    content: public object? GetValue(object target)
+    parameters:
+    - id: target
+      type: System.Object
+      description: The object to get the property value from.
+    return:
+      type: System.Object
+      description: The value of the property.
+    content.vb: Public Function GetValue(target As Object) As Object
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue*
+  nameWithType.vb: PropertyInfo.GetValue(Object)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue(Object)
+  name.vb: GetValue(Object)
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(System.Object,System.Object)
+  commentId: M:Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(System.Object,System.Object)
+  id: SetValue(System.Object,System.Object)
+  parent: Terminal.Gui.Xaml.Model.PropertyInfo
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object, object?)
+  nameWithType: PropertyInfo.SetValue(object, object?)
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(object, object?)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: SetValue
+    path: ../src/Terminal.Gui.Xaml/Model/PropertyInfo.cs
+    startLine: 71
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Model
+  summary: Sets the value of the property on the specified target object.
+  example: []
+  syntax:
+    content: public void SetValue(object target, object? value)
+    parameters:
+    - id: target
+      type: System.Object
+      description: The object to set the property value on.
+    - id: value
+      type: System.Object
+      description: The value to set.
+    content.vb: Public Sub SetValue(target As Object, value As Object)
+  overload: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue*
+  nameWithType.vb: PropertyInfo.SetValue(Object, Object)
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue(Object, Object)
+  name.vb: SetValue(Object, Object)
+references:
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo
+  commentId: T:Terminal.Gui.Xaml.Model.PropertyInfo
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo
+- uid: Terminal.Gui.Xaml.Model
+  commentId: N:Terminal.Gui.Xaml.Model
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Model
+  nameWithType: Terminal.Gui.Xaml.Model
+  fullName: Terminal.Gui.Xaml.Model
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.#ctor*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.#ctor
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo__ctor_System_String_System_Type_System_Reflection_PropertyInfo_
+  name: PropertyInfo
+  nameWithType: PropertyInfo.PropertyInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyInfo
+  nameWithType.vb: PropertyInfo.New
+  fullName.vb: Terminal.Gui.Xaml.Model.PropertyInfo.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Reflection.PropertyInfo
+  commentId: T:System.Reflection.PropertyInfo
+  parent: System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.reflection.propertyinfo
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: System.Reflection.PropertyInfo
+- uid: System.Reflection
+  commentId: N:System.Reflection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Reflection
+  nameWithType: System.Reflection
+  fullName: System.Reflection
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Reflection
+    name: Reflection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.Name*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.Name
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_Name
+  name: Name
+  nameWithType: PropertyInfo.Name
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.Name
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_PropertyType
+  name: PropertyType
+  nameWithType: PropertyInfo.PropertyType
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.PropertyType
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ReflectionInfo
+  name: ReflectionInfo
+  nameWithType: PropertyInfo.ReflectionInfo
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ReflectionInfo
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_BindingExpression
+  name: BindingExpression
+  nameWithType: PropertyInfo.BindingExpression
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.BindingExpression
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_IsTwoWay
+  name: IsTwoWay
+  nameWithType: PropertyInfo.IsTwoWay
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.IsTwoWay
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_ValidateBindingExpression
+  name: ValidateBindingExpression
+  nameWithType: PropertyInfo.ValidateBindingExpression
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.ValidateBindingExpression
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.GetValue
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_GetValue_System_Object_
+  name: GetValue
+  nameWithType: PropertyInfo.GetValue
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.GetValue
+- uid: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue*
+  commentId: Overload:Terminal.Gui.Xaml.Model.PropertyInfo.SetValue
+  href: Terminal.Gui.Xaml.Model.PropertyInfo.html#Terminal_Gui_Xaml_Model_PropertyInfo_SetValue_System_Object_System_Object_
+  name: SetValue
+  nameWithType: PropertyInfo.SetValue
+  fullName: Terminal.Gui.Xaml.Model.PropertyInfo.SetValue

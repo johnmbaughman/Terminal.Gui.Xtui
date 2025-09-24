@@ -1,0 +1,842 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  commentId: T:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  id: XamlLoggerExtensions
+  parent: Terminal.Gui.Xaml.Logging
+  children:
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  - Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: XamlLoggerExtensions
+  nameWithType: XamlLoggerExtensions
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: XamlLoggerExtensions
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 12
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Provides extension methods for <xref href="Terminal.Gui.Xaml.Logging.IXamlLogger" data-throw-if-not-resolved="false"></xref> to simplify logging operations.
+  example: []
+  syntax:
+    content: public static class XamlLoggerExtensions
+    content.vb: Public Module XamlLoggerExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  id: LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogXamlParsingStart(IXamlLogger, string, string)
+  nameWithType: XamlLoggerExtensions.LogXamlParsingStart(IXamlLogger, string, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogXamlParsingStart
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 20
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs the start of a XAML parsing operation.
+  example: []
+  syntax:
+    content: public static void LogXamlParsingStart(this IXamlLogger logger, string filePath, string caller = "")
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: filePath
+      type: System.String
+      description: The XAML file path being parsed.
+    - id: caller
+      type: System.String
+      description: The calling method name (auto-filled).
+    content.vb: Public Shared Sub LogXamlParsingStart(logger As IXamlLogger, filePath As String, caller As String = "")
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart*
+  nameWithType.vb: XamlLoggerExtensions.LogXamlParsingStart(IXamlLogger, String, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String)
+  name.vb: LogXamlParsingStart(IXamlLogger, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  id: LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogXamlParsingComplete(IXamlLogger, string, double, int, string)
+  nameWithType: XamlLoggerExtensions.LogXamlParsingComplete(IXamlLogger, string, double, int, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double, int, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogXamlParsingComplete
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 36
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs the completion of a XAML parsing operation with performance metrics.
+  example: []
+  syntax:
+    content: public static void LogXamlParsingComplete(this IXamlLogger logger, string filePath, double elapsedMs, int elementCount, string caller = "")
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: filePath
+      type: System.String
+      description: The XAML file path that was parsed.
+    - id: elapsedMs
+      type: System.Double
+      description: The parsing time in milliseconds.
+    - id: elementCount
+      type: System.Int32
+      description: The number of elements parsed.
+    - id: caller
+      type: System.String
+      description: The calling method name (auto-filled).
+    content.vb: Public Shared Sub LogXamlParsingComplete(logger As IXamlLogger, filePath As String, elapsedMs As Double, elementCount As Integer, caller As String = "")
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete*
+  nameWithType.vb: XamlLoggerExtensions.LogXamlParsingComplete(IXamlLogger, String, Double, Integer, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double, Integer, String)
+  name.vb: LogXamlParsingComplete(IXamlLogger, String, Double, Integer, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  id: LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogCodeGenerationStart(IXamlLogger, string, string)
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationStart(IXamlLogger, string, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogCodeGenerationStart
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 69
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs the start of a code generation operation.
+  example: []
+  syntax:
+    content: public static void LogCodeGenerationStart(this IXamlLogger logger, string className, string caller = "")
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: className
+      type: System.String
+      description: The class name being generated.
+    - id: caller
+      type: System.String
+      description: The calling method name (auto-filled).
+    content.vb: Public Shared Sub LogCodeGenerationStart(logger As IXamlLogger, className As String, caller As String = "")
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart*
+  nameWithType.vb: XamlLoggerExtensions.LogCodeGenerationStart(IXamlLogger, String, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String)
+  name.vb: LogCodeGenerationStart(IXamlLogger, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  id: LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double,System.Int32,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogCodeGenerationComplete(IXamlLogger, string, double, int, string)
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationComplete(IXamlLogger, string, double, int, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double, int, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogCodeGenerationComplete
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 85
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs the completion of a code generation operation with performance metrics.
+  example: []
+  syntax:
+    content: public static void LogCodeGenerationComplete(this IXamlLogger logger, string className, double elapsedMs, int linesOfCode, string caller = "")
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: className
+      type: System.String
+      description: The class name that was generated.
+    - id: elapsedMs
+      type: System.Double
+      description: The generation time in milliseconds.
+    - id: linesOfCode
+      type: System.Int32
+      description: The number of lines of code generated.
+    - id: caller
+      type: System.String
+      description: The calling method name (auto-filled).
+    content.vb: Public Shared Sub LogCodeGenerationComplete(logger As IXamlLogger, className As String, elapsedMs As Double, linesOfCode As Integer, caller As String = "")
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete*
+  nameWithType.vb: XamlLoggerExtensions.LogCodeGenerationComplete(IXamlLogger, String, Double, Integer, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double, Integer, String)
+  name.vb: LogCodeGenerationComplete(IXamlLogger, String, Double, Integer, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  id: LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.String,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogDataBinding(IXamlLogger, string, string, string)
+  nameWithType: XamlLoggerExtensions.LogDataBinding(IXamlLogger, string, string, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger, string, string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogDataBinding
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 119
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs a data binding operation.
+  example: []
+  syntax:
+    content: public static void LogDataBinding(this IXamlLogger logger, string sourceProperty, string targetProperty, string bindingMode)
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: sourceProperty
+      type: System.String
+      description: The source property being bound.
+    - id: targetProperty
+      type: System.String
+      description: The target property being bound to.
+    - id: bindingMode
+      type: System.String
+      description: The binding mode (OneWay, TwoWay, etc.).
+    content.vb: Public Shared Sub LogDataBinding(logger As IXamlLogger, sourceProperty As String, targetProperty As String, bindingMode As String)
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding*
+  nameWithType.vb: XamlLoggerExtensions.LogDataBinding(IXamlLogger, String, String, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding(Terminal.Gui.Xaml.Logging.IXamlLogger, String, String, String)
+  name.vb: LogDataBinding(IXamlLogger, String, String, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  id: LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Exception)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogDataBindingError(IXamlLogger, string, Exception)
+  nameWithType: XamlLoggerExtensions.LogDataBindingError(IXamlLogger, string, Exception)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger, string, System.Exception)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogDataBindingError
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 138
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs a data binding error.
+  example: []
+  syntax:
+    content: public static void LogDataBindingError(this IXamlLogger logger, string bindingExpression, Exception exception)
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: bindingExpression
+      type: System.String
+      description: The binding expression that failed.
+    - id: exception
+      type: System.Exception
+      description: The exception that occurred.
+    content.vb: Public Shared Sub LogDataBindingError(logger As IXamlLogger, bindingExpression As String, exception As Exception)
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError*
+  nameWithType.vb: XamlLoggerExtensions.LogDataBindingError(IXamlLogger, String, Exception)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError(Terminal.Gui.Xaml.Logging.IXamlLogger, String, System.Exception)
+  name.vb: LogDataBindingError(IXamlLogger, String, Exception)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  id: LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Double)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogMemoryUsage(IXamlLogger, string, double)
+  nameWithType: XamlLoggerExtensions.LogMemoryUsage(IXamlLogger, string, double)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger, string, double)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogMemoryUsage
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 155
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs memory usage for constitutional compliance monitoring.
+  example: []
+  syntax:
+    content: public static void LogMemoryUsage(this IXamlLogger logger, string operationName, double memoryUsedMB)
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: operationName
+      type: System.String
+      description: The name of the operation.
+    - id: memoryUsedMB
+      type: System.Double
+      description: The memory used in megabytes.
+    content.vb: Public Shared Sub LogMemoryUsage(logger As IXamlLogger, operationName As String, memoryUsedMB As Double)
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage*
+  nameWithType.vb: XamlLoggerExtensions.LogMemoryUsage(IXamlLogger, String, Double)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Double)
+  name.vb: LogMemoryUsage(IXamlLogger, String, Double)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  id: BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: BeginPerformanceScope(IXamlLogger, string)
+  nameWithType: XamlLoggerExtensions.BeginPerformanceScope(IXamlLogger, string)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BeginPerformanceScope
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 184
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Creates a performance tracking scope that automatically logs elapsed time.
+  example: []
+  syntax:
+    content: public static IDisposable BeginPerformanceScope(this IXamlLogger logger, string operationName)
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: operationName
+      type: System.String
+      description: The name of the operation to track.
+    return:
+      type: System.IDisposable
+      description: A disposable scope that logs performance on disposal.
+    content.vb: Public Shared Function BeginPerformanceScope(logger As IXamlLogger, operationName As String) As IDisposable
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope*
+  nameWithType.vb: XamlLoggerExtensions.BeginPerformanceScope(IXamlLogger, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope(Terminal.Gui.Xaml.Logging.IXamlLogger, String)
+  name.vb: BeginPerformanceScope(IXamlLogger, String)
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  commentId: M:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  id: LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger,System.String,System.Boolean,System.String)
+  isExtensionMethod: true
+  parent: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+  langs:
+  - csharp
+  - vb
+  name: LogConstitutionalCheck(IXamlLogger, string, bool, string?)
+  nameWithType: XamlLoggerExtensions.LogConstitutionalCheck(IXamlLogger, string, bool, string?)
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger, string, bool, string?)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogConstitutionalCheck
+    path: ../src/Terminal.Gui.Xaml/Logging/XamlLoggerExtensions.cs
+    startLine: 196
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Logs constitutional compliance check results.
+  example: []
+  syntax:
+    content: public static void LogConstitutionalCheck(this IXamlLogger logger, string checkName, bool passed, string? details = null)
+    parameters:
+    - id: logger
+      type: Terminal.Gui.Xaml.Logging.IXamlLogger
+      description: The logger instance.
+    - id: checkName
+      type: System.String
+      description: The name of the constitutional check.
+    - id: passed
+      type: System.Boolean
+      description: Whether the check passed.
+    - id: details
+      type: System.String
+      description: Additional details about the check.
+    content.vb: Public Shared Sub LogConstitutionalCheck(logger As IXamlLogger, checkName As String, passed As Boolean, details As String = Nothing)
+  overload: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck*
+  nameWithType.vb: XamlLoggerExtensions.LogConstitutionalCheck(IXamlLogger, String, Boolean, String)
+  fullName.vb: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck(Terminal.Gui.Xaml.Logging.IXamlLogger, String, Boolean, String)
+  name.vb: LogConstitutionalCheck(IXamlLogger, String, Boolean, String)
+references:
+- uid: Terminal.Gui.Xaml.Logging.IXamlLogger
+  commentId: T:Terminal.Gui.Xaml.Logging.IXamlLogger
+  parent: Terminal.Gui.Xaml.Logging
+  href: Terminal.Gui.Xaml.Logging.IXamlLogger.html
+  name: IXamlLogger
+  nameWithType: IXamlLogger
+  fullName: Terminal.Gui.Xaml.Logging.IXamlLogger
+- uid: Terminal.Gui.Xaml.Logging
+  commentId: N:Terminal.Gui.Xaml.Logging
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Logging
+  nameWithType: Terminal.Gui.Xaml.Logging
+  fullName: Terminal.Gui.Xaml.Logging
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Logging.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Logging.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_
+  name: LogXamlParsingStart
+  nameWithType: XamlLoggerExtensions.LogXamlParsingStart
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingStart
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_
+  name: LogXamlParsingComplete
+  nameWithType: XamlLoggerExtensions.LogXamlParsingComplete
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogXamlParsingComplete
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_
+  name: LogCodeGenerationStart
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationStart
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationStart
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_
+  name: LogCodeGenerationComplete
+  nameWithType: XamlLoggerExtensions.LogCodeGenerationComplete
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogCodeGenerationComplete
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBinding_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_System_String_
+  name: LogDataBinding
+  nameWithType: XamlLoggerExtensions.LogDataBinding
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBinding
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBindingError_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Exception_
+  name: LogDataBindingError
+  nameWithType: XamlLoggerExtensions.LogDataBindingError
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogDataBindingError
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogMemoryUsage_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_
+  name: LogMemoryUsage
+  nameWithType: XamlLoggerExtensions.LogMemoryUsage
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogMemoryUsage
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_BeginPerformanceScope_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_
+  name: BeginPerformanceScope
+  nameWithType: XamlLoggerExtensions.BeginPerformanceScope
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.BeginPerformanceScope
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck*
+  commentId: Overload:Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck
+  href: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogConstitutionalCheck_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Boolean_System_String_
+  name: LogConstitutionalCheck
+  nameWithType: XamlLoggerExtensions.LogConstitutionalCheck
+  fullName: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.LogConstitutionalCheck
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

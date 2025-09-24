@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Data Binding Concepts | Terminal.Gui.Xaml Concepts </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Data Binding Concepts | Terminal.Gui.Xaml Concepts ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="data-binding-concepts">Data Binding Concepts</h1>
+
+<h2 id="what-is-data-binding-in-terminalguixaml">What is Data Binding in Terminal.Gui.Xaml?</h2>
+<p>Data binding automatically synchronizes data between your UI elements and your application's data model. Instead of manually updating UI controls when data changes, binding creates a live connection that keeps everything in sync automatically.</p>
+<h2 id="how-data-binding-works">How Data Binding Works</h2>
+<h3 id="binding-sources">Binding Sources</h3>
+<p>Data can come from various sources:</p>
+<ul>
+<li><strong>Properties</strong>: Object properties that implement <code>INotifyPropertyChanged</code></li>
+<li><strong>Collections</strong>: Lists that implement <code>INotifyCollectionChanged</code></li>
+<li><strong>Resources</strong>: Static data defined in XAML</li>
+<li><strong>Other UI Elements</strong>: Binding to properties of other controls</li>
+</ul>
+<h3 id="binding-modes">Binding Modes</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OneWay</code></td>
+<td>Source → Target only</td>
+<td>Display read-only data</td>
+</tr>
+<tr>
+<td><code>TwoWay</code></td>
+<td>Source ↔ Target</td>
+<td>Input controls (TextBox, CheckBox)</td>
+</tr>
+<tr>
+<td><code>OneTime</code></td>
+<td>Source → Target once</td>
+<td>Static initialization</td>
+</tr>
+<tr>
+<td><code>OneWayToSource</code></td>
+<td>Target → Source only</td>
+<td>Custom controls</td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-binding-syntax">Basic Binding Syntax</h3>
+<pre><code class="lang-xml">&lt;TextField Text=&quot;{Binding UserName}&quot; /&gt;
+&lt;Label Text=&quot;{Binding FullName, Mode=OneWay}&quot; /&gt;
+&lt;CheckBox Checked=&quot;{Binding IsEnabled, Mode=TwoWay}&quot; /&gt;
+</code></pre>
+<h3 id="property-paths">Property Paths</h3>
+<p>Navigate object hierarchies with dot notation:</p>
+<pre><code class="lang-xml">&lt;Label Text=&quot;{Binding User.Address.City}&quot; /&gt;
+&lt;TextField Text=&quot;{Binding Items[0].Name}&quot; /&gt;
+</code></pre>
+<h2 id="why-use-data-binding">Why Use Data Binding?</h2>
+<h3 id="automatic-updates">Automatic Updates</h3>
+<p>When your data changes, the UI updates automatically:</p>
+<pre><code class="lang-csharp">public class PersonViewModel : INotifyPropertyChanged
+{
+    private string _name;
+    public string Name 
+    { 
+        get =&gt; _name; 
+        set { _name = value; OnPropertyChanged(); }
+    }
+    
+    // PropertyChanged event implementation
+}
+</code></pre>
+<pre><code class="lang-xml">&lt;!-- Updates automatically when Name property changes --&gt;
+&lt;Label Text=&quot;{Binding Name}&quot; /&gt;
+</code></pre>
+<h3 id="reduced-code">Reduced Code</h3>
+<p>Eliminate manual UI update code:</p>
+<pre><code class="lang-csharp">// Without binding - manual updates
+nameLabel.Text = person.Name;
+person.PropertyChanged += (s, e) =&gt; {
+    if (e.PropertyName == &quot;Name&quot;) 
+        nameLabel.Text = person.Name;
+};
+
+// With binding - automatic
+// &lt;Label Text=&quot;{Binding Name}&quot; /&gt;
+</code></pre>
+<h3 id="testability">Testability</h3>
+<p>Separate UI from business logic:</p>
+<ul>
+<li>Test view models without UI</li>
+<li>Mock data sources easily</li>
+<li>Clear separation of concerns</li>
+</ul>
+<h2 id="common-binding-scenarios">Common Binding Scenarios</h2>
+<h3 id="form-input-binding">Form Input Binding</h3>
+<pre><code class="lang-xml">&lt;Window DataContext=&quot;{Binding PersonViewModel}&quot;&gt;
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        &lt;Label Text=&quot;Name:&quot; /&gt;
+        &lt;TextField Text=&quot;{Binding Name, Mode=TwoWay}&quot; /&gt;
+        
+        &lt;Label Text=&quot;Age:&quot; /&gt;
+        &lt;TextField Text=&quot;{Binding Age, Mode=TwoWay}&quot; /&gt;
+        
+        &lt;CheckBox Text=&quot;Active&quot; Checked=&quot;{Binding IsActive, Mode=TwoWay}&quot; /&gt;
+        
+        &lt;Button Text=&quot;Save&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="list-binding">List Binding</h3>
+<pre><code class="lang-xml">&lt;ListView ItemsSource=&quot;{Binding People}&quot;&gt;
+    &lt;ListView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;Label Text=&quot;{Binding FullName}&quot; /&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListView.ItemTemplate&gt;
+&lt;/ListView&gt;
+</code></pre>
+<h3 id="master-detail-binding">Master-Detail Binding</h3>
+<pre><code class="lang-xml">&lt;Window&gt;
+    &lt;ListView Name=&quot;peopleList&quot; 
+              ItemsSource=&quot;{Binding People}&quot; 
+              SelectedItem=&quot;{Binding SelectedPerson, Mode=TwoWay}&quot;
+              Width=&quot;Dim.Percent(40)&quot; /&gt;
+    
+    &lt;FrameView Title=&quot;Details&quot; X=&quot;Pos.Right(peopleList)&quot;&gt;
+        &lt;StackView DataContext=&quot;{Binding SelectedPerson}&quot;&gt;
+            &lt;Label Text=&quot;{Binding Name}&quot; /&gt;
+            &lt;Label Text=&quot;{Binding Email}&quot; /&gt;
+            &lt;TextField Text=&quot;{Binding Notes, Mode=TwoWay}&quot; /&gt;
+        &lt;/StackView&gt;
+    &lt;/FrameView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="conditional-binding">Conditional Binding</h3>
+<pre><code class="lang-xml">&lt;!-- Show different content based on data --&gt;
+&lt;Label Text=&quot;{Binding Status}&quot; 
+       ColorScheme=&quot;{Binding IsOnline, Converter={StaticResource BoolToColorConverter}}&quot; /&gt;
+
+&lt;!-- Enable/disable based on data --&gt;
+&lt;Button Text=&quot;Submit&quot; 
+        Enabled=&quot;{Binding CanSubmit}&quot; 
+        Command=&quot;{Binding SubmitCommand}&quot; /&gt;
+</code></pre>
+<h2 id="value-converters">Value Converters</h2>
+<p>Transform data during binding:</p>
+<pre><code class="lang-csharp">public class BoolToStatusConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return (bool)value ? &quot;Online&quot; : &quot;Offline&quot;;
+    }
+    
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value?.ToString() == &quot;Online&quot;;
+    }
+}
+</code></pre>
+<pre><code class="lang-xml">&lt;Label Text=&quot;{Binding IsOnline, Converter={StaticResource BoolToStatusConverter}}&quot; /&gt;
+</code></pre>
+<h2 id="binding-context-and-datacontext">Binding Context and DataContext</h2>
+<h3 id="window-level-context">Window-Level Context</h3>
+<pre><code class="lang-xml">&lt;Window DataContext=&quot;{Binding MainViewModel}&quot;&gt;
+    &lt;!-- All child controls inherit this context --&gt;
+    &lt;Label Text=&quot;{Binding Title}&quot; /&gt;
+    &lt;Button Command=&quot;{Binding CloseCommand}&quot; /&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="control-level-context">Control-Level Context</h3>
+<pre><code class="lang-xml">&lt;FrameView DataContext=&quot;{Binding UserProfile}&quot;&gt;
+    &lt;Label Text=&quot;{Binding Name}&quot; /&gt;
+    &lt;Label Text=&quot;{Binding Email}&quot; /&gt;
+&lt;/FrameView&gt;
+</code></pre>
+<h3 id="relative-binding">Relative Binding</h3>
+<pre><code class="lang-xml">&lt;!-- Bind to parent window's property --&gt;
+&lt;Label Text=&quot;{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Title}&quot; /&gt;
+
+&lt;!-- Bind to another control --&gt;
+&lt;Label Text=&quot;{Binding ElementName=nameField, Path=Text}&quot; /&gt;
+</code></pre>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<h3 id="efficient-collections">Efficient Collections</h3>
+<p>Use <code>ObservableCollection&lt;T&gt;</code> for automatic collection change notifications:</p>
+<pre><code class="lang-csharp">public ObservableCollection&lt;Person&gt; People { get; set; } = new();
+
+// Automatically notifies UI of changes
+People.Add(new Person { Name = &quot;John&quot; });
+People.RemoveAt(0);
+</code></pre>
+<h3 id="property-change-notifications">Property Change Notifications</h3>
+<p>Implement <code>INotifyPropertyChanged</code> efficiently:</p>
+<pre><code class="lang-csharp">public class BaseViewModel : INotifyPropertyChanged
+{
+    protected bool SetProperty&lt;T&gt;(ref T field, T value, [CallerMemberName] string propertyName = null)
+    {
+        if (EqualityComparer&lt;T&gt;.Default.Equals(field, value)) 
+            return false;
+            
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+    
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    
+    public event PropertyChangedEventHandler PropertyChanged;
+}
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="layout.html">Layout Concepts</a> - Position bound controls effectively</li>
+<li><a href="events.html">Events Guide</a> - Handle binding-related events</li>
+<li><a href="../guides/bind-data.html">Bind Data Guide</a> - Step-by-step binding implementation</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Event Handling Concepts | Terminal.Gui.Xaml Concepts </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Event Handling Concepts | Terminal.Gui.Xaml Concepts ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="event-handling-concepts">Event Handling Concepts</h1>
+
+<h2 id="what-are-events-in-terminalguixaml">What are Events in Terminal.Gui.Xaml?</h2>
+<p>Events in Terminal.Gui.Xaml provide a way to respond to user interactions and system notifications. Unlike traditional event handling where you write code-behind, Terminal.Gui.Xaml supports both declarative event binding in XAML and command patterns for better separation of concerns.</p>
+<h2 id="how-event-handling-works">How Event Handling Works</h2>
+<h3 id="event-types">Event Types</h3>
+<h4 id="user-input-events">User Input Events</h4>
+<ul>
+<li><strong>Click</strong>: Button presses, menu selections</li>
+<li><strong>KeyPress</strong>: Keyboard input, shortcuts</li>
+<li><strong>Focus</strong>: Control focus changes</li>
+<li><strong>Selection</strong>: List item selection, text selection</li>
+</ul>
+<h4 id="system-events">System Events</h4>
+<ul>
+<li><strong>Loaded</strong>: Control initialization complete</li>
+<li><strong>SizeChanged</strong>: Terminal or control resized</li>
+<li><strong>Timer</strong>: Scheduled or repeated actions</li>
+</ul>
+<h4 id="data-events">Data Events</h4>
+<ul>
+<li><strong>PropertyChanged</strong>: Data binding notifications</li>
+<li><strong>CollectionChanged</strong>: List modifications</li>
+<li><strong>Validation</strong>: Input validation results</li>
+</ul>
+<h3 id="event-handling-approaches">Event Handling Approaches</h3>
+<h4 id="1-command-binding-recommended">1. Command Binding (Recommended)</h4>
+<p>Use commands to separate UI from business logic:</p>
+<pre><code class="lang-xml">&lt;Button Text=&quot;Save&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+&lt;Button Text=&quot;Cancel&quot; Command=&quot;{Binding CancelCommand}&quot; /&gt;
+</code></pre>
+<pre><code class="lang-csharp">public class ViewModel
+{
+    public ICommand SaveCommand { get; }
+    public ICommand CancelCommand { get; }
+    
+    public ViewModel()
+    {
+        SaveCommand = new RelayCommand(Save, CanSave);
+        CancelCommand = new RelayCommand(Cancel);
+    }
+    
+    private void Save() { /* Save logic */ }
+    private bool CanSave() =&gt; /* Validation logic */;
+    private void Cancel() { /* Cancel logic */ }
+}
+</code></pre>
+<h4 id="2-event-binding">2. Event Binding</h4>
+<p>Bind events directly to view model methods:</p>
+<pre><code class="lang-xml">&lt;TextField TextChanged=&quot;{Binding OnTextChanged}&quot; /&gt;
+&lt;ListView SelectionChanged=&quot;{Binding OnSelectionChanged}&quot; /&gt;
+</code></pre>
+<h4 id="3-code-behind-when-necessary">3. Code-Behind (When Necessary)</h4>
+<p>For UI-specific logic that doesn't belong in view models:</p>
+<pre><code class="lang-xml">&lt;Button Text=&quot;Browse&quot; Click=&quot;BrowseButton_Click&quot; /&gt;
+</code></pre>
+<pre><code class="lang-csharp">private void BrowseButton_Click(object sender, EventArgs e)
+{
+    // File dialog or UI-specific logic
+}
+</code></pre>
+<h2 id="why-use-commands-over-events">Why Use Commands Over Events?</h2>
+<h3 id="testability">Testability</h3>
+<p>Commands can be tested without UI:</p>
+<pre><code class="lang-csharp">[Test]
+public void SaveCommand_WithValidData_CallsSaveService()
+{
+    // Arrange
+    var viewModel = new DocumentViewModel();
+    viewModel.Document = new Document { Title = &quot;Test&quot; };
+    
+    // Act
+    viewModel.SaveCommand.Execute(null);
+    
+    // Assert
+    mockSaveService.Verify(s =&gt; s.Save(It.IsAny&lt;Document&gt;()), Times.Once);
+}
+</code></pre>
+<h3 id="automatic-enabledisable">Automatic Enable/Disable</h3>
+<p>Commands support <code>CanExecute</code> for automatic UI state management:</p>
+<pre><code class="lang-xml">&lt;!-- Button automatically disabled when CanSave returns false --&gt;
+&lt;Button Text=&quot;Save&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+</code></pre>
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<p>Commands work seamlessly with keyboard bindings:</p>
+<pre><code class="lang-xml">&lt;Window&gt;
+    &lt;Window.KeyBindings&gt;
+        &lt;KeyBinding Key=&quot;Ctrl+S&quot; Command=&quot;{Binding SaveCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;Ctrl+N&quot; Command=&quot;{Binding NewCommand}&quot; /&gt;
+    &lt;/Window.KeyBindings&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="common-event-handling-patterns">Common Event Handling Patterns</h2>
+<h3 id="form-validation">Form Validation</h3>
+<pre><code class="lang-xml">&lt;StackView&gt;
+    &lt;TextField Name=&quot;nameField&quot; 
+               Text=&quot;{Binding Name, Mode=TwoWay}&quot;
+               TextChanged=&quot;{Binding ValidateInput}&quot; /&gt;
+    
+    &lt;Label Text=&quot;{Binding ValidationMessage}&quot; 
+           ForegroundColor=&quot;Red&quot; 
+           Visible=&quot;{Binding HasValidationError}&quot; /&gt;
+    
+    &lt;Button Text=&quot;Submit&quot; 
+            Command=&quot;{Binding SubmitCommand}&quot;
+            Enabled=&quot;{Binding IsFormValid}&quot; /&gt;
+&lt;/StackView&gt;
+</code></pre>
+<h3 id="master-detail-selection">Master-Detail Selection</h3>
+<pre><code class="lang-xml">&lt;Window&gt;
+    &lt;ListView ItemsSource=&quot;{Binding Items}&quot;
+              SelectedItem=&quot;{Binding SelectedItem, Mode=TwoWay}&quot;
+              SelectionChanged=&quot;{Binding OnItemSelected}&quot; /&gt;
+    
+    &lt;FrameView DataContext=&quot;{Binding SelectedItem}&quot;&gt;
+        &lt;TextField Text=&quot;{Binding Name, Mode=TwoWay}&quot; /&gt;
+        &lt;Button Text=&quot;Delete&quot; Command=&quot;{Binding DataContext.DeleteCommand, 
+                                              RelativeSource={RelativeSource AncestorType=Window}}&quot;
+                CommandParameter=&quot;{Binding}&quot; /&gt;
+    &lt;/FrameView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="confirmation-dialogs">Confirmation Dialogs</h3>
+<pre><code class="lang-csharp">public class DeleteCommand : ICommand
+{
+    public bool CanExecute(object parameter) =&gt; parameter != null;
+    
+    public void Execute(object parameter)
+    {
+        var result = MessageBox.Query(&quot;Delete&quot;, &quot;Are you sure?&quot;, &quot;Yes&quot;, &quot;No&quot;);
+        if (result == 0) // Yes
+        {
+            // Perform delete
+        }
+    }
+    
+    public event EventHandler CanExecuteChanged;
+}
+</code></pre>
+<h3 id="progress-updates">Progress Updates</h3>
+<pre><code class="lang-xml">&lt;Window&gt;
+    &lt;ProgressBar Value=&quot;{Binding Progress}&quot; Maximum=&quot;100&quot; /&gt;
+    &lt;Label Text=&quot;{Binding StatusMessage}&quot; /&gt;
+    &lt;Button Text=&quot;Start&quot; Command=&quot;{Binding StartProcessCommand}&quot; /&gt;
+    &lt;Button Text=&quot;Cancel&quot; Command=&quot;{Binding CancelProcessCommand}&quot; /&gt;
+&lt;/Window&gt;
+</code></pre>
+<pre><code class="lang-csharp">public async Task StartProcess()
+{
+    for (int i = 0; i &lt;= 100; i++)
+    {
+        Progress = i;
+        StatusMessage = $&quot;Processing... {i}%&quot;;
+        await Task.Delay(50);
+        
+        if (cancellationToken.IsCancellationRequested)
+            break;
+    }
+}
+</code></pre>
+<h2 id="event-propagation-and-bubbling">Event Propagation and Bubbling</h2>
+<h3 id="focus-events">Focus Events</h3>
+<pre><code class="lang-xml">&lt;FrameView GotFocus=&quot;{Binding OnFrameFocused}&quot; LostFocus=&quot;{Binding OnFrameUnfocused}&quot;&gt;
+    &lt;TextField GotFocus=&quot;{Binding OnTextFieldFocused}&quot; /&gt;
+    &lt;Button GotFocus=&quot;{Binding OnButtonFocused}&quot; /&gt;
+&lt;/FrameView&gt;
+</code></pre>
+<h3 id="key-events">Key Events</h3>
+<pre><code class="lang-xml">&lt;Window KeyDown=&quot;{Binding OnGlobalKeyDown}&quot;&gt;
+    &lt;TextField KeyDown=&quot;{Binding OnTextFieldKeyDown}&quot; /&gt;
+    &lt;!-- Event bubbles up if not handled --&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="handled-property">Handled Property</h3>
+<p>Stop event propagation when handled:</p>
+<pre><code class="lang-csharp">private void OnKeyDown(object sender, KeyEventArgs e)
+{
+    if (e.Key == Key.Escape)
+    {
+        Close();
+        e.Handled = true; // Stop bubbling
+    }
+}
+</code></pre>
+<h2 id="asynchronous-event-handling">Asynchronous Event Handling</h2>
+<h3 id="async-commands">Async Commands</h3>
+<pre><code class="lang-csharp">public class AsyncRelayCommand : ICommand
+{
+    private readonly Func&lt;Task&gt; _executeAsync;
+    private readonly Func&lt;bool&gt; _canExecute;
+    private bool _isExecuting;
+    
+    public AsyncRelayCommand(Func&lt;Task&gt; executeAsync, Func&lt;bool&gt; canExecute = null)
+    {
+        _executeAsync = executeAsync;
+        _canExecute = canExecute;
+    }
+    
+    public bool CanExecute(object parameter) =&gt; !_isExecuting &amp;&amp; (_canExecute?.Invoke() ?? true);
+    
+    public async void Execute(object parameter)
+    {
+        _isExecuting = true;
+        CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        
+        try
+        {
+            await _executeAsync();
+        }
+        finally
+        {
+            _isExecuting = false;
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+    
+    public event EventHandler CanExecuteChanged;
+}
+</code></pre>
+<h3 id="background-operations">Background Operations</h3>
+<pre><code class="lang-csharp">public class LoadDataCommand : AsyncRelayCommand
+{
+    public LoadDataCommand(IDataService dataService) 
+        : base(async () =&gt; await LoadDataAsync(dataService))
+    {
+    }
+    
+    private static async Task LoadDataAsync(IDataService dataService)
+    {
+        // Show loading indicator
+        IsLoading = true;
+        
+        try
+        {
+            var data = await dataService.GetDataAsync();
+            Items.Clear();
+            foreach (var item in data)
+                Items.Add(item);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}
+</code></pre>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<h3 id="event-handler-cleanup">Event Handler Cleanup</h3>
+<p>Always unsubscribe from events to prevent memory leaks:</p>
+<pre><code class="lang-csharp">public class ViewModel : IDisposable
+{
+    private Timer _timer;
+    
+    public ViewModel()
+    {
+        _timer = new Timer(OnTimerTick, null, 1000, 1000);
+    }
+    
+    public void Dispose()
+    {
+        _timer?.Dispose();
+        // Unsubscribe from other events
+    }
+}
+</code></pre>
+<h3 id="efficient-event-handling">Efficient Event Handling</h3>
+<p>Use weak event patterns for long-lived subscriptions:</p>
+<pre><code class="lang-csharp">WeakEventManager.AddHandler(source, &quot;PropertyChanged&quot;, OnPropertyChanged);
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="layout.html">Layout Concepts</a> - Handle layout-related events</li>
+<li><a href="binding.html">Binding Concepts</a> - Event binding and commands</li>
+<li><a href="../guides/handle-input.html">Handle Input Guide</a> - Step-by-step input handlingvents (Concept)</li>
+</ul>
+<p>Explain What/How/Why for events in Terminal.Gui.Xaml.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

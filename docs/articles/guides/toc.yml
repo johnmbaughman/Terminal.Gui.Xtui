@@ -1,0 +1,15 @@
+- name: Guides
+  href: index.md
+  items:
+  - name: Create a Window
+    href: create-window.md
+  - name: Bind Data
+    href: bind-data.md
+  - name: Handle Input
+    href: handle-input.md
+  - name: Navigation
+    href: navigation.md
+  - name: Legacy Binding Syntax
+    href: legacy-binding-syntax.md
+  - name: Accessibility
+    href: ../accessibility.md

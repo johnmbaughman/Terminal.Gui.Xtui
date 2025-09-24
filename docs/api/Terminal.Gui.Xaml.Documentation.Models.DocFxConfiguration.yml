@@ -1,0 +1,790 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  id: DocFxConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  langs:
+  - csharp
+  - vb
+  name: DocFxConfiguration
+  nameWithType: DocFxConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: DocFxConfiguration
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 11
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Represents the DocFX project configuration settings.
+  example: []
+  syntax:
+    content: public class DocFxConfiguration
+    content.vb: Public Class DocFxConfiguration
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  id: ProjectName
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ProjectName
+  nameWithType: DocFxConfiguration.ProjectName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ProjectName
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 16
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the name of the documentation project.
+  example: []
+  syntax:
+    content: >-
+      [Required(ErrorMessage = "ProjectName is required")]
+
+      public string ProjectName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required(ErrorMessage:="ProjectName is required")>
+
+      Public Property ProjectName As String
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: ProjectName is required
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  id: Version
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: DocFxConfiguration.Version
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Version
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 22
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the documentation version (synced with assembly version).
+  example: []
+  syntax:
+    content: >-
+      [Required(ErrorMessage = "Version is required")]
+
+      public string Version { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required(ErrorMessage:="Version is required")>
+
+      Public Property Version As String
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: Version is required
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  id: OutputPath
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: OutputPath
+  nameWithType: DocFxConfiguration.OutputPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: OutputPath
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 28
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the path where documentation is generated.
+  example: []
+  syntax:
+    content: >-
+      [Required(ErrorMessage = "OutputPath is required")]
+
+      public string OutputPath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required(ErrorMessage:="OutputPath is required")>
+
+      Public Property OutputPath As String
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: OutputPath is required
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  id: SourcePaths
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: SourcePaths
+  nameWithType: DocFxConfiguration.SourcePaths
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: SourcePaths
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 34
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the source code paths to document.
+  example: []
+  syntax:
+    content: >-
+      [Required(ErrorMessage = "SourcePaths must contain at least one valid path")]
+
+      [MinLength(1, ErrorMessage = "SourcePaths must contain at least one valid path")]
+
+      public string[] SourcePaths { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: >-
+      <Required(ErrorMessage:="SourcePaths must contain at least one valid path")>
+
+      <MinLength(1, ErrorMessage:="SourcePaths must contain at least one valid path")>
+
+      Public Property SourcePaths As String()
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: SourcePaths must contain at least one valid path
+  - type: System.ComponentModel.DataAnnotations.MinLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MinLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
+    namedArguments:
+    - name: ErrorMessage
+      type: System.String
+      value: SourcePaths must contain at least one valid path
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  id: ExcludePatterns
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: ExcludePatterns
+  nameWithType: DocFxConfiguration.ExcludePatterns
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ExcludePatterns
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 41
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the files/patterns to exclude from documentation.
+  example: []
+  syntax:
+    content: public string[] ExcludePatterns { get; set; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: Public Property ExcludePatterns As String()
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns*
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  id: TemplateSettings
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: TemplateSettings
+  nameWithType: DocFxConfiguration.TemplateSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: TemplateSettings
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 46
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the custom template settings.
+  example: []
+  syntax:
+    content: public TemplateConfiguration? TemplateSettings { get; set; }
+    parameters: []
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+    content.vb: Public Property TemplateSettings As TemplateConfiguration
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings*
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  id: BuildSettings
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: BuildSettings
+  nameWithType: DocFxConfiguration.BuildSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BuildSettings
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 51
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the build-specific settings.
+  example: []
+  syntax:
+    content: public BuildConfiguration? BuildSettings { get; set; }
+    parameters: []
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+    content.vb: Public Property BuildSettings As BuildConfiguration
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings*
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  id: Metadata
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Metadata
+  nameWithType: DocFxConfiguration.Metadata
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Metadata
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 56
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the DocFX metadata configuration.
+  example: []
+  syntax:
+    content: public MetadataConfiguration? Metadata { get; set; }
+    parameters: []
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+    content.vb: Public Property Metadata As MetadataConfiguration
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata*
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  id: Build
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Build
+  nameWithType: DocFxConfiguration.Build
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+      branch: 003-the-project-needs
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Build
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+    startLine: 61
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets the DocFX build configuration.
+  example: []
+  syntax:
+    content: public BuildConfiguration? Build { get; set; }
+    parameters: []
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+    content.vb: Public Property Build As BuildConfiguration
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build*
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ProjectName
+  name: ProjectName
+  nameWithType: DocFxConfiguration.ProjectName
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ProjectName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Version
+  name: Version
+  nameWithType: DocFxConfiguration.Version
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Version
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_OutputPath
+  name: OutputPath
+  nameWithType: DocFxConfiguration.OutputPath
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.OutputPath
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_SourcePaths
+  name: SourcePaths
+  nameWithType: DocFxConfiguration.SourcePaths
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.SourcePaths
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_ExcludePatterns
+  name: ExcludePatterns
+  nameWithType: DocFxConfiguration.ExcludePatterns
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.ExcludePatterns
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_TemplateSettings
+  name: TemplateSettings
+  nameWithType: DocFxConfiguration.TemplateSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.TemplateSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html
+  name: TemplateConfiguration
+  nameWithType: TemplateConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_BuildSettings
+  name: BuildSettings
+  nameWithType: DocFxConfiguration.BuildSettings
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.BuildSettings
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html
+  name: BuildConfiguration
+  nameWithType: BuildConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Metadata
+  name: Metadata
+  nameWithType: DocFxConfiguration.Metadata
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Metadata
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html
+  name: MetadataConfiguration
+  nameWithType: MetadataConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html#Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_Build
+  name: Build
+  nameWithType: DocFxConfiguration.Build
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.Build
