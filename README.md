@@ -170,4 +170,4 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 
 ---
 
-**Built with ❤️ for the terminal UI community**
+**Built with ❤️ (and [Spec Kit](https://github.com/github/spec-kit)) for the terminal UI community**
