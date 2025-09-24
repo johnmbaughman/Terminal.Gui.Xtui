@@ -15,8 +15,8 @@ public class XamlException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="XamlException"/> class.
     /// </summary>
-    public XamlException()
-        : base("An error occurred in the XAML framework.")
+    public XamlException ()
+        : base ("An error occurred in the XAML framework.")
     {
     }
 
@@ -24,8 +24,8 @@ public class XamlException : Exception
     /// Initializes a new instance of the <see cref="XamlException"/> class with a specified error message.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
-    public XamlException(string message)
-        : base(message)
+    public XamlException (string message)
+        : base (message)
     {
     }
 
@@ -35,18 +35,8 @@ public class XamlException : Exception
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
     /// <param name="innerException">The exception that is the cause of the current exception.</param>
-    public XamlException(string message, Exception innerException)
-        : base(message, innerException)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="XamlException"/> class with serialized data.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="StreamingContext"/> that contains contextual information about the source or destination.</param>
-    protected XamlException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
+    public XamlException (string message, Exception innerException)
+        : base (message, innerException)
     {
     }
 
@@ -74,17 +64,6 @@ public class XamlException : Exception
     /// Gets or sets a localized error message, if available.
     /// </summary>
     public string? LocalizedMessage { get; set; }
-    public int? LineNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets the column number where the error occurred, if applicable.
-    /// </summary>
-    public int? ColumnNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets an error code that categorizes the type of error.
-    /// </summary>
-    public string? ErrorCode { get; set; }
 
     /// <summary>
     /// Gets a formatted error message that includes location information if available.
@@ -93,16 +72,14 @@ public class XamlException : Exception
     {
         get
         {
-            var message = Message;
+            string message = Message;
 
-            if (!string.IsNullOrEmpty(XamlFilePath))
+            if (!string.IsNullOrEmpty (XamlFilePath))
             {
                 message += $" File: {XamlFilePath}";
-
                 if (LineNumber.HasValue)
                 {
                     message += $", Line: {LineNumber}";
-
                     if (ColumnNumber.HasValue)
                     {
                         message += $", Column: {ColumnNumber}";
@@ -110,7 +87,7 @@ public class XamlException : Exception
                 }
             }
 
-            if (!string.IsNullOrEmpty(ErrorCode))
+            if (!string.IsNullOrEmpty (ErrorCode))
             {
                 message += $" (Error Code: {ErrorCode})";
             }
@@ -120,22 +97,11 @@ public class XamlException : Exception
     }
 
     /// <summary>
-    /// Sets serialization data for the exception.
+    /// Serializes this exception to JSON using System.Text.Json.
     /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo"/> to populate with data.</param>
-    /// <param name="context">The destination for this serialization.</param>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    /// <returns>A JSON string representing the exception.</returns>
+    public string ToJson ()
     {
-        if (info == null)
-        {
-            throw new ArgumentNullException(nameof(info));
-        }
-
-        info.AddValue(nameof(XamlFilePath), XamlFilePath);
-        info.AddValue(nameof(LineNumber), LineNumber);
-        info.AddValue(nameof(ColumnNumber), ColumnNumber);
-        info.AddValue(nameof(ErrorCode), ErrorCode);
-
-        base.GetObjectData(info, context);
+        return System.Text.Json.JsonSerializer.Serialize (this);
     }
 }
