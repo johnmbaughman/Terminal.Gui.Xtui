@@ -1,0 +1,175 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  id: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  - Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  - Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType
+  - Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  - Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+  href: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation.html
+  name: ApiDocumentation
+  nameWithType: ApiDocumentation
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+- uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration.html
+  name: BuildConfiguration
+  nameWithType: BuildConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html
+  name: DocumentationBuildMode
+  nameWithType: DocumentationBuildMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics.html
+  name: CoverageMetrics
+  nameWithType: CoverageMetrics
+  fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
+  name: DocFxConfiguration
+  nameWithType: DocFxConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration.html
+  name: MetadataConfiguration
+  nameWithType: MetadataConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+  href: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration.html
+  name: SourceConfiguration
+  nameWithType: SourceConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+  href: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration.html
+  name: ContentConfiguration
+  nameWithType: ContentConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+  href: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration.html
+  name: ResourceConfiguration
+  nameWithType: ResourceConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html
+  name: DocumentationValidationResult
+  nameWithType: DocumentationValidationResult
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html
+  name: ValidationStatus
+  nameWithType: ValidationStatus
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration.html
+  name: TemplateConfiguration
+  nameWithType: TemplateConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue.html
+  name: ValidationIssue
+  nameWithType: ValidationIssue
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueType
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.IssueType.html
+  name: IssueType
+  nameWithType: IssueType
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html
+  name: IssueSeverity
+  nameWithType: IssueSeverity
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html

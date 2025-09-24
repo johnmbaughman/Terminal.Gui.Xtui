@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Using Documentation Offline | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Using Documentation Offline | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-documentation-offline">Using Documentation Offline</h1>
+
+<p>This guide explains how to access Terminal.Gui.Xaml documentation offline for development environments without internet access.</p>
+<blockquote>
+<p><strong>Introduced in</strong>: Terminal.Gui.Xaml v1.0 (September 2025)<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Status</strong>: Stable</p>
+</blockquote>
+<h2 id="why-use-offline-documentation">Why Use Offline Documentation?</h2>
+<ul>
+<li><strong>Air-gapped environments</strong>: Work in secure or isolated networks</li>
+<li><strong>Reliability</strong>: No dependency on GitHub Pages availability</li>
+<li><strong>Performance</strong>: Faster access than web browsing</li>
+<li><strong>Customization</strong>: Modify documentation for internal use</li>
+<li><strong>Version control</strong>: Match docs to specific code versions</li>
+</ul>
+<h2 id="methods">Methods</h2>
+<h3 id="method-1-clone-and-build-recommended">Method 1: Clone and Build (Recommended)</h3>
+<p>Best for developers who want the latest documentation and can run DocFX.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<ul>
+<li>Git installed</li>
+<li>.NET 8+ SDK</li>
+<li>DocFX CLI tool</li>
+</ul>
+<h4 id="setup-steps">Setup Steps</h4>
+<ol>
+<li><strong>Clone the repository</strong>:</li>
+</ol>
+<pre><code class="lang-bash">git clone https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+cd Terminal.Gui.Xaml
+</code></pre>
+<ol start="2">
+<li><strong>Install DocFX</strong> (if not already installed):</li>
+</ol>
+<pre><code class="lang-bash">dotnet tool install -g docfx
+</code></pre>
+<ol start="3">
+<li><strong>Build the documentation</strong>:</li>
+</ol>
+<pre><code class="lang-bash">cd docs
+docfx docfx.json
+</code></pre>
+<ol start="4">
+<li><strong>Serve locally</strong>:</li>
+</ol>
+<pre><code class="lang-bash">docfx docfx.json --serve --port 8080
+</code></pre>
+<ol start="5">
+<li><strong>Access documentation</strong>:
+<ul>
+<li>Open browser to <code>http://localhost:8080</code></li>
+<li>Documentation includes all API references and guides</li>
+</ul>
+</li>
+</ol>
+<h4 id="updating-documentation">Updating Documentation</h4>
+<pre><code class="lang-bash"># Pull latest changes
+git pull origin main
+
+# Rebuild documentation  
+cd docs
+docfx docfx.json
+
+# Serve updated version
+docfx docfx.json --serve --port 8080
+</code></pre>
+<h3 id="method-2-static-build-portable">Method 2: Static Build (Portable)</h3>
+<p>Best for environments where DocFX cannot be installed or run.</p>
+<h4 id="build-static-files">Build Static Files</h4>
+<pre><code class="lang-bash"># Clone and build (one-time setup)
+git clone https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+cd Terminal.Gui.Xaml/docs
+docfx docfx.json
+
+# Copy built files
+cp -r _site/ /path/to/offline-docs/
+</code></pre>
+<h4 id="use-static-files">Use Static Files</h4>
+<ol>
+<li><strong>Copy the <code>_site</code> folder</strong> to your target environment</li>
+<li><strong>Open <code>index.html</code></strong> in any web browser</li>
+<li><strong>Navigate normally</strong> - all links are relative and work offline</li>
+</ol>
+<h3 id="method-3-download-release-package">Method 3: Download Release Package</h3>
+<blockquote>
+<p>💡 <strong>Coming Soon</strong>: Pre-built documentation packages will be available in GitHub Releases starting with v1.1.</p>
+</blockquote>
+<h2 id="customization">Customization</h2>
+<h3 id="branding-and-themes">Branding and Themes</h3>
+<p>Modify the appearance for internal use:</p>
+<ol>
+<li><p><strong>Edit templates</strong>:</p>
+<ul>
+<li>Templates: <code>docs/templates/</code></li>
+<li>Styles: <code>docs/templates/styles/</code></li>
+</ul>
+</li>
+<li><p><strong>Customize metadata</strong>:</p>
+<ul>
+<li>Site info: <code>docs/docfx.json</code></li>
+<li>Navigation: <code>docs/toc.yml</code></li>
+</ul>
+</li>
+<li><p><strong>Add custom content</strong>:</p>
+<ul>
+<li>Internal guides: <code>docs/articles/internal/</code></li>
+<li>Company-specific examples: <code>docs/articles/examples/internal/</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="version-pinning">Version Pinning</h3>
+<p>Lock documentation to specific framework versions:</p>
+<pre><code class="lang-bash"># Checkout specific version
+git checkout v1.0.0
+
+# Build documentation for that version
+cd docs
+docfx docfx.json
+
+# Archive the build
+tar -czf terminal-gui-xaml-docs-v1.0.0.tar.gz _site/
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>DocFX build errors</strong></p>
+<ul>
+<li>Ensure .NET 8+ SDK is installed: <code>dotnet --version</code></li>
+<li>Install DocFX globally: <code>dotnet tool install -g docfx</code></li>
+<li>Check for missing dependencies: <code>docfx docfx.json --logLevel Verbose</code></li>
+</ul>
+<p><strong>Missing API documentation</strong></p>
+<ul>
+<li>Build the project first: <code>dotnet build</code> (from repository root)</li>
+<li>Ensure XML documentation is generated: Check <code>*.csproj</code> files for <code>&lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt;</code></li>
+</ul>
+<p><strong>Broken links in offline mode</strong></p>
+<ul>
+<li>All links should be relative in the built <code>_site</code> folder</li>
+<li>If external links don't work offline, that's expected behavior</li>
+<li>File a bug if internal cross-references are broken</li>
+</ul>
+<p><strong>Port conflicts when serving</strong></p>
+<ul>
+<li>Change port: <code>docfx docfx.json --serve --port 9000</code></li>
+<li>Or serve from different directory using any HTTP server</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<p><strong>Large repositories</strong></p>
+<pre><code class="lang-bash"># Shallow clone to reduce download size
+git clone --depth 1 https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+
+# Build only docs (skip tests)
+cd docs
+docfx docfx.json --logLevel Warning
+</code></pre>
+<p><strong>Incremental builds</strong></p>
+<pre><code class="lang-bash"># Only rebuild changed files
+docfx docfx.json --incremental
+</code></pre>
+<h2 id="distribution-options">Distribution Options</h2>
+<h3 id="internal-networks">Internal Networks</h3>
+<ol>
+<li><strong>Shared network drive</strong>: Copy <code>_site</code> folder to shared location</li>
+<li><strong>Internal web server</strong>: Host the static files on intranet</li>
+<li><strong>Container deployment</strong>: Package in Docker/Podman container</li>
+<li><strong>Archive distribution</strong>: Create ZIP/TAR files for easy sharing</li>
+</ol>
+<h3 id="container-example">Container Example</h3>
+<pre><code class="lang-dockerfile"># Dockerfile
+FROM nginx:alpine
+COPY _site/ /usr/share/nginx/html/
+EXPOSE 80
+</code></pre>
+<pre><code class="lang-bash"># Build and run
+docker build -t terminal-gui-xaml-docs .
+docker run -p 8080:80 terminal-gui-xaml-docs
+</code></pre>
+<h2 id="file-structure">File Structure</h2>
+<p>The built documentation contains:</p>
+<pre><code>_site/
+├── index.html              # Main documentation page
+├── api/                    # API reference
+├── articles/               # Guides and examples  
+├── styles/                 # CSS and styling
+├── scripts/                # JavaScript functionality
+├── search-stopwords.json   # Search configuration
+├── toc.html               # Navigation structure
+└── manifest.json          # Site metadata
+</code></pre>
+<p>All files are static and work without server-side processing.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><strong><a href="index.html">Contributing Guide</a></strong> - General contribution instructions</li>
+<li><strong><a href="docs-style-guide.html">Docs Style Guide</a></strong> - Documentation standards</li>
+<li><strong><a href="https://dotnet.github.io/docfx/">DocFX Documentation</a></strong> - DocFX configuration and usage</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

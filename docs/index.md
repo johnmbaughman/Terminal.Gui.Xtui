@@ -1,12 +1,19 @@
-# Terminal.Gui.Xaml Documentation
+# Terminal.Gui.Xaml
+
+## Learn More
+
+- **Concepts**: [Layout](articles/concepts/layout.md), [Binding](articles/concepts/binding.md), [Events](articles/concepts/events.md)
+- **Guides**: [Create a Window](articles/guides/create-window.md), [Bind Data](articles/guides/bind-data.md), [Handle Input](articles/guides/handle-input.md), [Navigation](articles/guides/navigation.md)
+- **Examples**: [Hello World](articles/examples/hello-world.md), [Basic Layout](articles/examples/basic-layout.md), [Button Click](articles/examples/button-click.md)
+- **More**: [Accessibility](articles/accessibility.md) | [FAQ](articles/faq.md) | [Changelog](articles/changelog.md)mentation
 
 Welcome to the Terminal.Gui.Xaml framework documentation. This framework enables declarative UI development with Microsoft XAML standards compatibility for Terminal.Gui v2+ applications.
 
 ## Getting Started
 
-- [Installation Guide](articles/getting-started.md)
+- [Getting Started Guide](articles/getting-started.md)
 - [API Reference](api/index.md)
-- [Samples and Examples](articles/samples.md)
+- [Examples](articles/examples/index.md)
 
 ## Key Features
 
@@ -16,13 +23,9 @@ Welcome to the Terminal.Gui.Xaml framework documentation. This framework enables
 - **Cross-Platform**: Windows, Linux, macOS support
 - **TDD Approach**: Comprehensive test coverage
 
-## Architecture
+## Learn More
 
-The framework consists of several key components:
-
-- **XAML Parser**: Processes XAML documents with validation
-- **Code Generator**: Creates strongly-typed UI classes
-- **Runtime Binding**: Supports data binding and MVVM patterns
-- **MSBuild Integration**: Seamless build-time generation
-
-For detailed architectural information, see the [Architecture Guide](articles/architecture.md).
+- Concepts: [Layout](articles/concepts/layout.md), [Binding](articles/concepts/binding.md), [Events](articles/concepts/events.md)
+- Guides: [Create a Window](articles/guides/create-window.md), [Bind Data](articles/guides/bind-data.md), [Handle Input](articles/guides/handle-input.md), [Navigation](articles/guides/navigation.md)
+- Accessibility: [Best Practices](articles/accessibility.md)
+- What’s New: [Changelog](articles/changelog.md)

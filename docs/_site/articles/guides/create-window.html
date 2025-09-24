@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Create a Window | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Create a Window | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="create-a-window">Create a Window</h1>
+
+<p>This guide walks you through creating your first Terminal.Gui.Xaml window with basic layout and controls.</p>
+<blockquote>
+<p><strong>Introduced in</strong>: Terminal.Gui.Xaml v1.0 (September 2025)<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Status</strong>: Stable</p>
+</blockquote>
+<h2 id="related-apis">Related APIs</h2>
+<p>Before diving into the implementation, familiarize yourself with these key APIs used in this guide:</p>
+<h3 id="core-components">Core Components</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Main container for your application interface</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Layout container that arranges controls vertically or horizontally</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Display text and provide user guidance</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField</a></strong> - Single-line text input control</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button</a></strong> - Interactive control for user actions</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean input control</li>
+</ul>
+<h3 id="layout-and-sizing">Layout and Sizing</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Dim.yml">Dim</a></strong> - Dimension system for responsive layouts (<code>Dim.Fill()</code>, <code>Dim.Sized()</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Pos.yml">Pos</a></strong> - Position system for control placement</li>
+</ul>
+<h3 id="styling-and-appearance">Styling and Appearance</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Color.yml">Color</a></strong> - Color system for foreground and background styling</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.BorderStyle.yml">BorderStyle</a></strong> - Border appearance options</li>
+</ul>
+<h3 id="event-handling">Event Handling</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.EventArgs.yml">EventArgs</a></strong> - Base event argument type</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.ClickEvent.yml">Click Events</a></strong> - Button and control interaction events</li>
+</ul>
+<blockquote>
+<p><strong>💡 Pro Tip</strong>: Keep the API reference open while following this guide to explore additional properties and methods for each control.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET 8+ SDK installed</li>
+<li>Terminal.Gui.Xaml package referenced</li>
+<li>Basic familiarity with XAML syntax</li>
+</ul>
+<h2 id="step-1-create-the-project">Step 1: Create the Project</h2>
+<p>Create a new console application:</p>
+<pre><code class="lang-powershell">dotnet new console -n MyTerminalApp
+cd MyTerminalApp
+dotnet add package Terminal.Gui.Xaml
+</code></pre>
+<h2 id="step-2-create-a-simple-window-xaml">Step 2: Create a Simple Window XAML</h2>
+<p>Create <code>MainWindow.xaml</code>:</p>
+<pre><code class="lang-xml">&lt;Window x:Class=&quot;MyTerminalApp.MainWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;My First Terminal Window&quot;
+        Width=&quot;80&quot; Height=&quot;25&quot;&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+        &lt;Label Text=&quot;Welcome to Terminal.Gui.Xaml!&quot; 
+               HorizontalAlignment=&quot;Center&quot; 
+               ForegroundColor=&quot;Green&quot; /&gt;
+        
+        &lt;FrameView Title=&quot;User Information&quot; Height=&quot;8&quot;&gt;
+            &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot; Margin=&quot;1&quot;&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Name:&quot; Width=&quot;10&quot; /&gt;
+                    &lt;TextField Name=&quot;nameField&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Email:&quot; Width=&quot;10&quot; /&gt;
+                    &lt;TextField Name=&quot;emailField&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;CheckBox Name=&quot;subscribeCheck&quot; Text=&quot;Subscribe to newsletter&quot; /&gt;
+            &lt;/StackView&gt;
+        &lt;/FrameView&gt;
+        
+        &lt;StackView Orientation=&quot;Horizontal&quot; HorizontalAlignment=&quot;Center&quot; Spacing=&quot;2&quot;&gt;
+            &lt;Button Name=&quot;saveButton&quot; Text=&quot;Save&quot; Width=&quot;8&quot; /&gt;
+            &lt;Button Name=&quot;cancelButton&quot; Text=&quot;Cancel&quot; Width=&quot;8&quot; /&gt;
+        &lt;/StackView&gt;
+        
+        &lt;Label Name=&quot;statusLabel&quot; Text=&quot;&quot; 
+               HorizontalAlignment=&quot;Center&quot; 
+               ForegroundColor=&quot;Yellow&quot; /&gt;
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="step-3-create-the-code-behind">Step 3: Create the Code-Behind</h2>
+<p>Create <code>MainWindow.xaml.cs</code>:</p>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+
+namespace MyTerminalApp;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+        SetupEventHandlers();
+    }
+    
+    private void SetupEventHandlers()
+    {
+        // Handle save button click
+        saveButton.Click += OnSaveClick;
+        
+        // Handle cancel button click  
+        cancelButton.Click += OnCancelClick;
+        
+        // Validate input as user types
+        nameField.TextChanged += ValidateInput;
+        emailField.TextChanged += ValidateInput;
+    }
+    
+    private void OnSaveClick(object sender, EventArgs e)
+    {
+        if (IsInputValid())
+        {
+            var name = nameField.Text?.ToString() ?? &quot;&quot;;
+            var email = emailField.Text?.ToString() ?? &quot;&quot;;
+            var subscribe = subscribeCheck.Checked;
+            
+            statusLabel.Text = $&quot;Saved: {name} ({email}) Subscribe: {subscribe}&quot;;
+            statusLabel.ForegroundColor = Color.Green;
+        }
+        else
+        {
+            statusLabel.Text = &quot;Please fill in all required fields&quot;;
+            statusLabel.ForegroundColor = Color.Red;
+        }
+    }
+    
+    private void OnCancelClick(object sender, EventArgs e)
+    {
+        // Clear form
+        nameField.Text = &quot;&quot;;
+        emailField.Text = &quot;&quot;;
+        subscribeCheck.Checked = false;
+        statusLabel.Text = &quot;Form cleared&quot;;
+        statusLabel.ForegroundColor = Color.Yellow;
+    }
+    
+    private void ValidateInput(object sender, EventArgs e)
+    {
+        saveButton.Enabled = IsInputValid();
+    }
+    
+    private bool IsInputValid()
+    {
+        return !string.IsNullOrWhiteSpace(nameField.Text?.ToString()) &amp;&amp;
+               !string.IsNullOrWhiteSpace(emailField.Text?.ToString());
+    }
+}
+</code></pre>
+<h2 id="step-4-update-programcs">Step 4: Update Program.cs</h2>
+<p>Update your <code>Program.cs</code> to launch the window:</p>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+using MyTerminalApp;
+
+// Initialize Terminal.Gui
+Application.Init();
+
+try
+{
+    // Create and show the main window
+    var mainWindow = new MainWindow();
+    Application.Run(mainWindow);
+}
+finally
+{
+    // Clean up
+    Application.Shutdown();
+}
+</code></pre>
+<h2 id="step-5-run-the-application">Step 5: Run the Application</h2>
+<p>Build and run your application:</p>
+<pre><code class="lang-powershell">dotnet build
+dotnet run
+</code></pre>
+<p>You should see a terminal window with:</p>
+<ul>
+<li>A welcome message</li>
+<li>A framed input form with name and email fields</li>
+<li>A checkbox for newsletter subscription</li>
+<li>Save and Cancel buttons</li>
+<li>A status label for feedback</li>
+</ul>
+<h2 id="understanding-the-code">Understanding the Code</h2>
+<h3 id="window-structure">Window Structure</h3>
+<pre><code class="lang-xml">&lt;Window Title=&quot;...&quot; Width=&quot;80&quot; Height=&quot;25&quot;&gt;
+</code></pre>
+<ul>
+<li>Defines the main container with title and size</li>
+<li>Size is in character cells (80 columns × 25 rows)</li>
+</ul>
+<h3 id="layout-with-stackview">Layout with StackView</h3>
+<pre><code class="lang-xml">&lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+</code></pre>
+<ul>
+<li>Arranges child controls vertically</li>
+<li>Adds 1 character spacing between items</li>
+</ul>
+<h3 id="input-controls">Input Controls</h3>
+<pre><code class="lang-xml">&lt;TextField Name=&quot;nameField&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+</code></pre>
+<ul>
+<li>Named controls can be accessed in code-behind</li>
+<li><code>Dim.Fill()</code> expands to available width</li>
+</ul>
+<h3 id="event-handling-1">Event Handling</h3>
+<pre><code class="lang-csharp">saveButton.Click += OnSaveClick;
+</code></pre>
+<ul>
+<li>Connects UI events to code methods</li>
+<li>Enables interactive behavior</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have a basic window, you can:</p>
+<ol>
+<li><p><strong>Add Data Binding</strong>: Connect controls to view models</p>
+<ul>
+<li>See <a href="bind-data.html">Bind Data Guide</a></li>
+</ul>
+</li>
+<li><p><strong>Improve Layout</strong>: Use advanced positioning</p>
+<ul>
+<li>See <a href="../concepts/layout.html">Layout Concepts</a></li>
+</ul>
+</li>
+<li><p><strong>Handle Complex Input</strong>: Add validation and commands</p>
+<ul>
+<li>See <a href="handle-input.html">Handle Input Guide</a></li>
+</ul>
+</li>
+<li><p><strong>Add Navigation</strong>: Multiple windows or views</p>
+<ul>
+<li>See <a href="navigation.html">Navigation Guide</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Window doesn't appear</strong></p>
+<ul>
+<li>Check that <code>Application.Init()</code> is called before creating windows</li>
+<li>Ensure <code>Application.Run()</code> is called with your window</li>
+</ul>
+<p><strong>Controls not responding</strong></p>
+<ul>
+<li>Verify event handlers are attached in <code>SetupEventHandlers()</code></li>
+<li>Check control names match between XAML and code-behind</li>
+</ul>
+<p><strong>Layout problems</strong></p>
+<ul>
+<li>Use <code>Width=&quot;Dim.Fill()&quot;</code> for flexible sizing</li>
+<li>Set explicit widths for labels: <code>Width=&quot;10&quot;</code></li>
+<li>Add <code>Spacing</code> to StackView for better appearance</li>
+</ul>
+<p><strong>Terminal display issues</strong></p>
+<ul>
+<li>Test in different terminal types (cmd, PowerShell, bash)</li>
+<li>Ensure terminal supports colors if using <code>ForegroundColor</code></li>
+<li>Check terminal size is adequate for your window size</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="api-reference">API Reference</h3>
+<ul>
+<li><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window Class</a> - Window API documentation</li>
+<li><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView Class</a> - Stack layout container</li>
+<li><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label Class</a> - Text display control</li>
+<li><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField Class</a> - Text input control</li>
+<li><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button Class</a> - Button control</li>
+<li><a href="../../api/Terminal.Gui.Xaml.IXamlParser.yml">IXamlParser Interface</a> - XAML parsing</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><a href="../concepts/layout.html">Layout System</a> - Understanding layout principles</li>
+<li><a href="../concepts/events.html">Event Handling</a> - Working with events</li>
+<li><a href="../concepts/binding.html">Data Binding</a> - Connecting data to UI</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="../examples/hello-world.html">Hello World</a> - Simplest possible window</li>
+<li><a href="../examples/basic-layout.html">Basic Layout</a> - Layout containers in action</li>
+<li><a href="../examples/button-click.html">Button Click</a> - Event handling example</li>
+</ul>
+<h3 id="next-steps-1">Next Steps</h3>
+<ul>
+<li><a href="bind-data.html">Data Binding Guide</a> - Connect your UI to data</li>
+<li><a href="handle-input.html">Handling Input</a> - Advanced input processing</li>
+<li><a href="navigation.html">Navigation Guide</a> - Multiple windows and views</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Frequently Asked Questions | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Frequently Asked Questions | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+
+<p>Common questions and answers about Terminal.Gui.Xaml development, troubleshooting, and best practices.</p>
+<blockquote>
+<p><strong>Version</strong>: Terminal.Gui.Xaml 1.0+<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Quick Links</strong>: <a href="getting-started.html">Getting Started</a> • <a href="#troubleshooting">Troubleshooting</a> • <a href="#performance">Performance</a></p>
+</blockquote>
+<h2 id="general-questions">General Questions</h2>
+<h3 id="what-is-terminalguixaml">What is Terminal.Gui.Xaml?</h3>
+<p><strong>Q</strong>: What is Terminal.Gui.Xaml and how does it relate to Terminal.Gui?</p>
+<p><strong>A</strong>: Terminal.Gui.Xaml is a declarative UI framework that brings XAML-based development to terminal applications. It's built on top of Terminal.Gui v2+ and allows you to define your terminal UI using familiar XAML syntax instead of imperative C# code.</p>
+<p>Key benefits:</p>
+<ul>
+<li><strong>Declarative UI</strong>: Define layouts in XAML instead of code</li>
+<li><strong>Data Binding</strong>: Two-way binding with INotifyPropertyChanged</li>
+<li><strong>Design-Time Support</strong>: IntelliSense and validation in IDEs</li>
+<li><strong>Familiar Patterns</strong>: Similar to WPF/UWP for existing developers</li>
+</ul>
+<h3 id="how-does-it-compare-to-other-ui-frameworks">How does it compare to other UI frameworks?</h3>
+<p><strong>Q</strong>: How does Terminal.Gui.Xaml compare to WPF, Avalonia, or MAUI?</p>
+<p><strong>A</strong>: Terminal.Gui.Xaml targets terminal/console applications specifically:</p>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Target</th>
+<th>Rendering</th>
+<th>Deployment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Terminal.Gui.Xaml</strong></td>
+<td>Terminal/Console</td>
+<td>Text-based</td>
+<td>Cross-platform CLI</td>
+</tr>
+<tr>
+<td><strong>WPF</strong></td>
+<td>Windows Desktop</td>
+<td>Graphics</td>
+<td>Windows only</td>
+</tr>
+<tr>
+<td><strong>Avalonia</strong></td>
+<td>Cross-platform Desktop</td>
+<td>Graphics</td>
+<td>Desktop apps</td>
+</tr>
+<tr>
+<td><strong>MAUI</strong></td>
+<td>Mobile/Desktop</td>
+<td>Graphics</td>
+<td>Multiple platforms</td>
+</tr>
+</tbody>
+</table>
+<p>Choose Terminal.Gui.Xaml for:</p>
+<ul>
+<li>Command-line tools with rich UIs</li>
+<li>Server administration interfaces</li>
+<li>Development tools and utilities</li>
+<li>Applications that need to run in SSH/remote sessions</li>
+</ul>
+<h3 id="what-net-versions-are-supported">What .NET versions are supported?</h3>
+<p><strong>Q</strong>: What versions of .NET can I use with Terminal.Gui.Xaml?</p>
+<p><strong>A</strong>: Terminal.Gui.Xaml requires <strong>.NET 8.0 or later</strong>. This ensures:</p>
+<ul>
+<li>Latest C# language features</li>
+<li>Performance optimizations</li>
+<li>Long-term support (LTS) compatibility</li>
+<li>Modern API surfaces</li>
+</ul>
+<p>For older .NET versions, consider using Terminal.Gui directly.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="how-do-i-create-my-first-application">How do I create my first application?</h3>
+<p><strong>Q</strong>: What's the quickest way to get started with Terminal.Gui.Xaml?</p>
+<p><strong>A</strong>: Follow these steps:</p>
+<pre><code class="lang-powershell"># Create new console application
+dotnet new console -n MyTerminalApp
+cd MyTerminalApp
+
+# Add Terminal.Gui.Xaml package
+dotnet add package Terminal.Gui.Xaml
+
+# Run the app
+dotnet run
+</code></pre>
+<p>See our complete <a href="getting-started.html">Getting Started Guide</a> for detailed instructions.</p>
+<h3 id="do-i-need-visual-studio">Do I need Visual Studio?</h3>
+<p><strong>Q</strong>: Can I develop Terminal.Gui.Xaml applications without Visual Studio?</p>
+<p><strong>A</strong>: Yes! Terminal.Gui.Xaml works with:</p>
+<ul>
+<li><strong>Visual Studio 2022</strong>: Full IntelliSense and debugging</li>
+<li><strong>VS Code</strong>: With C# extension for syntax highlighting</li>
+<li><strong>JetBrains Rider</strong>: Full IDE support</li>
+<li><strong>Command Line</strong>: Using <code>dotnet</code> CLI tools</li>
+</ul>
+<p>XAML IntelliSense is available in Visual Studio and VS Code with appropriate extensions.</p>
+<h3 id="can-i-use-existing-terminalgui-code">Can I use existing Terminal.Gui code?</h3>
+<p><strong>Q</strong>: I have existing Terminal.Gui applications. Can I migrate to XAML?</p>
+<p><strong>A</strong>: Yes, you can migrate incrementally:</p>
+<ol>
+<li><strong>Hybrid Approach</strong>: Use XAML for new windows, keep existing code</li>
+<li><strong>Control-by-Control</strong>: Replace individual controls with XAML equivalents</li>
+<li><strong>Full Migration</strong>: Convert entire application to XAML</li>
+</ol>
+<p>See our <a href="guides/migration-from-terminal-gui.md">Migration Guide</a> for strategies and examples.</p>
+<h2 id="xaml-and-syntax">XAML and Syntax</h2>
+<h3 id="is-this-real-xaml">Is this &quot;real&quot; XAML?</h3>
+<p><strong>Q</strong>: Is Terminal.Gui.Xaml compatible with WPF/UWP XAML?</p>
+<p><strong>A</strong>: Terminal.Gui.Xaml uses XAML syntax but targets terminal controls:</p>
+<p><strong>Similar Concepts</strong>:</p>
+<ul>
+<li>Element hierarchy and nesting</li>
+<li>Property setting via attributes</li>
+<li>Data binding syntax <code>{Binding}</code></li>
+<li>Resource dictionaries and styles</li>
+</ul>
+<p><strong>Terminal-Specific</strong>:</p>
+<ul>
+<li>Character-based positioning (<code>Pos</code>, <code>Dim</code>)</li>
+<li>Terminal colors and attributes</li>
+<li>Keyboard-focused navigation</li>
+<li>Text-based rendering</li>
+</ul>
+<p>You can leverage existing XAML knowledge while learning terminal-specific concepts.</p>
+<h3 id="why-doesnt-my-wpf-xaml-work-directly">Why doesn't my WPF XAML work directly?</h3>
+<p><strong>Q</strong>: I copied XAML from my WPF app but it doesn't work. Why?</p>
+<p><strong>A</strong>: While the syntax is similar, the control libraries are different:</p>
+<pre><code class="lang-xml">&lt;!-- WPF --&gt;
+&lt;Grid&gt;
+    &lt;TextBox Text=&quot;{Binding Name}&quot; /&gt;
+    &lt;Button Content=&quot;OK&quot; Click=&quot;OnClick&quot; /&gt;
+&lt;/Grid&gt;
+
+&lt;!-- Terminal.Gui.Xaml --&gt;
+&lt;StackView Orientation=&quot;Vertical&quot;&gt;
+    &lt;TextField Text=&quot;{Binding Name}&quot; /&gt;
+    &lt;Button Text=&quot;OK&quot; Clicked=&quot;OnClick&quot; /&gt;
+&lt;/StackView&gt;
+</code></pre>
+<p>Key differences:</p>
+<ul>
+<li>Different control names (<code>TextBox</code> → <code>TextField</code>)</li>
+<li>Different properties (<code>Content</code> → <code>Text</code>)</li>
+<li>Different events (<code>Click</code> → <code>Clicked</code>)</li>
+<li>Different layout containers (<code>Grid</code> → <code>StackView</code>)</li>
+</ul>
+<h3 id="how-do-i-handle-complex-layouts">How do I handle complex layouts?</h3>
+<p><strong>Q</strong>: How do I create complex, responsive layouts in character-based terminals?</p>
+<p><strong>A</strong>: Use Terminal.Gui's positioning system:</p>
+<pre><code class="lang-xml">&lt;Window Width=&quot;80&quot; Height=&quot;25&quot;&gt;
+    &lt;!-- Responsive sizing --&gt;
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        &lt;FrameView Title=&quot;Header&quot; Height=&quot;3&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+        
+        &lt;!-- Split content area --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; Height=&quot;Dim.Fill(2)&quot;&gt;
+            &lt;FrameView Title=&quot;Sidebar&quot; Width=&quot;20&quot; /&gt;
+            &lt;FrameView Title=&quot;Content&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+        &lt;/StackView&gt;
+        
+        &lt;Label Text=&quot;Status&quot; Height=&quot;1&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Learn more in our <a href="concepts/layout.html">Layout Concepts</a> guide.</p>
+<h2 id="data-binding">Data Binding</h2>
+<h3 id="how-does-data-binding-work">How does data binding work?</h3>
+<p><strong>Q</strong>: How do I set up data binding in Terminal.Gui.Xaml?</p>
+<p><strong>A</strong>: Implement <code>INotifyPropertyChanged</code> in your view models:</p>
+<pre><code class="lang-csharp">public class PersonViewModel : INotifyPropertyChanged
+{
+    private string _name;
+    public string Name
+    {
+        get =&gt; _name;
+        set
+        {
+            _name = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+</code></pre>
+<p>Bind in XAML:</p>
+<pre><code class="lang-xml">&lt;TextField Text=&quot;{Binding Name, Mode=TwoWay}&quot; /&gt;
+</code></pre>
+<p>See our <a href="guides/bind-data.html">Data Binding Guide</a> for complete examples.</p>
+<h3 id="why-isnt-my-binding-updating">Why isn't my binding updating?</h3>
+<p><strong>Q</strong>: My bound data changes but the UI doesn't update. What's wrong?</p>
+<p><strong>A</strong>: Common issues:</p>
+<ol>
+<li><p><strong>Missing INotifyPropertyChanged</strong>:</p>
+<pre><code class="lang-csharp">// ❌ Bad - no notifications
+public string Name { get; set; }
+
+// ✅ Good - raises PropertyChanged
+public string Name
+{
+    get =&gt; _name;
+    set { _name = value; OnPropertyChanged(); }
+}
+</code></pre>
+</li>
+<li><p><strong>Incorrect DataContext</strong>:</p>
+<pre><code class="lang-csharp">// Ensure DataContext is set
+window.DataContext = new PersonViewModel();
+</code></pre>
+</li>
+<li><p><strong>Wrong binding mode</strong>:</p>
+<pre><code class="lang-xml">&lt;!-- For input controls, use TwoWay --&gt;
+&lt;TextField Text=&quot;{Binding Name, Mode=TwoWay}&quot; /&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="performance">Performance</h2>
+<h3 id="how-fast-is-terminalguixaml">How fast is Terminal.Gui.Xaml?</h3>
+<p><strong>Q</strong>: What's the performance impact of using XAML vs. code-only Terminal.Gui?</p>
+<p><strong>A</strong>: Terminal.Gui.Xaml performance characteristics:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>XAML Parse Time</strong></td>
+<td>&lt; 100ms</td>
+<td>One-time cost at startup</td>
+</tr>
+<tr>
+<td><strong>Render Performance</strong></td>
+<td>&gt; 30 FPS</td>
+<td>Same as Terminal.Gui</td>
+</tr>
+<tr>
+<td><strong>Memory Overhead</strong></td>
+<td>&lt; 50MB</td>
+<td>For typical applications</td>
+</tr>
+<tr>
+<td><strong>Startup Time</strong></td>
+<td>&lt; 50ms</td>
+<td>Additional overhead</td>
+</tr>
+</tbody>
+</table>
+<p>The XAML parsing happens once at startup, so runtime performance is equivalent to hand-coded Terminal.Gui.</p>
+<h3 id="how-can-i-optimize-performance">How can I optimize performance?</h3>
+<p><strong>Q</strong>: My application feels slow. How can I optimize it?</p>
+<p><strong>A</strong>: Common optimization strategies:</p>
+<ol>
+<li><strong>Minimize Bindings</strong>: Only bind what changes frequently</li>
+<li><strong>Lazy Loading</strong>: Load complex UIs on demand</li>
+<li><strong>Virtual Lists</strong>: Use virtualization for large data sets</li>
+<li><strong>Efficient Updates</strong>: Batch property changes</li>
+</ol>
+<pre><code class="lang-csharp">// ✅ Batch updates efficiently
+using (var suspension = viewModel.SuspendNotifications())
+{
+    viewModel.Property1 = value1;
+    viewModel.Property2 = value2;
+    viewModel.Property3 = value3;
+} // Single update notification
+</code></pre>
+<p>See our <a href="guides/performance.md">Performance Guide</a> for detailed optimization techniques.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-build-errors">Common Build Errors</h3>
+<p><strong>Q</strong>: My project won't build. What are common issues?</p>
+<p><strong>A</strong>: Check these common problems:</p>
+<ol>
+<li><p><strong>Missing Package Reference</strong>:</p>
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;Terminal.Gui.Xaml&quot; Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+</li>
+<li><p><strong>Wrong Target Framework</strong>:</p>
+<pre><code class="lang-xml">&lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+</code></pre>
+</li>
+<li><p><strong>Missing XAML Build Action</strong>:</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;EmbeddedResource Include=&quot;**/*.xaml&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+</li>
+<li><p><strong>Namespace Issues</strong>:</p>
+<pre><code class="lang-xml">xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+</code></pre>
+</li>
+</ol>
+<h3 id="runtime-exceptions">Runtime Exceptions</h3>
+<p><strong>Q</strong>: My app crashes at runtime. How do I debug XAML issues?</p>
+<p><strong>A</strong>: Common runtime issues:</p>
+<ol>
+<li><p><strong>XAML Parse Errors</strong>:</p>
+<pre><code>XamlParseException: Cannot find control 'MyControl'
+</code></pre>
+<p><strong>Solution</strong>: Check control names and namespaces</p>
+</li>
+<li><p><strong>Binding Errors</strong>:</p>
+<pre><code>BindingException: Property 'Name' not found on type 'PersonViewModel'
+</code></pre>
+<p><strong>Solution</strong>: Verify property names and DataContext</p>
+</li>
+<li><p><strong>Type Conversion</strong>:</p>
+<pre><code>ArgumentException: Cannot convert 'string' to 'int'
+</code></pre>
+<p><strong>Solution</strong>: Use appropriate data types or converters</p>
+</li>
+</ol>
+<p>Enable debugging output:</p>
+<pre><code class="lang-csharp">// Add to Program.cs for detailed binding information
+XamlConfiguration.DebugBindings = true;
+</code></pre>
+<h3 id="xaml-intellisense-not-working">XAML IntelliSense Not Working</h3>
+<p><strong>Q</strong>: I don't get IntelliSense for XAML in my editor. How do I fix this?</p>
+<p><strong>A</strong>: Solutions by editor:</p>
+<p><strong>Visual Studio 2022</strong>:</p>
+<ol>
+<li>Install latest VS 2022 (17.7+)</li>
+<li>Ensure C# workload is installed</li>
+<li>Restart VS after adding Terminal.Gui.Xaml package</li>
+</ol>
+<p><strong>VS Code</strong>:</p>
+<ol>
+<li>Install &quot;C# for Visual Studio Code&quot; extension</li>
+<li>Install &quot;XAML&quot; extension by Microsoft</li>
+<li>Restart VS Code and reload workspace</li>
+</ol>
+<p><strong>Rider</strong>:</p>
+<ol>
+<li>Enable XAML support in settings</li>
+<li>Invalidate caches and restart if needed</li>
+</ol>
+<h2 id="platform-specific">Platform-Specific</h2>
+<h3 id="does-it-work-on-linux">Does it work on Linux?</h3>
+<p><strong>Q</strong>: Can I run Terminal.Gui.Xaml applications on Linux?</p>
+<p><strong>A</strong>: Yes! Terminal.Gui.Xaml is cross-platform:</p>
+<p><strong>Supported Platforms</strong>:</p>
+<ul>
+<li>Windows (PowerShell, Command Prompt, Windows Terminal)</li>
+<li>Linux (bash, zsh, most terminal emulators)</li>
+<li>macOS (Terminal.app, iTerm2)</li>
+</ul>
+<p><strong>Platform Considerations</strong>:</p>
+<ul>
+<li>Colors may vary between terminals</li>
+<li>Some Unicode symbols might not display correctly</li>
+<li>Keyboard shortcuts may differ</li>
+<li>Font rendering varies by terminal</li>
+</ul>
+<p>Test your application on target platforms for best results.</p>
+<h3 id="what-about-macos">What about macOS?</h3>
+<p><strong>Q</strong>: Are there any macOS-specific considerations?</p>
+<p><strong>A</strong>: macOS works well with some considerations:</p>
+<p><strong>✅ Works Great</strong>:</p>
+<ul>
+<li>Terminal.app with default settings</li>
+<li>iTerm2 with Unicode support</li>
+<li>VS Code integrated terminal</li>
+</ul>
+<p><strong>⚠️ Consider</strong>:</p>
+<ul>
+<li>Some Unicode symbols may not render</li>
+<li>Terminal color schemes vary</li>
+<li>Keyboard shortcuts (Cmd vs Ctrl)</li>
+</ul>
+<h2 id="advanced-scenarios">Advanced Scenarios</h2>
+<h3 id="can-i-create-custom-controls">Can I create custom controls?</h3>
+<p><strong>Q</strong>: How do I create reusable custom controls in Terminal.Gui.Xaml?</p>
+<p><strong>A</strong>: Yes, you can create custom controls:</p>
+<ol>
+<li><strong>User Controls</strong>: Combine existing controls</li>
+<li><strong>Custom Controls</strong>: Inherit from base classes</li>
+<li><strong>Templated Controls</strong>: Define control templates</li>
+</ol>
+<p>Example custom control:</p>
+<pre><code class="lang-csharp">public partial class PersonEditor : UserControl
+{
+    public PersonEditor()
+    {
+        InitializeComponent(); // Loads PersonEditor.xaml
+    }
+}
+</code></pre>
+<p>See our <a href="guides/custom-controls.md">Custom Controls Guide</a> for detailed examples.</p>
+<h3 id="how-do-i-handle-validation">How do I handle validation?</h3>
+<p><strong>Q</strong>: What's the best way to handle input validation?</p>
+<p><strong>A</strong>: Multiple validation strategies:</p>
+<ol>
+<li><strong>Property Validation</strong>: Validate in property setters</li>
+<li><strong>IDataErrorInfo</strong>: Implement validation interface</li>
+<li><strong>Validation Rules</strong>: Create reusable validation logic</li>
+<li><strong>Commands</strong>: Validate before executing actions</li>
+</ol>
+<pre><code class="lang-csharp">public class PersonViewModel : INotifyPropertyChanged, IDataErrorInfo
+{
+    public string this[string propertyName]
+    {
+        get
+        {
+            return propertyName switch
+            {
+                nameof(Email) when !IsValidEmail(Email) =&gt; &quot;Invalid email format&quot;,
+                nameof(Age) when Age &lt; 0 || Age &gt; 120 =&gt; &quot;Age must be between 0 and 120&quot;,
+                _ =&gt; null
+            };
+        }
+    }
+}
+</code></pre>
+<h3 id="can-i-use-dependency-injection">Can I use dependency injection?</h3>
+<p><strong>Q</strong>: How do I integrate with dependency injection containers?</p>
+<p><strong>A</strong>: Yes, Terminal.Gui.Xaml works with DI:</p>
+<pre><code class="lang-csharp">// Setup DI container
+var services = new ServiceCollection();
+services.AddTransient&lt;IDataService, DataService&gt;();
+services.AddTransient&lt;MainWindowViewModel&gt;();
+
+var provider = services.BuildServiceProvider();
+
+// Use in application
+var viewModel = provider.GetService&lt;MainWindowViewModel&gt;();
+var window = new MainWindow { DataContext = viewModel };
+</code></pre>
+<p>This enables MVVM patterns with proper separation of concerns.</p>
+<h2 id="getting-help">Getting Help</h2>
+<h3 id="where-can-i-get-help">Where can I get help?</h3>
+<p><strong>Q</strong>: I'm stuck and need help. What are my options?</p>
+<p><strong>A</strong>: Multiple support channels:</p>
+<p><strong>Free Support</strong>:</p>
+<ul>
+<li><a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/issues">GitHub Issues</a> - Bug reports and feature requests</li>
+<li><a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/discussions">GitHub Discussions</a> - Q&amp;A and community help</li>
+<li><a href="https://stackoverflow.com/questions/tagged/terminal-gui-xaml">Stack Overflow</a> - Use tag <code>terminal-gui-xaml</code></li>
+</ul>
+<p><strong>Documentation</strong>:</p>
+<ul>
+<li><a href="getting-started.html">Getting Started Guide</a></li>
+<li><a href="../api/index.html">API Reference</a></li>
+<li><a href="examples/index.html">Examples Collection</a></li>
+</ul>
+<p><strong>Community</strong>:</p>
+<ul>
+<li>Share your projects and get feedback</li>
+<li>Contribute examples and documentation</li>
+<li>Help other developers</li>
+</ul>
+<h3 id="how-do-i-report-bugs">How do I report bugs?</h3>
+<p><strong>Q</strong>: I found a bug. How should I report it?</p>
+<p><strong>A</strong>: Please report bugs on <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/issues">GitHub Issues</a>:</p>
+<p><strong>Include</strong>:</p>
+<ul>
+<li>Terminal.Gui.Xaml version</li>
+<li>.NET version and OS</li>
+<li>Minimal reproduction case</li>
+<li>Expected vs actual behavior</li>
+<li>Stack trace if applicable</li>
+</ul>
+<p><strong>Template</strong>:</p>
+<pre><code>**Version**: Terminal.Gui.Xaml 1.0.0, .NET 8.0, Windows 11
+**Issue**: Button click handler not called
+
+**Reproduction**:
+1. Create button with Clicked event
+2. Run application
+3. Click button
+4. Handler never executes
+
+**Expected**: Handler should be called
+**Actual**: No response to button clicks
+</code></pre>
+<h3 id="how-can-i-contribute">How can I contribute?</h3>
+<p><strong>Q</strong>: I want to contribute to Terminal.Gui.Xaml. How do I start?</p>
+<p><strong>A</strong>: Contributions are welcome! See our <a href="contributing/index.html">Contributing Guide</a> for:</p>
+<ul>
+<li>Code contributions and pull requests</li>
+<li>Documentation improvements</li>
+<li>Example submissions</li>
+<li>Testing and bug reports</li>
+<li>Feature suggestions and feedback</li>
+</ul>
+<p>Start with <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> to get familiar with the codebase.</p>
+<hr>
+<h2 id="still-have-questions">Still Have Questions?</h2>
+<p>If your question isn't answered here:</p>
+<ol>
+<li><strong>Search existing documentation</strong> using the search box</li>
+<li><strong>Check <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/discussions">GitHub Discussions</a></strong> for community Q&amp;A</li>
+<li><strong>Create a new discussion</strong> if you can't find an answer</li>
+<li><strong>Report documentation gaps</strong> to help improve this FAQ</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>Quick Links</strong>: <a href="getting-started.html">Getting Started</a> • <a href="../api/index.html">API Reference</a> • <a href="examples/index.html">Examples</a> • <a href="contributing/index.html">Contributing</a></p>
+</blockquote>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

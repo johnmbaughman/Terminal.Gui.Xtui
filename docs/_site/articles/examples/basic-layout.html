@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Basic Layout Example | Terminal.Gui.Xaml Examples </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Basic Layout Example | Terminal.Gui.Xaml Examples ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="basic-layout-example">Basic Layout Example</h1>
+
+<p>Demonstrates form layout with input controls, labels, and responsive sizing using Terminal.Gui.Xaml.</p>
+<blockquote>
+<p><strong>Introduced in</strong>: Terminal.Gui.Xaml v1.0 (September 2025)<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Status</strong>: Stable<br>
+<strong>Tested With</strong>: .NET 8.0, Windows 11, PowerShell 7.4</p>
+</blockquote>
+<h2 id="related-apis">Related APIs</h2>
+<p>This example demonstrates these layout and input control APIs:</p>
+<h3 id="layout-controls">Layout Controls</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Vertical/horizontal layout container (<code>Orientation</code>, <code>Spacing</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.FrameView.yml">FrameView</a></strong> - Bordered container with title (<code>Title</code>, <code>Border</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Main window container (<code>Title</code>, <code>Width</code>, <code>Height</code>)</li>
+</ul>
+<h3 id="input-controls">Input Controls</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField</a></strong> - Single-line text input (<code>Text</code>, <code>Width</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.ComboBox.yml">ComboBox</a></strong> - Dropdown selection control (<code>ItemsSource</code>, <code>SelectedItem</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean checkbox control (<code>IsChecked</code>, <code>Text</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button</a></strong> - Action button (<code>Text</code>, <code>Click</code> event, <code>IsEnabled</code>)</li>
+</ul>
+<h3 id="layout-system">Layout System</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Dim.yml">Dim</a></strong> - Dimension system (<code>Dim.Fill()</code>, <code>Dim.Sized()</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Pos.yml">Pos</a></strong> - Position system (<code>Pos.Left()</code>, <code>Pos.Center()</code>)</li>
+</ul>
+<h3 id="styling">Styling</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Color.yml">Color</a></strong> - Color system for styling (<code>ForegroundColor</code>, <code>BackgroundColor</code>)</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display (<code>Text</code>, styling properties)</li>
+</ul>
+<blockquote>
+<p><strong>💡 Pro Tip</strong>: Use <code>FrameView</code> to group related controls and <code>StackView</code> for consistent spacing. <code>Dim.Fill()</code> makes controls responsive to window resizing.</p>
+</blockquote>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Form layout with labels and input controls</li>
+<li>Responsive sizing using <code>Dim.Fill()</code> and <code>Pos</code> helpers</li>
+<li>Container controls (<code>FrameView</code>, <code>StackView</code>)</li>
+<li>Basic input handling and validation</li>
+<li>Status display and user feedback</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completed <a href="hello-world.html">Hello World Example</a></li>
+<li>.NET 8+ SDK installed</li>
+<li>Basic understanding of XAML layout concepts</li>
+</ul>
+<h2 id="complete-example">Complete Example</h2>
+<h3 id="programcs">Program.cs</h3>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+
+namespace BasicLayoutApp;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Application.Init();
+        
+        try
+        {
+            var window = new BasicLayoutWindow();
+            Application.Run(window);
+        }
+        finally
+        {
+            Application.Shutdown();
+        }
+    }
+}
+</code></pre>
+<h3 id="basiclayoutwindowxaml">BasicLayoutWindow.xaml</h3>
+<pre><code class="lang-xml">&lt;Window x:Class=&quot;BasicLayoutApp.BasicLayoutWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;Basic Layout - Terminal.Gui.Xaml Demo&quot;
+        Width=&quot;70&quot; Height=&quot;20&quot;&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+        
+        &lt;!-- Header --&gt;
+        &lt;Label Text=&quot;User Registration Form&quot;
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;Cyan&quot; /&gt;
+        
+        &lt;!-- Main form in a frame --&gt;
+        &lt;FrameView Title=&quot;Personal Information&quot; Height=&quot;12&quot;&gt;
+            &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot; Margin=&quot;1&quot;&gt;
+                
+                &lt;!-- Name row --&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Full Name:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;nameField&quot;
+                               PlaceholderText=&quot;Enter your full name&quot;
+                               Width=&quot;Dim.Fill()&quot;
+                               Height=&quot;1&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;!-- Email row --&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Email Address:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;emailField&quot;
+                               PlaceholderText=&quot;user@example.com&quot;
+                               Width=&quot;Dim.Fill()&quot;
+                               Height=&quot;1&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;!-- Age row --&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Age:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;TextField Name=&quot;ageField&quot;
+                               PlaceholderText=&quot;18-120&quot;
+                               Width=&quot;10&quot;
+                               Height=&quot;1&quot; /&gt;
+                    &lt;Label Text=&quot;years old&quot; 
+                           X=&quot;Pos.Right(ageField) + 1&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;!-- Country selection --&gt;
+                &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                    &lt;Label Text=&quot;Country:&quot; Width=&quot;15&quot; /&gt;
+                    &lt;ComboBox Name=&quot;countryCombo&quot;
+                              Width=&quot;20&quot;
+                              Height=&quot;1&quot; /&gt;
+                &lt;/StackView&gt;
+                
+                &lt;!-- Newsletter checkbox --&gt;
+                &lt;CheckBox Name=&quot;newsletterCheck&quot;
+                          Text=&quot;Subscribe to newsletter&quot;
+                          X=&quot;15&quot; /&gt;
+                
+                &lt;!-- Terms checkbox --&gt;
+                &lt;CheckBox Name=&quot;termsCheck&quot;
+                          Text=&quot;I agree to the terms and conditions&quot;
+                          X=&quot;15&quot; /&gt;
+                
+            &lt;/StackView&gt;
+        &lt;/FrameView&gt;
+        
+        &lt;!-- Action buttons --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; 
+                   HorizontalAlignment=&quot;Center&quot; 
+                   Spacing=&quot;3&quot;&gt;
+            &lt;Button Name=&quot;submitButton&quot;
+                    Text=&quot;Submit&quot;
+                    Width=&quot;12&quot;
+                    Height=&quot;1&quot;
+                    IsDefault=&quot;true&quot; /&gt;
+            &lt;Button Name=&quot;clearButton&quot;
+                    Text=&quot;Clear&quot;
+                    Width=&quot;12&quot; 
+                    Height=&quot;1&quot; /&gt;
+            &lt;Button Name=&quot;cancelButton&quot;
+                    Text=&quot;Cancel&quot;
+                    Width=&quot;12&quot;
+                    Height=&quot;1&quot; /&gt;
+        &lt;/StackView&gt;
+        
+        &lt;!-- Status bar --&gt;
+        &lt;Label Name=&quot;statusLabel&quot;
+               Text=&quot;Ready - Fill out the form above&quot;
+               HorizontalAlignment=&quot;Center&quot;
+               ForegroundColor=&quot;Yellow&quot; /&gt;
+        
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="basiclayoutwindowxamlcs">BasicLayoutWindow.xaml.cs</h3>
+<pre><code class="lang-csharp">using Terminal.Gui;
+using Terminal.Gui.Xaml;
+using System.Text.RegularExpressions;
+
+namespace BasicLayoutApp;
+
+public partial class BasicLayoutWindow : Window
+{
+    private readonly string[] countries = new[]
+    {
+        &quot;United States&quot;, &quot;Canada&quot;, &quot;United Kingdom&quot;, &quot;Germany&quot;, 
+        &quot;France&quot;, &quot;Japan&quot;, &quot;Australia&quot;, &quot;Brazil&quot;, &quot;India&quot;, &quot;Other&quot;
+    };
+    
+    public BasicLayoutWindow()
+    {
+        InitializeComponent();
+        SetupForm();
+        SetupEventHandlers();
+    }
+    
+    private void SetupForm()
+    {
+        // Initialize country dropdown
+        countryCombo.SetSource(countries);
+        countryCombo.SelectedItem = 0; // Default to first item
+        
+        // Set initial status
+        UpdateStatus(&quot;Ready - Fill out the form above&quot;, Color.Yellow);
+    }
+    
+    private void SetupEventHandlers()
+    {
+        // Button event handlers
+        submitButton.Clicked += OnSubmitClicked;
+        clearButton.Clicked += OnClearClicked;
+        cancelButton.Clicked += OnCancelClicked;
+        
+        // Real-time validation as user types
+        nameField.TextChanged += (s, e) =&gt; ValidateForm();
+        emailField.TextChanged += (s, e) =&gt; ValidateForm();
+        ageField.TextChanged += (s, e) =&gt; ValidateForm();
+        
+        // Checkbox validation
+        termsCheck.Toggled += (s, e) =&gt; ValidateForm();
+        
+        // Initial validation
+        ValidateForm();
+    }
+    
+    private void OnSubmitClicked(object sender, EventArgs e)
+    {
+        if (!IsFormValid())
+        {
+            UpdateStatus(&quot;Please fill out all required fields correctly&quot;, Color.Red);
+            return;
+        }
+        
+        // Simulate form submission
+        var name = nameField.Text?.ToString() ?? &quot;&quot;;
+        var email = emailField.Text?.ToString() ?? &quot;&quot;;
+        var age = ageField.Text?.ToString() ?? &quot;&quot;;
+        var country = countries[countryCombo.SelectedItem];
+        var newsletter = newsletterCheck.Checked;
+        
+        var message = $&quot;Submitted: {name} ({email}), Age {age}, {country}&quot;;
+        if (newsletter) message += &quot; - Newsletter subscribed&quot;;
+        
+        UpdateStatus(message, Color.Green);
+    }
+    
+    private void OnClearClicked(object sender, EventArgs e)
+    {
+        // Clear all form fields
+        nameField.Text = &quot;&quot;;
+        emailField.Text = &quot;&quot;;
+        ageField.Text = &quot;&quot;;
+        countryCombo.SelectedItem = 0;
+        newsletterCheck.Checked = false;
+        termsCheck.Checked = false;
+        
+        UpdateStatus(&quot;Form cleared&quot;, Color.Yellow);
+        ValidateForm();
+    }
+    
+    private void OnCancelClicked(object sender, EventArgs e)
+    {
+        // Close the application
+        Application.RequestStop();
+    }
+    
+    private void ValidateForm()
+    {
+        var isValid = IsFormValid();
+        submitButton.Enabled = isValid;
+        
+        if (!isValid &amp;&amp; !string.IsNullOrEmpty(GetValidationMessage()))
+        {
+            UpdateStatus(GetValidationMessage(), Color.Red);
+        }
+        else if (isValid)
+        {
+            UpdateStatus(&quot;Form is valid - ready to submit&quot;, Color.Green);
+        }
+    }
+    
+    private bool IsFormValid()
+    {
+        return IsNameValid() &amp;&amp; 
+               IsEmailValid() &amp;&amp; 
+               IsAgeValid() &amp;&amp; 
+               termsCheck.Checked;
+    }
+    
+    private bool IsNameValid()
+    {
+        var name = nameField.Text?.ToString() ?? &quot;&quot;;
+        return !string.IsNullOrWhiteSpace(name) &amp;&amp; name.Length &gt;= 2;
+    }
+    
+    private bool IsEmailValid()
+    {
+        var email = emailField.Text?.ToString() ?? &quot;&quot;;
+        return !string.IsNullOrWhiteSpace(email) &amp;&amp; 
+               email.Contains('@') &amp;&amp; 
+               email.Contains('.');
+    }
+    
+    private bool IsAgeValid()
+    {
+        var ageText = ageField.Text?.ToString() ?? &quot;&quot;;
+        return int.TryParse(ageText, out var age) &amp;&amp; age &gt;= 18 &amp;&amp; age &lt;= 120;
+    }
+    
+    private string GetValidationMessage()
+    {
+        if (!IsNameValid()) return &quot;Name must be at least 2 characters&quot;;
+        if (!IsEmailValid()) return &quot;Please enter a valid email address&quot;;
+        if (!IsAgeValid()) return &quot;Age must be between 18 and 120&quot;;
+        if (!termsCheck.Checked) return &quot;You must agree to the terms&quot;;
+        return &quot;&quot;;
+    }
+    
+    private void UpdateStatus(string message, Color color)
+    {
+        statusLabel.Text = message;
+        statusLabel.ForegroundColor = color;
+    }
+}
+</code></pre>
+<h3 id="project-file">Project File</h3>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+    &lt;Nullable&gt;enable&lt;/Nullable&gt;
+    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;Terminal.Gui.Xaml&quot; Version=&quot;1.0.0&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;EmbeddedResource Include=&quot;**/*.xaml&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<h2 id="running-the-example">Running the Example</h2>
+<pre><code class="lang-powershell"># Create and setup project
+dotnet new console -n BasicLayoutApp
+cd BasicLayoutApp
+dotnet add package Terminal.Gui.Xaml
+
+# Build and run
+dotnet build
+dotnet run
+</code></pre>
+<h2 id="expected-output">Expected Output</h2>
+<p>You'll see a registration form with:</p>
+<pre><code>┌─ Basic Layout - Terminal.Gui.Xaml Demo ─────────────────────────┐
+│                    User Registration Form                       │
+│                                                                 │
+│ ┌─ Personal Information ─────────────────────────────────────┐  │
+│ │                                                           │  │
+│ │ Full Name:      [Enter your full name              ]     │  │
+│ │                                                           │  │
+│ │ Email Address:  [user@example.com                  ]     │  │
+│ │                                                           │  │
+│ │ Age:            [18-120  ] years old                     │  │
+│ │                                                           │  │
+│ │ Country:        [United States     ▼]                    │  │
+│ │                                                           │  │
+│ │                 ☐ Subscribe to newsletter                │  │
+│ │                                                           │  │
+│ │                 ☐ I agree to the terms and conditions    │  │
+│ │                                                           │  │
+│ └───────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│            [  Submit  ]   [  Clear  ]   [  Cancel  ]            │
+│                                                                 │
+│               Ready - Fill out the form above                   │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="step-by-step-explanation">Step-by-Step Explanation</h2>
+<h3 id="1-responsive-layout-structure">1. Responsive Layout Structure</h3>
+<pre><code class="lang-xml">&lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot;&gt;
+</code></pre>
+<ul>
+<li>Vertical arrangement of major form sections</li>
+<li>Consistent spacing between sections</li>
+</ul>
+<h3 id="2-form-container">2. Form Container</h3>
+<pre><code class="lang-xml">&lt;FrameView Title=&quot;Personal Information&quot; Height=&quot;12&quot;&gt;
+</code></pre>
+<ul>
+<li>Groups related form fields visually</li>
+<li>Fixed height ensures consistent layout</li>
+</ul>
+<h3 id="3-input-row-layout">3. Input Row Layout</h3>
+<pre><code class="lang-xml">&lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+    &lt;Label Text=&quot;Full Name:&quot; Width=&quot;15&quot; /&gt;
+    &lt;TextField Width=&quot;Dim.Fill()&quot; /&gt;
+&lt;/StackView&gt;
+</code></pre>
+<ul>
+<li>Fixed-width labels for alignment</li>
+<li><code>Dim.Fill()</code> makes input fields expand to available width</li>
+</ul>
+<h3 id="4-advanced-positioning">4. Advanced Positioning</h3>
+<pre><code class="lang-xml">&lt;Label Text=&quot;years old&quot; X=&quot;Pos.Right(ageField) + 1&quot; /&gt;
+</code></pre>
+<ul>
+<li>Positions label relative to another control</li>
+<li>Adds spacing with <code>+ 1</code></li>
+</ul>
+<h3 id="5-button-group-layout">5. Button Group Layout</h3>
+<pre><code class="lang-xml">&lt;StackView Orientation=&quot;Horizontal&quot; HorizontalAlignment=&quot;Center&quot; Spacing=&quot;3&quot;&gt;
+</code></pre>
+<ul>
+<li>Centers button group horizontally</li>
+<li>Even spacing between buttons</li>
+</ul>
+<h3 id="6-real-time-validation">6. Real-time Validation</h3>
+<pre><code class="lang-csharp">nameField.TextChanged += (s, e) =&gt; ValidateForm();
+</code></pre>
+<ul>
+<li>Validates form as user types</li>
+<li>Provides immediate feedback</li>
+</ul>
+<h2 id="key-layout-concepts">Key Layout Concepts</h2>
+<h3 id="flexible-sizing">Flexible Sizing</h3>
+<ul>
+<li><strong>Fixed Width</strong>: <code>Width=&quot;15&quot;</code> for consistent alignment</li>
+<li><strong>Fill Available</strong>: <code>Width=&quot;Dim.Fill()&quot;</code> for responsive sizing</li>
+<li><strong>Relative Position</strong>: <code>X=&quot;Pos.Right(control) + offset&quot;</code></li>
+</ul>
+<h3 id="container-hierarchy">Container Hierarchy</h3>
+<ul>
+<li><strong>Window</strong>: Root container</li>
+<li><strong>StackView</strong>: Layout panels for arrangement</li>
+<li><strong>FrameView</strong>: Visual grouping with borders</li>
+</ul>
+<h3 id="spacing-and-alignment">Spacing and Alignment</h3>
+<ul>
+<li><strong>Spacing</strong>: Consistent gaps between elements</li>
+<li><strong>Alignment</strong>: Center, left, right positioning</li>
+<li><strong>Margins</strong>: Inner padding within containers</li>
+</ul>
+<h2 id="advanced-features-demonstrated">Advanced Features Demonstrated</h2>
+<h3 id="form-validation">Form Validation</h3>
+<pre><code class="lang-csharp">private bool IsEmailValid()
+{
+    var email = emailField.Text?.ToString() ?? &quot;&quot;;
+    return !string.IsNullOrWhiteSpace(email) &amp;&amp; 
+           email.Contains('@') &amp;&amp; 
+           email.Contains('.');
+}
+</code></pre>
+<h3 id="dynamic-ui-updates">Dynamic UI Updates</h3>
+<pre><code class="lang-csharp">private void ValidateForm()
+{
+    var isValid = IsFormValid();
+    submitButton.Enabled = isValid; // Enable/disable based on validation
+}
+</code></pre>
+<h3 id="status-communication">Status Communication</h3>
+<pre><code class="lang-csharp">private void UpdateStatus(string message, Color color)
+{
+    statusLabel.Text = message;
+    statusLabel.ForegroundColor = color; // Green/Yellow/Red feedback
+}
+</code></pre>
+<h2 id="platform-considerations">Platform Considerations</h2>
+<h3 id="terminal-width">Terminal Width</h3>
+<p>The form is designed for 70-character width terminals. On smaller terminals:</p>
+<ul>
+<li>Horizontal scrolling may occur</li>
+<li>Consider responsive breakpoints for mobile terminals</li>
+</ul>
+<h3 id="color-support">Color Support</h3>
+<p>Status colors (Green/Yellow/Red) work on most modern terminals but may vary:</p>
+<ul>
+<li><strong>Windows Terminal</strong>: Full color support</li>
+<li><strong>Legacy terminals</strong>: May show different shades or fallback colors</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li><strong>Add Data Binding</strong>: Convert to MVVM pattern with <a href="../guides/bind-data.html">Data Binding Guide</a></li>
+<li><strong>Handle Events</strong>: Learn advanced input handling with <a href="button-click.html">Button Click Example</a></li>
+<li><strong>Navigation</strong>: Connect multiple forms with <a href="../guides/navigation.html">Navigation Guide</a></li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="layout-issues">Layout Issues</h3>
+<p><strong>Controls overlap or misalign</strong></p>
+<pre><code>Solution: Check container sizes and Width/Height properties
+- Use explicit sizes for containers
+- Ensure child controls fit within parent bounds
+</code></pre>
+<p><strong>Text gets cut off</strong></p>
+<pre><code>Solution: Increase container width or use Dim.Fill()
+- Test with different terminal sizes
+- Use responsive sizing where possible
+</code></pre>
+<h3 id="validation-problems">Validation Problems</h3>
+<p><strong>Form validation not working</strong></p>
+<pre><code>Solution: Verify event handlers are attached
+- Check TextChanged events are wired up
+- Ensure ValidateForm() is called on initialization
+</code></pre>
+<p><strong>Button states not updating</strong></p>
+<pre><code>Solution: Call ValidateForm() after state changes
+- Update validation when checkboxes change
+- Refresh button states in validation logic
+</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="examples-by-complexity">Examples by Complexity</h3>
+<ul>
+<li><strong><a href="hello-world.html">Hello World</a></strong> - Minimal application setup (start here!)</li>
+<li><strong><a href="button-click.html">Button Click</a></strong> - Event handling and user interaction</li>
+<li><strong><a href="form-validation.md">Form Validation</a></strong> - Advanced input validation</li>
+<li><strong><a href="multi-window.md">Multi-Window App</a></strong> - Complex application structure</li>
+</ul>
+<h3 id="learning-guides">Learning Guides</h3>
+<ul>
+<li><strong><a href="../guides/create-window.html">Create a Window</a></strong> - Step-by-step window creation</li>
+<li><strong><a href="../guides/handle-input.html">Handle Input</a></strong> - User interaction patterns</li>
+<li><strong><a href="../guides/navigation.html">Navigation</a></strong> - Multi-form applications and flow</li>
+</ul>
+<h3 id="api-reference">API Reference</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Layout container with orientation and spacing</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.FrameView.yml">FrameView</a></strong> - Bordered grouping container</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField</a></strong> - Text input control with validation</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.ComboBox.yml">ComboBox</a></strong> - Dropdown selection with data binding</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean input with three-state support</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Dim.yml">Dim</a></strong> - Responsive dimension system</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><strong><a href="../concepts/layout.html">Layout System</a></strong> - Understanding positioning and sizing</li>
+<li><strong><a href="../concepts/controls.md">Control Hierarchy</a></strong> - Container and child relationships</li>
+<li><strong><a href="../concepts/events.html">Event Handling</a></strong> - User interaction patterns</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

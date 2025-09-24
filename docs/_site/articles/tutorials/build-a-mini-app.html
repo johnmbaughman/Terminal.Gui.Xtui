@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Tutorial: Build a Mini App | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Tutorial: Build a Mini App | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial-build-a-mini-app">Tutorial: Build a Mini App</h1>
+
+<p>An end-to-end walkthrough building a complete Terminal.Gui.Xaml application from scratch.</p>
+<blockquote>
+<p><strong>Version</strong>: Terminal.Gui.Xaml 1.0+<br>
+<strong>Duration</strong>: 30-45 minutes<br>
+<strong>Level</strong>: Intermediate<br>
+<strong>Prerequisites</strong>: <a href="../getting-started.html">Getting Started</a> completed</p>
+</blockquote>
+<h2 id="what-youll-build">What You'll Build</h2>
+<p>In this tutorial, you'll create a complete file manager application that demonstrates:</p>
+<ul>
+<li><strong>Multi-window navigation</strong> with proper focus management</li>
+<li><strong>Data binding</strong> with live updates from file system</li>
+<li><strong>Custom commands</strong> for file operations</li>
+<li><strong>Error handling</strong> with user-friendly messages</li>
+<li><strong>Responsive layout</strong> that adapts to terminal size</li>
+<li><strong>Keyboard shortcuts</strong> and accessibility patterns</li>
+</ul>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this tutorial, you'll understand how to:</p>
+<ol>
+<li><strong>Structure a multi-file XAML application</strong></li>
+<li><strong>Implement MVVM pattern</strong> with ViewModels and Commands</li>
+<li><strong>Handle asynchronous operations</strong> in terminal UI</li>
+<li><strong>Create reusable custom controls</strong></li>
+<li><strong>Test and debug</strong> Terminal.Gui.Xaml applications</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>Terminal.Gui.Xaml basics</strong> from <a href="../getting-started.html">Getting Started</a></li>
+<li><strong>C# knowledge</strong> including async/await and MVVM concepts</li>
+<li><strong>Understanding of data binding</strong> from <a href="../guides/bind-data.html">Binding Guide</a></li>
+<li><strong>.NET 8+ SDK</strong> installed and working</li>
+</ul>
+<h2 id="application-overview">Application Overview</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>File Browser</strong>: Navigate directories with keyboard and mouse</li>
+<li><strong>File Operations</strong>: Copy, move, delete files with confirmation dialogs</li>
+<li><strong>Search</strong>: Find files by name with live filtering</li>
+<li><strong>Properties</strong>: View file details in a separate pane</li>
+<li><strong>Status Bar</strong>: Show current directory and file count</li>
+<li><strong>Menu System</strong>: Access all functions via keyboard shortcuts</li>
+</ul>
+<h3 id="architecture">Architecture</h3>
+<pre><code>FileManagerApp/
+├── ViewModels/
+│   ├── MainViewModel.cs
+│   ├── FileItemViewModel.cs
+│   └── PropertiesViewModel.cs
+├── Views/
+│   ├── MainWindow.xaml
+│   ├── FileListView.xaml
+│   └── PropertiesPanel.xaml
+├── Services/
+│   ├── IFileService.cs
+│   └── FileService.cs
+├── Models/
+│   └── FileItem.cs
+└── Program.cs
+</code></pre>
+<h2 id="step-1-project-setup">Step 1: Project Setup</h2>
+<h3 id="create-the-project-structure">Create the Project Structure</h3>
+<pre><code class="lang-powershell"># Create new solution
+dotnet new sln -n FileManagerApp
+cd FileManagerApp
+
+# Create main application project
+dotnet new console -n FileManagerApp
+dotnet sln add FileManagerApp/FileManagerApp.csproj
+
+# Add Terminal.Gui.Xaml package
+cd FileManagerApp
+dotnet add package Terminal.Gui.Xaml
+
+# Create folder structure
+New-Item -ItemType Directory -Path &quot;ViewModels&quot;, &quot;Views&quot;, &quot;Services&quot;, &quot;Models&quot;
+</code></pre>
+<h3 id="configure-project-file">Configure Project File</h3>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+    &lt;Nullable&gt;enable&lt;/Nullable&gt;
+    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;Terminal.Gui.Xaml&quot; Version=&quot;1.0.0&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;EmbeddedResource Include=&quot;**/*.xaml&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+&lt;/Project&gt;
+</code></pre>
+<h2 id="step-2-core-models-and-services">Step 2: Core Models and Services</h2>
+<h3 id="file-item-model">File Item Model</h3>
+<pre><code class="lang-csharp">// Models/FileItem.cs
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace FileManagerApp.Models;
+
+public class FileItem : INotifyPropertyChanged
+{
+    private bool _isSelected;
+    
+    public string Name { get; set; } = string.Empty;
+    public string FullPath { get; set; } = string.Empty;
+    public long Size { get; set; }
+    public DateTime Modified { get; set; }
+    public bool IsDirectory { get; set; }
+    public string Icon =&gt; IsDirectory ? &quot;📁&quot; : &quot;📄&quot;;
+    
+    public bool IsSelected
+    {
+        get =&gt; _isSelected;
+        set
+        {
+            _isSelected = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string DisplaySize =&gt; IsDirectory ? &quot;---&quot; : FormatBytes(Size);
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
+    
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    
+    private static string FormatBytes(long bytes)
+    {
+        string[] suffixes = { &quot;B&quot;, &quot;KB&quot;, &quot;MB&quot;, &quot;GB&quot; };
+        int counter = 0;
+        decimal number = bytes;
+        while (Math.Round(number / 1024) &gt;= 1)
+        {
+            number /= 1024;
+            counter++;
+        }
+        return $&quot;{number:N1} {suffixes[counter]}&quot;;
+    }
+}
+</code></pre>
+<h3 id="file-service">File Service</h3>
+<pre><code class="lang-csharp">// Services/IFileService.cs
+using FileManagerApp.Models;
+
+namespace FileManagerApp.Services;
+
+public interface IFileService
+{
+    Task&lt;IEnumerable&lt;FileItem&gt;&gt; GetFilesAsync(string path);
+    Task&lt;FileItem?&gt; GetFileInfoAsync(string path);
+    Task&lt;bool&gt; DeleteFileAsync(string path);
+    Task&lt;bool&gt; CopyFileAsync(string sourcePath, string destinationPath);
+    Task&lt;bool&gt; MoveFileAsync(string sourcePath, string destinationPath);
+}
+</code></pre>
+<pre><code class="lang-csharp">// Services/FileService.cs
+using FileManagerApp.Models;
+
+namespace FileManagerApp.Services;
+
+public class FileService : IFileService
+{
+    public async Task&lt;IEnumerable&lt;FileItem&gt;&gt; GetFilesAsync(string path)
+    {
+        try
+        {
+            var items = new List&lt;FileItem&gt;();
+            
+            // Add parent directory if not root
+            if (Directory.GetParent(path) != null)
+            {
+                items.Add(new FileItem
+                {
+                    Name = &quot;..&quot;,
+                    FullPath = Directory.GetParent(path)!.FullName,
+                    IsDirectory = true,
+                    Modified = DateTime.Now
+                });
+            }
+            
+            // Add directories
+            var directories = Directory.GetDirectories(path);
+            foreach (var dir in directories)
+            {
+                var info = new DirectoryInfo(dir);
+                items.Add(new FileItem
+                {
+                    Name = info.Name,
+                    FullPath = info.FullName,
+                    IsDirectory = true,
+                    Modified = info.LastWriteTime
+                });
+            }
+            
+            // Add files
+            var files = Directory.GetFiles(path);
+            foreach (var file in files)
+            {
+                var info = new FileInfo(file);
+                items.Add(new FileItem
+                {
+                    Name = info.Name,
+                    FullPath = info.FullName,
+                    IsDirectory = false,
+                    Size = info.Length,
+                    Modified = info.LastWriteTime
+                });
+            }
+            
+            return items.OrderBy(x =&gt; !x.IsDirectory).ThenBy(x =&gt; x.Name);
+        }
+        catch
+        {
+            return Enumerable.Empty&lt;FileItem&gt;();
+        }
+    }
+
+    public async Task&lt;FileItem?&gt; GetFileInfoAsync(string path)
+    {
+        try
+        {
+            if (Directory.Exists(path))
+            {
+                var info = new DirectoryInfo(path);
+                return new FileItem
+                {
+                    Name = info.Name,
+                    FullPath = info.FullName,
+                    IsDirectory = true,
+                    Modified = info.LastWriteTime
+                };
+            }
+            else if (File.Exists(path))
+            {
+                var info = new FileInfo(path);
+                return new FileItem
+                {
+                    Name = info.Name,
+                    FullPath = info.FullName,
+                    IsDirectory = false,
+                    Size = info.Length,
+                    Modified = info.LastWriteTime
+                };
+            }
+            return null;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public async Task&lt;bool&gt; DeleteFileAsync(string path)
+    {
+        try
+        {
+            if (Directory.Exists(path))
+                Directory.Delete(path, true);
+            else if (File.Exists(path))
+                File.Delete(path);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task&lt;bool&gt; CopyFileAsync(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            File.Copy(sourcePath, destinationPath, true);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task&lt;bool&gt; MoveFileAsync(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            File.Move(sourcePath, destinationPath);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}
+</code></pre>
+<h2 id="step-3-viewmodels-with-commands">Step 3: ViewModels with Commands</h2>
+<h3 id="main-view-model">Main View Model</h3>
+<pre><code class="lang-csharp">// ViewModels/MainViewModel.cs
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using FileManagerApp.Models;
+using FileManagerApp.Services;
+using Terminal.Gui;
+
+namespace FileManagerApp.ViewModels;
+
+public class MainViewModel : INotifyPropertyChanged
+{
+    private readonly IFileService _fileService;
+    private string _currentPath;
+    private FileItem? _selectedItem;
+    private string _statusText;
+    private bool _isLoading;
+
+    public MainViewModel(IFileService fileService)
+    {
+        _fileService = fileService;
+        _currentPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        _statusText = &quot;Ready&quot;;
+        
+        Files = new ObservableCollection&lt;FileItem&gt;();
+        
+        // Initialize commands
+        RefreshCommand = new AsyncRelayCommand(RefreshAsync);
+        NavigateCommand = new AsyncRelayCommand&lt;FileItem&gt;(NavigateAsync);
+        DeleteCommand = new AsyncRelayCommand(DeleteSelectedAsync);
+        CopyCommand = new AsyncRelayCommand(CopySelectedAsync);
+        
+        // Load initial directory
+        _ = RefreshAsync();
+    }
+    
+    public ObservableCollection&lt;FileItem&gt; Files { get; }
+    
+    public string CurrentPath
+    {
+        get =&gt; _currentPath;
+        set
+        {
+            _currentPath = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(WindowTitle));
+        }
+    }
+    
+    public FileItem? SelectedItem
+    {
+        get =&gt; _selectedItem;
+        set
+        {
+            _selectedItem = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(StatusText));
+        }
+    }
+    
+    public string StatusText
+    {
+        get
+        {
+            if (SelectedItem != null)
+                return $&quot;{SelectedItem.Name} - {SelectedItem.DisplaySize}&quot;;
+            return $&quot;{Files.Count} items in {Path.GetFileName(CurrentPath)}&quot;;
+        }
+    }
+    
+    public bool IsLoading
+    {
+        get =&gt; _isLoading;
+        set
+        {
+            _isLoading = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    public string WindowTitle =&gt; $&quot;File Manager - {Path.GetFileName(CurrentPath)}&quot;;
+    
+    public ICommand RefreshCommand { get; }
+    public ICommand NavigateCommand { get; }
+    public ICommand DeleteCommand { get; }
+    public ICommand CopyCommand { get; }
+    
+    private async Task RefreshAsync()
+    {
+        IsLoading = true;
+        try
+        {
+            var files = await _fileService.GetFilesAsync(CurrentPath);
+            Files.Clear();
+            foreach (var file in files)
+            {
+                Files.Add(file);
+            }
+        }
+        finally
+        {
+            IsLoading = false;
+            OnPropertyChanged(nameof(StatusText));
+        }
+    }
+    
+    private async Task NavigateAsync(FileItem? item)
+    {
+        if (item?.IsDirectory == true)
+        {
+            CurrentPath = item.FullPath;
+            await RefreshAsync();
+        }
+    }
+    
+    private async Task DeleteSelectedAsync()
+    {
+        if (SelectedItem == null) return;
+        
+        var result = MessageBox.Query(&quot;Confirm Delete&quot;, 
+            $&quot;Delete {SelectedItem.Name}?&quot;, &quot;Yes&quot;, &quot;No&quot;);
+            
+        if (result == 0)
+        {
+            var success = await _fileService.DeleteFileAsync(SelectedItem.FullPath);
+            if (success)
+            {
+                await RefreshAsync();
+            }
+            else
+            {
+                MessageBox.ErrorQuery(&quot;Error&quot;, &quot;Failed to delete file.&quot;, &quot;OK&quot;);
+            }
+        }
+    }
+    
+    private async Task CopySelectedAsync()
+    {
+        // Implementation for copy dialog
+        MessageBox.Query(&quot;Copy&quot;, &quot;Copy functionality - implement dialog&quot;, &quot;OK&quot;);
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+
+// Helper class for async commands
+public class AsyncRelayCommand : ICommand
+{
+    private readonly Func&lt;Task&gt; _execute;
+    private readonly Func&lt;bool&gt;? _canExecute;
+
+    public AsyncRelayCommand(Func&lt;Task&gt; execute, Func&lt;bool&gt;? canExecute = null)
+    {
+        _execute = execute;
+        _canExecute = canExecute;
+    }
+
+    public event EventHandler? CanExecuteChanged;
+
+    public bool CanExecute(object? parameter) =&gt; _canExecute?.Invoke() ?? true;
+
+    public async void Execute(object? parameter) =&gt; await _execute();
+
+    public void RaiseCanExecuteChanged() =&gt; CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+}
+
+public class AsyncRelayCommand&lt;T&gt; : ICommand
+{
+    private readonly Func&lt;T?, Task&gt; _execute;
+    private readonly Func&lt;T?, bool&gt;? _canExecute;
+
+    public AsyncRelayCommand(Func&lt;T?, Task&gt; execute, Func&lt;T?, bool&gt;? canExecute = null)
+    {
+        _execute = execute;
+        _canExecute = canExecute;
+    }
+
+    public event EventHandler? CanExecuteChanged;
+
+    public bool CanExecute(object? parameter) =&gt; _canExecute?.Invoke((T?)parameter) ?? true;
+
+    public async void Execute(object? parameter) =&gt; await _execute((T?)parameter);
+
+    public void RaiseCanExecuteChanged() =&gt; CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+}
+</code></pre>
+<h2 id="step-4-xaml-views">Step 4: XAML Views</h2>
+<h3 id="main-window">Main Window</h3>
+<pre><code class="lang-xml">&lt;!-- Views/MainWindow.xaml --&gt;
+&lt;Window x:Class=&quot;FileManagerApp.Views.MainWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;{Binding WindowTitle}&quot;
+        Width=&quot;100&quot; Height=&quot;30&quot;&gt;
+    
+    &lt;Window.KeyBindings&gt;
+        &lt;KeyBinding Key=&quot;F5&quot; Command=&quot;{Binding RefreshCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;Delete&quot; Command=&quot;{Binding DeleteCommand}&quot; /&gt;
+        &lt;KeyBinding Key=&quot;F4&quot; Command=&quot;{Binding CopyCommand}&quot; /&gt;
+    &lt;/Window.KeyBindings&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        
+        &lt;!-- Menu Bar --&gt;
+        &lt;MenuBar&gt;
+            &lt;MenuBarItem Title=&quot;File&quot;&gt;
+                &lt;MenuItem Title=&quot;Refresh&quot; Shortcut=&quot;F5&quot; Command=&quot;{Binding RefreshCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Copy&quot; Shortcut=&quot;F4&quot; Command=&quot;{Binding CopyCommand}&quot; /&gt;
+                &lt;MenuSeparator /&gt;
+                &lt;MenuItem Title=&quot;Delete&quot; Shortcut=&quot;Del&quot; Command=&quot;{Binding DeleteCommand}&quot; /&gt;
+                &lt;MenuSeparator /&gt;
+                &lt;MenuItem Title=&quot;Exit&quot; Shortcut=&quot;Alt+F4&quot; Click=&quot;OnExitClicked&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+            &lt;MenuBarItem Title=&quot;View&quot;&gt;
+                &lt;MenuItem Title=&quot;Refresh&quot; Command=&quot;{Binding RefreshCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+        &lt;/MenuBar&gt;
+        
+        &lt;!-- Toolbar --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; Height=&quot;1&quot;&gt;
+            &lt;Label Text=&quot;Path: &quot; /&gt;
+            &lt;Label Text=&quot;{Binding CurrentPath}&quot; Width=&quot;Dim.Fill()&quot; /&gt;
+        &lt;/StackView&gt;
+        
+        &lt;!-- Main Content Area --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; Height=&quot;Dim.Fill(2)&quot;&gt;
+            
+            &lt;!-- File List --&gt;
+            &lt;FrameView Title=&quot;Files&quot; Width=&quot;Dim.Percent(60)&quot;&gt;
+                &lt;ListView Name=&quot;fileListView&quot;
+                          ItemsSource=&quot;{Binding Files}&quot;
+                          SelectedItem=&quot;{Binding SelectedItem, Mode=TwoWay}&quot;
+                          AccessibleName=&quot;File list&quot;&gt;
+                    &lt;ListView.ItemTemplate&gt;
+                        &lt;DataTemplate&gt;
+                            &lt;StackView Orientation=&quot;Horizontal&quot;&gt;
+                                &lt;Label Text=&quot;{Binding Icon}&quot; Width=&quot;2&quot; /&gt;
+                                &lt;Label Text=&quot;{Binding Name}&quot; Width=&quot;30&quot; /&gt;
+                                &lt;Label Text=&quot;{Binding DisplaySize}&quot; Width=&quot;10&quot; HorizontalAlignment=&quot;Right&quot; /&gt;
+                            &lt;/StackView&gt;
+                        &lt;/DataTemplate&gt;
+                    &lt;/ListView.ItemTemplate&gt;
+                &lt;/ListView&gt;
+            &lt;/FrameView&gt;
+            
+            &lt;!-- Properties Panel --&gt;
+            &lt;FrameView Title=&quot;Properties&quot; Width=&quot;Dim.Fill()&quot;&gt;
+                &lt;StackView Orientation=&quot;Vertical&quot; Margin=&quot;1&quot;&gt;
+                    &lt;Label Text=&quot;Name:&quot; /&gt;
+                    &lt;Label Text=&quot;{Binding SelectedItem.Name}&quot; ForegroundColor=&quot;Cyan&quot; /&gt;
+                    
+                    &lt;Label Text=&quot;Size:&quot; /&gt;
+                    &lt;Label Text=&quot;{Binding SelectedItem.DisplaySize}&quot; ForegroundColor=&quot;Yellow&quot; /&gt;
+                    
+                    &lt;Label Text=&quot;Modified:&quot; /&gt;
+                    &lt;Label Text=&quot;{Binding SelectedItem.Modified}&quot; ForegroundColor=&quot;Green&quot; /&gt;
+                    
+                    &lt;Label Text=&quot;Type:&quot; /&gt;
+                    &lt;Label ForegroundColor=&quot;Magenta&quot;&gt;
+                        &lt;Label.Text&gt;
+                            &lt;Binding Path=&quot;SelectedItem.IsDirectory&quot;&gt;
+                                &lt;Binding.Converter&gt;
+                                    &lt;ValueConverter&gt;
+                                        &lt;ValueConverter.ConvertMethod&gt;
+                                            &lt;![CDATA[
+                                            (bool isDir) =&gt; isDir ? &quot;Directory&quot; : &quot;File&quot;
+                                            ]]&gt;
+                                        &lt;/ValueConverter.ConvertMethod&gt;
+                                    &lt;/ValueConverter&gt;
+                                &lt;/Binding.Converter&gt;
+                            &lt;/Binding&gt;
+                        &lt;/Label.Text&gt;
+                    &lt;/Label&gt;
+                &lt;/StackView&gt;
+            &lt;/FrameView&gt;
+            
+        &lt;/StackView&gt;
+        
+        &lt;!-- Status Bar --&gt;
+        &lt;Label Name=&quot;statusBar&quot; 
+               Text=&quot;{Binding StatusText}&quot; 
+               Height=&quot;1&quot; 
+               ForegroundColor=&quot;Black&quot; 
+               BackgroundColor=&quot;Gray&quot; /&gt;
+               
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h3 id="main-window-code-behind">Main Window Code-Behind</h3>
+<pre><code class="lang-csharp">// Views/MainWindow.xaml.cs
+using FileManagerApp.ViewModels;
+using Terminal.Gui;
+using Terminal.Gui.Xaml;
+
+namespace FileManagerApp.Views;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+        
+        // Handle double-click for navigation
+        fileListView.OpenSelectedItem += OnFileDoubleClick;
+    }
+    
+    private void OnFileDoubleClick(object sender, EventArgs e)
+    {
+        if (DataContext is MainViewModel viewModel &amp;&amp; viewModel.SelectedItem != null)
+        {
+            viewModel.NavigateCommand.Execute(viewModel.SelectedItem);
+        }
+    }
+    
+    private void OnExitClicked(object sender, EventArgs e)
+    {
+        Application.RequestStop();
+    }
+}
+</code></pre>
+<h2 id="step-5-application-entry-point">Step 5: Application Entry Point</h2>
+<pre><code class="lang-csharp">// Program.cs
+using FileManagerApp.Services;
+using FileManagerApp.ViewModels;
+using FileManagerApp.Views;
+using Terminal.Gui;
+
+namespace FileManagerApp;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Application.Init();
+
+        try
+        {
+            // Setup dependency injection (simple)
+            var fileService = new FileService();
+            var mainViewModel = new MainViewModel(fileService);
+            
+            // Create and configure main window
+            var mainWindow = new MainWindow
+            {
+                DataContext = mainViewModel
+            };
+
+            // Run the application
+            Application.Run(mainWindow);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.ErrorQuery(&quot;Fatal Error&quot;, 
+                $&quot;Application error: {ex.Message}&quot;, &quot;OK&quot;);
+        }
+        finally
+        {
+            Application.Shutdown();
+        }
+    }
+}
+</code></pre>
+<h2 id="step-6-testing-and-debugging">Step 6: Testing and Debugging</h2>
+<h3 id="manual-testing">Manual Testing</h3>
+<pre><code class="lang-powershell"># Build and run
+dotnet build
+dotnet run
+
+# Test key scenarios:
+# 1. Navigate directories with Enter key
+# 2. Select files with arrow keys
+# 3. Use F5 to refresh
+# 4. Try Delete key on a test file
+# 5. Test menu access with Alt keys
+</code></pre>
+<h3 id="expected-behavior">Expected Behavior</h3>
+<p><strong>On startup:</strong></p>
+<ul>
+<li>Shows current user home directory</li>
+<li>File list populated with directories and files</li>
+<li>Properties panel shows selected item details</li>
+<li>Status bar shows item count</li>
+</ul>
+<p><strong>Navigation:</strong></p>
+<ul>
+<li>Double-click or Enter navigates into directories</li>
+<li>&quot;..&quot; entry navigates to parent directory</li>
+<li>Arrow keys select different files</li>
+<li>Properties panel updates with selection</li>
+</ul>
+<p><strong>File Operations:</strong></p>
+<ul>
+<li>F5 refreshes the current directory</li>
+<li>Delete key prompts for confirmation</li>
+<li>Menu items work via keyboard shortcuts</li>
+</ul>
+<h2 id="step-7-enhancements">Step 7: Enhancements</h2>
+<h3 id="add-search-functionality">Add Search Functionality</h3>
+<pre><code class="lang-xml">&lt;!-- Add to toolbar section --&gt;
+&lt;StackView Orientation=&quot;Horizontal&quot; Height=&quot;1&quot;&gt;
+    &lt;Label Text=&quot;Search: &quot; /&gt;
+    &lt;TextField Name=&quot;searchBox&quot; 
+               Text=&quot;{Binding SearchText, Mode=TwoWay}&quot; 
+               Width=&quot;20&quot; /&gt;
+    &lt;Button Text=&quot;Clear&quot; Command=&quot;{Binding ClearSearchCommand}&quot; /&gt;
+&lt;/StackView&gt;
+</code></pre>
+<h3 id="implement-file-filtering">Implement File Filtering</h3>
+<pre><code class="lang-csharp">// Add to MainViewModel
+private string _searchText = string.Empty;
+public string SearchText
+{
+    get =&gt; _searchText;
+    set
+    {
+        _searchText = value;
+        OnPropertyChanged();
+        _ = FilterFilesAsync();
+    }
+}
+
+private async Task FilterFilesAsync()
+{
+    // Filter files based on search text
+    // Implementation details...
+}
+</code></pre>
+<h3 id="add-keyboard-shortcuts">Add Keyboard Shortcuts</h3>
+<pre><code class="lang-xml">&lt;Window.KeyBindings&gt;
+    &lt;KeyBinding Key=&quot;Ctrl+C&quot; Command=&quot;{Binding CopyCommand}&quot; /&gt;
+    &lt;KeyBinding Key=&quot;Ctrl+X&quot; Command=&quot;{Binding CutCommand}&quot; /&gt;
+    &lt;KeyBinding Key=&quot;Ctrl+V&quot; Command=&quot;{Binding PasteCommand}&quot; /&gt;
+    &lt;KeyBinding Key=&quot;F2&quot; Command=&quot;{Binding RenameCommand}&quot; /&gt;
+    &lt;KeyBinding Key=&quot;Alt+Enter&quot; Command=&quot;{Binding PropertiesCommand}&quot; /&gt;
+&lt;/Window.KeyBindings&gt;
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Files don't load on startup</strong></p>
+<pre><code>- Check CurrentPath is valid
+- Verify file service permissions
+- Add error handling in RefreshAsync()
+</code></pre>
+<p><strong>ListView doesn't respond to selection</strong></p>
+<pre><code>- Ensure SelectedItem binding is TwoWay
+- Check DataContext is properly set
+- Verify INotifyPropertyChanged implementation
+</code></pre>
+<p><strong>Commands don't execute</strong></p>
+<pre><code>- Check command binding syntax
+- Verify CanExecute returns true
+- Add debugging to command methods
+</code></pre>
+<p><strong>XAML parsing errors</strong></p>
+<pre><code>- Validate XML namespace declarations
+- Check property names and types
+- Use DocFX build warnings to identify issues
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<p>Congratulations! You've built a complete file manager application. Consider these enhancements:</p>
+<ol>
+<li><strong>Add Configuration</strong>: Settings for default directory, colors, etc.</li>
+<li><strong>Implement Plugins</strong>: Extensible architecture for custom file types</li>
+<li><strong>Add Tests</strong>: Unit tests for ViewModels and Services</li>
+<li><strong>Improve UI</strong>: Icons, colors, better layouts</li>
+<li><strong>Add Logging</strong>: Structured logging for debugging</li>
+</ol>
+<h2 id="related-documentation">Related Documentation</h2>
+<ul>
+<li><a href="../guides/bind-data.html">Data Binding Guide</a> - Advanced binding scenarios</li>
+<li><a href="../guides/custom-controls.md">Custom Controls Guide</a> - Building reusable components</li>
+<li><a href="../guides/performance.md">Performance Guide</a> - Optimizing large file lists</li>
+<li><a href="../../tests/TestStrategy.md">Testing Guide</a> - Unit and integration testing</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>Completed Tutorial</strong>: You now have experience building production-ready Terminal.Gui.Xaml applications with MVVM, commands, and proper architecture patterns.</p>
+</blockquote>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
