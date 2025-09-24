@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Models;
 
@@ -35,23 +34,20 @@ public class DocumentationGenerationIntegrationTests
         var response = await generatorService.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.GeneratedFiles.Should().NotBeEmpty();
-        response.Duration.Should().BeLessThan(TimeSpan.FromMinutes(5));
+    Assert.NotNull(response);
+    Assert.True(response.Success);
+    Assert.True(response.GeneratedFiles.Any());
+    Assert.True(response.Duration < TimeSpan.FromMinutes(5));
 
         // Verify key files were generated
-        response.GeneratedFiles.Should().Contain(file =>
-            file.EndsWith("index.html"));
-        response.GeneratedFiles.Should().Contain(file =>
-            file.Contains("api/") && file.EndsWith(".html"));
-        response.GeneratedFiles.Should().Contain(file =>
-            file.EndsWith("toc.html"));
+        Assert.Contains(response.GeneratedFiles, f => f.EndsWith("index.html", StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(response.GeneratedFiles, f => f.Contains("api/", StringComparison.OrdinalIgnoreCase) && f.EndsWith(".html", StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(response.GeneratedFiles, f => f.EndsWith("toc.html", StringComparison.OrdinalIgnoreCase));
 
         // Verify structure
-        Directory.Exists("temp/docs/_site/").Should().BeTrue();
-        Directory.Exists("temp/docs/_site/api/").Should().BeTrue();
-        File.Exists("temp/docs/_site/index.html").Should().BeTrue();
+    Assert.True(Directory.Exists("temp/docs/_site/"));
+    Assert.True(Directory.Exists("temp/docs/_site/api/"));
+    Assert.True(File.Exists("temp/docs/_site/index.html"));
     }
 
     [Fact]
@@ -71,26 +67,25 @@ public class DocumentationGenerationIntegrationTests
         var response = await generatorService.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.ValidationResult.Should().NotBeNull();
-        response.Coverage.Should().NotBeNull();
+    Assert.NotNull(response);
+    Assert.NotNull(response.ValidationResult);
+    Assert.NotNull(response.Coverage);
 
         // Verify coverage metrics
-        response.Coverage.CoveragePercentage.Should().BeGreaterOrEqualTo(0);
-        response.Coverage.TotalMembers.Should().BeGreaterThan(0);
-        response.Coverage.DocumentedMembers.Should().BeGreaterOrEqualTo(0);
-        response.Coverage.UndocumentedMembers.Should().BeGreaterOrEqualTo(0);
+    Assert.True(response.Coverage.CoveragePercentage >= 0);
+    Assert.True(response.Coverage.TotalMembers > 0);
+    Assert.True(response.Coverage.DocumentedMembers >= 0);
+    Assert.True(response.Coverage.UndocumentedMembers >= 0);
 
         // Verify issue reporting
-        response.Issues.Should().NotBeNull();
-        response.Issues.Where(i => i.Severity == IssueSeverity.Error)
-            .Should().AllSatisfy(issue =>
-            {
-                issue.FilePath.Should().NotBeNullOrEmpty();
-                issue.LineNumber.Should().BeGreaterThan(0);
-                issue.MemberName.Should().NotBeNullOrEmpty();
-                issue.Message.Should().NotBeNullOrEmpty();
-            });
+        Assert.NotNull(response.Issues);
+        foreach (var issue in response.Issues.Where(i => i.Severity == IssueSeverity.Error))
+        {
+            Assert.False(string.IsNullOrEmpty(issue.FilePath));
+            Assert.True(issue.LineNumber > 0);
+            Assert.False(string.IsNullOrEmpty(issue.MemberName));
+            Assert.False(string.IsNullOrEmpty(issue.Message));
+        }
     }
 
     [Fact]
@@ -127,12 +122,12 @@ public class DocumentationGenerationIntegrationTests
         var incrementalResponse = await generatorService.GenerateDocumentationAsync(incrementalRequest);
 
         // Assert
-        incrementalResponse.Should().NotBeNull();
-        incrementalResponse.Success.Should().BeTrue();
-        incrementalResponse.GeneratedFiles.Count.Should().BeLessThan(fullBuildFileCount);
-        incrementalResponse.Duration.Should().BeLessThan(fullBuildResponse.Duration);
-        incrementalResponse.Metadata.Should().ContainKey("IncrementalBuild");
-        incrementalResponse.Metadata["IncrementalBuild"].Should().Be("true");
+    Assert.NotNull(incrementalResponse);
+    Assert.True(incrementalResponse.Success);
+    Assert.True(incrementalResponse.GeneratedFiles.Count < fullBuildFileCount);
+    Assert.True(incrementalResponse.Duration < fullBuildResponse.Duration);
+    Assert.True(incrementalResponse.Metadata.ContainsKey("IncrementalBuild"));
+    Assert.Equal("true", incrementalResponse.Metadata["IncrementalBuild"].ToString());
     }
 
     [Fact]
@@ -156,15 +151,15 @@ public class DocumentationGenerationIntegrationTests
         var generateResponse = await buildService.ExecuteBuildTargetAsync(generateRequest);
 
         // Assert
-        generateResponse.Should().NotBeNull();
-        generateResponse.Success.Should().BeTrue();
-        generateResponse.ExitCode.Should().Be(0);
-        generateResponse.Output.Should().NotBeNullOrEmpty();
-        generateResponse.Duration.Should().BeLessThan(TimeSpan.FromMinutes(5));
+    Assert.NotNull(generateResponse);
+    Assert.True(generateResponse.Success);
+    Assert.Equal(0, generateResponse.ExitCode);
+    Assert.False(string.IsNullOrEmpty(generateResponse.Output));
+    Assert.True(generateResponse.Duration < TimeSpan.FromMinutes(5));
 
         // Verify documentation was generated
-        Directory.Exists("temp/docs/_site/").Should().BeTrue();
-        File.Exists("temp/docs/_site/index.html").Should().BeTrue();
+    Assert.True(Directory.Exists("temp/docs/_site/"));
+    Assert.True(File.Exists("temp/docs/_site/index.html"));
 
         // Test validation target
         var validateRequest = new BuildTargetRequest
@@ -179,9 +174,9 @@ public class DocumentationGenerationIntegrationTests
         };
 
         var validateResponse = await buildService.ExecuteBuildTargetAsync(validateRequest);
-        validateResponse.Should().NotBeNull();
-        validateResponse.Success.Should().BeTrue();
-        validateResponse.ValidationResults.Should().NotBeNull();
+    Assert.NotNull(validateResponse);
+    Assert.True(validateResponse.Success);
+    Assert.NotNull(validateResponse.ValidationResults);
     }
 
     [Fact]
@@ -192,7 +187,8 @@ public class DocumentationGenerationIntegrationTests
         var configService = CreateDocumentationConfigurationService();
 
         var config = await configService.CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/");
-        config.Build.GlobalMetadata["_enableSearch"] = true;
+    config.Build ??= new BuildConfiguration();
+    config.Build.GlobalMetadata["_enableSearch"] = true;
 
         var request = new GenerateDocumentationRequest
         {
@@ -206,17 +202,16 @@ public class DocumentationGenerationIntegrationTests
         var response = await generatorService.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
+    Assert.NotNull(response);
+    Assert.True(response.Success);
 
         // Verify search functionality was generated
-        response.GeneratedFiles.Should().Contain(file =>
-            file.Contains("search") && file.EndsWith(".js"));
-        File.Exists("temp/docs/_site/search-worker.js").Should().BeTrue();
+        Assert.Contains(response.GeneratedFiles, f => f.Contains("search", StringComparison.OrdinalIgnoreCase) && f.EndsWith(".js", StringComparison.OrdinalIgnoreCase));
+        Assert.True(File.Exists("temp/docs/_site/search-worker.js"));
 
         // Verify search index was created
-        response.Metadata.Should().ContainKey("SearchEnabled");
-        response.Metadata["SearchEnabled"].Should().Be("true");
+    Assert.True(response.Metadata.ContainsKey("SearchEnabled"));
+    Assert.Equal("true", response.Metadata["SearchEnabled"].ToString());
     }
 
     [Fact]
@@ -227,7 +222,8 @@ public class DocumentationGenerationIntegrationTests
         var configService = CreateDocumentationConfigurationService();
 
         var config = await configService.CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/");
-        config.Build.Template = new[] { "default", "modern" };
+    config.Build ??= new BuildConfiguration();
+    config.Build.Template = new[] { "default", "modern" };
 
         var request = new GenerateDocumentationRequest
         {
@@ -241,19 +237,29 @@ public class DocumentationGenerationIntegrationTests
         var response = await generatorService.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
+    Assert.NotNull(response);
+    Assert.True(response.Success);
 
         // Verify template assets were generated
-        response.GeneratedFiles.Should().Contain(file =>
-            file.Contains("styles/") && file.EndsWith(".css"));
-        response.GeneratedFiles.Should().Contain(file =>
-            file.Contains("scripts/") && file.EndsWith(".js"));
+        Assert.Contains(response.GeneratedFiles, f => f.Contains("styles/", StringComparison.OrdinalIgnoreCase) && f.EndsWith(".css", StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(response.GeneratedFiles, f => f.Contains("scripts/", StringComparison.OrdinalIgnoreCase) && f.EndsWith(".js", StringComparison.OrdinalIgnoreCase));
 
-        // Verify custom styling was applied
-        var indexContent = await File.ReadAllTextAsync("temp/docs/_site/index.html");
-        indexContent.Should().Contain("modern");
-        indexContent.Should().Contain("Terminal.Gui.Xaml");
+        // Verify custom styling was applied (retry in case file handle not yet released)
+        string indexContent = string.Empty;
+        for (int attempt = 0; attempt < 3; attempt++)
+        {
+            try
+            {
+                indexContent = await File.ReadAllTextAsync("temp/docs/_site/index.html");
+                break;
+            }
+            catch (IOException) when (attempt < 2)
+            {
+                await Task.Delay(50);
+            }
+        }
+    Assert.Contains("modern", indexContent, StringComparison.OrdinalIgnoreCase);
+    Assert.Contains("Terminal.Gui.Xaml", indexContent, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -281,32 +287,29 @@ public class DocumentationGenerationIntegrationTests
         var totalDuration = DateTime.UtcNow - startTime;
 
         // Constitutional requirement: Must complete within 5 minutes
-        totalDuration.Should().BeLessThan(TimeSpan.FromMinutes(5));
-        response.Duration.Should().BeLessThan(TimeSpan.FromMinutes(5));
+    Assert.True(totalDuration < TimeSpan.FromMinutes(5));
+    Assert.True(response.Duration < TimeSpan.FromMinutes(5));
 
         // Performance should be reasonable for typical project size
         if (response.GeneratedFiles.Count > 0)
         {
             var avgTimePerFile = response.Duration.TotalMilliseconds / response.GeneratedFiles.Count;
-            avgTimePerFile.Should().BeLessThan(1000); // Less than 1 second per file on average
+            Assert.True(avgTimePerFile < 1000, $"Expected avgTimePerFile < 1000ms, actual {avgTimePerFile}"); // Less than 1 second per file on average
         }
     }
 
     private static IDocumentationGeneratorService CreateDocumentationGeneratorService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IDocumentationGeneratorService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService();
     }
 
     private static IDocumentationConfigurationService CreateDocumentationConfigurationService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IDocumentationConfigurationService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService();
     }
 
     private static IBuildIntegrationService CreateBuildIntegrationService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IBuildIntegrationService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService();
     }
 }

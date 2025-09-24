@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Models;
 
@@ -32,13 +31,13 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.OutputPath.Should().NotBeNullOrEmpty();
-        response.GeneratedDocuments.Should().NotBeNull();
-        response.ValidationResult.Should().NotBeNull();
-        response.GenerationTime.Should().BeLessThan(TimeSpan.FromMinutes(5));
-        response.Errors.Should().BeEmpty();
+    Assert.NotNull(response);
+    Assert.True(response.Success);
+    Assert.False(string.IsNullOrEmpty(response.OutputPath));
+    Assert.NotNull(response.GeneratedDocuments);
+    Assert.NotNull(response.ValidationResult);
+    Assert.True(response.GenerationTime < TimeSpan.FromMinutes(5));
+    Assert.Empty(response.Errors);
     }
 
     [Fact]
@@ -57,10 +56,10 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeFalse();
-        response.Errors.Should().NotBeEmpty();
-        response.Errors.Should().Contain(error => error.Contains("configuration"));
+    Assert.NotNull(response);
+    Assert.False(response.Success);
+    Assert.NotEmpty(response.Errors);
+    Assert.Contains(response.Errors, e => e.Contains("configuration", StringComparison.OrdinalIgnoreCase));
     }
 
     [Fact]
@@ -79,10 +78,10 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeFalse();
-        response.Errors.Should().NotBeEmpty();
-        response.Errors.Should().Contain(error => error.Contains("source path"));
+    Assert.NotNull(response);
+    Assert.False(response.Success);
+    Assert.NotEmpty(response.Errors);
+    Assert.Contains(response.Errors, e => e.Contains("source path", StringComparison.OrdinalIgnoreCase));
     }
 
     [Fact]
@@ -102,11 +101,11 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.OutputPath.Should().BeNullOrEmpty(); // No files generated in validate-only mode
-        response.ValidationResult.Should().NotBeNull();
-        response.ValidationResult.ValidationStatus.Should().NotBe(ValidationStatus.Error);
+        Assert.NotNull(response);
+        Assert.True(response.Success);
+        Assert.True(string.IsNullOrEmpty(response.OutputPath)); // No files generated in validate-only mode
+        Assert.NotNull(response.ValidationResult);
+        Assert.NotEqual(ValidationStatus.Error, response.ValidationResult.Status);
     }
 
     [Fact]
@@ -132,9 +131,9 @@ public class DocumentationGeneratorServiceContractTests
         var incrementalBuildResponse = await service.GenerateDocumentationAsync(incrementalBuildRequest);
 
         // Assert
-        fullBuildResponse.Success.Should().BeTrue();
-        incrementalBuildResponse.Success.Should().BeTrue();
-        incrementalBuildResponse.GenerationTime.Should().BeLessOrEqualTo(fullBuildResponse.GenerationTime);
+        Assert.True(fullBuildResponse.Success);
+        Assert.True(incrementalBuildResponse.Success);
+        Assert.True(incrementalBuildResponse.GenerationTime <= fullBuildResponse.GenerationTime);
     }
 
     [Fact]
@@ -153,10 +152,10 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.ValidationResult.Should().NotBeNull();
-        response.ValidationResult.CoverageMetrics.Should().NotBeNull();
-        response.ValidationResult.CoverageMetrics.CoveragePercentage.Should().BeGreaterOrEqualTo(80.0);
+        Assert.NotNull(response);
+        Assert.NotNull(response.ValidationResult);
+        Assert.NotNull(response.ValidationResult.CoverageMetrics);
+        Assert.True(response.ValidationResult.CoverageMetrics.CoveragePercentage >= 80.0);
     }
 
     [Fact]
@@ -175,47 +174,48 @@ public class DocumentationGeneratorServiceContractTests
         var response = await service.GenerateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.GeneratedDocuments.Should().Contain(doc =>
-            doc.GeneratedPath.Contains("search") || doc.GeneratedPath.Contains("index"));
+        Assert.NotNull(response);
+        Assert.True(response.Success);
+        Assert.Contains(response.GeneratedDocuments, d => d.GeneratedPath.Contains("search", StringComparison.OrdinalIgnoreCase) || d.GeneratedPath.Contains("index", StringComparison.OrdinalIgnoreCase));
     }
 
     private static IDocumentationGeneratorService CreateDocumentationGeneratorService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IDocumentationGeneratorService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService();
     }
 
     private static DocFxConfiguration CreateValidDocFxConfiguration()
     {
-        // This will fail until DocFxConfiguration is implemented
-        throw new NotImplementedException("DocFxConfiguration not implemented yet");
+        return new DocFxConfiguration
+        {
+            ProjectName = "Terminal.Gui.Xaml",
+            Version = "1.0.0",
+            OutputPath = Path.Combine("temp", "docs", "_site"),
+            SourcePaths = new[] { "src/Terminal.Gui.Xaml/" },
+            Build = new BuildConfiguration
+            {
+                Dest = "_site/",
+                Template = new[] { "default" },
+                GlobalMetadata = new Dictionary<string, object>
+                {
+                    ["_appTitle"] = "Terminal.Gui.Xaml"
+                }
+            },
+            Metadata = new MetadataConfiguration
+            {
+                Src = new[]
+                {
+                    new SourceConfiguration
+                    {
+                        Files = new [] { "**/*.cs" },
+                        Src = "src/Terminal.Gui.Xaml/"
+                    }
+                },
+                Dest = "api/",
+                Properties = new Dictionary<string, string> { ["TargetFramework"] = "net8.0" }
+            }
+        };
     }
 }
 
-// These types will fail to compile until implemented in Phase 3.3
-public class GenerateDocumentationRequest
-{
-    public DocFxConfiguration Configuration { get; set; }
-    public string[] SourcePaths { get; set; }
-    public DocumentationBuildMode BuildMode { get; set; }
-    public bool ValidateOnly { get; set; } = false;
-}
-
-public class GenerateDocumentationResponse
-{
-    public bool Success { get; set; }
-    public string OutputPath { get; set; }
-    public ApiDocumentation[] GeneratedDocuments { get; set; }
-    public DocumentationValidationResult ValidationResult { get; set; }
-    public TimeSpan GenerationTime { get; set; }
-    public string[] Errors { get; set; }
-}
-
-public enum DocumentationBuildMode
-{
-    Full,
-    Incremental,
-    MetadataOnly
-}
+// End of tests

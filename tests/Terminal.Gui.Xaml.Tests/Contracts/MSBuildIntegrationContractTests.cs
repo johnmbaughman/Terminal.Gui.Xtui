@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 
 namespace Terminal.Gui.Xaml.Tests.Contracts;
 

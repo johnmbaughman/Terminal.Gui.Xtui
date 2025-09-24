@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Models;
 
@@ -35,12 +34,12 @@ public class BuildIntegrationServiceContractTests
         var response = await service.ExecuteBuildTargetAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.ExitCode.Should().Be(0);
-        response.Output.Should().NotBeNullOrEmpty();
-        response.Errors.Should().BeNullOrEmpty();
-        response.Duration.Should().BeLessThan(TimeSpan.FromMinutes(5));
+    Assert.NotNull(response);
+    Assert.True(response.Success);
+    Assert.Equal(0, response.ExitCode);
+    Assert.False(string.IsNullOrEmpty(response.Output));
+    Assert.True(response.Errors == null || response.Errors.Length == 0);
+    Assert.True(response.Duration < TimeSpan.FromMinutes(5));
     }
 
     [Fact]
@@ -64,11 +63,11 @@ public class BuildIntegrationServiceContractTests
         var response = await service.ExecuteBuildTargetAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.ValidationResults.Should().NotBeNull();
-        response.ValidationResults.Coverage.Should().NotBeNull();
-        response.ValidationResults.Issues.Should().NotBeNull();
+    Assert.NotNull(response);
+    Assert.True(response.Success);
+    Assert.NotNull(response.ValidationResults);
+    Assert.NotNull(response.ValidationResults.Coverage);
+    Assert.NotNull(response.ValidationResults.Issues);
     }
 
     [Fact]
@@ -91,11 +90,11 @@ public class BuildIntegrationServiceContractTests
         var response = await service.ExecuteBuildTargetAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeTrue();
-        response.ExitCode.Should().Be(0);
-        response.FilesDeleted.Should().NotBeNull();
-        response.FilesDeleted.Should().NotBeEmpty();
+    Assert.NotNull(response);
+    Assert.True(response.Success);
+    Assert.Equal(0, response.ExitCode);
+    Assert.NotNull(response.FilesDeleted);
+    Assert.True(response.FilesDeleted!.Count > 0);
     }
 
     [Fact]
@@ -129,10 +128,11 @@ public class BuildIntegrationServiceContractTests
         var response = await service.ExecuteBuildTargetAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Success.Should().BeFalse();
-        response.ExitCode.Should().NotBe(0);
-        response.Errors.Should().NotBeNullOrEmpty();
+    Assert.NotNull(response);
+    Assert.False(response.Success);
+    Assert.NotEqual(0, response.ExitCode);
+    Assert.NotNull(response.Errors);
+    Assert.True(response.Errors!.Length > 0);
     }
 
     [Fact]
@@ -145,12 +145,12 @@ public class BuildIntegrationServiceContractTests
         var targets = service.GetAvailableTargets();
 
         // Assert
-        targets.Should().NotBeNull();
-        targets.Should().NotBeEmpty();
-        targets.Should().Contain("GenerateDocumentation");
-        targets.Should().Contain("ValidateDocumentation");
-        targets.Should().Contain("CleanDocumentation");
-        targets.Should().AllSatisfy(target => target.Should().NotBeNullOrEmpty());
+    Assert.NotNull(targets);
+    Assert.True(targets.Any());
+    Assert.Contains("GenerateDocumentation", targets);
+    Assert.Contains("ValidateDocumentation", targets);
+    Assert.Contains("CleanDocumentation", targets);
+    Assert.All(targets, t => Assert.False(string.IsNullOrEmpty(t)));
     }
 
     [Fact]
@@ -164,13 +164,13 @@ public class BuildIntegrationServiceContractTests
         var properties = service.GetTargetProperties(target);
 
         // Assert
-        properties.Should().NotBeNull();
-        properties.Should().NotBeEmpty();
-        properties.Should().ContainKey("DocFxConfigPath");
-        properties.Should().ContainKey("OutputPath");
-        properties.Should().ContainKey("LogLevel");
-        properties["DocFxConfigPath"].DefaultValue.Should().Be("docs/docfx.json");
-        properties["OutputPath"].DefaultValue.Should().Be("docs/_site/");
+    Assert.NotNull(properties);
+    Assert.True(properties.Any());
+    Assert.True(properties.ContainsKey("DocFxConfigPath"));
+    Assert.True(properties.ContainsKey("OutputPath"));
+    Assert.True(properties.ContainsKey("LogLevel"));
+    Assert.Equal("docs/docfx.json", properties["DocFxConfigPath"].DefaultValue);
+    Assert.Equal("docs/_site/", properties["OutputPath"].DefaultValue);
     }
 
     [Fact]
@@ -199,8 +199,8 @@ public class BuildIntegrationServiceContractTests
         await service.RegisterCustomTargetAsync(targetDefinition);
 
         // Assert
-        var targets = service.GetAvailableTargets();
-        targets.Should().Contain("CustomDocumentationTarget");
+    var targets = service.GetAvailableTargets();
+    Assert.Contains("CustomDocumentationTarget", targets);
     }
 
     [Fact]
@@ -223,69 +223,15 @@ public class BuildIntegrationServiceContractTests
         });
 
         // Assert
-        response.Should().NotBeNull();
-        progressReports.Should().NotBeEmpty();
-        progressReports.Should().Contain(p => p.Phase == BuildPhase.Starting);
-        progressReports.Should().Contain(p => p.Phase == BuildPhase.Completed || p.Phase == BuildPhase.Failed);
-        progressReports.Should().AllSatisfy(p => p.Message.Should().NotBeNullOrEmpty());
+    Assert.NotNull(response);
+    Assert.True(progressReports.Any());
+    Assert.Contains(progressReports, p => p.Phase == BuildPhase.Starting);
+    Assert.Contains(progressReports, p => p.Phase == BuildPhase.Completed || p.Phase == BuildPhase.Failed);
+    Assert.All(progressReports, p => Assert.False(string.IsNullOrEmpty(p.Message)));
     }
 
     private static IBuildIntegrationService CreateBuildIntegrationService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IBuildIntegrationService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService();
     }
-}
-
-// These types will fail to compile until implemented in Phase 3.3
-public class BuildTargetRequest
-{
-    public string Target { get; set; }
-    public string ProjectFile { get; set; }
-    public Dictionary<string, string> Properties { get; set; } = new();
-}
-
-public class BuildTargetResponse
-{
-    public bool Success { get; set; }
-    public int ExitCode { get; set; }
-    public string Output { get; set; }
-    public string Errors { get; set; }
-    public TimeSpan Duration { get; set; }
-    public ValidateDocumentationResponse ValidationResults { get; set; }
-    public List<string> FilesDeleted { get; set; } = new();
-}
-
-public class BuildTargetDefinition
-{
-    public string Name { get; set; }
-    public string Command { get; set; }
-    public string Arguments { get; set; }
-    public string WorkingDirectory { get; set; }
-    public Dictionary<string, BuildPropertyDefinition> Properties { get; set; } = new();
-}
-
-public class BuildPropertyDefinition
-{
-    public string Description { get; set; }
-    public string DefaultValue { get; set; }
-    public bool Required { get; set; }
-}
-
-public class BuildProgress
-{
-    public BuildPhase Phase { get; set; }
-    public string Message { get; set; }
-    public double PercentComplete { get; set; }
-}
-
-public enum BuildPhase
-{
-    Starting,
-    Preparing,
-    Building,
-    Validating,
-    Completing,
-    Completed,
-    Failed
 }

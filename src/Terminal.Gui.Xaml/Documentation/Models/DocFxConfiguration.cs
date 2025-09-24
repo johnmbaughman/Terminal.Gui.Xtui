@@ -82,8 +82,9 @@ public class MetadataConfiguration
 
     /// <summary>
     /// Gets or sets additional metadata properties.
+    /// Use string values to ensure stable JSON round-trip semantics in tests.
     /// </summary>
-    public Dictionary<string, object> Properties { get; set; } = [];
+    public Dictionary<string, string> Properties { get; set; } = [];
 }
 
 /// <summary>

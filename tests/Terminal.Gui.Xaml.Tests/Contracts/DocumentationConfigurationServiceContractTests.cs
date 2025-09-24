@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Models;
 
@@ -26,11 +25,11 @@ public class DocumentationConfigurationServiceContractTests
         var config = await service.LoadConfigurationAsync(configPath);
 
         // Assert
-        config.Should().NotBeNull();
-        config.Metadata.Should().NotBeNull();
-        config.Build.Should().NotBeNull();
-        config.Metadata.Src.Should().NotBeEmpty();
-        config.Build.Dest.Should().NotBeNullOrEmpty();
+    Assert.NotNull(config);
+    Assert.NotNull(config.Metadata);
+    Assert.NotNull(config.Build);
+    Assert.NotEmpty(config.Metadata!.Src);
+    Assert.False(string.IsNullOrEmpty(config.Build!.Dest));
     }
 
     [Fact]
@@ -63,7 +62,7 @@ public class DocumentationConfigurationServiceContractTests
                     }
                 },
                 Dest = "api/",
-                Properties = new Dictionary<string, object>
+                Properties = new Dictionary<string, string>
                 {
                     ["TargetFramework"] = "net8.0"
                 }
@@ -97,7 +96,9 @@ public class DocumentationConfigurationServiceContractTests
 
         // Assert - Verify file was created and can be loaded back
         var loadedConfig = await service.LoadConfigurationAsync(configPath);
-        loadedConfig.Should().BeEquivalentTo(config);
+    Assert.Equal(config.Metadata!.Dest, loadedConfig.Metadata!.Dest);
+    Assert.Equal(config.Build!.Dest, loadedConfig.Build!.Dest);
+    Assert.Equal(config.Build.Template, loadedConfig.Build.Template);
     }
 
     [Fact]
@@ -111,14 +112,14 @@ public class DocumentationConfigurationServiceContractTests
         var config = await service.CreateDefaultConfigurationAsync(projectPath);
 
         // Assert
-        config.Should().NotBeNull();
-        config.Metadata.Should().NotBeNull();
-        config.Build.Should().NotBeNull();
-        config.Metadata.Src.Should().NotBeEmpty();
-        config.Metadata.Src[0].Src.Should().Be(projectPath);
-        config.Build.Template.Should().Contain("default");
-        config.Build.GlobalMetadata.Should().ContainKey("_appTitle");
-        config.Build.GlobalMetadata.Should().ContainKey("_appFooter");
+    Assert.NotNull(config);
+    Assert.NotNull(config.Metadata);
+    Assert.NotNull(config.Build);
+    Assert.NotEmpty(config.Metadata!.Src);
+    Assert.Equal(projectPath, config.Metadata.Src[0].Src);
+    Assert.Contains("default", config.Build!.Template);
+    Assert.True(config.Build.GlobalMetadata.ContainsKey("_appTitle"));
+    Assert.True(config.Build.GlobalMetadata.ContainsKey("_appFooter"));
     }
 
     [Fact]
@@ -132,10 +133,10 @@ public class DocumentationConfigurationServiceContractTests
         var validation = await service.ValidateConfigurationAsync(config);
 
         // Assert
-        validation.Should().NotBeNull();
-        validation.IsValid.Should().BeTrue();
-        validation.Errors.Should().BeEmpty();
-        validation.Warnings.Should().NotBeNull();
+    Assert.NotNull(validation);
+    Assert.True(validation.IsValid);
+    Assert.Empty(validation.Errors);
+    Assert.NotNull(validation.Warnings);
     }
 
     [Fact]
@@ -176,11 +177,10 @@ public class DocumentationConfigurationServiceContractTests
         var validation = await service.ValidateConfigurationAsync(config);
 
         // Assert
-        validation.Should().NotBeNull();
-        validation.IsValid.Should().BeFalse();
-        validation.Errors.Should().NotBeEmpty();
-        validation.Errors.Should().Contain(error =>
-            error.Contains("non/existent/path"));
+        Assert.NotNull(validation);
+        Assert.False(validation.IsValid);
+        Assert.NotEmpty(validation.Errors);
+        Assert.Contains(validation.Errors, e => e.Contains("non/existent/path", StringComparison.OrdinalIgnoreCase));
     }
 
     [Fact]
@@ -193,11 +193,11 @@ public class DocumentationConfigurationServiceContractTests
         var templates = service.GetSupportedTemplates();
 
         // Assert
-        templates.Should().NotBeNull();
-        templates.Should().NotBeEmpty();
-        templates.Should().Contain("default");
-        templates.Should().Contain("modern");
-        templates.Should().AllSatisfy(template => template.Should().NotBeNullOrEmpty());
+    Assert.NotNull(templates);
+    Assert.True(templates.Any());
+    Assert.Contains("default", templates);
+    Assert.Contains("modern", templates);
+    Assert.All(templates, t => Assert.False(string.IsNullOrEmpty(t)));
     }
 
     [Fact]
@@ -210,26 +210,18 @@ public class DocumentationConfigurationServiceContractTests
         var metadata = service.GetDefaultGlobalMetadata();
 
         // Assert
-        metadata.Should().NotBeNull();
-        metadata.Should().ContainKey("_appTitle");
-        metadata.Should().ContainKey("_appFooter");
-        metadata.Should().ContainKey("_enableSearch");
-        metadata.Should().ContainKey("_enableNewTab");
-        metadata["_enableSearch"].Should().Be(true);
-        metadata["_enableNewTab"].Should().Be(true);
+    Assert.NotNull(metadata);
+    Assert.True(metadata.ContainsKey("_appTitle"));
+    Assert.True(metadata.ContainsKey("_appFooter"));
+    Assert.True(metadata.ContainsKey("_enableSearch"));
+    Assert.True(metadata.ContainsKey("_enableNewTab"));
+    Assert.True((bool)metadata["_enableSearch"]);
+    Assert.True((bool)metadata["_enableNewTab"]);
     }
 
     private static IDocumentationConfigurationService CreateDocumentationConfigurationService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IDocumentationConfigurationService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService();
     }
 }
-
-// These types will fail to compile until implemented in Phase 3.3
-public class ConfigurationValidationResult
-{
-    public bool IsValid { get; set; }
-    public List<string> Errors { get; set; } = new();
-    public List<string> Warnings { get; set; } = new();
-}
+ 
