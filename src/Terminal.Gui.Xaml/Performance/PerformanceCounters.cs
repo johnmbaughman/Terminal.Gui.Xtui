@@ -15,24 +15,32 @@ public static class PerformanceCounters
     /// <summary>
     /// Measures the elapsed time of an operation in milliseconds.
     /// </summary>
-    public static double MeasureElapsedMs(Action action)
+    /// <summary>
+    /// Measures the elapsed time in milliseconds for the specified action.
+    /// </summary>
+    /// <param name="action">The action to measure.</param>
+    /// <returns>The elapsed time in milliseconds.</returns>
+    public static double MeasureElapsedMs (Action action)
     {
-        var sw = Stopwatch.StartNew();
-        action();
-        sw.Stop();
+        Stopwatch sw = Stopwatch.StartNew ();
+        action ();
+        sw.Stop ();
         return sw.Elapsed.TotalMilliseconds;
     }
 
     /// <summary>
+    /// Calculates the difference in memory usage before and after executing the specified action, in bytes.
+    /// </summary>
+    /// <summary>
     /// Measures the memory usage of an operation in bytes.
     /// </summary>
-    public static long MeasureMemoryUsage(Action action)
+    /// <param name="action">The action to measure.</param>
+    /// <returns>The memory usage in bytes.</returns>
+    public static long MeasureMemoryUsage (Action action)
     {
-        GC.Collect();
-        GC.WaitForPendingFinalizers();
-        var before = GC.GetTotalMemory(true);
-        action();
-        var after = GC.GetTotalMemory(true);
-        return Math.Max(0, after - before);
+        long before = GC.GetTotalMemory (true);
+        action ();
+        long after = GC.GetTotalMemory (true);
+        return Math.Max (0, after - before);
     }
 }

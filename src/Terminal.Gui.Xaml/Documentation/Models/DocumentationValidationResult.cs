@@ -22,7 +22,7 @@ public class DocumentationValidationResult
     /// <summary>
     /// Gets or sets the list of validation issues found.
     /// </summary>
-    public ValidationIssue[] Issues { get; set; } = Array.Empty<ValidationIssue>();
+    public ValidationIssue [] Issues { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the documentation coverage statistics.
@@ -58,5 +58,5 @@ public enum ValidationStatus
     /// <summary>
     /// Validation failed with errors.
     /// </summary>
-    Error
+    Error,
 }

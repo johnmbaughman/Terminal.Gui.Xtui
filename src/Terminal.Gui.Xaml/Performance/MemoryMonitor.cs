@@ -19,13 +19,23 @@ public static class MemoryMonitor
     {
         get
         {
-            using var proc = Process.GetCurrentProcess();
+            using Process proc = Process.GetCurrentProcess ();
             return proc.WorkingSet64 / (1024.0 * 1024.0);
         }
     }
 
     /// <summary>
-    /// Checks if current memory usage exceeds the constitutional limit (50MB).
+    /// Gets the current memory usage in bytes for the process.
     /// </summary>
-    public static bool IsMemoryUsageCompliant() => CurrentMemoryUsageMB <= 50.0;
+    /// <returns>The total memory usage in bytes for the current process.</returns>
+    public static long GetCurrentMemoryUsage ()
+    {
+        return GC.GetTotalMemory (false);
+    }
+
+    /// <summary>
+    /// Checks if current memory usage is within the constitutional limit (50MB).
+    /// </summary>
+    /// <returns>True if memory usage is compliant; otherwise, false.</returns>
+    public static bool IsMemoryUsageCompliant () => CurrentMemoryUsageMB <= 50.0;
 }

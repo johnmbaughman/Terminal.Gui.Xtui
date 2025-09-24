@@ -57,17 +57,17 @@ Based on plan.md structure: Single project with documentation tooling extension
 - [x] T008 [P] Contract test IBuildIntegrationService MSBuild integration in tests/Terminal.Gui.Xaml.Tests/Contracts/BuildIntegrationContractTests.cs
 - [x] T009 [P] Integration test end-to-end documentation generation in tests/Terminal.Gui.Xaml.Tests/Integration/DocumentationGenerationIntegrationTests.cs
 - [x] T010 [P] Test DocumentationMetadata models with validation in tests/Terminal.Gui.Xaml.Tests/Models/DocumentationMetadataModelsTests.cs
-- [ ] T011 [P] Integration test MSBuild target execution in tests/Terminal.Gui.Xaml.Tests/Integration/MSBuildTargetExecutionTests.cs
-- [ ] T012 [P] Integration test documentation site navigation and search in tests/Terminal.Gui.Xaml.Tests/Integration/DocumentationSiteTests.cs
+- [x] T011 [P] Integration test MSBuild target execution in tests/Terminal.Gui.Xaml.Tests/Integration/MSBuildTargetExecutionTests.cs
+- [x] T012 [P] Integration test documentation site navigation and search in tests/Terminal.Gui.Xaml.Tests/Integration/DocumentationSiteTests.cs
 
 ## Phase 3.3: Core Implementation (ONLY after tests are failing)
-- [ ] T013 [P] DocFxConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-- [ ] T014 [P] TemplateConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/TemplateConfiguration.cs
-- [ ] T015 [P] BuildConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-- [ ] T016 [P] ApiDocumentation model in src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-- [ ] T017 [P] DocumentationValidationResult model in src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-- [ ] T018 [P] ValidationIssue model in src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-- [ ] T019 [P] CoverageMetrics model in src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
+- [x] T013 [P] DocFxConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
+- [x] T014 [P] TemplateConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/TemplateConfiguration.cs
+- [x] T015 [P] BuildConfiguration model in src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+- [x] T016 [P] ApiDocumentation model in src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
+- [x] T017 [P] DocumentationValidationResult model in src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+- [x] T018 [P] ValidationIssue model in src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+- [x] T019 [P] CoverageMetrics model in src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
 - [ ] T020 IDocumentationGeneratorService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
 - [ ] T021 DocumentationGeneratorService implementation in src/Terminal.Gui.Xaml/Documentation/Services/DocumentationGeneratorService.cs
 - [ ] T022 IDocumentationConfigurationService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
@@ -75,7 +75,7 @@ Based on plan.md structure: Single project with documentation tooling extension
 - [ ] T024 IBuildIntegrationService interface in src/Terminal.Gui.Xaml/Build/IBuildIntegrationService.cs
 - [ ] T025 BuildIntegrationService implementation in src/Terminal.Gui.Xaml/Build/BuildIntegrationService.cs
 - [ ] T026 GenerateDocumentationTask MSBuild task in src/Terminal.Gui.Xaml/Build/GenerateDocumentationTask.cs
-- [x] T027 Documentation validation and coverage analysis in DocumentationGeneratorService.ValidateDocumentationAsync
+- [ ] T027 Documentation validation and coverage analysis in DocumentationGeneratorService.ValidateDocumentationAsync
 - [ ] T028 Error handling and logging integration across all services
 
 ## Phase 3.4: Integration
@@ -136,7 +136,7 @@ Task: "ApiDocumentation model in src/Terminal.Gui.Xaml/Documentation/Models/ApiD
    - msbuild-integration.md → T008 (build integration contract test)
    - Each service interface → T020, T022, T024 (interface definitions)
    - Each service implementation → T021, T023, T025 (implementations)
-   
+
 2. **From Data Model**:
    - DocFxConfiguration → T013 (model creation)
    - TemplateConfiguration → T014 (model creation)
@@ -145,7 +145,7 @@ Task: "ApiDocumentation model in src/Terminal.Gui.Xaml/Documentation/Models/ApiD
    - DocumentationValidationResult → T017 (model creation)
    - ValidationIssue → T018 (model creation)
    - CoverageMetrics → T019 (model creation)
-   
+
 3. **From Quickstart Guide**:
    - Installation workflow → T009 (basic generation test)
    - XML documentation validation → T010 (validation test)

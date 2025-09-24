@@ -2,51 +2,70 @@
 // Copyright © Terminal.Gui.Xaml 2025. All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
+using Terminal.Gui.Xaml.Model;
 
 namespace Terminal.Gui.Xaml.Model;
 
 /// <summary>
-/// Represents a XAML document with namespace support and validation.
+/// Represents a XAML document and provides validation logic.
 /// </summary>
 public class XamlDocument
 {
-    public string RawContent { get; }
-    public XDocument Xml { get; }
-    public IReadOnlyDictionary<string, XamlNamespace> Namespaces { get; }
+    private readonly List<XamlNamespace> _namespaces = [];
 
-    public XamlDocument(string rawContent)
-    {
-        RawContent = rawContent ?? throw new ArgumentNullException(nameof(rawContent));
-        Xml = XDocument.Parse(rawContent);
-        Namespaces = ParseNamespaces(Xml);
-    }
+    /// <summary>
+    /// Gets or sets the XAML text.
+    /// </summary>
+    public string? XamlText { get; set; }
 
-    private static Dictionary<string, XamlNamespace> ParseNamespaces(XDocument xml)
+    /// <summary>
+    /// Gets or sets the file path.
+    /// </summary>
+    public string? FilePath { get; set; }
+
+    /// <summary>
+    /// Gets or sets the root namespace.
+    /// </summary>
+    public XamlNamespace? RootNamespace { get; set; }
+
+    /// <summary>
+    /// Gets the collection of namespaces.
+    /// </summary>
+    public IReadOnlyList<XamlNamespace> Namespaces => _namespaces;
+
+    /// <summary>
+    /// Validates the XAML document against Microsoft XAML standards.
+    /// </summary>
+    /// <returns>
+    /// A tuple containing a boolean indicating validity and a collection of error messages.
+    /// </returns>
+    public (bool IsValid, System.Collections.ObjectModel.Collection<string> Errors) Validate ()
     {
-        var nsDict = new Dictionary<string, XamlNamespace>();
-        foreach (var attr in xml.Root.Attributes())
+        System.Collections.ObjectModel.Collection<string> errors = [];
+
+        if (string.IsNullOrWhiteSpace (XamlText))
         {
-            if (attr.IsNamespaceDeclaration)
-            {
-                nsDict[attr.Name.LocalName] = new XamlNamespace(attr.Value);
-            }
+            errors.Add ("XAML text is empty.");
         }
-        return nsDict;
+
+        if (RootNamespace == null)
+        {
+            errors.Add ("Root namespace is not set.");
+        }
+
+        if (Namespaces.Count == 0)
+        {
+            errors.Add ("No namespaces defined.");
+        }
+
+        // Add more comprehensive validation logic as needed.
+        return (errors.Count == 0, errors);
     }
 
-#pragma warning disable CA1822 // Mark members as static
-#pragma warning disable CA1021 // Avoid out parameters
-    public bool Validate(out List<string> errors)
-#pragma warning restore CA1021 // Avoid out parameters
-#pragma warning restore CA1822 // Mark members as static
-    {
-        errors = new List<string>();
-        // TODO: Implement validation logic for Microsoft XAML standards
-        return errors.Count == 0;
-    }
-
-    public override string ToString() => Xml.ToString();
+    /// <summary>
+    /// Returns the string representation of the XAML document.
+    /// </summary>
+    /// <returns>The XAML text.</returns>
+    public override string ToString () => XamlText ?? string.Empty;
 }
+

@@ -15,8 +15,8 @@ public class XamlParseException : XamlException
     /// <summary>
     /// Initializes a new instance of the <see cref="XamlParseException"/> class.
     /// </summary>
-    public XamlParseException()
-        : base("An error occurred while parsing XAML.")
+    public XamlParseException ()
+        : base ("An error occurred while parsing XAML.")
     {
     }
 
@@ -24,8 +24,8 @@ public class XamlParseException : XamlException
     /// Initializes a new instance of the <see cref="XamlParseException"/> class with a specified error message.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
-    public XamlParseException(string message)
-        : base(message)
+    public XamlParseException (string message)
+        : base (message)
     {
     }
 
@@ -35,8 +35,8 @@ public class XamlParseException : XamlException
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
     /// <param name="innerException">The exception that is the cause of the current exception.</param>
-    public XamlParseException(string message, Exception innerException)
-        : base(message, innerException)
+    public XamlParseException (string message, Exception innerException)
+        : base (message, innerException)
     {
     }
 
@@ -47,8 +47,8 @@ public class XamlParseException : XamlException
     /// <param name="filePath">The XAML file path where the error occurred.</param>
     /// <param name="lineNumber">The line number where the error occurred.</param>
     /// <param name="columnNumber">The column number where the error occurred.</param>
-    public XamlParseException(string message, string filePath, int lineNumber, int columnNumber)
-        : base(message)
+    public XamlParseException (string message, string filePath, int lineNumber, int columnNumber)
+        : base (message)
     {
         XamlFilePath = filePath;
         LineNumber = lineNumber;
@@ -65,23 +65,13 @@ public class XamlParseException : XamlException
     /// <param name="lineNumber">The line number where the error occurred.</param>
     /// <param name="columnNumber">The column number where the error occurred.</param>
     /// <param name="innerException">The exception that is the cause of the current exception.</param>
-    public XamlParseException(string message, string filePath, int lineNumber, int columnNumber, Exception innerException)
-        : base(message, innerException)
+    public XamlParseException (string message, string filePath, int lineNumber, int columnNumber, Exception innerException)
+        : base (message, innerException)
     {
         XamlFilePath = filePath;
         LineNumber = lineNumber;
         ColumnNumber = columnNumber;
         ErrorCode = "XAML0001";
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="XamlParseException"/> class with serialized data.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="StreamingContext"/> that contains contextual information about the source or destination.</param>
-    protected XamlParseException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
     }
 
     /// <summary>
@@ -112,13 +102,13 @@ public class XamlParseException : XamlException
     /// <param name="lineNumber">The line number.</param>
     /// <param name="columnNumber">The column number.</param>
     /// <returns>A new <see cref="XamlParseException"/> instance.</returns>
-    public static XamlParseException InvalidElement(string elementName, string filePath, int lineNumber, int columnNumber)
+    public static XamlParseException InvalidElement (string elementName, string filePath, int lineNumber, int columnNumber)
     {
-        var message = $"The element '{elementName}' is not recognized or is not a valid Terminal.Gui control.";
-        return new XamlParseException(message, filePath, lineNumber, columnNumber)
+        string message = $"The element '{elementName}' is not recognized or is not a valid Terminal.Gui control.";
+        return new XamlParseException (message, filePath, lineNumber, columnNumber)
         {
             ElementName = elementName,
-            ErrorCode = "XAML1001"
+            ErrorCode = "XAML1001",
         };
     }
 
@@ -131,14 +121,14 @@ public class XamlParseException : XamlException
     /// <param name="lineNumber">The line number.</param>
     /// <param name="columnNumber">The column number.</param>
     /// <returns>A new <see cref="XamlParseException"/> instance.</returns>
-    public static XamlParseException InvalidAttribute(string attributeName, string elementName, string filePath, int lineNumber, int columnNumber)
+    public static XamlParseException InvalidAttribute (string attributeName, string elementName, string filePath, int lineNumber, int columnNumber)
     {
-        var message = $"The attribute '{attributeName}' is not valid for the element '{elementName}'.";
-        return new XamlParseException(message, filePath, lineNumber, columnNumber)
+        string message = $"The attribute '{attributeName}' is not valid for the element '{elementName}'.";
+        return new XamlParseException (message, filePath, lineNumber, columnNumber)
         {
             ElementName = elementName,
             AttributeName = attributeName,
-            ErrorCode = "XAML1002"
+            ErrorCode = "XAML1002",
         };
     }
 
@@ -151,34 +141,14 @@ public class XamlParseException : XamlException
     /// <param name="lineNumber">The line number.</param>
     /// <param name="columnNumber">The column number.</param>
     /// <returns>A new <see cref="XamlParseException"/> instance.</returns>
-    public static XamlParseException MalformedSyntax(string expected, string actual, string filePath, int lineNumber, int columnNumber)
+    public static XamlParseException MalformedSyntax (string expected, string actual, string filePath, int lineNumber, int columnNumber)
     {
-        var message = $"Invalid XAML syntax. Expected '{expected}' but found '{actual}'.";
-        return new XamlParseException(message, filePath, lineNumber, columnNumber)
+        string message = $"Invalid XAML syntax. Expected '{expected}' but found '{actual}'.";
+        return new XamlParseException (message, filePath, lineNumber, columnNumber)
         {
             Expected = expected,
             Actual = actual,
-            ErrorCode = "XAML1003"
+            ErrorCode = "XAML1003",
         };
-    }
-
-    /// <summary>
-    /// Sets serialization data for the exception.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo"/> to populate with data.</param>
-    /// <param name="context">The destination for this serialization.</param>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        if (info == null)
-        {
-            throw new ArgumentNullException(nameof(info));
-        }
-
-        info.AddValue(nameof(ElementName), ElementName);
-        info.AddValue(nameof(AttributeName), AttributeName);
-        info.AddValue(nameof(Expected), Expected);
-        info.AddValue(nameof(Actual), Actual);
-
-        base.GetObjectData(info, context);
     }
 }

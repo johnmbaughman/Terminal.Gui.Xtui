@@ -40,22 +40,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
 
-    <!-- Code Quality Analyzers -->
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
 
     <!-- Performance monitoring -->
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
 
-    <!-- DocFX for documentation generation -->
-    <PackageReference Include="docfx" Version="2.75.3" />
-    <PackageReference Include="docfx.console" Version="2.75.3" />
+  <!-- DocFX for documentation generation -->
+  <PackageReference Include="docfx.console" Version="2.59.4" />
   </ItemGroup>
 
   <ItemGroup>

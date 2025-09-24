@@ -57,5 +57,5 @@ public class TemplateConfiguration
     /// <summary>
     /// Gets or sets custom template variables.
     /// </summary>
-    public Dictionary<string, object> Variables { get; set; } = new();
+    public Dictionary<string, object> Variables { get; set; } = [];
 }

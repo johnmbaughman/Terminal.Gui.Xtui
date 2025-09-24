@@ -10,27 +10,135 @@ namespace Terminal.Gui.Xaml.Logging;
 /// <summary>
 /// Adapter to bridge IXamlLogger with Microsoft.Extensions.Logging.
 /// </summary>
-public sealed class MicrosoftLoggerAdapter : IXamlLogger
+/// <remarks>
+/// Initializes a new instance of the <see cref="MicrosoftLoggerAdapter"/> class.
+/// </remarks>
+/// <param name="logger">The Microsoft logger instance.</param>
+public sealed class MicrosoftLoggerAdapter (ILogger logger) : IXamlLogger
 {
-    private readonly ILogger _logger;
+    private readonly ILogger _logger = logger;
 
-    public MicrosoftLoggerAdapter(ILogger logger)
+    /// <inheritdoc/>
+    public void LogTrace (string message, params object [] args)
     {
-        _logger = logger;
+        if (args.Length == 0)
+        {
+            _logger.LogTrace ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogTrace ("{Message} | Args: {Args}", message, args);
+        }
     }
 
-    public void LogTrace(string message, params object[] args) => _logger.LogTrace(message, args);
-    public void LogDebug(string message, params object[] args) => _logger.LogDebug(message, args);
-    public void LogInformation(string message, params object[] args) => _logger.LogInformation(message, args);
-    public void LogWarning(string message, params object[] args) => _logger.LogWarning(message, args);
-    public void LogError(string message, params object[] args) => _logger.LogError(message, args);
-    public void LogError(Exception exception, string message, params object[] args) => _logger.LogError(exception, message, args);
-    public void LogCritical(string message, params object[] args) => _logger.LogCritical(message, args);
-    public void LogCritical(Exception exception, string message, params object[] args) => _logger.LogCritical(exception, message, args);
-    public IDisposable BeginScope(string operationName) => _logger.BeginScope(operationName);
-    public void LogPerformanceMetric(string operationName, double elapsedMs, long memoryUsedBytes = 0)
+    /// <inheritdoc/>
+    public void LogDebug (string message, params object [] args)
     {
-        _logger.LogInformation("PerformanceMetric: {Operation} {ElapsedMs}ms {MemoryUsedBytes}bytes", operationName, elapsedMs, memoryUsedBytes);
+        if (args.Length == 0)
+        {
+            _logger.LogDebug ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogDebug ("{Message} | Args: {Args}", message, args);
+        }
     }
-    public bool IsEnabled(LogLevel logLevel) => _logger.IsEnabled((Microsoft.Extensions.Logging.LogLevel)logLevel);
+
+    /// <inheritdoc/>
+    public void LogInformation (string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogInformation ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogInformation ("{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public void LogWarning (string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogWarning ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogWarning ("{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public void LogError (string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogError ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogError ("{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public void LogError (Exception exception, string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogError (exception, "{Message}", message);
+        }
+        else
+        {
+            _logger.LogError (exception, "{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public void LogCritical (string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogCritical ("{Message}", message);
+        }
+        else
+        {
+            _logger.LogCritical ("{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public void LogCritical (Exception exception, string message, params object [] args)
+    {
+        if (args.Length == 0)
+        {
+            _logger.LogCritical (exception, "{Message}", message);
+        }
+        else
+        {
+            _logger.LogCritical (exception, "{Message} | Args: {Args}", message, args);
+        }
+    }
+
+    /// <inheritdoc/>
+    public IDisposable BeginScope (string operationName)
+    {
+        // Microsoft.Extensions.Logging.ILogger.BeginScope may return null, but IDisposable is not nullable in the interface.
+        // Suppress possible null reference warning as per interface contract.
+        return _logger.BeginScope (operationName)!;
+    }
+
+    /// <inheritdoc/>
+    public void LogPerformanceMetric (string operationName, double elapsedMs, long memoryUsedBytes = 0)
+    {
+        _logger.LogInformation ("PerformanceMetric: {Operation} {ElapsedMs}ms {MemoryUsedBytes}bytes", operationName, elapsedMs, memoryUsedBytes);
+    }
+
+    /// <inheritdoc/>
+    public bool IsEnabled (LogLevel logLevel)
+    {
+        return _logger.IsEnabled ((Microsoft.Extensions.Logging.LogLevel)logLevel);
+    }
 }
