@@ -1,5 +1,5 @@
-using System;
 
+using System;
 // CLS compliance for the assembly
 [assembly: CLSCompliant(true)]
 

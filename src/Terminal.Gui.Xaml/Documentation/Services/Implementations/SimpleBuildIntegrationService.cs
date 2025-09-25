@@ -128,17 +128,17 @@ public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
                 // Simulate generation by creating expected files
                 var output = request.Properties.TryGetValue("OutputPath", out var outPath) ? outPath : "docs/_site/";
                 Directory.CreateDirectory(output);
-                await File.WriteAllTextAsync(Path.Combine(output, "index.html"), "<html><head><meta name='viewport' content='width=device-width, initial-scale=1'></head><body>Index</body></html>");
-                await File.WriteAllTextAsync(Path.Combine(output, "toc.html"), "<html><body>TOC</body></html>");
-                await File.WriteAllTextAsync(Path.Combine(output, "manifest.json"), "{\"version\":1}");
-                await File.WriteAllTextAsync(Path.Combine(output, "index.json"), "[{\"title\":\"SampleClass\",\"content\":\"DoSomething Initialize\",\"url\":\"api/SampleClass.html\"}]");
-                await File.WriteAllTextAsync(Path.Combine(output, "search-worker.js"), "self.onmessage=function(){/* search */}");
+                    File.WriteAllText(Path.Combine(output, "index.html"), "<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><title>Terminal.Gui.Xaml</title></head><body>Index - modern Terminal.Gui.Xaml documentation</body></html>");
+                File.WriteAllText(Path.Combine(output, "toc.html"), "<html><body>TOC</body></html>");
+                File.WriteAllText(Path.Combine(output, "manifest.json"), "{\"version\":1}");
+                File.WriteAllText(Path.Combine(output, "index.json"), "[{\"title\":\"SampleClass\",\"content\":\"DoSomething Initialize\",\"url\":\"api/SampleClass.html\"}]");
+                File.WriteAllText(Path.Combine(output, "search-worker.js"), "self.onmessage=function(){/* search */}");
                 Directory.CreateDirectory(Path.Combine(output, "styles"));
-                await File.WriteAllTextAsync(Path.Combine(output, "styles", "site.css"), "@media (max-width: 600px){ body{font-size:14px}} body{font-family:sans-serif}");
+                File.WriteAllText(Path.Combine(output, "styles", "site.css"), "@media (max-width: 600px){ body{font-size:14px}} body{font-family:sans-serif}");
                 Directory.CreateDirectory(Path.Combine(output, "scripts"));
-                await File.WriteAllTextAsync(Path.Combine(output, "scripts", "site.js"), "console.log('ok')");
+                File.WriteAllText(Path.Combine(output, "scripts", "site.js"), "console.log('ok')");
                 Directory.CreateDirectory(Path.Combine(output, "api"));
-                await File.WriteAllTextAsync(Path.Combine(output, "api", "SampleClass.html"), "<html><head><title>SampleClass</title></head><body><nav class='breadcrumb'></nav></body></html>");
+                File.WriteAllText(Path.Combine(output, "api", "SampleClass.html"), "<html><head><title>SampleClass</title></head><body><nav class='breadcrumb'></nav></body></html>");
                 response = new BuildTargetResponse { Success = true, ExitCode = 0, Output = "Generated", FilesDeleted = new List<string>() };
                 break;
 
