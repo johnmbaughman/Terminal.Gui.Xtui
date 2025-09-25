@@ -3,8 +3,9 @@
 .SYNOPSIS
     Example compilation validation for Terminal.Gui XAML Framework documentation
 .DESCRIPTION
-    This script extracts and validates code examples from documentation to catch drift.
-    It's designed to be forgiving during early development phases when the framework is not fully implemented.
+    Extracts fenced code blocks from docs and validates syntax (C#, PowerShell, XML). Optionally attempts
+    to compile C# snippets in a temporary project. Designed to be forgiving during early development when
+    some examples may not fully compile due to missing packages.
 .PARAMETER ExamplesDirectory
     Path to the examples directory (defaults to docs/articles/examples)
 .PARAMETER TempDirectory

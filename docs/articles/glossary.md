@@ -260,10 +260,10 @@ A mechanism to avoid name conflicts in XML documents by qualifying element and a
 ## Related Documentation
 
 - [Getting Started](getting-started.md) - Basic concepts and your first application
-- [XAML Concepts](concepts/xaml-syntax.md) - Detailed XAML syntax and features  
+- XAML concepts and syntax (coming soon)  
 - [Data Binding](concepts/binding.md) - Comprehensive binding guide
 - [Layout System](concepts/layout.md) - Positioning and sizing concepts
-- [API Reference](~/api/index.html) - Complete technical reference
+- [API Reference](../api/index.md) - Complete technical reference
 
 ---
 

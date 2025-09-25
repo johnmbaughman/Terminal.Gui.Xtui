@@ -90,28 +90,28 @@
 <p>This example demonstrates these event handling and interaction APIs:</p>
 <h3 id="interactive-controls">Interactive Controls</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button</a></strong> - Click events and command binding (<code>Click</code>, <code>Command</code>, <code>IsEnabled</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean interaction (<code>CheckedChanged</code>, <code>IsChecked</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuItem.yml">MenuItem</a></strong> - Menu item actions (<code>Click</code>, <code>Command</code>, shortcuts)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuBar.yml">MenuBar</a></strong> - Menu container (<code>MenuBarItem</code> hierarchy)</li>
+<li><strong><code>Button</code></strong> - Click events and command binding (<code>Click</code>, <code>Command</code>, <code>IsEnabled</code>)</li>
+<li><strong><code>CheckBox</code></strong> - Boolean interaction (<code>CheckedChanged</code>, <code>IsChecked</code>)</li>
+<li><strong><code>MenuItem</code></strong> - Menu item actions (<code>Click</code>, <code>Command</code>, shortcuts)</li>
+<li><strong><code>MenuBar</code></strong> - Menu container (<code>MenuBarItem</code> hierarchy)</li>
 </ul>
 <h3 id="event-system">Event System</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.EventArgs.yml">EventArgs</a></strong> - Base event argument type</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.RoutedEventArgs.yml">RoutedEventArgs</a></strong> - Routed event handling</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.KeyEventArgs.yml">KeyEventArgs</a></strong> - Keyboard event data</li>
+<li><strong><code>EventArgs</code></strong> - Base event argument type</li>
+<li><strong><code>RoutedEventArgs</code></strong> - Routed event handling</li>
+<li><strong><code>KeyEventArgs</code></strong> - Keyboard event data</li>
 </ul>
 <h3 id="command-pattern">Command Pattern</h3>
 <ul>
-<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command interface (<code>Execute</code>, <code>CanExecute</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml">RelayCommand</a></strong> - Simple command implementation</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcuts (<code>Key</code>, <code>Command</code>)</li>
+<li><strong><code>ICommand</code></strong> - Command interface (<code>Execute</code>, <code>CanExecute</code>)</li>
+<li><strong><code>RelayCommand</code></strong> - Simple command implementation</li>
+<li><strong><code>KeyBinding</code></strong> - Keyboard shortcuts (<code>Key</code>, <code>Command</code>)</li>
 </ul>
 <h3 id="dynamic-ui-updates">Dynamic UI Updates</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display with styling (<code>Text</code>, <code>ForegroundColor</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_Refresh">Application.Refresh</a></strong> - Force UI redraw</li>
-<li><strong><a href="../../api/Terminal.Gui.Control.yml#Terminal_Gui_Control_SetNeedsDisplay">Control.SetNeedsDisplay</a></strong> - Mark for repainting</li>
+<li><strong><code>Label</code></strong> - Text display with styling (<code>Text</code>, <code>ForegroundColor</code>)</li>
+<li><strong><code>Application.Refresh</code></strong> - Force UI redraw</li>
+<li><strong><code>Control.SetNeedsDisplay</code></strong> - Mark for repainting</li>
 </ul>
 <blockquote>
 <p><strong>💡 Pro Tip</strong>: Use commands for complex logic that needs <code>CanExecute</code> support, and direct event handlers for simple UI interactions. Keyboard shortcuts work globally within windows.</p>
@@ -783,7 +783,7 @@ private void OnKeyPressed(object sender, KeyEventArgs e)
 <li><strong><a href="hello-world.html">Hello World</a></strong> - Basic application structure and lifecycle</li>
 <li><strong><a href="basic-layout.html">Basic Layout</a></strong> - Form controls and responsive layout</li>
 <li><strong><a href="form-validation.html">Form Validation</a></strong> - Advanced input validation patterns</li>
-<li><strong><a href="data-binding.md">Data Binding</a></strong> - MVVM with commands and two-way binding</li>
+<li><strong><a href="data-binding.html">Data Binding</a></strong> - MVVM with commands and two-way binding</li>
 </ul>
 <h3 id="guides-for-deep-learning">Guides for Deep Learning</h3>
 <ul>
@@ -793,18 +793,17 @@ private void OnKeyPressed(object sender, KeyEventArgs e)
 </ul>
 <h3 id="api-reference">API Reference</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button</a></strong> - Click events, commands, and state management</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcuts and global hotkeys</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuItem.yml">MenuItem</a></strong> - Menu actions and keyboard accelerators</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean input with change events</li>
-<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern interface</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml">RelayCommand</a></strong> - Command implementation helper</li>
+<li><code>Button</code> - Click events, commands, and state management</li>
+<li><code>KeyBinding</code> - Keyboard shortcuts and global hotkeys</li>
+<li><code>MenuItem</code> - Menu actions and keyboard accelerators</li>
+<li><code>CheckBox</code> - Boolean input with change events</li>
+<li><code>ICommand</code> - Command pattern interface</li>
+<li><code>RelayCommand</code> - Command implementation helper</li>
 </ul>
 <h3 id="concepts">Concepts</h3>
 <ul>
 <li><strong><a href="../concepts/events.html">Event Handling</a></strong> - Understanding event patterns and routing</li>
-<li><strong><a href="../concepts/commands.md">Command Pattern</a></strong> - Implementing commands vs direct events</li>
-<li><strong><a href="../concepts/interaction.md">User Interaction</a></strong> - Best practices for user experience</li>
+<li>User interaction best practices</li>
 </ul>
 
 </article>

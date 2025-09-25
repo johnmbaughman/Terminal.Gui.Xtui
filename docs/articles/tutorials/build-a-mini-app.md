@@ -839,8 +839,8 @@ Congratulations! You've built a complete file manager application. Consider thes
 ## Related Documentation
 
 - [Data Binding Guide](../guides/bind-data.md) - Advanced binding scenarios
-- [Custom Controls Guide](../guides/custom-controls.md) - Building reusable components  
-- [Performance Guide](../guides/performance.md) - Optimizing large file lists
+- Custom Controls Guide (coming soon)  
+- Performance Guide (coming soon)
 - [Testing Guide](../../tests/TestStrategy.md) - Unit and integration testing
 
 ---

@@ -185,7 +185,7 @@ dotnet run
 <li><strong>Control-by-Control</strong>: Replace individual controls with XAML equivalents</li>
 <li><strong>Full Migration</strong>: Convert entire application to XAML</li>
 </ol>
-<p>See our <a href="guides/migration-from-terminal-gui.md">Migration Guide</a> for strategies and examples.</p>
+<p>See our <a href="migration/v1-to-v2.html">Migration Overview</a> for high-level changes and strategies.</p>
 <h2 id="xaml-and-syntax">XAML and Syntax</h2>
 <h3 id="is-this-real-xaml">Is this &quot;real&quot; XAML?</h3>
 <p><strong>Q</strong>: Is Terminal.Gui.Xaml compatible with WPF/UWP XAML?</p>
@@ -355,7 +355,7 @@ using (var suspension = viewModel.SuspendNotifications())
     viewModel.Property3 = value3;
 } // Single update notification
 </code></pre>
-<p>See our <a href="guides/performance.md">Performance Guide</a> for detailed optimization techniques.</p>
+<p>Performance guidance is coming soon; in the meantime, prefer simple layouts and minimize unnecessary bindings.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="common-build-errors">Common Build Errors</h3>
 <p><strong>Q</strong>: My project won't build. What are common issues?</p>
@@ -476,7 +476,7 @@ XamlConfiguration.DebugBindings = true;
     }
 }
 </code></pre>
-<p>See our <a href="guides/custom-controls.md">Custom Controls Guide</a> for detailed examples.</p>
+<p>Custom controls guidance is coming soon; for now, you can compose <code>UserControl</code> from existing controls.</p>
 <h3 id="how-do-i-handle-validation">How do I handle validation?</h3>
 <p><strong>Q</strong>: What's the best way to handle input validation?</p>
 <p><strong>A</strong>: Multiple validation strategies:</p>

@@ -32,6 +32,7 @@
         "files": [
           "articles/**.md",
           "articles/**/toc.yml",
+          "tests/**.md",
           "toc.yml",
           "*.md"
         ]
@@ -42,7 +43,8 @@
         "files": [
           "images/**",
           "favicon.ico",
-          "search-stopwords.json"
+          "search-stopwords.json",
+          "logo.svg"
         ]
       }
     ],

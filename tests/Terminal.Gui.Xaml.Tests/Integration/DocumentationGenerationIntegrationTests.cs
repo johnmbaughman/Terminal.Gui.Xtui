@@ -14,6 +14,11 @@ namespace Terminal.Gui.Xaml.Tests.Integration;
 /// </summary>
 public class DocumentationGenerationIntegrationTests
 {
+    private static string UniqueOutput(string testName)
+    {
+        var path = Path.Combine("temp", "docs", "_site", testName, Guid.NewGuid().ToString("N")) + Path.DirectorySeparatorChar;
+        return path.Replace('\\','/');
+    }
     [Fact]
     public async Task EndToEnd_GenerateDocumentation_ShouldProduceCompleteDocumentationSite()
     {
@@ -22,12 +27,13 @@ public class DocumentationGenerationIntegrationTests
         var configService = CreateDocumentationConfigurationService();
 
         var config = await configService.CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/");
+        var output = UniqueOutput(nameof(EndToEnd_GenerateDocumentation_ShouldProduceCompleteDocumentationSite));
         var request = new GenerateDocumentationRequest
         {
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = false,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         // Act
@@ -45,9 +51,9 @@ public class DocumentationGenerationIntegrationTests
         Assert.Contains(response.GeneratedFiles, f => f.EndsWith("toc.html", StringComparison.OrdinalIgnoreCase));
 
         // Verify structure
-    Assert.True(Directory.Exists("temp/docs/_site/"));
-    Assert.True(Directory.Exists("temp/docs/_site/api/"));
-    Assert.True(File.Exists("temp/docs/_site/index.html"));
+    Assert.True(Directory.Exists(output));
+    Assert.True(Directory.Exists(Path.Combine(output, "api/")));
+    Assert.True(File.Exists(Path.Combine(output, "index.html")));
     }
 
     [Fact]
@@ -98,12 +104,13 @@ public class DocumentationGenerationIntegrationTests
         var config = await configService.CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/");
 
         // First build - full generation
+        var output = UniqueOutput(nameof(EndToEnd_IncrementalBuild_ShouldOnlyRegenerateChangedFiles));
         var fullBuildRequest = new GenerateDocumentationRequest
         {
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = false,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         var fullBuildResponse = await generatorService.GenerateDocumentationAsync(fullBuildRequest);
@@ -115,7 +122,7 @@ public class DocumentationGenerationIntegrationTests
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = true,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         // Act
@@ -135,6 +142,7 @@ public class DocumentationGenerationIntegrationTests
     {
         // Arrange
         var buildService = CreateBuildIntegrationService();
+        var output = UniqueOutput(nameof(EndToEnd_MSBuildIntegration_ShouldExecuteDocumentationTargets));
         var generateRequest = new BuildTargetRequest
         {
             Target = "GenerateDocumentation",
@@ -142,7 +150,7 @@ public class DocumentationGenerationIntegrationTests
             Properties = new Dictionary<string, string>
             {
                 ["DocFxConfigPath"] = "docs/docfx.json",
-                ["OutputPath"] = "temp/docs/_site/",
+                ["OutputPath"] = output,
                 ["LogLevel"] = "Info"
             }
         };
@@ -158,8 +166,8 @@ public class DocumentationGenerationIntegrationTests
     Assert.True(generateResponse.Duration < TimeSpan.FromMinutes(5));
 
         // Verify documentation was generated
-    Assert.True(Directory.Exists("temp/docs/_site/"));
-    Assert.True(File.Exists("temp/docs/_site/index.html"));
+    Assert.True(Directory.Exists(output));
+    Assert.True(File.Exists(Path.Combine(output, "index.html")));
 
         // Test validation target
         var validateRequest = new BuildTargetRequest
@@ -190,12 +198,13 @@ public class DocumentationGenerationIntegrationTests
     config.Build ??= new BuildConfiguration();
     config.Build.GlobalMetadata["_enableSearch"] = true;
 
+        var output = UniqueOutput(nameof(EndToEnd_SearchFunctionality_ShouldGenerateSearchableContent));
         var request = new GenerateDocumentationRequest
         {
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = false,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         // Act
@@ -207,7 +216,7 @@ public class DocumentationGenerationIntegrationTests
 
         // Verify search functionality was generated
         Assert.Contains(response.GeneratedFiles, f => f.Contains("search", StringComparison.OrdinalIgnoreCase) && f.EndsWith(".js", StringComparison.OrdinalIgnoreCase));
-        Assert.True(File.Exists("temp/docs/_site/search-worker.js"));
+    Assert.True(File.Exists(Path.Combine(output, "search-worker.js")));
 
         // Verify search index was created
     Assert.True(response.Metadata.ContainsKey("SearchEnabled"));
@@ -225,12 +234,13 @@ public class DocumentationGenerationIntegrationTests
     config.Build ??= new BuildConfiguration();
     config.Build.Template = new[] { "default", "modern" };
 
+        var output = UniqueOutput(nameof(EndToEnd_MultipleTemplates_ShouldGenerateWithCustomStyling));
         var request = new GenerateDocumentationRequest
         {
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = false,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         // Act
@@ -250,7 +260,7 @@ public class DocumentationGenerationIntegrationTests
         {
             try
             {
-                indexContent = await File.ReadAllTextAsync("temp/docs/_site/index.html");
+                indexContent = await File.ReadAllTextAsync(Path.Combine(output, "index.html"));
                 break;
             }
             catch (IOException) when (attempt < 2)
@@ -270,12 +280,13 @@ public class DocumentationGenerationIntegrationTests
         var configService = CreateDocumentationConfigurationService();
 
         var config = await configService.CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/");
+        var output = UniqueOutput(nameof(EndToEnd_PerformanceRequirements_ShouldMeetTimingConstraints));
         var request = new GenerateDocumentationRequest
         {
             Configuration = config,
             ValidateOnly = false,
             IncrementalBuild = false,
-            OutputPath = "temp/docs/_site/"
+            OutputPath = output
         };
 
         var startTime = DateTime.UtcNow;

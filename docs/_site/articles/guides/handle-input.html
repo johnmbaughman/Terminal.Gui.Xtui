@@ -85,31 +85,31 @@
 <p>This guide demonstrates these key input handling APIs and patterns:</p>
 <h3 id="input-events-and-handling">Input Events and Handling</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.KeyEventArgs.yml">KeyEventArgs</a></strong> - Keyboard input event data</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.MouseEventArgs.yml">MouseEventArgs</a></strong> - Mouse input event data</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml">TextChangedEventArgs</a></strong> - Text input change notifications</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.FocusEventArgs.yml">FocusEventArgs</a></strong> - Focus change event data</li>
+<li><code>KeyEventArgs</code> - Keyboard input event data</li>
+<li><code>MouseEventArgs</code> - Mouse input event data</li>
+<li><code>TextChangedEventArgs</code> - Text input change notifications</li>
+<li><code>FocusEventArgs</code> - Focus change event data</li>
 </ul>
 <h3 id="keyboard-and-shortcuts">Keyboard and Shortcuts</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcut definitions</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.Key.yml">Key</a></strong> - Key enumeration and modifiers</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyGesture.yml">KeyGesture</a></strong> - Complex key combinations</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.InputGesture.yml">InputGesture</a></strong> - Base input gesture handling</li>
+<li><code>KeyBinding</code> - Keyboard shortcut definitions</li>
+<li><code>Key</code> - Key enumeration and modifiers</li>
+<li><code>KeyGesture</code> - Complex key combinations</li>
+<li><code>InputGesture</code> - Base input gesture handling</li>
 </ul>
 <h3 id="commands-and-actions">Commands and Actions</h3>
 <ul>
-<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern interface</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml">RelayCommand</a></strong> - Simple command implementation</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.CommandBinding.yml">CommandBinding</a></strong> - Connect commands to handlers</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.RoutedCommand.yml">RoutedCommand</a></strong> - Commands with routing support</li>
+<li><code>ICommand</code> - Command pattern interface</li>
+<li><code>RelayCommand</code> - Simple command implementation</li>
+<li><code>CommandBinding</code> - Connect commands to handlers</li>
+<li><code>RoutedCommand</code> - Commands with routing support</li>
 </ul>
 <h3 id="validation">Validation</h3>
 <ul>
-<li><strong><a href="../../api/System.ComponentModel.IDataErrorInfo.yml">IDataErrorInfo</a></strong> - Object-level validation interface</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml">ValidationRule</a></strong> - Custom validation logic</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.Validation.yml">Validation</a></strong> - Validation helper methods</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.BindingValidationError.yml">BindingValidationError</a></strong> - Validation error details</li>
+<li><code>IDataErrorInfo</code> - Object-level validation interface</li>
+<li><code>ValidationRule</code> - Custom validation logic</li>
+<li><code>Validation</code> - Validation helper methods</li>
+<li><code>BindingValidationError</code> - Validation error details</li>
 </ul>
 <blockquote>
 <p><strong>💡 Pro Tip</strong>: Use command binding for complex logic and direct event handlers for simple UI interactions. Keyboard shortcuts work globally within a window.</p>
@@ -777,25 +777,25 @@ public Color PasswordStrengthColor { get; }
 <h2 id="related-topics">Related Topics</h2>
 <h3 id="api-reference">API Reference</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.KeyEventArgs.yml">KeyEventArgs</a></strong> - Keyboard event handling</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.MouseEventArgs.yml">MouseEventArgs</a></strong> - Mouse interaction events</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml">KeyBinding</a></strong> - Keyboard shortcuts</li>
-<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern interface</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml">ValidationRule</a></strong> - Custom validation</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml">TextChangedEventArgs</a></strong> - Text change notifications</li>
+<li><code>KeyEventArgs</code> - Keyboard event handling</li>
+<li><code>MouseEventArgs</code> - Mouse interaction events</li>
+<li><code>KeyBinding</code> - Keyboard shortcuts</li>
+<li><code>ICommand</code> - Command pattern interface</li>
+<li><code>ValidationRule</code> - Custom validation</li>
+<li><code>TextChangedEventArgs</code> - Text change notifications</li>
 </ul>
 <h3 id="concepts">Concepts</h3>
 <ul>
 <li><strong><a href="../concepts/events.html">Event Handling</a></strong> - Understanding event patterns</li>
-<li><strong><a href="../concepts/commands.md">Command Pattern</a></strong> - Implementing commands</li>
-<li><strong><a href="../concepts/input.md">Input System</a></strong> - Keyboard and mouse handling</li>
-<li><strong><a href="../concepts/validation.md">Validation</a></strong> - Data validation concepts</li>
+<li>Command pattern - see <code>ICommand</code> usage in guides</li>
+<li>Input system - keyboard and mouse handling is covered throughout this guide</li>
+<li>Validation concepts - see Bind Data guide for patterns</li>
 </ul>
 <h3 id="examples">Examples</h3>
 <ul>
 <li><strong><a href="../examples/button-click.html">Button Click</a></strong> - Basic event handling</li>
-<li><strong><a href="../examples/form-validation.html">Form Validation</a></strong> - Input validation example</li>
-<li><strong><a href="../examples/keyboard-shortcuts.md">Keyboard Shortcuts</a></strong> - Key binding examples</li>
+<li>Form validation example (coming soon)</li>
+<li>Keyboard shortcuts example (coming soon)</li>
 </ul>
 <h3 id="related-guides">Related Guides</h3>
 <ul>

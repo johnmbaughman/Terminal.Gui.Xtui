@@ -12,23 +12,23 @@ Demonstrates form layout with input controls, labels, and responsive sizing usin
 This example demonstrates these layout and input control APIs:
 
 ### Layout Controls
-- **[StackView](../../api/Terminal.Gui.Xaml.StackView.yml)** - Vertical/horizontal layout container (`Orientation`, `Spacing`)
-- **[FrameView](../../api/Terminal.Gui.Xaml.FrameView.yml)** - Bordered container with title (`Title`, `Border`)
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Main window container (`Title`, `Width`, `Height`)
+- **`StackView`** - Vertical/horizontal layout container (`Orientation`, `Spacing`)
+- **`FrameView`** - Bordered container with title (`Title`, `Border`)
+- **`Window`** - Main window container (`Title`, `Width`, `Height`)
 
 ### Input Controls
-- **[TextField](../../api/Terminal.Gui.Xaml.TextField.yml)** - Single-line text input (`Text`, `Width`)
-- **[ComboBox](../../api/Terminal.Gui.Xaml.ComboBox.yml)** - Dropdown selection control (`ItemsSource`, `SelectedItem`)
-- **[CheckBox](../../api/Terminal.Gui.Xaml.CheckBox.yml)** - Boolean checkbox control (`IsChecked`, `Text`)
-- **[Button](../../api/Terminal.Gui.Xaml.Button.yml)** - Action button (`Text`, `Click` event, `IsEnabled`)
+- **`TextField`** - Single-line text input (`Text`, `Width`)
+- **`ComboBox`** - Dropdown selection control (`ItemsSource`, `SelectedItem`)
+- **`CheckBox`** - Boolean checkbox control (`IsChecked`, `Text`)
+- **`Button`** - Action button (`Text`, `Click` event, `IsEnabled`)
 
 ### Layout System
-- **[Dim](../../api/Terminal.Gui.Xaml.Dim.yml)** - Dimension system (`Dim.Fill()`, `Dim.Sized()`)
-- **[Pos](../../api/Terminal.Gui.Xaml.Pos.yml)** - Position system (`Pos.Left()`, `Pos.Center()`)
+- **`Dim`** - Dimension system (`Dim.Fill()`, `Dim.Sized()`)
+- **`Pos`** - Position system (`Pos.Left()`, `Pos.Center()`)
 
 ### Styling
-- **[Color](../../api/Terminal.Gui.Xaml.Color.yml)** - Color system for styling (`ForegroundColor`, `BackgroundColor`)
-- **[Label](../../api/Terminal.Gui.Xaml.Label.yml)** - Text display (`Text`, styling properties)
+- **`Color`** - Color system for styling (`ForegroundColor`, `BackgroundColor`)
+- **`Label`** - Text display (`Text`, styling properties)
 
 > **💡 Pro Tip**: Use `FrameView` to group related controls and `StackView` for consistent spacing. `Dim.Fill()` makes controls responsive to window resizing.
 
@@ -555,14 +555,14 @@ Solution: Call ValidateForm() after state changes
 - **[Navigation](../guides/navigation.md)** - Multi-form applications and flow
 
 ### API Reference
-- **[StackView](../../api/Terminal.Gui.Xaml.StackView.yml)** - Layout container with orientation and spacing
-- **[FrameView](../../api/Terminal.Gui.Xaml.FrameView.yml)** - Bordered grouping container
-- **[TextField](../../api/Terminal.Gui.Xaml.TextField.yml)** - Text input control with validation
-- **[ComboBox](../../api/Terminal.Gui.Xaml.ComboBox.yml)** - Dropdown selection with data binding
-- **[CheckBox](../../api/Terminal.Gui.Xaml.CheckBox.yml)** - Boolean input with three-state support
-- **[Dim](../../api/Terminal.Gui.Xaml.Dim.yml)** - Responsive dimension system
+- `StackView` - Layout container with orientation and spacing
+- `FrameView` - Bordered grouping container
+- `TextField` - Text input control with validation
+- `ComboBox` - Dropdown selection with data binding
+- `CheckBox` - Boolean input with three-state support
+- `Dim` - Responsive dimension system
 
 ### Concepts  
 - **[Layout System](../concepts/layout.md)** - Understanding positioning and sizing
-- **[Control Hierarchy](../concepts/controls.md)** - Container and child relationships
+- Control hierarchy (containers and children) — see `StackView`, `FrameView`
 - **[Event Handling](../concepts/events.md)** - User interaction patterns

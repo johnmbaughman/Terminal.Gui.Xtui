@@ -52,4 +52,4 @@ Terminal.Gui.Xaml brings declarative UI development to terminal applications by 
 
 ---
 
-> **Related Documentation**: [Getting Started](../getting-started.md) • [Guides](../guides/toc.yml) • [Examples](../examples/toc.yml) • [API Reference](~/api/index.md)
+> **Related Documentation**: [Getting Started](../getting-started.md) • [Guides](../guides/toc.yml) • [Examples](../examples/toc.yml) • [API Reference](../../api/index.md)

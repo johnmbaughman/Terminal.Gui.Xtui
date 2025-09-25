@@ -1,3 +1,30 @@
+#!/usr/bin/env pwsh
+<#
+.SYNOPSIS
+    Validate the version & compatibility matrix against the current package version and rules.
+.DESCRIPTION
+    Parses the version compatibility markdown and ensures:
+    - Current PackageVersion in the .csproj appears in the matrix
+    - Feature table has an "Introduced In" column and non-empty values
+    - Version rows are ordered (ascending by default, or descending with -Descending)
+    - No duplicate versions
+    - An upcoming placeholder row exists for the next minor version (configurable)
+    Optionally emits a JSON report.
+.PARAMETER CompatibilityFile
+    Path to the version compatibility markdown file. Defaults to docs/articles/guides/version-compatibility.md.
+.PARAMETER ProjectFile
+    Path to the Terminal.Gui.Xaml.csproj that contains PackageVersion.
+.PARAMETER Descending
+    Enforce descending semantic version ordering (latest first).
+.PARAMETER ConfigFile
+    Optional path to a JSON config controlling validation behavior.
+.EXAMPLE
+    ./validate-version-matrix.ps1 -Descending
+    Validates with descending order rules.
+.NOTES
+    Returns distinct exit codes for specific failure categories to aid CI troubleshooting.
+#>
+
 param(
     [string]$CompatibilityFile = "$(Join-Path $PSScriptRoot '..' 'docs' 'articles' 'guides' 'version-compatibility.md')",
     [string]$ProjectFile = "$(Join-Path $PSScriptRoot '..' 'src' 'Terminal.Gui.Xaml' 'Terminal.Gui.Xaml.csproj')",

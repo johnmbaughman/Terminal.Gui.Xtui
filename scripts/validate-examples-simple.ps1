@@ -3,9 +3,12 @@
 .SYNOPSIS
     Simple example validation for Terminal.Gui XAML Framework documentation
 .DESCRIPTION
-    Validates code examples from documentation by extracting and checking basic syntax.
+    Validates code examples from documentation by extracting fenced code blocks and performing
+    light heuristics (length/shape) checks without compilation.
 .PARAMETER ShowDetails
     Enable detailed output
+.EXAMPLE
+    ./validate-examples-simple.ps1 -ShowDetails
 #>
 
 param(

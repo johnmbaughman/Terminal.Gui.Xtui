@@ -1,3 +1,19 @@
+#!/usr/bin/env pwsh
+<#
+.SYNOPSIS
+    Pack the library and perform a quick install smoke test.
+.DESCRIPTION
+    Creates a NuGet package from the Terminal.Gui.Xaml project, then scaffolds a temporary console app
+    to verify the package can be added and the project builds. Cleans the temp project afterward.
+.PARAMETER Configuration
+    Build configuration for packing. Defaults to Debug.
+.EXAMPLE
+    ./pack-and-test.ps1 -Configuration Release
+    Produces a Release package and validates install/build in a throwaway project.
+.NOTES
+    Uses a local ./nupkg output folder as a temporary NuGet source during the test.
+#>
+
 param(
     [string]$Configuration = "Debug"
 )

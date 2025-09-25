@@ -94,10 +94,10 @@ Based on plan.md structure: Single project with documentation tooling extension
 - [x] T039 [P] XML documentation for all public documentation APIs
 - [x] T040 [P] Update main README.md with DocFX documentation setup instructions
 - [x] T041 [P] Create documentation architecture guide in docs/articles/architecture.md
-- [ ] T042 Code quality review (cyclomatic complexity <15, SOLID principles) for documentation services
-- [ ] T043 UX consistency validation (error messages, build integration patterns)
-- [ ] T044 Remove code duplication across documentation services
-- [ ] T045 Execute quickstart.md manual testing scenarios
+- [x] T042 Code quality review (cyclomatic complexity <15, SOLID principles) for documentation services — extracted helpers in SimpleDocumentationGeneratorService to reduce method complexity and improve separation of concerns
+- [x] T043 UX consistency validation (error messages, build integration patterns) — standardized build error messages with BUILDxxxx codes and normalized progress messages in SimpleBuildIntegrationService
+- [x] T044 Remove code duplication across documentation services — introduced shared PathHelpers (repo root + ResolvePath + normalization) and refactored SimpleBuildIntegrationService and SimpleDocumentationGeneratorService to use it
+- [x] T045 Execute quickstart.md manual testing scenarios — documented manual checks and added `QuickstartSmokeTests` to automate basic generation/validation/build flows
 
 ## Dependencies
 - Setup (T001-T004) before tests (T005-T012)

@@ -1,5 +1,5 @@
 <div style="display:flex;align-items:center;gap:12px;">
-	<img src="logo.svg" alt="Terminal.Gui.Xaml" width="60" height="60"/>
+	<img src="/logo.svg" alt="Terminal.Gui.Xaml" width="60" height="60"/>
 	<h1 style="margin:0;">Terminal.Gui.Xaml</h1>
 </div>
 

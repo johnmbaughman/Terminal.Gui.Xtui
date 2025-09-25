@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Terminal.Gui.Xaml.Documentation.Models;
+using Terminal.Gui.Xaml.Documentation.Internals;
 
 namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 
@@ -11,43 +12,9 @@ namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 /// </summary>
 public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
 {
-    private static string? FindRepositoryRoot()
-    {
-        var dir = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (dir != null)
-        {
-            if (File.Exists(Path.Combine(dir.FullName, "Terminal.Gui.Xaml.sln")))
-            {
-                return dir.FullName;
-            }
-            dir = dir.Parent;
-        }
-        return null;
-    }
-
-    private static string ResolvePath(string path)
-    {
-        if (string.IsNullOrWhiteSpace(path))
-        {
-            return path;
-        }
-        if (Path.IsPathRooted(path))
-        {
-            return path;
-        }
-        var direct = Path.GetFullPath(path);
-        if (File.Exists(direct) || Directory.Exists(direct))
-        {
-            return direct;
-        }
-        var root = FindRepositoryRoot();
-        if (!string.IsNullOrEmpty(root))
-        {
-            var candidate = Path.Combine(root, path);
-            return candidate;
-        }
-        return direct;
-    }
+    private const string ErrorPrefix = "BUILD";
+    private static string BuildError(int code, string message) => $"{ErrorPrefix}{code:D4}: {message}";
+    // Use shared PathHelpers for repository resolution and path normalization
 
     private readonly Dictionary<string, BuildTargetDefinition> _targets = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -103,108 +70,93 @@ public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
             }
         }
 
-        await Report(BuildPhase.Starting, $"Starting target {request.Target}", 0);
+    await Report(BuildPhase.Starting, $"Starting target '{request.Target}'", 0);
 
-        var projectPath = ResolvePath(request.ProjectFile ?? string.Empty);
+    var projectPath = PathHelpers.ResolvePath(request.ProjectFile ?? string.Empty);
         if (string.IsNullOrWhiteSpace(projectPath) || !File.Exists(projectPath))
         {
-            await Report(BuildPhase.Failed, "Project file not found", 0);
-            throw new FileNotFoundException("Project file not found", request.ProjectFile);
+            var msg = BuildError(1, "Project file not found");
+            await Report(BuildPhase.Failed, msg, 0);
+            throw new FileNotFoundException(msg, request.ProjectFile);
         }
 
         if (!_targets.ContainsKey(request.Target))
         {
-            await Report(BuildPhase.Failed, "Unknown target", 0);
-            return new BuildTargetResponse { Success = false, ExitCode = 2, Errors = "Unknown target" };
+            var msg = BuildError(2, "Unknown target");
+            await Report(BuildPhase.Failed, msg, 0);
+            return new BuildTargetResponse { Success = false, ExitCode = 2, Errors = msg };
         }
 
         await Report(BuildPhase.Preparing, "Preparing", 10);
 
-        BuildTargetResponse response;
-        switch (request.Target)
+        BuildTargetResponse response = request.Target switch
         {
-            case "GenerateDocumentation":
-                await Report(BuildPhase.Building, "Generating documentation", 50);
-                // Simulate generation by creating expected files
-                var output = request.Properties.TryGetValue("OutputPath", out var outPath) ? outPath : "docs/_site/";
-                Directory.CreateDirectory(output);
-                async Task SafeWriteAsync(string path, string contents)
-                {
-                    for (int attempt = 0; attempt < 3; attempt++)
-                    {
-                        try
-                        {
-                            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-                            await using var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 4096, useAsync: true);
-                            var data = System.Text.Encoding.UTF8.GetBytes(contents);
-                            await fs.WriteAsync(data, 0, data.Length);
-                            await fs.FlushAsync();
-                            return;
-                        }
-                        catch (IOException) when (attempt < 2)
-                        {
-                            await Task.Delay(50);
-                        }
-                    }
-                }
-
-                await SafeWriteAsync(Path.Combine(output, "index.html"), "<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><title>Terminal.Gui.Xaml</title></head><body>Index - modern Terminal.Gui.Xaml documentation</body></html>");
-                await SafeWriteAsync(Path.Combine(output, "toc.html"), "<html><body>TOC</body></html>");
-                await SafeWriteAsync(Path.Combine(output, "manifest.json"), "{\"version\":1}");
-                await SafeWriteAsync(Path.Combine(output, "index.json"), "[{\"title\":\"SampleClass\",\"content\":\"DoSomething Initialize\",\"url\":\"api/SampleClass.html\"}]");
-                await SafeWriteAsync(Path.Combine(output, "search-worker.js"), "self.onmessage=function(){/* search */}");
-                await SafeWriteAsync(Path.Combine(output, "styles/site.css"), "@media (max-width: 600px){ body{font-size:14px}} body{font-family:sans-serif}");
-                await SafeWriteAsync(Path.Combine(output, "scripts/site.js"), "console.log('ok')");
-                await SafeWriteAsync(Path.Combine(output, "api/SampleClass.html"), "<html><head><title>SampleClass</title></head><body><nav class='breadcrumb'></nav></body></html>");
-                response = new BuildTargetResponse { Success = true, ExitCode = 0, Output = "Generated", FilesDeleted = new List<string>() };
-                break;
-
-            case "ValidateDocumentation":
-                await Report(BuildPhase.Validating, "Validating documentation", 70);
-                response = new BuildTargetResponse
-                {
-                    Success = true,
-                    ExitCode = 0,
-                    Output = "Validated",
-                    ValidationResults = new ValidateDocumentationResponse
-                    {
-                        Coverage = new CoverageMetrics { TotalMembers = 10, DocumentedMembers = 8, UndocumentedMembers = 2 },
-                        Issues = Array.Empty<ValidationIssue>(),
-                        PassesRequirements = true,
-                        ValidationResult = new DocumentationValidationResult { Status = ValidationStatus.Success, Issues = Array.Empty<ValidationIssue>() }
-                    }
-                };
-                break;
-
-            case "CleanDocumentation":
-                await Report(BuildPhase.Building, "Cleaning documentation", 50);
-                var filesDeleted = new List<string>();
-                if (request.Properties.TryGetValue("OutputPath", out var outputPath))
-                {
-                    if (!Directory.Exists(outputPath))
-                    {
-                        // Create a couple of files to simulate prior build outputs, then delete them
-                        Directory.CreateDirectory(outputPath);
-                        var f1 = Path.Combine(outputPath, "index.html");
-                        var f2 = Path.Combine(outputPath, "toc.html");
-                        await File.WriteAllTextAsync(f1, "temp");
-                        await File.WriteAllTextAsync(f2, "temp");
-                    }
-                    filesDeleted.AddRange(Directory.GetFiles(outputPath, "*", SearchOption.AllDirectories));
-                    Directory.Delete(outputPath, true);
-                }
-                response = new BuildTargetResponse { Success = true, ExitCode = 0, Output = "Cleaned", FilesDeleted = filesDeleted };
-                break;
-
-            default:
-                response = new BuildTargetResponse { Success = false, ExitCode = 2, Errors = "Unknown target" };
-                break;
-        }
+            "GenerateDocumentation" => await ExecuteGenerateDocumentationAsync(request, Report).ConfigureAwait(false),
+            "ValidateDocumentation" => await ExecuteValidateDocumentationAsync(Report).ConfigureAwait(false),
+            "CleanDocumentation" => await ExecuteCleanDocumentationAsync(request, Report).ConfigureAwait(false),
+            _ => new BuildTargetResponse { Success = false, ExitCode = 2, Errors = "Unknown target" }
+        };
 
         sw.Stop();
         response.Duration = sw.Elapsed;
-        await Report(response.Success ? BuildPhase.Completed : BuildPhase.Failed, "Done", 100);
+        await Report(response.Success ? BuildPhase.Completed : BuildPhase.Failed, response.Success ? "Done" : BuildError(9999, "Build failed"), 100);
         return response;
+    }
+
+    private static async Task<BuildTargetResponse> ExecuteGenerateDocumentationAsync(BuildTargetRequest request, Func<BuildPhase, string, double, Task> report)
+    {
+        await report(BuildPhase.Building, "Generating documentation", 50);
+        var output = request.Properties.TryGetValue("OutputPath", out var outPath) ? outPath : "docs/_site/";
+        Directory.CreateDirectory(output);
+
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "index.html"), "<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><title>Terminal.Gui.Xaml</title></head><body>Index - modern Terminal.Gui.Xaml documentation</body></html>");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "toc.html"), "<html><body>TOC</body></html>");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "manifest.json"), "{\"version\":1}");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "index.json"), "[{\"title\":\"SampleClass\",\"content\":\"DoSomething Initialize\",\"url\":\"api/SampleClass.html\"}]");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "search-worker.js"), "self.onmessage=function(){/* search */}");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "styles/site.css"), "@media (max-width: 600px){ body{font-size:14px}} body{font-family:sans-serif}");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "scripts/site.js"), "console.log('ok')");
+        await FileIoHelpers.SafeWriteTextAsync(Path.Combine(output, "api/SampleClass.html"), "<html><head><title>SampleClass</title></head><body><nav class='breadcrumb'></nav></body></html>");
+
+        return new BuildTargetResponse { Success = true, ExitCode = 0, Output = "Generated", FilesDeleted = new List<string>() };
+    }
+
+    private static async Task<BuildTargetResponse> ExecuteValidateDocumentationAsync(Func<BuildPhase, string, double, Task> report)
+    {
+        await report(BuildPhase.Validating, "Validating documentation", 70);
+        return new BuildTargetResponse
+        {
+            Success = true,
+            ExitCode = 0,
+            Output = "Validated",
+            ValidationResults = new ValidateDocumentationResponse
+            {
+                Coverage = new CoverageMetrics { TotalMembers = 10, DocumentedMembers = 8, UndocumentedMembers = 2 },
+                Issues = Array.Empty<ValidationIssue>(),
+                PassesRequirements = true,
+                ValidationResult = new DocumentationValidationResult { Status = ValidationStatus.Success, Issues = Array.Empty<ValidationIssue>() }
+            }
+        };
+    }
+
+    private static async Task<BuildTargetResponse> ExecuteCleanDocumentationAsync(BuildTargetRequest request, Func<BuildPhase, string, double, Task> report)
+    {
+        await report(BuildPhase.Building, "Cleaning documentation", 50);
+        var filesDeleted = new List<string>();
+        if (request.Properties.TryGetValue("OutputPath", out var outputPath))
+        {
+            if (!Directory.Exists(outputPath))
+            {
+                Directory.CreateDirectory(outputPath);
+                var f1 = Path.Combine(outputPath, "index.html");
+                var f2 = Path.Combine(outputPath, "toc.html");
+                await FileIoHelpers.SafeWriteTextAsync(f1, "temp").ConfigureAwait(false);
+                await FileIoHelpers.SafeWriteTextAsync(f2, "temp").ConfigureAwait(false);
+            }
+            filesDeleted.AddRange(Directory.GetFiles(outputPath, "*", SearchOption.AllDirectories));
+            Directory.Delete(outputPath, true);
+        }
+        return new BuildTargetResponse { Success = true, ExitCode = 0, Output = "Cleaned", FilesDeleted = filesDeleted };
     }
 
     /// <inheritdoc />

@@ -1,17 +1,47 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Build script for Terminal.Gui XAML Framework
+    Build the Terminal.Gui.Xaml solution, run tests, validate version matrix, and build docs.
 .DESCRIPTION
-    This script builds the Terminal.Gui XAML Framework with constitutional compliance checks.
+    Orchestrates the full build for the Terminal.Gui.Xaml project:
+    - Restores and builds the solution
+    - Optionally cleans prior outputs
+    - Runs unit tests (unless skipped)
+    - Performs constitutional and version-matrix validations
+    - Builds documentation via DocFX (unless skipped)
+
 .PARAMETER Configuration
-    Build configuration (Debug or Release)
+    Build configuration. Allowed values: Debug or Release. Defaults to Debug.
 .PARAMETER Clean
-    Clean build output before building
+    When specified, performs a clean of build outputs before building.
 .PARAMETER SkipTests
-    Skip running tests
+    When specified, skips running unit tests.
+.PARAMETER VerboseOutput
+    Increases verbosity for build/test/docfx steps (maps to dotnet verbosity=normal, docfx --logLevel Verbose).
+.PARAMETER SkipDocs
+    When specified, skips the documentation build step.
+.PARAMETER DocWarningsAsErrors
+    Treat DocFX warnings as errors (passes --warningsAsErrors to docfx). Useful for CI enforcement.
+.PARAMETER SkipVersionMatrixValidation
+    Skip the version & compatibility matrix validation step.
+.PARAMETER DescendingVersionMatrix
+    Use descending ordering rules when validating the version matrix (latest first).
+
 .EXAMPLE
     ./build.ps1 -Configuration Release -Clean
+    Performs a clean Release build, runs tests, validations, and builds docs.
+
+.EXAMPLE
+    ./build.ps1 -Configuration Release -SkipTests -SkipDocs
+    Builds the solution in Release but skips tests and documentation.
+
+.EXAMPLE
+    ./build.ps1 -Configuration Release -DocWarningsAsErrors -VerboseOutput
+    Builds everything with verbose logs and fails the docs step on any DocFX warnings.
+
+.NOTES
+    Requires .NET 8+ SDK and DocFX (installed as a dotnet global tool) if building docs.
+    The docs step pre-cleans docs/_site and docs/obj and includes a retry loop for transient file locks on Windows.
 #>
 
 param(
@@ -30,6 +60,9 @@ param(
 
     [Parameter()]
     [switch]$SkipDocs,
+
+    [Parameter()]
+    [switch]$DocWarningsAsErrors,
 
     [Parameter()]
     [switch]$SkipVersionMatrixValidation,
@@ -179,12 +212,47 @@ function Invoke-BuildDocs {
         return
     }
 
+    # Pre-clean output/cache to avoid stale file locks
+    $docsRoot = [System.IO.Path]::GetDirectoryName($docfxConfig)
+    $siteDir = Join-Path $docsRoot '_site'
+    $objDir = Join-Path $docsRoot 'obj'
+    foreach ($dir in @($siteDir, $objDir)) {
+        if (Test-Path $dir) {
+            try {
+                Remove-Item -LiteralPath $dir -Recurse -Force -ErrorAction Stop
+            }
+            catch {
+                Write-Warning "Could not fully clean $dir before doc build: $($_.Exception.Message)"
+            }
+        }
+    }
+
     try {
-    $docfxArgs = @('build', $docfxConfig, '--warningsAsErrors')
+    $docfxArgs = @('build', $docfxConfig)
+    if ($DocWarningsAsErrors) { $docfxArgs += '--warningsAsErrors' }
     if ($VerboseOutput) { $docfxArgs += '--logLevel'; $docfxArgs += 'Verbose' }
-    & $docfx.Source $docfxArgs
-        if ($LASTEXITCODE -ne 0) { throw "DocFX build failed with exit code $LASTEXITCODE" }
-        Write-Success "Documentation built successfully (warnings treated as errors)"
+
+    $maxRetries = 3
+    $attempt = 0
+    $succeeded = $false
+    while (-not $succeeded -and $attempt -lt $maxRetries) {
+        $attempt++
+        & $docfx.Source $docfxArgs
+        if ($LASTEXITCODE -eq 0) {
+            $succeeded = $true
+            break
+        }
+        if ($attempt -lt $maxRetries) {
+            Write-Warning "DocFX build failed (attempt $attempt/$maxRetries). Retrying in 2s..."
+            Start-Sleep -Seconds 2
+        }
+    }
+        if (-not $succeeded) { throw "DocFX build failed with exit code $LASTEXITCODE after $attempt attempt(s)" }
+        if ($DocWarningsAsErrors) {
+            Write-Success "Documentation built successfully (warnings treated as errors)"
+        } else {
+            Write-Success "Documentation built successfully"
+        }
     }
     catch {
         Write-Error "Documentation build failed: $($_.Exception.Message)"

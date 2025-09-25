@@ -12,25 +12,25 @@ Demonstrates event handling, user interaction patterns, and dynamic UI updates i
 This example demonstrates these event handling and interaction APIs:
 
 ### Interactive Controls
-- **[Button](../../api/Terminal.Gui.Xaml.Button.yml)** - Click events and command binding (`Click`, `Command`, `IsEnabled`)
-- **[CheckBox](../../api/Terminal.Gui.Xaml.CheckBox.yml)** - Boolean interaction (`CheckedChanged`, `IsChecked`)
-- **[MenuItem](../../api/Terminal.Gui.Xaml.MenuItem.yml)** - Menu item actions (`Click`, `Command`, shortcuts)
-- **[MenuBar](../../api/Terminal.Gui.Xaml.MenuBar.yml)** - Menu container (`MenuBarItem` hierarchy)
+- **`Button`** - Click events and command binding (`Click`, `Command`, `IsEnabled`)
+- **`CheckBox`** - Boolean interaction (`CheckedChanged`, `IsChecked`)
+- **`MenuItem`** - Menu item actions (`Click`, `Command`, shortcuts)
+- **`MenuBar`** - Menu container (`MenuBarItem` hierarchy)
 
 ### Event System
-- **[EventArgs](../../api/Terminal.Gui.Xaml.EventArgs.yml)** - Base event argument type
-- **[RoutedEventArgs](../../api/Terminal.Gui.Xaml.RoutedEventArgs.yml)** - Routed event handling
-- **[KeyEventArgs](../../api/Terminal.Gui.Xaml.KeyEventArgs.yml)** - Keyboard event data
+- **`EventArgs`** - Base event argument type
+- **`RoutedEventArgs`** - Routed event handling
+- **`KeyEventArgs`** - Keyboard event data
 
 ### Command Pattern
-- **[ICommand](../../api/System.Windows.Input.ICommand.yml)** - Command interface (`Execute`, `CanExecute`)
-- **[RelayCommand](../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml)** - Simple command implementation
-- **[KeyBinding](../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml)** - Keyboard shortcuts (`Key`, `Command`)
+- **`ICommand`** - Command interface (`Execute`, `CanExecute`)
+- **`RelayCommand`** - Simple command implementation
+- **`KeyBinding`** - Keyboard shortcuts (`Key`, `Command`)
 
 ### Dynamic UI Updates  
-- **[Label](../../api/Terminal.Gui.Xaml.Label.yml)** - Text display with styling (`Text`, `ForegroundColor`)
-- **[Application.Refresh](../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_Refresh)** - Force UI redraw
-- **[Control.SetNeedsDisplay](../../api/Terminal.Gui.Control.yml#Terminal_Gui_Control_SetNeedsDisplay)** - Mark for repainting
+- **`Label`** - Text display with styling (`Text`, `ForegroundColor`)
+- **`Application.Refresh`** - Force UI redraw
+- **`Control.SetNeedsDisplay`** - Mark for repainting
 
 > **💡 Pro Tip**: Use commands for complex logic that needs `CanExecute` support, and direct event handlers for simple UI interactions. Keyboard shortcuts work globally within windows.
 
@@ -758,14 +758,13 @@ Solution: Check status label updates
 - **[Create a Window](../guides/create-window.md)** - Window setup and event handling basics
 
 ### API Reference
-- **[Button](../../api/Terminal.Gui.Xaml.Button.yml)** - Click events, commands, and state management
-- **[KeyBinding](../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml)** - Keyboard shortcuts and global hotkeys
-- **[MenuItem](../../api/Terminal.Gui.Xaml.MenuItem.yml)** - Menu actions and keyboard accelerators
-- **[CheckBox](../../api/Terminal.Gui.Xaml.CheckBox.yml)** - Boolean input with change events
-- **[ICommand](../../api/System.Windows.Input.ICommand.yml)** - Command pattern interface
-- **[RelayCommand](../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml)** - Command implementation helper
+- `Button` - Click events, commands, and state management
+- `KeyBinding` - Keyboard shortcuts and global hotkeys
+- `MenuItem` - Menu actions and keyboard accelerators
+- `CheckBox` - Boolean input with change events
+- `ICommand` - Command pattern interface
+- `RelayCommand` - Command implementation helper
 
 ### Concepts
 - **[Event Handling](../concepts/events.md)** - Understanding event patterns and routing
-- **[Command Pattern](../concepts/commands.md)** - Implementing commands vs direct events
-- **[User Interaction](../concepts/interaction.md)** - Best practices for user experience
+- User interaction best practices

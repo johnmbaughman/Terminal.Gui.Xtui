@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Example: Layout (Planned) | Terminal.Gui.Xaml Examples </title>
+      <title>Layout Example | Terminal.Gui.Xaml Examples </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Example: Layout (Planned) | Terminal.Gui.Xaml Examples ">
+      <meta name="title" content="Layout Example | Terminal.Gui.Xaml Examples ">
     
     
       <link rel="shortcut icon" href="../../favicon.ico">
@@ -77,10 +77,52 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="example-layout-planned">Example: Layout (Planned)</h1>
+<h1 id="layout-example">Layout Example</h1>
 
-<p>This example will demonstrate layout containers, absolute vs computed positioning, and adaptive terminal sizing.</p>
-<p>Status: Planned — placeholder to eliminate link warnings.</p>
+<p>Version: 1.0.0-beta1<br>
+Prerequisites: .NET 8 SDK, Terminal.Gui v2+, <code>Terminal.Gui.Xaml</code></p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Difference between absolute and computed layout</li>
+<li>Using <code>StackView</code> and <code>GridView</code> containers</li>
+<li>Anchoring controls to resize with the terminal</li>
+<li>Mixing XAML layout with code-behind adjustments</li>
+</ul>
+<h2 id="basic-window-definition">Basic Window Definition</h2>
+<pre><code class="lang-xml">&lt;Window xmlns=&quot;http://schemas.terminal-gui.org/xaml&quot; Title=&quot;Layout Demo&quot; Width=&quot;80&quot; Height=&quot;20&quot;&gt;
+	&lt;GridView x:Name=&quot;RootGrid&quot; Rows=&quot;3&quot; Columns=&quot;2&quot;&gt;
+		&lt;Label Grid.Row=&quot;0&quot; Grid.Column=&quot;0&quot; Text=&quot;Header&quot; /&gt;
+		&lt;StackView Grid.Row=&quot;1&quot; Grid.Column=&quot;0&quot; Orientation=&quot;Vertical&quot;&gt;
+			&lt;Label Text=&quot;Name&quot; /&gt;
+			&lt;TextField x:Name=&quot;NameField&quot; Width=&quot;40&quot; /&gt;
+			&lt;Label Text=&quot;Description&quot; /&gt;
+			&lt;TextView x:Name=&quot;DescriptionField&quot; Width=&quot;60&quot; Height=&quot;5&quot; /&gt;
+		&lt;/StackView&gt;
+		&lt;FrameView Grid.RowSpan=&quot;2&quot; Grid.Column=&quot;1&quot; Title=&quot;Preview&quot; x:Name=&quot;PreviewPane&quot; /&gt;
+	&lt;/GridView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="code-behind-adjustment">Code-Behind Adjustment</h2>
+<pre><code class="lang-csharp">using Terminal.Gui;
+
+public partial class LayoutDemoWindow : Window
+{
+		public LayoutDemoWindow()
+		{
+				InitializeComponent();
+
+				// Demonstrate dynamic resizing logic
+				PreviewPane.Width = Dim.Fill();
+				PreviewPane.Height = Dim.Fill();
+
+				this.LayoutComplete += (_) =&gt; PreviewPane.SetNeedsDisplay();
+		}
+}
+</code></pre>
+<h2 id="run">Run</h2>
+<pre><code class="lang-powershell">dotnet run --project samples/LayoutSample/LayoutSample.csproj
+</code></pre>
+<p>Status: Example — initial content (enhance with grid spanning and relative dimensions later)</p>
 
 </article>
           </div>

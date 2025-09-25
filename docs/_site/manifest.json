@@ -1490,6 +1490,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/contributing/accessibility-testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/accessibility-testing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "articles/contributing/docs-style-guide.md",
       "output": {
         ".html": {
@@ -1514,6 +1524,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/contributing/offline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/contributing/screen-reader-commands.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/contributing/screen-reader-commands.html"
         }
       },
       "version": ""
@@ -1547,6 +1567,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/examples/button-click.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/data-binding.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/data-binding.html"
         }
       },
       "version": ""
@@ -1607,6 +1637,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/examples/multi-window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/examples/theming.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/examples/theming.html"
         }
       },
       "version": ""
@@ -1716,6 +1756,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/guides/keyboard-navigation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/keyboard-navigation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "articles/guides/legacy-binding-syntax.md",
       "output": {
         ".html": {
@@ -1750,6 +1800,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/guides/navigation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/guides/resources-and-theming.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/guides/resources-and-theming.html"
         }
       },
       "version": ""
@@ -1869,6 +1929,16 @@
       "output": {
         "resource": {
           "relative_path": "search-stopwords.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tests/TestStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "tests/TestStrategy.html"
         }
       },
       "version": ""
