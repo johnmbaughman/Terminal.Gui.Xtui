@@ -6,6 +6,8 @@ Stay up-to-date with the latest features, improvements, and breaking changes in 
 > **Last Updated**: September 2025  
 > **Documentation Version**: 1.0
 
+> See also: [Version & Compatibility Matrix](guides/version-compatibility.md) for runtime & feature support status.
+
 ## Version 1.0.0 - Initial Release
 *Released: September 2025*
 
@@ -15,7 +17,7 @@ Stay up-to-date with the latest features, improvements, and breaking changes in 
 
 #### Core Framework
 - **XAML Support**: Full XAML parsing and rendering engine for Terminal.Gui
-  - [XAML Syntax Overview](concepts/xaml-syntax.md)
+  - XAML syntax overview (coming soon)
   - [Getting Started Guide](getting-started.md)
   
 - **Data Binding**: Two-way data binding with INotifyPropertyChanged support
@@ -28,14 +30,14 @@ Stay up-to-date with the latest features, improvements, and breaking changes in 
 
 #### Controls and Components
 - **Basic Controls**: Label, Button, TextField, CheckBox, RadioButton
-  - [Button API Reference](~/api/Terminal.Gui.Xaml.Button.html)
-  - [TextField API Reference](~/api/Terminal.Gui.Xaml.TextField.html)
+  - Button API reference
+  - TextField API reference
   
 - **Container Controls**: StackView, FrameView, Dialog, Window
-  - [Container Controls Guide](guides/container-controls.md)
+  - Container controls guide (coming soon)
   
 - **List Controls**: ListView, ComboBox with data binding support
-  - [List Controls Guide](guides/list-controls.md)
+  - List controls guide (coming soon)
 
 #### Developer Experience
 - **IntelliSense**: Full Visual Studio and VS Code XAML IntelliSense support
@@ -183,7 +185,7 @@ Special thanks to early adopters, beta testers, and contributors who helped shap
 
 ### Documentation
 - [Getting Started](getting-started.md) - Your first Terminal.Gui.Xaml application
-- [API Reference](~/api/index.html) - Complete API documentation
+- [API Reference](../api/index.md) - Complete API documentation
 - [Concepts](concepts/index.md) - Understanding the framework
 - [Examples](examples/index.md) - Copy-paste ready code samples
 

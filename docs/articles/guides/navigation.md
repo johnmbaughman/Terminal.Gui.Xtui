@@ -7,28 +7,28 @@ This guide covers navigation patterns, window management, and creating multi-vie
 This guide demonstrates these key navigation and window management APIs:
 
 ### Window Management
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Primary window container for views
-- **[Dialog](../../api/Terminal.Gui.Xaml.Dialog.yml)** - Modal dialog windows
-- **[WindowManager](../../api/Terminal.Gui.Xaml.WindowManager.yml)** - Multi-window coordination
-- **[Application](../../api/Terminal.Gui.Xaml.Application.yml)** - Application-level window lifecycle
+- `Window` - Primary window container for views
+- `Dialog` - Modal dialog windows
+- `WindowManager` - Multi-window coordination
+- `Application` - Application-level window lifecycle
 
 ### Navigation Controls
-- **[MenuBar](../../api/Terminal.Gui.Xaml.MenuBar.yml)** - Top-level navigation menu
-- **[MenuItem](../../api/Terminal.Gui.Xaml.MenuItem.yml)** - Individual menu actions
-- **[TabView](../../api/Terminal.Gui.Xaml.TabView.yml)** - Tabbed content navigation
-- **[TreeView](../../api/Terminal.Gui.Xaml.TreeView.yml)** - Hierarchical content navigation
+- `MenuBar` - Top-level navigation menu
+- `MenuItem` - Individual menu actions
+- `TabView` - Tabbed content navigation
+- `TreeView` - Hierarchical content navigation
 
 ### View Management
-- **[ContentPresenter](../../api/Terminal.Gui.Xaml.ContentPresenter.yml)** - Dynamic content display
-- **[Frame](../../api/Terminal.Gui.Xaml.Frame.yml)** - Navigation container for views
-- **[UserControl](../../api/Terminal.Gui.Xaml.UserControl.yml)** - Reusable view components
-- **[ViewManager](../../api/Terminal.Gui.Xaml.ViewManager.yml)** - View lifecycle management
+- `ContentPresenter` - Dynamic content display
+- `Frame` - Navigation container for views
+- `UserControl` - Reusable view components
+- `ViewManager` - View lifecycle management
 
 ### Commands and Events
-- **[NavigationCommand](../../api/Terminal.Gui.Xaml.Commands.NavigationCommand.yml)** - Navigation-specific commands
-- **[WindowClosingEventArgs](../../api/Terminal.Gui.Xaml.WindowClosingEventArgs.yml)** - Window close event handling
-- **[NavigationEventArgs](../../api/Terminal.Gui.Xaml.NavigationEventArgs.yml)** - Navigation event data
-- **[INavigationService](../../api/Terminal.Gui.Xaml.Services.INavigationService.yml)** - Navigation service interface
+- `NavigationCommand` - Navigation-specific commands
+- `WindowClosingEventArgs` - Window close event handling
+- `NavigationEventArgs` - Navigation event data
+- `INavigationService` - Navigation service interface
 
 > **💡 Pro Tip**: Use `Dialog` for modal interactions and `Frame` with `UserControl` for complex view hierarchies. Always handle `WindowClosing` events for data persistence.
 
@@ -312,23 +312,21 @@ public void CascadeWindows()
 ## Related Topics
 
 ### API Reference
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Primary window container
-- **[Dialog](../../api/Terminal.Gui.Xaml.Dialog.yml)** - Modal dialog handling
-- **[MenuBar](../../api/Terminal.Gui.Xaml.MenuBar.yml)** - Menu navigation control
-- **[TabView](../../api/Terminal.Gui.Xaml.TabView.yml)** - Tabbed content navigation
-- **[Frame](../../api/Terminal.Gui.Xaml.Frame.yml)** - Content navigation container
-- **[NavigationCommand](../../api/Terminal.Gui.Xaml.Commands.NavigationCommand.yml)** - Navigation commands
+- `Window` - Primary window container
+- `Dialog` - Modal dialog handling
+- `MenuBar` - Menu navigation control
+- `TabView` - Tabbed content navigation
+- `Frame` - Content navigation container
+- `NavigationCommand` - Navigation commands
 
 ### Concepts
-- **[Window Lifecycle](../concepts/window-lifecycle.md)** - Window creation and management
 - **[Event Handling](../concepts/events.md)** - Navigation event patterns
-- **[View Management](../concepts/views.md)** - View composition and lifecycle
-- **[Application Architecture](../concepts/architecture.md)** - Multi-window app patterns
+- Application architecture notes (coming soon)
 
 ### Examples
-- **[Multi-Window App](../examples/multi-window.md)** - Complete navigation example
-- **[Dialog Usage](../examples/dialogs.md)** - Modal and non-modal dialogs
-- **[Menu Navigation](../examples/menu-navigation.md)** - Menu-driven applications
+- Multi-Window app (coming soon)
+- Dialog usage (coming soon)
+- Menu navigation (coming soon)
 
 ### Related Guides
 - **[Create a Window](create-window.md)** - Basic window creation and setup

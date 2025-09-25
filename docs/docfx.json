@@ -32,6 +32,7 @@
         "files": [
           "articles/**.md",
           "articles/**/toc.yml",
+          "tests/**.md",
           "toc.yml",
           "*.md"
         ]
@@ -41,12 +42,15 @@
       {
         "files": [
           "images/**",
-          "favicon.ico"
+          "favicon.ico",
+          "search-stopwords.json",
+          "logo.svg"
         ]
       }
     ],
     "output": "_site",
     "template": [
+      "templates/terminal-gui-xaml",
       "default"
     ],
     "globalMetadata": {

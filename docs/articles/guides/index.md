@@ -57,4 +57,4 @@ All guide examples follow these standards:
 
 ---
 
-> **Related Documentation**: [Concepts](../concepts/index.md) • [Examples](../examples/index.md) • [API Reference](~/api/index.md) • [FAQ](../faq.md)
+> **Related Documentation**: [Concepts](../concepts/index.md) • [Examples](../examples/index.md) • [API Reference](../../api/index.md) • [FAQ](../faq.md)

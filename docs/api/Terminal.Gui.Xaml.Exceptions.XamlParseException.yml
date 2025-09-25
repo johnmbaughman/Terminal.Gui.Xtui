@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: XamlParseException
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -95,7 +95,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -126,7 +126,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -161,7 +161,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -202,7 +202,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -246,7 +246,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -293,7 +293,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ElementName
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: AttributeName
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Expected
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -386,7 +386,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Actual
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -417,7 +417,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: InvalidElement
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -464,7 +464,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: InvalidAttribute
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
@@ -514,7 +514,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MalformedSyntax
     path: ../src/Terminal.Gui.Xaml/Exceptions/XamlParseException.cs

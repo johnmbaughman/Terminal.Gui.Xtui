@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ApiDocumentation
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: AssemblyName
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Namespace
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -121,7 +121,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: TypeName
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MemberName
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: DocumentationCoverage
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -214,7 +214,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: GeneratedPath
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
@@ -245,7 +245,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: LastGenerated
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ApiDocumentation.cs

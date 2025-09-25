@@ -36,4 +36,6 @@
     <Message Text="Cleaning generated documentation..." Importance="high" />
     <RemoveDir Directories="$(DocumentationOutputPath)" Condition="Exists('$(DocumentationOutputPath)')" />
   </Target>
+  <!-- Import documentation targets -->
+  <Import Project="src/Terminal.Gui.Xaml/Build/Terminal.Gui.Xaml.Documentation.targets" Condition="Exists('src/Terminal.Gui.Xaml/Build/Terminal.Gui.Xaml.Documentation.targets')" />
 </Project>

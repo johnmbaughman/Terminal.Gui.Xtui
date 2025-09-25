@@ -11,24 +11,24 @@ This guide walks you through creating your first Terminal.Gui.Xaml window with b
 Before diving into the implementation, familiarize yourself with these key APIs used in this guide:
 
 ### Core Components
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Main container for your application interface
-- **[StackView](../../api/Terminal.Gui.Xaml.StackView.yml)** - Layout container that arranges controls vertically or horizontally
-- **[Label](../../api/Terminal.Gui.Xaml.Label.yml)** - Display text and provide user guidance
-- **[TextField](../../api/Terminal.Gui.Xaml.TextField.yml)** - Single-line text input control
-- **[Button](../../api/Terminal.Gui.Xaml.Button.yml)** - Interactive control for user actions
-- **[CheckBox](../../api/Terminal.Gui.Xaml.CheckBox.yml)** - Boolean input control
+- `Window` - Main container for your application interface
+- `StackView` - Layout container that arranges controls vertically or horizontally
+- `Label` - Display text and provide user guidance
+- `TextField` - Single-line text input control
+- `Button` - Interactive control for user actions
+- `CheckBox` - Boolean input control
 
 ### Layout and Sizing
-- **[Dim](../../api/Terminal.Gui.Xaml.Dim.yml)** - Dimension system for responsive layouts (`Dim.Fill()`, `Dim.Sized()`)
-- **[Pos](../../api/Terminal.Gui.Xaml.Pos.yml)** - Position system for control placement
+- `Dim` - Dimension system for responsive layouts (`Dim.Fill()`, `Dim.Sized()`)
+- `Pos` - Position system for control placement
 
 ### Styling and Appearance
-- **[Color](../../api/Terminal.Gui.Xaml.Color.yml)** - Color system for foreground and background styling
-- **[BorderStyle](../../api/Terminal.Gui.Xaml.BorderStyle.yml)** - Border appearance options
+- `Color` - Color system for foreground and background styling
+- `BorderStyle` - Border appearance options
 
 ### Event Handling
-- **[EventArgs](../../api/Terminal.Gui.Xaml.EventArgs.yml)** - Base event argument type
-- **[Click Events](../../api/Terminal.Gui.Xaml.ClickEvent.yml)** - Button and control interaction events
+- `EventArgs` - Base event argument type
+- Click events - Button and control interaction events
 
 > **💡 Pro Tip**: Keep the API reference open while following this guide to explore additional properties and methods for each control.
 
@@ -276,12 +276,12 @@ Now that you have a basic window, you can:
 ## Related Topics
 
 ### API Reference
-- [Window Class](../../api/Terminal.Gui.Xaml.Window.yml) - Window API documentation
-- [StackView Class](../../api/Terminal.Gui.Xaml.StackView.yml) - Stack layout container
-- [Label Class](../../api/Terminal.Gui.Xaml.Label.yml) - Text display control
-- [TextField Class](../../api/Terminal.Gui.Xaml.TextField.yml) - Text input control
-- [Button Class](../../api/Terminal.Gui.Xaml.Button.yml) - Button control
-- [IXamlParser Interface](../../api/Terminal.Gui.Xaml.IXamlParser.yml) - XAML parsing
+- `Window` - Window API
+- `StackView` - Stack layout container
+- `Label` - Text display control
+- `TextField` - Text input control
+- `Button` - Button control
+- `IXamlParser` - XAML parsing interface
 
 ### Concepts
 - [Layout System](../concepts/layout.md) - Understanding layout principles

@@ -54,7 +54,7 @@ Basic binding syntax:
 <Label Text="{Binding UserName}" />
 ```
 
-> 💡 **v1.2+**: Two-way binding support added for all input controls. See [Two-Way Binding](../advanced/two-way-binding.md).
+> 💡 **v1.2+**: Two-way binding support added for all input controls. See guidance on two-way binding in the Binding guide.
 
 > ⚠️ **Breaking Change in v2.0**: The `Binding` syntax changed from `{Data UserName}` to `{Binding UserName}`. Update existing XAML files.
 ```

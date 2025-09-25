@@ -89,34 +89,38 @@
 <h2 id="related-apis">Related APIs</h2>
 <p>This guide demonstrates these key data binding APIs and concepts:</p>
 <h3 id="core-binding-system">Core Binding System</h3>
+<h3 id="core-binding-system-1">Core Binding System</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Data.Binding.yml">Binding</a></strong> - Primary data binding mechanism</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Data.BindingExpression.yml">BindingExpression</a></strong> - Runtime binding evaluation and management</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Data.BindingMode.yml">BindingMode</a></strong> - One-way, two-way, and one-time binding modes</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Data.IValueConverter.yml">IValueConverter</a></strong> - Custom data transformation interface</li>
+<li><code>Binding</code> - Primary data binding mechanism</li>
+<li><code>BindingExpression</code> - Runtime binding evaluation and management</li>
+<li><code>BindingMode</code> - One-way, two-way, and one-time binding modes</li>
+<li><code>IValueConverter</code> - Custom data transformation interface</li>
 </ul>
 <h3 id="mvvm-support">MVVM Support</h3>
+<h3 id="mvvm-support-1">MVVM Support</h3>
 <ul>
-<li><strong><a href="../../api/System.ComponentModel.INotifyPropertyChanged.yml">INotifyPropertyChanged</a></strong> - Property change notification</li>
-<li><strong><a href="../../api/System.Windows.Input.ICommand.yml">ICommand</a></strong> - Command pattern for user actions</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml">RelayCommand</a></strong> - Simple command implementation</li>
-<li><strong><a href="../../api/System.Collections.ObjectModel.ObservableCollection.yml">ObservableCollection<t></t></a></strong> - Collection change notifications</li>
+<li><code>INotifyPropertyChanged</code> - Property change notification</li>
+<li><code>ICommand</code> - Command pattern for user actions</li>
+<li><code>RelayCommand</code> - Simple command implementation</li>
+<li><code>ObservableCollection&lt;T&gt;</code> - Collection change notifications</li>
 </ul>
 <h3 id="control-data-properties">Control Data Properties</h3>
+<h3 id="control-data-properties-1">Control Data Properties</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml#Terminal_Gui_Xaml_TextField_Text">TextField.Text</a></strong> - Bindable text content</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml#Terminal_Gui_Xaml_Label_Text">Label.Text</a></strong> - Display bound data</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml#Terminal_Gui_Xaml_CheckBox_Checked">CheckBox.Checked</a></strong> - Boolean binding</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml#Terminal_Gui_Xaml_Button_Command">Button.Command</a></strong> - Command binding</li>
+<li><code>TextField.Text</code> - Bindable text content</li>
+<li><code>Label.Text</code> - Display bound data</li>
+<li><code>CheckBox.Checked</code> - Boolean binding</li>
+<li><code>Button.Command</code> - Command binding</li>
 </ul>
 <blockquote>
 <p><strong>💡 Pro Tip</strong>: Most Terminal.Gui.Xaml controls support two-way data binding. Always implement <code>INotifyPropertyChanged</code> in your view models for automatic UI updates.</p>
 </blockquote>
 <h2 id="prerequisites">Prerequisites</h2>
+<h2 id="related-resources">Related Resources</h2>
 <ul>
-<li>Completed <a href="create-window.html">Create a Window Guide</a></li>
-<li>Understanding of <a href="../concepts/binding.html">Binding Concepts</a></li>
-<li>Familiarity with <code>INotifyPropertyChanged</code></li>
+<li>Data binding implementation and concepts</li>
+<li>Value converters for transforming data</li>
+<li>Observable collections for list UIs</li>
 </ul>
 <h2 id="step-1-create-a-view-model">Step 1: Create a View Model</h2>
 <p>Create <code>PersonViewModel.cs</code>:</p>
@@ -443,7 +447,7 @@ PropertyChanged += (s, e) =&gt;
 <li>Changes in view model update the UI</li>
 </ul>
 <blockquote>
-<p>💡 <strong>v1.2+</strong>: Two-way binding validation support added. Binding errors are automatically displayed with visual indicators. See <a href="../advanced/validation.md">Validation Patterns</a> for details.</p>
+<p>💡 <strong>v1.2+</strong>: Two-way binding validation support added. Binding errors are automatically displayed with visual indicators.</p>
 </blockquote>
 <h3 id="command-binding-with-canexecute">Command Binding with CanExecute</h3>
 <pre><code class="lang-csharp">SaveCommand = new RelayCommand(Save, CanSave);
@@ -534,13 +538,6 @@ private bool CanSave()
 <li>Implement virtual collections for large datasets</li>
 </ul>
 <h2 id="related-topics">Related Topics</h2>
-<h3 id="api-reference">API Reference</h3>
-<ul>
-<li><a href="../../api/Terminal.Gui.Xaml.Data.Binding.yml">Binding Class</a> - Data binding implementation</li>
-<li><a href="../../api/Terminal.Gui.Xaml.Data.BindingExpression.yml">BindingExpression Class</a> - Binding evaluation</li>
-<li><a href="../../api/Terminal.Gui.Xaml.Data.IValueConverter.yml">IValueConverter Interface</a> - Custom value conversion</li>
-<li><a href="../../api/System.Collections.ObjectModel.ObservableCollection.yml">ObservableCollection<t></t></a> - Observable collections</li>
-</ul>
 <h3 id="concepts">Concepts</h3>
 <ul>
 <li><a href="../concepts/binding.html">Data Binding Concepts</a> - Understanding binding fundamentals</li>

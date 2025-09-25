@@ -26,7 +26,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: BuildConfiguration
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -63,7 +63,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: BuildMode
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -94,7 +94,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ParallelBuild
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -125,7 +125,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: VerboseLogging
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -156,7 +156,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: WarningsAsErrors
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -187,7 +187,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MaxConcurrency
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -236,7 +236,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CacheEnabled
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -267,7 +267,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Content
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -298,7 +298,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Resource
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -329,7 +329,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Dest
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -374,7 +374,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Template
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
@@ -405,7 +405,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: GlobalMetadata
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs

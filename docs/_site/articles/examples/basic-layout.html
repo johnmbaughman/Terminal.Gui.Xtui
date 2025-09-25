@@ -90,26 +90,26 @@
 <p>This example demonstrates these layout and input control APIs:</p>
 <h3 id="layout-controls">Layout Controls</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Vertical/horizontal layout container (<code>Orientation</code>, <code>Spacing</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.FrameView.yml">FrameView</a></strong> - Bordered container with title (<code>Title</code>, <code>Border</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Main window container (<code>Title</code>, <code>Width</code>, <code>Height</code>)</li>
+<li><strong><code>StackView</code></strong> - Vertical/horizontal layout container (<code>Orientation</code>, <code>Spacing</code>)</li>
+<li><strong><code>FrameView</code></strong> - Bordered container with title (<code>Title</code>, <code>Border</code>)</li>
+<li><strong><code>Window</code></strong> - Main window container (<code>Title</code>, <code>Width</code>, <code>Height</code>)</li>
 </ul>
 <h3 id="input-controls">Input Controls</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField</a></strong> - Single-line text input (<code>Text</code>, <code>Width</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.ComboBox.yml">ComboBox</a></strong> - Dropdown selection control (<code>ItemsSource</code>, <code>SelectedItem</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean checkbox control (<code>IsChecked</code>, <code>Text</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Button.yml">Button</a></strong> - Action button (<code>Text</code>, <code>Click</code> event, <code>IsEnabled</code>)</li>
+<li><strong><code>TextField</code></strong> - Single-line text input (<code>Text</code>, <code>Width</code>)</li>
+<li><strong><code>ComboBox</code></strong> - Dropdown selection control (<code>ItemsSource</code>, <code>SelectedItem</code>)</li>
+<li><strong><code>CheckBox</code></strong> - Boolean checkbox control (<code>IsChecked</code>, <code>Text</code>)</li>
+<li><strong><code>Button</code></strong> - Action button (<code>Text</code>, <code>Click</code> event, <code>IsEnabled</code>)</li>
 </ul>
 <h3 id="layout-system">Layout System</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Dim.yml">Dim</a></strong> - Dimension system (<code>Dim.Fill()</code>, <code>Dim.Sized()</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Pos.yml">Pos</a></strong> - Position system (<code>Pos.Left()</code>, <code>Pos.Center()</code>)</li>
+<li><strong><code>Dim</code></strong> - Dimension system (<code>Dim.Fill()</code>, <code>Dim.Sized()</code>)</li>
+<li><strong><code>Pos</code></strong> - Position system (<code>Pos.Left()</code>, <code>Pos.Center()</code>)</li>
 </ul>
 <h3 id="styling">Styling</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Color.yml">Color</a></strong> - Color system for styling (<code>ForegroundColor</code>, <code>BackgroundColor</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display (<code>Text</code>, styling properties)</li>
+<li><strong><code>Color</code></strong> - Color system for styling (<code>ForegroundColor</code>, <code>BackgroundColor</code>)</li>
+<li><strong><code>Label</code></strong> - Text display (<code>Text</code>, styling properties)</li>
 </ul>
 <blockquote>
 <p><strong>💡 Pro Tip</strong>: Use <code>FrameView</code> to group related controls and <code>StackView</code> for consistent spacing. <code>Dim.Fill()</code> makes controls responsive to window resizing.</p>
@@ -592,8 +592,8 @@ dotnet run
 <ul>
 <li><strong><a href="hello-world.html">Hello World</a></strong> - Minimal application setup (start here!)</li>
 <li><strong><a href="button-click.html">Button Click</a></strong> - Event handling and user interaction</li>
-<li><strong><a href="form-validation.md">Form Validation</a></strong> - Advanced input validation</li>
-<li><strong><a href="multi-window.md">Multi-Window App</a></strong> - Complex application structure</li>
+<li><strong><a href="form-validation.html">Form Validation</a></strong> - Advanced input validation</li>
+<li><strong><a href="multi-window.html">Multi-Window App</a></strong> - Complex application structure</li>
 </ul>
 <h3 id="learning-guides">Learning Guides</h3>
 <ul>
@@ -603,17 +603,17 @@ dotnet run
 </ul>
 <h3 id="api-reference">API Reference</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Layout container with orientation and spacing</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.FrameView.yml">FrameView</a></strong> - Bordered grouping container</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.TextField.yml">TextField</a></strong> - Text input control with validation</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.ComboBox.yml">ComboBox</a></strong> - Dropdown selection with data binding</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.CheckBox.yml">CheckBox</a></strong> - Boolean input with three-state support</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Dim.yml">Dim</a></strong> - Responsive dimension system</li>
+<li><code>StackView</code> - Layout container with orientation and spacing</li>
+<li><code>FrameView</code> - Bordered grouping container</li>
+<li><code>TextField</code> - Text input control with validation</li>
+<li><code>ComboBox</code> - Dropdown selection with data binding</li>
+<li><code>CheckBox</code> - Boolean input with three-state support</li>
+<li><code>Dim</code> - Responsive dimension system</li>
 </ul>
 <h3 id="concepts">Concepts</h3>
 <ul>
 <li><strong><a href="../concepts/layout.html">Layout System</a></strong> - Understanding positioning and sizing</li>
-<li><strong><a href="../concepts/controls.md">Control Hierarchy</a></strong> - Container and child relationships</li>
+<li>Control hierarchy (containers and children) — see <code>StackView</code>, <code>FrameView</code></li>
 <li><strong><a href="../concepts/events.html">Event Handling</a></strong> - User interaction patterns</li>
 </ul>
 

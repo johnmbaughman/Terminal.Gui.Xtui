@@ -1,0 +1,849 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  commentId: T:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  id: SimpleDataBindingEngine
+  parent: Terminal.Gui.Xaml.Binding
+  children:
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent(System.String,System.String)
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind(System.Object)
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding(System.Object)
+  - Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SimpleDataBindingEngine
+  nameWithType: SimpleDataBindingEngine
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: SimpleDataBindingEngine
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 10
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Minimal implementation of <xref href="Terminal.Gui.Xaml.Binding.IDataBindingEngine" data-throw-if-not-resolved="false"></xref> for tests.
+  example: []
+  syntax:
+    content: 'public sealed class SimpleDataBindingEngine : IDataBindingEngine'
+    content.vb: Public NotInheritable Class SimpleDataBindingEngine Implements IDataBindingEngine
+  inheritance:
+  - System.Object
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  id: Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: Bind(string, string, BindingMode)
+  nameWithType: SimpleDataBindingEngine.Bind(string, string, BindingMode)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(string, string, Terminal.Gui.Xaml.Binding.BindingMode)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Bind
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 13
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Binds a source property to a target property with a given mode.
+  example: []
+  syntax:
+    content: public void Bind(string sourceProperty, string targetProperty, BindingMode mode)
+    parameters:
+    - id: sourceProperty
+      type: System.String
+      description: The source property path.
+    - id: targetProperty
+      type: System.String
+      description: The target property path.
+    - id: mode
+      type: Terminal.Gui.Xaml.Binding.BindingMode
+      description: The binding mode.
+    content.vb: Public Sub Bind(sourceProperty As String, targetProperty As String, mode As BindingMode)
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  nameWithType.vb: SimpleDataBindingEngine.Bind(String, String, BindingMode)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(String, String, Terminal.Gui.Xaml.Binding.BindingMode)
+  name.vb: Bind(String, String, BindingMode)
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  id: Bind(System.Object,System.Object,System.String)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: Bind(object, object, string)
+  nameWithType: SimpleDataBindingEngine.Bind(object, object, string)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(object, object, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Bind
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 29
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Binds data to a control.
+  example: []
+  syntax:
+    content: public void Bind(object control, object dataSource, string propertyPath)
+    parameters:
+    - id: control
+      type: System.Object
+      description: The control to bind data to.
+    - id: dataSource
+      type: System.Object
+      description: The data source.
+    - id: propertyPath
+      type: System.String
+      description: The property path for binding.
+    content.vb: Public Sub Bind(control As Object, dataSource As Object, propertyPath As String)
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  nameWithType.vb: SimpleDataBindingEngine.Bind(Object, Object, String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind(Object, Object, String)
+  name.vb: Bind(Object, Object, String)
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind(System.Object)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind(System.Object)
+  id: Unbind(System.Object)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: Unbind(object)
+  nameWithType: SimpleDataBindingEngine.Unbind(object)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind(object)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Unbind
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 38
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Unbinds data from a control.
+  example: []
+  syntax:
+    content: public void Unbind(object control)
+    parameters:
+    - id: control
+      type: System.Object
+      description: The control to unbind data from.
+    content.vb: Public Sub Unbind(control As Object)
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(System.Object)
+  nameWithType.vb: SimpleDataBindingEngine.Unbind(Object)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind(Object)
+  name.vb: Unbind(Object)
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding(System.Object)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding(System.Object)
+  id: UpdateBinding(System.Object)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: UpdateBinding(object)
+  nameWithType: SimpleDataBindingEngine.UpdateBinding(object)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding(object)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: UpdateBinding
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 44
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Updates the binding for a control.
+  example: []
+  syntax:
+    content: public void UpdateBinding(object control)
+    parameters:
+    - id: control
+      type: System.Object
+      description: The control to update binding for.
+    content.vb: Public Sub UpdateBinding(control As Object)
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(System.Object)
+  nameWithType.vb: SimpleDataBindingEngine.UpdateBinding(Object)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding(Object)
+  name.vb: UpdateBinding(Object)
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding(System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding(System.String)
+  id: ValidateBinding(System.String)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: ValidateBinding(string)
+  nameWithType: SimpleDataBindingEngine.ValidateBinding(string)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateBinding
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 50
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Validates a binding expression.
+  example: []
+  syntax:
+    content: public bool ValidateBinding(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+      description: The binding expression.
+    return:
+      type: System.Boolean
+      description: True if the binding expression is valid; otherwise, false.
+    content.vb: Public Function ValidateBinding(expression As String) As Boolean
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(System.String)
+  nameWithType.vb: SimpleDataBindingEngine.ValidateBinding(String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding(String)
+  name.vb: ValidateBinding(String)
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent(System.String,System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent(System.String,System.String)
+  id: BindEvent(System.String,System.String)
+  parent: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+  langs:
+  - csharp
+  - vb
+  name: BindEvent(string, string)
+  nameWithType: SimpleDataBindingEngine.BindEvent(string, string)
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BindEvent
+    path: ../src/Terminal.Gui.Xaml/Binding/SimpleDataBindingEngine.cs
+    startLine: 56
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Binds an event on a control to a handler name.
+  example: []
+  syntax:
+    content: public void BindEvent(string eventPath, string handlerName)
+    parameters:
+    - id: eventPath
+      type: System.String
+      description: The event path (e.g., Button.Clicked).
+    - id: handlerName
+      type: System.String
+      description: The handler method name.
+    content.vb: Public Sub BindEvent(eventPath As String, handlerName As String)
+  overload: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent*
+  implements:
+  - Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(System.String,System.String)
+  nameWithType.vb: SimpleDataBindingEngine.BindEvent(String, String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent(String, String)
+  name.vb: BindEvent(String, String)
+references:
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  commentId: T:Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  parent: Terminal.Gui.Xaml.Binding
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html
+  name: IDataBindingEngine
+  nameWithType: IDataBindingEngine
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+- uid: Terminal.Gui.Xaml.Binding
+  commentId: N:Terminal.Gui.Xaml.Binding
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Binding
+  nameWithType: Terminal.Gui.Xaml.Binding
+  fullName: Terminal.Gui.Xaml.Binding
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Binding
+    name: Binding
+    href: Terminal.Gui.Xaml.Binding.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Binding
+    name: Binding
+    href: Terminal.Gui.Xaml.Binding.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind*
+  commentId: Overload:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind
+  href: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.html#Terminal_Gui_Xaml_Binding_SimpleDataBindingEngine_Bind_System_String_System_String_Terminal_Gui_Xaml_Binding_BindingMode_
+  name: Bind
+  nameWithType: SimpleDataBindingEngine.Bind
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Bind
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_String_System_String_Terminal_Gui_Xaml_Binding_BindingMode_
+  name: Bind(string, string, BindingMode)
+  nameWithType: IDataBindingEngine.Bind(string, string, BindingMode)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(string, string, Terminal.Gui.Xaml.Binding.BindingMode)
+  nameWithType.vb: IDataBindingEngine.Bind(String, String, BindingMode)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(String, String, Terminal.Gui.Xaml.Binding.BindingMode)
+  name.vb: Bind(String, String, BindingMode)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+    name: Bind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_String_System_String_Terminal_Gui_Xaml_Binding_BindingMode_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Binding.BindingMode
+    name: BindingMode
+    href: Terminal.Gui.Xaml.Binding.BindingMode.html
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.String,System.String,Terminal.Gui.Xaml.Binding.BindingMode)
+    name: Bind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_String_System_String_Terminal_Gui_Xaml_Binding_BindingMode_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Binding.BindingMode
+    name: BindingMode
+    href: Terminal.Gui.Xaml.Binding.BindingMode.html
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Terminal.Gui.Xaml.Binding.BindingMode
+  commentId: T:Terminal.Gui.Xaml.Binding.BindingMode
+  parent: Terminal.Gui.Xaml.Binding
+  href: Terminal.Gui.Xaml.Binding.BindingMode.html
+  name: BindingMode
+  nameWithType: BindingMode
+  fullName: Terminal.Gui.Xaml.Binding.BindingMode
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.Object,System.Object,System.String)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_Object_System_Object_System_String_
+  name: Bind(object, object, string)
+  nameWithType: IDataBindingEngine.Bind(object, object, string)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(object, object, string)
+  nameWithType.vb: IDataBindingEngine.Bind(Object, Object, String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(Object, Object, String)
+  name.vb: Bind(Object, Object, String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.Object,System.Object,System.String)
+    name: Bind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_Object_System_Object_System_String_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Bind(System.Object,System.Object,System.String)
+    name: Bind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Bind_System_Object_System_Object_System_String_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind*
+  commentId: Overload:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind
+  href: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.html#Terminal_Gui_Xaml_Binding_SimpleDataBindingEngine_Unbind_System_Object_
+  name: Unbind
+  nameWithType: SimpleDataBindingEngine.Unbind
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.Unbind
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(System.Object)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(System.Object)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Unbind_System_Object_
+  name: Unbind(object)
+  nameWithType: IDataBindingEngine.Unbind(object)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(object)
+  nameWithType.vb: IDataBindingEngine.Unbind(Object)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(Object)
+  name.vb: Unbind(Object)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(System.Object)
+    name: Unbind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Unbind_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.Unbind(System.Object)
+    name: Unbind
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_Unbind_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding*
+  commentId: Overload:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding
+  href: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.html#Terminal_Gui_Xaml_Binding_SimpleDataBindingEngine_UpdateBinding_System_Object_
+  name: UpdateBinding
+  nameWithType: SimpleDataBindingEngine.UpdateBinding
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.UpdateBinding
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(System.Object)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(System.Object)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_UpdateBinding_System_Object_
+  name: UpdateBinding(object)
+  nameWithType: IDataBindingEngine.UpdateBinding(object)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(object)
+  nameWithType.vb: IDataBindingEngine.UpdateBinding(Object)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(Object)
+  name.vb: UpdateBinding(Object)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(System.Object)
+    name: UpdateBinding
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_UpdateBinding_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.UpdateBinding(System.Object)
+    name: UpdateBinding
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_UpdateBinding_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding*
+  commentId: Overload:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding
+  href: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.html#Terminal_Gui_Xaml_Binding_SimpleDataBindingEngine_ValidateBinding_System_String_
+  name: ValidateBinding
+  nameWithType: SimpleDataBindingEngine.ValidateBinding
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.ValidateBinding
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(System.String)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_ValidateBinding_System_String_
+  name: ValidateBinding(string)
+  nameWithType: IDataBindingEngine.ValidateBinding(string)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(string)
+  nameWithType.vb: IDataBindingEngine.ValidateBinding(String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(String)
+  name.vb: ValidateBinding(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(System.String)
+    name: ValidateBinding
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_ValidateBinding_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.ValidateBinding(System.String)
+    name: ValidateBinding
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_ValidateBinding_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent*
+  commentId: Overload:Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent
+  href: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.html#Terminal_Gui_Xaml_Binding_SimpleDataBindingEngine_BindEvent_System_String_System_String_
+  name: BindEvent
+  nameWithType: SimpleDataBindingEngine.BindEvent
+  fullName: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine.BindEvent
+- uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(System.String,System.String)
+  commentId: M:Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(System.String,System.String)
+  parent: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+  isExternal: true
+  href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_BindEvent_System_String_System_String_
+  name: BindEvent(string, string)
+  nameWithType: IDataBindingEngine.BindEvent(string, string)
+  fullName: Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(string, string)
+  nameWithType.vb: IDataBindingEngine.BindEvent(String, String)
+  fullName.vb: Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(String, String)
+  name.vb: BindEvent(String, String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(System.String,System.String)
+    name: BindEvent
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_BindEvent_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine.BindEvent(System.String,System.String)
+    name: BindEvent
+    href: Terminal.Gui.Xaml.Binding.IDataBindingEngine.html#Terminal_Gui_Xaml_Binding_IDataBindingEngine_BindEvent_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )

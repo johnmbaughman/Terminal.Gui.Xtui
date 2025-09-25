@@ -7,3 +7,13 @@
     href: basic-layout.md
   - name: Button Click
     href: button-click.md
+  - name: Layout
+    href: layout.md
+  - name: Form Validation
+    href: form-validation.md
+  - name: Multi-Window
+    href: multi-window.md
+  - name: Theming
+    href: theming.md
+  - name: Data Binding
+    href: data-binding.md

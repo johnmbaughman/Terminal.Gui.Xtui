@@ -9,6 +9,9 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Default off; opt-in at solution level to avoid task load errors in isolated builds -->
+    <EnableXamlDocumentation Condition=" '$(EnableXamlDocumentation)' == '' ">false</EnableXamlDocumentation>
+    <SkipDocumentationTasks Condition=" '$(SkipDocumentationTasks)' == '' AND '$(EnableXamlDocumentation)' != 'true' ">true</SkipDocumentationTasks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -27,6 +30,15 @@
     <PackageProjectUrl>https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Authors>Terminal.Gui.Xaml Contributors</Authors>
+    <Company>Terminal.Gui.Xaml</Company>
+    <RepositoryUrl>https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\nupkg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,8 +59,13 @@
   <!-- DocFX for documentation generation -->
   </ItemGroup>
 
+
+  <!-- Pack documentation targets file so consumers get automatic task/targets import -->
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)..\..\stylecop.json" />
+    <None Include="Build\Terminal.Gui.Xaml.Documentation.targets" Pack="true" PackagePath="buildTransitive" />
+    <None Include="Build\Terminal.Gui.Xaml.targets" Pack="true" PackagePath="buildTransitive" />
   </ItemGroup>
+
+  <!-- Adjust UsingTask in packed targets: rely on standard buildTransitive semantics; keep source version unchanged -->
 
 </Project>

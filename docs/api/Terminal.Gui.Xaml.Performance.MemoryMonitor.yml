@@ -18,7 +18,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MemoryMonitor
     path: ../src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
@@ -55,7 +55,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CurrentMemoryUsageMB
     path: ../src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
@@ -86,7 +86,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: GetCurrentMemoryUsage
     path: ../src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
@@ -117,7 +117,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: IsMemoryUsageCompliant
     path: ../src/Terminal.Gui.Xaml/Performance/MemoryMonitor.cs

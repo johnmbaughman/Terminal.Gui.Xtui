@@ -1,0 +1,138 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  id: Terminal.Gui.Xaml.Documentation.Services
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  - Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+  - Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+  - Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+  - Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+  - Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest.html
+  name: BuildTargetRequest
+  nameWithType: BuildTargetRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse.html
+  name: BuildTargetResponse
+  nameWithType: BuildTargetResponse
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition.html
+  name: BuildTargetDefinition
+  nameWithType: BuildTargetDefinition
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition.html
+  name: BuildPropertyDefinition
+  nameWithType: BuildPropertyDefinition
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildProgress.html
+  name: BuildProgress
+  nameWithType: BuildProgress
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.html
+  name: BuildPhase
+  nameWithType: BuildPhase
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService
+  href: Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService.html
+  name: DocumentationConfigurationService
+  nameWithType: DocumentationConfigurationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html
+  name: IBuildIntegrationService
+  nameWithType: IBuildIntegrationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html
+  name: IDocumentationConfigurationService
+  nameWithType: IDocumentationConfigurationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.html
+  name: IDocumentationGeneratorService
+  nameWithType: IDocumentationGeneratorService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html

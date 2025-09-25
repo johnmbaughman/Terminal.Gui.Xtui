@@ -1,0 +1,287 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  id: BuildPhase
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Building
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completed
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completing
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Failed
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Preparing
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Starting
+  - Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Validating
+  langs:
+  - csharp
+  - vb
+  name: BuildPhase
+  nameWithType: BuildPhase
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BuildPhase
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 146
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Represents the different phases of a build.
+  example: []
+  syntax:
+    content: public enum BuildPhase
+    content.vb: Public Enum BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Starting
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Starting
+  id: Starting
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Starting
+  nameWithType: BuildPhase.Starting
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Starting
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Starting
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 151
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build is starting.
+  example: []
+  syntax:
+    content: Starting = 0
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Preparing
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Preparing
+  id: Preparing
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Preparing
+  nameWithType: BuildPhase.Preparing
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Preparing
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Preparing
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 156
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build is preparing.
+  example: []
+  syntax:
+    content: Preparing = 1
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Building
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Building
+  id: Building
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Building
+  nameWithType: BuildPhase.Building
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Building
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Building
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 161
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build is building.
+  example: []
+  syntax:
+    content: Building = 2
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Validating
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Validating
+  id: Validating
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Validating
+  nameWithType: BuildPhase.Validating
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Validating
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Validating
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 166
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build is validating.
+  example: []
+  syntax:
+    content: Validating = 3
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completing
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completing
+  id: Completing
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Completing
+  nameWithType: BuildPhase.Completing
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completing
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Completing
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 171
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build is completing.
+  example: []
+  syntax:
+    content: Completing = 4
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completed
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completed
+  id: Completed
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Completed
+  nameWithType: BuildPhase.Completed
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Completed
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Completed
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 176
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build has completed.
+  example: []
+  syntax:
+    content: Completed = 5
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Failed
+  commentId: F:Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Failed
+  id: Failed
+  parent: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  langs:
+  - csharp
+  - vb
+  name: Failed
+  nameWithType: BuildPhase.Failed
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.Failed
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Failed
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/BuildModels.cs
+    startLine: 181
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Build has failed.
+  example: []
+  syntax:
+    content: Failed = 6
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildPhase.html
+  name: BuildPhase
+  nameWithType: BuildPhase
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildPhase

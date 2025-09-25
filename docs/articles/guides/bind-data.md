@@ -13,31 +13,34 @@ This guide shows how to connect your UI controls to data using Terminal.Gui.Xaml
 This guide demonstrates these key data binding APIs and concepts:
 
 ### Core Binding System
-- **[Binding](../../api/Terminal.Gui.Xaml.Data.Binding.yml)** - Primary data binding mechanism
-- **[BindingExpression](../../api/Terminal.Gui.Xaml.Data.BindingExpression.yml)** - Runtime binding evaluation and management
-- **[BindingMode](../../api/Terminal.Gui.Xaml.Data.BindingMode.yml)** - One-way, two-way, and one-time binding modes
-- **[IValueConverter](../../api/Terminal.Gui.Xaml.Data.IValueConverter.yml)** - Custom data transformation interface
+### Core Binding System
+- `Binding` - Primary data binding mechanism
+- `BindingExpression` - Runtime binding evaluation and management
+- `BindingMode` - One-way, two-way, and one-time binding modes
+- `IValueConverter` - Custom data transformation interface
 
 ### MVVM Support
-- **[INotifyPropertyChanged](../../api/System.ComponentModel.INotifyPropertyChanged.yml)** - Property change notification
-- **[ICommand](../../api/System.Windows.Input.ICommand.yml)** - Command pattern for user actions
-- **[RelayCommand](../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml)** - Simple command implementation
-- **[ObservableCollection<T>](../../api/System.Collections.ObjectModel.ObservableCollection.yml)** - Collection change notifications
+### MVVM Support
+- `INotifyPropertyChanged` - Property change notification
+- `ICommand` - Command pattern for user actions
+- `RelayCommand` - Simple command implementation
+- `ObservableCollection<T>` - Collection change notifications
 
 ### Control Data Properties
-- **[TextField.Text](../../api/Terminal.Gui.Xaml.TextField.yml#Terminal_Gui_Xaml_TextField_Text)** - Bindable text content
-- **[Label.Text](../../api/Terminal.Gui.Xaml.Label.yml#Terminal_Gui_Xaml_Label_Text)** - Display bound data
-- **[CheckBox.Checked](../../api/Terminal.Gui.Xaml.CheckBox.yml#Terminal_Gui_Xaml_CheckBox_Checked)** - Boolean binding
-- **[Button.Command](../../api/Terminal.Gui.Xaml.Button.yml#Terminal_Gui_Xaml_Button_Command)** - Command binding
+### Control Data Properties
+- `TextField.Text` - Bindable text content
+- `Label.Text` - Display bound data
+- `CheckBox.Checked` - Boolean binding
+- `Button.Command` - Command binding
 
 > **💡 Pro Tip**: Most Terminal.Gui.Xaml controls support two-way data binding. Always implement `INotifyPropertyChanged` in your view models for automatic UI updates.
 
 ## Prerequisites
 
-- Completed [Create a Window Guide](create-window.md)
-- Understanding of [Binding Concepts](../concepts/binding.md)
-- Familiarity with `INotifyPropertyChanged`
-
+## Related Resources
+- Data binding implementation and concepts
+- Value converters for transforming data
+- Observable collections for list UIs
 ## Step 1: Create a View Model
 
 Create `PersonViewModel.cs`:
@@ -390,7 +393,7 @@ PropertyChanged += (s, e) =>
 - Changes in UI update the view model
 - Changes in view model update the UI
 
-> 💡 **v1.2+**: Two-way binding validation support added. Binding errors are automatically displayed with visual indicators. See [Validation Patterns](../advanced/validation.md) for details.
+> 💡 **v1.2+**: Two-way binding validation support added. Binding errors are automatically displayed with visual indicators.
 
 ### Command Binding with CanExecute
 ```csharp
@@ -484,12 +487,6 @@ public string FormSummary => $"{People.Count} people, {People.Count(p => p.IsSub
 - Implement virtual collections for large datasets
 
 ## Related Topics
-
-### API Reference
-- [Binding Class](../../api/Terminal.Gui.Xaml.Data.Binding.yml) - Data binding implementation
-- [BindingExpression Class](../../api/Terminal.Gui.Xaml.Data.BindingExpression.yml) - Binding evaluation
-- [IValueConverter Interface](../../api/Terminal.Gui.Xaml.Data.IValueConverter.yml) - Custom value conversion
-- [ObservableCollection<T>](../../api/System.Collections.ObjectModel.ObservableCollection.yml) - Observable collections
 
 ### Concepts
 - [Data Binding Concepts](../concepts/binding.md) - Understanding binding fundamentals

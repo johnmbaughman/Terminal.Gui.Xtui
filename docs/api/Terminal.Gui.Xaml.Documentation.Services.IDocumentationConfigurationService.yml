@@ -1,0 +1,773 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  id: IDocumentationConfigurationService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync(System.String)
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync(System.String)
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration,System.String)
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  langs:
+  - csharp
+  - vb
+  name: IDocumentationConfigurationService
+  nameWithType: IDocumentationConfigurationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  type: Interface
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IDocumentationConfigurationService
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 11
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Defines the contract for documentation configuration services.
+  example: []
+  syntax:
+    content: public interface IDocumentationConfigurationService
+    content.vb: Public Interface IDocumentationConfigurationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync(System.String)
+  id: LoadConfigurationAsync(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: LoadConfigurationAsync(string)
+  nameWithType: IDocumentationConfigurationService.LoadConfigurationAsync(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LoadConfigurationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 18
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Loads documentation configuration asynchronously.
+  example: []
+  syntax:
+    content: Task<DocFxConfiguration> LoadConfigurationAsync(string configPath)
+    parameters:
+    - id: configPath
+      type: System.String
+      description: The configuration file path.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration}
+      description: A task that represents the asynchronous operation. The task result contains the DocFx configuration.
+    content.vb: Function LoadConfigurationAsync(configPath As String) As Task(Of DocFxConfiguration)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync*
+  nameWithType.vb: IDocumentationConfigurationService.LoadConfigurationAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync(String)
+  name.vb: LoadConfigurationAsync(String)
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration,System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration,System.String)
+  id: SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration,System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: SaveConfigurationAsync(DocFxConfiguration, string)
+  nameWithType: IDocumentationConfigurationService.SaveConfigurationAsync(DocFxConfiguration, string)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration, string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: SaveConfigurationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 26
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Saves documentation configuration asynchronously.
+  example: []
+  syntax:
+    content: Task SaveConfigurationAsync(DocFxConfiguration configuration, string configPath)
+    parameters:
+    - id: configuration
+      type: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+      description: The DocFx configuration to save.
+    - id: configPath
+      type: System.String
+      description: The configuration file path.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous operation.
+    content.vb: Function SaveConfigurationAsync(configuration As DocFxConfiguration, configPath As String) As Task
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync*
+  nameWithType.vb: IDocumentationConfigurationService.SaveConfigurationAsync(DocFxConfiguration, String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration, String)
+  name.vb: SaveConfigurationAsync(DocFxConfiguration, String)
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  id: ValidateConfiguration(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ValidateConfiguration(DocFxConfiguration)
+  nameWithType: IDocumentationConfigurationService.ValidateConfiguration(DocFxConfiguration)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateConfiguration
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 33
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Validates documentation configuration.
+  example: []
+  syntax:
+    content: DocumentationValidationResult ValidateConfiguration(DocFxConfiguration configuration)
+    parameters:
+    - id: configuration
+      type: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+      description: The DocFx configuration to validate.
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+      description: A validation result.
+    content.vb: Function ValidateConfiguration(configuration As DocFxConfiguration) As DocumentationValidationResult
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync(System.String)
+  id: CreateDefaultConfigurationAsync(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: CreateDefaultConfigurationAsync(string)
+  nameWithType: IDocumentationConfigurationService.CreateDefaultConfigurationAsync(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: CreateDefaultConfigurationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 40
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Creates a default DocFX configuration from a project path.
+  example: []
+  syntax:
+    content: Task<DocFxConfiguration> CreateDefaultConfigurationAsync(string projectPath)
+    parameters:
+    - id: projectPath
+      type: System.String
+      description: The project path to analyze.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration}
+      description: A task that represents the asynchronous operation. The task result contains the default configuration.
+    content.vb: Function CreateDefaultConfigurationAsync(projectPath As String) As Task(Of DocFxConfiguration)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync*
+  nameWithType.vb: IDocumentationConfigurationService.CreateDefaultConfigurationAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync(String)
+  name.vb: CreateDefaultConfigurationAsync(String)
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  id: ValidateConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: ValidateConfigurationAsync(DocFxConfiguration)
+  nameWithType: IDocumentationConfigurationService.ValidateConfigurationAsync(DocFxConfiguration)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync(Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateConfigurationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 47
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Validates a configuration asynchronously with additional checks like path existence.
+  example: []
+  syntax:
+    content: Task<ConfigurationValidationResult> ValidateConfigurationAsync(DocFxConfiguration configuration)
+    parameters:
+    - id: configuration
+      type: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+      description: The configuration to validate.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult}
+      description: A task that represents the asynchronous operation. The task result contains a validation result.
+    content.vb: Function ValidateConfigurationAsync(configuration As DocFxConfiguration) As Task(Of ConfigurationValidationResult)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates
+  id: GetSupportedTemplates
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetSupportedTemplates()
+  nameWithType: IDocumentationConfigurationService.GetSupportedTemplates()
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetSupportedTemplates
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 53
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Gets the list of supported templates.
+  example: []
+  syntax:
+    content: IReadOnlyList<string> GetSupportedTemplates()
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+      description: A list of template names.
+    content.vb: Function GetSupportedTemplates() As IReadOnlyList(Of String)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata
+  id: GetDefaultGlobalMetadata
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultGlobalMetadata()
+  nameWithType: IDocumentationConfigurationService.GetDefaultGlobalMetadata()
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetDefaultGlobalMetadata
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+    startLine: 59
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Gets default global metadata key/value pairs.
+  example: []
+  syntax:
+    content: IReadOnlyDictionary<string, object> GetDefaultGlobalMetadata()
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+      description: A dictionary of default metadata items.
+    content.vb: Function GetDefaultGlobalMetadata() As IReadOnlyDictionary(Of String, Object)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata*
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_LoadConfigurationAsync_System_String_
+  name: LoadConfigurationAsync
+  nameWithType: IDocumentationConfigurationService.LoadConfigurationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.LoadConfigurationAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DocFxConfiguration>
+  nameWithType: Task<DocFxConfiguration>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration>
+  nameWithType.vb: Task(Of DocFxConfiguration)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration)
+  name.vb: Task(Of DocFxConfiguration)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+    name: DocFxConfiguration
+    href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+    name: DocFxConfiguration
+    href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_SaveConfigurationAsync_Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_System_String_
+  name: SaveConfigurationAsync
+  nameWithType: IDocumentationConfigurationService.SaveConfigurationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.SaveConfigurationAsync
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
+  name: DocFxConfiguration
+  nameWithType: DocFxConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_ValidateConfiguration_Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_
+  name: ValidateConfiguration
+  nameWithType: IDocumentationConfigurationService.ValidateConfiguration
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfiguration
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html
+  name: DocumentationValidationResult
+  nameWithType: DocumentationValidationResult
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_CreateDefaultConfigurationAsync_System_String_
+  name: CreateDefaultConfigurationAsync
+  nameWithType: IDocumentationConfigurationService.CreateDefaultConfigurationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.CreateDefaultConfigurationAsync
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_ValidateConfigurationAsync_Terminal_Gui_Xaml_Documentation_Models_DocFxConfiguration_
+  name: ValidateConfigurationAsync
+  nameWithType: IDocumentationConfigurationService.ValidateConfigurationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.ValidateConfigurationAsync
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ConfigurationValidationResult>
+  nameWithType: Task<ConfigurationValidationResult>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult>
+  nameWithType.vb: Task(Of ConfigurationValidationResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult)
+  name.vb: Task(Of ConfigurationValidationResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
+    name: ConfigurationValidationResult
+    href: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
+    name: ConfigurationValidationResult
+    href: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult.html
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_GetSupportedTemplates
+  name: GetSupportedTemplates
+  nameWithType: IDocumentationConfigurationService.GetSupportedTemplates
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetSupportedTemplates
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationConfigurationService_GetDefaultGlobalMetadata
+  name: GetDefaultGlobalMetadata
+  nameWithType: IDocumentationConfigurationService.GetDefaultGlobalMetadata
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService.GetDefaultGlobalMetadata
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

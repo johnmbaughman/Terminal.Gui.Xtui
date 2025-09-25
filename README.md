@@ -1,7 +1,9 @@
 # Terminal.Gui XAML Framework
 
 [![Build Status](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/workflows/PR%20Validation/badge.svg)](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions)
+[![Version Matrix Validation](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions/workflows/version-matrix-validation.yml/badge.svg)](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions/workflows/version-matrix-validation.yml)
 [![Performance Tests](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/workflows/Performance%20Tests/badge.svg)](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions)
+[![Documentation Build](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions/workflows/documentation.yml/badge.svg)](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/actions/workflows/documentation.yml)
 [![NuGet Package](https://img.shields.io/nuget/v/Terminal.Gui.Xaml.svg)](https://www.nuget.org/packages/Terminal.Gui.Xaml/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -93,6 +95,34 @@ dotnet run
 - [Performance Guide](docs/performance.md)
 - [API Documentation](docs/api/)
 
+### DocFX Documentation Generation (T040)
+
+This repository includes an integrated (simulated) DocFX-based documentation toolchain with build + validation support.
+
+Local build (uses MSBuild targets wired through the package):
+
+```pwsh
+pwsh ./scripts/build.ps1 -Documentation   # invokes generation if enabled
+```
+
+Or manually enable during a standard build:
+
+```pwsh
+dotnet build /p:EnableXamlDocumentation=true /p:XamlDocumentationOutputPath=artifacts/docs
+```
+
+Validate only (no generation side‑effects in future split):
+
+```pwsh
+dotnet msbuild /t:XamlValidateDocumentation /p:EnableXamlDocumentation=true
+```
+
+Artifacts (site content, JSON summaries) are emitted under `docs/_site` (simulated) or the custom path you provide. Performance and coverage summaries are persisted for benchmark dashboards.
+
+Key configuration file: `docs/docfx.json` (template, metadata, build options). See `docs/articles/guides/msbuild-documentation.md` for advanced property descriptions.
+
+> NOTE: Some generation/validation flows are currently simulated placeholders pending full DocFX engine integration; interfaces and tests are structured to allow a drop-in replacement later.
+
 ## 🏗️ Constitutional Principles
 
 This framework is built on four core constitutional principles:
@@ -154,6 +184,132 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 🤝 Community
 
+## 🔄 Version Compatibility
+
+For supported runtime, Terminal.Gui, and documentation feature status see the **[Version & Compatibility Matrix](docs/articles/guides/version-compatibility.md)**.
+
+### Version Matrix Validation (Automation)
+
+The repository provides a script (`scripts/validate-version-matrix.ps1`) that enforces consistency between the project `PackageVersion` and the matrix plus feature table hygiene:
+
+Validation includes:
+- Current `PackageVersion` row appears in the Core Compatibility table.
+- Feature table contains an `Introduced In` column.
+- Each feature row has a non-empty `Introduced In` value.
+- Semantic version ordering (ascending by default) with no duplicates (parenthetical tags like `(planned)` are ignored for comparison).
+- Optional descending order enforcement via `-Descending` switch.
+
+Run manually:
+```pwsh
+pwsh ./scripts/validate-version-matrix.ps1
+```
+
+Descending order example (if you reorder to put newest first):
+```pwsh
+pwsh ./scripts/validate-version-matrix.ps1 -Descending
+```
+
+Integrated build usage (runs automatically unless skipped):
+```pwsh
+pwsh ./scripts/build.ps1 -SkipVersionMatrixValidation   # skip check
+pwsh ./scripts/build.ps1 -DescendingVersionMatrix       # enforce descending order
+```
+
+Exit Codes:
+| Code | Meaning |
+|------|---------|
+| 0 | Success |
+| 1 | Missing file (compatibility or project) |
+| 2 | `PackageVersion` not defined in project file |
+| 3 | Version not referenced in matrix |
+| 4 | `Introduced In` column header missing |
+| 5 | A feature row missing `Introduced In` value |
+| 6 | Version ordering incorrect |
+| 7 | Duplicate version entries found |
+| 9 | Other validation failure |
+
+Use these in CI to fail builds early when documentation falls out of sync.
+
+#### Configuration File
+
+Advanced behavior can be controlled via `scripts/version-matrix.config.json`:
+
+```json
+{
+    "ordering": "ascending",          // "ascending" or "descending"
+    "requireUpcomingPlaceholder": false,
+    "upcomingPlaceholderPattern": "(planned|future)",
+    "emitJsonReport": true,
+    "reportPath": "temp_test_validation/version-matrix-report.json"
+}
+```
+
+CLI precedence: Explicit `-Descending` switch overrides `ordering` value in the config. If the config file is missing or invalid, defaults are applied.
+
+#### JSON Report
+When `emitJsonReport` is true, a machine-readable report is written (path configurable). Example excerpt:
+
+```json
+{
+    "packageVersion": "1.0.0-beta1",
+    "orderingMode": "ascending",
+    "errors": [],
+    "success": true,
+    "timestamp": "2025-09-24T00:00:00.0000000Z"
+}
+```
+
+This artifact is uploaded by the Version Matrix Validation workflow for downstream dashboards.
+
+## 🧹 Documentation Hygiene (Placeholders & Search Stopwords)
+
+To keep documentation build warnings actionable, this repository uses two lightweight hygiene strategies:
+
+### Intentional Placeholder Pages
+
+Some links point to future planned content (e.g., advanced guides or migration topics). Rather than tolerating persistent `InvalidFileLink` warnings or suppressing them globally, we create **minimal placeholder Markdown files** that:
+
+- Contain a clear `Status: Planned — placeholder` line
+- Briefly describe the eventual scope
+- Live at the exact final path so links are already stable
+
+Benefits:
+- Reduces warning noise (so new, accidental broken links stand out)
+- Stabilizes deep links early (permalinks usable in issues / discussions)
+- Makes contribution opportunities discoverable (`git grep "Status: Planned"`)
+
+Contributor Guidance:
+1. When implementing real content, replace the placeholder body (keep filename + path).
+2. Remove the `Status: Planned` marker.
+3. Expand headings/bookmarks referenced by existing links (check any remaining `InvalidBookmark` warnings).
+4. Ensure new sections include introductory context and at least one outbound cross-link.
+
+### Search Stopwords (`docs/search-stopwords.json`)
+
+DocFX's built-in search indexing can overweight ubiquitous filler words ("the", "and") and highly repetitive domain terms ("xaml", "terminal"). A curated JSON array (`docs/search-stopwords.json`) is shipped as a static resource so that:
+
+- Future custom post-processors or client-side search enhancers can ignore these tokens
+- External indexing (e.g., Algolia / Lunr integration) can reuse the same canonical list
+
+Maintenance Rules:
+- Prefer removing (not adding) words unless a term demonstrably harms relevance.
+- Avoid adding technology names users would reasonably search for (e.g., "binding", "layout").
+- Keep the file sorted (lexicographically) on edits for diff clarity.
+
+Suggested Validation (manual quick check):
+```pwsh
+Select-String -Path docs/**/*.md -Pattern '\b(xaml|gui|terminal)\b' | Measure-Object
+```
+If stopwords are removed, consider measuring search result quality before committing.
+
+### Open Follow-Ups
+- Automate bookmark validation once more placeholders are replaced.
+- Add a lightweight script to diff new broken links vs baseline.
+- Optional: Implement a DocFX post-processor to exclude stopwords during index emission (currently the file is staged for future tooling).
+
+If you'd like to author one of the placeholder pages, open an issue and reference the path.
+
+
 - [GitHub Discussions](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/discussions) - Ask questions and share ideas
 - [Issues](https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml/issues) - Report bugs or request features
 - [Terminal.Gui Community](https://github.com/gui-cs/Terminal.Gui) - Join the broader Terminal.Gui community
@@ -171,3 +327,118 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 ---
 
 **Built with ❤️ (and [Spec Kit](https://github.com/github/spec-kit)) for the terminal UI community**
+
+## 🛠 MSBuild Integration (Documentation Generation)
+
+For a more detailed guide (properties, targets, troubleshooting) see the **[Full MSBuild Documentation Guide](docs/articles/guides/msbuild-documentation.md)**.
+
+When the `Terminal.Gui.Xaml` package is referenced, it brings in build-transitive MSBuild targets enabling optional documentation generation and validation.
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `EnableXamlDocumentation` | bool | `false` in Debug, `true` in Release (via `DocumentationEnabled`) | Master switch enabling documentation targets (`XamlGenerateDocumentation`). |
+| `XamlDocumentationOutputPath` | string | `$(DocumentationOutputPath)` (resolves to `$(OutputPath)docs`) | Output folder for generated site artifacts. |
+| `XamlDocumentationBuildMode` | string (`Incremental`\|`Full`) | `Incremental` | Chooses between incremental or full (future expansion) generation behavior. |
+| `RequiredDocumentationCoverage` | double | `80.0` | Minimum coverage gate enforced during validation. |
+| `ValidateDocumentationLinks` | bool | `true` | Enables simulated link validation pass. |
+| `ValidateDocumentationExamples` | bool | `true` | Enables simulated example compilation validation. |
+
+### Targets
+
+| Target | Invocation | Purpose |
+|--------|-----------|---------|
+| `XamlGenerateDocumentation` | Auto (After `Build`) when `EnableXamlDocumentation=true` | Generates (or validates) documentation. |
+| `XamlValidateDocumentation` | Manual (`/t:XamlValidateDocumentation`) | Runs validation flow (currently same underlying task). |
+| `XamlCleanDocumentation` | Auto (After `Clean`) | Removes generated output directory. |
+
+### Quick Examples
+
+Enable documentation in a Debug build:
+```bash
+dotnet build /p:EnableXamlDocumentation=true
+```
+
+Force a full rebuild mode (future behavior hook):
+```bash
+dotnet build -c Release /p:EnableXamlDocumentation=true /p:XamlDocumentationBuildMode=Full
+```
+
+Run validation only after build:
+```bash
+dotnet msbuild /t:XamlValidateDocumentation /p:EnableXamlDocumentation=true
+```
+
+Override output path:
+```bash
+dotnet build -c Release /p:EnableXamlDocumentation=true /p:XamlDocumentationOutputPath=artifacts/docs
+```
+
+### Correlation & Diagnostics
+
+Generation and validation responses carry a `CorrelationId` and timing metrics (duration in ms) surfaced via logging and summary text. Provide your own by setting a property or in future API calls; otherwise one is generated automatically.
+
+### Roadmap
+
+- Split validation into a distinct MSBuild task (no generation side-effects)
+- Add template customization ingestion (`docs/templates/`)
+- Emit structured build logs (binary logger friendly) for CI diagnostics
+
+If you have suggestions for additional properties or behaviors, open a discussion or issue!
+
+## 🧭 Code Style & Static Analysis
+
+This project relies exclusively on the built-in .NET compiler analyzers plus a focused `.editorconfig` and `CodeAnalysis.ruleset` (kept lean) rather than external style rule packages. The goal: strong correctness & maintainability signals without noise or duplicate configuration surfaces.
+
+Key characteristics:
+
+- Unified enforcement: `EnableNETAnalyzers=true`, `AnalysisLevel=latest` (tracks the newest shipped analyzer improvements)
+- Warnings-as-errors: All analyzer diagnostics are elevated to errors in CI/build to prevent style & quality drift
+- Central policy: Repository root `.editorconfig` governs naming, formatting preferences, nullability, and selective rule severities
+- Ruleset overlay: `CodeAnalysis.ruleset` provides targeted overrides where granular severity tuning is clearer than inline suppressions
+- No redundant config: No secondary JSON/style configuration files; a single source of truth keeps maintenance cheap
+
+Philosophy:
+
+1. Favor clarity over strict aesthetic micro-rules (rules that do not materially improve readability or correctness are disabled)  
+2. Keep signal density high—any red build should feel important  
+3. Prefer fixing root causes over suppressing diagnostics—suppression requires justification in code review  
+4. Avoid analyzer churn by minimizing bespoke or experimental rule sets  
+
+How to inspect analyzer output locally:
+
+```pwsh
+dotnet build -warnaserror
+```
+
+Or to list all diagnostics (including informational):
+
+```pwsh
+dotnet build -consoleloggerparameters:Summary;NoSummary -v:m
+```
+
+Temporarily relaxing a rule (example):
+
+1. Identify the rule ID in the build output (e.g., `CA1852`)  
+2. If it reflects intentional design, prefer a narrow `#pragma warning disable/restore` around the smallest viable code region  
+3. Only if repeated and justified, adjust severity in `.editorconfig` (document rationale in the same change)  
+
+Extending policy:
+
+- Add new analyzer packages only if they directly improve correctness (security, allocation hot paths, API surface misuse).  
+- If you propose one, include: rule count, false-positive rate expectation, and sample deltas on current code.  
+
+Formatting:
+
+- Rely on the IDE/editor `.editorconfig` settings (no separate code formatter step).  
+- Run the repository’s normal build before committing—formatting drifts usually surface as minimal diffs; do not hand-edit generated code.  
+
+Quick checklist before opening a PR:
+
+- [ ] Build succeeds with no analyzer warnings  
+- [ ] No new broad suppressions were added  
+- [ ] Any suppression is justified in the PR description  
+- [ ] Public APIs have XML docs where meaningful (enables high-quality generated documentation)  
+
+Questions? Open a discussion and tag it with `static-analysis`.

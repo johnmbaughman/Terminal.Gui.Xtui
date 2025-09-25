@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Multi-Window Application Example | Terminal.Gui.Xaml Examples </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Multi-Window Application Example | Terminal.Gui.Xaml Examples ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="multi-window-application-example">Multi-Window Application Example</h1>
+
+<p>Version: 1.0.0-beta1<br>
+Prerequisites: .NET 8 SDK, Terminal.Gui v2+, <code>Terminal.Gui.Xaml</code></p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Creating multiple top-level windows</li>
+<li>Switching focus programmatically</li>
+<li>Handling window closing events</li>
+<li>Using XAML to define secondary windows</li>
+</ul>
+<h2 id="primary-window-xaml">Primary Window XAML</h2>
+<pre><code class="lang-xml">&lt;Window xmlns=&quot;http://schemas.terminal-gui.org/xaml&quot; Title=&quot;Main&quot; Width=&quot;60&quot; Height=&quot;18&quot;&gt;
+	&lt;StackView Orientation=&quot;Vertical&quot;&gt;
+		&lt;Button x:Name=&quot;OpenSettings&quot; Text=&quot;Open Settings&quot; Clicked=&quot;OnOpenSettings&quot; /&gt;
+		&lt;Button x:Name=&quot;OpenLogs&quot; Text=&quot;Open Logs&quot; Clicked=&quot;OnOpenLogs&quot; /&gt;
+	&lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="secondary-settings-window-xaml">Secondary (Settings) Window XAML</h2>
+<pre><code class="lang-xml">&lt;Window xmlns=&quot;http://schemas.terminal-gui.org/xaml&quot; Title=&quot;Settings&quot; Width=&quot;50&quot; Height=&quot;12&quot;&gt;
+	&lt;StackView Orientation=&quot;Vertical&quot;&gt;
+		&lt;Label Text=&quot;Theme&quot; /&gt;
+		&lt;ComboBox x:Name=&quot;ThemeSelect&quot; /&gt;
+		&lt;Button Text=&quot;Close&quot; Clicked=&quot;OnClose&quot; /&gt;
+	&lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="code-behind-managing-windows">Code-Behind: Managing Windows</h2>
+<pre><code class="lang-csharp">using Terminal.Gui;
+
+public partial class MainWindow : Window
+{
+		private SettingsWindow? _settings;
+		private LogsWindow? _logs;
+
+		public MainWindow()
+		{
+				InitializeComponent();
+		}
+
+		private void OnOpenSettings(object? sender, EventArgs e)
+		{
+				if (_settings == null)
+				{
+						_settings = new SettingsWindow();
+						_settings.Closed += (_) =&gt; _settings = null;
+						Application.Top.Add(_settings);
+				}
+				_settings.FocusFirst();
+		}
+
+		private void OnOpenLogs(object? sender, EventArgs e)
+		{
+				if (_logs == null)
+				{
+						_logs = new LogsWindow();
+						_logs.Closed += (_) =&gt; _logs = null;
+						Application.Top.Add(_logs);
+				}
+				_logs.FocusFirst();
+		}
+}
+</code></pre>
+<h2 id="run">Run</h2>
+<pre><code class="lang-powershell">dotnet run --project samples/MultiWindowSample/MultiWindowSample.csproj
+</code></pre>
+<p>Status: Example — initial content (enhance with window layout persistence later)</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

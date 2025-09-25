@@ -8,25 +8,32 @@ This section contains the complete API reference for Terminal.Gui.Xaml framework
 
 ### Core Namespaces
 
-- [Terminal.Gui.Xaml](Terminal.Gui.Xaml.yml) - Main framework types
+- [Terminal.Gui.Xaml.Generation](Terminal.Gui.Xaml.Generation.yml) - Code generation
+- [Terminal.Gui.Xaml.Parsing](Terminal.Gui.Xaml.Parsing.yml) - XAML parsing
 - [Terminal.Gui.Xaml.Model](Terminal.Gui.Xaml.Model.yml) - Data models and entities
-- [Terminal.Gui.Xaml.Documentation](Terminal.Gui.Xaml.Documentation.yml) - Documentation generation
+- [Terminal.Gui.Xaml.Validation](Terminal.Gui.Xaml.Validation.yml) - Validation engine
+- [Terminal.Gui.Xaml.Runtime](Terminal.Gui.Xaml.Runtime.yml) - Runtime loader and services
+- [Terminal.Gui.Xaml.Events](Terminal.Gui.Xaml.Events.yml) - Event system
+- [Terminal.Gui.Xaml.Binding](Terminal.Gui.Xaml.Binding.yml) - Data binding primitives
 - [Terminal.Gui.Xaml.Build](Terminal.Gui.Xaml.Build.yml) - MSBuild integration
 - [Terminal.Gui.Xaml.Logging](Terminal.Gui.Xaml.Logging.yml) - Logging infrastructure
 - [Terminal.Gui.Xaml.Exceptions](Terminal.Gui.Xaml.Exceptions.yml) - Exception hierarchy
 - [Terminal.Gui.Xaml.Performance](Terminal.Gui.Xaml.Performance.yml) - Performance monitoring
+- [Terminal.Gui.Xaml.Documentation.Models](Terminal.Gui.Xaml.Documentation.Models.yml) - Documentation data models
+- [Terminal.Gui.Xaml.Documentation.Services](Terminal.Gui.Xaml.Documentation.Services.yml) - Documentation services
+- [Terminal.Gui.Xaml.Documentation.Logging](Terminal.Gui.Xaml.Documentation.Logging.yml) - Documentation logging
 
 ### Key Interfaces
 
-- [IXamlParser](Terminal.Gui.Xaml.IXamlParser.yml) - XAML parsing interface
-- [ICodeGenerator](Terminal.Gui.Xaml.ICodeGenerator.yml) - Code generation interface  
+- [IXamlParser](Terminal.Gui.Xaml.Parsing.IXamlParser.yml) - XAML parsing interface
+- [ICodeGenerator](Terminal.Gui.Xaml.Generation.ICodeGenerator.yml) - Code generation interface  
 - [IDocumentationGeneratorService](Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.yml) - Documentation generation
 - [IBuildIntegrationService](Terminal.Gui.Xaml.Build.IBuildIntegrationService.yml) - MSBuild integration
 
 ### Core Types
 
 - [XamlDocument](Terminal.Gui.Xaml.Model.XamlDocument.yml) - XAML document representation
-- [XamlElement](Terminal.Gui.Xaml.Model.XamlElement.yml) - XAML element representation
+- [ParsedTemplate](Terminal.Gui.Xaml.Model.ParsedTemplate.yml) - Parsed XAML template representation
 - [DocFxConfiguration](Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.yml) - Documentation configuration
 
 ## Quick Navigation by Use Case
@@ -115,14 +122,14 @@ This section contains the complete API reference for Terminal.Gui.Xaml framework
 ### API Reference Quick Links
 
 **Core Framework Types:**
-- [`Terminal.Gui.Xaml`](Terminal.Gui.Xaml.yml) → See [Getting Started Guide](../articles/getting-started.md)
-- [`IXamlParser`](Terminal.Gui.Xaml.IXamlParser.yml) → See [Layout Concepts](../articles/concepts/layout.md)
+- [`Terminal.Gui.Xaml.Model`](Terminal.Gui.Xaml.Model.yml) → See [Getting Started Guide](../articles/getting-started.md)
+- [`IXamlParser`](Terminal.Gui.Xaml.Parsing.IXamlParser.yml) → See [Layout Concepts](../articles/concepts/layout.md)
 - [`XamlDocument`](Terminal.Gui.Xaml.Model.XamlDocument.yml) → See [Hello World Example](../articles/examples/hello-world.md)
-- [`XamlElement`](Terminal.Gui.Xaml.Model.XamlElement.yml) → See [Basic Layout Example](../articles/examples/basic-layout.md)
+- [`ParsedTemplate`](Terminal.Gui.Xaml.Model.ParsedTemplate.yml) → See [Basic Layout Example](../articles/examples/basic-layout.md)
 
 **Build and Integration:**
 - [`Terminal.Gui.Xaml.Build`](Terminal.Gui.Xaml.Build.yml) → See [Window Creation Guide](../articles/guides/create-window.md)
-- [`ICodeGenerator`](Terminal.Gui.Xaml.ICodeGenerator.yml) → See [Build Process Documentation](../articles/guides/create-window.md)
+- [`ICodeGenerator`](Terminal.Gui.Xaml.Generation.ICodeGenerator.yml) → See [Build Process Documentation](../articles/guides/create-window.md)
 - [`IBuildIntegrationService`](Terminal.Gui.Xaml.Build.IBuildIntegrationService.yml) → See [MSBuild Integration](../articles/guides/create-window.md)
 
 **Error Handling and Diagnostics:**

@@ -68,15 +68,13 @@ Complete MSBuild integration, performance validation, and production readiness.
 **Task 003: Setup Linting and Code Analysis** ✅
 - **Objective**: Implement automated code quality enforcement
 - **Implementation**:
-  - Configure StyleCop analyzers for C# standards
-  - Setup SonarAnalyzer.CSharp for quality metrics
-  - Configure ruleset files for consistent standards
+  - Enable built-in .NET analyzers (AnalysisLevel=latest) with warnings-as-errors
+  - Configure ruleset file for consistent standards
   - Add nullable reference types enforcement
 - **Files**:
   - `CodeAnalysis.ruleset`
-  - `stylecop.json`
   - `src/Terminal.Gui.Xaml/GlobalSuppressions.cs`
-- **Tests**: Build produces no warnings, all analyzers active
+- **Tests**: Build produces no warnings, analyzers enforced by .editorconfig + ruleset
 - **Dependencies**: Task 002
 - **Constitutional Check**: ✅ Code Quality (automated standards), TDD (quality gates)
 

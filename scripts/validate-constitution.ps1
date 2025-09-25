@@ -42,27 +42,18 @@ function Test-CodeQualityStandards {
     Write-Header "Code Quality Standards Validation"
 
     $compliance = @{
-        "StyleCopAnalyzers" = $true
-        "SonarAnalyzer" = $true
+        "DotNetAnalyzers" = $true
         "NullableReferenceTypes" = $true
         "XMLDocumentation" = $true
         "CodeCoverage" = $true
     }
 
-    # Check StyleCop configuration
-    if (Test-Path "stylecop.json") {
-        Write-Success "StyleCop configuration found"
-    } else {
-        Write-Error "StyleCop configuration missing"
-        $compliance["StyleCopAnalyzers"] = $false
-    }
-
     # Check analyzer configuration
     if (Test-Path "CodeAnalysis.ruleset") {
-        Write-Success "Code analysis rules configured"
+        Write-Success "Code analysis rules configured (.NET analyzers via ruleset/.editorconfig)"
     } else {
         Write-Error "Code analysis rules missing"
-        $compliance["SonarAnalyzer"] = $false
+        $compliance["DotNetAnalyzers"] = $false
     }
 
     return $compliance

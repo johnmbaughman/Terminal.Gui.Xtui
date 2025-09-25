@@ -79,25 +79,32 @@
 </blockquote>
 <h3 id="core-namespaces">Core Namespaces</h3>
 <ul>
-<li><a href="Terminal.Gui.Xaml.yml">Terminal.Gui.Xaml</a> - Main framework types</li>
+<li><a href="Terminal.Gui.Xaml.Generation.html">Terminal.Gui.Xaml.Generation</a> - Code generation</li>
+<li><a href="Terminal.Gui.Xaml.Parsing.html">Terminal.Gui.Xaml.Parsing</a> - XAML parsing</li>
 <li><a href="Terminal.Gui.Xaml.Model.html">Terminal.Gui.Xaml.Model</a> - Data models and entities</li>
-<li><a href="Terminal.Gui.Xaml.Documentation.yml">Terminal.Gui.Xaml.Documentation</a> - Documentation generation</li>
-<li><a href="Terminal.Gui.Xaml.Build.yml">Terminal.Gui.Xaml.Build</a> - MSBuild integration</li>
+<li><a href="Terminal.Gui.Xaml.Validation.html">Terminal.Gui.Xaml.Validation</a> - Validation engine</li>
+<li><a href="Terminal.Gui.Xaml.Runtime.html">Terminal.Gui.Xaml.Runtime</a> - Runtime loader and services</li>
+<li><a href="Terminal.Gui.Xaml.Events.html">Terminal.Gui.Xaml.Events</a> - Event system</li>
+<li><a href="Terminal.Gui.Xaml.Binding.html">Terminal.Gui.Xaml.Binding</a> - Data binding primitives</li>
+<li><a href="Terminal.Gui.Xaml.Build.html">Terminal.Gui.Xaml.Build</a> - MSBuild integration</li>
 <li><a href="Terminal.Gui.Xaml.Logging.html">Terminal.Gui.Xaml.Logging</a> - Logging infrastructure</li>
 <li><a href="Terminal.Gui.Xaml.Exceptions.html">Terminal.Gui.Xaml.Exceptions</a> - Exception hierarchy</li>
 <li><a href="Terminal.Gui.Xaml.Performance.html">Terminal.Gui.Xaml.Performance</a> - Performance monitoring</li>
+<li><a href="Terminal.Gui.Xaml.Documentation.Models.html">Terminal.Gui.Xaml.Documentation.Models</a> - Documentation data models</li>
+<li><a href="Terminal.Gui.Xaml.Documentation.Services.html">Terminal.Gui.Xaml.Documentation.Services</a> - Documentation services</li>
+<li><a href="Terminal.Gui.Xaml.Documentation.Logging.html">Terminal.Gui.Xaml.Documentation.Logging</a> - Documentation logging</li>
 </ul>
 <h3 id="key-interfaces">Key Interfaces</h3>
 <ul>
-<li><a href="Terminal.Gui.Xaml.IXamlParser.yml">IXamlParser</a> - XAML parsing interface</li>
-<li><a href="Terminal.Gui.Xaml.ICodeGenerator.yml">ICodeGenerator</a> - Code generation interface</li>
-<li><a href="Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.yml">IDocumentationGeneratorService</a> - Documentation generation</li>
-<li><a href="Terminal.Gui.Xaml.Build.IBuildIntegrationService.yml">IBuildIntegrationService</a> - MSBuild integration</li>
+<li><a href="Terminal.Gui.Xaml.Parsing.IXamlParser.html">IXamlParser</a> - XAML parsing interface</li>
+<li><a href="Terminal.Gui.Xaml.Generation.ICodeGenerator.html">ICodeGenerator</a> - Code generation interface</li>
+<li><a href="Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.html">IDocumentationGeneratorService</a> - Documentation generation</li>
+<li><a href="Terminal.Gui.Xaml.Build.IBuildIntegrationService.html">IBuildIntegrationService</a> - MSBuild integration</li>
 </ul>
 <h3 id="core-types">Core Types</h3>
 <ul>
 <li><a href="Terminal.Gui.Xaml.Model.XamlDocument.html">XamlDocument</a> - XAML document representation</li>
-<li><a href="Terminal.Gui.Xaml.Model.XamlElement.yml">XamlElement</a> - XAML element representation</li>
+<li><a href="Terminal.Gui.Xaml.Model.ParsedTemplate.html">ParsedTemplate</a> - Parsed XAML template representation</li>
 <li><a href="Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html">DocFxConfiguration</a> - Documentation configuration</li>
 </ul>
 <h2 id="quick-navigation-by-use-case">Quick Navigation by Use Case</h2>
@@ -186,16 +193,16 @@
 <h3 id="api-reference-quick-links">API Reference Quick Links</h3>
 <p><strong>Core Framework Types:</strong></p>
 <ul>
-<li><a href="Terminal.Gui.Xaml.yml"><code>Terminal.Gui.Xaml</code></a> → See <a href="../articles/getting-started.html">Getting Started Guide</a></li>
-<li><a href="Terminal.Gui.Xaml.IXamlParser.yml"><code>IXamlParser</code></a> → See <a href="../articles/concepts/layout.html">Layout Concepts</a></li>
+<li><a href="Terminal.Gui.Xaml.Model.html"><code>Terminal.Gui.Xaml.Model</code></a> → See <a href="../articles/getting-started.html">Getting Started Guide</a></li>
+<li><a href="Terminal.Gui.Xaml.Parsing.IXamlParser.html"><code>IXamlParser</code></a> → See <a href="../articles/concepts/layout.html">Layout Concepts</a></li>
 <li><a href="Terminal.Gui.Xaml.Model.XamlDocument.html"><code>XamlDocument</code></a> → See <a href="../articles/examples/hello-world.html">Hello World Example</a></li>
-<li><a href="Terminal.Gui.Xaml.Model.XamlElement.yml"><code>XamlElement</code></a> → See <a href="../articles/examples/basic-layout.html">Basic Layout Example</a></li>
+<li><a href="Terminal.Gui.Xaml.Model.ParsedTemplate.html"><code>ParsedTemplate</code></a> → See <a href="../articles/examples/basic-layout.html">Basic Layout Example</a></li>
 </ul>
 <p><strong>Build and Integration:</strong></p>
 <ul>
-<li><a href="Terminal.Gui.Xaml.Build.yml"><code>Terminal.Gui.Xaml.Build</code></a> → See <a href="../articles/guides/create-window.html">Window Creation Guide</a></li>
-<li><a href="Terminal.Gui.Xaml.ICodeGenerator.yml"><code>ICodeGenerator</code></a> → See <a href="../articles/guides/create-window.html">Build Process Documentation</a></li>
-<li><a href="Terminal.Gui.Xaml.Build.IBuildIntegrationService.yml"><code>IBuildIntegrationService</code></a> → See <a href="../articles/guides/create-window.html">MSBuild Integration</a></li>
+<li><a href="Terminal.Gui.Xaml.Build.html"><code>Terminal.Gui.Xaml.Build</code></a> → See <a href="../articles/guides/create-window.html">Window Creation Guide</a></li>
+<li><a href="Terminal.Gui.Xaml.Generation.ICodeGenerator.html"><code>ICodeGenerator</code></a> → See <a href="../articles/guides/create-window.html">Build Process Documentation</a></li>
+<li><a href="Terminal.Gui.Xaml.Build.IBuildIntegrationService.html"><code>IBuildIntegrationService</code></a> → See <a href="../articles/guides/create-window.html">MSBuild Integration</a></li>
 </ul>
 <p><strong>Error Handling and Diagnostics:</strong></p>
 <ul>

@@ -1,0 +1,4 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Wrapper that imports the richer documentation targets file. Provided for NuGet buildTransitive expectations. -->
+  <Import Project="$(MSBuildThisFileDirectory)Terminal.Gui.Xaml.Documentation.targets" Condition="Exists('$(MSBuildThisFileDirectory)Terminal.Gui.Xaml.Documentation.targets')" />
+</Project>

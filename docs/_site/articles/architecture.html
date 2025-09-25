@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Documentation Architecture (T041) | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Documentation Architecture (T041) | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="documentation-architecture-t041">Documentation Architecture (T041)</h1>
+
+<p>Status: Stable — initial architecture documentation.</p>
+<p>This document explains how the documentation generation and validation subsystem is structured within the Terminal.Gui.Xaml repository. It focuses on the composable model + service design, build integration points, and performance / quality feedback loops.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>Deterministic, test-driven documentation generation pipeline</li>
+<li>Clear separation between configuration (models), orchestration (services), and hosting/build layers (MSBuild targets &amp; tasks)</li>
+<li>Extensibility for future real DocFX engine integration without breaking public contracts</li>
+<li>Performance + coverage visibility (benchmark history, regression detection, dashboards)</li>
+</ul>
+<h2 id="high-level-layers">High-Level Layers</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Purpose</th>
+<th>Key Artifacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Models</td>
+<td>Strongly-typed configuration &amp; result contracts</td>
+<td><code>DocFxConfiguration</code>, <code>TemplateConfiguration</code>, <code>BuildConfiguration</code>, <code>CoverageMetrics</code>, <code>DocumentationValidationResult</code>, <code>ValidationIssue</code></td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Orchestrate generation &amp; validation flows</td>
+<td><code>IDocumentationGeneratorService</code>, <code>IDocumentationConfigurationService</code>, <code>IBuildIntegrationService</code> + corresponding implementations</td>
+</tr>
+<tr>
+<td>Build Integration</td>
+<td>Expose documentation actions to host builds</td>
+<td><code>GenerateDocumentationTask</code>, <code>Terminal.Gui.Xaml.Documentation.targets</code>, <code>Terminal.Gui.Xaml.targets</code></td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Abstraction for structured + testable logging</td>
+<td><code>IDocumentationLogger</code>, <code>ConsoleDocumentationLogger</code>, <code>NullDocumentationLogger</code></td>
+</tr>
+<tr>
+<td>Performance &amp; Quality</td>
+<td>Detect regressions, surface metrics</td>
+<td>BenchmarkDotNet benchmarks, performance tests, history CSV/JSON, dashboard HTML</td>
+</tr>
+</tbody>
+</table>
+<h2 id="models-overview">Models Overview</h2>
+<p>All models reside under <code>src/Terminal.Gui.Xaml/Documentation/Models/</code> and are decorated with <code>[Required]</code> and other validation attributes to enable deterministic validation in unit tests. They intentionally mirror key DocFX concepts (metadata, build content, resources) while remaining minimal.</p>
+<p>Validation flows use DataAnnotations + manual checks aggregated into <code>DocumentationValidationResult</code> which carries a collection of <code>ValidationIssue</code> items (with severity + type enums).</p>
+<h2 id="services">Services</h2>
+<h3 id="configuration-service">Configuration Service</h3>
+<p><code>DocumentationConfigurationService</code> validates and normalizes <code>DocFxConfiguration</code> instances (e.g., ensures paths, default values, invariants).</p>
+<h3 id="generator-service">Generator Service</h3>
+<p><code>DocumentationGeneratorService</code> simulates generation (placeholder) and produces:</p>
+<ul>
+<li>Timing metrics</li>
+<li>Coverage metrics (placeholder deterministic values for tests)</li>
+<li>Validation summary when invoked in validation mode</li>
+</ul>
+<h3 id="build-integration-service">Build Integration Service</h3>
+<p><code>BuildIntegrationService</code> is a wrapper that delegates to a simple internal implementation, enabling future enrichment (structured logging, retry, concurrency throttling). It exposes both sync + async style discovery of supported targets to support IDE and CLI use-cases.</p>
+<h2 id="build-targets--task">Build Targets &amp; Task</h2>
+<p><code>GenerateDocumentationTask</code> provides a thin facade approximating an MSBuild task while tests avoid a full MSBuild dependency. Real integration would substitute Microsoft.Build types without altering public interfaces.</p>
+<p>Targets file (<code>Terminal.Gui.Xaml.Documentation.targets</code>) maps MSBuild properties (<code>EnableXamlDocumentation</code>, <code>XamlDocumentationOutputPath</code>, <code>XamlDocumentationBuildMode</code>) to task invocation.</p>
+<h2 id="performance--regression-loop">Performance &amp; Regression Loop</h2>
+<ol>
+<li>BenchmarkDotNet micro-benchmarks measure full vs incremental generation.</li>
+<li>Results persisted to <code>.benchmarks/last-results.json</code>.</li>
+<li>History appended to <code>.benchmarks/history.csv</code> and converted to JSON + summary.</li>
+<li>GitHub Action posts PR comment diff and publishes history to <code>benchmarks-data</code> branch.</li>
+<li>Static dashboard (HTML) visualizes latest metrics.</li>
+</ol>
+<p>Optional regression gating (environment-controlled) can fail CI on &gt;20% slowdown.</p>
+<h2 id="extensibility-points">Extensibility Points</h2>
+<ul>
+<li>Replace simulation with real DocFX invocation (process start or library) inside <code>DocumentationGeneratorService</code>.</li>
+<li>Add richer coverage analysis by parsing real metadata + API model outputs.</li>
+<li>Introduce plugin system for custom validation rules (e.g., bookmarking, link integrity, image dimension checks).</li>
+<li>Implement a DocFX post-processor pipeline for index tuning (stopwords, ranking).</li>
+</ul>
+<h2 id="error-handling--logging">Error Handling &amp; Logging</h2>
+<p>Services lean on explicit result objects instead of throwing for validation and generation issues to keep test scenarios deterministic. Exceptions are reserved for infrastructure failures.</p>
+<p><code>IDocumentationLogger</code> allows test injection of null/no-op or future structured log sinks.</p>
+<h2 id="quality--compliance">Quality &amp; Compliance</h2>
+<ul>
+<li>Static analysis: .NET built-in analyzers configured via <code>.editorconfig</code> with <code>TreatWarningsAsErrors</code>.</li>
+<li>XML docs: All public types documented (see T039).</li>
+<li>Complexity: Services kept intentionally small; orchestration extracted from models.</li>
+<li>Tests: Contract, integration, unit, and performance layers cover the surfaces enumerated in <code>tasks.md</code> phases.</li>
+</ul>
+<h2 id="future-directions">Future Directions</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Potential Enhancement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real DocFX Engine</td>
+<td>Invoke <code>docfx</code> with generated config &amp; capture JSON logs</td>
+</tr>
+<tr>
+<td>Coverage Metrics</td>
+<td>Compute real API coverage from metadata files</td>
+</tr>
+<tr>
+<td>Link Validation</td>
+<td>Parse HTML artifacts &amp; detect broken anchors</td>
+</tr>
+<tr>
+<td>Incremental Mode</td>
+<td>Track input file hashes &amp; skip unchanged segments</td>
+</tr>
+<tr>
+<td>Dashboard UX</td>
+<td>Add charting (moving averages, z-score anomalies)</td>
+</tr>
+</tbody>
+</table>
+<p>Contributions and design discussions welcome—open an issue or start a Discussion thread.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Parsing
+  commentId: N:Terminal.Gui.Xaml.Parsing
+  id: Terminal.Gui.Xaml.Parsing
+  children:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  - Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  - Terminal.Gui.Xaml.Parsing.XamlParser
+  - Terminal.Gui.Xaml.Parsing.XamlParsingError
+  - Terminal.Gui.Xaml.Parsing.XamlTokenizer
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Parsing
+  nameWithType: Terminal.Gui.Xaml.Parsing
+  fullName: Terminal.Gui.Xaml.Parsing
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser
+  commentId: T:Terminal.Gui.Xaml.Parsing.IXamlParser
+  parent: Terminal.Gui.Xaml.Parsing
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html
+  name: IXamlParser
+  nameWithType: IXamlParser
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser
+- uid: Terminal.Gui.Xaml.Parsing.XamlParsingError
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlParsingError
+  href: Terminal.Gui.Xaml.Parsing.XamlParsingError.html
+  name: XamlParsingError
+  nameWithType: XamlParsingError
+  fullName: Terminal.Gui.Xaml.Parsing.XamlParsingError
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  parent: Terminal.Gui.Xaml.Parsing
+  href: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.html
+  name: XamlErrorSeverity
+  nameWithType: XamlErrorSeverity
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  commentId: T:Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html
+  name: SimpleXamlParser
+  nameWithType: SimpleXamlParser
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+- uid: Terminal.Gui.Xaml.Parsing.XamlParser
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlParser
+  href: Terminal.Gui.Xaml.Parsing.XamlParser.html
+  name: XamlParser
+  nameWithType: XamlParser
+  fullName: Terminal.Gui.Xaml.Parsing.XamlParser
+- uid: Terminal.Gui.Xaml.Parsing.XamlTokenizer
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlTokenizer
+  href: Terminal.Gui.Xaml.Parsing.XamlTokenizer.html
+  name: XamlTokenizer
+  nameWithType: XamlTokenizer
+  fullName: Terminal.Gui.Xaml.Parsing.XamlTokenizer
+- uid: Terminal.Gui.Xaml.Parsing
+  commentId: N:Terminal.Gui.Xaml.Parsing
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Parsing
+  nameWithType: Terminal.Gui.Xaml.Parsing
+  fullName: Terminal.Gui.Xaml.Parsing
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html

@@ -49,7 +49,7 @@
 
 **Code Quality Standards Check:**
 - [ ] All planned components follow Microsoft C# coding conventions
-- [ ] Static analysis integration planned (StyleCop, FxCop/Analyzers)
+- [ ] Static analysis integration planned (.NET analyzers via .editorconfig)
 - [ ] XML documentation strategy for public APIs defined
 - [ ] SOLID principles applied to architectural design
 

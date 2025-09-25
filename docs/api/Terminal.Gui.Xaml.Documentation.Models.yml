@@ -6,17 +6,22 @@ items:
   children:
   - Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
   - Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
   - Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
   - Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
   - Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  - Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+  - Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
   - Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
   - Terminal.Gui.Xaml.Documentation.Models.IssueType
   - Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
   - Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
   - Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
   - Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+  - Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+  - Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
   - Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
   - Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
   langs:
@@ -58,6 +63,7 @@ references:
   fullName: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
   commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+  parent: Terminal.Gui.Xaml.Documentation.Models
   href: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration.html
   name: DocFxConfiguration
   nameWithType: DocFxConfiguration
@@ -89,6 +95,7 @@ references:
   fullName: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
   commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  parent: Terminal.Gui.Xaml.Documentation.Models
   href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html
   name: DocumentationValidationResult
   nameWithType: DocumentationValidationResult
@@ -100,6 +107,39 @@ references:
   name: ValidationStatus
   nameWithType: ValidationStatus
   fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest.html
+  name: GenerateDocumentationRequest
+  nameWithType: GenerateDocumentationRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+- uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+  href: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse.html
+  name: GenerateDocumentationResponse
+  nameWithType: GenerateDocumentationResponse
+  fullName: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest.html
+  name: ValidateDocumentationRequest
+  nameWithType: ValidateDocumentationRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse.html
+  name: ValidateDocumentationResponse
+  nameWithType: ValidateDocumentationResponse
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+- uid: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
+  href: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult.html
+  name: ConfigurationValidationResult
+  nameWithType: ConfigurationValidationResult
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
 - uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
   commentId: T:Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
   parent: Terminal.Gui.Xaml.Documentation.Models

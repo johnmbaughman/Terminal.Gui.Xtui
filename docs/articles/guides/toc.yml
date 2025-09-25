@@ -1,4 +1,3 @@
-- name: Guides
   href: index.md
   items:
   - name: Create a Window
@@ -13,3 +12,11 @@
     href: legacy-binding-syntax.md
   - name: Accessibility
     href: ../accessibility.md
+  - name: MSBuild Documentation
+    href: msbuild-documentation.md
+  - name: Version & Compatibility
+    href: version-compatibility.md
+  - name: Hosting & Search
+    href: hosting-and-search.md
+  - name: Resources & Theming
+    href: resources-and-theming.md

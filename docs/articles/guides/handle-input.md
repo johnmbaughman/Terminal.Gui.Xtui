@@ -9,28 +9,28 @@ This guide covers input handling, validation, keyboard shortcuts, and user inter
 This guide demonstrates these key input handling APIs and patterns:
 
 ### Input Events and Handling
-- **[KeyEventArgs](../../api/Terminal.Gui.Xaml.KeyEventArgs.yml)** - Keyboard input event data
-- **[MouseEventArgs](../../api/Terminal.Gui.Xaml.MouseEventArgs.yml)** - Mouse input event data
-- **[TextChangedEventArgs](../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml)** - Text input change notifications
-- **[FocusEventArgs](../../api/Terminal.Gui.Xaml.FocusEventArgs.yml)** - Focus change event data
+- `KeyEventArgs` - Keyboard input event data
+- `MouseEventArgs` - Mouse input event data
+- `TextChangedEventArgs` - Text input change notifications
+- `FocusEventArgs` - Focus change event data
 
 ### Keyboard and Shortcuts
-- **[KeyBinding](../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml)** - Keyboard shortcut definitions
-- **[Key](../../api/Terminal.Gui.Xaml.Input.Key.yml)** - Key enumeration and modifiers
-- **[KeyGesture](../../api/Terminal.Gui.Xaml.Input.KeyGesture.yml)** - Complex key combinations
-- **[InputGesture](../../api/Terminal.Gui.Xaml.Input.InputGesture.yml)** - Base input gesture handling
+- `KeyBinding` - Keyboard shortcut definitions
+- `Key` - Key enumeration and modifiers
+- `KeyGesture` - Complex key combinations
+- `InputGesture` - Base input gesture handling
 
 ### Commands and Actions
-- **[ICommand](../../api/System.Windows.Input.ICommand.yml)** - Command pattern interface
-- **[RelayCommand](../../api/Terminal.Gui.Xaml.Commands.RelayCommand.yml)** - Simple command implementation
-- **[CommandBinding](../../api/Terminal.Gui.Xaml.Input.CommandBinding.yml)** - Connect commands to handlers
-- **[RoutedCommand](../../api/Terminal.Gui.Xaml.Input.RoutedCommand.yml)** - Commands with routing support
+- `ICommand` - Command pattern interface
+- `RelayCommand` - Simple command implementation
+- `CommandBinding` - Connect commands to handlers
+- `RoutedCommand` - Commands with routing support
 
 ### Validation
-- **[IDataErrorInfo](../../api/System.ComponentModel.IDataErrorInfo.yml)** - Object-level validation interface
-- **[ValidationRule](../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml)** - Custom validation logic
-- **[Validation](../../api/Terminal.Gui.Xaml.Controls.Validation.yml)** - Validation helper methods
-- **[BindingValidationError](../../api/Terminal.Gui.Xaml.Controls.BindingValidationError.yml)** - Validation error details
+- `IDataErrorInfo` - Object-level validation interface
+- `ValidationRule` - Custom validation logic
+- `Validation` - Validation helper methods
+- `BindingValidationError` - Validation error details
 
 > **💡 Pro Tip**: Use command binding for complex logic and direct event handlers for simple UI interactions. Keyboard shortcuts work globally within a window.
 
@@ -722,23 +722,23 @@ public async Task ValidateEmailAsync(string email)
 ## Related Topics
 
 ### API Reference
-- **[KeyEventArgs](../../api/Terminal.Gui.Xaml.KeyEventArgs.yml)** - Keyboard event handling
-- **[MouseEventArgs](../../api/Terminal.Gui.Xaml.MouseEventArgs.yml)** - Mouse interaction events
-- **[KeyBinding](../../api/Terminal.Gui.Xaml.Input.KeyBinding.yml)** - Keyboard shortcuts
-- **[ICommand](../../api/System.Windows.Input.ICommand.yml)** - Command pattern interface
-- **[ValidationRule](../../api/Terminal.Gui.Xaml.Controls.ValidationRule.yml)** - Custom validation
-- **[TextChangedEventArgs](../../api/Terminal.Gui.Xaml.TextChangedEventArgs.yml)** - Text change notifications
+- `KeyEventArgs` - Keyboard event handling
+- `MouseEventArgs` - Mouse interaction events
+- `KeyBinding` - Keyboard shortcuts
+- `ICommand` - Command pattern interface
+- `ValidationRule` - Custom validation
+- `TextChangedEventArgs` - Text change notifications
 
 ### Concepts
 - **[Event Handling](../concepts/events.md)** - Understanding event patterns
-- **[Command Pattern](../concepts/commands.md)** - Implementing commands
-- **[Input System](../concepts/input.md)** - Keyboard and mouse handling
-- **[Validation](../concepts/validation.md)** - Data validation concepts
+- Command pattern - see `ICommand` usage in guides
+- Input system - keyboard and mouse handling is covered throughout this guide
+- Validation concepts - see Bind Data guide for patterns
 
 ### Examples
 - **[Button Click](../examples/button-click.md)** - Basic event handling
-- **[Form Validation](../examples/form-validation.md)** - Input validation example
-- **[Keyboard Shortcuts](../examples/keyboard-shortcuts.md)** - Key binding examples
+- Form validation example (coming soon)
+- Keyboard shortcuts example (coming soon)
 
 ### Related Guides
 - **[Create a Window](create-window.md)** - Basic UI setup and event handling

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Runtime
+  commentId: N:Terminal.Gui.Xaml.Runtime
+  id: Terminal.Gui.Xaml.Runtime
+  children:
+  - Terminal.Gui.Xaml.Runtime.ControlFactory
+  - Terminal.Gui.Xaml.Runtime.RuntimeLoader
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Runtime
+  nameWithType: Terminal.Gui.Xaml.Runtime
+  fullName: Terminal.Gui.Xaml.Runtime
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Runtime.ControlFactory
+  commentId: T:Terminal.Gui.Xaml.Runtime.ControlFactory
+  href: Terminal.Gui.Xaml.Runtime.ControlFactory.html
+  name: ControlFactory
+  nameWithType: ControlFactory
+  fullName: Terminal.Gui.Xaml.Runtime.ControlFactory
+- uid: Terminal.Gui.Xaml.Runtime.RuntimeLoader
+  commentId: T:Terminal.Gui.Xaml.Runtime.RuntimeLoader
+  href: Terminal.Gui.Xaml.Runtime.RuntimeLoader.html
+  name: RuntimeLoader
+  nameWithType: RuntimeLoader
+  fullName: Terminal.Gui.Xaml.Runtime.RuntimeLoader
