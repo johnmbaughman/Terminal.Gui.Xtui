@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CoverageMetrics
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
@@ -56,7 +56,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: TotalMembers
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
@@ -87,7 +87,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: DocumentedMembers
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
@@ -118,7 +118,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: UndocumentedMembers
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
@@ -149,7 +149,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CoveragePercentage
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs

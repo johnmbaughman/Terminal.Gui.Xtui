@@ -1,0 +1,92 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Build
+  commentId: N:Terminal.Gui.Xaml.Build
+  id: Terminal.Gui.Xaml.Build
+  children:
+  - Terminal.Gui.Xaml.Build.BuildIntegrationService
+  - Terminal.Gui.Xaml.Build.GenerateDocumentationTask
+  - Terminal.Gui.Xaml.Build.IBuildEngine
+  - Terminal.Gui.Xaml.Build.IBuildIntegrationService
+  - Terminal.Gui.Xaml.Build.ITask
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Build
+  nameWithType: Terminal.Gui.Xaml.Build
+  fullName: Terminal.Gui.Xaml.Build
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Build.BuildIntegrationService
+  commentId: T:Terminal.Gui.Xaml.Build.BuildIntegrationService
+  href: Terminal.Gui.Xaml.Build.BuildIntegrationService.html
+  name: BuildIntegrationService
+  nameWithType: BuildIntegrationService
+  fullName: Terminal.Gui.Xaml.Build.BuildIntegrationService
+- uid: Terminal.Gui.Xaml.Build.GenerateDocumentationTask
+  commentId: T:Terminal.Gui.Xaml.Build.GenerateDocumentationTask
+  href: Terminal.Gui.Xaml.Build.GenerateDocumentationTask.html
+  name: GenerateDocumentationTask
+  nameWithType: GenerateDocumentationTask
+  fullName: Terminal.Gui.Xaml.Build.GenerateDocumentationTask
+- uid: Terminal.Gui.Xaml.Build.ITask
+  commentId: T:Terminal.Gui.Xaml.Build.ITask
+  parent: Terminal.Gui.Xaml.Build
+  href: Terminal.Gui.Xaml.Build.ITask.html
+  name: ITask
+  nameWithType: ITask
+  fullName: Terminal.Gui.Xaml.Build.ITask
+- uid: Terminal.Gui.Xaml.Build.IBuildEngine
+  commentId: T:Terminal.Gui.Xaml.Build.IBuildEngine
+  parent: Terminal.Gui.Xaml.Build
+  href: Terminal.Gui.Xaml.Build.IBuildEngine.html
+  name: IBuildEngine
+  nameWithType: IBuildEngine
+  fullName: Terminal.Gui.Xaml.Build.IBuildEngine
+- uid: Terminal.Gui.Xaml.Build.IBuildIntegrationService
+  commentId: T:Terminal.Gui.Xaml.Build.IBuildIntegrationService
+  parent: Terminal.Gui.Xaml.Build
+  href: Terminal.Gui.Xaml.Build.IBuildIntegrationService.html
+  name: IBuildIntegrationService
+  nameWithType: IBuildIntegrationService
+  fullName: Terminal.Gui.Xaml.Build.IBuildIntegrationService
+- uid: Terminal.Gui.Xaml.Build
+  commentId: N:Terminal.Gui.Xaml.Build
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Build
+  nameWithType: Terminal.Gui.Xaml.Build
+  fullName: Terminal.Gui.Xaml.Build
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Build
+    name: Build
+    href: Terminal.Gui.Xaml.Build.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Build
+    name: Build
+    href: Terminal.Gui.Xaml.Build.html

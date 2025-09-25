@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services.Implementations
+  id: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService
+  - Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService
+  - Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  fullName: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService
+  href: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService.html
+  name: SimpleBuildIntegrationService
+  nameWithType: SimpleBuildIntegrationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService
+  href: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService.html
+  name: SimpleDocumentationConfigurationService
+  nameWithType: SimpleDocumentationConfigurationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService
+  href: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService.html
+  name: SimpleDocumentationGeneratorService
+  nameWithType: SimpleDocumentationGeneratorService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService

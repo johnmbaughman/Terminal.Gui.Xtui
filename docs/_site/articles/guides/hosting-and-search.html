@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Hosting &amp; Search Configuration | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Hosting &amp; Search Configuration | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="hosting--search-configuration">Hosting &amp; Search Configuration</h1>
+
+<p>Status: Stable</p>
+<p>This guide explains how the Terminal.Gui.Xaml documentation site is built, hosted, and how search is customized.</p>
+<h2 id="hosting">Hosting</h2>
+<p>The documentation is deployed automatically to <strong>GitHub Pages</strong> from the <code>main</code> branch.</p>
+<p>Workflow: <code>.github/workflows/documentation.yml</code></p>
+<p>Key steps:</p>
+<ol>
+<li>Restore and build the solution (Release).</li>
+<li>Install DocFX as a .NET global tool.</li>
+<li>Run <code>docfx build</code> inside the <code>docs/</code> directory.</li>
+<li>Publish the generated <code>_site/</code> directory as a GitHub Pages artifact.</li>
+<li>Deploy via the <code>deploy-pages</code> action.</li>
+</ol>
+<p>To preview locally:</p>
+<pre><code class="lang-pwsh">pwsh -c &quot;cd docs; docfx build; docfx serve&quot;
+</code></pre>
+<h2 id="url-structure">URL Structure</h2>
+<p>DocFX emits clean HTML pages; future customizations can add canonical tags or sitemap if external indexing is required.</p>
+<h2 id="search-enhancements">Search Enhancements</h2>
+<p>DocFX provides a client-side search (Lunr-based index). This project layers a lightweight enhancement to reduce noise:</p>
+<ul>
+<li>A curated stopwords list: <code>docs/search-stopwords.json</code>.</li>
+<li>A script: <code>templates/terminal-gui-xaml/scripts/search-enhancements.js</code> that loads stopwords and avoids weighting queries consisting solely of common or domain-repetitive terms.</li>
+</ul>
+<p>This script currently does not rewrite the visible query (to avoid confusing users) but stores a cleaned version in a data attribute for potential future enhancements.</p>
+<h3 id="extending-search-further">Extending Search Further</h3>
+<p>Potential future improvements:</p>
+<ul>
+<li>Integrate semantic scoring by section weight.</li>
+<li>Add synonyms mapping (e.g., &quot;dialog&quot; → &quot;window&quot;).</li>
+<li>Expose filtering (guides vs API vs examples) via UI toggle.</li>
+</ul>
+<h2 id="adding-new-content">Adding New Content</h2>
+<p>When adding new conceptual pages:</p>
+<ol>
+<li>Create file under <code>docs/articles/...</code>.</li>
+<li>Update <code>docs/toc.yml</code> if a new navigation entry is needed.</li>
+<li>Avoid linking to non-existent anchors; create headings first.</li>
+<li>If page is planned but not written, add a placeholder with <code>Status: Planned — placeholder</code>.</li>
+</ol>
+<h2 id="deployment-troubleshooting">Deployment Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pages deploy fails</td>
+<td>Artifact missing</td>
+<td>Ensure <code>docfx build</code> produced <code>_site/</code> and no step failed earlier.</td>
+</tr>
+<tr>
+<td>404 on GitHub Pages</td>
+<td>Cache stale</td>
+<td>Hard refresh / purge browser cache.</td>
+</tr>
+<tr>
+<td>Search returns no results</td>
+<td>Index not built</td>
+<td>Check for <code>index.json</code> in <code>_site/</code>. Re-run build.</td>
+</tr>
+<tr>
+<td>Many InvalidFileLink warnings</td>
+<td>Missing placeholders</td>
+<td>Create minimal placeholder pages for future links.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="maintenance-checklist">Maintenance Checklist</h2>
+<ul>
+<li>Monthly: Review stopwords list for accidental over-filtering.</li>
+<li>Quarterly: Audit warnings count; ensure trend is downward.</li>
+<li>Each Release: Verify version &amp; compatibility matrix links resolve.</li>
+</ul>
+<h2 id="related-documents">Related Documents</h2>
+<ul>
+<li>Version &amp; Compatibility Matrix: <code>docs/articles/guides/version-compatibility.md</code></li>
+<li>Documentation Hygiene: See README section &quot;Documentation Hygiene&quot;.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

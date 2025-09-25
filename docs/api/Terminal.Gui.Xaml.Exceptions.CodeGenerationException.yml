@@ -27,7 +27,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CodeGenerationException
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -93,7 +93,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -124,7 +124,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -159,7 +159,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -200,7 +200,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ClassName
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -231,7 +231,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MethodName
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -262,7 +262,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ErrorCode
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -293,7 +293,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: LocalizedMessage
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -324,7 +324,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: GeneratedCode
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -355,7 +355,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: InvalidType
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -396,7 +396,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CompilationError
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -440,7 +440,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: TemplateError
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
@@ -484,7 +484,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: GetObjectData
     path: ../src/Terminal.Gui.Xaml/Exceptions/CodeGenerationException.cs

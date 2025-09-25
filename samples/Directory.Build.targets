@@ -1,0 +1,9 @@
+<Project>
+  <!-- Forces Terminal.Gui reference to be present for compiler if package assets were pruned by some transitive target -->
+  <ItemGroup Condition="Exists('$(NuGetPackageRoot)terminal.gui/2.0.0-develop.4559/lib/net8.0/Terminal.Gui.dll')">
+    <Reference Include="Terminal.Gui">
+      <HintPath>$(NuGetPackageRoot)terminal.gui/2.0.0-develop.4559/lib/net8.0/Terminal.Gui.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

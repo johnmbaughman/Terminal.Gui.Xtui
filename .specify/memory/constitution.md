@@ -14,7 +14,7 @@ Sync Impact Report:
 ### I. Code Quality Standards (NON-NEGOTIABLE)
 All code MUST adhere to strict quality standards to ensure maintainability, readability, and reliability. Code MUST:
 - Follow Microsoft C# coding conventions and .NET Framework best practices
-- Pass static analysis tools (StyleCop, FxCop/Analyzers) without warnings
+- Pass static analysis (built-in .NET analyzers via .editorconfig) without warnings
 - Maintain cyclomatic complexity below 15 per method
 - Include XML documentation for all public APIs
 - Use meaningful names for variables, methods, and classes

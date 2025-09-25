@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ValidationIssue
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -59,7 +59,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: IssueType
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -90,7 +90,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Severity
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -121,7 +121,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Message
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -152,7 +152,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: FilePath
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -183,7 +183,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: LineNumber
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -214,7 +214,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MemberName
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -245,7 +245,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Suggestion
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs

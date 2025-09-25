@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: IssueType
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -48,7 +48,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MissingDocumentation
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -76,7 +76,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: InvalidLink
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -104,7 +104,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: InvalidExample
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -132,7 +132,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MalformedXml
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -160,7 +160,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MissingReturnDoc
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
@@ -188,7 +188,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: MissingParameterDoc
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs

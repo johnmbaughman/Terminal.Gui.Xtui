@@ -29,8 +29,15 @@ param(
     [switch]$VerboseOutput,
 
     [Parameter()]
-    [switch]$SkipDocs
-)Set-StrictMode -Version Latest
+    [switch]$SkipDocs,
+
+    [Parameter()]
+    [switch]$SkipVersionMatrixValidation,
+
+    [Parameter()]
+    [switch]$DescendingVersionMatrix
+)
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 # Constitutional Performance Requirements
@@ -173,9 +180,9 @@ function Invoke-BuildDocs {
     }
 
     try {
-        $args = @('build', $docfxConfig, '--warningsAsErrors')
-        if ($VerboseOutput) { $args += '--logLevel'; $args += 'Verbose' }
-        & $docfx.Source $args
+    $docfxArgs = @('build', $docfxConfig, '--warningsAsErrors')
+    if ($VerboseOutput) { $docfxArgs += '--logLevel'; $docfxArgs += 'Verbose' }
+    & $docfx.Source $docfxArgs
         if ($LASTEXITCODE -ne 0) { throw "DocFX build failed with exit code $LASTEXITCODE" }
         Write-Success "Documentation built successfully (warnings treated as errors)"
     }
@@ -193,6 +200,31 @@ function Test-ConstitutionalCompliance {
     Write-Success "Constitutional compliance checks passed (placeholder)"
 }
 
+function Invoke-VersionMatrixValidation {
+    if ($SkipVersionMatrixValidation) {
+        Write-Warning "Skipping version & compatibility matrix validation as requested"
+        return
+    }
+
+    Write-Header "Validating Version & Compatibility Matrix"
+    $scriptPath = Join-Path $PSScriptRoot 'validate-version-matrix.ps1'
+    if (-not (Test-Path $scriptPath)) {
+        Write-Warning "Validation script not found at $scriptPath"
+        return
+    }
+    try {
+    $validationArgs = @()
+    if ($DescendingVersionMatrix) { $validationArgs += '-Descending' }
+    & $scriptPath @validationArgs
+        if ($LASTEXITCODE -ne 0) { throw "Matrix validation failed with exit code $LASTEXITCODE" }
+        Write-Success "Version & compatibility matrix validation passed"
+    }
+    catch {
+        Write-Error "Version matrix validation failed: $($_.Exception.Message)"
+        exit 1
+    }
+}
+
 # Main execution
 try {
     Write-Header "Terminal.Gui XAML Framework Build Script"
@@ -208,6 +240,7 @@ try {
     Invoke-BuildProjects
     Invoke-RunTests
     Test-ConstitutionalCompliance
+    Invoke-VersionMatrixValidation
     Invoke-BuildDocs
 
     Write-Header "Build Completed Successfully"

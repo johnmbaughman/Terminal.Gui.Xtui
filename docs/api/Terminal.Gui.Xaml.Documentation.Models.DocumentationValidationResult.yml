@@ -5,10 +5,12 @@ items:
   id: DocumentationValidationResult
   parent: Terminal.Gui.Xaml.Documentation.Models
   children:
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CoverageMetrics
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Issues
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
   - Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime
   langs:
@@ -21,7 +23,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: DocumentationValidationResult
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
@@ -44,6 +46,37 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
+  id: CorrelationId
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: DocumentationValidationResult.CorrelationId
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: CorrelationId
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 14
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets a correlation identifier that ties this validation result to a generation/validation request.
+  example: []
+  syntax:
+    content: public string CorrelationId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CorrelationId As String
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId*
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
   commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
   id: ValidationTarget
@@ -58,11 +91,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ValidationTarget
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 14
+    startLine: 19
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -89,11 +122,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Status
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 19
+    startLine: 24
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -120,11 +153,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Issues
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 24
+    startLine: 29
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -151,11 +184,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: CoverageMetrics
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 29
+    startLine: 34
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -182,11 +215,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ValidationTime
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 34
+    startLine: 39
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -199,6 +232,37 @@ items:
       type: System.DateTime
     content.vb: Public Property ValidationTime As Date
   overload: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTime*
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
+  commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
+  id: ValidationDuration
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+  langs:
+  - csharp
+  - vb
+  name: ValidationDuration
+  nameWithType: DocumentationValidationResult.ValidationDuration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidationDuration
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 44
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Gets or sets how long validation took (duration from start to completion).
+  example: []
+  syntax:
+    content: public TimeSpan ValidationDuration { get; set; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public Property ValidationDuration As TimeSpan
+  overload: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration*
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
   commentId: P:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
   id: Summary
@@ -213,11 +277,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Summary
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
-    startLine: 39
+    startLine: 49
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -514,12 +578,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget*
-  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
-  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTarget
-  name: ValidationTarget
-  nameWithType: DocumentationValidationResult.ValidationTarget
-  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_CorrelationId
+  name: CorrelationId
+  nameWithType: DocumentationValidationResult.CorrelationId
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.CorrelationId
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -531,6 +595,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationTarget
+  name: ValidationTarget
+  nameWithType: DocumentationValidationResult.ValidationTarget
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationTarget
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status*
   commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Status
   href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Status
@@ -601,6 +671,20 @@ references:
   nameWithType.vb: Date
   fullName.vb: Date
   name.vb: Date
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_ValidationDuration
+  name: ValidationDuration
+  nameWithType: DocumentationValidationResult.ValidationDuration
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.ValidationDuration
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
 - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary*
   commentId: Overload:Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.Summary
   href: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult.html#Terminal_Gui_Xaml_Documentation_Models_DocumentationValidationResult_Summary

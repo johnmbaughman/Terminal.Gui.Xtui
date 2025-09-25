@@ -24,7 +24,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: DocFxConfiguration
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -61,7 +61,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ProjectName
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -106,7 +106,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Version
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -151,7 +151,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: OutputPath
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -196,7 +196,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: SourcePaths
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -254,7 +254,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ExcludePatterns
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -285,7 +285,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: TemplateSettings
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -316,7 +316,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: BuildSettings
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -347,7 +347,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Metadata
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
@@ -378,7 +378,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Build
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs

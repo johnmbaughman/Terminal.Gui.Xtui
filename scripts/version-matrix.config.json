@@ -1,0 +1,7 @@
+{
+  "ordering": "ascending",
+  "requireUpcomingPlaceholder": false,
+  "upcomingPlaceholderPattern": "(planned|future)",
+  "emitJsonReport": true,
+  "reportPath": "temp_test_validation/version-matrix-report.json"
+}

@@ -18,11 +18,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ContentConfiguration
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-    startLine: 115
+    startLine: 116
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -55,11 +55,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Files
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-    startLine: 120
+    startLine: 121
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -86,11 +86,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Src
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-    startLine: 125
+    startLine: 126
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models
@@ -117,11 +117,11 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Dest
     path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocFxConfiguration.cs
-    startLine: 130
+    startLine: 131
   assemblies:
   - Terminal.Gui.Xaml
   namespace: Terminal.Gui.Xaml.Documentation.Models

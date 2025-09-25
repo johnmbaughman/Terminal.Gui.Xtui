@@ -1,0 +1,1081 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  commentId: T:Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  id: SimpleXamlParser
+  parent: Terminal.Gui.Xaml.Parsing
+  children:
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync(System.String)
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync(System.String)
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl(System.String,System.Type)
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate(System.String)
+  - Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax(System.String)
+  langs:
+  - csharp
+  - vb
+  name: SimpleXamlParser
+  nameWithType: SimpleXamlParser
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: SimpleXamlParser
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 8
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Very simple XAML parser that only performs trivial validation to satisfy contract tests.
+  example: []
+  syntax:
+    content: 'public sealed class SimpleXamlParser : IXamlParser'
+    content.vb: Public NotInheritable Class SimpleXamlParser Implements IXamlParser
+  inheritance:
+  - System.Object
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync(System.String)
+  id: ParseAsync(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: ParseAsync(string)
+  nameWithType: SimpleXamlParser.ParseAsync(string)
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ParseAsync
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 24
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Parses XAML from a string into a minimal <xref href="Terminal.Gui.Xaml.Model.XamlDocument" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Task<XamlDocument> ParseAsync(string xaml)
+    parameters:
+    - id: xaml
+      type: System.String
+      description: The XAML text to parse.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Model.XamlDocument}
+      description: A <xref href="Terminal.Gui.Xaml.Model.XamlDocument" data-throw-if-not-resolved="false"></xref> instance.
+    content.vb: Public Function ParseAsync(xaml As String) As Task(Of XamlDocument)
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync*
+  exceptions:
+  - type: Terminal.Gui.Xaml.Exceptions.XamlParseException
+    commentId: T:Terminal.Gui.Xaml.Exceptions.XamlParseException
+    description: Thrown when parsing fails.
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(System.String)
+  nameWithType.vb: SimpleXamlParser.ParseAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync(String)
+  name.vb: ParseAsync(String)
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync(System.String)
+  id: ParseFileAsync(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: ParseFileAsync(string)
+  nameWithType: SimpleXamlParser.ParseFileAsync(string)
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ParseFileAsync
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 55
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Parses XAML from a file path.
+  example: []
+  syntax:
+    content: public Task<XamlDocument> ParseFileAsync(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+      description: The path to the XAML file.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Model.XamlDocument}
+      description: A parsed <xref href="Terminal.Gui.Xaml.Model.XamlDocument" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function ParseFileAsync(filePath As String) As Task(Of XamlDocument)
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync*
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(System.String)
+  nameWithType.vb: SimpleXamlParser.ParseFileAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync(String)
+  name.vb: ParseFileAsync(String)
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax(System.String)
+  id: ValidateSyntax(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: ValidateSyntax(string)
+  nameWithType: SimpleXamlParser.ValidateSyntax(string)
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateSyntax
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 66
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Validates the XAML syntax at a superficial level.
+  example: []
+  syntax:
+    content: public bool ValidateSyntax(string xaml)
+    parameters:
+    - id: xaml
+      type: System.String
+      description: The XAML text.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the input appears valid; otherwise, <code>false</code>.
+    content.vb: Public Function ValidateSyntax(xaml As String) As Boolean
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax*
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(System.String)
+  nameWithType.vb: SimpleXamlParser.ValidateSyntax(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax(String)
+  name.vb: ValidateSyntax(String)
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate(System.String)
+  id: Validate(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: Validate(string)
+  nameWithType: SimpleXamlParser.Validate(string)
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Validate
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 74
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Performs the actual simple validation logic and records any errors.
+  example: []
+  syntax:
+    content: public bool Validate(string xaml)
+    parameters:
+    - id: xaml
+      type: System.String
+      description: The XAML text.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if valid; otherwise, <code>false</code>.
+    content.vb: Public Function Validate(xaml As String) As Boolean
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate*
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(System.String)
+  nameWithType.vb: SimpleXamlParser.Validate(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate(String)
+  name.vb: Validate(String)
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl(System.String,System.Type)
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl(System.String,System.Type)
+  id: RegisterControl(System.String,System.Type)
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: RegisterControl(string, Type)
+  nameWithType: SimpleXamlParser.RegisterControl(string, Type)
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: RegisterControl
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 112
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Registers a control type by name for future validation.
+  example: []
+  syntax:
+    content: public void RegisterControl(string controlName, Type controlType)
+    parameters:
+    - id: controlName
+      type: System.String
+      description: The control name as it may appear in XAML.
+    - id: controlType
+      type: System.Type
+      description: The associated runtime type.
+    content.vb: Public Sub RegisterControl(controlName As String, controlType As Type)
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl*
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(System.String,System.Type)
+  nameWithType.vb: SimpleXamlParser.RegisterControl(String, Type)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl(String, System.Type)
+  name.vb: RegisterControl(String, Type)
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors
+  commentId: M:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors
+  id: GetParsingErrors
+  parent: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+  langs:
+  - csharp
+  - vb
+  name: GetParsingErrors()
+  nameWithType: SimpleXamlParser.GetParsingErrors()
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetParsingErrors
+    path: ../src/Terminal.Gui.Xaml/Parsing/SimpleXamlParser.cs
+    startLine: 121
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Gets the errors collected during the last validation.
+  example: []
+  syntax:
+    content: public IEnumerable<XamlParsingError> GetParsingErrors()
+    return:
+      type: System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Parsing.XamlParsingError}
+      description: A snapshot of parsing errors.
+    content.vb: Public Function GetParsingErrors() As IEnumerable(Of XamlParsingError)
+  overload: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors*
+  implements:
+  - Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors
+references:
+- uid: Terminal.Gui.Xaml.Parsing
+  commentId: N:Terminal.Gui.Xaml.Parsing
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Parsing
+  nameWithType: Terminal.Gui.Xaml.Parsing
+  fullName: Terminal.Gui.Xaml.Parsing
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser
+  commentId: T:Terminal.Gui.Xaml.Parsing.IXamlParser
+  parent: Terminal.Gui.Xaml.Parsing
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html
+  name: IXamlParser
+  nameWithType: IXamlParser
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Model.XamlDocument
+  commentId: T:Terminal.Gui.Xaml.Model.XamlDocument
+  parent: Terminal.Gui.Xaml.Model
+  href: Terminal.Gui.Xaml.Model.XamlDocument.html
+  name: XamlDocument
+  nameWithType: XamlDocument
+  fullName: Terminal.Gui.Xaml.Model.XamlDocument
+- uid: Terminal.Gui.Xaml.Exceptions.XamlParseException
+  commentId: T:Terminal.Gui.Xaml.Exceptions.XamlParseException
+  parent: Terminal.Gui.Xaml.Exceptions
+  href: Terminal.Gui.Xaml.Exceptions.XamlParseException.html
+  name: XamlParseException
+  nameWithType: XamlParseException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlParseException
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_ParseAsync_System_String_
+  name: ParseAsync
+  nameWithType: SimpleXamlParser.ParseAsync
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseAsync
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  isExternal: true
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseAsync_System_String_
+  name: ParseAsync(string)
+  nameWithType: IXamlParser.ParseAsync(string)
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(string)
+  nameWithType.vb: IXamlParser.ParseAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(String)
+  name.vb: ParseAsync(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(System.String)
+    name: ParseAsync
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseAsync(System.String)
+    name: ParseAsync
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Model.XamlDocument}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Model.XamlDocument}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<XamlDocument>
+  nameWithType: Task<XamlDocument>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Model.XamlDocument>
+  nameWithType.vb: Task(Of XamlDocument)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Model.XamlDocument)
+  name.vb: Task(Of XamlDocument)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Model.XamlDocument
+    name: XamlDocument
+    href: Terminal.Gui.Xaml.Model.XamlDocument.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Model.XamlDocument
+    name: XamlDocument
+    href: Terminal.Gui.Xaml.Model.XamlDocument.html
+  - name: )
+- uid: Terminal.Gui.Xaml.Model
+  commentId: N:Terminal.Gui.Xaml.Model
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Model
+  nameWithType: Terminal.Gui.Xaml.Model
+  fullName: Terminal.Gui.Xaml.Model
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Model
+    name: Model
+    href: Terminal.Gui.Xaml.Model.html
+- uid: Terminal.Gui.Xaml.Exceptions
+  commentId: N:Terminal.Gui.Xaml.Exceptions
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Exceptions
+  nameWithType: Terminal.Gui.Xaml.Exceptions
+  fullName: Terminal.Gui.Xaml.Exceptions
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Exceptions
+    name: Exceptions
+    href: Terminal.Gui.Xaml.Exceptions.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Exceptions
+    name: Exceptions
+    href: Terminal.Gui.Xaml.Exceptions.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_ParseFileAsync_System_String_
+  name: ParseFileAsync
+  nameWithType: SimpleXamlParser.ParseFileAsync
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ParseFileAsync
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  isExternal: true
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseFileAsync_System_String_
+  name: ParseFileAsync(string)
+  nameWithType: IXamlParser.ParseFileAsync(string)
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(string)
+  nameWithType.vb: IXamlParser.ParseFileAsync(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(String)
+  name.vb: ParseFileAsync(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(System.String)
+    name: ParseFileAsync
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseFileAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ParseFileAsync(System.String)
+    name: ParseFileAsync
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ParseFileAsync_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_ValidateSyntax_System_String_
+  name: ValidateSyntax
+  nameWithType: SimpleXamlParser.ValidateSyntax
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.ValidateSyntax
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  isExternal: true
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ValidateSyntax_System_String_
+  name: ValidateSyntax(string)
+  nameWithType: IXamlParser.ValidateSyntax(string)
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(string)
+  nameWithType.vb: IXamlParser.ValidateSyntax(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(String)
+  name.vb: ValidateSyntax(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(System.String)
+    name: ValidateSyntax
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ValidateSyntax_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.ValidateSyntax(System.String)
+    name: ValidateSyntax
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_ValidateSyntax_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_Validate_System_String_
+  name: Validate
+  nameWithType: SimpleXamlParser.Validate
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.Validate
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(System.String)
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(System.String)
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  isExternal: true
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_Validate_System_String_
+  name: Validate(string)
+  nameWithType: IXamlParser.Validate(string)
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(string)
+  nameWithType.vb: IXamlParser.Validate(String)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(String)
+  name.vb: Validate(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(System.String)
+    name: Validate
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_Validate_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.Validate(System.String)
+    name: Validate
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_Validate_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_RegisterControl_System_String_System_Type_
+  name: RegisterControl
+  nameWithType: SimpleXamlParser.RegisterControl
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.RegisterControl
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(System.String,System.Type)
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(System.String,System.Type)
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  isExternal: true
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_RegisterControl_System_String_System_Type_
+  name: RegisterControl(string, Type)
+  nameWithType: IXamlParser.RegisterControl(string, Type)
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(string, System.Type)
+  nameWithType.vb: IXamlParser.RegisterControl(String, Type)
+  fullName.vb: Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(String, System.Type)
+  name.vb: RegisterControl(String, Type)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(System.String,System.Type)
+    name: RegisterControl
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_RegisterControl_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.RegisterControl(System.String,System.Type)
+    name: RegisterControl
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_RegisterControl_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors*
+  commentId: Overload:Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors
+  href: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.html#Terminal_Gui_Xaml_Parsing_SimpleXamlParser_GetParsingErrors
+  name: GetParsingErrors
+  nameWithType: SimpleXamlParser.GetParsingErrors
+  fullName: Terminal.Gui.Xaml.Parsing.SimpleXamlParser.GetParsingErrors
+- uid: Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors
+  commentId: M:Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors
+  parent: Terminal.Gui.Xaml.Parsing.IXamlParser
+  href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_GetParsingErrors
+  name: GetParsingErrors()
+  nameWithType: IXamlParser.GetParsingErrors()
+  fullName: Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors()
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors
+    name: GetParsingErrors
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_GetParsingErrors
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser.GetParsingErrors
+    name: GetParsingErrors
+    href: Terminal.Gui.Xaml.Parsing.IXamlParser.html#Terminal_Gui_Xaml_Parsing_IXamlParser_GetParsingErrors
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Parsing.XamlParsingError}
+  commentId: T:System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Parsing.XamlParsingError}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<XamlParsingError>
+  nameWithType: IEnumerable<XamlParsingError>
+  fullName: System.Collections.Generic.IEnumerable<Terminal.Gui.Xaml.Parsing.XamlParsingError>
+  nameWithType.vb: IEnumerable(Of XamlParsingError)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Terminal.Gui.Xaml.Parsing.XamlParsingError)
+  name.vb: IEnumerable(Of XamlParsingError)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Parsing.XamlParsingError
+    name: XamlParsingError
+    href: Terminal.Gui.Xaml.Parsing.XamlParsingError.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Parsing.XamlParsingError
+    name: XamlParsingError
+    href: Terminal.Gui.Xaml.Parsing.XamlParsingError.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

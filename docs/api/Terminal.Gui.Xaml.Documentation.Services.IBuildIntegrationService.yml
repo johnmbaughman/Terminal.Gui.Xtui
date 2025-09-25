@@ -1,0 +1,730 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  id: IBuildIntegrationService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest,System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task})
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties(System.String)
+  - Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition)
+  langs:
+  - csharp
+  - vb
+  name: IBuildIntegrationService
+  nameWithType: IBuildIntegrationService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  type: Interface
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IBuildIntegrationService
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 9
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Defines the contract for build integration services.
+  example: []
+  syntax:
+    content: public interface IBuildIntegrationService
+    content.vb: Public Interface IBuildIntegrationService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest,System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task})
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest,System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task})
+  id: ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest,System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task})
+  parent: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  langs:
+  - csharp
+  - vb
+  name: ExecuteBuildTargetAsync(BuildTargetRequest, Func<BuildProgress, Task>?)
+  nameWithType: IBuildIntegrationService.ExecuteBuildTargetAsync(BuildTargetRequest, Func<BuildProgress, Task>?)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest, System.Func<Terminal.Gui.Xaml.Documentation.Services.BuildProgress, System.Threading.Tasks.Task>?)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ExecuteBuildTargetAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 17
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Executes a build target asynchronously.
+  example: []
+  syntax:
+    content: Task<BuildTargetResponse> ExecuteBuildTargetAsync(BuildTargetRequest request, Func<BuildProgress, Task>? progressReporter = null)
+    parameters:
+    - id: request
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+      description: The build target request.
+    - id: progressReporter
+      type: System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task}
+      description: Optional progress reporter.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse}
+      description: A task that represents the asynchronous operation. The task result contains the build target response.
+    content.vb: Function ExecuteBuildTargetAsync(request As BuildTargetRequest, progressReporter As Func(Of BuildProgress, Task) = Nothing) As Task(Of BuildTargetResponse)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync*
+  nameWithType.vb: IBuildIntegrationService.ExecuteBuildTargetAsync(BuildTargetRequest, Func(Of BuildProgress, Task))
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest, System.Func(Of Terminal.Gui.Xaml.Documentation.Services.BuildProgress, System.Threading.Tasks.Task))
+  name.vb: ExecuteBuildTargetAsync(BuildTargetRequest, Func(Of BuildProgress, Task))
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync
+  id: GetAvailableTargetsAsync
+  parent: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableTargetsAsync()
+  nameWithType: IBuildIntegrationService.GetAvailableTargetsAsync()
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetAvailableTargetsAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 23
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Gets available build targets.
+  example: []
+  syntax:
+    content: Task<IEnumerable<BuildTargetDefinition>> GetAvailableTargetsAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition}}
+      description: A collection of available build targets.
+    content.vb: Function GetAvailableTargetsAsync() As Task(Of IEnumerable(Of BuildTargetDefinition))
+  overload: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets
+  id: GetAvailableTargets
+  parent: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableTargets()
+  nameWithType: IBuildIntegrationService.GetAvailableTargets()
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetAvailableTargets
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 29
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Gets available build targets synchronously for quick discovery.
+  example: []
+  syntax:
+    content: IEnumerable<string> GetAvailableTargets()
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: Collection of available target names.
+    content.vb: Function GetAvailableTargets() As IEnumerable(Of String)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties(System.String)
+  id: GetTargetProperties(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  langs:
+  - csharp
+  - vb
+  name: GetTargetProperties(string)
+  nameWithType: IBuildIntegrationService.GetTargetProperties(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GetTargetProperties
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 36
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Gets property definitions for a specific target.
+  example: []
+  syntax:
+    content: IReadOnlyDictionary<string, BuildPropertyDefinition> GetTargetProperties(string target)
+    parameters:
+    - id: target
+      type: System.String
+      description: The target name.
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition}
+      description: Dictionary of property definitions.
+    content.vb: Function GetTargetProperties(target As String) As IReadOnlyDictionary(Of String, BuildPropertyDefinition)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties*
+  nameWithType.vb: IBuildIntegrationService.GetTargetProperties(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties(String)
+  name.vb: GetTargetProperties(String)
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition)
+  id: RegisterCustomTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+  langs:
+  - csharp
+  - vb
+  name: RegisterCustomTargetAsync(BuildTargetDefinition)
+  nameWithType: IBuildIntegrationService.RegisterCustomTargetAsync(BuildTargetDefinition)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync(Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: RegisterCustomTargetAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs
+    startLine: 42
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Registers a custom build target at runtime.
+  example: []
+  syntax:
+    content: Task RegisterCustomTargetAsync(BuildTargetDefinition definition)
+    parameters:
+    - id: definition
+      type: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+      description: The target definition.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function RegisterCustomTargetAsync(definition As BuildTargetDefinition) As Task
+  overload: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync*
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html#Terminal_Gui_Xaml_Documentation_Services_IBuildIntegrationService_ExecuteBuildTargetAsync_Terminal_Gui_Xaml_Documentation_Services_BuildTargetRequest_System_Func_Terminal_Gui_Xaml_Documentation_Services_BuildProgress_System_Threading_Tasks_Task__
+  name: ExecuteBuildTargetAsync
+  nameWithType: IBuildIntegrationService.ExecuteBuildTargetAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.ExecuteBuildTargetAsync
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest.html
+  name: BuildTargetRequest
+  nameWithType: BuildTargetRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+- uid: System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task}
+  commentId: T:System.Func{Terminal.Gui.Xaml.Documentation.Services.BuildProgress,System.Threading.Tasks.Task}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<BuildProgress, Task>
+  nameWithType: Func<BuildProgress, Task>
+  fullName: System.Func<Terminal.Gui.Xaml.Documentation.Services.BuildProgress, System.Threading.Tasks.Task>
+  nameWithType.vb: Func(Of BuildProgress, Task)
+  fullName.vb: System.Func(Of Terminal.Gui.Xaml.Documentation.Services.BuildProgress, System.Threading.Tasks.Task)
+  name.vb: Func(Of BuildProgress, Task)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+    name: BuildProgress
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildProgress.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+    name: BuildProgress
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildProgress.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.Tasks.Task
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  - name: )
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<BuildTargetResponse>
+  nameWithType: Task<BuildTargetResponse>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse>
+  nameWithType.vb: Task(Of BuildTargetResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse)
+  name.vb: Task(Of BuildTargetResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+    name: BuildTargetResponse
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+    name: BuildTargetResponse
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse.html
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html#Terminal_Gui_Xaml_Documentation_Services_IBuildIntegrationService_GetAvailableTargetsAsync
+  name: GetAvailableTargetsAsync
+  nameWithType: IBuildIntegrationService.GetAvailableTargetsAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargetsAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<BuildTargetDefinition>>
+  nameWithType: Task<IEnumerable<BuildTargetDefinition>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition>>
+  nameWithType.vb: Task(Of IEnumerable(Of BuildTargetDefinition))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition))
+  name.vb: Task(Of IEnumerable(Of BuildTargetDefinition))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+    name: BuildTargetDefinition
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+    name: BuildTargetDefinition
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition.html
+  - name: )
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html#Terminal_Gui_Xaml_Documentation_Services_IBuildIntegrationService_GetAvailableTargets
+  name: GetAvailableTargets
+  nameWithType: IBuildIntegrationService.GetAvailableTargets
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetAvailableTargets
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html#Terminal_Gui_Xaml_Documentation_Services_IBuildIntegrationService_GetTargetProperties_System_String_
+  name: GetTargetProperties
+  nameWithType: IBuildIntegrationService.GetTargetProperties
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.GetTargetProperties
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, BuildPropertyDefinition>
+  nameWithType: IReadOnlyDictionary<string, BuildPropertyDefinition>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition>
+  nameWithType.vb: IReadOnlyDictionary(Of String, BuildPropertyDefinition)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition)
+  name.vb: IReadOnlyDictionary(Of String, BuildPropertyDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+    name: BuildPropertyDefinition
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+    name: BuildPropertyDefinition
+    href: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.html#Terminal_Gui_Xaml_Documentation_Services_IBuildIntegrationService_RegisterCustomTargetAsync_Terminal_Gui_Xaml_Documentation_Services_BuildTargetDefinition_
+  name: RegisterCustomTargetAsync
+  nameWithType: IBuildIntegrationService.RegisterCustomTargetAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService.RegisterCustomTargetAsync
+- uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition.html
+  name: BuildTargetDefinition
+  nameWithType: BuildTargetDefinition
+  fullName: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task

@@ -22,7 +22,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: LogLevel
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -49,7 +49,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Trace
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -77,7 +77,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Debug
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -105,7 +105,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Information
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -133,7 +133,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Warning
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -161,7 +161,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Error
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -189,7 +189,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Critical
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
@@ -217,7 +217,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: None
     path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs

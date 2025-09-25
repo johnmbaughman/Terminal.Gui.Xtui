@@ -1,0 +1,43 @@
+:root {
+  --tgx-accent: #3CA4FF;
+  --tgx-accent-alt: #2C82CC;
+  --tgx-bg: #101317;
+  --tgx-panel: #1b2128;
+  --tgx-border: #2a323b;
+  --tgx-text: #e5e9f0;
+  --tgx-muted: #9aa4b1;
+  --tgx-danger: #ff5577;
+  --tgx-warn: #ffc94d;
+  --tgx-ok: #55d888;
+}
+
+body {
+  background: var(--tgx-bg);
+  color: var(--tgx-text);
+  font-family: system-ui, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.navbar, .subnav, .sidefilter, .sidenav {
+  background: var(--tgx-panel) !important;
+  border-color: var(--tgx-border) !important;
+}
+
+a { color: var(--tgx-accent); }
+a:hover { color: var(--tgx-accent-alt); }
+
+pre, code { background: #161b21 !important; border: 1px solid var(--tgx-border); }
+
+.tgx-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--tgx-accent-alt);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.footer { background: transparent !important; color: var(--tgx-muted); }
+.footer a { color: var(--tgx-accent-alt); }

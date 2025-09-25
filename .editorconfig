@@ -1877,7 +1877,7 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
-[*.{appxmanifest,axml,build,config,csproj,dbml,discomap,dtd,jsproj,lsproj,njsproj,nuspec,proj,props,resw,resx,StyleCop,targets,tasks,vbproj,xml,xsd}]
+[*.{appxmanifest,axml,build,config,csproj,dbml,discomap,dtd,jsproj,lsproj,njsproj,nuspec,proj,props,resw,resx,targets,tasks,vbproj,xml,xsd}]
 indent_style = space
 indent_size = 2
 tab_width = 2

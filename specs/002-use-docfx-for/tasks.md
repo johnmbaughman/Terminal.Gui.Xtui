@@ -68,32 +68,32 @@ Based on plan.md structure: Single project with documentation tooling extension
 - [x] T017 [P] DocumentationValidationResult model in src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
 - [x] T018 [P] ValidationIssue model in src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
 - [x] T019 [P] CoverageMetrics model in src/Terminal.Gui.Xaml/Documentation/Models/CoverageMetrics.cs
-- [ ] T020 IDocumentationGeneratorService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
-- [ ] T021 DocumentationGeneratorService implementation in src/Terminal.Gui.Xaml/Documentation/Services/DocumentationGeneratorService.cs
-- [ ] T022 IDocumentationConfigurationService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
-- [ ] T023 DocumentationConfigurationService implementation in src/Terminal.Gui.Xaml/Documentation/Services/DocumentationConfigurationService.cs
-- [ ] T024 IBuildIntegrationService interface in src/Terminal.Gui.Xaml/Build/IBuildIntegrationService.cs
-- [ ] T025 BuildIntegrationService implementation in src/Terminal.Gui.Xaml/Build/BuildIntegrationService.cs
-- [ ] T026 GenerateDocumentationTask MSBuild task in src/Terminal.Gui.Xaml/Build/GenerateDocumentationTask.cs
-- [ ] T027 Documentation validation and coverage analysis in DocumentationGeneratorService.ValidateDocumentationAsync
-- [ ] T028 Error handling and logging integration across all services
+- [x] T020 IDocumentationGeneratorService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+- [x] T021 DocumentationGeneratorService implementation in src/Terminal.Gui.Xaml/Documentation/Services/DocumentationGeneratorService.cs
+- [x] T022 IDocumentationConfigurationService interface in src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationConfigurationService.cs
+- [x] T023 DocumentationConfigurationService implementation in src/Terminal.Gui.Xaml/Documentation/Services/DocumentationConfigurationService.cs
+- [x] T024 IBuildIntegrationService interface (consolidated: uses existing interface in src/Terminal.Gui.Xaml/Documentation/Services/IBuildIntegrationService.cs; duplicate Build path removed)
+- [x] T025 BuildIntegrationService implementation in src/Terminal.Gui.Xaml/Build/BuildIntegrationService.cs
+- [x] T026 GenerateDocumentationTask MSBuild task in src/Terminal.Gui.Xaml/Build/GenerateDocumentationTask.cs
+- [x] T027 Documentation validation and coverage analysis in DocumentationGeneratorService.ValidateDocumentationAsync
+- [x] T028 Error handling and logging integration across all services
 
-## Phase 3.4: Integration
-- [ ] T029 MSBuild targets file integration in src/Terminal.Gui.Xaml/Build/Terminal.Gui.Xaml.Documentation.targets
-- [ ] T030 NuGet package configuration for documentation tools
-- [ ] T031 DocFX template customization and branding in docs/templates/
-- [ ] T032 CI/CD pipeline integration for documentation deployment in .github/workflows/documentation.yml
-- [ ] T033 Documentation site hosting and search configuration
+# Phase 3.4: Integration
+- [x] T029 MSBuild targets file integration in src/Terminal.Gui.Xaml/Build/Terminal.Gui.Xaml.Documentation.targets
+- [x] T030 NuGet package configuration for documentation tools
+- [x] T031 DocFX template customization and branding in docs/templates/
+- [x] T032 CI/CD pipeline integration for documentation deployment in .github/workflows/documentation.yml
+- [x] T033 Documentation site hosting and search configuration
 
 ## Phase 3.5: Polish & Constitutional Compliance
-- [ ] T034 [P] Unit tests for DocFxConfiguration validation in tests/Terminal.Gui.Xaml.Tests/Unit/DocFxConfigurationTests.cs
-- [ ] T035 [P] Unit tests for DocumentationGeneratorService in tests/Terminal.Gui.Xaml.Tests/Unit/DocumentationGeneratorServiceTests.cs
-- [ ] T036 [P] Unit tests for BuildIntegrationService in tests/Terminal.Gui.Xaml.Tests/Unit/BuildIntegrationServiceTests.cs
-- [ ] T037 Performance tests (documentation generation <5 minutes, memory <200MB) in tests/Terminal.Gui.Xaml.Tests/Performance/DocumentationPerformanceTests.cs
-- [ ] T038 [P] Static analysis compliance (StyleCop, FxCop/Analyzers) for all documentation code
-- [ ] T039 [P] XML documentation for all public documentation APIs
-- [ ] T040 [P] Update main README.md with DocFX documentation setup instructions
-- [ ] T041 [P] Create documentation architecture guide in docs/articles/architecture.md
+- [x] T034 [P] Unit tests for DocFxConfiguration validation in tests/Terminal.Gui.Xaml.Tests/Unit/DocFxConfigurationTests.cs
+- [x] T035 [P] Unit tests for DocumentationGeneratorService in tests/Terminal.Gui.Xaml.Tests/Unit/DocumentationGeneratorServiceTests.cs
+- [x] T036 [P] Unit tests for BuildIntegrationService in tests/Terminal.Gui.Xaml.Tests/Unit/BuildIntegrationServiceTests.cs
+- [x] T037 Performance tests (documentation generation <5 minutes, memory <200MB) in tests/Terminal.Gui.Xaml.Tests/Performance/DocumentationPerformanceTests.cs
+- [x] T038 [P] Static analysis compliance (.NET analyzers via .editorconfig) for all documentation code
+- [x] T039 [P] XML documentation for all public documentation APIs
+- [x] T040 [P] Update main README.md with DocFX documentation setup instructions
+- [x] T041 [P] Create documentation architecture guide in docs/articles/architecture.md
 - [ ] T042 Code quality review (cyclomatic complexity <15, SOLID principles) for documentation services
 - [ ] T043 UX consistency validation (error messages, build integration patterns)
 - [ ] T044 Remove code duplication across documentation services

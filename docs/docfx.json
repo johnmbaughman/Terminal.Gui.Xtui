@@ -41,12 +41,14 @@
       {
         "files": [
           "images/**",
-          "favicon.ico"
+          "favicon.ico",
+          "search-stopwords.json"
         ]
       }
     ],
     "output": "_site",
     "template": [
+      "templates/terminal-gui-xaml",
       "default"
     ],
     "globalMetadata": {

@@ -19,7 +19,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: BindingException
     path: ../src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
@@ -87,7 +87,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
@@ -118,7 +118,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
@@ -153,7 +153,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: .ctor
     path: ../src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
@@ -191,7 +191,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Exceptions/BindingException.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: BindingExpression
     path: ../src/Terminal.Gui.Xaml/Exceptions/BindingException.cs

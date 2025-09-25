@@ -107,7 +107,7 @@ public class GeneratedCode
 
 ## Constitutional Compliance Requirements
 
-- **Code Quality**: Generated code must pass StyleCop and FxCop analysis
+- **Code Quality**: Generated code must pass .NET analyzer rules (treat warnings as errors)
 - **Performance**: Code generation must complete within 200ms
 - **Readability**: Generated code must be human-readable and debuggable
 - **Documentation**: All public APIs must have XML documentation

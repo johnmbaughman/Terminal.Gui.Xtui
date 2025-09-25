@@ -21,7 +21,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: XamlDocument
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -36,6 +36,8 @@ items:
     content.vb: Public Class XamlDocument
   inheritance:
   - System.Object
+  derivedClasses:
+  - Terminal.Gui.Xaml.Model.Window
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -57,7 +59,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: XamlText
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -88,7 +90,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: FilePath
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -119,7 +121,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: RootNamespace
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -150,7 +152,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Namespaces
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -181,7 +183,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: Validate
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs
@@ -212,7 +214,7 @@ items:
   source:
     remote:
       path: src/Terminal.Gui.Xaml/Model/XamlDocument.cs
-      branch: 003-the-project-needs
+      branch: 002-use-docfx-for
       repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
     id: ToString
     path: ../src/Terminal.Gui.Xaml/Model/XamlDocument.cs

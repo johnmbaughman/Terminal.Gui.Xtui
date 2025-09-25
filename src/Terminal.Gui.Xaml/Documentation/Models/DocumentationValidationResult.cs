@@ -10,6 +10,11 @@ namespace Terminal.Gui.Xaml.Documentation.Models;
 public class DocumentationValidationResult
 {
     /// <summary>
+    /// Gets or sets a correlation identifier that ties this validation result to a generation/validation request.
+    /// </summary>
+    public string CorrelationId { get; set; } = string.Empty;
+
+    /// <summary>
     /// Gets or sets what was validated (file path or identifier).
     /// </summary>
     public string ValidationTarget { get; set; } = string.Empty;
@@ -33,6 +38,11 @@ public class DocumentationValidationResult
     /// Gets or sets when validation was performed.
     /// </summary>
     public DateTime ValidationTime { get; set; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// Gets or sets how long validation took (duration from start to completion).
+    /// </summary>
+    public TimeSpan ValidationDuration { get; set; }
 
     /// <summary>
     /// Gets or sets the validation summary.

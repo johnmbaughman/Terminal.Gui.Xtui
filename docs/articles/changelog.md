@@ -6,6 +6,8 @@ Stay up-to-date with the latest features, improvements, and breaking changes in 
 > **Last Updated**: September 2025  
 > **Documentation Version**: 1.0
 
+> See also: [Version & Compatibility Matrix](guides/version-compatibility.md) for runtime & feature support status.
+
 ## Version 1.0.0 - Initial Release
 *Released: September 2025*
 

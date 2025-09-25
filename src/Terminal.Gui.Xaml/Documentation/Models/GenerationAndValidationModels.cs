@@ -40,6 +40,11 @@ public class GenerateDocumentationRequest
     /// Gets or sets the explicit output path to generate to.
     /// </summary>
     public string? OutputPath { get; set; }
+
+    /// <summary>
+    /// Gets or sets an optional correlation id supplied by the caller; if not provided one will be generated.
+    /// </summary>
+    public string? CorrelationId { get; set; }
 }
 
 /// <summary>
@@ -95,6 +100,11 @@ public class GenerateDocumentationResponse
     /// Gets or sets the list of generated files (paths).
     /// </summary>
     public IList<string> GeneratedFiles { get; set; } = new List<string>();
+
+    /// <summary>
+    /// Gets or sets the correlation id associated with this generation.
+    /// </summary>
+    public string CorrelationId { get; set; } = string.Empty;
 }
 
 /// <summary>
@@ -122,6 +132,11 @@ public class ValidateDocumentationRequest
     /// </summary>
     [Range(0.0, 100.0)]
     public double MinimumCoverage { get; set; } = 80.0;
+
+    /// <summary>
+    /// Gets or sets an optional correlation id; if provided it will be echoed in the validation result.
+    /// </summary>
+    public string? CorrelationId { get; set; }
 }
 
 /// <summary>
@@ -148,6 +163,11 @@ public class ValidateDocumentationResponse
     /// Gets or sets a value indicating whether the documentation passes minimal requirements.
     /// </summary>
     public bool PassesRequirements { get; set; }
+
+    /// <summary>
+    /// Gets or sets the correlation id associated with this validation response.
+    /// </summary>
+    public string CorrelationId { get; set; } = string.Empty;
 }
 
 /// <summary>

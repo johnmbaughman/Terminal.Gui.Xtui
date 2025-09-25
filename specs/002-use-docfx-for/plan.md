@@ -51,7 +51,7 @@ Implement comprehensive API documentation generation for the Terminal.Gui.Xaml f
 
 **Code Quality Standards Check:**
 - [x] All planned components follow Microsoft C# coding conventions
-- [x] Static analysis integration planned (StyleCop, FxCop/Analyzers) - existing infrastructure
+- [x] Static analysis integration planned (.NET built-in analyzers via .editorconfig) - existing infrastructure
 - [x] XML documentation strategy for public APIs defined - DocFX consumes XML comments
 - [x] SOLID principles applied to architectural design - documentation generation as service
 

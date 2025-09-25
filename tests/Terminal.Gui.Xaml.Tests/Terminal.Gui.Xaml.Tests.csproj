@@ -9,6 +9,8 @@
     <IsTestProject>true</IsTestProject>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
+    <!-- Ensure build-transitive documentation tasks from the library never run during test builds -->
+    <SkipDocumentationTasks>true</SkipDocumentationTasks>
     
     <!-- Suppress compatibility warnings for CodeAnalysis testing packages -->
   <NoWarn>$(NoWarn);NU1701</NoWarn>
