@@ -19,11 +19,6 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Install PowerShell (pwsh)
-        uses: PowerShell/PowerShell@v1
-        with:
-          version: 'latest'
-
       - name: Run Version & Compatibility Matrix Validation
         shell: pwsh
         run: |
