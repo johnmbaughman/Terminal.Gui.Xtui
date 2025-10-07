@@ -19,6 +19,8 @@ All code MUST adhere to strict quality standards to ensure maintainability, read
 - Include XML documentation for all public APIs
 - Use meaningful names for variables, methods, and classes
 - Follow SOLID principles and established design patterns
+- Follow standards established in copilot-instructions.md
+- Ensure no code duplication (DRY principle)
 
 Rationale: High code quality reduces technical debt, improves maintainability, and ensures consistent developer experience across the codebase.
 
@@ -30,6 +32,7 @@ TDD methodology MUST be followed for all new features and bug fixes:
 - Unit test coverage MUST be ≥80% for new code
 - Integration tests MUST cover all public API endpoints
 - XAML parsing and UI component tests MUST validate user interface behavior
+- Performance benchmarks MUST be included for performance-critical paths
 
 Rationale: TDD ensures robust, well-designed code with comprehensive test coverage, reducing bugs and enabling confident refactoring.
 
@@ -51,6 +54,19 @@ All components MUST meet performance standards to ensure responsive user experie
 - Memory usage MUST not exceed 50MB for standard document sizes
 - Component initialization MUST complete within 50ms
 - Performance regressions MUST be identified and addressed before merge
+- Memory usage MUST be monitored and optimized for all components
+- CPU usage MUST be measured and optimized for all components
+- Disk I/O MUST be minimized and optimized for all components
+- Network usage MUST be monitored and optimized for all components
+- GPU usage MUST be measured and optimized for all components
+- Disk space usage MUST be monitored and optimized for all components
+- Application startup time MUST be minimized
+- Latency MUST be minimized for all network requests
+- Frame drops MUST be minimized during UI interactions
+- Resource leaks MUST be detected and resolved promptly
+- Unused resources MUST be released in a timely manner
+- Performance optimizations MUST be documented and communicated
+- Code changes MUST be reviewed for performance impact
 
 Rationale: Performance is critical for user experience and application scalability, especially in terminal-based applications where responsiveness is paramount.
 
@@ -61,6 +77,9 @@ Rationale: Performance is critical for user experience and application scalabili
 - Performance metrics MUST be tracked in CI/CD pipeline
 - Baseline performance MUST be established for regression detection
 - Performance testing MUST occur on representative hardware configurations
+- Resource usage MUST be monitored during performance testing
+- Performance regressions MUST be identified and addressed before merge
+- Documentation MUST be updated to reflect any performance-related changes
 
 **Optimization Guidelines:**
 - Lazy loading for non-critical UI components
@@ -68,6 +87,7 @@ Rationale: Performance is critical for user experience and application scalabili
 - Minimal allocations in hot paths
 - Caching for frequently accessed data structures
 - Asynchronous operations where UI blocking would occur
+- Profiling and analysis to identify bottlenecks
 
 ## Development Workflow
 
@@ -76,6 +96,7 @@ Rationale: Performance is critical for user experience and application scalabili
 - Reviewers MUST verify constitutional compliance
 - Performance impact MUST be assessed for changes in critical paths
 - Tests MUST pass before merge approval
+- Documentation MUST be updated to reflect any changes in functionality
 
 **Quality Gates:**
 - Static analysis MUST pass without violations
