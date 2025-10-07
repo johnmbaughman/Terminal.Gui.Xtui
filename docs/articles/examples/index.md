@@ -169,7 +169,7 @@ Examples are integrated with the broader documentation:
 
 - **To API Reference**: Examples link to related API documentation
   ```markdown
-  This example uses [`Window`](~/api/Terminal.Gui.Xaml.Window.html) and [`Button`](~/api/Terminal.Gui.Xaml.Button.html) controls.
+  This example uses `Window` and `Button` controls.
   ```
 
 #### Version Compatibility
@@ -232,12 +232,12 @@ Brief description of what this example demonstrates.
 ### Community Resources
 - **GitHub Issues**: Report bugs or request new examples
 - **Discussions**: Ask questions and share your own examples
-- **Documentation**: Browse the full [Terminal.Gui.Xaml documentation](../index.md)
+- **Documentation**: Browse the full [Terminal.Gui.Xaml documentation](../../index.md)
 
 ### Support Channels
 - **Concept Questions**: See [Concepts](../concepts/index.md) for foundational topics
 - **Implementation Help**: Check [Guides](../guides/index.md) for step-by-step instructions
-- **API Details**: Browse the [API Reference](~/api/index.md) for complete documentation
+- **API Details**: Browse the [API Reference](../../api/index.md) for complete documentation
 
 ---
 

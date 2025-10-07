@@ -2,4 +2,4 @@
 
 This guide will cover customizing visual themes, color palettes, and adapting the terminal documentation aesthetic to application branding.
 
-Status: Planned â€” referenced to reduce link warnings.
+Status: Planned — referenced to reduce link warnings.

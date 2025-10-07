@@ -1,21 +1,24 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Test script for Terminal.Gui XAML Framework
+    Run unit tests, optional coverage/perf checks, and docs link validation.
 .DESCRIPTION
-    This script runs all tests with coverage reporting and constitutional compliance validation.
+    Executes unit tests (optionally filtered), generates code coverage, runs placeholder performance checks,
+    validates documentation links via DocFX (and optional HTML scan), and can validate example code blocks.
 .PARAMETER Filter
-    Test filter expression
+    xUnit filter expression passed to 'dotnet test --filter'.
 .PARAMETER Coverage
-    Generate code coverage report
+    Generate code coverage (XPlat Code Coverage collector).
 .PARAMETER Performance
-    Run performance tests
+    Run performance test placeholders.
 .PARAMETER StrictLinkValidation
-    Treat documentation link validation warnings as errors
+    Treat DocFX link warnings as errors (passes --warningsAsErrors).
 .PARAMETER UseHtmlLinkValidator
-    Run additional HTML-based link validation as backup
+    After DocFX, run HTML-based link validation on the built site for redundancy.
 .PARAMETER ValidateExamples
-    Run example compilation validation to catch code drift
+    Validate example code blocks extracted from docs (syntax/compilation where possible).
+.PARAMETER VerboseOutput
+    Increase verbosity for dotnet/docfx commands.
 .EXAMPLE
     ./test.ps1 -Coverage -Performance -StrictLinkValidation -ValidateExamples
 #>

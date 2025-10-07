@@ -95,7 +95,7 @@ XAML IntelliSense is available in Visual Studio and VS Code with appropriate ext
 2. **Control-by-Control**: Replace individual controls with XAML equivalents
 3. **Full Migration**: Convert entire application to XAML
 
-See our [Migration Guide](guides/migration-from-terminal-gui.md) for strategies and examples.
+See our [Migration Overview](migration/v1-to-v2.md) for high-level changes and strategies.
 
 ## XAML and Syntax
 
@@ -277,7 +277,7 @@ using (var suspension = viewModel.SuspendNotifications())
 } // Single update notification
 ```
 
-See our [Performance Guide](guides/performance.md) for detailed optimization techniques.
+Performance guidance is coming soon; in the meantime, prefer simple layouts and minimize unnecessary bindings.
 
 ## Troubleshooting
 
@@ -420,7 +420,7 @@ public partial class PersonEditor : UserControl
 }
 ```
 
-See our [Custom Controls Guide](guides/custom-controls.md) for detailed examples.
+Custom controls guidance is coming soon; for now, you can compose `UserControl` from existing controls.
 
 ### How do I handle validation?
 
@@ -487,7 +487,7 @@ This enables MVVM patterns with proper separation of concerns.
 
 **Documentation**:
 - [Getting Started Guide](getting-started.md)
-- [API Reference](~/api/index.html)
+- [API Reference](../api/index.md)
 - [Examples Collection](examples/index.md)
 
 **Community**:
@@ -550,4 +550,4 @@ If your question isn't answered here:
 
 ---
 
-> **Quick Links**: [Getting Started](getting-started.md) • [API Reference](~/api/index.html) • [Examples](examples/index.md) • [Contributing](contributing/index.md)
+> **Quick Links**: [Getting Started](getting-started.md) • [API Reference](../api/index.md) • [Examples](examples/index.md) • [Contributing](contributing/index.md)

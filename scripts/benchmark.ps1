@@ -3,13 +3,17 @@
 .SYNOPSIS
     Performance benchmark script for Terminal.Gui XAML Framework
 .DESCRIPTION
-    This script runs performance benchmarks to validate constitutional performance requirements.
+    Runs performance benchmarks (placeholders for now) intended to validate constitutional
+    requirements for parsing, rendering, memory, and initialization.
 .PARAMETER Output
     Output directory for benchmark results
 .PARAMETER Format
     Output format (json, html, csv)
 .EXAMPLE
     ./benchmark.ps1 -Output "./benchmarks" -Format html
+.NOTES
+    Requires the benchmark project under tests/Terminal.Gui.Xaml.Benchmarks. Actual benchmarks
+    will be wired up as the library implementation lands.
 #>
 
 param(

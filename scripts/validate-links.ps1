@@ -3,14 +3,17 @@
 .SYNOPSIS
     Link validation script for Terminal.Gui XAML Framework documentation
 .DESCRIPTION
-    This script validates links in the generated documentation site by checking HTML files for broken internal links.
-    It serves as a backup to DocFX's built-in link validation.
+    Validates links in the generated documentation site by scanning HTML files for broken internal links.
+    It serves as a backup/supplement to DocFX's built-in link validation and operates on the built _site output.
+    External (http/https), mailto, and fragment-only (#) links are ignored.
 .PARAMETER SiteDirectory
     Path to the built documentation site (_site directory)
 .PARAMETER ExitOnFailure
     Exit with non-zero code if broken links are found
 .EXAMPLE
     ./validate-links.ps1 -SiteDirectory "docs/_site" -ExitOnFailure
+.NOTES
+    Use this after a successful DocFX build. Useful in CI pipelines as a secondary safety net.
 #>
 
 param(

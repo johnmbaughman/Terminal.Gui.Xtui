@@ -12,18 +12,18 @@ A minimal Terminal.Gui.Xaml application showing the basic window structure and X
 This example demonstrates these fundamental APIs:
 
 ### Application Framework
-- **[Application](../../api/Terminal.Gui.Application.yml)** - Framework initialization (`Init`, `Run`, `Shutdown`)
-- **[Application.Top](../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_Top)** - Top-level application container
-- **[Application.MainLoop](../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_MainLoop)** - Event loop management
+- **`Application`** - Framework initialization (`Init`, `Run`, `Shutdown`)
+- **`Application.Top`** - Top-level application container
+- **`Application.MainLoop`** - Event loop management
 
 ### Window and Layout
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Primary container with title and sizing
-- **[StackView](../../api/Terminal.Gui.Xaml.StackView.yml)** - Vertical layout container
-- **[Label](../../api/Terminal.Gui.Xaml.Label.yml)** - Text display control
+- **`Window`** - Primary container with title and sizing
+- **`StackView`** - Vertical layout container
+- **`Label`** - Text display control
 
 ### XAML Integration
-- **[XamlLoader](../../api/Terminal.Gui.Xaml.XamlLoader.yml)** - XAML parsing and loading
-- **[IXamlParser](../../api/Terminal.Gui.Xaml.IXamlParser.yml)** - XAML parsing interface
+- **`XamlLoader`** - XAML parsing and loading
+- **[IXamlParser](../../api/Terminal.Gui.Xaml.Parsing.IXamlParser.yml)** - XAML parsing interface
 
 > **💡 Pro Tip**: This is the minimum viable Terminal.Gui.Xaml application. Always call `Application.Init()` before creating windows and `Application.Shutdown()` in a `finally` block.
 
@@ -344,13 +344,13 @@ Solution: This should not occur with this simple example. Check for:
 - **[Data Binding Guide](../guides/bind-data.md)** - MVVM pattern implementation
 
 ### API Reference
-- **[Application](../../api/Terminal.Gui.Application.yml)** - Framework initialization and lifecycle
-- **[Window](../../api/Terminal.Gui.Xaml.Window.yml)** - Main container with properties and events
-- **[StackView](../../api/Terminal.Gui.Xaml.StackView.yml)** - Layout container for vertical/horizontal arrangement  
-- **[Label](../../api/Terminal.Gui.Xaml.Label.yml)** - Text display control with styling options
-- **[XamlLoader](../../api/Terminal.Gui.Xaml.XamlLoader.yml)** - XAML parsing and object creation
+- `Application` - Framework initialization and lifecycle
+- `Window` - Main container with properties and events
+- `StackView` - Layout container for vertical/horizontal arrangement  
+- `Label` - Text display control with styling options
+- `XamlLoader` - XAML parsing and object creation
 
 ### Concepts
-- **[Application Lifecycle](../concepts/application.md)** - Understanding Init/Run/Shutdown patterns
-- **[Window Management](../concepts/windows.md)** - Window lifecycle and properties
-- **[XAML Basics](../concepts/xaml.md)** - XAML syntax and structure
+- [Layout](../concepts/layout.md) - Positioning and sizing basics
+- [Binding](../concepts/binding.md) - Data binding fundamentals
+- [Events](../concepts/events.md) - Event model and patterns

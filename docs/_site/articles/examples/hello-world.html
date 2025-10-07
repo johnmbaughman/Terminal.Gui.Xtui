@@ -90,20 +90,20 @@
 <p>This example demonstrates these fundamental APIs:</p>
 <h3 id="application-framework">Application Framework</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Application.yml">Application</a></strong> - Framework initialization (<code>Init</code>, <code>Run</code>, <code>Shutdown</code>)</li>
-<li><strong><a href="../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_Top">Application.Top</a></strong> - Top-level application container</li>
-<li><strong><a href="../../api/Terminal.Gui.Application.yml#Terminal_Gui_Application_MainLoop">Application.MainLoop</a></strong> - Event loop management</li>
+<li><strong><code>Application</code></strong> - Framework initialization (<code>Init</code>, <code>Run</code>, <code>Shutdown</code>)</li>
+<li><strong><code>Application.Top</code></strong> - Top-level application container</li>
+<li><strong><code>Application.MainLoop</code></strong> - Event loop management</li>
 </ul>
 <h3 id="window-and-layout">Window and Layout</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Primary container with title and sizing</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Vertical layout container</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display control</li>
+<li><strong><code>Window</code></strong> - Primary container with title and sizing</li>
+<li><strong><code>StackView</code></strong> - Vertical layout container</li>
+<li><strong><code>Label</code></strong> - Text display control</li>
 </ul>
 <h3 id="xaml-integration">XAML Integration</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.XamlLoader.yml">XamlLoader</a></strong> - XAML parsing and loading</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.IXamlParser.yml">IXamlParser</a></strong> - XAML parsing interface</li>
+<li><strong><code>XamlLoader</code></strong> - XAML parsing and loading</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Parsing.IXamlParser.html">IXamlParser</a></strong> - XAML parsing interface</li>
 </ul>
 <blockquote>
 <p><strong>💡 Pro Tip</strong>: This is the minimum viable Terminal.Gui.Xaml application. Always call <code>Application.Init()</code> before creating windows and <code>Application.Shutdown()</code> in a <code>finally</code> block.</p>
@@ -381,17 +381,17 @@ dotnet run
 </ul>
 <h3 id="api-reference">API Reference</h3>
 <ul>
-<li><strong><a href="../../api/Terminal.Gui.Application.yml">Application</a></strong> - Framework initialization and lifecycle</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Main container with properties and events</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.StackView.yml">StackView</a></strong> - Layout container for vertical/horizontal arrangement</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.Label.yml">Label</a></strong> - Text display control with styling options</li>
-<li><strong><a href="../../api/Terminal.Gui.Xaml.XamlLoader.yml">XamlLoader</a></strong> - XAML parsing and object creation</li>
+<li><code>Application</code> - Framework initialization and lifecycle</li>
+<li><code>Window</code> - Main container with properties and events</li>
+<li><code>StackView</code> - Layout container for vertical/horizontal arrangement</li>
+<li><code>Label</code> - Text display control with styling options</li>
+<li><code>XamlLoader</code> - XAML parsing and object creation</li>
 </ul>
 <h3 id="concepts">Concepts</h3>
 <ul>
-<li><strong><a href="../concepts/application.md">Application Lifecycle</a></strong> - Understanding Init/Run/Shutdown patterns</li>
-<li><strong><a href="../concepts/windows.md">Window Management</a></strong> - Window lifecycle and properties</li>
-<li><strong><a href="../concepts/xaml.md">XAML Basics</a></strong> - XAML syntax and structure</li>
+<li><a href="../concepts/layout.html">Layout</a> - Positioning and sizing basics</li>
+<li><a href="../concepts/binding.html">Binding</a> - Data binding fundamentals</li>
+<li><a href="../concepts/events.html">Events</a> - Event model and patterns</li>
 </ul>
 
 </article>

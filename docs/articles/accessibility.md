@@ -506,9 +506,9 @@ public void ShowDialog()
 - **Platform Guidelines**: Windows, macOS, and Linux accessibility standards
 
 ### Development Resources
-- [Accessibility Testing Guide](contributing/accessibility-testing.md)
-- [Screen Reader Commands Reference](contributing/screen-reader-commands.md)
-- [High Contrast Theme Guide](guides/theming.md#high-contrast)
+- [Docs Style Guide](contributing/docs-style-guide.md)
+- [Offline Docs Guide](contributing/offline.md)
+- [Theming Guide](guides/theming.md#high-contrast)
 
 ## Next Steps
 
@@ -520,10 +520,10 @@ public void ShowDialog()
 
 ## Related Documentation
 
-- [Keyboard Navigation Guide](guides/keyboard-navigation.md)
 - [Theming and Colors](guides/theming.md)
-- [Testing Strategies](../tests/TestStrategy.md)
+- [Guides Index](guides/index.md)
 - [Contributing Guidelines](contributing/index.md)
+- [API Reference](../api/index.md)
 
 ---
 
