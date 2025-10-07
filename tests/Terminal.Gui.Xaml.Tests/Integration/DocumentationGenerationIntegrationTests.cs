@@ -14,6 +14,22 @@ namespace Terminal.Gui.Xaml.Tests.Integration;
 /// </summary>
 public class DocumentationGenerationIntegrationTests
 {
+    public DocumentationGenerationIntegrationTests()
+    {
+        try
+        {
+            var dir = Path.Combine("temp", "docs", "_site");
+            if (Directory.Exists(dir))
+            {
+                Directory.Delete(dir, recursive: true);
+            }
+            Directory.CreateDirectory(dir);
+        }
+        catch
+        {
+            // best-effort cleanup; tests will still run and surface errors if cleanup fails
+        }
+    }
     [Fact]
     public async Task EndToEnd_GenerateDocumentation_ShouldProduceCompleteDocumentationSite()
     {

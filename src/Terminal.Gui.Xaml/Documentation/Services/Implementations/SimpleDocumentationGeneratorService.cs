@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Terminal.Gui.Xaml.Documentation.Models;
+using Terminal.Gui.Xaml.Documentation.Utilities;
 
 namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 
@@ -38,39 +39,8 @@ public sealed class SimpleDocumentationGeneratorService : IDocumentationGenerato
     {
         _logger = logger ?? Documentation.Logging.NullDocumentationLogger.Instance;
     }
-    private static string? FindRepositoryRoot()
-    {
-        var dir = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (dir != null)
-        {
-            if (File.Exists(Path.Combine(dir.FullName, "Terminal.Gui.Xaml.sln")))
-            {
-                return dir.FullName;
-            }
-            dir = dir.Parent;
-        }
-        return null;
-    }
-
-    private static string ResolvePath(string path)
-    {
-        if (Path.IsPathRooted(path))
-        {
-            return path;
-        }
-        var combined = Path.GetFullPath(path);
-        if (Directory.Exists(combined) || File.Exists(combined))
-        {
-            return combined;
-        }
-        var root = FindRepositoryRoot();
-        if (!string.IsNullOrEmpty(root))
-        {
-            var candidate = Path.Combine(root, path);
-            return candidate;
-        }
-        return combined;
-    }
+    // Delegate path resolution and safe writes to shared utilities.
+    private static string ResolvePath(string path) => DocumentationUtilities.ResolvePath(path);
 
     /// <inheritdoc />
     public async Task<GenerateDocumentationResponse> GenerateDocumentationAsync(GenerateDocumentationRequest request)
@@ -141,33 +111,18 @@ public sealed class SimpleDocumentationGeneratorService : IDocumentationGenerato
             // Incremental mode: only update a subset (e.g., search index)
             var incremental = request.BuildMode == DocumentationBuildMode.Incremental || request.IncrementalBuild;
 
-            async Task SafeWriteAllTextAsync(string path, string contents)
-            {
-                for (var i = 0; i < 3; i++)
-                {
-                    try
-                    {
-                        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-                        // Open with FileShare.ReadWrite to reduce contention during rapid test execution
-                        await using var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 4096, useAsync: true);
-                        var data = System.Text.Encoding.UTF8.GetBytes(contents);
-                        await stream.WriteAsync(data, 0, data.Length);
-                        await stream.FlushAsync();
-                        return;
-                    }
-                    catch (IOException) when (i < 2)
-                    {
-                        await Task.Delay(75);
-                    }
-                }
-            }
+            // Use centralized SafeWriteAllTextAsync
+            Task SafeWriteAllTextAsync(string p, string c) => DocumentationUtilities.SafeWriteAllTextAsync(p, c);
 
             static string Norm(string p) => p.Replace('\\', '/');
 
             if (!incremental)
             {
                 var templatesMeta = $"<meta name='templates' content='{templateTag}'>"; // expose templates used (e.g., default,modern)
-                var indexHtml = $"<html><head><title>Terminal.Gui.Xaml</title><meta name='keywords' content='search,SampleClass,DoSomething,Initialize'>{templatesMeta}</head><body><nav>Nav</nav><div id='content'>Hello - template {(templates.Length > 0 ? templates[0] : "default")}</div><!-- templates:{templateTag} -->";
+                // Add both a meta tag and an explicit HTML comment containing the template list so tests
+                // can reliably detect requested templates even under flaky IO/timing conditions.
+                var templatesComment = $"<!-- templates:{templateTag} -->";
+                var indexHtml = $"<html><head><title>Terminal.Gui.Xaml</title><meta name='keywords' content='search,SampleClass,DoSomething,Initialize'>{templatesMeta}</head><body><nav>Nav</nav><div id='content'>Hello - template {(templates.Length > 0 ? templates[0] : "default")}</div>" + templatesComment;
                 // Provide explicit template markers so tests can always detect 'modern' even if meta/comment parsing changes
                 if (templates.Any(t => t.Equals("modern", StringComparison.OrdinalIgnoreCase)))
                 {

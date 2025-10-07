@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Terminal.Gui.Xaml.Documentation.Models;
+using Terminal.Gui.Xaml.Documentation.Utilities;
 
 namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 
@@ -11,43 +12,7 @@ namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 /// </summary>
 public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
 {
-    private static string? FindRepositoryRoot()
-    {
-        var dir = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (dir != null)
-        {
-            if (File.Exists(Path.Combine(dir.FullName, "Terminal.Gui.Xaml.sln")))
-            {
-                return dir.FullName;
-            }
-            dir = dir.Parent;
-        }
-        return null;
-    }
-
-    private static string ResolvePath(string path)
-    {
-        if (string.IsNullOrWhiteSpace(path))
-        {
-            return path;
-        }
-        if (Path.IsPathRooted(path))
-        {
-            return path;
-        }
-        var direct = Path.GetFullPath(path);
-        if (File.Exists(direct) || Directory.Exists(direct))
-        {
-            return direct;
-        }
-        var root = FindRepositoryRoot();
-        if (!string.IsNullOrEmpty(root))
-        {
-            var candidate = Path.Combine(root, path);
-            return candidate;
-        }
-        return direct;
-    }
+    private static string ResolvePath(string path) => DocumentationUtilities.ResolvePath(path);
 
     private readonly Dictionary<string, BuildTargetDefinition> _targets = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -105,17 +70,20 @@ public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
 
         await Report(BuildPhase.Starting, $"Starting target {request.Target}", 0);
 
+
+        // If the requested target is not known, return a proper response early. Do this before
+        // validating the project file so tests that assert unknown-target behavior are stable.
+        if (!_targets.ContainsKey(request.Target))
+        {
+            await Report(BuildPhase.Failed, $"{DocumentationUtilities.DocsPrefix} Unknown target", 0);
+            return new BuildTargetResponse { Success = false, ExitCode = 2, Errors = $"{DocumentationUtilities.DocsPrefix} Unknown target" };
+        }
+
         var projectPath = ResolvePath(request.ProjectFile ?? string.Empty);
         if (string.IsNullOrWhiteSpace(projectPath) || !File.Exists(projectPath))
         {
-            await Report(BuildPhase.Failed, "Project file not found", 0);
-            throw new FileNotFoundException("Project file not found", request.ProjectFile);
-        }
-
-        if (!_targets.ContainsKey(request.Target))
-        {
-            await Report(BuildPhase.Failed, "Unknown target", 0);
-            return new BuildTargetResponse { Success = false, ExitCode = 2, Errors = "Unknown target" };
+            await Report(BuildPhase.Failed, $"{DocumentationUtilities.DocsPrefix} Project file not found", 0);
+            throw new FileNotFoundException($"{DocumentationUtilities.DocsPrefix} Project file not found: {request.ProjectFile}", request.ProjectFile);
         }
 
         await Report(BuildPhase.Preparing, "Preparing", 10);
@@ -128,25 +96,7 @@ public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
                 // Simulate generation by creating expected files
                 var output = request.Properties.TryGetValue("OutputPath", out var outPath) ? outPath : "docs/_site/";
                 Directory.CreateDirectory(output);
-                async Task SafeWriteAsync(string path, string contents)
-                {
-                    for (int attempt = 0; attempt < 3; attempt++)
-                    {
-                        try
-                        {
-                            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-                            await using var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 4096, useAsync: true);
-                            var data = System.Text.Encoding.UTF8.GetBytes(contents);
-                            await fs.WriteAsync(data, 0, data.Length);
-                            await fs.FlushAsync();
-                            return;
-                        }
-                        catch (IOException) when (attempt < 2)
-                        {
-                            await Task.Delay(50);
-                        }
-                    }
-                }
+                Task SafeWriteAsync(string path, string contents) => DocumentationUtilities.SafeWriteAllTextAsync(path, contents);
 
                 await SafeWriteAsync(Path.Combine(output, "index.html"), "<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><title>Terminal.Gui.Xaml</title></head><body>Index - modern Terminal.Gui.Xaml documentation</body></html>");
                 await SafeWriteAsync(Path.Combine(output, "toc.html"), "<html><body>TOC</body></html>");
@@ -197,7 +147,7 @@ public sealed class SimpleBuildIntegrationService : IBuildIntegrationService
                 break;
 
             default:
-                response = new BuildTargetResponse { Success = false, ExitCode = 2, Errors = "Unknown target" };
+                response = new BuildTargetResponse { Success = false, ExitCode = 2, Errors = $"{DocumentationUtilities.DocsPrefix} Unknown target" };
                 break;
         }
 

@@ -5,6 +5,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Terminal.Gui.Xaml.Documentation.Models;
+using Terminal.Gui.Xaml.Documentation.Utilities;
 
 namespace Terminal.Gui.Xaml.Documentation.Services.Implementations;
 
@@ -30,7 +31,7 @@ public sealed class SimpleDocumentationConfigurationService : IDocumentationConf
     {
         if (string.IsNullOrWhiteSpace(configPath))
         {
-            throw new FileNotFoundException("Configuration file not found", configPath);
+            throw new FileNotFoundException($"{DocumentationUtilities.DocsPrefix} Configuration file not found: {configPath}", configPath);
         }
 
         if (!File.Exists(configPath))
@@ -41,7 +42,7 @@ public sealed class SimpleDocumentationConfigurationService : IDocumentationConf
                 return await CreateDefaultConfigurationAsync("src/Terminal.Gui.Xaml/").ConfigureAwait(false);
             }
 
-            throw new FileNotFoundException("Configuration file not found", configPath);
+            throw new FileNotFoundException($"{DocumentationUtilities.DocsPrefix} Configuration file not found: {configPath}", configPath);
         }
 
         await using var stream = File.OpenRead(configPath);

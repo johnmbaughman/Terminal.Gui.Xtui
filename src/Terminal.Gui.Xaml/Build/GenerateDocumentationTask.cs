@@ -7,6 +7,7 @@
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Services.Implementations;
 using Terminal.Gui.Xaml.Documentation.Models;
+using Terminal.Gui.Xaml.Documentation.Utilities;
 
 namespace Terminal.Gui.Xaml.Build;
 
@@ -48,7 +49,22 @@ public sealed class GenerateDocumentationTask : ITask
     public string DocumentationBuildMode { get; set; } = "Full";
 
     /// <inheritdoc />
-    public IBuildEngine BuildEngine { get; set; } = null!;
+    private IBuildEngine? _buildEngine;
+
+    /// <summary>
+    /// Gets or sets the build engine used for logging and task context.
+    /// Assignments are wrapped with <see cref="BuildEnginePrefixedAdapter"/> to
+    /// ensure documentation messages are consistently prefixed.
+    /// </summary>
+    public IBuildEngine BuildEngine
+    {
+        get => _buildEngine!;
+        set
+        {
+            // Wrap the provided engine so documentation messages are prefixed consistently.
+            _buildEngine = value is null ? throw new ArgumentNullException(nameof(value)) : new BuildEnginePrefixedAdapter(value);
+        }
+    }
 
     /// <summary>
     /// Executes the documentation generation task.
@@ -58,13 +74,14 @@ public sealed class GenerateDocumentationTask : ITask
     {
         if (!DocumentationEnabled)
         {
-            BuildEngine?.LogMessage("Documentation generation disabled; skipping.");
+                BuildEngine?.LogMessage($"{DocumentationUtilities.DocsPrefix} Documentation generation disabled; skipping.");
             return true;
         }
 
-        if (string.IsNullOrWhiteSpace(DocumentationConfiguration) || !File.Exists(DocumentationConfiguration))
+        var configPath = DocumentationUtilities.ResolvePath(DocumentationConfiguration);
+        if (string.IsNullOrWhiteSpace(DocumentationConfiguration) || !File.Exists(configPath))
         {
-            BuildEngine?.LogError($"DocFX configuration not found: {DocumentationConfiguration}");
+                BuildEngine?.LogError($"{DocumentationUtilities.DocsPrefix} DocFX configuration not found: {DocumentationConfiguration}");
             return false;
         }
 
@@ -85,7 +102,7 @@ public sealed class GenerateDocumentationTask : ITask
             var response = _buildIntegration.ExecuteBuildTargetAsync(request).GetAwaiter().GetResult();
             if (!response.Success)
             {
-                BuildEngine?.LogError($"Documentation generation failed: {response.Errors}");
+                BuildEngine?.LogError($"{DocumentationUtilities.DocsPrefix} Documentation generation failed: {response.Errors}");
                 return false;
             }
 
@@ -98,9 +115,15 @@ public sealed class GenerateDocumentationTask : ITask
             BuildEngine?.LogMessage("Documentation generation completed successfully.");
             return true;
         }
+        catch (OperationCanceledException oce)
+        {
+            // Surface cancellation with a clear DOCS: prefix for CI parsing/logging.
+            BuildEngine?.LogError($"{DocumentationUtilities.DocsPrefix} Documentation generation canceled: {oce.Message}");
+            return false;
+        }
         catch (Exception ex)
         {
-            BuildEngine?.LogError($"Exception during documentation generation: {ex.Message}");
+            BuildEngine?.LogError($"{DocumentationUtilities.DocsPrefix} Exception during documentation generation: {ex.Message}");
             return false;
         }
     }

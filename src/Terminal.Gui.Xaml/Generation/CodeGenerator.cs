@@ -18,7 +18,9 @@ public sealed class CodeGenerator : ICodeGenerator
     public Task<string> GenerateAsync(string xaml)
     {
         if (!ValidateGeneration(xaml))
+        {
             throw new CodeGenerationException("Invalid XAML for generation");
+        }
         // TODO: Integrate Roslyn source generation here
         var code = GenerateClassCode("GeneratedView", "Generated", xaml);
         return Task.FromResult(code);
@@ -32,7 +34,10 @@ public sealed class CodeGenerator : ICodeGenerator
         foreach (var xaml in xamlDocuments)
         {
             if (!ValidateGeneration(xaml))
+            {
                 throw new CodeGenerationException($"Invalid XAML in document {i}");
+            }
+
             var className = $"GeneratedView{i}";
             var code = GenerateClassCode(className, "Generated", xaml);
             result.Add(new GeneratedClass

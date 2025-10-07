@@ -44,6 +44,7 @@ public sealed class BuildIntegrationService : IBuildIntegrationService
     /// <inheritdoc />
     public Task RegisterCustomTargetAsync(BuildTargetDefinition definition)
     {
+        // Lock to ensure registration is thread-safe. Delegate to inner implementation.
         lock (_lock)
         {
             return _inner.RegisterCustomTargetAsync(definition);
