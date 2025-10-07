@@ -1,0 +1,192 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  id: XamlErrorSeverity
+  parent: Terminal.Gui.Xaml.Parsing
+  children:
+  - Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Error
+  - Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Fatal
+  - Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Info
+  - Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Warning
+  langs:
+  - csharp
+  - vb
+  name: XamlErrorSeverity
+  nameWithType: XamlErrorSeverity
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: XamlErrorSeverity
+    path: ../src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+    startLine: 84
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Represents the severity of a XAML parsing error.
+  example: []
+  syntax:
+    content: public enum XamlErrorSeverity
+    content.vb: Public Enum XamlErrorSeverity
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Info
+  commentId: F:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Info
+  id: Info
+  parent: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: XamlErrorSeverity.Info
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Info
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Info
+    path: ../src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+    startLine: 89
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Information message.
+  example: []
+  syntax:
+    content: Info = 0
+    return:
+      type: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Warning
+  commentId: F:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Warning
+  id: Warning
+  parent: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: XamlErrorSeverity.Warning
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Warning
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Warning
+    path: ../src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+    startLine: 94
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Warning message.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Error
+  commentId: F:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Error
+  id: Error
+  parent: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: XamlErrorSeverity.Error
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Error
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Error
+    path: ../src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+    startLine: 99
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Error message.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Fatal
+  commentId: F:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Fatal
+  id: Fatal
+  parent: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  langs:
+  - csharp
+  - vb
+  name: Fatal
+  nameWithType: XamlErrorSeverity.Fatal
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.Fatal
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Fatal
+    path: ../src/Terminal.Gui.Xaml/Parsing/IXamlParser.cs
+    startLine: 104
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Parsing
+  summary: Fatal error message.
+  example: []
+  syntax:
+    content: Fatal = 3
+    return:
+      type: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+references:
+- uid: Terminal.Gui.Xaml.Parsing
+  commentId: N:Terminal.Gui.Xaml.Parsing
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Parsing
+  nameWithType: Terminal.Gui.Xaml.Parsing
+  fullName: Terminal.Gui.Xaml.Parsing
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Parsing
+    name: Parsing
+    href: Terminal.Gui.Xaml.Parsing.html
+- uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  commentId: T:Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+  parent: Terminal.Gui.Xaml.Parsing
+  href: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity.html
+  name: XamlErrorSeverity
+  nameWithType: XamlErrorSeverity
+  fullName: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity

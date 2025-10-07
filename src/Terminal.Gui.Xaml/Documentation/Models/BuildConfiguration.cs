@@ -34,7 +34,7 @@ public class BuildConfiguration
     /// <summary>
     /// Gets or sets the maximum parallel operations.
     /// </summary>
-    [Range(1, int.MaxValue, ErrorMessage = "MaxConcurrency must be between 1 and {2}")]
+    [Range (1, int.MaxValue, ErrorMessage = "MaxConcurrency must be between 1 and {2}")]
     public int MaxConcurrency { get; set; } = Environment.ProcessorCount;
 
     /// <summary>
@@ -45,28 +45,28 @@ public class BuildConfiguration
     /// <summary>
     /// Gets or sets the content configurations.
     /// </summary>
-    public ContentConfiguration[] Content { get; set; } = Array.Empty<ContentConfiguration>();
+    public ContentConfiguration [] Content { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the resource configurations.
     /// </summary>
-    public ResourceConfiguration[] Resource { get; set; } = Array.Empty<ResourceConfiguration>();
+    public ResourceConfiguration [] Resource { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the destination path.
     /// </summary>
-    [Required(ErrorMessage = "Dest is required")]
+    [Required (ErrorMessage = "Dest is required")]
     public string Dest { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets the templates to use.
     /// </summary>
-    public string[] Template { get; set; } = new[] { "default" };
+    public string [] Template { get; set; } = ["default"];
 
     /// <summary>
     /// Gets or sets the global metadata.
     /// </summary>
-    public Dictionary<string, object> GlobalMetadata { get; set; } = new();
+    public Dictionary<string, object> GlobalMetadata { get; set; } = [];
 }
 
 /// <summary>
@@ -87,5 +87,5 @@ public enum DocumentationBuildMode
     /// <summary>
     /// Metadata only build.
     /// </summary>
-    MetadataOnly
+    MetadataOnly,
 }

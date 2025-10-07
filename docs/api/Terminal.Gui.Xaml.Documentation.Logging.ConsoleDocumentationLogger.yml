@@ -1,0 +1,696 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  commentId: T:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  id: ConsoleDocumentationLogger
+  parent: Terminal.Gui.Xaml.Documentation.Logging
+  children:
+  - Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor(System.Boolean)
+  - Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug(System.String)
+  - Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error(System.String,System.Exception)
+  - Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info(System.String)
+  - Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ConsoleDocumentationLogger
+  nameWithType: ConsoleDocumentationLogger
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ConsoleDocumentationLogger
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 9
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: >-
+    Simple console logger implementation. In library contexts this may be replaced by an adapter
+
+    over an application logging framework.
+  example: []
+  syntax:
+    content: 'public sealed class ConsoleDocumentationLogger : IDocumentationLogger'
+    content.vb: Public NotInheritable Class ConsoleDocumentationLogger Implements IDocumentationLogger
+  inheritance:
+  - System.Object
+  implements:
+  - Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor(System.Boolean)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  langs:
+  - csharp
+  - vb
+  name: ConsoleDocumentationLogger(bool)
+  nameWithType: ConsoleDocumentationLogger.ConsoleDocumentationLogger(bool)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.ConsoleDocumentationLogger(bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: .ctor
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 18
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: Creates a new console logger.
+  example: []
+  syntax:
+    content: public ConsoleDocumentationLogger(bool includeTimestamps = true)
+    parameters:
+    - id: includeTimestamps
+      type: System.Boolean
+      description: If true, UTC timestamps are prefixed to each line.
+    content.vb: Public Sub New(includeTimestamps As Boolean = True)
+  overload: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor*
+  nameWithType.vb: ConsoleDocumentationLogger.New(Boolean)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.New(Boolean)
+  name.vb: New(Boolean)
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug(System.String)
+  id: Debug(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  langs:
+  - csharp
+  - vb
+  name: Debug(string)
+  nameWithType: ConsoleDocumentationLogger.Debug(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Debug
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 48
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: Logs a verbose or diagnostic message not generally shown in normal summaries.
+  example: []
+  syntax:
+    content: public void Debug(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub Debug(message As String)
+  overload: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug*
+  implements:
+  - Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(System.String)
+  nameWithType.vb: ConsoleDocumentationLogger.Debug(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug(String)
+  name.vb: Debug(String)
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info(System.String)
+  id: Info(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  langs:
+  - csharp
+  - vb
+  name: Info(string)
+  nameWithType: ConsoleDocumentationLogger.Info(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Info
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 50
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: Logs an informational message about high-level progress.
+  example: []
+  syntax:
+    content: public void Info(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub Info(message As String)
+  overload: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info*
+  implements:
+  - Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(System.String)
+  nameWithType.vb: ConsoleDocumentationLogger.Info(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info(String)
+  name.vb: Info(String)
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn(System.String)
+  id: Warn(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  langs:
+  - csharp
+  - vb
+  name: Warn(string)
+  nameWithType: ConsoleDocumentationLogger.Warn(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn(string)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Warn
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 52
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: Logs a warning that indicates a non-fatal issue.
+  example: []
+  syntax:
+    content: public void Warn(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Public Sub Warn(message As String)
+  overload: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn*
+  implements:
+  - Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(System.String)
+  nameWithType.vb: ConsoleDocumentationLogger.Warn(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn(String)
+  name.vb: Warn(String)
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error(System.String,System.Exception)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error(System.String,System.Exception)
+  id: Error(System.String,System.Exception)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+  langs:
+  - csharp
+  - vb
+  name: Error(string, Exception?)
+  nameWithType: ConsoleDocumentationLogger.Error(string, Exception?)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error(string, System.Exception?)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Error
+    path: ../src/Terminal.Gui.Xaml/Documentation/Logging/ConsoleDocumentationLogger.cs
+    startLine: 54
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Logging
+  summary: Logs an error describing a failure (may still allow continuation).
+  example: []
+  syntax:
+    content: public void Error(string message, Exception? ex = null)
+    parameters:
+    - id: message
+      type: System.String
+    - id: ex
+      type: System.Exception
+    content.vb: Public Sub [Error](message As String, ex As Exception = Nothing)
+  overload: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error*
+  implements:
+  - Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(System.String,System.Exception)
+  nameWithType.vb: ConsoleDocumentationLogger.Error(String, Exception)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error(String, System.Exception)
+  name.vb: Error(String, Exception)
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Logging
+  commentId: N:Terminal.Gui.Xaml.Documentation.Logging
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Logging
+  nameWithType: Terminal.Gui.Xaml.Documentation.Logging
+  fullName: Terminal.Gui.Xaml.Documentation.Logging
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Documentation.Logging.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Documentation.Logging.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  commentId: T:Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  parent: Terminal.Gui.Xaml.Documentation.Logging
+  href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html
+  name: IDocumentationLogger
+  nameWithType: IDocumentationLogger
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.#ctor
+  href: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_ConsoleDocumentationLogger__ctor_System_Boolean_
+  name: ConsoleDocumentationLogger
+  nameWithType: ConsoleDocumentationLogger.ConsoleDocumentationLogger
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.ConsoleDocumentationLogger
+  nameWithType.vb: ConsoleDocumentationLogger.New
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug
+  href: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_ConsoleDocumentationLogger_Debug_System_String_
+  name: Debug
+  nameWithType: ConsoleDocumentationLogger.Debug
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Debug
+- uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  isExternal: true
+  href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Debug_System_String_
+  name: Debug(string)
+  nameWithType: IDocumentationLogger.Debug(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(string)
+  nameWithType.vb: IDocumentationLogger.Debug(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(String)
+  name.vb: Debug(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(System.String)
+    name: Debug
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Debug_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Debug(System.String)
+    name: Debug
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Debug_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info
+  href: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_ConsoleDocumentationLogger_Info_System_String_
+  name: Info
+  nameWithType: ConsoleDocumentationLogger.Info
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Info
+- uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  isExternal: true
+  href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Info_System_String_
+  name: Info(string)
+  nameWithType: IDocumentationLogger.Info(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(string)
+  nameWithType.vb: IDocumentationLogger.Info(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(String)
+  name.vb: Info(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(System.String)
+    name: Info
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Info_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Info(System.String)
+    name: Info
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Info_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn
+  href: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_ConsoleDocumentationLogger_Warn_System_String_
+  name: Warn
+  nameWithType: ConsoleDocumentationLogger.Warn
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Warn
+- uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(System.String)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(System.String)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  isExternal: true
+  href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Warn_System_String_
+  name: Warn(string)
+  nameWithType: IDocumentationLogger.Warn(string)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(string)
+  nameWithType.vb: IDocumentationLogger.Warn(String)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(String)
+  name.vb: Warn(String)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(System.String)
+    name: Warn
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Warn_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Warn(System.String)
+    name: Warn
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Warn_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error
+  href: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_ConsoleDocumentationLogger_Error_System_String_System_Exception_
+  name: Error
+  nameWithType: ConsoleDocumentationLogger.Error
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger.Error
+- uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(System.String,System.Exception)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(System.String,System.Exception)
+  parent: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+  isExternal: true
+  href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Error_System_String_System_Exception_
+  name: Error(string, Exception)
+  nameWithType: IDocumentationLogger.Error(string, Exception)
+  fullName: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(string, System.Exception)
+  nameWithType.vb: IDocumentationLogger.Error(String, Exception)
+  fullName.vb: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(String, System.Exception)
+  name.vb: Error(String, Exception)
+  spec.csharp:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(System.String,System.Exception)
+    name: Error
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Error_System_String_System_Exception_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+  spec.vb:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.Error(System.String,System.Exception)
+    name: Error
+    href: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger.html#Terminal_Gui_Xaml_Documentation_Logging_IDocumentationLogger_Error_System_String_System_Exception_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception

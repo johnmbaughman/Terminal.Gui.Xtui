@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Navigation and Multi-Window Management | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Navigation and Multi-Window Management | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="navigation-and-multi-window-management">Navigation and Multi-Window Management</h1>
+
+<p>This guide covers navigation patterns, window management, and creating multi-view applications in Terminal.Gui.Xaml.</p>
+<h2 id="related-apis">Related APIs</h2>
+<p>This guide demonstrates these key navigation and window management APIs:</p>
+<h3 id="window-management">Window Management</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Primary window container for views</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Dialog.yml">Dialog</a></strong> - Modal dialog windows</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.WindowManager.yml">WindowManager</a></strong> - Multi-window coordination</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Application.yml">Application</a></strong> - Application-level window lifecycle</li>
+</ul>
+<h3 id="navigation-controls">Navigation Controls</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuBar.yml">MenuBar</a></strong> - Top-level navigation menu</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuItem.yml">MenuItem</a></strong> - Individual menu actions</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TabView.yml">TabView</a></strong> - Tabbed content navigation</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TreeView.yml">TreeView</a></strong> - Hierarchical content navigation</li>
+</ul>
+<h3 id="view-management">View Management</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.ContentPresenter.yml">ContentPresenter</a></strong> - Dynamic content display</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Frame.yml">Frame</a></strong> - Navigation container for views</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.UserControl.yml">UserControl</a></strong> - Reusable view components</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.ViewManager.yml">ViewManager</a></strong> - View lifecycle management</li>
+</ul>
+<h3 id="commands-and-events">Commands and Events</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.NavigationCommand.yml">NavigationCommand</a></strong> - Navigation-specific commands</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.WindowClosingEventArgs.yml">WindowClosingEventArgs</a></strong> - Window close event handling</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.NavigationEventArgs.yml">NavigationEventArgs</a></strong> - Navigation event data</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Services.INavigationService.yml">INavigationService</a></strong> - Navigation service interface</li>
+</ul>
+<blockquote>
+<p><strong>💡 Pro Tip</strong>: Use <code>Dialog</code> for modal interactions and <code>Frame</code> with <code>UserControl</code> for complex view hierarchies. Always handle <code>WindowClosing</code> events for data persistence.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completed <a href="create-window.html">Create a Window Guide</a></li>
+<li>Understanding of <a href="../concepts/events.html">Events Concepts</a></li>
+<li>Familiarity with MVVM patterns</li>
+</ul>
+<h2 id="step-1-create-a-main-navigation-window">Step 1: Create a Main Navigation Window</h2>
+<p>Create <code>NavigationMainWindow.xaml</code>:</p>
+<pre><code class="lang-xml">&lt;Window x:Class=&quot;MyTerminalApp.NavigationMainWindow&quot;
+        xmlns=&quot;http://terminal.gui.xaml/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://www.w3.org/1999/xlink&quot;
+        Title=&quot;Terminal.Gui.Xaml - Navigation Demo&quot;
+        Width=&quot;100&quot; Height=&quot;30&quot;&gt;
+    
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        &lt;!-- Menu bar for navigation --&gt;
+        &lt;MenuBar&gt;
+            &lt;MenuBarItem Title=&quot;File&quot;&gt;
+                &lt;MenuItem Title=&quot;New Document&quot; Command=&quot;{Binding NewDocumentCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Open Document&quot; Command=&quot;{Binding OpenDocumentCommand}&quot; /&gt;
+                &lt;MenuSeparator /&gt;
+                &lt;MenuItem Title=&quot;Settings&quot; Command=&quot;{Binding ShowSettingsCommand}&quot; /&gt;
+                &lt;MenuSeparator /&gt;
+                &lt;MenuItem Title=&quot;Exit&quot; Command=&quot;{Binding ExitCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+            &lt;MenuBarItem Title=&quot;View&quot;&gt;
+                &lt;MenuItem Title=&quot;Dashboard&quot; Command=&quot;{Binding ShowDashboardCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Data Entry&quot; Command=&quot;{Binding ShowDataEntryCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Reports&quot; Command=&quot;{Binding ShowReportsCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+            &lt;MenuBarItem Title=&quot;Window&quot;&gt;
+                &lt;MenuItem Title=&quot;Cascade Windows&quot; Command=&quot;{Binding CascadeWindowsCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Tile Horizontal&quot; Command=&quot;{Binding TileHorizontalCommand}&quot; /&gt;
+                &lt;MenuItem Title=&quot;Close All&quot; Command=&quot;{Binding CloseAllWindowsCommand}&quot; /&gt;
+            &lt;/MenuBarItem&gt;
+        &lt;/MenuBar&gt;
+        
+        &lt;!-- Main content area with tabs --&gt;
+        &lt;TabView Name=&quot;mainTabs&quot; 
+                 SelectedTab=&quot;{Binding SelectedTabIndex, Mode=TwoWay}&quot;
+                 Height=&quot;Dim.Fill(3)&quot;&gt;
+            
+            &lt;!-- Dashboard tab --&gt;
+            &lt;Tab Text=&quot;Dashboard&quot;&gt;
+                &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot; Margin=&quot;1&quot;&gt;
+                    &lt;Label Text=&quot;Application Dashboard&quot; 
+                           HorizontalAlignment=&quot;Center&quot; 
+                           ForegroundColor=&quot;Cyan&quot; /&gt;
+                    
+                    &lt;!-- Quick action buttons --&gt;
+                    &lt;FrameView Title=&quot;Quick Actions&quot; Height=&quot;8&quot;&gt;
+                        &lt;StackView Orientation=&quot;Vertical&quot; Spacing=&quot;1&quot; Margin=&quot;1&quot;&gt;
+                            &lt;Button Text=&quot;Create New Document&quot; 
+                                    Command=&quot;{Binding NewDocumentCommand}&quot; 
+                                    Width=&quot;Dim.Fill()&quot; /&gt;
+                            &lt;Button Text=&quot;Open Existing Document&quot; 
+                                    Command=&quot;{Binding OpenDocumentCommand}&quot; 
+                                    Width=&quot;Dim.Fill()&quot; /&gt;
+                            &lt;Button Text=&quot;View Reports&quot; 
+                                    Command=&quot;{Binding ShowReportsCommand}&quot; 
+                                    Width=&quot;Dim.Fill()&quot; /&gt;
+                            &lt;Button Text=&quot;Application Settings&quot; 
+                                    Command=&quot;{Binding ShowSettingsCommand}&quot; 
+                                    Width=&quot;Dim.Fill()&quot; /&gt;
+                        &lt;/StackView&gt;
+                    &lt;/FrameView&gt;
+                    
+                    &lt;!-- Recent items --&gt;
+                    &lt;FrameView Title=&quot;Recent Documents&quot;&gt;
+                        &lt;ListView ItemsSource=&quot;{Binding RecentDocuments}&quot;
+                                  SelectedItem=&quot;{Binding SelectedDocument, Mode=TwoWay}&quot;&gt;
+                            &lt;ListView.ItemTemplate&gt;
+                                &lt;DataTemplate&gt;
+                                    &lt;Label Text=&quot;{Binding DisplayName}&quot; /&gt;
+                                &lt;/DataTemplate&gt;
+                            &lt;/ListView.ItemTemplate&gt;
+                        &lt;/ListView&gt;
+                    &lt;/FrameView&gt;
+                &lt;/StackView&gt;
+            &lt;/Tab&gt;
+            
+            &lt;!-- Data entry tab --&gt;
+            &lt;Tab Text=&quot;Data Entry&quot;&gt;
+                &lt;ContentPresenter Content=&quot;{Binding DataEntryView}&quot; /&gt;
+            &lt;/Tab&gt;
+            
+            &lt;!-- Reports tab --&gt;
+            &lt;Tab Text=&quot;Reports&quot;&gt;
+                &lt;ContentPresenter Content=&quot;{Binding ReportsView}&quot; /&gt;
+            &lt;/Tab&gt;
+            
+        &lt;/TabView&gt;
+        
+        &lt;!-- Status bar --&gt;
+        &lt;StackView Orientation=&quot;Horizontal&quot; Y=&quot;Pos.Bottom()&quot; Height=&quot;1&quot;&gt;
+            &lt;Label Text=&quot;{Binding StatusMessage}&quot; /&gt;
+            &lt;Label Text=&quot;{Binding ActiveWindowsCount, StringFormat='Windows: {0}'}&quot; 
+                   X=&quot;Pos.Right()&quot; /&gt;
+        &lt;/StackView&gt;
+        
+    &lt;/StackView&gt;
+&lt;/Window&gt;
+</code></pre>
+<h2 id="step-2-create-supporting-services">Step 2: Create Supporting Services</h2>
+<p>Create <code>NavigationService.cs</code>:</p>
+<pre><code class="lang-csharp">using Terminal.Gui;
+
+namespace MyTerminalApp.Services;
+
+public interface INavigationService
+{
+    Task&lt;Window&gt; CreateDocumentWindowAsync(DocumentViewModel document = null);
+    Window CreateSettingsWindow();
+    View CreateDataEntryView();
+    View CreateReportsView();
+}
+
+public class NavigationService : INavigationService
+{
+    public async Task&lt;Window&gt; CreateDocumentWindowAsync(DocumentViewModel document = null)
+    {
+        var viewModel = new DocumentWindowViewModel(document);
+        var window = new DocumentWindow { DataContext = viewModel };
+        return window;
+    }
+    
+    public Window CreateSettingsWindow()
+    {
+        var viewModel = new SettingsViewModel();
+        return new SettingsWindow { DataContext = viewModel };
+    }
+    
+    public View CreateDataEntryView()
+    {
+        var viewModel = new DataEntryViewModel();
+        return new DataEntryView { DataContext = viewModel };
+    }
+    
+    public View CreateReportsView()
+    {
+        var viewModel = new ReportsViewModel();
+        return new ReportsView { DataContext = viewModel };
+    }
+}
+</code></pre>
+<p>Create <code>WindowManager.cs</code>:</p>
+<pre><code class="lang-csharp">using Terminal.Gui;
+
+namespace MyTerminalApp.Services;
+
+public interface IWindowManager
+{
+    void ShowWindow(Window window);
+    void ShowModal(Window window);
+    void CloseWindow(Window window);
+    void CascadeWindows();
+    void TileHorizontal();
+}
+
+public class WindowManager : IWindowManager
+{
+    private readonly List&lt;Window&gt; _openWindows = new();
+    
+    public void ShowWindow(Window window)
+    {
+        _openWindows.Add(window);
+        
+        // Position new windows slightly offset
+        var offset = _openWindows.Count * 2;
+        window.X = offset;
+        window.Y = offset;
+        
+        Application.Run(window);
+    }
+    
+    public void ShowModal(Window window)
+    {
+        Application.Run(window);
+    }
+    
+    public void CloseWindow(Window window)
+    {
+        if (_openWindows.Contains(window))
+        {
+            _openWindows.Remove(window);
+            window.RequestStop();
+        }
+    }
+    
+    public void CascadeWindows()
+    {
+        for (int i = 0; i &lt; _openWindows.Count; i++)
+        {
+            _openWindows[i].X = i * 3;
+            _openWindows[i].Y = i * 2;
+        }
+    }
+    
+    public void TileHorizontal()
+    {
+        if (_openWindows.Count == 0) return;
+        
+        var availableHeight = Application.Top.Frame.Height / _openWindows.Count;
+        for (int i = 0; i &lt; _openWindows.Count; i++)
+        {
+            var window = _openWindows[i];
+            window.Y = i * availableHeight;
+            window.Height = availableHeight;
+        }
+    }
+}
+</code></pre>
+<h2 id="step-3-test-navigation">Step 3: Test Navigation</h2>
+<p>Run the application:</p>
+<pre><code class="lang-powershell">dotnet build
+dotnet run
+</code></pre>
+<p>Test these navigation features:</p>
+<ul>
+<li><strong>Tab navigation</strong>: Switch between Dashboard, Data Entry, Reports</li>
+<li><strong>Window management</strong>: Open multiple document windows, cascade/tile them</li>
+<li><strong>Modal dialogs</strong>: Settings window opens modally</li>
+<li><strong>Recent documents</strong>: Click items to reopen them</li>
+<li><strong>Menu navigation</strong>: Access all features through menus</li>
+</ul>
+<h2 id="understanding-navigation-patterns">Understanding Navigation Patterns</h2>
+<h3 id="tab-based-navigation">Tab-Based Navigation</h3>
+<pre><code class="lang-xml">&lt;TabView SelectedTab=&quot;{Binding SelectedTabIndex, Mode=TwoWay}&quot;&gt;
+    &lt;Tab Text=&quot;Dashboard&quot;&gt;&lt;!-- Content --&gt;&lt;/Tab&gt;
+    &lt;Tab Text=&quot;Data Entry&quot;&gt;&lt;!-- Content --&gt;&lt;/Tab&gt;
+&lt;/TabView&gt;
+</code></pre>
+<h3 id="service-based-navigation">Service-Based Navigation</h3>
+<pre><code class="lang-csharp">public interface INavigationService
+{
+    Window CreateSettingsWindow();
+    void NavigateTo&lt;T&gt;() where T : Window, new();
+}
+</code></pre>
+<h3 id="window-management-1">Window Management</h3>
+<pre><code class="lang-csharp">public void CascadeWindows()
+{
+    for (int i = 0; i &lt; _openWindows.Count; i++)
+    {
+        _openWindows[i].X = i * 3;
+        _openWindows[i].Y = i * 2;
+    }
+}
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li><strong>Add State Management</strong>: Preserve navigation state across sessions</li>
+<li><strong>Implement Breadcrumbs</strong>: Show navigation hierarchy</li>
+<li><strong>Add Keyboard Navigation</strong>: Full keyboard-only navigation support</li>
+<li><strong>Create Custom Views</strong>: Build reusable navigation components</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<h3 id="api-reference">API Reference</h3>
+<ul>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Window.yml">Window</a></strong> - Primary window container</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Dialog.yml">Dialog</a></strong> - Modal dialog handling</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.MenuBar.yml">MenuBar</a></strong> - Menu navigation control</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.TabView.yml">TabView</a></strong> - Tabbed content navigation</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Frame.yml">Frame</a></strong> - Content navigation container</li>
+<li><strong><a href="../../api/Terminal.Gui.Xaml.Commands.NavigationCommand.yml">NavigationCommand</a></strong> - Navigation commands</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><strong><a href="../concepts/window-lifecycle.md">Window Lifecycle</a></strong> - Window creation and management</li>
+<li><strong><a href="../concepts/events.html">Event Handling</a></strong> - Navigation event patterns</li>
+<li><strong><a href="../concepts/views.md">View Management</a></strong> - View composition and lifecycle</li>
+<li><strong><a href="../concepts/architecture.md">Application Architecture</a></strong> - Multi-window app patterns</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><strong><a href="../examples/multi-window.html">Multi-Window App</a></strong> - Complete navigation example</li>
+<li><strong><a href="../examples/dialogs.html">Dialog Usage</a></strong> - Modal and non-modal dialogs</li>
+<li><strong><a href="../examples/menu-navigation.md">Menu Navigation</a></strong> - Menu-driven applications</li>
+</ul>
+<h3 id="related-guides">Related Guides</h3>
+<ul>
+<li><strong><a href="create-window.html">Create a Window</a></strong> - Basic window creation and setup</li>
+<li><strong><a href="handle-input.html">Handle Input</a></strong> - Input handling across multiple views</li>
+<li><strong><a href="bind-data.html">Bind Data</a></strong> - Data context management in navigation</li>
+</ul>
+<h3 id="external-resources">External Resources</h3>
+<ul>
+<li><strong><a href="https://docs.microsoft.com/en-us/dotnet/architecture/maui/mvvm">MVVM Navigation</a></strong> - Navigation in MVVM applications</li>
+<li><strong><a href="https://docs.microsoft.com/en-us/windows/apps/design/layout/">Window Management Patterns</a></strong> - UI navigation best practices</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

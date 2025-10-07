@@ -72,7 +72,7 @@
 ## Phase 3.5: Polish & Constitutional Compliance
 - [ ] T019 [P] Unit tests for validation in tests/unit/test_validation.py
 - [ ] T020 Performance tests (<100ms XAML parsing, >30 FPS rendering, <50MB memory)
-- [ ] T021 [P] Static analysis compliance (StyleCop, FxCop/Analyzers)
+- [ ] T021 [P] Static analysis compliance (.NET analyzers via .editorconfig)
 - [ ] T022 [P] XML documentation for public APIs
 - [ ] T023 [P] Update docs/api.md
 - [ ] T024 Code quality review (cyclomatic complexity <15, SOLID principles)

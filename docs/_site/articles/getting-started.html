@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Getting Started with Terminal.Gui.Xaml | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Getting Started with Terminal.Gui.Xaml | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started-with-terminalguixaml">Getting Started with Terminal.Gui.Xaml</h1>
+
+<p>This guide helps you set up Terminal.Gui.Xaml and create a minimal UI using XAML.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET 8+ SDK</li>
+<li>Terminal.Gui v2+</li>
+<li>Basic familiarity with XAML</li>
+</ul>
+<h2 id="install-packages">Install packages</h2>
+<p>From your app’s project folder, add the required packages:</p>
+<pre><code class="lang-pwsh">dotnet add package Terminal.Gui
+dotnet add package Terminal.Gui.Xaml
+</code></pre>
+<h2 id="create-your-first-xaml-ui">Create your first XAML UI</h2>
+<ol>
+<li>Add a XAML file named <code>MainWindow.xaml</code> to your project:</li>
+</ol>
+<pre><code class="lang-xml">&lt;Window xmlns=&quot;https://schemas.terminal-gui.xaml.com/2023&quot;
+        Title=&quot;My First XAML App&quot;&gt;
+  &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+    &lt;Label Text=&quot;Hello, XAML!&quot; /&gt;
+    &lt;Button Text=&quot;Click Me&quot; Click=&quot;OnButtonClick&quot; /&gt;
+  &lt;/StackView&gt;
+  
+  &lt;!-- Optional: Key bindings, layout hints, etc. --&gt;
+&lt;/Window&gt;
+</code></pre>
+<ol start="2">
+<li>Load and run the XAML window from <code>Program.cs</code>:</li>
+</ol>
+<pre><code class="lang-csharp">using Terminal.Gui;
+
+// using Terminal.Gui.Xaml; // Namespace for XAML loading utilities
+
+Application.Init();
+
+// Load a Window defined in XAML (API subject to change)
+// var window = XamlLoader.Load&lt;Window&gt;(&quot;MainWindow.xaml&quot;);
+// For now, create a window directly if loader API is not available in your version:
+var window = new Window(&quot;My First XAML App&quot;)
+{
+    X = 0,
+    Y = 1, // Leave space for the menu/status bar if any
+    Width = Dim.Fill(),
+    Height = Dim.Fill()
+};
+
+window.Add(new Label(&quot;Hello, XAML!&quot;) { X = 1, Y = 1 });
+window.Add(new Button(&quot;Click Me&quot;) { X = 1, Y = 3, Clicked = () =&gt; MessageBox.Query(&quot;Hello&quot;, &quot;Button clicked!&quot;, &quot;OK&quot;) });
+
+Application.Top.Add(window);
+Application.Run();
+Application.Shutdown();
+</code></pre>
+<p>Expected result: A terminal window titled “My First XAML App” that shows a label and a “Click Me” button, which displays a message box when clicked.</p>
+<p>Notes:</p>
+<ul>
+<li>When XAML loading APIs are available, prefer <code>XamlLoader.Load&lt;T&gt;(path)</code> to instantiate views from XAML.</li>
+<li>Keep UI minimal at first; add layout, binding, and events as you grow.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>Concepts: <a href="concepts/layout.html">Layout</a>, <a href="concepts/binding.html">Binding</a>, <a href="concepts/events.html">Events</a></li>
+<li>Guides: <a href="guides/create-window.html">Create a Window</a>, <a href="guides/bind-data.html">Bind Data</a>, <a href="guides/handle-input.html">Handle Input</a>, <a href="guides/navigation.html">Navigation</a></li>
+<li>Examples: <a href="examples/hello-world.html">Hello World</a>, <a href="examples/basic-layout.html">Basic Layout</a></li>
+<li>Reference: <a href="../api/index.html">API Reference</a></li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

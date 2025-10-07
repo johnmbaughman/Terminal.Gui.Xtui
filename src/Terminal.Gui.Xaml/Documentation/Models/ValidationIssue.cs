@@ -78,7 +78,7 @@ public enum IssueType
     /// <summary>
     /// Missing parameter documentation.
     /// </summary>
-    MissingParameterDoc
+    MissingParameterDoc,
 }
 
 /// <summary>
@@ -99,5 +99,5 @@ public enum IssueSeverity
     /// <summary>
     /// Informational notice.
     /// </summary>
-    Information
+    Information,
 }

@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Generation
+  commentId: N:Terminal.Gui.Xaml.Generation
+  id: Terminal.Gui.Xaml.Generation
+  children:
+  - Terminal.Gui.Xaml.Generation.CodeGenerator
+  - Terminal.Gui.Xaml.Generation.CodeTemplates
+  - Terminal.Gui.Xaml.Generation.GeneratedClass
+  - Terminal.Gui.Xaml.Generation.ICodeGenerator
+  - Terminal.Gui.Xaml.Generation.SimpleCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: Terminal.Gui.Xaml.Generation
+  nameWithType: Terminal.Gui.Xaml.Generation
+  fullName: Terminal.Gui.Xaml.Generation
+  type: Namespace
+  assemblies:
+  - Terminal.Gui.Xaml
+references:
+- uid: Terminal.Gui.Xaml.Generation.CodeGenerator
+  commentId: T:Terminal.Gui.Xaml.Generation.CodeGenerator
+  href: Terminal.Gui.Xaml.Generation.CodeGenerator.html
+  name: CodeGenerator
+  nameWithType: CodeGenerator
+  fullName: Terminal.Gui.Xaml.Generation.CodeGenerator
+- uid: Terminal.Gui.Xaml.Generation.CodeTemplates
+  commentId: T:Terminal.Gui.Xaml.Generation.CodeTemplates
+  href: Terminal.Gui.Xaml.Generation.CodeTemplates.html
+  name: CodeTemplates
+  nameWithType: CodeTemplates
+  fullName: Terminal.Gui.Xaml.Generation.CodeTemplates
+- uid: Terminal.Gui.Xaml.Generation.ICodeGenerator
+  commentId: T:Terminal.Gui.Xaml.Generation.ICodeGenerator
+  parent: Terminal.Gui.Xaml.Generation
+  href: Terminal.Gui.Xaml.Generation.ICodeGenerator.html
+  name: ICodeGenerator
+  nameWithType: ICodeGenerator
+  fullName: Terminal.Gui.Xaml.Generation.ICodeGenerator
+- uid: Terminal.Gui.Xaml.Generation.GeneratedClass
+  commentId: T:Terminal.Gui.Xaml.Generation.GeneratedClass
+  href: Terminal.Gui.Xaml.Generation.GeneratedClass.html
+  name: GeneratedClass
+  nameWithType: GeneratedClass
+  fullName: Terminal.Gui.Xaml.Generation.GeneratedClass
+- uid: Terminal.Gui.Xaml.Generation.SimpleCodeGenerator
+  commentId: T:Terminal.Gui.Xaml.Generation.SimpleCodeGenerator
+  href: Terminal.Gui.Xaml.Generation.SimpleCodeGenerator.html
+  name: SimpleCodeGenerator
+  nameWithType: SimpleCodeGenerator
+  fullName: Terminal.Gui.Xaml.Generation.SimpleCodeGenerator
+- uid: Terminal.Gui.Xaml.Generation
+  commentId: N:Terminal.Gui.Xaml.Generation
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Generation
+  nameWithType: Terminal.Gui.Xaml.Generation
+  fullName: Terminal.Gui.Xaml.Generation
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Generation
+    name: Generation
+    href: Terminal.Gui.Xaml.Generation.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Generation
+    name: Generation
+    href: Terminal.Gui.Xaml.Generation.html

@@ -7,12 +7,15 @@ namespace Terminal.Gui.Xaml.Model;
 /// <summary>
 /// Represents a XAML namespace.
 /// </summary>
-public class XamlNamespace
+/// <remarks>
+/// Initializes a new instance of the <see cref="XamlNamespace"/> class.
+/// </remarks>
+/// <param name="uri">The namespace URI.</param>
+public class XamlNamespace (System.Uri uri)
 {
-    public string Uri { get; }
 
-    public XamlNamespace(string uri)
-    {
-        Uri = uri;
-    }
+    /// <summary>
+    /// Gets the URI of the XAML namespace.
+    /// </summary>
+    public System.Uri Uri { get; } = uri;
 }

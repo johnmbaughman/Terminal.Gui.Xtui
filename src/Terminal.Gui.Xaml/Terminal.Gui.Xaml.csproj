@@ -9,16 +9,19 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Default off; opt-in at solution level to avoid task load errors in isolated builds -->
+    <EnableXamlDocumentation Condition=" '$(EnableXamlDocumentation)' == '' ">false</EnableXamlDocumentation>
+    <SkipDocumentationTasks Condition=" '$(SkipDocumentationTasks)' == '' AND '$(EnableXamlDocumentation)' != 'true' ">true</SkipDocumentationTasks>
   </PropertyGroup>
 
   <PropertyGroup>
     <AssemblyTitle>Terminal.Gui XAML Framework</AssemblyTitle>
     <AssemblyDescription>A comprehensive XAML framework for Terminal.Gui v2+ that enables declarative UI development with Microsoft XAML standards compatibility.</AssemblyDescription>
     <Copyright>Copyright © 2025</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <PackageVersion>1.0.0</PackageVersion>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  <FileVersion>1.0.0.0</FileVersion>
+  <PackageVersion>1.0.0-beta1</PackageVersion>
+  <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -27,6 +30,15 @@
     <PackageProjectUrl>https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Authors>Terminal.Gui.Xaml Contributors</Authors>
+    <Company>Terminal.Gui.Xaml</Company>
+    <RepositoryUrl>https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\..\nupkg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,32 +46,26 @@
     <PackageReference Include="Terminal.Gui" Version="2.0.0-develop.4559" />
 
     <!-- Microsoft.CodeAnalysis for Roslyn integration -->
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
 
-    <!-- Code Quality Analyzers -->
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
 
     <!-- Performance monitoring -->
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.9" />
 
-    <!-- DocFX for documentation generation -->
-    <PackageReference Include="docfx" Version="2.75.3" />
-    <PackageReference Include="docfx.console" Version="2.75.3" />
+  <!-- DocFX for documentation generation -->
   </ItemGroup>
 
+
+  <!-- Pack documentation targets file so consumers get automatic task/targets import -->
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)..\..\stylecop.json" />
+    <None Include="Build\Terminal.Gui.Xaml.Documentation.targets" Pack="true" PackagePath="buildTransitive" />
+    <None Include="Build\Terminal.Gui.Xaml.targets" Pack="true" PackagePath="buildTransitive" />
   </ItemGroup>
+
+  <!-- Adjust UsingTask in packed targets: rely on standard buildTransitive semantics; keep source version unchanged -->
 
 </Project>

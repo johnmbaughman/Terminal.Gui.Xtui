@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Glossary | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Glossary | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="glossary">Glossary</h1>
+
+<p>Definitions of key terms, concepts, and acronyms used in Terminal.Gui.Xaml development.</p>
+<blockquote>
+<p><strong>Version</strong>: Terminal.Gui.Xaml 1.0+<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Quick Navigation</strong>: <a href="#a-c">A-C</a> • <a href="#d-g">D-G</a> • <a href="#h-m">H-M</a> • <a href="#n-r">N-R</a> • <a href="#s-z">S-Z</a></p>
+</blockquote>
+<hr>
+<h2 id="a-c">A-C</h2>
+<h3 id="access-key">Access Key</h3>
+<p>A keyboard shortcut that allows quick navigation to a control. Defined using the <code>AccessKey</code> property, typically activated with Alt+Key.</p>
+<pre><code class="lang-xml">&lt;Button Text=&quot;Save&quot; AccessKey=&quot;S&quot; /&gt;
+&lt;!-- Activated with Alt+S --&gt;
+</code></pre>
+<h3 id="attached-property">Attached Property</h3>
+<p>A property that can be applied to any element, even if the element's class doesn't define it. Common in layout scenarios.</p>
+<pre><code class="lang-xml">&lt;Label Grid.Row=&quot;1&quot; Grid.Column=&quot;2&quot; /&gt;
+&lt;!-- Grid.Row and Grid.Column are attached properties --&gt;
+</code></pre>
+<h3 id="binding">Binding</h3>
+<p>The connection between UI elements and data sources that automatically synchronizes values. See <a href="concepts/binding.html">Data Binding</a>.</p>
+<h3 id="binding-context">Binding Context</h3>
+<p>The object that provides data for binding expressions. Typically set via the <code>DataContext</code> property.</p>
+<h3 id="binding-mode">Binding Mode</h3>
+<p>Specifies how data flows between source and target in a binding:</p>
+<ul>
+<li><strong>OneWay</strong>: Source to target only</li>
+<li><strong>TwoWay</strong>: Bidirectional synchronization</li>
+<li><strong>OneTime</strong>: Single initial value transfer</li>
+<li><strong>OneWayToSource</strong>: Target to source only</li>
+</ul>
+<h3 id="code-behind">Code-Behind</h3>
+<p>The C# code file (.xaml.cs) associated with a XAML file that contains event handlers and logic.</p>
+<h3 id="command">Command</h3>
+<p>An object implementing <code>ICommand</code> that encapsulates application logic and can be bound to UI elements for MVVM scenarios.</p>
+<h3 id="control">Control</h3>
+<p>A UI element that users can interact with, such as buttons, text fields, or lists. Inherits from the <code>View</code> class in Terminal.Gui.</p>
+<h3 id="converter">Converter</h3>
+<p>A class implementing <code>IValueConverter</code> that transforms data between binding source and target formats.</p>
+<hr>
+<h2 id="d-g">D-G</h2>
+<h3 id="datacontext">DataContext</h3>
+<p>The object that serves as the default source for data binding within an element and its children.</p>
+<h3 id="data-template">Data Template</h3>
+<p>A XAML template that defines how data objects should be displayed in data-bound controls like ListView.</p>
+<h3 id="dependency-property">Dependency Property</h3>
+<p>A special type of property that supports data binding, styling, and other WPF-like features.</p>
+<h3 id="design-time">Design Time</h3>
+<p>The period when you're editing XAML in a designer or IDE, as opposed to runtime when the application is executing.</p>
+<h3 id="dim">Dim</h3>
+<p>Terminal.Gui's dimension system for character-based sizing:</p>
+<pre><code class="lang-xml">&lt;FrameView Width=&quot;Dim.Fill(2)&quot; Height=&quot;Dim.Percent(50)&quot; /&gt;
+</code></pre>
+<h3 id="element-tree">Element Tree</h3>
+<p>The hierarchical structure of XAML elements in your user interface, similar to DOM in web development.</p>
+<h3 id="event-handler">Event Handler</h3>
+<p>A method in code-behind that responds to user interface events like button clicks or text changes.</p>
+<h3 id="focus">Focus</h3>
+<p>The state of a control that indicates it will receive keyboard input. Only one control can have focus at a time.</p>
+<hr>
+<h2 id="h-m">H-M</h2>
+<h3 id="hot-reload">Hot Reload</h3>
+<p>A development feature that applies XAML changes to a running application without restarting it.</p>
+<h3 id="inotifypropertychanged">INotifyPropertyChanged</h3>
+<p>An interface that classes implement to notify the binding system when property values change, enabling automatic UI updates.</p>
+<h3 id="intellisense">IntelliSense</h3>
+<p>IDE feature providing code completion, syntax highlighting, and error detection for XAML and C#.</p>
+<h3 id="layout">Layout</h3>
+<p>The system for positioning and sizing controls within their containers. See <a href="concepts/layout.html">Layout Concepts</a>.</p>
+<h3 id="markup-extension">Markup Extension</h3>
+<p>XAML syntax that provides values for properties using special syntax, such as <code>{Binding}</code> or <code>{StaticResource}</code>.</p>
+<h3 id="mvvm-model-view-viewmodel">MVVM (Model-View-ViewModel)</h3>
+<p>A design pattern that separates UI (View) from business logic (Model) using a ViewModel as an intermediary. Common in XAML applications.</p>
+<hr>
+<h2 id="n-r">N-R</h2>
+<h3 id="namespace">Namespace</h3>
+<p>XML namespace declarations in XAML that map prefixes to .NET namespaces:</p>
+<pre><code class="lang-xml">xmlns:local=&quot;clr-namespace:MyApp.Views&quot;
+</code></pre>
+<h3 id="navigation">Navigation</h3>
+<p>Moving between different views or windows in an application. See <a href="guides/navigation.html">Navigation Guide</a>.</p>
+<h3 id="one-way-binding">One-Way Binding</h3>
+<p>A binding mode where data flows from source to target but changes in the target don't affect the source.</p>
+<h3 id="pos">Pos</h3>
+<p>Terminal.Gui's position system for character-based positioning:</p>
+<pre><code class="lang-xml">&lt;Button X=&quot;Pos.Center()&quot; Y=&quot;Pos.Bottom(view) - 1&quot; /&gt;
+</code></pre>
+<h3 id="property-element">Property Element</h3>
+<p>XAML syntax for setting complex properties using elements instead of attributes:</p>
+<pre><code class="lang-xml">&lt;Button&gt;
+    &lt;Button.Content&gt;
+        &lt;StackPanel&gt;
+            &lt;Label Text=&quot;Line 1&quot; /&gt;
+            &lt;Label Text=&quot;Line 2&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Button.Content&gt;
+&lt;/Button&gt;
+</code></pre>
+<h3 id="resource">Resource</h3>
+<p>A reusable object defined in XAML that can be referenced throughout your application, such as styles or data templates.</p>
+<h3 id="routed-event">Routed Event</h3>
+<p>An event that can travel up or down the element tree, allowing multiple elements to handle the same event occurrence.</p>
+<hr>
+<h2 id="s-z">S-Z</h2>
+<h3 id="screen-reader">Screen Reader</h3>
+<p>Assistive technology that reads UI elements aloud for visually impaired users. Terminal.Gui.Xaml supports screen readers through accessibility properties.</p>
+<h3 id="setter">Setter</h3>
+<p>Part of a style that sets a property value:</p>
+<pre><code class="lang-xml">&lt;Style TargetType=&quot;Button&quot;&gt;
+    &lt;Setter Property=&quot;ForegroundColor&quot; Value=&quot;Blue&quot; /&gt;
+&lt;/Style&gt;
+</code></pre>
+<h3 id="style">Style</h3>
+<p>A collection of property setters that can be applied to controls to provide consistent appearance and behavior.</p>
+<h3 id="tab-index">Tab Index</h3>
+<p>A numeric value that determines the order in which controls receive focus when the user presses the Tab key.</p>
+<h3 id="template">Template</h3>
+<p>A reusable definition of a control's visual structure. Data templates define how data appears, while control templates define control appearance.</p>
+<h3 id="terminalgui">Terminal.Gui</h3>
+<p>The underlying cross-platform terminal UI framework that Terminal.Gui.Xaml is built upon.</p>
+<h3 id="trigger">Trigger</h3>
+<p>A mechanism that automatically applies property changes or actions when specified conditions are met.</p>
+<h3 id="two-way-binding">Two-Way Binding</h3>
+<p>A binding mode where changes in either the source or target are automatically synchronized to the other.</p>
+<h3 id="ui-thread">UI Thread</h3>
+<p>The main thread where all UI operations must occur. Terminal applications typically run single-threaded.</p>
+<h3 id="user-control">User Control</h3>
+<p>A reusable custom control created by combining existing controls, typically with associated XAML and code-behind files.</p>
+<h3 id="value-converter">Value Converter</h3>
+<p>A class that transforms data between different types or formats during binding operations.</p>
+<h3 id="view">View</h3>
+<p>In MVVM pattern, the user interface layer that displays data and captures user input. In Terminal.Gui, the base class for all UI elements.</p>
+<h3 id="viewmodel">ViewModel</h3>
+<p>In MVVM pattern, the layer between View and Model that exposes data and commands for the UI to bind to.</p>
+<h3 id="visual-tree">Visual Tree</h3>
+<p>The runtime hierarchy of visual elements that make up the user interface.</p>
+<h3 id="xaml-extensible-application-markup-language">XAML (eXtensible Application Markup Language)</h3>
+<p>A declarative markup language used to define user interfaces. Pronounced &quot;zammel.&quot;</p>
+<h3 id="xml-namespace">XML Namespace</h3>
+<p>A mechanism to avoid name conflicts in XML documents by qualifying element and attribute names.</p>
+<hr>
+<h2 id="acronyms-and-abbreviations">Acronyms and Abbreviations</h2>
+<table>
+<thead>
+<tr>
+<th>Acronym</th>
+<th>Full Form</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API</strong></td>
+<td>Application Programming Interface</td>
+<td>Set of functions and methods available to developers</td>
+</tr>
+<tr>
+<td><strong>CLI</strong></td>
+<td>Command Line Interface</td>
+<td>Text-based user interface for operating systems</td>
+</tr>
+<tr>
+<td><strong>DI</strong></td>
+<td>Dependency Injection</td>
+<td>Design pattern for providing dependencies to objects</td>
+</tr>
+<tr>
+<td><strong>IDE</strong></td>
+<td>Integrated Development Environment</td>
+<td>Software for code editing, debugging, and building</td>
+</tr>
+<tr>
+<td><strong>MVVM</strong></td>
+<td>Model-View-ViewModel</td>
+<td>Architectural pattern for separating UI from business logic</td>
+</tr>
+<tr>
+<td><strong>NuGet</strong></td>
+<td>.NET Package Manager</td>
+<td>Package management system for .NET</td>
+</tr>
+<tr>
+<td><strong>REPL</strong></td>
+<td>Read-Eval-Print Loop</td>
+<td>Interactive programming environment</td>
+</tr>
+<tr>
+<td><strong>TUI</strong></td>
+<td>Text User Interface</td>
+<td>Character-based user interface in terminal applications</td>
+</tr>
+<tr>
+<td><strong>UI</strong></td>
+<td>User Interface</td>
+<td>The means by which users interact with applications</td>
+</tr>
+<tr>
+<td><strong>UWP</strong></td>
+<td>Universal Windows Platform</td>
+<td>Windows application platform</td>
+</tr>
+<tr>
+<td><strong>WPF</strong></td>
+<td>Windows Presentation Foundation</td>
+<td>Microsoft's UI framework for desktop applications</td>
+</tr>
+<tr>
+<td><strong>XAML</strong></td>
+<td>eXtensible Application Markup Language</td>
+<td>Declarative markup language for defining UIs</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="common-file-extensions">Common File Extensions</h2>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>.xaml</strong></td>
+<td>XAML markup files containing UI definitions</td>
+<td><code>MainWindow.xaml</code></td>
+</tr>
+<tr>
+<td><strong>.xaml.cs</strong></td>
+<td>Code-behind files with event handlers and logic</td>
+<td><code>MainWindow.xaml.cs</code></td>
+</tr>
+<tr>
+<td><strong>.cs</strong></td>
+<td>C# source code files</td>
+<td><code>PersonViewModel.cs</code></td>
+</tr>
+<tr>
+<td><strong>.csproj</strong></td>
+<td>MSBuild project files</td>
+<td><code>MyApp.csproj</code></td>
+</tr>
+<tr>
+<td><strong>.sln</strong></td>
+<td>Visual Studio solution files</td>
+<td><code>MyApplication.sln</code></td>
+</tr>
+<tr>
+<td><strong>.json</strong></td>
+<td>Configuration files</td>
+<td><code>appsettings.json</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="symbol-meanings">Symbol Meanings</h2>
+<h3 id="xaml-syntax">XAML Syntax</h3>
+<ul>
+<li><code>{}</code> - Markup extension syntax: <code>{Binding Path=Name}</code></li>
+<li><code>x:</code> - XAML namespace prefix for XAML-specific features</li>
+<li><code>xmlns:</code> - XML namespace declaration</li>
+<li><code>&lt;!--  --&gt;</code> - XAML comments</li>
+<li><code>&lt;![CDATA[  ]]&gt;</code> - Literal text that won't be parsed as XML</li>
+</ul>
+<h3 id="terminal-positioning">Terminal Positioning</h3>
+<ul>
+<li><code>Pos.Center()</code> - Center position within parent</li>
+<li><code>Pos.AnchorEnd()</code> - Position at end of parent</li>
+<li><code>Dim.Fill()</code> - Fill remaining space</li>
+<li><code>Dim.Percent(50)</code> - 50% of parent dimension</li>
+</ul>
+<h3 id="binding-syntax">Binding Syntax</h3>
+<ul>
+<li><code>{Binding}</code> - Bind to entire DataContext</li>
+<li><code>{Binding Name}</code> - Bind to Name property</li>
+<li><code>{Binding Path=Name}</code> - Explicit path syntax</li>
+<li><code>{Binding Name, Mode=TwoWay}</code> - Specify binding mode</li>
+</ul>
+<hr>
+<h2 id="related-documentation">Related Documentation</h2>
+<ul>
+<li><a href="getting-started.html">Getting Started</a> - Basic concepts and your first application</li>
+<li><a href="concepts/xaml-syntax.md">XAML Concepts</a> - Detailed XAML syntax and features</li>
+<li><a href="concepts/binding.html">Data Binding</a> - Comprehensive binding guide</li>
+<li><a href="concepts/layout.html">Layout System</a> - Positioning and sizing concepts</li>
+<li><a href="../api/index.html">API Reference</a> - Complete technical reference</li>
+</ul>
+<hr>
+<h2 id="contributing-to-the-glossary">Contributing to the Glossary</h2>
+<p>Found a term that should be added or needs clarification?</p>
+<ol>
+<li><strong>Check existing documentation</strong> to see if the term is explained elsewhere</li>
+<li><strong>Search the codebase</strong> to understand current usage</li>
+<li><strong>Submit a pull request</strong> with your additions following the format above</li>
+<li><strong>Include examples</strong> where helpful to illustrate the concept</li>
+</ol>
+<p>See our <a href="contributing/index.html">Contributing Guide</a> for the contribution process.</p>
+<hr>
+<blockquote>
+<p><strong>Quick Navigation</strong>: <a href="#a-c">A-C</a> • <a href="#d-g">D-G</a> • <a href="#h-m">H-M</a> • <a href="#n-r">N-R</a> • <a href="#s-z">S-Z</a> • <a href="#glossary">Top</a></p>
+</blockquote>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

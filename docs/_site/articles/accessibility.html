@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Accessibility in Terminal.Gui.Xaml | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Accessibility in Terminal.Gui.Xaml | Terminal.Gui.Xaml Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="accessibility-in-terminalguixaml">Accessibility in Terminal.Gui.Xaml</h1>
+
+<p>Making your terminal applications accessible to all users, including those using screen readers, keyboard-only navigation, and users with visual or motor impairments.</p>
+<blockquote>
+<p><strong>Version</strong>: Terminal.Gui.Xaml 1.0+<br>
+<strong>Last Updated</strong>: September 2025<br>
+<strong>Applies To</strong>: All Terminal.Gui.Xaml applications</p>
+</blockquote>
+<h2 id="why-accessibility-matters">Why Accessibility Matters</h2>
+<p>Terminal applications have unique accessibility advantages and challenges:</p>
+<p><strong>✅ Inherent Benefits:</strong></p>
+<ul>
+<li>Text-based output works well with screen readers</li>
+<li>No mouse dependency by design</li>
+<li>High contrast terminal themes available</li>
+<li>Consistent keyboard navigation patterns</li>
+</ul>
+<p><strong>⚠️ Common Challenges:</strong></p>
+<ul>
+<li>Complex layouts can confuse screen readers</li>
+<li>Color-only information excludes colorblind users</li>
+<li>Custom controls may lack proper accessibility metadata</li>
+<li>Focus management in modal dialogs</li>
+</ul>
+<h2 id="core-accessibility-principles">Core Accessibility Principles</h2>
+<h3 id="1-keyboard-navigation">1. Keyboard Navigation</h3>
+<p><strong>All functionality must be accessible via keyboard:</strong></p>
+<pre><code class="lang-xml">&lt;!-- Good: Proper tab order and keyboard shortcuts --&gt;
+&lt;Dialog Title=&quot;User Settings&quot; TabIndex=&quot;0&quot;&gt;
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        &lt;Label Text=&quot;Name:&quot; AccessKey=&quot;N&quot; Target=&quot;{Binding ElementName=nameField}&quot; /&gt;
+        &lt;TextField Name=&quot;nameField&quot; TabIndex=&quot;1&quot; /&gt;
+        
+        &lt;Label Text=&quot;Email:&quot; AccessKey=&quot;E&quot; Target=&quot;{Binding ElementName=emailField}&quot; /&gt;
+        &lt;TextField Name=&quot;emailField&quot; TabIndex=&quot;2&quot; /&gt;
+        
+        &lt;StackView Orientation=&quot;Horizontal&quot; TabIndex=&quot;3&quot;&gt;
+            &lt;Button Text=&quot;OK&quot; IsDefault=&quot;true&quot; TabIndex=&quot;3&quot; /&gt;
+            &lt;Button Text=&quot;Cancel&quot; IsCancel=&quot;true&quot; TabIndex=&quot;4&quot; /&gt;
+        &lt;/StackView&gt;
+    &lt;/StackView&gt;
+&lt;/Dialog&gt;
+</code></pre>
+<p><strong>Key Navigation Principles:</strong></p>
+<ul>
+<li><strong>Tab Order</strong>: Set logical <code>TabIndex</code> values</li>
+<li><strong>Access Keys</strong>: Use <code>AccessKey</code> for quick navigation (Alt+Key)</li>
+<li><strong>Default Actions</strong>: Mark primary buttons with <code>IsDefault=&quot;true&quot;</code></li>
+<li><strong>Cancel Actions</strong>: Mark cancel buttons with <code>IsCancel=&quot;true&quot;</code></li>
+</ul>
+<h3 id="2-screen-reader-support">2. Screen Reader Support</h3>
+<p><strong>Provide meaningful text descriptions:</strong></p>
+<pre><code class="lang-xml">&lt;!-- Good: Descriptive labels and accessible names --&gt;
+&lt;FrameView Title=&quot;File Operations&quot; AccessibleName=&quot;File management controls&quot;&gt;
+    &lt;StackView Orientation=&quot;Vertical&quot;&gt;
+        &lt;!-- Progress indicator with accessible description --&gt;
+        &lt;ProgressBar Name=&quot;uploadProgress&quot; 
+                     Value=&quot;45&quot; 
+                     AccessibleName=&quot;File upload progress&quot;
+                     AccessibleDescription=&quot;Upload progress: 45% complete, 3 of 10 files uploaded&quot; /&gt;
+        
+        &lt;!-- Button with clear accessible name --&gt;
+        &lt;Button Text=&quot;📁 Browse Files&quot; 
+                AccessKey=&quot;B&quot;
+                AccessibleName=&quot;Browse and select files for upload&quot;
+                ToolTip=&quot;Click to open file browser&quot; /&gt;
+        
+        &lt;!-- Status with live updates --&gt;
+        &lt;Label Name=&quot;statusLabel&quot; 
+               Text=&quot;Ready to upload&quot;
+               AccessibleRole=&quot;Status&quot;
+               AccessibleLive=&quot;Polite&quot; /&gt;
+    &lt;/StackView&gt;
+&lt;/FrameView&gt;
+</code></pre>
+<p><strong>Screen Reader Properties:</strong></p>
+<ul>
+<li><code>AccessibleName</code>: Brief description of the control's purpose</li>
+<li><code>AccessibleDescription</code>: Detailed explanation if needed</li>
+<li><code>AccessibleRole</code>: Control type (Button, Status, Dialog, etc.)</li>
+<li><code>AccessibleLive</code>: How screen readers handle content changes</li>
+</ul>
+<h3 id="3-visual-accessibility">3. Visual Accessibility</h3>
+<p><strong>Support users with visual impairments:</strong></p>
+<pre><code class="lang-csharp">// Good: Multiple ways to convey information
+public void UpdateStatus(string message, StatusType type)
+{
+    statusLabel.Text = type switch
+    {
+        StatusType.Success =&gt; $&quot;✓ Success: {message}&quot;,
+        StatusType.Warning =&gt; $&quot;⚠ Warning: {message}&quot;,
+        StatusType.Error =&gt; $&quot;✗ Error: {message}&quot;,
+        _ =&gt; message
+    };
+    
+    // Don't rely on color alone - use symbols too
+    statusLabel.ForegroundColor = type switch
+    {
+        StatusType.Success =&gt; Color.Green,
+        StatusType.Warning =&gt; Color.Yellow,
+        StatusType.Error =&gt; Color.Red,
+        _ =&gt; Color.White
+    };
+    
+    // Update accessible description for screen readers
+    statusLabel.AccessibleDescription = $&quot;Status update: {type} - {message}&quot;;
+}
+</code></pre>
+<p><strong>Visual Best Practices:</strong></p>
+<ul>
+<li><strong>Contrast</strong>: Ensure sufficient contrast between text and background</li>
+<li><strong>Color Independence</strong>: Never use color as the only way to convey information</li>
+<li><strong>Symbols</strong>: Use text symbols (✓, ⚠, ✗) alongside color coding</li>
+<li><strong>Font Size</strong>: Respect terminal font size settings</li>
+</ul>
+<h3 id="4-focus-management">4. Focus Management</h3>
+<p><strong>Ensure users always know where they are:</strong></p>
+<pre><code class="lang-csharp">public partial class AccessibleDialog : Dialog
+{
+    public AccessibleDialog()
+    {
+        InitializeComponent();
+        SetupAccessibleFocus();
+    }
+    
+    private void SetupAccessibleFocus()
+    {
+        // Set initial focus to first interactive control
+        Loaded += (s, e) =&gt; nameField.SetFocus();
+        
+        // Announce dialog opening
+        AccessibleName = &quot;User Settings Dialog&quot;;
+        AccessibleDescription = &quot;Configure user account settings&quot;;
+        
+        // Trap focus within dialog
+        KeyDown += OnKeyDown;
+    }
+    
+    private void OnKeyDown(object sender, KeyEventArgs e)
+    {
+        // Handle Escape key
+        if (e.KeyEvent.Key == Key.Esc)
+        {
+            AnnounceClose();
+            Close();
+            e.Handled = true;
+        }
+        
+        // Cycle focus with Tab/Shift+Tab at boundaries
+        if (e.KeyEvent.Key == Key.Tab)
+        {
+            // Focus management logic here
+        }
+    }
+    
+    private void AnnounceClose()
+    {
+        // Announce dialog closure to screen readers
+        Application.Driver.Beep(); // Audio cue
+    }
+}
+</code></pre>
+<h2 id="xaml-accessibility-patterns">XAML Accessibility Patterns</h2>
+<h3 id="labels-and-form-controls">Labels and Form Controls</h3>
+<pre><code class="lang-xml">&lt;!-- Pattern 1: Explicit labeling --&gt;
+&lt;Label Text=&quot;Username:&quot; AccessKey=&quot;U&quot; Target=&quot;{Binding ElementName=usernameField}&quot; /&gt;
+&lt;TextField Name=&quot;usernameField&quot; 
+           AccessibleName=&quot;Username&quot;
+           AccessibleDescription=&quot;Enter your login username&quot; /&gt;
+
+&lt;!-- Pattern 2: Embedded labeling --&gt;
+&lt;TextField PlaceholderText=&quot;Enter username&quot; 
+           AccessibleName=&quot;Username field&quot;
+           AccessibleDescription=&quot;Your login username&quot; /&gt;
+
+&lt;!-- Pattern 3: Group labeling --&gt;
+&lt;FrameView Title=&quot;Contact Information&quot; 
+           AccessibleName=&quot;Contact information form&quot;
+           AccessibleRole=&quot;Group&quot;&gt;
+    &lt;TextField AccessibleName=&quot;Email address&quot; /&gt;
+    &lt;TextField AccessibleName=&quot;Phone number&quot; /&gt;
+&lt;/FrameView&gt;
+</code></pre>
+<h3 id="lists-and-tables">Lists and Tables</h3>
+<pre><code class="lang-xml">&lt;!-- Accessible list with proper roles --&gt;
+&lt;ListView Name=&quot;fileList&quot;
+          AccessibleName=&quot;File listing&quot;
+          AccessibleRole=&quot;List&quot;
+          AccessibleDescription=&quot;List of files in current directory&quot;&gt;
+    &lt;ListView.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;!-- Each item should have meaningful accessible name --&gt;
+            &lt;Label Text=&quot;{Binding DisplayName}&quot; 
+                   AccessibleName=&quot;{Binding AccessibleSummary}&quot; /&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListView.ItemTemplate&gt;
+&lt;/ListView&gt;
+
+&lt;!-- Table with headers and cell identification --&gt;
+&lt;TableView Name=&quot;dataTable&quot;
+           AccessibleName=&quot;Customer data table&quot;
+           AccessibleRole=&quot;Table&quot;&gt;
+    &lt;TableView.Columns&gt;
+        &lt;TableColumn Header=&quot;Name&quot; AccessibleName=&quot;Customer name column&quot; /&gt;
+        &lt;TableColumn Header=&quot;Status&quot; AccessibleName=&quot;Account status column&quot; /&gt;
+    &lt;/TableView.Columns&gt;
+&lt;/TableView&gt;
+</code></pre>
+<h3 id="progressive-disclosure">Progressive Disclosure</h3>
+<pre><code class="lang-xml">&lt;!-- Expandable sections with clear state --&gt;
+&lt;TreeView Name=&quot;categoryTree&quot;
+          AccessibleName=&quot;Product categories&quot;
+          AccessibleRole=&quot;Tree&quot;&gt;
+    &lt;TreeNode Text=&quot;Electronics&quot; 
+              AccessibleName=&quot;Electronics category&quot;
+              AccessibleDescription=&quot;Expand to view electronic products&quot;
+              AccessibleState=&quot;Collapsed&quot; /&gt;
+&lt;/TreeView&gt;
+
+&lt;!-- Details/summary pattern --&gt;
+&lt;FrameView Name=&quot;advancedOptions&quot;
+           Title=&quot;⊞ Advanced Options&quot;
+           AccessibleName=&quot;Advanced options panel&quot;
+           AccessibleState=&quot;Collapsed&quot;&gt;
+    &lt;!-- Content here --&gt;
+&lt;/FrameView&gt;
+</code></pre>
+<h2 id="code-behind-accessibility">Code-Behind Accessibility</h2>
+<h3 id="dynamic-content-updates">Dynamic Content Updates</h3>
+<pre><code class="lang-csharp">// Good: Announce dynamic changes
+public void AddNotification(string message, NotificationType type)
+{
+    var notification = new Label 
+    { 
+        Text = $&quot;{GetTypeIcon(type)} {message}&quot;,
+        AccessibleName = $&quot;{type} notification&quot;,
+        AccessibleDescription = message,
+        AccessibleLive = &quot;Polite&quot; // Announce to screen readers
+    };
+    
+    notificationPanel.Add(notification);
+    
+    // Move focus to new notification if important
+    if (type == NotificationType.Error)
+    {
+        notification.SetFocus();
+        Application.Driver.Beep(); // Audio cue
+    }
+}
+
+// Good: Progress updates
+public void UpdateProgress(int percentage, string status)
+{
+    progressBar.Value = percentage;
+    
+    // Update accessible description for milestones
+    if (percentage % 25 == 0)
+    {
+        progressBar.AccessibleDescription = $&quot;Progress: {percentage}% complete. {status}&quot;;
+    }
+    
+    statusLabel.Text = status;
+    statusLabel.AccessibleLive = &quot;Polite&quot;;
+}
+</code></pre>
+<h3 id="error-handling-and-validation">Error Handling and Validation</h3>
+<pre><code class="lang-csharp">// Good: Accessible error reporting
+public void ValidateForm()
+{
+    var errors = new List&lt;string&gt;();
+    
+    if (string.IsNullOrEmpty(nameField.Text))
+    {
+        errors.Add(&quot;Name is required&quot;);
+        nameField.AccessibleDescription = &quot;Error: Name is required&quot;;
+        nameField.ForegroundColor = Color.Red;
+    }
+    
+    if (errors.Any())
+    {
+        // Summary for screen readers
+        var errorSummary = $&quot;Form has {errors.Count} error(s): {string.Join(&quot;, &quot;, errors)}&quot;;
+        errorLabel.Text = errorSummary;
+        errorLabel.AccessibleLive = &quot;Assertive&quot;; // Immediate announcement
+        
+        // Focus first error field
+        nameField.SetFocus();
+        
+        // Audio cue
+        Application.Driver.Beep();
+    }
+}
+</code></pre>
+<h2 id="testing-accessibility">Testing Accessibility</h2>
+<h3 id="manual-testing-checklist">Manual Testing Checklist</h3>
+<p><strong>Keyboard Navigation:</strong></p>
+<ul>
+<li>[ ] All controls accessible via Tab key</li>
+<li>[ ] Tab order is logical (left-to-right, top-to-bottom)</li>
+<li>[ ] Access keys (Alt+Key) work for all labeled controls</li>
+<li>[ ] Enter key activates default buttons</li>
+<li>[ ] Escape key closes dialogs and cancels operations</li>
+<li>[ ] Arrow keys navigate within complex controls (lists, trees)</li>
+</ul>
+<p><strong>Screen Reader Testing:</strong></p>
+<ul>
+<li>[ ] Use NVDA (Windows) or Orca (Linux) to test</li>
+<li>[ ] All controls have meaningful names</li>
+<li>[ ] Status changes are announced appropriately</li>
+<li>[ ] Error messages are read clearly</li>
+<li>[ ] Progress updates are conveyed</li>
+</ul>
+<p><strong>Visual Testing:</strong></p>
+<ul>
+<li>[ ] Information is conveyed without relying on color alone</li>
+<li>[ ] Text has sufficient contrast in all supported terminal themes</li>
+<li>[ ] Focus indicators are clearly visible</li>
+<li>[ ] Text symbols used alongside color coding</li>
+</ul>
+<h3 id="automated-testing">Automated Testing</h3>
+<pre><code class="lang-csharp">[Test]
+public void TestAccessibilityMetadata()
+{
+    var dialog = new UserSettingsDialog();
+    
+    // Test that all interactive controls have accessible names
+    var interactiveControls = dialog.GetAllControls()
+        .Where(c =&gt; c is Button || c is TextField || c is CheckBox);
+    
+    foreach (var control in interactiveControls)
+    {
+        Assert.IsNotNullOrEmpty(control.AccessibleName, 
+            $&quot;Control {control.GetType().Name} missing AccessibleName&quot;);
+    }
+    
+    // Test tab order is sequential
+    var tabbableControls = dialog.GetAllControls()
+        .Where(c =&gt; c.TabIndex &gt;= 0)
+        .OrderBy(c =&gt; c.TabIndex);
+    
+    var expectedIndex = 0;
+    foreach (var control in tabbableControls)
+    {
+        Assert.AreEqual(expectedIndex, control.TabIndex,
+            $&quot;Tab order gap detected at {control.AccessibleName}&quot;);
+        expectedIndex++;
+    }
+}
+
+[Test]
+public void TestKeyboardShortcuts()
+{
+    var dialog = new UserSettingsDialog();
+    
+    // Test that access keys are unique
+    var accessKeys = dialog.GetAllControls()
+        .Where(c =&gt; !string.IsNullOrEmpty(c.AccessKey))
+        .Select(c =&gt; c.AccessKey.ToLower())
+        .ToList();
+    
+    var duplicates = accessKeys.GroupBy(k =&gt; k)
+        .Where(g =&gt; g.Count() &gt; 1)
+        .Select(g =&gt; g.Key);
+    
+    Assert.IsFalse(duplicates.Any(), 
+        $&quot;Duplicate access keys found: {string.Join(&quot;, &quot;, duplicates)}&quot;);
+}
+</code></pre>
+<h2 id="platform-specific-considerations">Platform-Specific Considerations</h2>
+<h3 id="windows">Windows</h3>
+<pre><code class="lang-csharp">// Windows-specific accessibility features
+public void ConfigureWindowsAccessibility()
+{
+    // Enable High Contrast mode detection
+    if (SystemInformation.HighContrast)
+    {
+        // Adjust color scheme
+        ApplyHighContrastTheme();
+    }
+    
+    // Support Narrator announcements
+    if (SystemInformation.ScreenReaderRunning)
+    {
+        // Enable live region updates
+        EnableScreenReaderSupport();
+    }
+}
+</code></pre>
+<h3 id="linux">Linux</h3>
+<pre><code class="lang-csharp">// Linux accessibility with Orca support
+public void ConfigureLinuxAccessibility()
+{
+    // Check for AT-SPI support
+    if (Environment.GetEnvironmentVariable(&quot;AT_SPI_BUS&quot;) != null)
+    {
+        // Enable assistive technology integration
+        EnableATSPISupport();
+    }
+    
+    // Support high contrast themes
+    var gtkTheme = Environment.GetEnvironmentVariable(&quot;GTK_THEME&quot;);
+    if (gtkTheme?.Contains(&quot;HighContrast&quot;) == true)
+    {
+        ApplyHighContrastTheme();
+    }
+}
+</code></pre>
+<h2 id="common-accessibility-anti-patterns">Common Accessibility Anti-Patterns</h2>
+<h3 id="-avoid-these-mistakes">❌ Avoid These Mistakes</h3>
+<pre><code class="lang-xml">&lt;!-- Bad: No accessible name --&gt;
+&lt;Button Text=&quot;🔍&quot; Click=&quot;OnSearch&quot; /&gt;
+
+&lt;!-- Good: Clear accessible name --&gt;
+&lt;Button Text=&quot;🔍 Search&quot; 
+        AccessKey=&quot;S&quot;
+        AccessibleName=&quot;Search products&quot;
+        Click=&quot;OnSearch&quot; /&gt;
+</code></pre>
+<pre><code class="lang-csharp">// Bad: Color-only status indication
+statusLabel.ForegroundColor = isError ? Color.Red : Color.Green;
+
+// Good: Color + text + symbol
+statusLabel.Text = isError ? &quot;❌ Error occurred&quot; : &quot;✅ Success&quot;;
+statusLabel.ForegroundColor = isError ? Color.Red : Color.Green;
+statusLabel.AccessibleDescription = isError ? &quot;Error status&quot; : &quot;Success status&quot;;
+</code></pre>
+<pre><code class="lang-csharp">// Bad: No focus management in dialogs
+public void ShowDialog()
+{
+    var dialog = new MyDialog();
+    Application.Run(dialog);
+}
+
+// Good: Proper focus management
+public void ShowDialog()
+{
+    var dialog = new MyDialog();
+    
+    // Set initial focus
+    dialog.Loaded += (s, e) =&gt; dialog.firstField.SetFocus();
+    
+    // Announce dialog
+    dialog.AccessibleName = &quot;Settings Dialog&quot;;
+    
+    Application.Run(dialog);
+}
+</code></pre>
+<h2 id="resources-and-tools">Resources and Tools</h2>
+<h3 id="testing-tools">Testing Tools</h3>
+<ul>
+<li><strong>NVDA</strong> (Windows): Free screen reader for testing</li>
+<li><strong>Orca</strong> (Linux): Built-in screen reader</li>
+<li><strong>Terminal Accessibility Checker</strong>: Custom validation tools</li>
+</ul>
+<h3 id="guidelines-and-standards">Guidelines and Standards</h3>
+<ul>
+<li><strong>WCAG 2.1</strong>: Web Content Accessibility Guidelines (adapted for terminal UI)</li>
+<li><strong>Section 508</strong>: US Federal accessibility requirements</li>
+<li><strong>Platform Guidelines</strong>: Windows, macOS, and Linux accessibility standards</li>
+</ul>
+<h3 id="development-resources">Development Resources</h3>
+<ul>
+<li><a href="contributing/accessibility-testing.md">Accessibility Testing Guide</a></li>
+<li><a href="contributing/screen-reader-commands.md">Screen Reader Commands Reference</a></li>
+<li><a href="guides/theming.html#high-contrast">High Contrast Theme Guide</a></li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li><strong>Audit Existing App</strong>: Use the manual testing checklist</li>
+<li><strong>Add Accessible Names</strong>: Ensure all interactive controls have meaningful names</li>
+<li><strong>Test with Screen Reader</strong>: Install NVDA or Orca and test your app</li>
+<li><strong>Validate Keyboard Navigation</strong>: Ensure all functionality works without mouse</li>
+<li><strong>Create Accessibility Tests</strong>: Add automated tests for accessibility metadata</li>
+</ol>
+<h2 id="related-documentation">Related Documentation</h2>
+<ul>
+<li><a href="guides/keyboard-navigation.md">Keyboard Navigation Guide</a></li>
+<li><a href="guides/theming.html">Theming and Colors</a></li>
+<li><a href="../tests/TestStrategy.md">Testing Strategies</a></li>
+<li><a href="contributing/index.html">Contributing Guidelines</a></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>Remember</strong>: Accessibility is not an afterthought—it's a core requirement that makes your applications usable by everyone. Start with accessible patterns from day one rather than retrofitting later.</p>
+</blockquote>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

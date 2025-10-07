@@ -3,7 +3,6 @@
 // </copyright>
 
 using Xunit;
-using FluentAssertions;
 using Terminal.Gui.Xaml.Documentation.Services;
 using Terminal.Gui.Xaml.Documentation.Models;
 
@@ -32,12 +31,12 @@ public class DocumentationValidationContractTests
         var response = await service.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.ValidationResult.Should().NotBeNull();
-        response.Coverage.Should().NotBeNull();
-        response.Issues.Should().NotBeNull();
-        response.PassesRequirements.Should().BeTrue();
-        response.Coverage.CoveragePercentage.Should().BeGreaterOrEqualTo(80.0);
+    Assert.NotNull(response);
+    Assert.NotNull(response.ValidationResult);
+    Assert.NotNull(response.Coverage);
+    Assert.NotNull(response.Issues);
+    Assert.True(response.PassesRequirements);
+    Assert.True(response.Coverage.CoveragePercentage >= 80.0);
     }
 
     [Fact]
@@ -57,10 +56,9 @@ public class DocumentationValidationContractTests
         var response = await service.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.PassesRequirements.Should().BeFalse();
-        response.Issues.Should().Contain(issue =>
-            issue.IssueType == IssueType.MissingDocumentation);
+        Assert.NotNull(response);
+        Assert.False(response.PassesRequirements);
+        Assert.Contains(response.Issues, i => i.IssueType == IssueType.MissingDocumentation);
     }
 
     [Fact]
@@ -96,9 +94,8 @@ public class DocumentationValidationContractTests
         var response = await service.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Issues.Should().NotContain(issue =>
-            issue.IssueType == IssueType.InvalidLink && issue.Severity == IssueSeverity.Error);
+        Assert.NotNull(response);
+        Assert.DoesNotContain(response.Issues, issue => issue.IssueType == IssueType.InvalidLink && issue.Severity == IssueSeverity.Error);
     }
 
     [Fact]
@@ -118,9 +115,8 @@ public class DocumentationValidationContractTests
         var response = await service.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Issues.Should().NotContain(issue =>
-            issue.IssueType == IssueType.InvalidExample && issue.Severity == IssueSeverity.Error);
+        Assert.NotNull(response);
+        Assert.DoesNotContain(response.Issues, issue => issue.IssueType == IssueType.InvalidExample && issue.Severity == IssueSeverity.Error);
     }
 
     [Fact]
@@ -140,8 +136,8 @@ public class DocumentationValidationContractTests
 
         // Assert
         var duration = DateTime.UtcNow - startTime;
-        duration.Should().BeLessThan(TimeSpan.FromMinutes(1));
-        response.Should().NotBeNull();
+    Assert.True(duration < TimeSpan.FromMinutes(1));
+    Assert.NotNull(response);
     }
 
     [Fact]
@@ -159,60 +155,19 @@ public class DocumentationValidationContractTests
         var response = await service.ValidateDocumentationAsync(request);
 
         // Assert
-        response.Should().NotBeNull();
-        response.Issues.Where(issue => issue.Severity >= IssueSeverity.Warning)
-            .Should().AllSatisfy(issue =>
-            {
-                issue.Message.Should().NotBeNullOrEmpty();
-                issue.FilePath.Should().NotBeNullOrEmpty();
-                issue.MemberName.Should().NotBeNullOrEmpty();
-            });
+        Assert.NotNull(response);
+        foreach (var issue in response.Issues.Where(i => i.Severity >= IssueSeverity.Warning))
+        {
+            Assert.False(string.IsNullOrEmpty(issue.Message));
+            Assert.False(string.IsNullOrEmpty(issue.FilePath));
+            Assert.False(string.IsNullOrEmpty(issue.MemberName));
+        }
     }
 
     private static IDocumentationGeneratorService CreateDocumentationGeneratorService()
     {
-        // This will fail until the interface and implementation are created
-        throw new NotImplementedException("IDocumentationGeneratorService not implemented yet");
+        return new Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService();
     }
 }
 
-// These types will fail to compile until implemented in Phase 3.3
-public class ValidateDocumentationRequest
-{
-    public string[] SourcePaths { get; set; }
-    public bool CheckLinks { get; set; } = true;
-    public bool CheckExamples { get; set; } = true;
-    public double MinimumCoverage { get; set; } = 80.0;
-}
-
-public class ValidateDocumentationResponse
-{
-    public DocumentationValidationResult ValidationResult { get; set; }
-    public CoverageMetrics Coverage { get; set; }
-    public ValidationIssue[] Issues { get; set; }
-    public bool PassesRequirements { get; set; }
-}
-
-public enum IssueType
-{
-    MissingDocumentation,
-    InvalidLink,
-    InvalidExample,
-    MalformedXml,
-    MissingReturnDoc,
-    MissingParameterDoc
-}
-
-public enum IssueSeverity
-{
-    Error,
-    Warning,
-    Information
-}
-
-public enum ValidationStatus
-{
-    Success,
-    Warning,
-    Error
-}
+// End of tests

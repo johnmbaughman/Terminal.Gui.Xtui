@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  id: IssueSeverity
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  - Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  - Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  langs:
+  - csharp
+  - vb
+  name: IssueSeverity
+  nameWithType: IssueSeverity
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IssueSeverity
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 86
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Specifies the severity of a documentation issue.
+  example: []
+  syntax:
+    content: public enum IssueSeverity
+    content.vb: Public Enum IssueSeverity
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  id: Error
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: IssueSeverity.Error
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Error
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Error
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 91
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Critical error that must be fixed.
+  example: []
+  syntax:
+    content: Error = 0
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  id: Warning
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: IssueSeverity.Warning
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Warning
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Warning
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 96
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Warning that should be addressed.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  id: Information
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  langs:
+  - csharp
+  - vb
+  name: Information
+  nameWithType: IssueSeverity.Information
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.Information
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Information
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 101
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Informational notice.
+  example: []
+  syntax:
+    content: Information = 2
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity.html
+  name: IssueSeverity
+  nameWithType: IssueSeverity
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity

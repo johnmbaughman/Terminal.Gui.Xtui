@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Terminal.Gui.Xaml</id>
+  <version>1.0.0-beta1</version>
+    <authors>johnmbaughman</authors>
+    <owners>johnmbaughman</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>XAML framework for Terminal.Gui applications</description>
+    <releaseNotes>Initial release of Terminal.Gui.Xaml</releaseNotes>
+    <copyright>Copyright © 2025 johnmbaughman</copyright>
+    <tags>terminalgui xaml mvvm dotnet</tags>
+    <dependencies>
+  <dependency id="Terminal.Gui" version="2.0.0-*" />
+      <dependency id="Microsoft.CodeAnalysis" version="4.0.1" />
+      <dependency id="System.Xml.Linq" version="8.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\Terminal.Gui.Xaml\bin\Debug\net8.0\Terminal.Gui.Xaml.dll" target="lib\net8.0" />
+    <file src="src\Terminal.Gui.Xaml\Runtime\*.*" target="contentFiles\any\any\Runtime" />
+    <file src="src\Terminal.Gui.Xaml\Model\*.*" target="contentFiles\any\any\Model" />
+    <file src="src\Terminal.Gui.Xaml\Parsing\*.*" target="contentFiles\any\any\Parsing" />
+    <file src="src\Terminal.Gui.Xaml\Generation\*.*" target="contentFiles\any\any\Generation" />
+    <file src="src\Terminal.Gui.Xaml\Binding\*.*" target="contentFiles\any\any\Binding" />
+    <file src="src\Terminal.Gui.Xaml\Exceptions\*.*" target="contentFiles\any\any\Exceptions" />
+    <file src="src\Terminal.Gui.Xaml\Logging\*.*" target="contentFiles\any\any\Logging" />
+    <file src="src\Terminal.Gui.Xaml\Performance\*.*" target="contentFiles\any\any\Performance" />
+    <file src="src\Terminal.Gui.Xaml\Properties\*.*" target="contentFiles\any\any\Properties" />
+  </files>
+</package>

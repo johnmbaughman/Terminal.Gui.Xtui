@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Documentation Generation via MSBuild | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Documentation Generation via MSBuild | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="documentation-generation-via-msbuild">Documentation Generation via MSBuild</h1>
+
+<p>This guide explains how the Terminal.Gui.Xaml package integrates with MSBuild to optionally generate and validate project documentation.</p>
+<h2 id="overview">Overview</h2>
+<p>When you add a reference to the <code>Terminal.Gui.Xaml</code> package, it brings in build-transitive targets that enable documentation generation and validation through simple MSBuild properties. Nothing runs unless you opt in.</p>
+<h2 id="key-msbuild-properties">Key MSBuild Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EnableXamlDocumentation</code></td>
+<td>bool</td>
+<td><code>false</code> (Debug), <code>true</code> (Release) via <code>DocumentationEnabled</code></td>
+<td>Master switch enabling documentation targets.</td>
+</tr>
+<tr>
+<td><code>XamlDocumentationOutputPath</code></td>
+<td>string</td>
+<td><code>$(OutputPath)docs</code></td>
+<td>Output folder for generated site artifacts.</td>
+</tr>
+<tr>
+<td><code>XamlDocumentationBuildMode</code></td>
+<td>string (<code>Incremental</code>|<code>Full</code>)</td>
+<td><code>Incremental</code></td>
+<td>Chooses between incremental or full generation (future expansion).</td>
+</tr>
+<tr>
+<td><code>RequiredDocumentationCoverage</code></td>
+<td>double</td>
+<td><code>80.0</code></td>
+<td>Minimum coverage gate enforced during validation.</td>
+</tr>
+<tr>
+<td><code>ValidateDocumentationLinks</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enables simulated link validation.</td>
+</tr>
+<tr>
+<td><code>ValidateDocumentationExamples</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enables simulated example validation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="targets">Targets</h2>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>When It Runs</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XamlGenerateDocumentation</code></td>
+<td>After <code>Build</code> when <code>EnableXamlDocumentation=true</code></td>
+<td>Performs generation (and implicit validation).</td>
+</tr>
+<tr>
+<td><code>XamlValidateDocumentation</code></td>
+<td>Manual (<code>/t:XamlValidateDocumentation</code>)</td>
+<td>Validates documentation without forcing a separate generation pass.</td>
+</tr>
+<tr>
+<td><code>XamlCleanDocumentation</code></td>
+<td>After <code>Clean</code></td>
+<td>Removes documentation output directory.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-examples">Quick Examples</h2>
+<p>Enable documentation in a Debug build:</p>
+<pre><code class="lang-bash">dotnet build /p:EnableXamlDocumentation=true
+</code></pre>
+<p>Force full build mode:</p>
+<pre><code class="lang-bash">dotnet build -c Release /p:EnableXamlDocumentation=true /p:XamlDocumentationBuildMode=Full
+</code></pre>
+<p>Run validation only:</p>
+<pre><code class="lang-bash">dotnet msbuild /t:XamlValidateDocumentation /p:EnableXamlDocumentation=true
+</code></pre>
+<p>Override output path:</p>
+<pre><code class="lang-bash">dotnet build -c Release /p:EnableXamlDocumentation=true /p:XamlDocumentationOutputPath=artifacts/docs
+</code></pre>
+<h2 id="correlation--timing">Correlation &amp; Timing</h2>
+<p>Generation and validation responses include a <code>CorrelationId</code> and timing metrics (milliseconds) for traceability. If you don't supply a correlation id, one is generated automatically.</p>
+<h2 id="roadmap">Roadmap</h2>
+<ul>
+<li>Separate validation-specific task implementation</li>
+<li>Template customization via <code>docs/templates/</code></li>
+<li>Structured build logging for CI analysis</li>
+</ul>
+<p>See also: <a href="version-compatibility.html">Version &amp; Compatibility Matrix</a> for feature maturity status across releases.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No documentation generated</td>
+<td><code>EnableXamlDocumentation</code> not set</td>
+<td>Pass <code>/p:EnableXamlDocumentation=true</code></td>
+</tr>
+<tr>
+<td>Incremental changes not picked up</td>
+<td>Mode set to <code>Incremental</code> with stale cache</td>
+<td>Re-run with <code>/p:XamlDocumentationBuildMode=Full</code></td>
+</tr>
+<tr>
+<td>Coverage gate fails</td>
+<td><code>RequiredDocumentationCoverage</code> too high</td>
+<td>Lower value or improve XML documentation</td>
+</tr>
+</tbody>
+</table>
+<p>Have suggestions? Open an issue or start a discussion.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

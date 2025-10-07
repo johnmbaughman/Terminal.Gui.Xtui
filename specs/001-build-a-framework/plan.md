@@ -49,7 +49,7 @@ Build a comprehensive XAML framework for Terminal.Gui v2+ that enables declarati
 
 **Code Quality Standards Check:**
 - [x] All planned components follow Microsoft C# coding conventions
-- [x] Static analysis integration planned (StyleCop, FxCop/Analyzers)
+- [x] Static analysis integration planned (.NET analyzers via .editorconfig)
 - [x] XML documentation strategy for public APIs defined
 - [x] SOLID principles applied to architectural design
 

@@ -1,0 +1,279 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Logging.LogLevel
+  commentId: T:Terminal.Gui.Xaml.Logging.LogLevel
+  id: LogLevel
+  parent: Terminal.Gui.Xaml.Logging
+  children:
+  - Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  - Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  - Terminal.Gui.Xaml.Logging.LogLevel.Error
+  - Terminal.Gui.Xaml.Logging.LogLevel.Information
+  - Terminal.Gui.Xaml.Logging.LogLevel.None
+  - Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  - Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  langs:
+  - csharp
+  - vb
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LogLevel
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 97
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Defines log levels for filtering log output.
+  example: []
+  syntax:
+    content: public enum LogLevel
+    content.vb: Public Enum LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  id: Trace
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Trace
+  nameWithType: LogLevel.Trace
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Trace
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Trace
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 102
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Trace level for very detailed diagnostic information.
+  example: []
+  syntax:
+    content: Trace = 0
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  id: Debug
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Debug
+  nameWithType: LogLevel.Debug
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Debug
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Debug
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 107
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Debug level for diagnostic information useful during development.
+  example: []
+  syntax:
+    content: Debug = 1
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Information
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Information
+  id: Information
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Information
+  nameWithType: LogLevel.Information
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Information
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Information
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 112
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Information level for general informational messages.
+  example: []
+  syntax:
+    content: Information = 2
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  id: Warning
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: LogLevel.Warning
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Warning
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Warning
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 117
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Warning level for potentially harmful situations.
+  example: []
+  syntax:
+    content: Warning = 3
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Error
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Error
+  id: Error
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: LogLevel.Error
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Error
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Error
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 122
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Error level for error events that might allow the application to continue.
+  example: []
+  syntax:
+    content: Error = 4
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  id: Critical
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: Critical
+  nameWithType: LogLevel.Critical
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.Critical
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Critical
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 127
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: Critical level for very serious error events.
+  example: []
+  syntax:
+    content: Critical = 5
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+- uid: Terminal.Gui.Xaml.Logging.LogLevel.None
+  commentId: F:Terminal.Gui.Xaml.Logging.LogLevel.None
+  id: None
+  parent: Terminal.Gui.Xaml.Logging.LogLevel
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: LogLevel.None
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel.None
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: None
+    path: ../src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs
+    startLine: 132
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Logging
+  summary: None level to disable all logging.
+  example: []
+  syntax:
+    content: None = 6
+    return:
+      type: Terminal.Gui.Xaml.Logging.LogLevel
+references:
+- uid: Terminal.Gui.Xaml.Logging
+  commentId: N:Terminal.Gui.Xaml.Logging
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Logging
+  nameWithType: Terminal.Gui.Xaml.Logging
+  fullName: Terminal.Gui.Xaml.Logging
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Logging.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Logging
+    name: Logging
+    href: Terminal.Gui.Xaml.Logging.html
+- uid: Terminal.Gui.Xaml.Logging.LogLevel
+  commentId: T:Terminal.Gui.Xaml.Logging.LogLevel
+  parent: Terminal.Gui.Xaml.Logging
+  href: Terminal.Gui.Xaml.Logging.LogLevel.html
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: Terminal.Gui.Xaml.Logging.LogLevel

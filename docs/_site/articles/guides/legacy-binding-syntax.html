@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Legacy Binding Syntax | Terminal.Gui.Xaml Guides </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Legacy Binding Syntax | Terminal.Gui.Xaml Guides ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="legacy-binding-syntax">Legacy Binding Syntax</h1>
+
+<blockquote>
+<p>⚠️ <strong>DEPRECATED</strong>: This binding syntax is deprecated as of Terminal.Gui.Xaml v2.0 and will be removed in v3.0. Use <a href="bind-data.html">Modern Binding Syntax</a> instead.</p>
+</blockquote>
+<blockquote>
+<p><strong>Introduced in</strong>: Terminal.Gui.Xaml v1.0 (September 2025)<br>
+<strong>Deprecated in</strong>: Terminal.Gui.Xaml v2.0 (March 2026)<br>
+<strong>Status</strong>: Deprecated<br>
+<strong>Removal planned</strong>: Terminal.Gui.Xaml v3.0 (September 2026)</p>
+</blockquote>
+<h2 id="what-this-was">What This Was</h2>
+<p>The legacy binding syntax used <code>{Data PropertyName}</code> format for data binding connections.</p>
+<h2 id="legacy-syntax-deprecated">Legacy Syntax (Deprecated)</h2>
+<pre><code class="lang-xml">&lt;!-- OLD: Legacy syntax (don't use) --&gt;
+&lt;Label Text=&quot;{Data UserName}&quot; /&gt;
+&lt;TextField Text=&quot;{Data Email, Mode=TwoWay}&quot; /&gt;
+</code></pre>
+<h2 id="modern-replacement">Modern Replacement</h2>
+<pre><code class="lang-xml">&lt;!-- NEW: Modern syntax (use instead) --&gt;
+&lt;Label Text=&quot;{Binding UserName}&quot; /&gt;
+&lt;TextField Text=&quot;{Binding Email, Mode=TwoWay}&quot; /&gt;
+</code></pre>
+<h2 id="migration-guide">Migration Guide</h2>
+<h3 id="automated-migration">Automated Migration</h3>
+<p>Use the migration tool to update existing XAML files:</p>
+<pre><code class="lang-powershell"># Install migration tool
+dotnet tool install --global Terminal.Gui.Xaml.MigrationTool
+
+# Migrate all XAML files
+tgx-migrate --from=v1 --to=v2 --path=&quot;./src&quot;
+</code></pre>
+<h3 id="manual-migration">Manual Migration</h3>
+<ol>
+<li><p><strong>Replace <code>{Data</code> with <code>{Binding</code></strong>:</p>
+<ul>
+<li>Find: <code>{Data PropertyName}</code></li>
+<li>Replace: <code>{Binding PropertyName}</code></li>
+</ul>
+</li>
+<li><p><strong>Update mode syntax</strong> (if used):</p>
+<ul>
+<li>Find: <code>{Data PropertyName, Mode=TwoWay}</code></li>
+<li>Replace: <code>{Binding PropertyName, Mode=TwoWay}</code></li>
+</ul>
+</li>
+<li><p><strong>Test thoroughly</strong> after migration</p>
+</li>
+</ol>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<blockquote>
+<p>⚠️ <strong>Breaking Change</strong>: The <code>{Data}</code> syntax is not supported in Terminal.Gui.Xaml v2.0+. Applications using legacy syntax will fail at runtime with <code>XamlParseException</code>.</p>
+</blockquote>
+<h2 id="timeline">Timeline</h2>
+<ul>
+<li><strong>v1.0 - v1.9</strong>: Legacy <code>{Data}</code> syntax supported</li>
+<li><strong>v2.0</strong>: Legacy syntax deprecated, modern <code>{Binding}</code> syntax required</li>
+<li><strong>v2.x</strong>: Warning messages for legacy syntax usage</li>
+<li><strong>v3.0</strong>: Legacy syntax removed entirely</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><strong><a href="bind-data.html">Modern Data Binding</a></strong> - Current binding implementation</li>
+<li><strong><a href="../migration/v1-to-v2.html">Migration Guide</a></strong> - Complete migration instructions</li>
+<li><strong><a href="../migration/breaking-changes.html">Breaking Changes</a></strong> - All v2.0 breaking changes</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/main/docs/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

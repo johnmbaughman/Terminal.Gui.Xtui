@@ -1,0 +1,352 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  commentId: T:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  id: IDocumentationGeneratorService
+  parent: Terminal.Gui.Xaml.Documentation.Services
+  children:
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest)
+  - Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest)
+  langs:
+  - csharp
+  - vb
+  name: IDocumentationGeneratorService
+  nameWithType: IDocumentationGeneratorService
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  type: Interface
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IDocumentationGeneratorService
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+    startLine: 11
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Defines the contract for documentation generation services.
+  example: []
+  syntax:
+    content: public interface IDocumentationGeneratorService
+    content.vb: Public Interface IDocumentationGeneratorService
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest)
+  id: GenerateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  langs:
+  - csharp
+  - vb
+  name: GenerateDocumentationAsync(GenerateDocumentationRequest)
+  nameWithType: IDocumentationGeneratorService.GenerateDocumentationAsync(GenerateDocumentationRequest)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: GenerateDocumentationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+    startLine: 18
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Generates documentation asynchronously.
+  example: []
+  syntax:
+    content: Task<GenerateDocumentationResponse> GenerateDocumentationAsync(GenerateDocumentationRequest request)
+    parameters:
+    - id: request
+      type: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+      description: The generate documentation request.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse}
+      description: A task that represents the asynchronous operation. The task result contains the generation response.
+    content.vb: Function GenerateDocumentationAsync(request As GenerateDocumentationRequest) As Task(Of GenerateDocumentationResponse)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync*
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest)
+  commentId: M:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest)
+  id: ValidateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest)
+  parent: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+  langs:
+  - csharp
+  - vb
+  name: ValidateDocumentationAsync(ValidateDocumentationRequest)
+  nameWithType: IDocumentationGeneratorService.ValidateDocumentationAsync(ValidateDocumentationRequest)
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync(Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest)
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidateDocumentationAsync
+    path: ../src/Terminal.Gui.Xaml/Documentation/Services/IDocumentationGeneratorService.cs
+    startLine: 25
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Services
+  summary: Validates documentation asynchronously.
+  example: []
+  syntax:
+    content: Task<ValidateDocumentationResponse> ValidateDocumentationAsync(ValidateDocumentationRequest request)
+    parameters:
+    - id: request
+      type: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+      description: The validate documentation request.
+    return:
+      type: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse}
+      description: A task that represents the asynchronous operation. The task result contains the validation response.
+    content.vb: Function ValidateDocumentationAsync(request As ValidateDocumentationRequest) As Task(Of ValidateDocumentationResponse)
+  overload: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync*
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  commentId: N:Terminal.Gui.Xaml.Documentation.Services
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Services
+  nameWithType: Terminal.Gui.Xaml.Documentation.Services
+  fullName: Terminal.Gui.Xaml.Documentation.Services
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Services
+    name: Services
+    href: Terminal.Gui.Xaml.Documentation.Services.html
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationGeneratorService_GenerateDocumentationAsync_Terminal_Gui_Xaml_Documentation_Models_GenerateDocumentationRequest_
+  name: GenerateDocumentationAsync
+  nameWithType: IDocumentationGeneratorService.GenerateDocumentationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.GenerateDocumentationAsync
+- uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest.html
+  name: GenerateDocumentationRequest
+  nameWithType: GenerateDocumentationRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<GenerateDocumentationResponse>
+  nameWithType: Task<GenerateDocumentationResponse>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse>
+  nameWithType.vb: Task(Of GenerateDocumentationResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse)
+  name.vb: Task(Of GenerateDocumentationResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+    name: GenerateDocumentationResponse
+    href: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+    name: GenerateDocumentationResponse
+    href: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse.html
+  - name: )
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync*
+  commentId: Overload:Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync
+  href: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.html#Terminal_Gui_Xaml_Documentation_Services_IDocumentationGeneratorService_ValidateDocumentationAsync_Terminal_Gui_Xaml_Documentation_Models_ValidateDocumentationRequest_
+  name: ValidateDocumentationAsync
+  nameWithType: IDocumentationGeneratorService.ValidateDocumentationAsync
+  fullName: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService.ValidateDocumentationAsync
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest.html
+  name: ValidateDocumentationRequest
+  nameWithType: ValidateDocumentationRequest
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+- uid: System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse}
+  commentId: T:System.Threading.Tasks.Task{Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ValidateDocumentationResponse>
+  nameWithType: Task<ValidateDocumentationResponse>
+  fullName: System.Threading.Tasks.Task<Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse>
+  nameWithType.vb: Task(Of ValidateDocumentationResponse)
+  fullName.vb: System.Threading.Tasks.Task(Of Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse)
+  name.vb: Task(Of ValidateDocumentationResponse)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+    name: ValidateDocumentationResponse
+    href: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+    name: ValidateDocumentationResponse
+    href: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse.html
+  - name: )

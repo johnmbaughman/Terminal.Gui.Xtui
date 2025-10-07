@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  id: ValidationStatus
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  - Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  - Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  langs:
+  - csharp
+  - vb
+  name: ValidationStatus
+  nameWithType: ValidationStatus
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ValidationStatus
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 55
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Specifies the validation status.
+  example: []
+  syntax:
+    content: public enum ValidationStatus
+    content.vb: Public Enum ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  id: Success
+  parent: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: ValidationStatus.Success
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Success
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Success
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 60
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Validation completed successfully with no issues.
+  example: []
+  syntax:
+    content: Success = 0
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  id: Warning
+  parent: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: ValidationStatus.Warning
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Warning
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Warning
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 65
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Validation completed with warnings.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  id: Error
+  parent: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: ValidationStatus.Error
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.Error
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Error
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/DocumentationValidationResult.cs
+    startLine: 70
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Validation failed with errors.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus.html
+  name: ValidationStatus
+  nameWithType: ValidationStatus
+  fullName: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus

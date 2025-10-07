@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IXamlLogger | Terminal.Gui.Xaml Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IXamlLogger | Terminal.Gui.Xaml Documentation ">
+    
+    <meta name="description" content="Provides structured logging capabilities for XAML framework operations.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="Terminal.Gui.Xaml">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger">
+
+
+
+  <h1 id="Terminal_Gui_Xaml_Logging_IXamlLogger" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger" class="text-break">Interface IXamlLogger</h1>
+  <div class="markdown level0 summary"><p>Provides structured logging capabilities for XAML framework operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Terminal.html">Terminal</a>.<a class="xref" href="Terminal.Gui.html">Gui</a>.<a class="xref" href="Terminal.Gui.Xaml.html">Xaml</a>.<a class="xref" href="Terminal.Gui.Xaml.Logging.html">Logging</a></h6>
+  <h6><strong>Assembly</strong>: Terminal.Gui.Xaml.dll</h6>
+  <h5 id="Terminal_Gui_Xaml_Logging_IXamlLogger_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IXamlLogger</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_BeginScope_System_String_.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L77">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_BeginScope_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_BeginScope_System_String_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.BeginScope(System.String)">BeginScope(string)</h4>
+  <div class="markdown level1 summary"><p>Begins a logical operation scope for performance tracking.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDisposable BeginScope(string operationName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">operationName</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></td>
+        <td><p>A disposable scope for the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_IsEnabled_Terminal_Gui_Xaml_Logging_LogLevel_.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L92">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_IsEnabled_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_IsEnabled_Terminal_Gui_Xaml_Logging_LogLevel_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.IsEnabled(Terminal.Gui.Xaml.Logging.LogLevel)">IsEnabled(LogLevel)</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the specified log level is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsEnabled(LogLevel logLevel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Terminal.Gui.Xaml.Logging.LogLevel.html">LogLevel</a></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>The log level to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if the log level is enabled; otherwise, false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L70">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_Exception_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.Exception,System.String,System.Object[])">LogCritical(Exception, string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs a critical error message with exception details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogCritical(Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>The exception to log.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L62">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogCritical_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogCritical(System.String,System.Object[])">LogCritical(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs a critical error message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogCritical(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogDebug_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L26">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogDebug_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogDebug_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogDebug(System.String,System.Object[])">LogDebug(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs a debug message for development diagnostic information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogDebug(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_Exception_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L55">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogError*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_Exception_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.Exception,System.String,System.Object[])">LogError(Exception, string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs an error message with exception details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogError(Exception exception, string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>The exception to log.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L47">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogError*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogError_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogError(System.String,System.Object[])">LogError(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs an error message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogError(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogInformation_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L33">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogInformation_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogInformation_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogInformation(System.String,System.Object[])">LogInformation(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs an informational message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogInformation(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogPerformanceMetric_System_String_System_Double_System_Int64_.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(System.String%2CSystem.Double%2CSystem.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L85">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogPerformanceMetric_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogPerformanceMetric_System_String_System_Double_System_Int64_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogPerformanceMetric(System.String,System.Double,System.Int64)">LogPerformanceMetric(string, double, long)</h4>
+  <div class="markdown level1 summary"><p>Logs performance metrics for constitutional compliance monitoring.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogPerformanceMetric(string operationName, double elapsedMs, long memoryUsedBytes = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">operationName</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">elapsedMs</span></td>
+        <td><p>The elapsed time in milliseconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">memoryUsedBytes</span></td>
+        <td><p>The memory used in bytes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogTrace_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L19">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogTrace_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogTrace_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogTrace(System.String,System.Object[])">LogTrace(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs a trace message for detailed diagnostic information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogTrace(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger_LogWarning_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L40">View Source</a>
+  </span>
+  <a id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogWarning_" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning*"></a>
+  <h4 id="Terminal_Gui_Xaml_Logging_IXamlLogger_LogWarning_System_String_System_Object___" data-uid="Terminal.Gui.Xaml.Logging.IXamlLogger.LogWarning(System.String,System.Object[])">LogWarning(string, params object[])</h4>
+  <div class="markdown level1 summary"><p>Logs a warning message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogWarning(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The log message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Optional message arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_BeginPerformanceScope_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_">XamlLoggerExtensions.BeginPerformanceScope(IXamlLogger, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_">XamlLoggerExtensions.LogCodeGenerationComplete(IXamlLogger, string, double, int, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogCodeGenerationStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_">XamlLoggerExtensions.LogCodeGenerationStart(IXamlLogger, string, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogConstitutionalCheck_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Boolean_System_String_">XamlLoggerExtensions.LogConstitutionalCheck(IXamlLogger, string, bool, string?)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBinding_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_System_String_">XamlLoggerExtensions.LogDataBinding(IXamlLogger, string, string, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogDataBindingError_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Exception_">XamlLoggerExtensions.LogDataBindingError(IXamlLogger, string, Exception)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogMemoryUsage_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_">XamlLoggerExtensions.LogMemoryUsage(IXamlLogger, string, double)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingComplete_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_Double_System_Int32_System_String_">XamlLoggerExtensions.LogXamlParsingComplete(IXamlLogger, string, double, int, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="Terminal.Gui.Xaml.Logging.XamlLoggerExtensions.html#Terminal_Gui_Xaml_Logging_XamlLoggerExtensions_LogXamlParsingStart_Terminal_Gui_Xaml_Logging_IXamlLogger_System_String_System_String_">XamlLoggerExtensions.LogXamlParsingStart(IXamlLogger, string, string)</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/new/main/apiSpec/new?filename=Terminal_Gui_Xaml_Logging_IXamlLogger.md&amp;value=---%0Auid%3A%20Terminal.Gui.Xaml.Logging.IXamlLogger%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/johnmbaughman/Terminal.Gui.Xaml/blob/002-use-docfx-for/src/Terminal.Gui.Xaml/Logging/IXamlLogger.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Terminal.Gui.Xaml Framework
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

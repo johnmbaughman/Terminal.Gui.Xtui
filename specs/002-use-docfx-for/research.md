@@ -76,7 +76,7 @@ Research findings for implementing DocFX-based documentation generation for the 
 - **Lucene.NET**: Full-text search (built into DocFX)
 
 ### Integration Points
-- **StyleCop**: XML documentation rule enforcement
+- **Static Analysis**: Rely on built-in .NET analyzers (.editorconfig) for XML documentation and style enforcement
 - **GitHub Actions**: Automated documentation deployment
 - **Azure Static Web Apps**: Documentation hosting (optional)
 

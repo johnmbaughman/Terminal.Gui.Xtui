@@ -1,0 +1,14 @@
+{
+  "packageVersion": "1.0.0-beta1",
+  "orderingMode": "ascending",
+  "errors": [],
+  "success": true,
+  "timestamp": "2025-09-24T22:51:43.2484113-05:00",
+  "config": {
+    "ordering": "ascending",
+    "requireUpcomingPlaceholder": false,
+    "upcomingPlaceholderPattern": "(planned|future)",
+    "emitJsonReport": true,
+    "reportPath": "temp_test_validation/version-matrix-report.json"
+  }
+}

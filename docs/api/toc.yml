@@ -1,0 +1,312 @@
+### YamlMime:TableOfContent
+items:
+- uid: Terminal.Gui.Xaml.Binding
+  name: Terminal.Gui.Xaml.Binding
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Binding.BindingMode
+    name: BindingMode
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Binding.DataBindingEngine
+    name: DataBindingEngine
+    type: Class
+  - uid: Terminal.Gui.Xaml.Binding.IDataBindingEngine
+    name: IDataBindingEngine
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Binding.PropertyChangeTracker
+    name: PropertyChangeTracker
+    type: Class
+  - uid: Terminal.Gui.Xaml.Binding.SimpleDataBindingEngine
+    name: SimpleDataBindingEngine
+    type: Class
+- uid: Terminal.Gui.Xaml.Build
+  name: Terminal.Gui.Xaml.Build
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Build.BuildIntegrationService
+    name: BuildIntegrationService
+    type: Class
+  - uid: Terminal.Gui.Xaml.Build.GenerateDocumentationTask
+    name: GenerateDocumentationTask
+    type: Class
+  - uid: Terminal.Gui.Xaml.Build.IBuildEngine
+    name: IBuildEngine
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Build.IBuildIntegrationService
+    name: IBuildIntegrationService
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Build.ITask
+    name: ITask
+    type: Interface
+- uid: Terminal.Gui.Xaml.Documentation.Logging
+  name: Terminal.Gui.Xaml.Documentation.Logging
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.ConsoleDocumentationLogger
+    name: ConsoleDocumentationLogger
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.IDocumentationLogger
+    name: IDocumentationLogger
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Documentation.Logging.NullDocumentationLogger
+    name: NullDocumentationLogger
+    type: Class
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  name: Terminal.Gui.Xaml.Documentation.Models
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ApiDocumentation
+    name: ApiDocumentation
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.BuildConfiguration
+    name: BuildConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ConfigurationValidationResult
+    name: ConfigurationValidationResult
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ContentConfiguration
+    name: ContentConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.CoverageMetrics
+    name: CoverageMetrics
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.DocFxConfiguration
+    name: DocFxConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+    name: DocumentationBuildMode
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationValidationResult
+    name: DocumentationValidationResult
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationRequest
+    name: GenerateDocumentationRequest
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.GenerateDocumentationResponse
+    name: GenerateDocumentationResponse
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.IssueSeverity
+    name: IssueSeverity
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Documentation.Models.IssueType
+    name: IssueType
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Documentation.Models.MetadataConfiguration
+    name: MetadataConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ResourceConfiguration
+    name: ResourceConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.SourceConfiguration
+    name: SourceConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.TemplateConfiguration
+    name: TemplateConfiguration
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationRequest
+    name: ValidateDocumentationRequest
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidateDocumentationResponse
+    name: ValidateDocumentationResponse
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidationIssue
+    name: ValidationIssue
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Models.ValidationStatus
+    name: ValidationStatus
+    type: Enum
+- uid: Terminal.Gui.Xaml.Documentation.Services
+  name: Terminal.Gui.Xaml.Documentation.Services
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildPhase
+    name: BuildPhase
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildProgress
+    name: BuildProgress
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildPropertyDefinition
+    name: BuildPropertyDefinition
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetDefinition
+    name: BuildTargetDefinition
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetRequest
+    name: BuildTargetRequest
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.BuildTargetResponse
+    name: BuildTargetResponse
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.DocumentationConfigurationService
+    name: DocumentationConfigurationService
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.IBuildIntegrationService
+    name: IBuildIntegrationService
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationConfigurationService
+    name: IDocumentationConfigurationService
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Documentation.Services.IDocumentationGeneratorService
+    name: IDocumentationGeneratorService
+    type: Interface
+- uid: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  name: Terminal.Gui.Xaml.Documentation.Services.Implementations
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleBuildIntegrationService
+    name: SimpleBuildIntegrationService
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationConfigurationService
+    name: SimpleDocumentationConfigurationService
+    type: Class
+  - uid: Terminal.Gui.Xaml.Documentation.Services.Implementations.SimpleDocumentationGeneratorService
+    name: SimpleDocumentationGeneratorService
+    type: Class
+- uid: Terminal.Gui.Xaml.Events
+  name: Terminal.Gui.Xaml.Events
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Events.EventHandlerRegistry
+    name: EventHandlerRegistry
+    type: Class
+- uid: Terminal.Gui.Xaml.Exceptions
+  name: Terminal.Gui.Xaml.Exceptions
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Exceptions.BindingException
+    name: BindingException
+    type: Class
+  - uid: Terminal.Gui.Xaml.Exceptions.CodeGenerationException
+    name: CodeGenerationException
+    type: Class
+  - uid: Terminal.Gui.Xaml.Exceptions.XamlException
+    name: XamlException
+    type: Class
+  - uid: Terminal.Gui.Xaml.Exceptions.XamlParseException
+    name: XamlParseException
+    type: Class
+- uid: Terminal.Gui.Xaml.Generation
+  name: Terminal.Gui.Xaml.Generation
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Generation.CodeGenerator
+    name: CodeGenerator
+    type: Class
+  - uid: Terminal.Gui.Xaml.Generation.CodeTemplates
+    name: CodeTemplates
+    type: Class
+  - uid: Terminal.Gui.Xaml.Generation.GeneratedClass
+    name: GeneratedClass
+    type: Class
+  - uid: Terminal.Gui.Xaml.Generation.ICodeGenerator
+    name: ICodeGenerator
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Generation.SimpleCodeGenerator
+    name: SimpleCodeGenerator
+    type: Class
+- uid: Terminal.Gui.Xaml.Logging
+  name: Terminal.Gui.Xaml.Logging
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Logging.DiagnosticSourceLogger
+    name: DiagnosticSourceLogger
+    type: Class
+  - uid: Terminal.Gui.Xaml.Logging.IXamlLogger
+    name: IXamlLogger
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Logging.LogLevel
+    name: LogLevel
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Logging.MicrosoftLoggerAdapter
+    name: MicrosoftLoggerAdapter
+    type: Class
+  - uid: Terminal.Gui.Xaml.Logging.XamlLoggerExtensions
+    name: XamlLoggerExtensions
+    type: Class
+- uid: Terminal.Gui.Xaml.Model
+  name: Terminal.Gui.Xaml.Model
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Model.BindingContext
+    name: BindingContext
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.ControlInfo
+    name: ControlInfo
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.EventInfo
+    name: EventInfo
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.ParsedTemplate
+    name: ParsedTemplate
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.PropertyInfo
+    name: PropertyInfo
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.ResourceDictionary
+    name: ResourceDictionary
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.StyleInfo
+    name: StyleInfo
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.ValidationResult
+    name: ValidationResult
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.Window
+    name: Window
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.XamlDocument
+    name: XamlDocument
+    type: Class
+  - uid: Terminal.Gui.Xaml.Model.XamlNamespace
+    name: XamlNamespace
+    type: Class
+- uid: Terminal.Gui.Xaml.Parsing
+  name: Terminal.Gui.Xaml.Parsing
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Parsing.IXamlParser
+    name: IXamlParser
+    type: Interface
+  - uid: Terminal.Gui.Xaml.Parsing.SimpleXamlParser
+    name: SimpleXamlParser
+    type: Class
+  - uid: Terminal.Gui.Xaml.Parsing.XamlErrorSeverity
+    name: XamlErrorSeverity
+    type: Enum
+  - uid: Terminal.Gui.Xaml.Parsing.XamlParser
+    name: XamlParser
+    type: Class
+  - uid: Terminal.Gui.Xaml.Parsing.XamlParsingError
+    name: XamlParsingError
+    type: Class
+  - uid: Terminal.Gui.Xaml.Parsing.XamlTokenizer
+    name: XamlTokenizer
+    type: Class
+- uid: Terminal.Gui.Xaml.Performance
+  name: Terminal.Gui.Xaml.Performance
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Performance.MemoryMonitor
+    name: MemoryMonitor
+    type: Class
+  - uid: Terminal.Gui.Xaml.Performance.PerformanceCounters
+    name: PerformanceCounters
+    type: Class
+- uid: Terminal.Gui.Xaml.Runtime
+  name: Terminal.Gui.Xaml.Runtime
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Runtime.ControlFactory
+    name: ControlFactory
+    type: Class
+  - uid: Terminal.Gui.Xaml.Runtime.RuntimeLoader
+    name: RuntimeLoader
+    type: Class
+- uid: Terminal.Gui.Xaml.Validation
+  name: Terminal.Gui.Xaml.Validation
+  type: Namespace
+  items:
+  - uid: Terminal.Gui.Xaml.Validation.ValidationEngine
+    name: ValidationEngine
+    type: Class
+memberLayout: SamePage

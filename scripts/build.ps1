@@ -26,8 +26,18 @@ param(
     [switch]$SkipTests,
 
     [Parameter()]
-    [switch]$VerboseOutput
-)Set-StrictMode -Version Latest
+    [switch]$VerboseOutput,
+
+    [Parameter()]
+    [switch]$SkipDocs,
+
+    [Parameter()]
+    [switch]$SkipVersionMatrixValidation,
+
+    [Parameter()]
+    [switch]$DescendingVersionMatrix
+)
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 # Constitutional Performance Requirements
@@ -148,12 +158,71 @@ function Invoke-RunTests {
     }
 }
 
+function Invoke-BuildDocs {
+    if ($SkipDocs) {
+        Write-Warning "Skipping documentation build as requested"
+        return
+    }
+
+    Write-Header "Building Documentation (DocFX)"
+
+    $docfxConfig = Join-Path $PSScriptRoot '..' | Join-Path -ChildPath 'docs/docfx.json'
+    $docfxConfig = [System.IO.Path]::GetFullPath($docfxConfig)
+    if (-not (Test-Path $docfxConfig)) {
+        Write-Warning "DocFX config not found at $docfxConfig; skipping docs build"
+        return
+    }
+
+    $docfx = Get-Command docfx -ErrorAction SilentlyContinue
+    if (-not $docfx) {
+        Write-Warning "DocFX CLI not found. Install with: dotnet tool update -g docfx; skipping docs build"
+        return
+    }
+
+    try {
+    $docfxArgs = @('build', $docfxConfig, '--warningsAsErrors')
+    if ($VerboseOutput) { $docfxArgs += '--logLevel'; $docfxArgs += 'Verbose' }
+    & $docfx.Source $docfxArgs
+        if ($LASTEXITCODE -ne 0) { throw "DocFX build failed with exit code $LASTEXITCODE" }
+        Write-Success "Documentation built successfully (warnings treated as errors)"
+    }
+    catch {
+        Write-Error "Documentation build failed: $($_.Exception.Message)"
+        exit 1
+    }
+}
+
 function Test-ConstitutionalCompliance {
     Write-Header "Constitutional Compliance Validation"
 
     # This is a placeholder for future constitutional checks
     # Will be implemented as we add the actual framework code
     Write-Success "Constitutional compliance checks passed (placeholder)"
+}
+
+function Invoke-VersionMatrixValidation {
+    if ($SkipVersionMatrixValidation) {
+        Write-Warning "Skipping version & compatibility matrix validation as requested"
+        return
+    }
+
+    Write-Header "Validating Version & Compatibility Matrix"
+    $scriptPath = Join-Path $PSScriptRoot 'validate-version-matrix.ps1'
+    if (-not (Test-Path $scriptPath)) {
+        Write-Warning "Validation script not found at $scriptPath"
+        return
+    }
+    try {
+    $validationArgs = @()
+    if ($DescendingVersionMatrix) { $validationArgs += '-Descending' }
+    & $scriptPath @validationArgs
+        if ($LASTEXITCODE -ne 0) { throw "Matrix validation failed with exit code $LASTEXITCODE" }
+        Write-Success "Version & compatibility matrix validation passed"
+    }
+    catch {
+        Write-Error "Version matrix validation failed: $($_.Exception.Message)"
+        exit 1
+    }
 }
 
 # Main execution
@@ -171,6 +240,8 @@ try {
     Invoke-BuildProjects
     Invoke-RunTests
     Test-ConstitutionalCompliance
+    Invoke-VersionMatrixValidation
+    Invoke-BuildDocs
 
     Write-Header "Build Completed Successfully"
     Write-Success "Terminal.Gui XAML Framework build completed"

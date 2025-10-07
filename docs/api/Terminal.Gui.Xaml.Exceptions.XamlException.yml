@@ -1,0 +1,940 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException
+  commentId: T:Terminal.Gui.Xaml.Exceptions.XamlException
+  id: XamlException
+  parent: Terminal.Gui.Xaml.Exceptions
+  children:
+  - Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  - Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String)
+  - Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String,System.Exception)
+  - Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  - Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  - Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  - Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  - Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  - Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  - Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  langs:
+  - csharp
+  - vb
+  name: XamlException
+  nameWithType: XamlException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException
+  type: Class
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: XamlException
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 11
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: The base exception class for all Terminal.Gui XAML framework exceptions.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class XamlException : Exception, ISerializable
+    content.vb: >-
+      <Serializable>
+
+      Public Class XamlException Inherits Exception Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  derivedClasses:
+  - Terminal.Gui.Xaml.Exceptions.BindingException
+  - Terminal.Gui.Xaml.Exceptions.CodeGenerationException
+  - Terminal.Gui.Xaml.Exceptions.XamlParseException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  id: '#ctor'
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: XamlException()
+  nameWithType: XamlException.XamlException()
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException()
+  type: Constructor
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: .ctor
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 17
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Initializes a new instance of the <xref href="Terminal.Gui.Xaml.Exceptions.XamlException" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public XamlException()
+    content.vb: Public Sub New()
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor*
+  nameWithType.vb: XamlException.New()
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New()
+  name.vb: New()
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String)
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: XamlException(string)
+  nameWithType: XamlException.XamlException(string)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: .ctor
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 26
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Initializes a new instance of the <xref href="Terminal.Gui.Xaml.Exceptions.XamlException" data-throw-if-not-resolved="false"></xref> class with a specified error message.
+  example: []
+  syntax:
+    content: public XamlException(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The message that describes the error.
+    content.vb: Public Sub New(message As String)
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor*
+  nameWithType.vb: XamlException.New(String)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New(String)
+  name.vb: New(String)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String,System.Exception)
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: XamlException(string, Exception)
+  nameWithType: XamlException.XamlException(string, Exception)
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException(string, System.Exception)
+  type: Constructor
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: .ctor
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 37
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: >-
+    Initializes a new instance of the <xref href="Terminal.Gui.Xaml.Exceptions.XamlException" data-throw-if-not-resolved="false"></xref> class with a specified error message
+
+    and a reference to the inner exception that is the cause of this exception.
+  example: []
+  syntax:
+    content: public XamlException(string message, Exception innerException)
+    parameters:
+    - id: message
+      type: System.String
+      description: The message that describes the error.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception.
+    content.vb: Public Sub New(message As String, innerException As Exception)
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor*
+  nameWithType.vb: XamlException.New(String, Exception)
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New(String, System.Exception)
+  name.vb: New(String, Exception)
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  id: XamlFilePath
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: XamlFilePath
+  nameWithType: XamlException.XamlFilePath
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: XamlFilePath
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 45
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets or sets the XAML file path where the error occurred, if applicable.
+  example: []
+  syntax:
+    content: public string? XamlFilePath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property XamlFilePath As String
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  id: LineNumber
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: LineNumber
+  nameWithType: XamlException.LineNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LineNumber
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 50
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets or sets the line number where the error occurred, if applicable.
+  example: []
+  syntax:
+    content: public int? LineNumber { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property LineNumber As Integer?
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  id: ColumnNumber
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: ColumnNumber
+  nameWithType: XamlException.ColumnNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ColumnNumber
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 55
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets or sets the column number where the error occurred, if applicable.
+  example: []
+  syntax:
+    content: public int? ColumnNumber { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property ColumnNumber As Integer?
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  id: ErrorCode
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: ErrorCode
+  nameWithType: XamlException.ErrorCode
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ErrorCode
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 60
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets or sets the error code for localization and diagnostics.
+  example: []
+  syntax:
+    content: public string? ErrorCode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ErrorCode As String
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  id: LocalizedMessage
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: LocalizedMessage
+  nameWithType: XamlException.LocalizedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: LocalizedMessage
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 65
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets or sets a localized error message, if available.
+  example: []
+  syntax:
+    content: public string? LocalizedMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property LocalizedMessage As String
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  commentId: P:Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  id: DetailedMessage
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: DetailedMessage
+  nameWithType: XamlException.DetailedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  type: Property
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: DetailedMessage
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 70
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Gets a formatted error message that includes location information if available.
+  example: []
+  syntax:
+    content: public string DetailedMessage { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DetailedMessage As String
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage*
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  commentId: M:Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  id: ToJson
+  parent: Terminal.Gui.Xaml.Exceptions.XamlException
+  langs:
+  - csharp
+  - vb
+  name: ToJson()
+  nameWithType: XamlException.ToJson()
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson()
+  type: Method
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: ToJson
+    path: ../src/Terminal.Gui.Xaml/Exceptions/XamlException.cs
+    startLine: 102
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Exceptions
+  summary: Serializes this exception to JSON using System.Text.Json.
+  example: []
+  syntax:
+    content: public string ToJson()
+    return:
+      type: System.String
+      description: A JSON string representing the exception.
+    content.vb: Public Function ToJson() As String
+  overload: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson*
+references:
+- uid: Terminal.Gui.Xaml.Exceptions
+  commentId: N:Terminal.Gui.Xaml.Exceptions
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Exceptions
+  nameWithType: Terminal.Gui.Xaml.Exceptions
+  fullName: Terminal.Gui.Xaml.Exceptions
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Exceptions
+    name: Exceptions
+    href: Terminal.Gui.Xaml.Exceptions.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Exceptions
+    name: Exceptions
+    href: Terminal.Gui.Xaml.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException
+  commentId: T:Terminal.Gui.Xaml.Exceptions.XamlException
+  parent: Terminal.Gui.Xaml.Exceptions
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html
+  name: XamlException
+  nameWithType: XamlException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.#ctor*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.#ctor
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException__ctor
+  name: XamlException
+  nameWithType: XamlException.XamlException
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlException
+  nameWithType.vb: XamlException.New
+  fullName.vb: Terminal.Gui.Xaml.Exceptions.XamlException.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_XamlFilePath
+  name: XamlFilePath
+  nameWithType: XamlException.XamlFilePath
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.XamlFilePath
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LineNumber
+  name: LineNumber
+  nameWithType: XamlException.LineNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LineNumber
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ColumnNumber
+  name: ColumnNumber
+  nameWithType: XamlException.ColumnNumber
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ColumnNumber
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ErrorCode
+  name: ErrorCode
+  nameWithType: XamlException.ErrorCode
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ErrorCode
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_LocalizedMessage
+  name: LocalizedMessage
+  nameWithType: XamlException.LocalizedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.LocalizedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_DetailedMessage
+  name: DetailedMessage
+  nameWithType: XamlException.DetailedMessage
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.DetailedMessage
+- uid: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson*
+  commentId: Overload:Terminal.Gui.Xaml.Exceptions.XamlException.ToJson
+  href: Terminal.Gui.Xaml.Exceptions.XamlException.html#Terminal_Gui_Xaml_Exceptions_XamlException_ToJson
+  name: ToJson
+  nameWithType: XamlException.ToJson
+  fullName: Terminal.Gui.Xaml.Exceptions.XamlException.ToJson

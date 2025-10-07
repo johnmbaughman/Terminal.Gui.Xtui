@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  id: DocumentationBuildMode
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  - Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  langs:
+  - csharp
+  - vb
+  name: DocumentationBuildMode
+  nameWithType: DocumentationBuildMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: DocumentationBuildMode
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+    startLine: 74
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Specifies the documentation build mode.
+  example: []
+  syntax:
+    content: public enum DocumentationBuildMode
+    content.vb: Public Enum DocumentationBuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  id: Full
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  langs:
+  - csharp
+  - vb
+  name: Full
+  nameWithType: DocumentationBuildMode.Full
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Full
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Full
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+    startLine: 79
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Full documentation build.
+  example: []
+  syntax:
+    content: Full = 0
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  id: Incremental
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  langs:
+  - csharp
+  - vb
+  name: Incremental
+  nameWithType: DocumentationBuildMode.Incremental
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.Incremental
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: Incremental
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+    startLine: 84
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Incremental build (only changed files).
+  example: []
+  syntax:
+    content: Incremental = 1
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  id: MetadataOnly
+  parent: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  langs:
+  - csharp
+  - vb
+  name: MetadataOnly
+  nameWithType: DocumentationBuildMode.MetadataOnly
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.MetadataOnly
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: MetadataOnly
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/BuildConfiguration.cs
+    startLine: 89
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Metadata only build.
+  example: []
+  syntax:
+    content: MetadataOnly = 2
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode.html
+  name: DocumentationBuildMode
+  nameWithType: DocumentationBuildMode
+  fullName: Terminal.Gui.Xaml.Documentation.Models.DocumentationBuildMode

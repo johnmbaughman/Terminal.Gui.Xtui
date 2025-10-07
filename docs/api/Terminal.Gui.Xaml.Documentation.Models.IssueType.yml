@@ -1,0 +1,258 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueType
+  id: IssueType
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  children:
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  - Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  langs:
+  - csharp
+  - vb
+  name: IssueType
+  nameWithType: IssueType
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: IssueType
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 50
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Specifies the type of documentation issue.
+  example: []
+  syntax:
+    content: public enum IssueType
+    content.vb: Public Enum IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  id: MissingDocumentation
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: MissingDocumentation
+  nameWithType: IssueType.MissingDocumentation
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingDocumentation
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: MissingDocumentation
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 55
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Missing XML documentation.
+  example: []
+  syntax:
+    content: MissingDocumentation = 0
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  id: InvalidLink
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: InvalidLink
+  nameWithType: IssueType.InvalidLink
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidLink
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: InvalidLink
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 60
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Invalid or broken link.
+  example: []
+  syntax:
+    content: InvalidLink = 1
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  id: InvalidExample
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: InvalidExample
+  nameWithType: IssueType.InvalidExample
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.InvalidExample
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: InvalidExample
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 65
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Invalid or non-compiling code example.
+  example: []
+  syntax:
+    content: InvalidExample = 2
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  id: MalformedXml
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: MalformedXml
+  nameWithType: IssueType.MalformedXml
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MalformedXml
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: MalformedXml
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 70
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Malformed XML documentation.
+  example: []
+  syntax:
+    content: MalformedXml = 3
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  id: MissingReturnDoc
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: MissingReturnDoc
+  nameWithType: IssueType.MissingReturnDoc
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingReturnDoc
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: MissingReturnDoc
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 75
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Missing return documentation.
+  example: []
+  syntax:
+    content: MissingReturnDoc = 4
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  commentId: F:Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  id: MissingParameterDoc
+  parent: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  langs:
+  - csharp
+  - vb
+  name: MissingParameterDoc
+  nameWithType: IssueType.MissingParameterDoc
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType.MissingParameterDoc
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: MissingParameterDoc
+    path: ../src/Terminal.Gui.Xaml/Documentation/Models/ValidationIssue.cs
+    startLine: 80
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Documentation.Models
+  summary: Missing parameter documentation.
+  example: []
+  syntax:
+    content: MissingParameterDoc = 5
+    return:
+      type: Terminal.Gui.Xaml.Documentation.Models.IssueType
+references:
+- uid: Terminal.Gui.Xaml.Documentation.Models
+  commentId: N:Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Documentation.Models
+  nameWithType: Terminal.Gui.Xaml.Documentation.Models
+  fullName: Terminal.Gui.Xaml.Documentation.Models
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation
+    name: Documentation
+    href: Terminal.Gui.Xaml.Documentation.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Documentation.Models
+    name: Models
+    href: Terminal.Gui.Xaml.Documentation.Models.html
+- uid: Terminal.Gui.Xaml.Documentation.Models.IssueType
+  commentId: T:Terminal.Gui.Xaml.Documentation.Models.IssueType
+  parent: Terminal.Gui.Xaml.Documentation.Models
+  href: Terminal.Gui.Xaml.Documentation.Models.IssueType.html
+  name: IssueType
+  nameWithType: IssueType
+  fullName: Terminal.Gui.Xaml.Documentation.Models.IssueType

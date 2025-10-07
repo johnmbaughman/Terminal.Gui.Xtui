@@ -36,7 +36,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/terminal-gui-xaml/Terminal.Gui.Xaml</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -50,7 +49,6 @@
 
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
-    <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="\" Condition="Exists('$(MSBuildThisFileDirectory)icon.png')" />
   </ItemGroup>
 
 </Project>

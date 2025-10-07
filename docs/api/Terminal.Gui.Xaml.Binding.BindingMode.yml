@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: Terminal.Gui.Xaml.Binding.BindingMode
+  commentId: T:Terminal.Gui.Xaml.Binding.BindingMode
+  id: BindingMode
+  parent: Terminal.Gui.Xaml.Binding
+  children:
+  - Terminal.Gui.Xaml.Binding.BindingMode.OneWay
+  - Terminal.Gui.Xaml.Binding.BindingMode.TwoWay
+  langs:
+  - csharp
+  - vb
+  name: BindingMode
+  nameWithType: BindingMode
+  fullName: Terminal.Gui.Xaml.Binding.BindingMode
+  type: Enum
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: BindingMode
+    path: ../src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+    startLine: 57
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Specifies binding modes.
+  example: []
+  syntax:
+    content: public enum BindingMode
+    content.vb: Public Enum BindingMode
+- uid: Terminal.Gui.Xaml.Binding.BindingMode.OneWay
+  commentId: F:Terminal.Gui.Xaml.Binding.BindingMode.OneWay
+  id: OneWay
+  parent: Terminal.Gui.Xaml.Binding.BindingMode
+  langs:
+  - csharp
+  - vb
+  name: OneWay
+  nameWithType: BindingMode.OneWay
+  fullName: Terminal.Gui.Xaml.Binding.BindingMode.OneWay
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: OneWay
+    path: ../src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+    startLine: 62
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: One-way binding from source to target.
+  example: []
+  syntax:
+    content: OneWay = 0
+    return:
+      type: Terminal.Gui.Xaml.Binding.BindingMode
+- uid: Terminal.Gui.Xaml.Binding.BindingMode.TwoWay
+  commentId: F:Terminal.Gui.Xaml.Binding.BindingMode.TwoWay
+  id: TwoWay
+  parent: Terminal.Gui.Xaml.Binding.BindingMode
+  langs:
+  - csharp
+  - vb
+  name: TwoWay
+  nameWithType: BindingMode.TwoWay
+  fullName: Terminal.Gui.Xaml.Binding.BindingMode.TwoWay
+  type: Field
+  source:
+    remote:
+      path: src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+      branch: 002-use-docfx-for
+      repo: https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
+    id: TwoWay
+    path: ../src/Terminal.Gui.Xaml/Binding/IDataBindingEngine.cs
+    startLine: 67
+  assemblies:
+  - Terminal.Gui.Xaml
+  namespace: Terminal.Gui.Xaml.Binding
+  summary: Two-way binding between source and target.
+  example: []
+  syntax:
+    content: TwoWay = 1
+    return:
+      type: Terminal.Gui.Xaml.Binding.BindingMode
+references:
+- uid: Terminal.Gui.Xaml.Binding
+  commentId: N:Terminal.Gui.Xaml.Binding
+  href: Terminal.html
+  name: Terminal.Gui.Xaml.Binding
+  nameWithType: Terminal.Gui.Xaml.Binding
+  fullName: Terminal.Gui.Xaml.Binding
+  spec.csharp:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Binding
+    name: Binding
+    href: Terminal.Gui.Xaml.Binding.html
+  spec.vb:
+  - uid: Terminal
+    name: Terminal
+    href: Terminal.html
+  - name: .
+  - uid: Terminal.Gui
+    name: Gui
+    href: Terminal.Gui.html
+  - name: .
+  - uid: Terminal.Gui.Xaml
+    name: Xaml
+    href: Terminal.Gui.Xaml.html
+  - name: .
+  - uid: Terminal.Gui.Xaml.Binding
+    name: Binding
+    href: Terminal.Gui.Xaml.Binding.html
+- uid: Terminal.Gui.Xaml.Binding.BindingMode
+  commentId: T:Terminal.Gui.Xaml.Binding.BindingMode
+  parent: Terminal.Gui.Xaml.Binding
+  href: Terminal.Gui.Xaml.Binding.BindingMode.html
+  name: BindingMode
+  nameWithType: BindingMode
+  fullName: Terminal.Gui.Xaml.Binding.BindingMode
