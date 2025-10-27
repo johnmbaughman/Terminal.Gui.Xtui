@@ -50,6 +50,16 @@
       <None Remove="$(XamlGeneratedFolder)\**\*.g.cs" />
     </ItemGroup>
 
+    <!-- Also run the generator for the example projects so their Sample.xaml files are precompiled into their obj/Generated -->
+    <ItemGroup>
+      <ExampleProject Include="..\..\Examples\Xaml" />
+      <ExampleProject Include="..\..\Examples\Xaml.Mvvm" />
+    </ItemGroup>
+
+    <Message Text="Terminal.Gui.Xaml: Running generator for example projects" Importance="Normal" />
+    <!-- Run generator for each example project (writes into each project's obj\Generated) -->
+  <Exec Command="dotnet &quot;$(TerminalGuiXamlBuildDll)&quot; &quot;$(MSBuildThisFileDirectory)%(ExampleProject.Identity)&quot; &quot;$(MSBuildThisFileDirectory)%(ExampleProject.Identity)\obj\Generated&quot;" />
+
     <Message Text="Terminal.Gui.Xaml: Ran Terminal.Gui.Xaml.Build to precompile XAML into $(XamlGeneratedFolder)" Importance="High" />
   </Target>
 

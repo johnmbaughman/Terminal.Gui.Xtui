@@ -12,4 +12,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- Include the sample XAML used by the example and compiled/generated sources -->
+    <None Include="Sample.xaml" />
+  </ItemGroup>
+
+  <!-- Include generated sources produced by the generator into the example build -->
+  <ItemGroup>
+    <Compile Include="obj\Generated\**\*.g.cs" />
+  </ItemGroup>
+
 </Project>
