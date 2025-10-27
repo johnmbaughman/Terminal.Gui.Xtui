@@ -1,0 +1,99 @@
+# Visual Studio / .NET / IDE ignores
+
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio temporary files, build logs and cache
+*.log
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.cache
+*.ilk
+*.meta
+*.obj
+*.pdb
+*.opendb
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of PackageReference
+packages/
+project.lock.json
+nuget.exe
+*.nupkg
+
+# MSBuild
+*.BuildLog.*
+msbuild.log
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Code workspace history
+.history/
+
+# Dotnet publish
+publish/
+*.publishsettings
+
+# Runtime
+*.log
+*.vsix
+
+# Test results
+TestResults/
+*.trx
+
+# JetBrains Rider
+.idea/
+
+# Temporary files
+*.tmp
+*~
+*.bak
+
+# Generated files
+*.g.cs
+
+# Coverage
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Mac
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# Ignore obj/Generated (codegen artifacts) only if you don't want to commit generated files
+# Leave commented if you prefer to commit generated .g.cs files sometimes
+# src/**/obj/Generated/

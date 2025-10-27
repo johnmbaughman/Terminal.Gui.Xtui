@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <!-- Reference the runtime library so Xaml project can compile against Terminal.Gui types -->
+    <ProjectReference Include="..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
+    <!-- Build helper: out-of-process tool that precompiles XAML into generated C# -->
+    <ProjectReference Include="..\Terminal.Gui.Xaml.Build\Terminal.Gui.Xaml.Build.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Add Roslyn code analyzers (latest stable series). Using PrivateAssets to avoid propagating analyzers to consumers. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Run the external build helper before compilation to generate C# from XAML files. -->
+  <Target Name="RunTerminalGuiXamlBuild" BeforeTargets="BeforeBuild">
+    <!-- Ensure the build tool is built first -->
+    <MSBuild Projects="..\Terminal.Gui.Xaml.Build\Terminal.Gui.Xaml.Build.csproj"
+             Targets="Build"
+             Properties="Configuration=$(Configuration)" />
+
+    <!-- Output folder for generated code -->
+    <PropertyGroup>
+      <!-- Use MSBuildProjectDirectory (no trailing slash) to avoid command-line quoting issues when passing paths that end with a backslash -->
+      <XamlGeneratedFolder>$(MSBuildProjectDirectory)\obj\Generated</XamlGeneratedFolder>
+      <!-- Compute the helper DLL path deterministically relative to this project file -->
+      <TerminalGuiXamlBuildDll>$(MSBuildThisFileDirectory)..\Terminal.Gui.Xaml.Build\bin\$(Configuration)\net9.0\Terminal.Gui.Xaml.Build.dll</TerminalGuiXamlBuildDll>
+    </PropertyGroup>
+
+    <!-- Fail fast if the helper DLL couldn't be built / found -->
+    <Error Condition="!Exists('$(TerminalGuiXamlBuildDll)')"
+           Text="Terminal.Gui.Xaml: Build helper '$(TerminalGuiXamlBuildDll)' not found after building Terminal.Gui.Xaml.Build. Ensure the build helper compiled successfully." />
+
+    <!-- Diagnostic message to show the exact command being executed -->
+  <Message Text="Terminal.Gui.Xaml: Running generator: dotnet &quot;$(TerminalGuiXamlBuildDll)&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(XamlGeneratedFolder)&quot;" Importance="Normal" />
+
+  <!-- Run the build helper executable (dotnet on the built DLL) to emit generated C# files -->
+  <Exec Command="dotnet &quot;$(TerminalGuiXamlBuildDll)&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(XamlGeneratedFolder)&quot;" WorkingDirectory="$(MSBuildProjectDirectory)" />
+
+    <!-- Include generated .cs files so they are compiled -->
+    <ItemGroup>
+      <Compile Include="$(XamlGeneratedFolder)\**\*.g.cs" />
+      <None Remove="$(XamlGeneratedFolder)\**\*.g.cs" />
+    </ItemGroup>
+
+    <Message Text="Terminal.Gui.Xaml: Ran Terminal.Gui.Xaml.Build to precompile XAML into $(XamlGeneratedFolder)" Importance="High" />
+  </Target>
+
+</Project>

@@ -1,0 +1,4 @@
+<View>
+  <Label Text="Hello, Terminal.Gui.Xaml!" />
+  <Button Text="Click me" />
+</View>

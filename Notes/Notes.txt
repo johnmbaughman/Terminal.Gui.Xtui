@@ -1,0 +1,3 @@
+Extend the generator to map common attributes (X, Y, Width, Height, TextColor, etc.) into property assignments.
+
+Add a README in Terminal.Gui.Xaml describing the build-time generator behavior and how to update the Terminal.Gui submodule.
