@@ -1,9 +1,0 @@
-- name: Concepts
-  href: index.md
-  items:
-  - name: Layout
-    href: layout.md
-  - name: Binding
-    href: binding.md
-  - name: Events
-    href: events.md

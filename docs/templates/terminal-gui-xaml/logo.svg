@@ -1,6 +1,0 @@
-<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal.Gui.Xaml Logo">
-  <rect x="0" y="0" width="120" height="120" rx="16" fill="#101317" stroke="#3CA4FF" stroke-width="4" />
-  <path d="M28 32 L50 54 L28 76" stroke="#3CA4FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-  <rect x="56" y="70" width="36" height="8" rx="4" fill="#55d888" />
-  <text x="60" y="52" font-size="22" font-family="Consolas, monospace" fill="#e5e9f0">X</text>
-</svg>

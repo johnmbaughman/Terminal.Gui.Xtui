@@ -1,7 +1,0 @@
-- name: Contributing
-  href: index.md
-  items:
-  - name: Docs Style Guide
-    href: docs-style-guide.md
-  - name: Offline Docs
-    href: offline.md
