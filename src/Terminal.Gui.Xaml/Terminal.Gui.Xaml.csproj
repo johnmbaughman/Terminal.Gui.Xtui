@@ -5,6 +5,9 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+
+    <!-- When packing, place the built generator assembly into the analyzers folder in the nupkg -->
+    <AnalyzerAssemblyName>Terminal.Gui.Xaml.Generator.dll</AnalyzerAssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +15,23 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
   </ItemGroup>
   
+  <!-- Include the buildTransitive targets file in the nupkg so consuming projects automatically import it -->
+  <ItemGroup>
+    <None Include="buildTransitive\Terminal.Gui.Xaml.targets" Pack="true" PackagePath="buildTransitive\" />
+  </ItemGroup>
+
+  <!-- Ensure the built generator DLL is packed into analyzers/dotnet/cs/ in the nupkg. The built output will be copied during pack. -->
+  <Target Name="PrepareAnalyzerForPack" AfterTargets="Build">
+    <ItemGroup>
+      <_AnalyzerToPack Include="$(OutputPath)$(AssemblyName).dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_AnalyzerToPack)" DestinationFolder="$(ProjectDir)analyzers\dotnet\cs\" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <None Include="analyzers\dotnet\cs\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs/" />
+    </ItemGroup>
+  </Target>
+
 </Project>

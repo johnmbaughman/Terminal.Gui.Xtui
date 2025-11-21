@@ -21,9 +21,4 @@
     <None Include="Sample.xaml" />
   </ItemGroup>
 
-  <!-- Include generated sources produced by the generator into the example build -->
-  <ItemGroup>
-    <Compile Include="obj\Generated\**\*.g.cs" />
-  </ItemGroup>
-
 </Project>
