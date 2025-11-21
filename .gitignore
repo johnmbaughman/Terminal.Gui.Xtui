@@ -29,7 +29,7 @@ build/
 *.pdb
 *.opendb
 
-# Rider
+# JetBrains Rider
 .idea/
 *.sln.iml
 
@@ -72,16 +72,10 @@ publish/
 TestResults/
 *.trx
 
-# JetBrains Rider
-.idea/
-
 # Temporary files
 *.tmp
 *~
 *.bak
-
-# Generated files
-*.g.cs
 
 # Coverage
 coverage*.json
@@ -94,6 +88,8 @@ coverage*.info
 # Windows thumbnail cache
 Thumbs.db
 
+# Generated files
+*.g.cs
 # Ignore obj/Generated (codegen artifacts) only if you don't want to commit generated files
 # Leave commented if you prefer to commit generated .g.cs files sometimes
 # src/**/obj/Generated/

@@ -1,11 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
-using Terminal.Gui;
 using Terminal.Gui.App;
 using Terminal.Gui.ViewBase;
 using Terminal.Gui.Views;
-using Terminal.Gui.Xaml.Generated;
+
+namespace Xaml;
 
 class Program
 {
@@ -24,10 +23,10 @@ class Program
 		};
 
 		// Use generated view from Terminal.Gui.Xaml project (generated at build time)
-		var view = Sample_Generated.Create();
-		win.Add(view);
-
-		top.Add(win);
-		Application.Run();
+		// var view = Sample_Generated.Create();
+		// win.Add(view);
+		//
+		// top.Add(win);
+		// Application.Run();
 	}
 }
