@@ -1,32 +1,38 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!-- Opt-out property: set to 'false' in consumer to disable automatic addition -->
-  <PropertyGroup>
-    <EnableXamlAdditionalFiles Condition="'$(EnableXamlAdditionalFiles)'==''">true</EnableXamlAdditionalFiles>
-  </PropertyGroup>
+    <!-- Opt-out property: set to 'false' in consumer to disable automatic addition -->
+    <PropertyGroup>
+        <EnableXamlAdditionalFiles Condition="'$(EnableXamlAdditionalFiles)'==''">true</EnableXamlAdditionalFiles>
+    </PropertyGroup>
 
-  <!-- Configurable glob/exclude; default will only match files inside the consumer project directory -->
-  <PropertyGroup>
-    <XamlAdditionalFilesGlob Condition="'$(XamlAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xaml</XamlAdditionalFilesGlob>
-    <XamlAdditionalFilesExclude Condition="'$(XamlAdditionalFilesExclude)'==''" />
-  </PropertyGroup>
+    <!-- Configure generated file output for IDE visibility -->
+    <PropertyGroup Condition="'$(EnableXamlAdditionalFiles)'!='false'">
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
 
-  <Target Name="AddXamlFilesAsAdditionalFiles"
-          BeforeTargets="PrepareForBuild"
-          Condition="'$(EnableXamlAdditionalFiles)'!='false'">
+    <!-- Configurable glob/exclude; default will only match files inside the consumer project directory -->
+    <PropertyGroup>
+        <XamlAdditionalFilesGlob Condition="'$(XamlAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xaml</XamlAdditionalFilesGlob>
+        <XamlAdditionalFilesExclude Condition="'$(XamlAdditionalFilesExclude)'==''"/>
+    </PropertyGroup>
 
-    <!-- Detect whether the consuming project references Terminal.Gui either as a package or as a project reference -->
-    <ItemGroup>
-      <!-- PackageReference check -->
-      <_TerminalGuiPackage Include="@(PackageReference)" Condition="'%(Identity)' == 'Terminal.Gui'" />
-      <!-- ProjectReference check (filename without path) -->
-      <_TerminalGuiProjectReference Include="@(ProjectReference)" Condition="'%(Filename)' == 'Terminal.Gui'" />
-    </ItemGroup>
+    <Target Name="AddXamlFilesAsAdditionalFiles"
+            BeforeTargets="ResolveReferences;CoreCompile"
+            Condition="'$(EnableXamlAdditionalFiles)'!='false'">
 
-    <!-- Only add AdditionalFiles and include generated sources as Compile when Terminal.Gui is referenced (package or project) -->
-    <ItemGroup Condition="'@(_TerminalGuiPackage)' != '' or '@(_TerminalGuiProjectReference)' != ''">
-      <AdditionalFiles Include="$(XamlAdditionalFilesGlob)" Exclude="$(XamlAdditionalFilesExclude)" />
-      <!-- Include generator-produced sources from the intermediate Generated folder so consumers don't need a manual Compile entry -->
-      <Compile Include="$(BaseIntermediateOutputPath)Generated\**\*.g.cs" />
-    </ItemGroup>
-  </Target>
+        <!-- Detect whether the consuming project references Terminal.Gui either as a package or as a project reference -->
+        <ItemGroup>
+            <!-- PackageReference check -->
+            <_TerminalGuiPackage Include="@(PackageReference)" Condition="'%(Identity)' == 'Terminal.Gui'"/>
+            <!-- ProjectReference check (filename without path) -->
+            <_TerminalGuiProjectReference Include="@(ProjectReference)" Condition="'%(Filename)' == 'Terminal.Gui'"/>
+        </ItemGroup>
+
+        <!-- Only add AdditionalFiles when Terminal.Gui is referenced (package or project) -->
+        <ItemGroup Condition="'@(_TerminalGuiPackage)' != '' or '@(_TerminalGuiProjectReference)' != ''">
+            <AdditionalFiles Include="$(XamlAdditionalFilesGlob)" Exclude="$(XamlAdditionalFilesExclude)"/>
+        </ItemGroup>
+
+        <Message Text="XAML files added as AdditionalFiles: @(AdditionalFiles)" Importance="high"/>
+    </Target>
 </Project>

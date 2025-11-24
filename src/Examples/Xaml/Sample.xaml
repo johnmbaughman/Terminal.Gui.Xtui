@@ -1,4 +1,0 @@
-<View>
-  <Label Text="Hello from Xaml Example!" />
-  <Button Text="Click me" />
-</View>

@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Terminal.Gui.Xaml": {
+      "commandName": "DebugRoslynComponent",
+        "targetProject": "../Examples/Xaml/Xaml.csproj"
+    }
+  }
+}

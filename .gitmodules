@@ -1,3 +1,4 @@
 [submodule "submodules/Terminal.Gui"]
 	path = src/Terminal.Gui
 	url = https://github.com/gui-cs/Terminal.Gui.git
+	branch = v2_develop

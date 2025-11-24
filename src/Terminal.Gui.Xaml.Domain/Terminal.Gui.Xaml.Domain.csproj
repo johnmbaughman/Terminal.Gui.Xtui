@@ -12,6 +12,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Terminal.Gui.Xaml\Terminal.Gui.Xaml.csproj"
                           OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
     </ItemGroup>
     
     <ItemGroup>

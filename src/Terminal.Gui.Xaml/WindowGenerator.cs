@@ -3,26 +3,26 @@ using System.Text;
 
 namespace Terminal.Gui.Xaml;
 
-internal class ViewGenerator
+internal class WindowGenerator
 {
     public string GenerateClass(ElementNode root, string @namespace, string className)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("using Terminal.Gui;");
+        sb.AppendLine("using Terminal.Gui.Views;");
         sb.AppendLine($"namespace {@namespace}");
         sb.AppendLine("{");
-        sb.AppendLine($"    public static class {className}");
+        sb.AppendLine($"    public partial class {className}");
         sb.AppendLine("    {");
-        sb.AppendLine("        public static View Build()");
+        sb.AppendLine("        public static Window Build()");
         sb.AppendLine("        {");
-        sb.AppendLine("            var root = new View();");
+        sb.AppendLine("            var root = new Window();");
 
         int id = 0;
 
         if (root != null)
         {
             // if top-level is a View, emit its children into 'root'
-            if (root.Name.Equals("View", StringComparison.OrdinalIgnoreCase))
+            if (root.Name.Equals("Window", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (var child in root.Children)
                     GenerateNode(child, "root", sb, ref id, 12);
@@ -50,20 +50,22 @@ internal class ViewGenerator
         {
             var text = node.Attributes.ContainsKey("Text") ? node.Attributes["Text"] : node.InnerText ?? "";
             var varName = $"label{id++}";
-            sb.AppendLine($"{ind}var {varName} = new Label(\"{Escape(text)}\");");
+            sb.AppendLine($"{ind}var {varName} = new Label();");
+            sb.AppendLine($"{ind}{varName}.Text = \"{Escape(text)}\";");
             sb.AppendLine($"{ind}{parentVar}.Add({varName});");
         }
         else if (node.Name.Equals("Button", StringComparison.OrdinalIgnoreCase))
         {
             var text = node.Attributes.ContainsKey("Text") ? node.Attributes["Text"] : node.InnerText ?? "";
             var varName = $"button{id++}";
-            sb.AppendLine($"{ind}var {varName} = new Button(\"{Escape(text)}\");");
+            sb.AppendLine($"{ind}var {varName} = new Button();");
+            sb.AppendLine($"{ind}{varName}.Text = \"{Escape(text)}\";");
             sb.AppendLine($"{ind}{parentVar}.Add({varName});");
         }
         else if (node.Name.Equals("View", StringComparison.OrdinalIgnoreCase))
         {
             var varName = $"view{id++}";
-            sb.AppendLine($"{ind}var {varName} = new View();");
+            sb.AppendLine($"{ind}var {varName} = new Window();");
             sb.AppendLine($"{ind}{parentVar}.Add({varName});");
             foreach (var child in node.Children)
                 GenerateNode(child, varName, sb, ref id, indent + 4);
@@ -72,7 +74,7 @@ internal class ViewGenerator
         {
             // unknown element -> treat as container View
             var varName = $"view{id++}";
-            sb.AppendLine($"{ind}var {varName} = new View();");
+            sb.AppendLine($"{ind}var {varName} = new Window();");
             sb.AppendLine($"{ind}{parentVar}.Add({varName});");
             foreach (var child in node.Children)
                 GenerateNode(child, varName, sb, ref id, indent + 4);

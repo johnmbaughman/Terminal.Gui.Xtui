@@ -8,25 +8,14 @@ namespace Xaml;
 
 class Program
 {
-	static void Main()
-	{
-		Application.Init();
-		var top = Application.Top;
-
-		var win = new Window()
-		{
-			Title = "XAML Example",
-			X = 0,
-			Y = 1,
-			Width = Dim.Fill(),
-			Height = Dim.Fill()
-		};
-
-		// Use generated view from Terminal.Gui.Xaml project (generated at build time)
-		// var view = Sample_Generated.Create();
-		// win.Add(view);
-		//
-		// top.Add(win);
-		// Application.Run();
-	}
+    static void Main()
+    {
+        var app = Application.Create();
+        app.Init();
+        var top = new Toplevel();
+        top.Add(MyWindow.Build());
+        app.Run(top);
+        top.Dispose();
+        app.Shutdown();
+    }
 }

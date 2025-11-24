@@ -1,4 +1,0 @@
-<View>
-  <Label Text="Hello from Xaml MVVM Example!" />
-  <Button Text="Click me (mvvm)" />
-</View>
