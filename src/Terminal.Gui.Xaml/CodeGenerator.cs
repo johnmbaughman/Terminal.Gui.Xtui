@@ -14,9 +14,9 @@ public class CodeGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // find additional files that end with .xaml
+        // find additional files that end with .xtui (Terminal.Gui UI)
         var xamlFiles = context.AdditionalTextsProvider
-            .Where(at => at.Path.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
+            .Where(at => at.Path.EndsWith(".xtui", StringComparison.OrdinalIgnoreCase))
             .Select((additionalText, cancellationToken) => 
             {
                 var text = additionalText.GetText(cancellationToken);
@@ -80,12 +80,12 @@ public class CodeGenerator : IIncrementalGenerator
             catch (InvalidOperationException ex)
             {
                 // InvalidOperationException typically indicates a parsing or validation error
-                var fileName = Path.GetFileNameWithoutExtension(file.Path) ?? "XamlError";
+                var fileName = Path.GetFileNameWithoutExtension(file.Path) ?? "XtuiError";
                 var diagnostic = Diagnostic.Create(
                     new DiagnosticDescriptor(
-                        id: "XAML001",
-                        title: "XAML Parsing Error",
-                        messageFormat: "Error parsing XAML file '{0}': {1}",
+                        id: "XTUI001",
+                        title: "XTUI Parsing Error",
+                        messageFormat: "Error parsing XTUI file '{0}': {1}",
                         category: "Terminal.Gui.Xaml",
                         defaultSeverity: DiagnosticSeverity.Error,
                         isEnabledByDefault: true),
@@ -98,24 +98,24 @@ public class CodeGenerator : IIncrementalGenerator
                 // Also generate a comment file so the error appears in generated files list
                 var hint = fileName + "_Error";
                 var errorComment = new StringBuilder();
-                errorComment.AppendLine("// XAML Parsing Error");
+                errorComment.AppendLine("// XTUI Parsing Error");
                 errorComment.AppendLine($"// File: {file.Path}");
                 errorComment.AppendLine($"// Error: {EscapeForComment(ex.Message)}");
                 errorComment.AppendLine("//");
                 errorComment.AppendLine("// This file was not generated due to the error above.");
-                errorComment.AppendLine("// Please fix the XAML syntax and rebuild.");
+                errorComment.AppendLine("// Please fix the XTUI syntax and rebuild.");
                 
                 spc.AddSource(hint + ".g.cs", SourceText.From(errorComment.ToString(), Encoding.UTF8));
             }
             catch (Exception ex)
             {
                 // Unexpected errors
-                var fileName = Path.GetFileNameWithoutExtension(file.Path) ?? "XamlError";
+                var fileName = Path.GetFileNameWithoutExtension(file.Path) ?? "XtuiError";
                 var diagnostic = Diagnostic.Create(
                     new DiagnosticDescriptor(
-                        id: "XAML002",
-                        title: "XAML Generation Error",
-                        messageFormat: "Unexpected error generating code from XAML file '{0}': {1}",
+                        id: "XTUI002",
+                        title: "XTUI Generation Error",
+                        messageFormat: "Unexpected error generating code from XTUI file '{0}': {1}",
                         category: "Terminal.Gui.Xaml",
                         defaultSeverity: DiagnosticSeverity.Error,
                         isEnabledByDefault: true),
@@ -128,7 +128,7 @@ public class CodeGenerator : IIncrementalGenerator
                 // Generate detailed error comment file
                 var hint = fileName + "_Error";
                 var errorComment = new StringBuilder();
-                errorComment.AppendLine("// XAML Generation Error");
+                errorComment.AppendLine("// XTUI Generation Error");
                 errorComment.AppendLine($"// File: {file.Path}");
                 errorComment.AppendLine($"// Error: {EscapeForComment(ex.Message)}");
                 if (ex.StackTrace != null)

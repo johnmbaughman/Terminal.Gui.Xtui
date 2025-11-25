@@ -1,24 +1,24 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <!-- Opt-out property: set to 'false' in consumer to disable automatic addition -->
     <PropertyGroup>
-        <EnableXamlAdditionalFiles Condition="'$(EnableXamlAdditionalFiles)'==''">true</EnableXamlAdditionalFiles>
+        <EnableXtuiAdditionalFiles Condition="'$(EnableXtuiAdditionalFiles)'==''">true</EnableXtuiAdditionalFiles>
     </PropertyGroup>
 
     <!-- Configure generated file output for IDE visibility -->
-    <PropertyGroup Condition="'$(EnableXamlAdditionalFiles)'!='false'">
+    <PropertyGroup Condition="'$(EnableXtuiAdditionalFiles)'!='false'">
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
 
     <!-- Configurable glob/exclude; default will only match files inside the consumer project directory -->
     <PropertyGroup>
-        <XamlAdditionalFilesGlob Condition="'$(XamlAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xaml</XamlAdditionalFilesGlob>
-        <XamlAdditionalFilesExclude Condition="'$(XamlAdditionalFilesExclude)'==''"/>
+        <XtuiAdditionalFilesGlob Condition="'$(XtuiAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xtui</XtuiAdditionalFilesGlob>
+        <XtuiAdditionalFilesExclude Condition="'$(XtuiAdditionalFilesExclude)'==''"/>
     </PropertyGroup>
 
-    <Target Name="AddXamlFilesAsAdditionalFiles"
+    <Target Name="AddXtuiFilesAsAdditionalFiles"
             BeforeTargets="ResolveReferences;CoreCompile"
-            Condition="'$(EnableXamlAdditionalFiles)'!='false'">
+            Condition="'$(EnableXtuiAdditionalFiles)'!='false'">
 
         <!-- Detect whether the consuming project references Terminal.Gui either as a package or as a project reference -->
         <ItemGroup>
@@ -30,9 +30,9 @@
 
         <!-- Only add AdditionalFiles when Terminal.Gui is referenced (package or project) -->
         <ItemGroup Condition="'@(_TerminalGuiPackage)' != '' or '@(_TerminalGuiProjectReference)' != ''">
-            <AdditionalFiles Include="$(XamlAdditionalFilesGlob)" Exclude="$(XamlAdditionalFilesExclude)"/>
+            <AdditionalFiles Include="$(XtuiAdditionalFilesGlob)" Exclude="$(XtuiAdditionalFilesExclude)"/>
         </ItemGroup>
 
-        <Message Text="XAML files added as AdditionalFiles: @(AdditionalFiles)" Importance="high"/>
+        <Message Text="XTUI files added as AdditionalFiles: @(AdditionalFiles)" Importance="high"/>
     </Target>
 </Project>
