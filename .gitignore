@@ -93,3 +93,9 @@ Thumbs.db
 # Ignore obj/Generated (codegen artifacts) only if you don't want to commit generated files
 # Leave commented if you prefer to commit generated .g.cs files sometimes
 # src/**/obj/Generated/
+
+# Ignore temporary package folders
+**/tmp-*/
+
+# Ignore analyzers build output
+**/Terminal.Gui.Xaml/analyzers/dotnet/cs/

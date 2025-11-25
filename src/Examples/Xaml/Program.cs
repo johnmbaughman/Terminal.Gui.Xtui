@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Terminal.Gui.App;
-using Terminal.Gui.ViewBase;
+﻿using Terminal.Gui.App;
 using Terminal.Gui.Views;
 
 namespace Xaml;

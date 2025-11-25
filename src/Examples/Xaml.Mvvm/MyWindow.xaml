@@ -1,2 +1,5 @@
 <Window>
+    <Label Text="Hello" X="10" Y="5" Width="20" Height="1" />
+    <Button Text="Click Me" X="{Center}" Y="50%" Width="80%" Height="3" />
+    <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd 5}" Width="{Auto}" Height="{Fill}" />    
 </Window>

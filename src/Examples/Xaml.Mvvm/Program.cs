@@ -1,10 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Terminal.Gui.App;
-using Terminal.Gui.ViewBase;
 using Terminal.Gui.Views;
 
 namespace Xaml.Mvvm
@@ -30,11 +26,10 @@ namespace Xaml.Mvvm
 			var app = Application.Create();
 			app.Init();
 			var top = new Toplevel();
-			top.Add(new MyWindow());
+			top.Add(new MyWindow(vm));
 			app.Run(top);
 			top.Dispose();
 			app.Shutdown();
-			app.Run();
 		}
 	}
 }

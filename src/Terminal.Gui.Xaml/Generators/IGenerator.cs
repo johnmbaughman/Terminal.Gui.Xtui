@@ -1,8 +1,23 @@
-﻿namespace Terminal.Gui.Xaml.Generators;
+﻿using System;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-internal interface IGenerator
+namespace Terminal.Gui.Xaml.Generators;
+
+internal abstract class Generator
 {
-    string Template { get; }
-    
-    string Generate(ElementNode node, IGeneratorFactory generators);
+    /// <summary>
+    /// Generates statements to create and configure the control.
+    /// Returns a list of statements that declare and initialize the control.
+    /// </summary>
+    public virtual StatementSyntax[] GenerateStatements(ElementNode node, string variableName,
+        IGeneratorFactory generators)
+    {
+        return [];
+    }
+
+    public virtual string GenerateClass(ElementNode node, string namespaceName, string className,
+        IGeneratorFactory generators)
+    {
+        return string.Empty;
+    }
 }
