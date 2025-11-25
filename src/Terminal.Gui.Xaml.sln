@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xaml.Benchmark
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xaml.Tests", "Terminal.Gui.Xaml.Tests\Terminal.Gui.Xaml.Tests.csproj", "{254C5A53-CB0A-4DF1-A97A-9EEACAF6F7E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xaml.Domain", "Terminal.Gui.Xaml.Domain\Terminal.Gui.Xaml.Domain.csproj", "{51A81366-44C3-4058-A405-A2975EE8FBDC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,10 +52,6 @@ Global
 		{254C5A53-CB0A-4DF1-A97A-9EEACAF6F7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{254C5A53-CB0A-4DF1-A97A-9EEACAF6F7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{254C5A53-CB0A-4DF1-A97A-9EEACAF6F7E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51A81366-44C3-4058-A405-A2975EE8FBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51A81366-44C3-4058-A405-A2975EE8FBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51A81366-44C3-4058-A405-A2975EE8FBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51A81366-44C3-4058-A405-A2975EE8FBDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8A3735C5-15E7-4E0B-B7C9-1D3563EC19DF} = {8FD2D6DB-570F-49C0-AAEC-58F6522FF836}
