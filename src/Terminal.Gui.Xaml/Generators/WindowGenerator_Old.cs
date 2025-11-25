@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace Terminal.Gui.Xaml;
+namespace Terminal.Gui.Xaml.Generators;
 
-internal class WindowGenerator
+internal class WindowGenerator_Old
 {
     public string GenerateClass(ElementNode root, string @namespace, string className)
     {
@@ -11,12 +11,11 @@ internal class WindowGenerator
         sb.AppendLine("using Terminal.Gui.Views;");
         sb.AppendLine($"namespace {@namespace}");
         sb.AppendLine("{");
-        sb.AppendLine($"    public partial class {className}");
+        sb.AppendLine($"    public partial class {className} : Terminal.Gui.Views.Window");
         sb.AppendLine("    {");
-        sb.AppendLine("        public static Window Build()");
+        sb.AppendLine($"        public {className}()");
         sb.AppendLine("        {");
-        sb.AppendLine("            var root = new Window();");
-
+        
         int id = 0;
 
         if (root != null)
@@ -25,16 +24,15 @@ internal class WindowGenerator
             if (root.Name.Equals("Window", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (var child in root.Children)
-                    GenerateNode(child, "root", sb, ref id, 12);
+                    GenerateNode(child, "this", sb, ref id, 12);
             }
             else
             {
                 // single top-level element -> add it to root
-                GenerateNode(root, "root", sb, ref id, 12);
+                GenerateNode(root, "this", sb, ref id, 12);
             }
         }
 
-        sb.AppendLine("            return root;");
         sb.AppendLine("        }");
         sb.AppendLine("    }");
         sb.AppendLine("}");

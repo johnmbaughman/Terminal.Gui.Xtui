@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using Terminal.Gui.Xaml.Generators;
 
 namespace Terminal.Gui.Xaml;
 
@@ -53,8 +54,10 @@ public class CodeGenerator : IIncrementalGenerator
                 var root = XamlLoader.LoadFromString(file.Content);
                 var fileName = Path.GetFileNameWithoutExtension(file.Path) ?? "XamlGenerated";
                 var className = fileName;
+                //var generator = new WindowGenerator_Old();
                 var generator = new WindowGenerator();
-                var code = generator.GenerateClass(root, "Xaml", className);
+                //var code = generator.GenerateClass(root, "Xaml", className);
+                var code = generator.Generate(root, null);
 
                 spc.AddSource(className + ".g.cs", SourceText.From(code, Encoding.UTF8));
             }

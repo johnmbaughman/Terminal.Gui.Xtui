@@ -13,7 +13,7 @@ class Program
         var app = Application.Create();
         app.Init();
         var top = new Toplevel();
-        top.Add(MyWindow.Build());
+        top.Add(new MyWindow());
         app.Run(top);
         top.Dispose();
         app.Shutdown();

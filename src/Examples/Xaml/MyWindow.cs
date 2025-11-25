@@ -1,6 +1,6 @@
 ﻿namespace Xaml;
 
-public partial class MyWindow : Terminal.Gui.Views.Window
+public partial class MyWindow
 {
     
 }
