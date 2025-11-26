@@ -8,12 +8,12 @@ Terminal.Gui.Xaml brings declarative UI design to Terminal.Gui through a compile
 
 ### Key Features
 
-- **Compile-Time Code Generation**: XAML files are transformed into C# code during compilation using Roslyn incremental source generators
-- **Zero Runtime Overhead**: No XAML parsing at runtime—generated code directly instantiates Terminal.Gui controls
+- **Compile-Time Code Generation**: `.xtui` files are transformed into C# code during compilation using Roslyn incremental source generators
+- **Zero Runtime Overhead**: No parsing at runtime—generated code directly instantiates Terminal.Gui controls
 - **Type-Safe**: Leverages C#'s type system with compile-time validation
 - **InitializeComponent Pattern**: Follows the familiar WPF/WinForms pattern with partial classes
 - **Rich Layout Support**: Full support for Terminal.Gui's `Pos` and `Dim` positioning system including operators
-- **Automatic Discovery**: XAML files are automatically detected and processed when Terminal.Gui is referenced
+- **Automatic Discovery**: `.xtui` files are automatically detected and processed when Terminal.Gui is referenced
 - **IDE Integration**: Generated files visible in your IDE under `obj/Generated` folder
 
 ## Getting Started
@@ -71,14 +71,14 @@ Terminal.Gui.Xaml/
 │   │   ├── Mappers/                     # Type mappers
 │   │   │   └── EnumMapper.cs            # Enum value mapping
 │   │   └── buildTransitive/             # MSBuild integration
-│   │       └── Terminal.Gui.Xaml.targets # Automatic XAML file discovery
+│   │       └── Terminal.Gui.Xaml.targets # Automatic .xtui file discovery
 │   ├── Examples/
 │   │   ├── Xaml/                        # Basic example
-│   │   │   ├── MyWindow.xaml            # XAML UI definition
+│   │   │   ├── MyWindow.xtui            # XTUI UI definition
 │   │   │   ├── MyWindow.cs              # Partial class with constructor
 │   │   │   └── Program.cs               # Application entry point
 │   │   └── Xaml.Mvvm/                   # MVVM pattern example
-│   │       ├── MyWindow.xaml
+│   │       ├── MyWindow.xtui
 │   │       ├── MyWindow.cs
 │   │       └── Program.cs               # Includes MainViewModel
 │   └── Terminal.Gui.Xaml.Tests/         # Unit tests (future)
@@ -94,7 +94,7 @@ Terminal.Gui.Xaml/
 
 The best reference is the [Xaml example project](src/Examples/Xaml). Here's how it works:
 
-**1. Create a XAML file (`MyWindow.xaml`):**
+**1. Create a `.xtui` file (`MyWindow.xtui`):**
 
 ```xml
 <Window>
@@ -109,7 +109,7 @@ The best reference is the [Xaml example project](src/Examples/Xaml). Here's how 
 </Window>
 ```
 
-**2. Create a partial class matching the XAML filename (`MyWindow.cs`):**
+**2. Create a partial class matching the `.xtui` filename (`MyWindow.cs`):**
 
 ```csharp
 namespace Xaml;
@@ -142,7 +142,7 @@ public partial class MyWindow
                       ReferenceOutputAssembly="false" />
   </ItemGroup>
 
-  <!-- Import the targets that auto-discover XAML files -->
+  <!-- Import the targets that auto-discover .xtui files -->
   <Import Project="..\..\Terminal.Gui.Xaml\buildTransitive\Terminal.Gui.Xaml.targets" />
 </Project>
 ```
@@ -281,7 +281,7 @@ The generator recognizes these property types:
 
 ### Comments
 
-XAML comments are automatically stripped during parsing:
+XTUI comments are automatically stripped during parsing:
 
 ```xml
 <Window>
@@ -315,18 +315,18 @@ Additional controls can be added by implementing new generators in the `Generato
 
 ### Source Generator Pipeline
 
-1. **XAML Discovery** (`Terminal.Gui.Xaml.targets`):
-   - MSBuild target automatically adds `*.xaml` files as `AdditionalFiles`
+1. **XTUI Discovery** (`Terminal.Gui.Xaml.targets`):
+   - MSBuild target automatically adds `*.xtui` files as `AdditionalFiles`
    - Only activates when Terminal.Gui is referenced
 
 2. **Incremental Source Generator** (`CodeGenerator.cs`):
    - Implements `IIncrementalGenerator` for efficient compilation
-   - Monitors `AdditionalFiles` for `.xaml` files
+   - Monitors `AdditionalFiles` for `.xtui` files
    - Verifies Terminal.Gui references in compilation
-   - Generates one `.g.cs` file per `.xaml` file
+   - Generates one `.g.cs` file per `.xtui` file
 
-3. **XAML Parsing** (`XamlLoader.cs`):
-   - Uses `System.Xml.Linq` to parse XAML
+3. **XTUI Parsing** (`XamlLoader.cs`):
+   - Uses `System.Xml.Linq` to parse XTUI (XML-based format)
    - Converts XML to `ElementNode` tree structure
    - Automatically filters out XML comments
 
@@ -343,7 +343,7 @@ Additional controls can be added by implementing new generators in the `Generato
 
 ### Generated Code Pattern
 
-For a XAML file named `MyWindow.xaml`, the generator:
+For an XTUI file named `MyWindow.xtui`, the generator:
 
 1. Searches for a partial class named `MyWindow` in the compilation
 2. Extracts the namespace from the partial class declaration
@@ -356,7 +356,7 @@ For a XAML file named `MyWindow.xaml`, the generator:
 ### Type System
 
 The generator uses a property type dictionary in `ObjectParsingHelpers.cs` to:
-- Map XAML attributes to C# types
+- Map XTUI attributes to C# types
 - Validate property names at compile time
 - Generate type-appropriate expressions (string literals, bool values, Pos/Dim calls)
 - Provide helpful error messages for unknown properties
@@ -427,22 +427,22 @@ internal sealed class TextFieldGenerator : Generator
 
 The generator provides detailed error diagnostics:
 
-- **XAML001**: XAML parsing errors (invalid XML, unknown elements)
-- **XAML002**: Code generation errors (unexpected exceptions)
+- **XTUI001**: XTUI parsing errors (invalid XML, unknown elements)
+- **XTUI002**: Code generation errors (unexpected exceptions)
 
 Errors appear in Visual Studio Error List with:
 - Error message describing the issue
-- Path to the problematic XAML file
+- Path to the problematic XTUI file
 - Suggested fixes when possible
 
 ## Testing
 
 Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strategy:
 
-- **Parser tests**: Verify XAML parsing and ElementNode tree construction
+- **Parser tests**: Verify XTUI parsing and ElementNode tree construction
 - **Generator tests**: Verify generated C# code syntax trees
 - **Integration tests**: Compile and run generated code
-- **Error case tests**: Verify diagnostic messages for invalid XAML
+- **Error case tests**: Verify diagnostic messages for invalid XTUI
 
 ## Roadmap
 
@@ -461,10 +461,10 @@ Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strateg
 
 ### Long Term
 - [ ] NuGet package distribution
-- [ ] Visual Studio XAML designer support
+- [ ] Visual Studio XTUI designer support
 - [ ] Live preview tooling
 - [ ] Code-behind auto-generation
-- [ ] XAML IntelliSense improvements
+- [ ] XTUI IntelliSense improvements
 
 ## Contributing
 
