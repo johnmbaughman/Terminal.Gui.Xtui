@@ -1,10 +1,10 @@
-# Terminal.Gui.Xaml
+# Terminal.Gui.Xtui
 
-A Roslyn source generator that enables XAML-based UI design for [Terminal.Gui v2](https://github.com/gui-cs/Terminal.Gui) applications. Write your terminal UIs declaratively using XAML syntax, and let the generator produce clean, efficient C# code at compile time.
+A Roslyn source generator that enables XML-based UI design, similar to XAML, for [Terminal.Gui v2](https://github.com/gui-cs/Terminal.Gui) applications. Write your terminal UIs declaratively using XTUI (XAML Terminal User Interface) syntax, and let the generator produce clean, efficient C# code at compile time.
 
 ## Overview
 
-Terminal.Gui.Xaml brings declarative UI design to Terminal.Gui through a compile-time source generator. Inspired by Microsoft's XAML implementation, this project allows you to define terminal-based user interfaces using familiar XAML syntax while maintaining Terminal.Gui's performance characteristics.
+Terminal.Gui.Xtui brings declarative UI design to Terminal.Gui through a compile-time source generator. Inspired by Microsoft's XAML implementation, this project allows you to define terminal-based user interfaces using familiar XML syntax while maintaining Terminal.Gui's performance characteristics.
 
 ### Key Features
 
@@ -29,8 +29,8 @@ Terminal.Gui.Xaml brings declarative UI design to Terminal.Gui through a compile
 1. **Clone the repository with submodules:**
 
 ```bash
-git clone --recurse-submodules https://github.com/johnmbaughman/Terminal.Gui.Xaml.git
-cd Terminal.Gui.Xaml
+git clone --recurse-submodules https://github.com/johnmbaughman/Terminal.Gui.Xtui.git
+cd Terminal.Gui.Xtui
 ```
 
 If you already cloned without `--recurse-submodules`:
@@ -42,25 +42,25 @@ git submodule update --init --recursive
 2. **Build the solution:**
 
 ```bash
-dotnet build src/Terminal.Gui.Xaml.sln
+dotnet build src/Terminal.Gui.Xtui.sln
 ```
 
 3. **Run the example:**
 
 ```bash
-dotnet run --project src/Examples/Xaml
+dotnet run --project src/Examples/Xtui
 ```
 
 ## Project Structure
 
 ```
-Terminal.Gui.Xaml/
+Terminal.Gui.Xtui/
 ├── src/
 │   ├── Terminal.Gui/                    # Git submodule (Terminal.Gui v2)
-│   ├── Terminal.Gui.Xaml/               # Source generator library
+│   ├── Terminal.Gui.Xtui/               # Source generator library
 │   │   ├── CodeGenerator.cs             # Roslyn incremental source generator
-│   │   ├── XamlLoader.cs                # XAML parser (using System.Xml.Linq)
-│   │   ├── ElementNode.cs               # Internal XAML tree representation
+│   │   ├── XtuiLoader.cs                # XTUI parser (using System.Xml.Linq)
+│   │   ├── ElementNode.cs               # Internal XTUI tree representation
 │   │   ├── Generators/                  # Control-specific code generators
 │   │   │   ├── WindowGenerator.cs       # Generates Window with InitializeComponent
 │   │   │   ├── LabelGenerator.cs        # Label generator
@@ -70,18 +70,19 @@ Terminal.Gui.Xaml/
 │   │   │   └── ObjectParsingHelpers.cs  # Pos/Dim expression parsing
 │   │   ├── Mappers/                     # Type mappers
 │   │   │   └── EnumMapper.cs            # Enum value mapping
+│   │   ├── Terminal.Gui.Xtui.xsd        # XML Schema for IntelliSense
 │   │   └── buildTransitive/             # MSBuild integration
-│   │       └── Terminal.Gui.Xaml.targets # Automatic .xtui file discovery
+│   │       └── Terminal.Gui.Xtui.targets # Automatic .xtui file discovery
 │   ├── Examples/
-│   │   ├── Xaml/                        # Basic example
+│   │   ├── Xtui/                        # Basic example
 │   │   │   ├── MyWindow.xtui            # XTUI UI definition
 │   │   │   ├── MyWindow.cs              # Partial class with constructor
 │   │   │   └── Program.cs               # Application entry point
-│   │   └── Xaml.Mvvm/                   # MVVM pattern example
+│   │   └── Xtui.Mvvm/                   # MVVM pattern example
 │   │       ├── MyWindow.xtui
 │   │       ├── MyWindow.cs
 │   │       └── Program.cs               # Includes MainViewModel
-│   └── Terminal.Gui.Xaml.Tests/         # Unit tests (future)
+│   └── Terminal.Gui.Xtui.Tests/         # Unit tests (future)
 ├── .gitignore
 ├── .gitmodules
 ├── LICENSE
@@ -92,7 +93,7 @@ Terminal.Gui.Xaml/
 
 ### Basic Example
 
-The best reference is the [Xaml example project](src/Examples/Xaml). Here's how it works:
+The best reference is the [Xtui example project](src/Examples/Xtui). Here's how it works:
 
 **1. Create a `.xtui` file (`MyWindow.xtui`):**
 
@@ -137,13 +138,13 @@ public partial class MyWindow
     <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
     
     <!-- Reference the generator (OutputItemType="Analyzer" is critical) -->
-    <ProjectReference Include="..\..\Terminal.Gui.Xaml\Terminal.Gui.Xaml.csproj"
+    <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj"
                       OutputItemType="Analyzer" 
                       ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <!-- Import the targets that auto-discover .xtui files -->
-  <Import Project="..\..\Terminal.Gui.Xaml\buildTransitive\Terminal.Gui.Xaml.targets" />
+  <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" />
 </Project>
 ```
 
@@ -153,7 +154,7 @@ public partial class MyWindow
 using Terminal.Gui.App;
 using Terminal.Gui.Views;
 
-namespace Xaml;
+namespace Xtui;
 
 class Program
 {
@@ -178,7 +179,7 @@ The generator produces code like this (visible in `obj/Generated/`):
 using Terminal.Gui.Views;
 using Terminal.Gui.ViewBase;
 
-namespace Xaml
+namespace Xtui
 {
     public partial class MyWindow : Window
     {
@@ -194,7 +195,7 @@ namespace Xaml
 
 ### MVVM Example
 
-See the [Xaml.Mvvm example project](src/Examples/Xaml.Mvvm) for MVVM pattern usage with CommunityToolkit.Mvvm:
+See the [Xtui.Mvvm example project](src/Examples/Xtui.Mvvm) for MVVM pattern usage with CommunityToolkit.Mvvm:
 
 ```csharp
 public partial class MainViewModel : ObservableObject
@@ -224,7 +225,7 @@ public partial class MyWindow
 }
 ```
 
-## XAML Syntax
+## XTUI Syntax
 
 ### Positioning (Pos)
 
@@ -315,7 +316,7 @@ Additional controls can be added by implementing new generators in the `Generato
 
 ### Source Generator Pipeline
 
-1. **XTUI Discovery** (`Terminal.Gui.Xaml.targets`):
+1. **XTUI Discovery** (`Terminal.Gui.Xtui.targets`):
    - MSBuild target automatically adds `*.xtui` files as `AdditionalFiles`
    - Only activates when Terminal.Gui is referenced
 
@@ -325,7 +326,7 @@ Additional controls can be added by implementing new generators in the `Generato
    - Verifies Terminal.Gui references in compilation
    - Generates one `.g.cs` file per `.xtui` file
 
-3. **XTUI Parsing** (`XamlLoader.cs`):
+3. **XTUI Parsing** (`XtuiLoader.cs`):
    - Uses `System.Xml.Linq` to parse XTUI (XML-based format)
    - Converts XML to `ElementNode` tree structure
    - Automatically filters out XML comments
@@ -367,14 +368,14 @@ The generator uses a property type dictionary in `ObjectParsingHelpers.cs` to:
 
 ```bash
 # Build entire solution
-dotnet build src/Terminal.Gui.Xaml.sln
+dotnet build src/Terminal.Gui.Xtui.sln
 
 # Build release configuration
-dotnet build src/Terminal.Gui.Xaml.sln -c Release
+dotnet build src/Terminal.Gui.Xtui.sln -c Release
 
 # Run example applications
-dotnet run --project src/Examples/Xaml
-dotnet run --project src/Examples/Xaml.Mvvm
+dotnet run --project src/Examples/Xtui
+dotnet run --project src/Examples/Xtui.Mvvm
 ```
 
 ### Submodule Management
@@ -397,7 +398,7 @@ git commit -m "Updated Terminal.Gui submodule"
 
 ### Generated Files Location
 
-Generated files are placed in `obj/Generated/Terminal.Gui.Xaml/Terminal.Gui.Xaml.CodeGenerator/` and are:
+Generated files are placed in `obj/Generated/Terminal.Gui.Xtui/Terminal.Gui.Xtui.CodeGenerator/` and are:
 - **Not committed** to source control (excluded by `.gitignore`)
 - **Automatically regenerated** on each build
 - **Visible in IDE** for debugging and verification
@@ -437,7 +438,7 @@ Errors appear in Visual Studio Error List with:
 
 ## Testing
 
-Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strategy:
+Unit tests are planned in the `Terminal.Gui.Xtui.Tests` project. Testing strategy:
 
 - **Parser tests**: Verify XTUI parsing and ElementNode tree construction
 - **Generator tests**: Verify generated C# code syntax trees
@@ -447,6 +448,7 @@ Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strateg
 ## Roadmap
 
 ### Short Term
+- [x] IntelliSense support via XSD schema
 - [ ] Support for more controls (TextField, TextView, ListView, etc.)
 - [ ] Event handler syntax (`Button.Accept="OnButtonClick"`)
 - [ ] Named elements with `x:Name` attribute
@@ -455,7 +457,7 @@ Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strateg
 ### Medium Term
 - [ ] Data binding syntax (`Text="{Binding PropertyName}"`)
 - [ ] Attached properties for advanced layouts
-- [ ] XAML resources and styles
+- [ ] XTUI resources and styles
 - [ ] Custom control support
 - [ ] Improved error messages with line numbers
 
@@ -464,7 +466,6 @@ Unit tests are planned in the `Terminal.Gui.Xaml.Tests` project. Testing strateg
 - [ ] Visual Studio XTUI designer support
 - [ ] Live preview tooling
 - [ ] Code-behind auto-generation
-- [ ] XTUI IntelliSense improvements
 
 ## Contributing
 
@@ -489,15 +490,15 @@ Contributions are welcome! To contribute:
 
 ```bash
 # Build the generator
-dotnet build src/Terminal.Gui.Xaml/Terminal.Gui.Xaml.csproj
+dotnet build src/Terminal.Gui.Xtui/Terminal.Gui.Xtui.csproj
 
 # Test with example projects
-dotnet clean src/Examples/Xaml
-dotnet build src/Examples/Xaml
-dotnet run --project src/Examples/Xaml
+dotnet clean src/Examples/Xtui
+dotnet build src/Examples/Xtui
+dotnet run --project src/Examples/Xtui
 ```
 
-Check the generated files in `src/Examples/Xaml/obj/Generated/` to verify your changes.
+Check the generated files in `src/Examples/Xtui/obj/Generated/` to verify your changes.
 
 ## License
 
@@ -510,6 +511,248 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **[Roslyn](https://github.com/dotnet/roslyn)** - The .NET compiler platform that enables source generation
 - **[CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/dotnet)** - MVVM helpers used in examples
 
+## IntelliSense Support
+
+XTUI files support IntelliSense/code completion in Visual Studio, Visual Studio Code, and JetBrains Rider through the included XML Schema Definition (XSD) file.
+
+### Visual Studio
+
+#### Automatic Setup (When Using NuGet Package)
+
+When you reference the `Terminal.Gui.Xtui` NuGet package, the schema is automatically included and your `.xtui` files should get IntelliSense support.
+
+#### Manual Setup (For Development)
+
+1. Ensure your `.xtui` files include the XML namespace declaration at the top:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.terminal.gui/xtui"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.terminal.gui/xtui ../../Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd">
+    <!-- Your UI elements here -->
+</Window>
+```
+
+2. The `xsi:schemaLocation` attribute should point to the relative path of the `Terminal.Gui.Xtui.xsd` file.
+
+3. Visual Studio will automatically provide IntelliSense for:
+   - Element names (Window, Label, Button, etc.)
+   - Attribute names (Text, X, Y, Width, Height, etc.)
+   - Documentation tooltips for elements and attributes
+
+#### Configuring XML Editor Association
+
+If Visual Studio doesn't automatically recognize `.xtui` files as XML:
+
+1. Right-click a `.xtui` file in Solution Explorer
+2. Select "Open With..."
+3. Choose "XML (Text) Editor"
+4. Click "Set as Default" (optional)
+5. Click OK
+
+### Visual Studio Code
+
+#### Prerequisites
+
+Install the **XML Language Support by Red Hat** extension:
+1. Open VS Code
+2. Press `Ctrl+Shift+X` (or `Cmd+Shift+X` on Mac) to open Extensions
+3. Search for "XML"
+4. Install **XML** by Red Hat (extension ID: `redhat.vscode-xml`)
+
+#### Workspace Setup
+
+For the best experience, add these files to your workspace root (this repo already includes them in `.vscode/`):
+
+**`.vscode/settings.json`:**
+```json
+{
+  "xml.fileAssociations": [
+    {
+      "pattern": "**/*.xtui",
+      "systemId": "Terminal.Gui.Xtui.xsd"
+    }
+  ],
+  "files.associations": {
+    "*.xtui": "xml"
+  }
+}
+```
+
+**`.vscode/extensions.json`:**
+```json
+{
+  "recommendations": [
+    "redhat.vscode-xml"
+  ]
+}
+```
+
+#### Schema Configuration
+
+**Option 1: Using schemaLocation (Recommended)**
+
+Ensure your `.xtui` files include the XML declaration with schema location:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.terminal.gui/xtui"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.terminal.gui/xtui ../../Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd">
+    <!-- Your UI elements here -->
+</Window>
+```
+
+The relative path in `xsi:schemaLocation` should point to where the `Terminal.Gui.Xtui.xsd` file is located.
+
+**Option 2: Using Workspace Settings**
+
+The workspace `.vscode/settings.json` can map `.xtui` files to the schema:
+
+```json
+{
+  "xml.fileAssociations": [
+    {
+      "pattern": "**/*.xtui",
+      "systemId": "path/to/Terminal.Gui.Xtui.xsd"
+    }
+  ]
+}
+```
+
+Replace `path/to/` with the actual path to the schema file (e.g., `Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd`).
+
+#### Verifying It Works
+
+1. Open a `.xtui` file in VS Code
+2. Check the bottom-right corner - it should show "XML" as the language mode
+3. Start typing `<` inside the Window element - you should see completion suggestions for `Label`, `Button`, etc.
+4. Inside an element, start typing an attribute name - you should see suggestions like `Text`, `X`, `Y`, etc.
+5. Hover over element or attribute names to see documentation tooltips
+
+#### Troubleshooting VS Code
+
+**No IntelliSense appearing:**
+- Verify the XML extension is installed and enabled
+- Check that the file is recognized as XML (bottom-right corner should say "XML")
+- Ensure the schema path in `xsi:schemaLocation` or settings is correct
+- Try reloading the window: `Ctrl+Shift+P` → "Developer: Reload Window"
+
+**Schema not found errors:**
+- Check the relative path to the XSD file
+- Verify the XSD file exists at that location
+- Try using an absolute path temporarily to verify it works
+
+**Extension not working:**
+- Check Output panel: View → Output → Select "XML Support" from dropdown
+- Look for any error messages about schema loading
+
+### JetBrains Rider
+
+#### Automatic Setup (When Using NuGet Package)
+
+Rider will automatically recognize the schema when you reference the `Terminal.Gui.Xtui` NuGet package.
+
+#### Manual Setup (For Development)
+
+1. Ensure your `.xtui` files include the XML declaration as shown above.
+
+2. If Rider doesn't automatically detect the schema:
+   - Go to **Settings** → **Languages & Frameworks** → **Schemas and DTDs** → **XML Schemas**
+   - Click **+** to add a new schema
+   - Browse to `Terminal.Gui.Xtui.xsd`
+   - Set the namespace to `http://schemas.terminal.gui/xtui`
+   - Click OK
+
+3. Associate `.xtui` extension with XML files:
+   - Go to **Settings** → **Editor** → **File Types**
+   - Find "XML files" in the list
+   - Add `*.xtui` to the file name patterns
+   - Click OK
+
+### IntelliSense Features
+
+Once configured, you'll get:
+
+#### 1. Element Completion
+Start typing `<` and you'll see a list of available elements:
+- `Window`
+- `Label`
+- `Button`
+- More controls as they're added
+
+#### 2. Attribute Completion
+Inside an element, start typing and you'll see available attributes:
+- `Text` - The text content (string)
+- `X`, `Y` - Position (number, percentage, or expression like `{Center}`)
+- `Width`, `Height` - Dimensions (number, percentage, or expression like `{Fill}`)
+- `Visible`, `Enabled`, `CanFocus` - Boolean properties
+- And many more...
+
+#### 3. Documentation
+Hover over any element or attribute to see documentation describing its purpose.
+
+#### 4. Validation
+The IDE will highlight errors if you:
+- Use invalid element names
+- Use invalid attribute names
+- Have malformed XML
+
+### Supported Attributes
+
+Common attributes available on most controls:
+
+#### String Properties
+- `Text` - Display text
+- `Title` - Title text (Window, Dialog)
+- `Id` - Identifier
+
+#### Position (Pos type)
+- `X` - Horizontal position
+  - Number: `X="10"`
+  - Percentage: `X="50%"`
+  - Expression: `X="{Center}"`, `X="{Center + 10}"`, `X="{AnchorEnd - 5}"`
+- `Y` - Vertical position (same formats as X)
+
+#### Dimensions (Dim type)
+- `Width` - Width
+  - Number: `Width="20"`
+  - Percentage: `Width="80%"`
+  - Expression: `Width="{Fill}"`, `Width="{Fill - 5}"`, `Width="{Auto}"`
+- `Height` - Height (same formats as Width)
+
+#### Boolean Properties
+- `Visible` - Visibility state
+- `Enabled` - Enabled state
+- `CanFocus` - Can receive focus
+- `HasFocus` - Currently has focus
+- And more...
+
+### IntelliSense Troubleshooting
+
+#### IntelliSense Not Working
+
+1. **Check XML Declaration**: Ensure your file starts with `<?xml version="1.0" encoding="utf-8"?>`
+2. **Check Namespace**: Verify the `xmlns` attribute is set to `http://schemas.terminal.gui/xtui`
+3. **Check Schema Location**: Ensure `xsi:schemaLocation` points to the correct relative path to `Terminal.Gui.Xtui.xsd`
+4. **Restart IDE**: Sometimes a restart helps the IDE pick up schema changes
+5. **Clear Caches**: 
+   - **Visual Studio**: Delete `.vs` folder in solution directory
+   - **Rider**: File → Invalidate Caches / Restart
+
+#### Schema Not Found Errors
+
+If you see errors about the schema not being found:
+
+1. Verify the relative path in `xsi:schemaLocation` is correct
+2. Check that `Terminal.Gui.Xtui.xsd` exists at that location
+3. For NuGet package users, ensure the package is properly restored
+
+### Adding New Elements
+
+As new Terminal.Gui controls are supported in XTUI, the `Terminal.Gui.Xtui.xsd` file is updated to include them. After updating the package, IntelliSense will automatically reflect the new elements and attributes.
+
 ## Related Resources
 
 - [Terminal.Gui Documentation](https://gui-cs.github.io/Terminal.GuiV2Docs/)
@@ -519,8 +762,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: Report bugs or request features on [GitHub Issues](https://github.com/johnmbaughman/Terminal.Gui.Xaml/issues)
-- **Discussions**: Ask questions or share ideas in [GitHub Discussions](https://github.com/johnmbaughman/Terminal.Gui.Xaml/discussions)
+- **Issues**: Report bugs or request features on [GitHub Issues](https://github.com/johnmbaughman/Terminal.Gui.Xtui/issues)
+- **Discussions**: Ask questions or share ideas in [GitHub Discussions](https://github.com/johnmbaughman/Terminal.Gui.Xtui/discussions)
 - **Examples**: Check the `src/Examples/` folder for working examples
 
 ---

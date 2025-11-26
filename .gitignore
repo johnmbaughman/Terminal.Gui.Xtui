@@ -101,4 +101,4 @@ Thumbs.db
 
 
 
-/src/Terminal.Gui.Xtui/analyzers/dotnet/cs/Terminal.Gui.Xtui.dll
+**/Terminal.Gui.Xtui/analyzers/dotnet/cs/

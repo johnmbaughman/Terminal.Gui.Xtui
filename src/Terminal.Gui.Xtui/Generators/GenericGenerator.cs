@@ -10,8 +10,8 @@ internal sealed class GenericGenerator : Generator
 {
     public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
-        // Create object with object initializer: var {variableName} = new {node.Name} { ... };
-        var objectCreation = CreateObjectWithInitializer(node.Name, node.Attributes);
+        // Create object with object initializer: var {variableName} = new {node.ElementTypeName} { ... };
+        var objectCreation = CreateObjectWithInitializer(node.ElementTypeName, node.Attributes);
         
         var statements = new List<StatementSyntax>
         {
@@ -32,8 +32,8 @@ internal sealed class GenericGenerator : Generator
         for (var i = 0; i < node.Children.Count; i++)
         {
             var child = node.Children[i];
-            var childVarName = $"{child.Name.ToLower()}{i}";
-            var childGenerator = generators.GetGenerator(child.Name);
+            var childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+            var childGenerator = generators.GetGenerator(child.ElementTypeName);
             var childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
                 
             statements.AddRange(childStatements);

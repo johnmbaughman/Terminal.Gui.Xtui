@@ -32,8 +32,8 @@ internal sealed class LabelGenerator : Generator
         for (var i = 0; i < node.Children.Count; i++)
         {
             var child = node.Children[i];
-            var childVarName = $"{child.Name.ToLower()}{i}";
-            var childGenerator = generators.GetGenerator(child.Name);
+            var childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+            var childGenerator = generators.GetGenerator(child.ElementTypeName);
             var childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
                 
             statements.AddRange(childStatements);

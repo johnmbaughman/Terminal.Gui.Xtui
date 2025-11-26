@@ -34,8 +34,8 @@ internal sealed class WindowGenerator : Generator
         for (var i = 0; i < node.Children.Count; i++)
         {
             var child = node.Children[i];
-            var childVarName = $"{child.Name.ToLower()}{i}";
-            var childGenerator = generators.GetGenerator(child.Name);
+            var childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+            var childGenerator = generators.GetGenerator(child.ElementTypeName);
             var childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
                 
             statements.AddRange(childStatements);
@@ -69,7 +69,7 @@ internal sealed class WindowGenerator : Generator
                 var child = node.Children[i];
                 
                 // Create child with object initializer: new Label { Text = "Hello" }
-                var childObjectCreation = CreateObjectWithInitializer(child.Name, child.Attributes);
+                var childObjectCreation = CreateObjectWithInitializer(child.ElementTypeName, child.Attributes);
                 
                 // this.Add(new Label { Text = "Hello" });
                 initializeComponentStatements.Add(

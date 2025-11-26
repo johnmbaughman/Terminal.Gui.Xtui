@@ -72,7 +72,7 @@ public class CodeGenerator : IIncrementalGenerator
                 var (namespaceName, className) = FindPartialClass(compilation, fileName);
                 
                 var generatorFactory = new GeneratorFactory();
-                var generator = generatorFactory.GetGenerator(root.Name);
+                var generator = generatorFactory.GetGenerator(root.ElementTypeName);
                 var code = generator.GenerateClass(root, namespaceName, className, generatorFactory);
 
                 spc.AddSource(className + ".g.cs", SourceText.From(code, Encoding.UTF8));

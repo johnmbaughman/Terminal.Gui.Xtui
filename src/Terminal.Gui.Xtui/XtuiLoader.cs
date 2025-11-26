@@ -10,12 +10,19 @@ public static class XtuiLoader
     /// XML comments are automatically ignored during parsing.
     /// </summary>
     /// <param name="xaml">The XTUI string to parse.</param>
-    /// <returns>An ElementNode representing the root element, or null if the XTUI is empty or invalid.</returns>
+    /// <returns>An ElementNode representing the root element.</returns>
+    /// <exception cref="System.ArgumentException">Thrown when the XTUI string is null or empty.</exception>
+    /// <exception cref="System.InvalidOperationException">Thrown when the XTUI document has no root element.</exception>
     public static ElementNode LoadFromString(string xaml)
     {
-        if (string.IsNullOrWhiteSpace(xaml)) return null;
+        if (string.IsNullOrWhiteSpace(xaml))
+            throw new System.ArgumentException("XTUI string cannot be null or empty.", nameof(xaml));
+        
         var doc = XDocument.Parse(xaml);
-        return doc.Root is null ? null : FromXElement(doc.Root);
+        if (doc.Root is null)
+            throw new System.InvalidOperationException("XTUI document has no root element.");
+        
+        return FromXElement(doc.Root);
     }
 
     /// <summary>
@@ -24,7 +31,7 @@ public static class XtuiLoader
     /// </summary>
     private static ElementNode FromXElement(XElement el)
     {
-        var node = new ElementNode { Name = el.Name.LocalName };
+        var node = new ElementNode { ElementTypeName = el.Name.LocalName };
 
         foreach (var attr in el.Attributes())
             node.Attributes[attr.Name.LocalName] = attr.Value;
