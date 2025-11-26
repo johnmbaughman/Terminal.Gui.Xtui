@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Terminal.Gui.Xtui": {
+      "commandName": "DebugRoslynComponent",
+        "targetProject": "../Examples/Xtui/Xtui.csproj"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.terminal.gui/xtui"
+           xmlns="http://schemas.terminal.gui/xtui"
+           elementFormDefault="qualified">
+
+  <!-- Common attribute group for all View-based elements -->
+  <xs:attributeGroup name="ViewAttributes">
+    <!-- String properties -->
+    <xs:attribute name="Text" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The text displayed by the view.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Title" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The title of the view.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Id" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The identifier for the view.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Boolean properties -->
+    <xs:attribute name="Visible" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the view is visible.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Enabled" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the view is enabled.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="CanFocus" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the view can receive keyboard focus.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="HasFocus" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the view currently has focus.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="IsInitialized" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the view has been initialized.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="PreserveTrailingSpaces" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether trailing spaces are preserved.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SuperViewRendersLineCanvas" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether the superview renders the line canvas.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ContentSizeTracksViewport" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether content size tracks the viewport.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="WantContinuousButtonPressed" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether continuous button pressed events are desired.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="WantMousePositionReports" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether mouse position reports are desired.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidatePosDim" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Gets or sets whether position and dimension are validated.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Position properties (Pos type) -->
+    <xs:attribute name="X" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The X (horizontal) position. Can be a number, percentage (e.g., "50%"), or expression (e.g., "{Center}", "{Center + 10}", "{AnchorEnd - 5}").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Y" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The Y (vertical) position. Can be a number, percentage (e.g., "50%"), or expression (e.g., "{Center}", "{Center + 10}", "{AnchorEnd - 5}").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Dimension properties (Dim type) -->
+    <xs:attribute name="Width" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The width. Can be a number, percentage (e.g., "80%"), or expression (e.g., "{Fill}", "{Fill - 10}", "{Auto}", "{Auto + 5}").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Height" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The height. Can be a number, percentage (e.g., "80%"), or expression (e.g., "{Fill}", "{Fill - 10}", "{Auto}", "{Auto + 5}").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <!-- Window element -->
+  <xs:element name="Window">
+    <xs:annotation>
+      <xs:documentation>A toplevel window that can contain other views.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Label"/>
+        <xs:element ref="Button"/>
+        <xs:element ref="Window"/>
+        <xs:any processContents="lax"/>
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Label element -->
+  <xs:element name="Label">
+    <xs:annotation>
+      <xs:documentation>A view that displays a single line or multiple lines of read-only text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Button element -->
+  <xs:element name="Button">
+    <xs:annotation>
+      <xs:documentation>A button that can be clicked.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax"/>
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
