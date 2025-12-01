@@ -3,13 +3,18 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.15.6" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj" />
     </ItemGroup>
 
 </Project>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Terminal.Gui.Xtui.Benchmarks.GeneratorBenchmarks-20251201-142736</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 11 (10.0.22631.6060/23H2/2023Update/SunValley3)
+Intel Core Ultra 7 155U, 1 CPU, 14 logical and 12 physical cores
+.NET SDK 9.0.308
+  [Host]   : .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method         </th><th>Mean </th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>&#39;Window Empty&#39;</td><td>43.03 &mu;s</td><td>1.040 &mu;s</td><td>2.951 &mu;s</td><td>1.00</td><td>0.00</td><td>3.4180</td><td>1.0376</td><td>0.3662</td><td>18.77 KB</td><td>1.00</td>
+</tr><tr><td>&#39;Window 1 Child&#39;</td><td>85.17 &mu;s</td><td>1.604 &mu;s</td><td>3.684 &mu;s</td><td>1.99</td><td>0.18</td><td>6.2256</td><td>1.8311</td><td>0.6104</td><td>34.63 KB</td><td>1.84</td>
+</tr><tr><td>&#39;Window 10 Children&#39;</td><td>427.26 &mu;s</td><td>8.518 &mu;s</td><td>13.261 &mu;s</td><td>10.31</td><td>0.89</td><td>33.6914</td><td>10.7422</td><td>4.3945</td><td>180.15 KB</td><td>9.60</td>
+</tr><tr><td>&#39;Window 50 Children&#39;</td><td>1,829.30 &mu;s</td><td>33.920 &mu;s</td><td>49.720 &mu;s</td><td>44.36</td><td>3.21</td><td>152.3438</td><td>46.8750</td><td>19.5313</td><td>821.24 KB</td><td>43.74</td>
+</tr><tr><td>&#39;Window 100 Children&#39;</td><td>3,784.33 &mu;s</td><td>74.238 &mu;s</td><td>82.516 &mu;s</td><td>94.59</td><td>3.72</td><td>300.7813</td><td>89.8438</td><td>39.0625</td><td>1618.5 KB</td><td>86.21</td>
+</tr></tbody></table>
+</body>
+</html>

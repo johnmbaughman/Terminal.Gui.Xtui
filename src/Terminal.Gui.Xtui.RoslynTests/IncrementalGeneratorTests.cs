@@ -1,0 +1,330 @@
+﻿using System.Collections.Immutable;
+using System.Reflection;
+using System.Text;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Text;
+
+namespace Terminal.Gui.Xtui.RoslynTests;
+
+public class IncrementalGeneratorTests
+{
+    private static CSharpCompilation CreateCompilation(string source, bool includeTerminalGui = false, params MetadataReference[] references)
+    {
+        var syntaxTree = CSharpSyntaxTree.ParseText(source);
+        
+        var defaultReferences = new List<MetadataReference>
+        {
+            MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(Console).Assembly.Location),
+            MetadataReference.CreateFromFile(Assembly.Load("System.Runtime").Location),
+        };
+
+        // Add Terminal.Gui reference if requested
+        if (includeTerminalGui)
+        {
+            var terminalGuiReference = GetTerminalGuiReference();
+            if (terminalGuiReference != null)
+            {
+                defaultReferences.Add(terminalGuiReference);
+            }
+        }
+
+        return CSharpCompilation.Create(
+            "TestCompilation",
+            new[] { syntaxTree },
+            defaultReferences.Concat(references),
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+    }
+
+    private static MetadataReference? GetTerminalGuiReference()
+    {
+        // Try to locate Terminal.Gui.dll from the solution
+        // Start from the test project directory and navigate up to find Terminal.Gui project
+        var testProjectDir = Directory.GetCurrentDirectory();
+        
+        // Navigate up to src directory
+        var srcDir = testProjectDir;
+        while (!string.IsNullOrEmpty(srcDir) && Path.GetFileName(srcDir) != "src")
+        {
+            srcDir = Path.GetDirectoryName(srcDir);
+        }
+
+        if (string.IsNullOrEmpty(srcDir))
+        {
+            return null;
+        }
+
+        // Look for Terminal.Gui assembly in the Terminal.Gui project's bin directory
+        // Try multiple potential paths (different configurations and frameworks)
+        var potentialPaths = new[]
+        {
+            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Debug", "net8.0", "Terminal.Gui.dll"),
+            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net8.0", "Terminal.Gui.dll"),
+            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Debug", "net9.0", "Terminal.Gui.dll"),
+            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net9.0", "Terminal.Gui.dll"),
+        };
+
+        foreach (var path in potentialPaths)
+        {
+            if (File.Exists(path))
+            {
+                return MetadataReference.CreateFromFile(path);
+            }
+        }
+
+        return null;
+    }
+
+    private static GeneratorDriver CreateDriver(CSharpCompilation compilation, params (string fileName, string content)[] additionalTexts)
+    {
+        var generator = new CodeGenerator().AsSourceGenerator();
+        
+        var driver = CSharpGeneratorDriver.Create(
+            generators: new[] { generator },
+            additionalTexts: additionalTexts.Select(t => 
+                (AdditionalText)new InMemoryAdditionalText(t.fileName, t.content)).ToImmutableArray(),
+            parseOptions: (CSharpParseOptions)compilation.SyntaxTrees.First().Options);
+        
+        return driver;
+    }
+
+    [Fact]
+    public void Generator_WithSimpleWindow_GeneratesInitializeComponent()
+    {
+        var xtuiSource = """
+            <Window Title="Main Window">
+                <Label Text="Hello World" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyWindow
+                {
+                    public MyWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation(userCode, includeTerminalGui: true);
+        var driver = CreateDriver(compilation, ("MyWindow.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        // Should have no errors
+        Assert.Empty(diagnostics.Where(d => d.Severity == DiagnosticSeverity.Error));
+        
+        // Should have generated one file
+        Assert.Single(runResult.GeneratedTrees);
+        
+        var generatedCode = runResult.GeneratedTrees.First().ToString();
+        
+        // Verify key elements in generated code
+        Assert.Contains("InitializeComponent()", generatedCode);
+        Assert.Contains("using Terminal.Gui.Views;", generatedCode);
+        Assert.Contains("using Terminal.Gui.ViewBase;", generatedCode);
+        Assert.Contains("public partial class MyWindow : Window", generatedCode);
+        Assert.Contains("this.Add(new Label", generatedCode);
+        Assert.Contains("Text = \"Hello World\"", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithoutTerminalGuiReference_DoesNotGenerate()
+    {
+        var xtuiSource = """
+            <Window Title="Main">
+                <Label Text="Test" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyWindow
+                {
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation(userCode); // No Terminal.Gui reference
+        var driver = CreateDriver(compilation, ("MyWindow.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        // Should not generate any files (no Terminal.Gui reference)
+        Assert.Empty(runResult.GeneratedTrees);
+    }
+
+    [Fact]
+    public void Generator_WithInvalidXtui_ReportsDiagnostic()
+    {
+        var xtuiSource = """
+            <Window Title="Main"
+                <Label Text="Unclosed tag"
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyWindow
+                {
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation(userCode, includeTerminalGui: true);
+        var driver = CreateDriver(compilation, ("MyWindow.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        // Should have a diagnostic error
+        var generatorDiagnostics = runResult.Diagnostics;
+        Assert.Contains(generatorDiagnostics, d => d.Id == "XTUI001" && d.Severity == DiagnosticSeverity.Error);
+    }
+
+    [Fact]
+    public void Generator_WithMultipleChildren_GeneratesMultipleAddCalls()
+    {
+        var xtuiSource = """
+            <Window Title="Multi">
+                <Label Text="First" />
+                <Button Text="Click Me" />
+                <Label Text="Second" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MultiWindow
+                {
+                    public MultiWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation(userCode, includeTerminalGui: true);
+        var driver = CreateDriver(compilation, ("MultiWindow.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        Assert.Single(runResult.GeneratedTrees);
+        
+        var generatedCode = runResult.GeneratedTrees.First().ToString();
+        
+        // Verify all three children are added
+        Assert.Contains("this.Add(new Label", generatedCode);
+        Assert.Contains("Text = \"First\"", generatedCode);
+        Assert.Contains("this.Add(new Button", generatedCode);
+        Assert.Contains("Text = \"Click Me\"", generatedCode);
+        Assert.Contains("Text = \"Second\"", generatedCode);
+        
+        // Count the number of Add calls (should be 3)
+        var addCount = System.Text.RegularExpressions.Regex.Matches(generatedCode, @"this\.Add\(").Count;
+        Assert.Equal(3, addCount);
+    }
+
+    [Fact]
+    public void Generator_WithNoPartialClass_UsesDefaultNamespace()
+    {
+        var xtuiSource = """
+            <Window Title="Standalone">
+            </Window>
+            """;
+
+        // No user code with partial class - just empty compilation
+        var compilation = CreateCompilation("// empty", includeTerminalGui: true);
+        var driver = CreateDriver(compilation, ("Standalone.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        Assert.Single(runResult.GeneratedTrees);
+        
+        var generatedCode = runResult.GeneratedTrees.First().ToString();
+        
+        // Should use default namespace "Generated"
+        Assert.Contains("namespace Generated", generatedCode);
+        Assert.Contains("public partial class Standalone : Window", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithCommentsInXtui_IgnoresComments()
+    {
+        var xtuiSource = """
+            <Window Title="Main">
+                <!-- This is a comment -->
+                <Label Text="Visible" />
+                <!-- <Label Text="Commented Out" /> -->
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class CommentTest
+                {
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation(userCode, includeTerminalGui: true);
+        var driver = CreateDriver(compilation, ("CommentTest.xtui", xtuiSource));
+        
+        driver = driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        
+        var runResult = driver.GetRunResult();
+        
+        Assert.Single(runResult.GeneratedTrees);
+        
+        var generatedCode = runResult.GeneratedTrees.First().ToString();
+        
+        // Should only have one Add call for the visible label
+        Assert.Contains("Text = \"Visible\"", generatedCode);
+        Assert.DoesNotContain("Text = \"Commented Out\"", generatedCode);
+        Assert.DoesNotContain("This is a comment", generatedCode);
+        
+        var addCount = System.Text.RegularExpressions.Regex.Matches(generatedCode, @"this\.Add\(").Count;
+        Assert.Equal(1, addCount);
+    }
+
+    /// <summary>
+    /// Helper class for providing additional text files to the generator during testing.
+    /// </summary>
+    private class InMemoryAdditionalText : AdditionalText
+    {
+        private readonly string _text;
+
+        public InMemoryAdditionalText(string path, string text)
+        {
+            Path = path;
+            _text = text;
+        }
+
+        public override string Path { get; }
+
+        public override SourceText GetText(CancellationToken cancellationToken = default)
+        {
+            return SourceText.From(_text, Encoding.UTF8);
+        }
+    }
+}
+

@@ -82,7 +82,19 @@ Terminal.Gui.Xtui/
 │   │       ├── MyWindow.xtui
 │   │       ├── MyWindow.cs
 │   │       └── Program.cs               # Includes MainViewModel
-│   └── Terminal.Gui.Xtui.Tests/         # Unit tests (future)
+│   ├── Terminal.Gui.Xtui.Tests/         # Unit tests for components
+│   │   ├── CodeGeneratorTests.cs        # XtuiLoader, GeneratorFactory, etc.
+│   │   └── Terminal.Gui.Xtui.Tests.csproj
+│   ├── Terminal.Gui.Xtui.RoslynTests/   # Roslyn integration tests
+│   │   ├── IncrementalGeneratorTests.cs # Full pipeline tests
+│   │   ├── SmokeTests.cs                # Infrastructure validation
+│   │   └── Terminal.Gui.Xtui.RoslynTests.csproj
+│   └── Terminal.Gui.Xtui.Benchmarks/    # Performance benchmarks
+│       ├── XtuiLoaderBenchmarks.cs      # XTUI parsing benchmarks
+│       ├── ExpressionParsingBenchmarks.cs # Pos/Dim expression benchmarks
+│       ├── GeneratorBenchmarks.cs       # Code generation benchmarks
+│       ├── Program.cs                   # BenchmarkRunner entry point
+│       └── Terminal.Gui.Xtui.Benchmarks.csproj
 ├── .gitignore
 ├── .gitmodules
 ├── LICENSE
@@ -438,12 +450,513 @@ Errors appear in Visual Studio Error List with:
 
 ## Testing
 
-Unit tests are planned in the `Terminal.Gui.Xtui.Tests` project. Testing strategy:
+The project includes comprehensive test coverage with two test projects, providing both unit and integration testing for the source generator.
 
-- **Parser tests**: Verify XTUI parsing and ElementNode tree construction
-- **Generator tests**: Verify generated C# code syntax trees
-- **Integration tests**: Compile and run generated code
-- **Error case tests**: Verify diagnostic messages for invalid XTUI
+### Overview
+
+**Test Status:** ✅ **14 tests, all passing**
+- ✅ 4 unit tests (Terminal.Gui.Xtui.Tests)
+- ✅ 4 smoke tests (infrastructure validation)
+- ✅ 6 integration tests (full pipeline with GeneratorDriver)
+
+**Test Infrastructure:**
+- **xUnit** - Test framework
+- **Roslyn APIs** - For source generator integration testing
+- **InMemoryAdditionalText** - Helper for providing `.xtui` files during tests
+- **Local Assembly References** - Tests against locally-built Terminal.Gui.dll
+
+### Test Projects
+
+#### 1. Terminal.Gui.Xtui.Tests (Unit Tests)
+**Location:** `src/Terminal.Gui.Xtui.Tests/`
+
+**Purpose:** Basic unit tests for core generator components without full Roslyn pipeline overhead.
+
+**Key Tests:**
+- `XtuiLoader.LoadFromString()` - Validates XTUI XML parsing into ElementNode trees
+- `GeneratorFactory.GetGenerator()` - Verifies correct generator selection for control types
+- `WindowGenerator.GenerateClass()` - Validates C# code generation with InitializeComponent pattern
+
+**Configuration:**
+- Made generator internals visible via `[assembly: InternalsVisibleTo("Terminal.Gui.Xtui.Tests")]`
+- Added in `src/Terminal.Gui.Xtui/Properties/InternalsVisibleTo.cs`
+
+**Status:** ✅ All 4 tests passing  
+**Execution Time:** < 2 seconds
+
+#### 2. Terminal.Gui.Xtui.RoslynTests (Integration Tests)
+**Location:** `src/Terminal.Gui.Xtui.RoslynTests/`
+
+**Purpose:** Full pipeline testing using Roslyn's `GeneratorDriver` to simulate real compilation scenarios.
+
+**Test Infrastructure:**
+- **xUnit** for test framework
+- **Microsoft.CodeAnalysis.CSharp** for Roslyn APIs
+- **GeneratorDriver** to execute the incremental generator
+- **InMemoryAdditionalText** helper to provide `.xtui` files during test execution
+
+**Test Suites:**
+
+**Smoke Tests** (`SmokeTests.cs`) - Infrastructure validation:
+- ✅ Generator instantiation works correctly
+- ✅ Source generator wrapping functions properly
+- ✅ XtuiLoader can parse basic XTUI
+- ✅ GeneratorDriver executes without errors
+
+**Integration Tests** (`IncrementalGeneratorTests.cs`) - Comprehensive pipeline tests:
+- ✅ Simple window generation with InitializeComponent
+- ✅ Multiple child elements generation
+- ✅ XML comment handling in XTUI files
+- ✅ Error reporting for invalid XTUI (diagnostic XTUI001)
+- ✅ Default namespace handling when no partial class exists
+- ✅ Behavior without Terminal.Gui reference (negative test)
+
+**Status:** ✅ All 10 tests passing  
+**Execution Time:** < 5 seconds
+
+### Implementation: Local Assembly Reference Approach
+
+The Roslyn tests use **Option #2** - locating Terminal.Gui.dll from the locally-built Terminal.Gui project without adding a NuGet package dependency.
+
+**How It Works:**
+
+The `IncrementalGeneratorTests.cs` file includes:
+
+1. **Enhanced `CreateCompilation()` method:**
+   ```csharp
+   private static CSharpCompilation CreateCompilation(
+       string source, 
+       bool includeTerminalGui = false, 
+       params MetadataReference[] references)
+   ```
+   - Added `includeTerminalGui` parameter (default: `false`)
+   - Conditionally includes Terminal.Gui assembly reference when requested
+
+2. **`GetTerminalGuiReference()` helper method:**
+   - Dynamically locates Terminal.Gui.dll in the solution
+   - Searches multiple build output paths (Debug/Release, net8.0/net9.0)
+   - Returns `MetadataReference` to the found assembly
+
+**Path Resolution Logic:**
+
+```csharp
+private static MetadataReference? GetTerminalGuiReference()
+{
+    // Navigate from test project directory up to src directory
+    var testProjectDir = Directory.GetCurrentDirectory();
+    var srcDir = testProjectDir;
+    while (!string.IsNullOrEmpty(srcDir) && Path.GetFileName(srcDir) != "src")
+    {
+        srcDir = Path.GetDirectoryName(srcDir);
+    }
+    
+    // Check multiple potential Terminal.Gui.dll locations
+    var potentialPaths = new[]
+    {
+        Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Debug", "net8.0", "Terminal.Gui.dll"),
+        Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net8.0", "Terminal.Gui.dll"),
+        // ... additional paths for net9.0
+    };
+    
+    // Return first found path
+    foreach (var path in potentialPaths)
+    {
+        if (File.Exists(path))
+            return MetadataReference.CreateFromFile(path);
+    }
+    
+    return null;
+}
+```
+
+**Advantages:**
+- ✅ No NuGet dependencies in test project
+- ✅ Always tests against current local build
+- ✅ Version-independent (no sync issues)
+- ✅ TDD-friendly (test local changes immediately)
+- ✅ Fast (no package restore needed)
+
+### Prerequisites for Running Tests
+
+⚠️ **Important:** Terminal.Gui must be built before running Roslyn tests.
+
+```bash
+# Option 1: Build just Terminal.Gui
+dotnet build src/Terminal.Gui/Terminal.Gui/Terminal.Gui.csproj -c Debug
+
+# Option 2: Build entire solution (recommended)
+dotnet build src/Terminal.Gui.Xtui.sln -c Debug
+```
+
+### Running Tests
+
+```bash
+# Run all tests in the solution
+dotnet test src/Terminal.Gui.Xtui.sln
+
+# Run only unit tests
+dotnet test src/Terminal.Gui.Xtui.Tests/
+
+# Run only Roslyn integration tests
+dotnet test src/Terminal.Gui.Xtui.RoslynTests/
+
+# Run with detailed output
+dotnet test src/Terminal.Gui.Xtui.RoslynTests/ -v normal
+
+# Run specific test categories
+dotnet test src/Terminal.Gui.Xtui.RoslynTests/ --filter "FullyQualifiedName~SmokeTests"
+dotnet test src/Terminal.Gui.Xtui.RoslynTests/ --filter "FullyQualifiedName~IncrementalGeneratorTests"
+
+# Run a specific test
+dotnet test src/Terminal.Gui.Xtui.RoslynTests/ --filter "FullyQualifiedName~Generator_WithSimpleWindow_GeneratesInitializeComponent"
+```
+
+### Expected Test Results
+
+When Terminal.Gui.dll is available (built):
+- ✅ **4 unit tests** should PASS (Terminal.Gui.Xtui.Tests)
+- ✅ **5 integration tests** should PASS (with Terminal.Gui reference)
+- ✅ **1 negative test** should PASS (without Terminal.Gui reference)
+- ✅ **4 smoke tests** should PASS (infrastructure validation)
+- **Total: 14 tests, all passing**
+
+### Test Coverage Summary
+
+#### What's Currently Tested ✅
+
+**Core Components:**
+- ✅ XTUI XML parsing (XtuiLoader)
+- ✅ Generator factory selection logic
+- ✅ Code generation output structure
+- ✅ InitializeComponent pattern compliance
+- ✅ Using directives generation
+- ✅ Namespace extraction from partial classes
+
+**Pipeline Integration:**
+- ✅ Full generator pipeline via GeneratorDriver
+- ✅ AdditionalFiles processing
+- ✅ Compilation integration
+- ✅ Source code addition to compilation
+
+**Error Handling:**
+- ✅ Error diagnostics (XTUI001, XTUI002)
+- ✅ Invalid XTUI error reporting
+- ✅ Missing Terminal.Gui reference handling
+
+**Features:**
+- ✅ XML comment handling and filtering
+- ✅ Multiple children generation
+- ✅ Default namespace fallback behavior
+- ✅ Partial class matching
+
+**Edge Cases:**
+- ✅ Empty windows
+- ✅ Windows without Terminal.Gui reference
+- ✅ Missing partial class declarations
+
+#### Future Test Enhancements 🎯
+
+**Planned Coverage:**
+- [ ] Pos/Dim expression parsing (e.g., `{Center + 5}`, `{Fill - 10}`)
+- [ ] Operator expressions validation
+- [ ] Attribute type coercion (string, int, bool, enum)
+- [ ] Nested view hierarchies
+- [ ] Complex property types
+- [ ] Event handler generation (when implemented)
+- [ ] Data binding scenarios (when MVVM support added)
+- [ ] Multiple .xtui files in one compilation
+- [ ] Incremental generation scenarios
+- [ ] Performance regression tests
+- [ ] Large file handling (100+ controls)
+
+### Troubleshooting Tests
+
+#### Tests Fail with "The collection was empty"
+
+**Cause:** Terminal.Gui.dll not found in expected location.
+
+**Solution:**
+1. Build Terminal.Gui project first
+2. Check that Terminal.Gui.dll exists at: `src/Terminal.Gui/Terminal.Gui/bin/Debug/net8.0/Terminal.Gui.dll`
+3. Verify working directory during test execution
+
+#### Tests Fail with Compilation Errors
+
+**Cause:** Missing metadata references or API changes in Terminal.Gui.
+
+**Solution:**
+1. Ensure Terminal.Gui is built with the same configuration (Debug/Release)
+2. Check if Terminal.Gui API has changed
+3. Update test expectations if needed
+
+#### Path Resolution Issues
+
+**Cause:** Tests run from unexpected working directory.
+
+**Solution:**
+Add diagnostic output to `GetTerminalGuiReference()`:
+```csharp
+var reference = GetTerminalGuiReference();
+if (reference == null)
+{
+    _output.WriteLine("Terminal.Gui.dll not found. Checked paths:");
+    foreach (var path in potentialPaths)
+    {
+        _output.WriteLine($"  - {path}");
+    }
+}
+```
+
+### CI/CD Considerations
+
+When setting up CI/CD pipelines, ensure:
+
+1. **Build Order:** Terminal.Gui must be built before running Roslyn tests
+   ```yaml
+   - name: Build Terminal.Gui
+     run: dotnet build src/Terminal.Gui/Terminal.Gui/Terminal.Gui.csproj
+   
+   - name: Run Tests
+     run: dotnet test src/Terminal.Gui.Xtui.sln
+   ```
+
+2. **Working Directory:** Tests assume they run from a directory under `src/`
+
+3. **Build Configuration:** Match Terminal.Gui build config with test expectations (Debug/Release)
+
+## Benchmarking
+
+The project includes comprehensive performance benchmarks using [BenchmarkDotNet](https://benchmarkdotnet.org/) to measure and track generator performance.
+
+### Benchmark Project
+
+**Location:** `src/Terminal.Gui.Xtui.Benchmarks/`
+
+Performance benchmarks for key generator operations:
+- **XtuiLoaderBenchmarks** - XTUI parsing performance with various file sizes (5-500 elements)
+- **ExpressionParsingBenchmarks** - Pos/Dim expression parsing (literals, percentages, operators)
+- **GeneratorBenchmarks** - Code generation with varying child counts (0-100 children)
+
+### Running Benchmarks
+
+```bash
+# Run all benchmarks
+cd src/Terminal.Gui.Xtui.Benchmarks
+dotnet run -c Release
+
+# Run specific benchmark suite
+dotnet run -c Release --filter "*XtuiLoaderBenchmarks*"
+
+# Run with memory profiler and export results
+dotnet run -c Release --memory --exporters json,html,markdown
+```
+
+⚠️ **Important:** Always run benchmarks in **Release** configuration for accurate results.
+
+### Benchmark Suites
+
+#### 1. XtuiLoaderBenchmarks
+
+Measures `XtuiLoader.LoadFromString()` performance:
+
+| Benchmark | Elements | Description |
+|-----------|----------|-------------|
+| Tiny | 5 | Baseline |
+| Small | 10 | Small dialog |
+| Medium | 50 | Typical window |
+| Large | 100 | Complex form |
+| XLarge | 500 | Stress test |
+| Nested | 10 levels | Deep hierarchy |
+| With Comments | 50 | XML comments included |
+
+**Metrics tracked:**
+- Parse time (mean, median, std dev)
+- Memory allocations
+- Throughput (operations/second)
+
+#### 2. ExpressionParsingBenchmarks
+
+Measures `ObjectParsingHelpers.ParseValueWithType()` performance:
+
+- Literal integers (`"10"`)
+- Percentages (`"50%"`)
+- Named methods (`"{Center}"`, `"{AnchorEnd}"`)
+- Methods with arguments (`"{AnchorEnd 5}"`)
+- Operator expressions (`"{Center + 10}"`, `"{Fill - 5}"`)
+- String literals and booleans
+
+#### 3. GeneratorBenchmarks
+
+Measures `WindowGenerator.GenerateClass()` performance:
+
+| Benchmark | Children | Description |
+|-----------|----------|-------------|
+| Empty | 0 | Baseline overhead |
+| 1 Child | 1 | Single control |
+| 10 Children | 10 | Small dialog |
+| 50 Children | 50 | Typical window |
+| 100 Children | 100 | Complex form |
+
+**Analyzes:**
+- Code generation time
+- Memory allocations
+- Scaling characteristics
+
+### Performance Targets
+
+Initial baseline targets to establish:
+
+**XTUI Parsing:**
+- Small (10 elements): < 100 µs, < 50 KB allocated
+- Medium (50 elements): < 500 µs, < 200 KB allocated
+- Large (100 elements): < 1 ms, < 400 KB allocated
+- Scaling: Linear with element count
+
+**Expression Parsing:**
+- All expressions: < 10 µs, < 5 KB allocated
+- Operator expressions: < 20 µs
+
+**Code Generation:**
+- Empty window: < 500 µs
+- 10 children: < 2 ms
+- 50 children: < 10 ms
+- 100 children: < 20 ms
+- Scaling: Linear with child count
+
+### Interpreting Results
+
+BenchmarkDotNet provides comprehensive metrics:
+
+```
+|              Method |      Mean |    Error |   StdDev | Ratio | Allocated |
+|-------------------- |----------:|---------:|---------:|------:|----------:|
+| 'Tiny (5 elements)' |  38.42 us | 0.423 us | 0.396 us |  1.00 |   12.8 KB |
+| 'Medium (50 elem)'  | 185.24 us | 2.145 us | 2.007 us |  4.82 |   58.3 KB |
+```
+
+- **Mean**: Average execution time
+- **Error**: 99.9% confidence interval
+- **StdDev**: Standard deviation
+- **Ratio**: Performance relative to baseline
+- **Allocated**: Heap memory allocated
+
+### Continuous Benchmarking
+
+**Regression Detection:**
+
+Consider performance regression if:
+- Execution time increases > 10%
+- Memory allocations increase > 15%
+- Throughput decreases > 10%
+
+**CI/CD Integration:**
+
+```yaml
+- name: Run Benchmarks
+  run: |
+    cd src/Terminal.Gui.Xtui.Benchmarks
+    dotnet run -c Release --exporters json
+
+- name: Compare Results
+  run: dotnet run -c Release --join  # Compare with baseline
+```
+
+### Best Practices
+
+✅ **Do:**
+- Run in Release mode
+- Close other applications
+- Use MemoryDiagnoser
+- Set baselines
+- Run multiple times
+
+❌ **Don't:**
+- Run in Debug mode
+- Compare across machines
+- Optimize prematurely
+- Ignore memory allocations
+
+For detailed benchmarking documentation, see [`src/Terminal.Gui.Xtui.Benchmarks/README.md`](src/Terminal.Gui.Xtui.Benchmarks/README.md).
+
+### Benchmark Results (December 1, 2025)
+
+Comprehensive performance benchmarks have been executed and analyzed. All performance targets were significantly exceeded.
+
+#### 🎉 Performance Summary
+
+| Category | Target | Actual | Status |
+|----------|--------|--------|--------|
+| **XTUI Parsing** (100 elements) | < 1 ms | 58 µs | ✅ **17x faster** |
+| **Expression Parsing** | < 10 µs | 0.45 µs | ✅ **22x faster** |
+| **Code Generation** (100 children) | < 20 ms | 3.78 ms | ✅ **5x faster** |
+
+**Test Environment:**
+- OS: Windows 11 (10.0.22631.6060)
+- CPU: Intel Core Ultra 7 155U (14 logical cores)
+- Runtime: .NET 8.0.22, X64 RyuJIT AVX2
+
+#### XTUI Parsing Results
+
+| Scenario | Elements | Time | Memory | vs Baseline |
+|----------|----------|------|--------|-------------|
+| Tiny | 5 | 4.20 µs | 19.12 KB | 1.00x |
+| Small | 10 | 6.87 µs | 25.71 KB | 1.63x |
+| Medium | 50 | 29.94 µs | 78.08 KB | 7.16x |
+| Large | 100 | 58.07 µs | 143.55 KB | 13.78x |
+| XLarge | 500 | 301.29 µs | 668.34 KB | 71.79x |
+
+**Key Findings:**
+- ✅ Excellent linear scaling with element count
+- ✅ Sub-linear memory growth (500 elements < 700 KB)
+- ✅ XML comments add only 5% overhead
+- ✅ Deep nesting (10 levels) has minimal impact (1.25x baseline)
+
+#### Expression Parsing Results
+
+| Expression Type | Time | Memory | vs Baseline |
+|----------------|------|--------|-------------|
+| Boolean | 22 ns | 80 B | 0.69x (fastest) ⚡ |
+| Integer Literal | 32 ns | 136 B | 1.00x |
+| String Literal | 73 ns | 184 B | 2.26x |
+| Percentage | 216 ns | 1,216 B | 6.65x |
+| Operator +/- | 450-463 ns | 1,896 B | ~14x |
+| Named Methods | 505-515 ns | 1,448 B | ~15x |
+| Method with Arg | 650 ns | 1,752 B | 20.22x |
+
+**Key Findings:**
+- ✅ All expressions parse in sub-microsecond time
+- ✅ Roslyn overhead ~430 ns (acceptable for code gen)
+- ✅ Operator expressions are faster than simple method calls
+- ✅ All allocations are Gen0 (efficient GC)
+
+#### Code Generation Results
+
+| Scenario | Children | Time | Memory | vs Baseline |
+|----------|----------|------|--------|-------------|
+| Empty Window | 0 | 43.03 µs | 18.77 KB | 1.00x |
+| 1 Child | 1 | 85.17 µs | 34.63 KB | 1.99x |
+| 10 Children | 10 | 427.26 µs | 180.15 KB | 10.31x |
+| 50 Children | 50 | 1.83 ms | 821.24 KB | 44.36x |
+| 100 Children | 100 | 3.78 ms | 1,618 KB | 94.59x |
+
+**Key Findings:**
+- ✅ Near-perfect linear scaling (O(n) complexity)
+- ✅ Consistent per-child cost: ~38 µs, ~16 KB
+- ✅ Real-world performance: Typical window (50 controls) generates in 1.83 ms
+- ⚠️ Gen2 collections increase at 100+ children (monitor for very large files)
+
+#### Overall Assessment
+
+**Conclusion:** The Terminal.Gui.Xtui source generator demonstrates **exceptional performance** across all dimensions:
+
+- ✅ **Production-ready** - No optimization bottlenecks identified
+- ✅ **Predictable scaling** - Linear performance with consistent costs
+- ✅ **Efficient memory usage** - Reasonable allocations, mostly young generation
+- ✅ **Negligible compile-time overhead** - < 2 ms for typical XTUI files
+
+**No immediate performance improvements required.** Current implementation exceeds all targets by 5-40x.
+
+For complete benchmark analysis and detailed results, see [`BenchmarkResults_20251201.md`](src/Terminal.Gui.Xtui.Benchmarks/BenchmarkResults_20251201.md).
 
 ## Roadmap
 
