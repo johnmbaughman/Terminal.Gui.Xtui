@@ -20,6 +20,8 @@ public class GeneratorBenchmarks
     private ElementNode _window100Children = null!;
     private ElementNode _checkBoxWindow = null!;
     private ElementNode _mixedControlWindow = null!;
+    private ElementNode _topLevelEmpty = null!;
+    private ElementNode _topLevel50Children = null!;
     private ElementNode _button1 = null!;
     private ElementNode _button10Properties = null!;
     private ElementNode _button50Batch = null!;
@@ -30,6 +32,7 @@ public class GeneratorBenchmarks
     private CheckBoxGenerator _checkBoxGenerator = null!;
     private ButtonGenerator _buttonGenerator = null!;
     private LabelGenerator _labelGenerator = null!;
+    private TopLevelGenerator _topLevelGenerator = null!;
     private GeneratorFactory _factory = null!;
 
     [GlobalSetup]
@@ -72,6 +75,13 @@ public class GeneratorBenchmarks
         _label1 = CreateLabel ("Username:", 0, 5);
         _label10Properties = CreateLabelWithManyProperties ();
         _label50Batch = CreateLabelBatch (50);
+        
+        // TopLevel benchmarks
+        _topLevelGenerator = new TopLevelGenerator ();
+        _topLevelEmpty = new ElementNode { ElementTypeName = "TopLevel" };
+        _topLevelEmpty.Attributes ["Modal"] = "false";
+        // Toplevel with 50 children for benchmarks
+        _topLevel50Children = CreateWindowWithChildren (50);
     }
 
     [Benchmark (Baseline = true, Description = "Window Empty")]
@@ -102,6 +112,18 @@ public class GeneratorBenchmarks
     public string GenerateWindow100Children ()
     {
         return _windowGenerator.GenerateClass (_window100Children, "Benchmark", "Window100", _factory);
+    }
+
+    [Benchmark (Description = "TopLevel Empty")]
+    public string GenerateTopLevelEmpty ()
+    {
+        return _topLevelGenerator.GenerateClass (_topLevelEmpty, "Benchmark", "EmptyTopLevel", _factory);
+    }
+
+    [Benchmark (Description = "TopLevel 50 Children")]
+    public string GenerateTopLevel50Children ()
+    {
+        return _topLevelGenerator.GenerateClass (_topLevel50Children, "Benchmark", "TopLevel50", _factory);
     }
 
     [Benchmark (Description = "CheckBox Window (50 CheckBoxes)")]

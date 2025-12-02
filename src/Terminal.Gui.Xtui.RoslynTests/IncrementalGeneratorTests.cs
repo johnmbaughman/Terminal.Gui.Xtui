@@ -136,6 +136,154 @@ public class IncrementalGeneratorTests
     }
 
     [Fact]
+    public void Generator_WithSimpleToplevel_GeneratesInitializeComponent ()
+    {
+        var xtuiSource = """
+            <TopLevel>
+                <Label Text="Hello TopLevel" />
+            </TopLevel>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyTop
+                {
+                    public MyTop()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("MyTop.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        // Should have no errors
+        Assert.Empty (diagnostics.Where (d => d.Severity == DiagnosticSeverity.Error));
+
+        // Should have generated one file
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify key elements in generated code
+        Assert.Contains ("InitializeComponent()", generatedCode);
+        Assert.Contains ("using Terminal.Gui.Views;", generatedCode);
+        Assert.Contains ("public partial class MyTop : Toplevel", generatedCode);
+        Assert.Contains ("this.Add(new Label", generatedCode);
+        Assert.Contains ("Text = \"Hello TopLevel\"", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_RecordsGeneratedFileBookkeeping ()
+    {
+        var xtuiSource = """
+            <Window Title="Main Window">
+                <Label Text="Hello World" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyWindow
+                {
+                    public MyWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        // Ensure generation ran
+        Assert.Single (runResult.GeneratedTrees);
+
+        // Use reflection to inspect the bookkeeping helper
+        var genAssembly = typeof (XtuiGenerator).Assembly;
+        var bookkeepingType = genAssembly.GetType ("Terminal.Gui.Xtui.GeneratedFileBookkeeping");
+        Assert.NotNull (bookkeepingType);
+
+        var countProp = bookkeepingType.GetProperty ("Count", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        Assert.NotNull (countProp);
+
+        int count = (int)countProp.GetValue (null)!;
+        Assert.True (count >= 1, "Bookkeeping should contain at least one recorded generated file");
+
+        var getMethod = bookkeepingType.GetMethod ("Get", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        Assert.NotNull (getMethod);
+
+        var info = getMethod.Invoke (null, new object?[] { "MyWindow.xtui" });
+        Assert.NotNull (info);
+
+        var infoType = info.GetType ();
+        var classNameProp = infoType.GetProperty ("ClassName");
+        Assert.NotNull (classNameProp);
+
+        var className = (string)classNameProp.GetValue (info)!;
+        Assert.Equal ("MyWindow", className);
+    }
+
+    [Fact]
+    public void Generator_EmitsCollisionDiagnostic_ForDuplicateGeneratedIdentity ()
+    {
+        // Two different input paths with the same filename will generate the same class name
+        var xtuiSourceA = """
+            <Window Title="A">
+                <Label Text="A" />
+            </Window>
+            """;
+
+        var xtuiSourceB = """
+            <Window Title="B">
+                <Label Text="B" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MyWindow
+                {
+                    public MyWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+
+        // Provide two additional texts with same filename but different directories
+        var driver = CreateDriver (compilation,
+            ("dirA/MyWindow.xtui", xtuiSourceA),
+            ("dirB/MyWindow.xtui", xtuiSourceB));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        // There should be a diagnostic with id XTUI003
+        var diag = runResult.Diagnostics.FirstOrDefault (d => d.Id == "XTUI003");
+        Assert.NotNull (diag);
+        Assert.Equal (DiagnosticSeverity.Warning, diag.Severity);
+    }
+
+    [Fact]
     public void Generator_WithoutTerminalGuiReference_DoesNotGenerate ()
     {
         var xtuiSource = """

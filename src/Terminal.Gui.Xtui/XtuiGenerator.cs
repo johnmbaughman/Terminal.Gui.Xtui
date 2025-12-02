@@ -40,6 +40,38 @@ public class XtuiGenerator : IIncrementalGenerator
             })
             .Where (x => !string.IsNullOrWhiteSpace (x.Content));
 
+        // Detect duplicate filenames among AdditionalTexts (e.g., dirA/MyWindow.xtui and dirB/MyWindow.xtui)
+        // and emit a diagnostic early so tests and users get immediate feedback.
+        var duplicateFilenameGroups = xamlFiles.Collect().Select((arr, _) =>
+        {
+            return arr.GroupBy(x => x.FileName, StringComparer.OrdinalIgnoreCase)
+                .Where(g => g.Count() > 1)
+                .Select(g => g.ToArray())
+                .ToArray();
+        });
+
+        context.RegisterSourceOutput(duplicateFilenameGroups, (spc, groups) =>
+        {
+            foreach (var group in groups)
+            {
+                // Report a diagnostic for each pair in the group (first vs others)
+                var first = group.First();
+                foreach (var other in group.Skip(1))
+                {
+                    var descriptor = new DiagnosticDescriptor(
+                        id: "XTUI003",
+                        title: "XTUI Generated Class Name Collision",
+                        messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
+                        category: "Terminal.Gui.Xtui",
+                        defaultSeverity: DiagnosticSeverity.Warning,
+                        isEnabledByDefault: true);
+
+                    var diagnostic = Diagnostic.Create(descriptor, Location.None, first.Path, other.Path, first.FileName, first.FileName);
+                    spc.ReportDiagnostic(diagnostic);
+                }
+            }
+        });
+
         // Check if Terminal.Gui is referenced in the compilation
         // We check for multiple core types to ensure Terminal.Gui is properly referenced
         string [] requiredTypes = new []
@@ -89,7 +121,22 @@ public class XtuiGenerator : IIncrementalGenerator
                 Generator generator = generatorFactory.GetGenerator (root.ElementTypeName);
                 string code = generator.GenerateClass (root, namespaceName, className, generatorFactory);
 
-                spc.AddSource (className + ".g.cs", SourceText.From (code, Encoding.UTF8));
+                // Create a unique hint name that includes a hash of the full path to avoid collisions
+                // when multiple .xtui files have the same filename in different directories
+                string pathHash = Math.Abs(file.Path.GetHashCode()).ToString("X8");
+                string generatedFileName = className + ".g.cs";
+                string uniqueHintName = $"{className}_{pathHash}.g.cs";
+                spc.AddSource (uniqueHintName, SourceText.From (code, Encoding.UTF8));
+
+                // Record bookkeeping info for the generated file (input .xtui -> generated file metadata)
+                try
+                {
+                    GeneratedFileBookkeeping.Record (file.Path, generatedFileName, namespaceName, className, spc);
+                }
+                catch
+                {
+                    // Non-fatal: bookkeeping best-effort, don't let it break generation
+                }
             }
             catch (InvalidOperationException ex)
             {
