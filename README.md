@@ -50,6 +50,10 @@ dotnet build src/Terminal.Gui.Xtui.sln
 3. **Run the example:**
 
 ```bash
+# Run the best example - a complete login form
+dotnet run --project src/Examples/ExampleLogin
+
+# Or try the basic example
 dotnet run --project src/Examples/Xtui
 ```
 
@@ -118,9 +122,287 @@ Terminal.Gui.Xtui/
 
 ## Usage
 
-### Basic Example
+### Example Projects
 
-The best reference is the [Xtui example project](src/Examples/Xtui). Here's how it works:
+The repository includes three example projects demonstrating different aspects of XTUI:
+
+| Project | Description | Best For |
+|---------|-------------|----------|
+| [**ExampleLogin**](src/Examples/ExampleLogin) | Complete login form with view references, event handling, and Terminal.Gui integration | **Best starting point** - Real-world example |
+| [Xtui](src/Examples/Xtui) | Basic window with various Pos/Dim expressions | Learning Pos/Dim syntax |
+| [Xtui.Mvvm](src/Examples/Xtui.Mvvm) | MVVM pattern with CommunityToolkit.Mvvm | MVVM architecture |
+
+### ExampleLogin - Complete Login Form (Best Example)
+
+The [ExampleLogin project](src/Examples/ExampleLogin) demonstrates a real-world login dialog with username/password fields, a login button, and a list view. This example showcases all key XTUI features including **view reference positioning**, **control IDs**, **event handling**, and **theming**.
+
+#### Step 1: Create the XTUI File (`ExampleLogin.xtui`)
+
+The XTUI file defines the UI layout declaratively:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.terminal.gui/xtui">
+    
+    <!-- Username Label -->
+    <Label Id="_usernameLabel" Text="Username:" X="0" Y="0" />
+    
+    <!-- Username TextField - positioned relative to the label using view reference -->
+    <TextField Id="_userNameText" X="{Right _usernameLabel+1}" Y="0" Width="{Fill}" />
+    
+    <!-- Password Label -->
+    <Label Id="_passwordLabel" Text="Password:" X="0" Y="2" />
+    
+    <!-- Password TextField - uses Secret="true" for password masking -->
+    <TextField Id="_passwordText" Secret="true" X="{Right _passwordLabel + 1}" Y="2" Width="{Fill}" />
+    
+    <!-- Login Button - centered, marked as default (responds to Enter key) -->
+    <Button Id="_btnLogin" Text="Login" X="{Center}" Y="4" IsDefault="true" />
+    
+    <!-- ListView at bottom - uses AnchorEnd for positioning -->
+    <ListView Id="_listView" Y="{AnchorEnd}" Height="{Auto}" Width="{Auto}" />
+    
+</Window>
+```
+
+**Key XTUI Features Demonstrated:**
+
+| Feature | Example | Description |
+|---------|---------|-------------|
+| **Control IDs** | `Id="_usernameLabel"` | Names controls for code access and positioning references |
+| **View Reference Positioning** | `X="{Right _usernameLabel+1}"` | Positions relative to another control's edge |
+| **Secret Text Field** | `Secret="true"` | Masks password input with bullets |
+| **Default Button** | `IsDefault="true"` | Button responds to Enter key anywhere in form |
+| **Anchor Positioning** | `Y="{AnchorEnd}"` | Positions from the bottom edge |
+| **Fill Sizing** | `Width="{Fill}"` | Fills remaining horizontal space |
+| **Auto Sizing** | `Height="{Auto}"` | Sizes based on content |
+
+#### Step 2: Create the Partial Class (`ExampleLogin.cs`)
+
+The partial class provides the constructor, event handlers, and business logic:
+
+```csharp
+using System.Linq;
+using Terminal.Gui.App;
+using Terminal.Gui.Configuration;
+using Terminal.Gui.Input;
+using Terminal.Gui.ViewBase;
+using Terminal.Gui.Views;
+
+namespace ExampleLogin;
+
+public partial class ExampleLogin : Window
+{
+    // Static property to store the logged-in username
+    public static string? UserName { get; set; }
+
+    public ExampleLogin()
+    {
+        // Set the window title with quit key information
+        Title = $"Example App ({Application.QuitKey} to quit)";
+        
+        // Call the generated InitializeComponent() method
+        // This instantiates all controls defined in the XTUI file
+        InitializeComponent();
+
+        // Setup ListView data - the _listView field is generated from Id="_listView"
+        if (_listView != null)
+        {
+            _listView.SetSource(["One", "Two", "Three", "Four"]);
+        }
+
+        // Attach login button event handler
+        // The _btnLogin field is generated from Id="_btnLogin"
+        if (_btnLogin != null)
+        {
+            _btnLogin.Accepting += OnLoginButtonAccepting;
+        }
+    }
+
+    public override void EndInit()
+    {
+        base.EndInit();
+        // Set the theme to "Anders" if available, otherwise use "Default"
+        ThemeManager.Theme = ThemeManager.GetThemeNames()
+            .FirstOrDefault(x => x == "Anders") ?? "Default";
+    }
+
+    private void OnLoginButtonAccepting(object? sender, CommandEventArgs e)
+    {
+        // Mark the event as handled to prevent further processing
+        e.Handled = true;
+
+        // Access text field values through generated fields
+        if (_userNameText != null && _passwordText != null)
+        {
+            if (_userNameText.Text == "admin" && _passwordText.Text == "password")
+            {
+                MessageBox.Query("Logging In", "Login Successful", "Ok");
+                UserName = _userNameText.Text;
+                Application.RequestStop();
+            }
+            else
+            {
+                MessageBox.ErrorQuery("Logging In", "Incorrect username or password", "Ok");
+            }
+        }
+    }
+}
+```
+
+**Code Pattern Explained:**
+
+1. **Partial Class Declaration**: The class is `partial` so it can be combined with the generated code
+2. **InitializeComponent()**: Generated method that creates all controls from the XTUI file
+3. **Generated Fields**: Controls with `Id` attributes become private fields (e.g., `_listView`, `_btnLogin`)
+4. **Event Handling**: Attach events after `InitializeComponent()` using the generated fields
+5. **Null Checks**: Fields are nullable, so check before use (controls might fail to generate)
+
+#### Step 3: Create the Entry Point (`Program.cs`)
+
+The application entry point initializes Terminal.Gui and runs the login window:
+
+```csharp
+using System;
+using Terminal.Gui.App;
+using Terminal.Gui.Configuration;
+
+namespace ExampleLogin;
+
+class Program
+{
+    static void Main()
+    {
+        // Enable configuration from all sources (files, environment, etc.)
+        ConfigurationManager.Enable(ConfigLocations.All);
+
+        // Run the application using the Run<T>() pattern
+        // This automatically creates a Toplevel and adds the ExampleLogin window
+        Application.Run<ExampleLogin>().Dispose();
+
+        // Shutdown Terminal.Gui and restore the console
+        Application.Shutdown();
+
+        // Display the username after the application exits
+        Console.WriteLine($@"Username: {ExampleLogin.UserName}");
+    }
+}
+```
+
+#### Step 4: Configure the Project File (`ExampleLogin.csproj`)
+
+The project file references Terminal.Gui and the source generator:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Reference Terminal.Gui library -->
+    <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
+    
+    <!-- Reference the XTUI source generator -->
+    <!-- OutputItemType="Analyzer" marks it as a source generator -->
+    <!-- ReferenceOutputAssembly="false" prevents runtime dependency -->
+    <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj" 
+                      OutputItemType="Analyzer" 
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <!-- Import the targets that auto-discover .xtui files -->
+  <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" />
+
+</Project>
+```
+
+#### Generated Code (`ExampleLogin.g.cs`)
+
+The source generator produces the following code (visible in `obj/Generated/`):
+
+```csharp
+using Terminal.Gui.Views;
+using Terminal.Gui.ViewBase;
+
+namespace ExampleLogin
+{
+    public partial class ExampleLogin : Window
+    {
+        // Private fields for controls with Id attributes
+        private Label? _usernameLabel;
+        private TextField? _userNameText;
+        private Label? _passwordLabel;
+        private TextField? _passwordText;
+        private Button? _btnLogin;
+        private ListView? _listView;
+
+        private void InitializeComponent()
+        {
+            // Create and add the username label
+            _usernameLabel = new Label() { Text = "Username:", X = 0, Y = 0 };
+            this.Add(_usernameLabel);
+
+            // Create and add the username text field
+            // Uses view reference: X = right edge of _usernameLabel + 1
+            _userNameText = new TextField() 
+            { 
+                X = Pos.Right(_usernameLabel) + 1, 
+                Y = 0, 
+                Width = Dim.Fill() 
+            };
+            this.Add(_userNameText);
+
+            // Create and add the password label
+            _passwordLabel = new Label() { Text = "Password:", X = 0, Y = 2 };
+            this.Add(_passwordLabel);
+
+            // Create and add the password text field with Secret masking
+            _passwordText = new TextField() 
+            { 
+                Secret = true, 
+                X = Pos.Right(_passwordLabel) + 1, 
+                Y = 2, 
+                Width = Dim.Fill() 
+            };
+            this.Add(_passwordText);
+
+            // Create and add the login button (default button for Enter key)
+            _btnLogin = new Button() 
+            { 
+                Text = "Login", 
+                X = Pos.Center(), 
+                Y = 4, 
+                IsDefault = true 
+            };
+            this.Add(_btnLogin);
+
+            // Create and add the list view at the bottom
+            _listView = new ListView() 
+            { 
+                Y = Pos.AnchorEnd(), 
+                Height = Dim.Auto(), 
+                Width = Dim.Auto() 
+            };
+            this.Add(_listView);
+        }
+    }
+}
+```
+
+**Generated Code Features:**
+
+- **Private Fields**: Each control with an `Id` attribute becomes a nullable private field
+- **View References**: `X="{Right _usernameLabel+1}"` becomes `X = Pos.Right(_usernameLabel) + 1`
+- **Property Mapping**: XTUI attributes map directly to Terminal.Gui properties
+- **Type Safety**: The generated code is fully typed and compile-time checked
+
+### Quick Start Example (Xtui)
+
+For a simpler introduction, the [Xtui example project](src/Examples/Xtui) demonstrates basic Pos/Dim expressions:
 
 **1. Create a `.xtui` file (`MyWindow.xtui`):**
 
@@ -140,7 +422,7 @@ The best reference is the [Xtui example project](src/Examples/Xtui). Here's how 
 **2. Create a partial class matching the `.xtui` filename (`MyWindow.cs`):**
 
 ```csharp
-namespace Xaml;
+namespace Xtui;
 
 public partial class MyWindow 
 {
@@ -151,31 +433,7 @@ public partial class MyWindow
 }
 ```
 
-**3. Reference the generator in your `.csproj`:**
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <!-- Reference Terminal.Gui -->
-    <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
-    
-    <!-- Reference the generator (OutputItemType="Analyzer" is critical) -->
-    <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj"
-                      OutputItemType="Analyzer" 
-                      ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <!-- Import the targets that auto-discover .xtui files -->
-  <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" />
-</Project>
-```
-
-**4. Use your window in the application (`Program.cs`):**
+**3. Use your window in the application (`Program.cs`):**
 
 ```csharp
 using Terminal.Gui.App;
@@ -194,28 +452,6 @@ class Program
         app.Run(top);
         top.Dispose();
         app.Shutdown();
-    }
-}
-```
-
-**Generated Code (`MyWindow.g.cs`):**
-
-The generator produces code like this (visible in `obj/Generated/`):
-
-```csharp
-using Terminal.Gui.Views;
-using Terminal.Gui.ViewBase;
-
-namespace Xtui
-{
-    public partial class MyWindow : Window
-    {
-        private void InitializeComponent()
-        {
-            this.Add(new Label() { Text = "Hello", X = 10, Y = 5, Width = 20, Height = 1 });
-            this.Add(new Button() { Text = "Click Me", X = Pos.Center(), Y = Pos.Percent(50), Width = Dim.Percent(80), Height = 3 });
-            this.Add(new Label() { Text = "Anchored", X = Pos.AnchorEnd(), Y = Pos.AnchorEnd(5), Width = Dim.Auto(), Height = Dim.Fill() });
-        }
     }
 }
 ```
@@ -418,8 +654,9 @@ dotnet build src/Terminal.Gui.Xtui.sln
 dotnet build src/Terminal.Gui.Xtui.sln -c Release
 
 # Run example applications
-dotnet run --project src/Examples/Xtui
-dotnet run --project src/Examples/Xtui.Mvvm
+dotnet run --project src/Examples/ExampleLogin  # Complete login form (best example)
+dotnet run --project src/Examples/Xtui          # Basic Pos/Dim demo
+dotnet run --project src/Examples/Xtui.Mvvm     # MVVM pattern demo
 ```
 
 ### Submodule Management
@@ -1050,12 +1287,12 @@ Contributions are welcome! To contribute:
 dotnet build src/Terminal.Gui.Xtui/Terminal.Gui.Xtui.csproj
 
 # Test with example projects
-dotnet clean src/Examples/Xtui
-dotnet build src/Examples/Xtui
-dotnet run --project src/Examples/Xtui
+dotnet clean src/Examples/ExampleLogin
+dotnet build src/Examples/ExampleLogin
+dotnet run --project src/Examples/ExampleLogin
 ```
 
-Check the generated files in `src/Examples/Xtui/obj/Generated/` to verify your changes.
+Check the generated files in `src/Examples/ExampleLogin/obj/Generated/` to verify your changes.
 
 ## License
 
@@ -1347,7 +1584,10 @@ After building the project, reload your IDE to pick up the updated schema and se
 
 - **Issues**: Report bugs or request features on [GitHub Issues](https://github.com/johnmbaughman/Terminal.Gui.Xtui/issues)
 - **Discussions**: Ask questions or share ideas in [GitHub Discussions](https://github.com/johnmbaughman/Terminal.Gui.Xtui/discussions)
-- **Examples**: Check the `src/Examples/` folder for working examples
+- **Examples**: Check the `src/Examples/` folder for working examples:
+  - [**ExampleLogin**](src/Examples/ExampleLogin) - Complete login form (recommended starting point)
+  - [Xtui](src/Examples/Xtui) - Basic Pos/Dim expressions demo
+  - [Xtui.Mvvm](src/Examples/Xtui.Mvvm) - MVVM pattern demo
 
 ---
 
