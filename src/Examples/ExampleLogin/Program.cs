@@ -12,12 +12,12 @@ class Program
         ConfigurationManager.Enable (ConfigLocations.All);
 
         // Run the application
-        Application.Run<ExampleWindow> ().Dispose ();
+        Application.Run<ExampleLogin> ().Dispose ();
 
         // Shutdown Terminal.Gui for clean exit
         Application.Shutdown ();
 
         // Display the username after shutdown
-        Console.WriteLine ($@"Username: {ExampleWindow.UserName}");
+        Console.WriteLine ($@"Username: {ExampleLogin.UserName}");
     }
 }

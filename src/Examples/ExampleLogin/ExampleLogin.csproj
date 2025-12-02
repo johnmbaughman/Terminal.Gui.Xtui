@@ -19,7 +19,7 @@
   <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" />
 
   <ItemGroup>
-    <AdditionalFiles Include="ExampleWindow.xtui" />
+    <AdditionalFiles Include="ExampleLogin.xtui" />
   </ItemGroup>
 
 </Project>
