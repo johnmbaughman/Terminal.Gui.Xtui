@@ -128,7 +128,7 @@ The repository includes three example projects demonstrating different aspects o
 
 | Project | Description | Best For |
 |---------|-------------|----------|
-| [**ExampleLogin**](src/Examples/ExampleLogin) | Complete login form with view references, event handling, and Terminal.Gui integration | **Best starting point** - Real-world example |
+| [ExampleLogin](src/Examples/ExampleLogin) | Complete login form with view references, event handling, and Terminal.Gui integration | **Best starting point** - Real-world example |
 | [Xtui](src/Examples/Xtui) | Basic window with various Pos/Dim expressions | Learning Pos/Dim syntax |
 | [Xtui.Mvvm](src/Examples/Xtui.Mvvm) | MVVM pattern with CommunityToolkit.Mvvm | MVVM architecture |
 
@@ -1575,7 +1575,7 @@ After building the project, reload your IDE to pick up the updated schema and se
 
 ## Related Resources
 
-- [Terminal.Gui Documentation](https://gui-cs.github.io/Terminal.GuiV2Docs/)
+- [Terminal.Gui Documentation](https://gui-cs.github.io/Terminal.Gui/)
 - [Terminal.Gui GitHub Repository](https://github.com/gui-cs/Terminal.Gui)
 - [Roslyn Source Generators](https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.md)
 - [C# Source Generators Cookbook](https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md)
@@ -1585,7 +1585,7 @@ After building the project, reload your IDE to pick up the updated schema and se
 - **Issues**: Report bugs or request features on [GitHub Issues](https://github.com/johnmbaughman/Terminal.Gui.Xtui/issues)
 - **Discussions**: Ask questions or share ideas in [GitHub Discussions](https://github.com/johnmbaughman/Terminal.Gui.Xtui/discussions)
 - **Examples**: Check the `src/Examples/` folder for working examples:
-  - [**ExampleLogin**](src/Examples/ExampleLogin) - Complete login form (recommended starting point)
+  - [ExampleLogin](src/Examples/ExampleLogin) - Complete login form (recommended starting point)
   - [Xtui](src/Examples/Xtui) - Basic Pos/Dim expressions demo
   - [Xtui.Mvvm](src/Examples/Xtui.Mvvm) - MVVM pattern demo
 
