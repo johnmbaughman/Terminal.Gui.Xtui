@@ -12,9 +12,11 @@ Terminal.Gui.Xtui brings declarative UI design to Terminal.Gui through a compile
 - **Zero Runtime Overhead**: No parsing at runtime—generated code directly instantiates Terminal.Gui controls
 - **Type-Safe**: Leverages C#'s type system with compile-time validation
 - **InitializeComponent Pattern**: Follows the familiar WPF/WinForms pattern with partial classes
-- **Rich Layout Support**: Full support for Terminal.Gui's `Pos` and `Dim` positioning system including operators
+- **Rich Layout Support**: Full support for Terminal.Gui's `Pos` and `Dim` positioning system including operators and view references
+- **View Reference Positioning**: Reference other controls in positioning expressions: `X="{Right _usernameLabel + 1}"`
 - **Automatic Discovery**: `.xtui` files are automatically detected and processed when Terminal.Gui is referenced
 - **IDE Integration**: Generated files visible in your IDE under `obj/Generated` folder
+- **Full IntelliSense Support**: Auto-generated XSD schema provides autocomplete, validation, and documentation for all 51 Terminal.Gui controls
 
 ## Getting Started
 
@@ -56,44 +58,57 @@ dotnet run --project src/Examples/Xtui
 ```
 Terminal.Gui.Xtui/
 ├── src/
-│   ├── Terminal.Gui/                    # Git submodule (Terminal.Gui v2)
-│   ├── Terminal.Gui.Xtui/               # Source generator library
-│   │   ├── CodeGenerator.cs             # Roslyn incremental source generator
-│   │   ├── XtuiLoader.cs                # XTUI parser (using System.Xml.Linq)
-│   │   ├── ElementNode.cs               # Internal XTUI tree representation
-│   │   ├── Generators/                  # Control-specific code generators
-│   │   │   ├── WindowGenerator.cs       # Generates Window with InitializeComponent
-│   │   │   ├── LabelGenerator.cs        # Label generator
-│   │   │   ├── ButtonGenerator.cs       # Button generator
-│   │   │   ├── GenericGenerator.cs      # Fallback for other controls
-│   │   │   ├── GeneratorFactory.cs      # Factory for selecting generators
-│   │   │   └── ObjectParsingHelpers.cs  # Pos/Dim expression parsing
-│   │   ├── Mappers/                     # Type mappers
-│   │   │   └── EnumMapper.cs            # Enum value mapping
-│   │   ├── Terminal.Gui.Xtui.xsd        # XML Schema for IntelliSense
-│   │   └── buildTransitive/             # MSBuild integration
-│   │       └── Terminal.Gui.Xtui.targets # Automatic .xtui file discovery
+│   ├── Terminal.Gui/                       # Git submodule (Terminal.Gui v2)
+│   ├── Terminal.Gui.Xtui/                  # Source generator library
+│   │   ├── CodeGenerator.cs                # Roslyn incremental source generator
+│   │   ├── XtuiLoader.cs                   # XTUI parser (using System.Xml.Linq)
+│   │   ├── ElementNode.cs                  # Internal XTUI tree representation
+│   │   ├── Generators/                     # Control-specific code generators
+│   │   │   ├── WindowGenerator.cs          # Generates Window with InitializeComponent
+│   │   │   ├── LabelGenerator.cs           # Label generator
+│   │   │   ├── ButtonGenerator.cs          # Button generator
+│   │   │   ├── CheckBoxGenerator.cs        # CheckBox generator
+│   │   │   ├── TextFieldGenerator.cs       # TextField generator
+│   │   │   ├── ListViewGenerator.cs        # ListView generator
+│   │   │   ├── GenericGenerator.cs         # Fallback for other controls
+│   │   │   ├── GeneratorFactory.cs         # Factory for selecting generators
+│   │   │   └── ObjectParsingHelpers.cs     # Pos/Dim expression parsing
+│   │   ├── Mappers/                        # Type mappers
+│   │   │   └── EnumMapper.cs               # Enum value mapping
+│   │   ├── Terminal.Gui.Xtui.xsd           # XML Schema for IntelliSense (auto-generated)
+│   │   └── buildTransitive/                # MSBuild integration
+│   │       └── Terminal.Gui.Xtui.targets   # Automatic .xtui file discovery
+│   ├── Terminal.Gui.Xtui.XsdGenerator/     # XSD schema generator
+│   │   ├── Program.cs                      # Reflects over Terminal.Gui assembly
+│   │   └── Terminal.Gui.Xtui.XsdGenerator.csproj
 │   ├── Examples/
-│   │   ├── Xtui/                        # Basic example
-│   │   │   ├── MyWindow.xtui            # XTUI UI definition
-│   │   │   ├── MyWindow.cs              # Partial class with constructor
-│   │   │   └── Program.cs               # Application entry point
-│   │   └── Xtui.Mvvm/                   # MVVM pattern example
+│   │   |── ExampleLogin/                   # Recreation of Terminal.Gui Example project
+│   │   |   ├── ExampleLogin.xtui           # XTUI UI definition
+│   │   |   ├── ExampleLogin.cs             # Partial class with constructor
+│   │   |   |── Program.cs                  # Application entry point
+│   │   │   └── ExampleLogin.csproj
+│   │   ├── Xtui/                           # Generator working dump project
+│   │   │   ├── MyWindow.xtui               # XTUI UI definition
+│   │   │   ├── MyWindow.cs                 # Partial class with constructor
+│   │   │   |── Program.cs                  # Application entry point
+│   │   │   └── Xtui.csproj
+│   │   |── Xtui.Mvvm/                      # MVVM pattern generator working dump project
 │   │       ├── MyWindow.xtui
 │   │       ├── MyWindow.cs
-│   │       └── Program.cs               # Includes MainViewModel
-│   ├── Terminal.Gui.Xtui.Tests/         # Unit tests for components
-│   │   ├── CodeGeneratorTests.cs        # XtuiLoader, GeneratorFactory, etc.
+│   │       |── Program.cs                  # Includes MainViewModel
+│   │       └── Xtui.Mvvm.csproj
+│   ├── Terminal.Gui.Xtui.Tests/            # Unit tests for components
+│   │   ├── CodeGeneratorTests.cs           # XtuiLoader, GeneratorFactory, etc.
 │   │   └── Terminal.Gui.Xtui.Tests.csproj
-│   ├── Terminal.Gui.Xtui.RoslynTests/   # Roslyn integration tests
-│   │   ├── IncrementalGeneratorTests.cs # Full pipeline tests
-│   │   ├── SmokeTests.cs                # Infrastructure validation
+│   ├── Terminal.Gui.Xtui.RoslynTests/      # Roslyn integration tests
+│   │   ├── IncrementalGeneratorTests.cs    # Full pipeline tests
+│   │   ├── SmokeTests.cs                   # Infrastructure validation
 │   │   └── Terminal.Gui.Xtui.RoslynTests.csproj
-│   └── Terminal.Gui.Xtui.Benchmarks/    # Performance benchmarks
-│       ├── XtuiLoaderBenchmarks.cs      # XTUI parsing benchmarks
-│       ├── ExpressionParsingBenchmarks.cs # Pos/Dim expression benchmarks
-│       ├── GeneratorBenchmarks.cs       # Code generation benchmarks
-│       ├── Program.cs                   # BenchmarkRunner entry point
+│   └── Terminal.Gui.Xtui.Benchmarks/       # Performance benchmarks
+│       ├── XtuiLoaderBenchmarks.cs         # XTUI parsing benchmarks
+│       ├── ExpressionParsingBenchmarks.cs  # Pos/Dim expression benchmarks
+│       ├── GeneratorBenchmarks.cs          # Code generation benchmarks
+│       ├── Program.cs                      # BenchmarkRunner entry point
 │       └── Terminal.Gui.Xtui.Benchmarks.csproj
 ├── .gitignore
 ├── .gitmodules
@@ -258,7 +273,14 @@ Terminal.Gui's `Pos` type supports multiple positioning modes:
 <Label X="{Center - 10}" />
 <Label X="{Center + 5}" />
 <Label X="{AnchorEnd - 25}" />
+
+<!-- View reference positioning (NEW) -->
+<Label Id="_usernameLabel" Text="Username:" X="0" Y="0" />
+<TextField X="{Right _usernameLabel + 1}" Y="0" />  <!-- Position relative to another control -->
+<Button X="{Left _usernameLabel}" Y="{Bottom _usernameLabel + 2}" />
 ```
+
+**View references** allow you to position controls relative to other controls using their `Id` attribute. The syntax is `{MethodName _viewId +/- offset}` or `{MethodName _viewId}`.
 
 **Supported Pos methods:** `Absolute`, `Percent`, `Center`, `AnchorEnd`, `Left`, `Right`, `Top`, `Bottom`, `X`, `Y`, `Func`, `Align`
 
@@ -315,14 +337,18 @@ XTUI comments are automatically stripped during parsing:
 
 ### Supported Controls
 
-Currently supported Terminal.Gui controls:
+Currently supported Terminal.Gui controls with dedicated generators:
 
 - **Window** - Top-level window with title bar and border
 - **Label** - Text display control
-- **Button** - Clickable button
-- **View** - Generic container (via GenericGenerator)
+- **Button** - Clickable button with `IsDefault` property support
+- **CheckBox** - Checkbox control with `CheckState` enum support
+- **TextField** - Text input control with `Secret` property for password fields
+- **ListView** - List view control for displaying items
 
-Additional controls can be added by implementing new generators in the `Generators/` folder.
+All other Terminal.Gui controls (51 total View-derived types) are supported via the XSD schema for IntelliSense and will use the GenericGenerator for code generation.
+
+Additional dedicated generators can be added by implementing new generator classes in the `Generators/` folder.
 
 ## Architecture
 
@@ -345,11 +371,17 @@ Additional controls can be added by implementing new generators in the `Generato
 
 4. **Code Generation** (`Generators/`):
    - `GeneratorFactory` selects appropriate generator per control type
-   - `WindowGenerator` creates partial class with `InitializeComponent()` method
-   - `ObjectParsingHelpers` parses Pos/Dim expressions with operator support
+   - `WindowGenerator` creates partial class with `InitializeComponent()` method and private fields for controls with `Id` attributes
+   - `ObjectParsingHelpers` parses Pos/Dim expressions with operator support and view references
    - Generates Roslyn `SyntaxTree` nodes for type-safe C# output
 
-5. **Output**:
+5. **XSD Schema Generation** (`Terminal.Gui.Xtui.XsdGenerator/`):
+   - Automatically discovers all 51 non-generic Terminal.Gui View types via reflection
+   - Extracts property information and XML documentation
+   - Generates complete XSD schema with IntelliSense support
+   - Runs automatically before each build to stay in sync with Terminal.Gui
+
+6. **Output**:
    - Generated `.g.cs` files written to `obj/Generated/`
    - Visible in IDE solution explorer
    - Compiled with rest of project
@@ -516,7 +548,7 @@ The project includes comprehensive test coverage with two test projects, providi
 
 ### Implementation: Local Assembly Reference Approach
 
-The Roslyn tests use **Option #2** - locating Terminal.Gui.dll from the locally-built Terminal.Gui project without adding a NuGet package dependency.
+The Roslyn tests use locating Terminal.Gui.dll from the locally-built Terminal.Gui project without adding a NuGet package dependency.
 
 **How It Works:**
 
@@ -960,12 +992,24 @@ For complete benchmark analysis and detailed results, see [`BenchmarkResults_202
 
 ## Roadmap
 
+### Recently Completed (December 2025) ✅
+- [x] **View reference positioning** - Position controls relative to other controls using `{Right _viewName + 1}` syntax
+- [x] **TextField generator** - Dedicated generator with `Secret` property support for password fields
+- [x] **ListView generator** - Dedicated generator for list views
+- [x] **CheckBox generator** - Dedicated generator with `CheckState` enum support
+- [x] **Button enhancements** - Added `IsDefault` property support
+- [x] **Automated XSD generation** - Roslyn-based XSD generator that reflects over Terminal.Gui assembly
+- [x] **XML documentation in XSD** - Property descriptions extracted from Terminal.Gui XML docs for IntelliSense tooltips
+- [x] **Comprehensive test coverage** - 96 tests covering all generators and view reference positioning
+- [x] **Build integration** - XSD automatically regenerates before each build
+
 ### Short Term
 - [x] IntelliSense support via XSD schema
-- [ ] Support for more controls (TextField, TextView, ListView, etc.)
+- [x] Support for more controls (TextField, ListView, CheckBox)
 - [ ] Event handler syntax (`Button.Accept="OnButtonClick"`)
 - [ ] Named elements with `x:Name` attribute
-- [ ] Property access from partial class constructor
+- [x] Property access from partial class constructor (via `Id` attribute and private fields)
+- [ ] Support for more Terminal.Gui controls (TextView, ComboBox, etc.)
 
 ### Medium Term
 - [ ] Data binding syntax (`Text="{Binding PropertyName}"`)
@@ -1026,7 +1070,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## IntelliSense Support
 
-XTUI files support IntelliSense/code completion in Visual Studio, Visual Studio Code, and JetBrains Rider through the included XML Schema Definition (XSD) file.
+XTUI files support IntelliSense/code completion in Visual Studio, Visual Studio Code, and JetBrains Rider through an automatically generated XML Schema Definition (XSD) file.
+
+### Automated XSD Generation
+
+The XSD schema is automatically generated from the Terminal.Gui assembly via the `Terminal.Gui.Xtui.XsdGenerator` project:
+
+- **Reflects over Terminal.Gui** to discover all 51 non-generic View-derived types
+- **Extracts property information** including types (bool, int, string, Pos, Dim, enums)
+- **Parses XML documentation** from Terminal.Gui.xml to provide IntelliSense tooltips
+- **Runs before each build** to stay in sync with Terminal.Gui changes
+- **No manual maintenance required** - schema updates automatically when Terminal.Gui is updated
+
+The generator creates comprehensive IntelliSense support including:
+- All 51 Terminal.Gui control types
+- Control-specific properties (e.g., Button.IsDefault, TextField.Secret, CheckBox.CheckedState)
+- Property documentation from Terminal.Gui XML comments
+- Type validation (booleans, integers, strings, enums)
+- Pos/Dim expression syntax documentation
 
 ### Visual Studio
 
@@ -1040,19 +1101,18 @@ When you reference the `Terminal.Gui.Xtui` NuGet package, the schema is automati
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Window xmlns="http://schemas.terminal.gui/xtui"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://schemas.terminal.gui/xtui ../../Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd">
+<Window xmlns="http://schemas.terminal.gui/xtui">
     <!-- Your UI elements here -->
 </Window>
 ```
 
-2. The `xsi:schemaLocation` attribute should point to the relative path of the `Terminal.Gui.Xtui.xsd` file.
+**Note:** The `xsi:schemaLocation` attribute is **optional** when using VS Code's `xml.fileAssociations` setting (see below).
 
-3. Visual Studio will automatically provide IntelliSense for:
-   - Element names (Window, Label, Button, etc.)
-   - Attribute names (Text, X, Y, Width, Height, etc.)
-   - Documentation tooltips for elements and attributes
+2. Visual Studio will automatically provide IntelliSense for:
+   - Element names (Window, Label, Button, TextField, CheckBox, ListView, and 45 more controls)
+   - Attribute names (Text, X, Y, Width, Height, IsDefault, Secret, CheckedState, etc.)
+   - Documentation tooltips extracted from Terminal.Gui XML comments
+   - Type validation (ensures boolean values are "true"/"false", etc.)
 
 #### Configuring XML Editor Association
 
@@ -1084,12 +1144,14 @@ For the best experience, add these files to your workspace root (this repo alrea
   "xml.fileAssociations": [
     {
       "pattern": "**/*.xtui",
-      "systemId": "Terminal.Gui.Xtui.xsd"
+      "systemId": "${workspaceFolder}/Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd"
     }
   ],
   "files.associations": {
     "*.xtui": "xml"
-  }
+  },
+  "xml.validation.enabled": true,
+  "xml.validation.schema.enabled": "always"
 }
 ```
 
@@ -1104,45 +1166,40 @@ For the best experience, add these files to your workspace root (this repo alrea
 
 #### Schema Configuration
 
-**Option 1: Using schemaLocation (Recommended)**
+**Using Workspace Settings (Recommended)**
 
-Ensure your `.xtui` files include the XML declaration with schema location:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Window xmlns="http://schemas.terminal.gui/xtui"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://schemas.terminal.gui/xtui ../../Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd">
-    <!-- Your UI elements here -->
-</Window>
-```
-
-The relative path in `xsi:schemaLocation` should point to where the `Terminal.Gui.Xtui.xsd` file is located.
-
-**Option 2: Using Workspace Settings**
-
-The workspace `.vscode/settings.json` can map `.xtui` files to the schema:
+The workspace `.vscode/settings.json` (already configured in this repo) maps `.xtui` files to the auto-generated schema:
 
 ```json
 {
   "xml.fileAssociations": [
     {
       "pattern": "**/*.xtui",
-      "systemId": "path/to/Terminal.Gui.Xtui.xsd"
+      "systemId": "${workspaceFolder}/Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd"
     }
   ]
 }
 ```
 
-Replace `path/to/` with the actual path to the schema file (e.g., `Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd`).
+With this configuration, your `.xtui` files only need the simple namespace declaration:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.terminal.gui/xtui">
+    <!-- Your UI elements here -->
+</Window>
+```
+
+No `xsi:schemaLocation` required!
 
 #### Verifying It Works
 
 1. Open a `.xtui` file in VS Code
 2. Check the bottom-right corner - it should show "XML" as the language mode
-3. Start typing `<` inside the Window element - you should see completion suggestions for `Label`, `Button`, etc.
-4. Inside an element, start typing an attribute name - you should see suggestions like `Text`, `X`, `Y`, etc.
-5. Hover over element or attribute names to see documentation tooltips
+3. Start typing `<` inside the Window element - you should see completion suggestions for all 51 Terminal.Gui controls
+4. Inside an element, start typing an attribute name - you should see control-specific suggestions
+5. Hover over attributes like `IsDefault`, `Secret`, or `CheckedState` to see documentation extracted from Terminal.Gui
+6. Try typing invalid values - VS Code will highlight validation errors
 
 #### Troubleshooting VS Code
 
@@ -1189,22 +1246,27 @@ Rider will automatically recognize the schema when you reference the `Terminal.G
 Once configured, you'll get:
 
 #### 1. Element Completion
-Start typing `<` and you'll see a list of available elements:
-- `Window`
-- `Label`
-- `Button`
-- More controls as they're added
+Start typing `<` and you'll see a list of all 51 Terminal.Gui controls including:
+- `Window`, `Dialog`, `FrameView`
+- `Label`, `Button`, `CheckBox`, `TextField`, `TextView`
+- `ListView`, `ComboBox`, `RadioGroup`
+- `MenuBar`, `StatusBar`, `TabView`
+- And 38 more...
 
 #### 2. Attribute Completion
-Inside an element, start typing and you'll see available attributes:
-- `Text` - The text content (string)
-- `X`, `Y` - Position (number, percentage, or expression like `{Center}`)
-- `Width`, `Height` - Dimensions (number, percentage, or expression like `{Fill}`)
-- `Visible`, `Enabled`, `CanFocus` - Boolean properties
-- And many more...
+Inside an element, start typing and you'll see control-specific attributes
+- **Common:** `Text`, `X`, `Y`, `Width`, `Height`, `Visible`, `Enabled`, `CanFocus`, `Id`
+- **Button:** `IsDefault`, `NoDecorations`, `NoPadding`, `HotKeySpecifier`
+- **TextField:** `Secret` (for password fields)
+- **CheckBox:** `CheckedState`, `AllowCheckStateNone`, `RadioStyle`
+- **ListView:** Control-specific properties
+- And many more per control type...
 
-#### 3. Documentation
-Hover over any element or attribute to see documentation describing its purpose.
+#### 3. Documentation Tooltips
+Hover over any element or attribute to see documentation extracted from Terminal.Gui XML comments:
+- Property descriptions
+- Type information
+- Usage guidance
 
 #### 4. Validation
 The IDE will highlight errors if you:
@@ -1226,7 +1288,8 @@ Common attributes available on most controls:
   - Number: `X="10"`
   - Percentage: `X="50%"`
   - Expression: `X="{Center}"`, `X="{Center + 10}"`, `X="{AnchorEnd - 5}"`
-- `Y` - Vertical position (same formats as X)
+  - View reference: `X="{Right _otherControl + 1}"` ← Position relative to another control
+- `Y` - Vertical position (same formats as X, including view references)
 
 #### Dimensions (Dim type)
 - `Width` - Width
@@ -1262,9 +1325,16 @@ If you see errors about the schema not being found:
 2. Check that `Terminal.Gui.Xtui.xsd` exists at that location
 3. For NuGet package users, ensure the package is properly restored
 
-### Adding New Elements
+### Automatic Schema Updates
 
-As new Terminal.Gui controls are supported in XTUI, the `Terminal.Gui.Xtui.xsd` file is updated to include them. After updating the package, IntelliSense will automatically reflect the new elements and attributes.
+The `Terminal.Gui.Xtui.xsd` file is **automatically regenerated** before each build by the `Terminal.Gui.Xtui.XsdGenerator` project. This means:
+
+- ✅ **Always in sync** - Schema reflects the current Terminal.Gui version
+- ✅ **No manual updates needed** - New controls appear automatically when Terminal.Gui is updated
+- ✅ **Complete coverage** - All 51 non-generic View types are included
+- ✅ **Documentation included** - Property descriptions extracted from Terminal.Gui XML comments
+
+After building the project, reload your IDE to pick up the updated schema and see the latest IntelliSense enhancements.
 
 ## Related Resources
 

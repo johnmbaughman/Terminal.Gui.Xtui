@@ -8,12 +8,13 @@ namespace Terminal.Gui.Xtui.Generators;
 
 internal sealed class GenericGenerator : Generator
 {
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    /// <inheritdoc />
+    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create object with object initializer: var {variableName} = new {node.ElementTypeName} { ... };
-        var objectCreation = CreateObjectWithInitializer(node.ElementTypeName, node.Attributes);
-        
-        var statements = new List<StatementSyntax>
+        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer (node.ElementTypeName, node.Attributes);
+
+        List<StatementSyntax> statements = new List<StatementSyntax>
         {
             LocalDeclarationStatement(
                 VariableDeclaration(
@@ -27,62 +28,65 @@ internal sealed class GenericGenerator : Generator
         };
 
         // Process children
-        if (node.Children.Count <= 0) return statements.ToArray();
-        
-        for (var i = 0; i < node.Children.Count; i++)
+        if (node.Children.Count <= 0)
         {
-            var child = node.Children[i];
-            var childVarName = $"{child.ElementTypeName.ToLower()}{i}";
-            var childGenerator = generators.GetGenerator(child.ElementTypeName);
-            var childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
-                
-            statements.AddRange(childStatements);
-
-            // {variableName}.Add({childVarName});
-            statements.Add(
-                ExpressionStatement(
-                    InvocationExpression(
-                            MemberAccessExpression(
-                                SyntaxKind.SimpleMemberAccessExpression,
-                                IdentifierName(variableName),
-                                IdentifierName("Add")))
-                        .WithArgumentList(
-                            ArgumentList(
-                                SingletonSeparatedList(
-                                    Argument(IdentifierName(childVarName)))))));
+            return [.. statements];
         }
 
-        return statements.ToArray();
+        for (int i = 0; i < node.Children.Count; i++)
+        {
+            ElementNode child = node.Children [i];
+            string childVarName = $"{child.ElementTypeName.ToLower ()}{i}";
+            Generator childGenerator = generators.GetGenerator (child.ElementTypeName);
+            StatementSyntax [] childStatements = childGenerator.GenerateStatements (child, childVarName, generators);
+
+            statements.AddRange (childStatements);
+
+            // {variableName}.Add({childVarName});
+            statements.Add (
+                ExpressionStatement (
+                    InvocationExpression (
+                            MemberAccessExpression (
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                IdentifierName (variableName),
+                                IdentifierName ("Add")))
+                        .WithArgumentList (
+                            ArgumentList (
+                                SingletonSeparatedList (
+                                    Argument (IdentifierName (childVarName)))))));
+        }
+
+        return [.. statements];
     }
 
     /// <summary>
     /// Creates an object creation expression with an object initializer for the given attributes.
     /// Example: new SomeView { Text = "Hello", Enabled = true }
     /// </summary>
-    private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string typeName, 
+    private static ObjectCreationExpressionSyntax CreateObjectWithInitializer (
+        string typeName,
         Dictionary<string, string> attributes)
     {
-        var objectCreation = ObjectCreationExpression(IdentifierName(typeName))
-            .WithArgumentList(ArgumentList());
-        
+        ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression (IdentifierName (typeName))
+            .WithArgumentList (ArgumentList ());
+
         if (attributes.Count > 0)
         {
             // Create property assignments for the object initializer
-            var assignments = attributes.Select(attr =>
-                AssignmentExpression(
+            IEnumerable<AssignmentExpressionSyntax> assignments = attributes.Select (attr =>
+                AssignmentExpression (
                     SyntaxKind.SimpleAssignmentExpression,
-                    IdentifierName(attr.Key),
-                    ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
-            
+                    IdentifierName (attr.Key),
+                    ObjectParsingHelpers.ParseValueWithType (attr.Value, attr.Key)));
+
             // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
-            var initializer = InitializerExpression(
+            InitializerExpressionSyntax initializer = InitializerExpression (
                 SyntaxKind.ObjectInitializerExpression,
-                SeparatedList<ExpressionSyntax>(assignments));
-            
-            objectCreation = objectCreation.WithInitializer(initializer);
+                SeparatedList<ExpressionSyntax> (assignments));
+
+            objectCreation = objectCreation.WithInitializer (initializer);
         }
-        
+
         return objectCreation;
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -6,14 +6,14 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Generators;
 
-internal sealed class ButtonGenerator : Generator
+internal sealed class ListViewGenerator : Generator
 {
     /// <inheritdoc />
     public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName,
         IGeneratorFactory generators)
     {
-        // Create Button with object initializer: var {variableName} = new Button { ... };
-        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer ("Button", node.Attributes);
+        // Create ListView with object initializer: var {variableName} = new ListView { ... };
+        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer ("ListView", node.Attributes);
 
         List<StatementSyntax> statements = new List<StatementSyntax>
         {
@@ -54,15 +54,16 @@ internal sealed class ButtonGenerator : Generator
                         .WithArgumentList (
                             ArgumentList (
                                 SingletonSeparatedList (
-                                    Argument (IdentifierName (childVarName)))))));
+                                    Argument (
+                                        IdentifierName (childVarName)))))));
         }
 
         return [.. statements];
     }
 
     /// <summary>
-    /// Creates an object creation expression with an object initializer for the given attributes.
-    /// Example: new Button { Text = "Click Me", Enabled = true }
+    /// Creates an object creation expression with an optional initializer block.
+    /// Example: new ListView { Height = Dim.Auto(), Width = Dim.Auto() }
     /// </summary>
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer (
         string typeName,
@@ -80,7 +81,7 @@ internal sealed class ButtonGenerator : Generator
                     IdentifierName (attr.Key),
                     ObjectParsingHelpers.ParseValueWithType (attr.Value, attr.Key)));
 
-            // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
+            // Create the initializer: { Property1 = "value1", Property2 = true }
             InitializerExpressionSyntax initializer = InitializerExpression (
                 SyntaxKind.ObjectInitializerExpression,
                 SeparatedList<ExpressionSyntax> (assignments));

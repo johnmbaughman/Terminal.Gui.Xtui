@@ -2,5 +2,5 @@
 
 internal interface IGeneratorFactory
 {
-    Generator GetGenerator(string elementName);
+    Generator GetGenerator (string elementName);
 }

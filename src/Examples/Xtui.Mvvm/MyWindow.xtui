@@ -4,5 +4,10 @@
         xsi:schemaLocation="http://schemas.terminal.gui/xtui ../../Terminal.Gui.Xtui/Terminal.Gui.Xtui.xsd">
     <Label Text="Hello" X="10" Y="5" Width="20" Height="1" />
     <Button Text="Click Me" X="{Center}" Y="50%" Width="80%" Height="3" />
-    <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd 5}" Width="{Auto}" Height="{Fill}" />    
+    <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd 5}" Width="{Auto}" Height="{Fill}" />
+    
+    <!-- CheckBox examples -->
+    <CheckBox Text="Remember Me" CheckedState="UnChecked" X="5" Y="15" />
+    <CheckBox Text="Auto-Save" CheckedState="Checked" X="5" Y="17" />
+    <CheckBox Text="Optional Setting" CheckedState="None" AllowCheckStateNone="true" X="5" Y="19" />
 </Window>

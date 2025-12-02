@@ -10,88 +10,88 @@ namespace Terminal.Gui.Xtui.Benchmarks;
 /// Tests parsing of various expression types (literals, percentages, named methods, operators).
 /// </summary>
 [MemoryDiagnoser]
-[SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob (RuntimeMoniker.Net80)]
 public class ExpressionParsingBenchmarks
 {
     private const string PropertyNameX = "X";
     private const string PropertyNameWidth = "Width";
 
-    [Benchmark(Baseline = true, Description = "Literal Integer")]
-    public ExpressionSyntax ParseLiteralInteger()
+    [Benchmark (Baseline = true, Description = "Literal Integer")]
+    public ExpressionSyntax ParseLiteralInteger ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("10", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("10", PropertyNameX);
     }
 
-    [Benchmark(Description = "Percentage")]
-    public ExpressionSyntax ParsePercentage()
+    [Benchmark (Description = "Percentage")]
+    public ExpressionSyntax ParsePercentage ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("50%", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("50%", PropertyNameX);
     }
 
-    [Benchmark(Description = "Named Method - Center")]
-    public ExpressionSyntax ParseNamedMethodCenter()
+    [Benchmark (Description = "Named Method - Center")]
+    public ExpressionSyntax ParseNamedMethodCenter ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Center}", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("{Center}", PropertyNameX);
     }
 
-    [Benchmark(Description = "Named Method - AnchorEnd")]
-    public ExpressionSyntax ParseNamedMethodAnchorEnd()
+    [Benchmark (Description = "Named Method - AnchorEnd")]
+    public ExpressionSyntax ParseNamedMethodAnchorEnd ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{AnchorEnd}", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("{AnchorEnd}", PropertyNameX);
     }
 
-    [Benchmark(Description = "Method with Argument")]
-    public ExpressionSyntax ParseMethodWithArgument()
+    [Benchmark (Description = "Method with Argument")]
+    public ExpressionSyntax ParseMethodWithArgument ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{AnchorEnd 5}", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("{AnchorEnd 5}", PropertyNameX);
     }
 
-    [Benchmark(Description = "Operator Expression - Addition")]
-    public ExpressionSyntax ParseOperatorAddition()
+    [Benchmark (Description = "Operator Expression - Addition")]
+    public ExpressionSyntax ParseOperatorAddition ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Center + 10}", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("{Center + 10}", PropertyNameX);
     }
 
-    [Benchmark(Description = "Operator Expression - Subtraction")]
-    public ExpressionSyntax ParseOperatorSubtraction()
+    [Benchmark (Description = "Operator Expression - Subtraction")]
+    public ExpressionSyntax ParseOperatorSubtraction ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Center - 10}", PropertyNameX);
+        return ObjectParsingHelpers.ParseValueWithType ("{Center - 10}", PropertyNameX);
     }
 
-    [Benchmark(Description = "Dim Fill")]
-    public ExpressionSyntax ParseDimFill()
+    [Benchmark (Description = "Dim Fill")]
+    public ExpressionSyntax ParseDimFill ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Fill}", PropertyNameWidth);
+        return ObjectParsingHelpers.ParseValueWithType ("{Fill}", PropertyNameWidth);
     }
 
-    [Benchmark(Description = "Dim Auto")]
-    public ExpressionSyntax ParseDimAuto()
+    [Benchmark (Description = "Dim Auto")]
+    public ExpressionSyntax ParseDimAuto ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Auto}", PropertyNameWidth);
+        return ObjectParsingHelpers.ParseValueWithType ("{Auto}", PropertyNameWidth);
     }
 
-    [Benchmark(Description = "Dim Fill with Operator")]
-    public ExpressionSyntax ParseDimFillOperator()
+    [Benchmark (Description = "Dim Fill with Operator")]
+    public ExpressionSyntax ParseDimFillOperator ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("{Fill - 5}", PropertyNameWidth);
+        return ObjectParsingHelpers.ParseValueWithType ("{Fill - 5}", PropertyNameWidth);
     }
 
-    [Benchmark(Description = "String Literal")]
-    public ExpressionSyntax ParseStringLiteral()
+    [Benchmark (Description = "String Literal")]
+    public ExpressionSyntax ParseStringLiteral ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("Hello World", "Text");
+        return ObjectParsingHelpers.ParseValueWithType ("Hello World", "Text");
     }
 
-    [Benchmark(Description = "Boolean True")]
-    public ExpressionSyntax ParseBooleanTrue()
+    [Benchmark (Description = "Boolean True")]
+    public ExpressionSyntax ParseBooleanTrue ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("true", "Visible");
+        return ObjectParsingHelpers.ParseValueWithType ("true", "Visible");
     }
 
-    [Benchmark(Description = "Boolean False")]
-    public ExpressionSyntax ParseBooleanFalse()
+    [Benchmark (Description = "Boolean False")]
+    public ExpressionSyntax ParseBooleanFalse ()
     {
-        return ObjectParsingHelpers.ParseValueWithType("false", "Visible");
+        return ObjectParsingHelpers.ParseValueWithType ("false", "Visible");
     }
 }
 

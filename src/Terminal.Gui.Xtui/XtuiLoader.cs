@@ -3,6 +3,14 @@ using System.Xml.Linq;
 
 namespace Terminal.Gui.Xtui;
 
+/// <summary>
+/// Utility for loading XTUI markup into the generator model.
+///
+/// Parses an XTUI string into an <see cref="ElementNode"/> tree, preserving
+/// element names, attributes and inner text while ignoring XML comments.
+/// Generators consume the resulting <see cref="ElementNode"/> instances to
+/// produce C# code.
+/// </summary>
 public static class XtuiLoader
 {
     /// <summary>
@@ -13,37 +21,57 @@ public static class XtuiLoader
     /// <returns>An ElementNode representing the root element.</returns>
     /// <exception cref="System.ArgumentException">Thrown when the XTUI string is null or empty.</exception>
     /// <exception cref="System.InvalidOperationException">Thrown when the XTUI document has no root element.</exception>
-    public static ElementNode LoadFromString(string xaml)
+    public static ElementNode LoadFromString (string xaml)
     {
-        if (string.IsNullOrWhiteSpace(xaml))
-            throw new System.ArgumentException("XTUI string cannot be null or empty.", nameof(xaml));
-        
-        var doc = XDocument.Parse(xaml);
+        if (string.IsNullOrWhiteSpace (xaml))
+        {
+            throw new System.ArgumentException ("XTUI string cannot be null or empty.", nameof (xaml));
+        }
+
+        XDocument doc;
+        try
+        {
+            doc = XDocument.Parse (xaml);
+        }
+        catch (System.Xml.XmlException ex)
+        {
+            // Wrap XML parsing errors as InvalidOperationException so callers
+            // can treat them as XTUI parsing/validation errors.
+            throw new System.InvalidOperationException (ex.Message, ex);
+        }
         if (doc.Root is null)
-            throw new System.InvalidOperationException("XTUI document has no root element.");
-        
-        return FromXElement(doc.Root);
+        {
+            throw new System.InvalidOperationException ("XTUI document has no root element.");
+        }
+
+        return FromXElement (doc.Root);
     }
 
     /// <summary>
     /// Recursively converts an XElement to an ElementNode.
     /// Only processes XElement nodes and XText nodes; XComment nodes are automatically ignored.
     /// </summary>
-    private static ElementNode FromXElement(XElement el)
+    private static ElementNode FromXElement (XElement el)
     {
-        var node = new ElementNode { ElementTypeName = el.Name.LocalName };
+        ElementNode node = new ElementNode { ElementTypeName = el.Name.LocalName };
 
-        foreach (var attr in el.Attributes())
-            node.Attributes[attr.Name.LocalName] = attr.Value;
+        foreach (XAttribute? attr in el.Attributes ())
+        {
+            node.Attributes [attr.Name.LocalName] = attr.Value;
+        }
 
         // Only process text nodes; comments are ignored
-        var txt = string.Concat(el.Nodes().OfType<XText>().Select(t => t.Value)).Trim();
-        if (!string.IsNullOrEmpty(txt))
+        string txt = string.Concat (el.Nodes ().OfType<XText> ().Select (t => t.Value)).Trim ();
+        if (!string.IsNullOrEmpty (txt))
+        {
             node.InnerText = txt;
+        }
 
         // Only process element nodes; comments are ignored
-        foreach (var child in el.Elements())
-            node.Children.Add(FromXElement(child));
+        foreach (XElement? child in el.Elements ())
+        {
+            node.Children.Add (FromXElement (child));
+        }
 
         return node;
     }
