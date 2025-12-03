@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xs:schema targetNamespace="http://schemas.terminal.gui/xtui" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.terminal.gui/xtui">
+  <xs:simpleType name="PosExpression">
+    <xs:annotation>
+      <xs:documentation>Position expression: integer, percentage (50%), or method call like {Center}, {AnchorEnd}, {Right _viewName + 1}</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="DimExpression">
+    <xs:annotation>
+      <xs:documentation>Dimension expression: integer, percentage (50%), or method call like {Fill}, {Auto}, {Percent 75}</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="CheckState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UnChecked" />
+      <xs:enumeration value="Checked" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextAlignment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Left" />
+      <xs:enumeration value="Right" />
+      <xs:enumeration value="Centered" />
+      <xs:enumeration value="Justified" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="ViewAttributes">
+    <xs:attribute name="Id" type="xs:string" />
+    <xs:attribute name="X" type="PosExpression" />
+    <xs:attribute name="Y" type="PosExpression" />
+    <xs:attribute name="Width" type="DimExpression" />
+    <xs:attribute name="Height" type="DimExpression" />
+    <xs:attribute name="Visible" type="xs:boolean" />
+    <xs:attribute name="Enabled" type="xs:boolean" />
+    <xs:attribute name="CanFocus" type="xs:boolean" />
+    <xs:attribute name="TabIndex" type="xs:int" />
+    <xs:attribute name="TabStop" type="xs:boolean" />
+    <xs:attribute name="Text" type="xs:string" />
+  </xs:attributeGroup>
+  <xs:element name="Adornment">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Parent" type="xs:string" />
+      <xs:attribute name="Diagnostics" type="xs:string" />
+      <xs:attribute name="Thickness" type="xs:string" />
+      <xs:attribute name="SuperView" type="xs:string" />
+      <xs:attribute name="Viewport" type="xs:string" />
+      <xs:attribute name="SuperViewRendersLineCanvas" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Bar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="AlignmentModes" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Border">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ColorScheme" type="xs:string" />
+      <xs:attribute name="LineStyle" type="xs:string" />
+      <xs:attribute name="Settings" type="xs:string" />
+      <xs:attribute name="DrawIndicator" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Button">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="WantContinuousButtonPressed" type="xs:boolean" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:attribute name="IsDefault" type="xs:boolean" />
+      <xs:attribute name="NoDecorations" type="xs:boolean" />
+      <xs:attribute name="NoPadding" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CharMap">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SelectedCodePoint" type="xs:int" />
+      <xs:attribute name="StartCodePoint" type="xs:int" />
+      <xs:attribute name="ShowGlyphWidths" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckBox">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:attribute name="AllowCheckStateNone" type="xs:boolean" />
+      <xs:attribute name="CheckedState" type="CheckState" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ColorPicker">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SelectedColor" type="xs:string" />
+      <xs:attribute name="Style" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ColorPicker16">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="BoxHeight" type="xs:int" />
+      <xs:attribute name="BoxWidth" type="xs:int" />
+      <xs:attribute name="Cursor" type="xs:string" />
+      <xs:attribute name="SelectedColor" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboBox">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ColorScheme" type="xs:string" />
+      <xs:attribute name="HideDropdownListOnClick" type="xs:boolean" />
+      <xs:attribute name="IsShow" type="xs:boolean" />
+      <xs:attribute name="ReadOnly" type="xs:boolean" />
+      <xs:attribute name="SearchText" type="xs:string" />
+      <xs:attribute name="SelectedItem" type="xs:int" />
+      <xs:attribute name="Source" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Culture" type="xs:string" />
+      <xs:attribute name="CursorPosition" type="xs:int" />
+      <xs:attribute name="Date" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatePicker">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Culture" type="xs:string" />
+      <xs:attribute name="Date" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dialog">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Canceled" type="xs:boolean" />
+      <xs:attribute name="ButtonAlignment" type="xs:string" />
+      <xs:attribute name="ButtonAlignmentModes" type="xs:string" />
+      <xs:attribute name="Buttons" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowedTypes" type="xs:string" />
+      <xs:attribute name="AllowsMultipleSelection" type="xs:boolean" />
+      <xs:attribute name="CurrentFilter" type="xs:string" />
+      <xs:attribute name="FileOperationsHandler" type="xs:string" />
+      <xs:attribute name="MultiSelected" type="xs:string" />
+      <xs:attribute name="MustExist" type="xs:boolean" />
+      <xs:attribute name="OpenMode" type="xs:string" />
+      <xs:attribute name="Path" type="xs:string" />
+      <xs:attribute name="SearchMatcher" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FrameView">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GraphView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AxisX" type="xs:string" />
+      <xs:attribute name="AxisY" type="xs:string" />
+      <xs:attribute name="CellSize" type="xs:string" />
+      <xs:attribute name="GraphColor" type="xs:string" />
+      <xs:attribute name="MarginBottom" type="xs:string" />
+      <xs:attribute name="MarginLeft" type="xs:string" />
+      <xs:attribute name="ScrollOffset" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HexView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowEdits" type="xs:boolean" />
+      <xs:attribute name="Source" type="xs:string" />
+      <xs:attribute name="BytesPerLine" type="xs:int" />
+      <xs:attribute name="Address" type="xs:string" />
+      <xs:attribute name="AddressWidth" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Label">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LegendAnnotation">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Line">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LineView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="EndingAnchor" type="xs:string" />
+      <xs:attribute name="LineRune" type="xs:string" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="StartingAnchor" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowsMarking" type="xs:boolean" />
+      <xs:attribute name="AllowsMultipleSelection" type="xs:boolean" />
+      <xs:attribute name="LeftItem" type="xs:int" />
+      <xs:attribute name="SelectedItem" type="xs:int" />
+      <xs:attribute name="Source" type="xs:string" />
+      <xs:attribute name="TopItem" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Margin">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ColorScheme" type="xs:string" />
+      <xs:attribute name="ShadowStyle" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MenuBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="IsMenuOpen" type="xs:boolean" />
+      <xs:attribute name="LastFocused" type="xs:string" />
+      <xs:attribute name="Menus" type="xs:string" />
+      <xs:attribute name="MenusBorderStyle" type="xs:string" />
+      <xs:attribute name="UseSubMenusSingleFrame" type="xs:boolean" />
+      <xs:attribute name="Key" type="xs:string" />
+      <xs:attribute name="UseKeysUpDownAsKeysLeftRight" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MenuBarv2">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Menuv2">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumericUpDown">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumericUpDown`1">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Value" type="xs:string" />
+      <xs:attribute name="Format" type="xs:string" />
+      <xs:attribute name="Increment" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="OpenMode" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Padding">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ColorScheme" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgressBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="BidirectionalMarquee" type="xs:boolean" />
+      <xs:attribute name="Fraction" type="xs:decimal" />
+      <xs:attribute name="ProgressBarFormat" type="xs:string" />
+      <xs:attribute name="ProgressBarStyle" type="xs:string" />
+      <xs:attribute name="SegmentCharacter" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RadioGroup">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="DoubleClickAccepts" type="xs:boolean" />
+      <xs:attribute name="HorizontalSpace" type="xs:int" />
+      <xs:attribute name="RadioLabels" type="xs:string" />
+      <xs:attribute name="SelectedItem" type="xs:int" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="Cursor" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScrollBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="Increment" type="xs:int" />
+      <xs:attribute name="AutoShow" type="xs:boolean" />
+      <xs:attribute name="VisibleContentSize" type="xs:int" />
+      <xs:attribute name="ScrollableContentSize" type="xs:int" />
+      <xs:attribute name="Position" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScrollSlider">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="Size" type="xs:int" />
+      <xs:attribute name="VisibleContentSize" type="xs:int" />
+      <xs:attribute name="Position" type="xs:int" />
+      <xs:attribute name="SliderPadding" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Shortcut">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AlignmentModes" type="xs:string" />
+      <xs:attribute name="Action" type="xs:string" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="CommandView" type="xs:string" />
+      <xs:attribute name="HelpText" type="xs:string" />
+      <xs:attribute name="Key" type="xs:string" />
+      <xs:attribute name="BindKeyToApplication" type="xs:boolean" />
+      <xs:attribute name="MinimumKeyTextSize" type="xs:int" />
+      <xs:attribute name="ColorScheme" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Slider">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Slider`1">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowEmpty" type="xs:boolean" />
+      <xs:attribute name="MinimumInnerSpacing" type="xs:int" />
+      <xs:attribute name="Type" type="xs:string" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="LegendsOrientation" type="xs:string" />
+      <xs:attribute name="Style" type="xs:string" />
+      <xs:attribute name="Options" type="xs:string" />
+      <xs:attribute name="RangeAllowSingle" type="xs:boolean" />
+      <xs:attribute name="ShowEndSpacing" type="xs:boolean" />
+      <xs:attribute name="ShowLegends" type="xs:boolean" />
+      <xs:attribute name="UseMinimumSize" type="xs:boolean" />
+      <xs:attribute name="FocusedOption" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpinnerView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AutoSpin" type="xs:boolean" />
+      <xs:attribute name="Sequence" type="xs:string" />
+      <xs:attribute name="SpinBounce" type="xs:boolean" />
+      <xs:attribute name="SpinDelay" type="xs:int" />
+      <xs:attribute name="SpinReverse" type="xs:boolean" />
+      <xs:attribute name="Style" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StatusBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Tab">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="DisplayText" type="xs:string" />
+      <xs:attribute name="View" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TableView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="CellActivationKey" type="xs:string" />
+      <xs:attribute name="CollectionNavigator" type="xs:string" />
+      <xs:attribute name="ColumnOffset" type="xs:int" />
+      <xs:attribute name="FullRowSelect" type="xs:boolean" />
+      <xs:attribute name="MaxCellWidth" type="xs:int" />
+      <xs:attribute name="MinCellWidth" type="xs:int" />
+      <xs:attribute name="MultiSelect" type="xs:boolean" />
+      <xs:attribute name="NullSymbol" type="xs:string" />
+      <xs:attribute name="RowOffset" type="xs:int" />
+      <xs:attribute name="SelectedColumn" type="xs:int" />
+      <xs:attribute name="SelectedRow" type="xs:int" />
+      <xs:attribute name="SeparatorSymbol" type="xs:string" />
+      <xs:attribute name="Style" type="xs:string" />
+      <xs:attribute name="Table" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TabView">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="MaxTabTextWidth" type="xs:string" />
+      <xs:attribute name="SelectedTab" type="xs:string" />
+      <xs:attribute name="Style" type="xs:string" />
+      <xs:attribute name="TabScrollOffset" type="xs:int" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Autocomplete" type="xs:string" />
+      <xs:attribute name="Caption" type="xs:string" />
+      <xs:attribute name="CaptionColor" type="xs:string" />
+      <xs:attribute name="CursorPosition" type="xs:int" />
+      <xs:attribute name="ReadOnly" type="xs:boolean" />
+      <xs:attribute name="ScrollOffset" type="xs:int" />
+      <xs:attribute name="Secret" type="xs:boolean" />
+      <xs:attribute name="SelectedLength" type="xs:int" />
+      <xs:attribute name="SelectedStart" type="xs:int" />
+      <xs:attribute name="SelectedText" type="xs:string" />
+      <xs:attribute name="Used" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextValidateField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Provider" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowsReturn" type="xs:boolean" />
+      <xs:attribute name="AllowsTab" type="xs:boolean" />
+      <xs:attribute name="Autocomplete" type="xs:string" />
+      <xs:attribute name="CurrentColumn" type="xs:int" />
+      <xs:attribute name="CurrentRow" type="xs:int" />
+      <xs:attribute name="CursorPosition" type="xs:string" />
+      <xs:attribute name="InheritsPreviousAttribute" type="xs:boolean" />
+      <xs:attribute name="IsDirty" type="xs:boolean" />
+      <xs:attribute name="LeftColumn" type="xs:int" />
+      <xs:attribute name="Multiline" type="xs:boolean" />
+      <xs:attribute name="ReadOnly" type="xs:boolean" />
+      <xs:attribute name="IsSelecting" type="xs:boolean" />
+      <xs:attribute name="SelectionStartColumn" type="xs:int" />
+      <xs:attribute name="SelectionStartRow" type="xs:int" />
+      <xs:attribute name="TabWidth" type="xs:int" />
+      <xs:attribute name="TopRow" type="xs:int" />
+      <xs:attribute name="Used" type="xs:boolean" />
+      <xs:attribute name="WordWrap" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TileView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="LineStyle" type="xs:string" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="ToggleResizable" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TimeField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="CursorPosition" type="xs:int" />
+      <xs:attribute name="IsShortFormat" type="xs:boolean" />
+      <xs:attribute name="Time" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Toplevel">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Modal" type="xs:boolean" />
+      <xs:attribute name="Running" type="xs:boolean" />
+      <xs:attribute name="IsLoaded" type="xs:boolean" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeView`1">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowLetterBasedNavigation" type="xs:boolean" />
+      <xs:attribute name="AspectGetter" type="xs:string" />
+      <xs:attribute name="ColorGetter" type="xs:string" />
+      <xs:attribute name="MaxDepth" type="xs:int" />
+      <xs:attribute name="MultiSelect" type="xs:boolean" />
+      <xs:attribute name="ObjectActivationButton" type="xs:string" />
+      <xs:attribute name="ObjectActivationKey" type="xs:string" />
+      <xs:attribute name="ScrollOffsetHorizontal" type="xs:int" />
+      <xs:attribute name="ScrollOffsetVertical" type="xs:int" />
+      <xs:attribute name="SelectedObject" type="xs:string" />
+      <xs:attrib

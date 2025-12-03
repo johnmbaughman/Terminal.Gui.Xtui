@@ -1,0 +1,98 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- Opt-out property: set to 'false' in consumer to disable automatic addition -->
+    <PropertyGroup>
+        <EnableXtuiAdditionalFiles Condition="'$(EnableXtuiAdditionalFiles)'==''">true</EnableXtuiAdditionalFiles>
+    </PropertyGroup>
+
+    <!-- Control whether the generated xtui manifest is copied to disk. Consumers can set to 'false' to disable. -->
+    <PropertyGroup>
+        <XtuiExportManifest Condition="'$(XtuiExportManifest)'==''">true</XtuiExportManifest>
+    </PropertyGroup>
+
+    <!-- Destination path for the copied manifest. Can be overridden by consumers. -->
+    <PropertyGroup>
+        <XtuiManifestDestination Condition="'$(XtuiManifestDestination)'==''">$(ProjectDir)obj\Generated\xtui-manifest.json</XtuiManifestDestination>
+    </PropertyGroup>
+
+    <!-- Configure generated file output for IDE visibility -->
+    <PropertyGroup Condition="'$(EnableXtuiAdditionalFiles)'!='false'">
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+
+    <!-- Configurable glob/exclude; default will only match files inside the consumer project directory -->
+    <PropertyGroup>
+        <XtuiAdditionalFilesGlob Condition="'$(XtuiAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xtui</XtuiAdditionalFilesGlob>
+        <XtuiAdditionalFilesExclude Condition="'$(XtuiAdditionalFilesExclude)'==''"/>
+    </PropertyGroup>
+
+        <!-- Note: extraction is done via Exec/PowerShell because CodeTaskFactory is not available on this SDK. -->
+
+    <Target Name="AddXtuiFilesAsAdditionalFiles" BeforeTargets="ResolveReferences;CoreCompile" Condition="'$(EnableXtuiAdditionalFiles)'!='false'">
+
+        <!-- Detect whether the consuming project references Terminal.Gui either as a package or as a project reference -->
+        <ItemGroup>
+            <!-- PackageReference check -->
+            <_TerminalGuiPackage Include="@(PackageReference)" Condition="'%(Identity)' == 'Terminal.Gui'"/>
+            <!-- ProjectReference check (filename without path) -->
+            <_TerminalGuiProjectReference Include="@(ProjectReference)" Condition="'%(Filename)' == 'Terminal.Gui'"/>
+        </ItemGroup>
+
+        <!-- Only add AdditionalFiles when Terminal.Gui is referenced (package or project) -->
+        <ItemGroup Condition="'@(_TerminalGuiPackage)' != '' or '@(_TerminalGuiProjectReference)' != ''">
+            <AdditionalFiles Include="$(XtuiAdditionalFilesGlob)" Exclude="$(XtuiAdditionalFilesExclude)"/>
+        </ItemGroup>
+
+        <Message Text="XTUI files added as AdditionalFiles: @(AdditionalFiles)" Importance="high"/>
+    </Target>
+
+    <!-- Inject the MSBuild-controlled analyzer option into the generated editorconfig so
+         Roslyn's AnalyzerConfigOptionsProvider exposes it to the source generator. This
+         runs after the SDK-generated editorconfig is created and before CoreCompile. -->
+    <Target Name="Xtui_Inject_EmitManifest" AfterTargets="GenerateMSBuildEditorConfig" BeforeTargets="CoreCompile" Condition="'$(XtuiExportManifest)' != 'false'">
+        <PropertyGroup>
+            <_XtuiGeneratedEditorConfig>$(IntermediateOutputPath)$(MSBuildProjectName).GeneratedMSBuildEditorConfig.editorconfig</_XtuiGeneratedEditorConfig>
+        </PropertyGroup>
+
+        <Message Text="Injecting Xtui manifest emission flag into generated editorconfig: $(_XtuiGeneratedEditorConfig)" Importance="low"/>
+
+        <!-- Append keys if not already present. WriteLinesToFile with Overwrite='false' will create or append. -->
+        <WriteLinesToFile File="$(_XtuiGeneratedEditorConfig)" Lines="" Overwrite="false" Encoding="UTF-8" />
+        <WriteLinesToFile File="$(_XtuiGeneratedEditorConfig)" Lines="# Xtui generated analyzer options" Overwrite="false" Encoding="UTF-8" />
+        <WriteLinesToFile File="$(_XtuiGeneratedEditorConfig)" Lines="xtui_emit_manifest = true" Overwrite="false" Encoding="UTF-8" />
+        <WriteLinesToFile File="$(_XtuiGeneratedEditorConfig)" Lines="build_property.XtuiEmitManifest = true" Overwrite="false" Encoding="UTF-8" />
+    </Target>
+
+    <Target Name="Xtui_Export_Manifest" AfterTargets="CoreCompile" Condition="'$(XtuiExportManifest)' != 'false'">
+        <!-- Look for any generated xtui manifest produced by the generator under the compiler-generated files output.
+             The generator produces files named like 'xtui-manifest.json.cs' (the compiler adds .cs). We match those
+             and copy them to the configured destination while stripping the additional '.cs' extension so the
+             destination file is a plain JSON manifest. -->
+        <ItemGroup>
+            <XtuiGeneratedManifestFiles Include="$(BaseIntermediateOutputPath)Generated\**\xtui-manifest.json.cs" />
+        </ItemGroup>
+
+        <!-- If no manifest found, skip the rest of the target -->
+        <Message Text="No xtui-manifest.json.cs found under $(BaseIntermediateOutputPath)Generated; skipping export." Importance="low" Condition="'@(XtuiGeneratedManifestFiles)'==''" />
+        <Message Text="Xtui manifest found: @(XtuiGeneratedManifestFiles)" Importance="high" Condition="'@(XtuiGeneratedManifestFiles)'!=''" />
+
+        <!-- Ensure destination folder exists (based on XtuiManifestDestination property) -->
+        <MakeDir Directories="$([System.IO.Path]::GetDirectoryName('$(XtuiManifestDestination)'))" />
+
+          <!-- Extract manifest JSON from the generated C# file (it's wrapped in a comment) and write
+             the extracted JSON to the configured destination. The generator emits files named
+             'xtui-manifest.json.cs' where the manifest JSON is inside a block comment with
+             markers '/* XTUI_MANIFEST_START' and 'XTUI_MANIFEST_END */'. Use the project-level
+             XtuiExtractManifest inline task to perform extraction per matched file. -->
+                      <!-- Build the extractor tool once (if any manifests exist) -->
+                      <Exec Condition="'@(XtuiGeneratedManifestFiles)'!=''"
+                          Command='dotnet build "$(MSBuildThisFileDirectory)..\tools\XtuiManifestExtractor\XtuiManifestExtractor.csproj" -c $(Configuration) --nologo' />
+
+                      <!-- Invoke the built extractor per generated manifest file to produce the JSON at destination -->
+                      <Exec Condition="'@(XtuiGeneratedManifestFiles)'!=''"
+                          Command='dotnet "$(MSBuildThisFileDirectory)..\tools\XtuiManifestExtractor\bin\$(Configuration)\net8.0\XtuiManifestExtractor.dll" "%(XtuiGeneratedManifestFiles.Identity)" "$(XtuiManifestDestination)%(RecursiveDir)%(Filename)"' />
+
+        <!-- Optional: also copy to project root for easy consumption -->
+        <!-- <Copy SourceFiles="@(XtuiGeneratedManifestFiles)" DestinationFiles="$(ProjectDir)xtui-manifest.json" Condition="'@(XtuiGeneratedManifestFiles)'!=''" /> -->
+    </Target>
+</Project>

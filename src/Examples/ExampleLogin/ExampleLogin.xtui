@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.terminal.gui/xtui">
+    
+    <!-- Username Label -->
+    <Label Id="_usernameLabel" Text="Username:" X="0" Y="0" />
+    
+    <!-- Username TextField -->
+    <TextField Id="_userNameText" X="{Right _usernameLabel+1}" Y="0" Width="{Fill}" />
+    
+    <!-- Password Label -->
+    <Label Id="_passwordLabel" Text="Password:" X="0" Y="2" />
+    
+    <!-- Password TextField -->
+    <TextField Id="_passwordText" Secret="true" X="{Right _passwordLabel + 1}" Y="2" Width="{Fill}" />
+    
+    <!-- Login Button -->
+    <Button Id="_btnLogin" Text="Login" X="{Center}" Y="4" IsDefault="true" />
+    
+    <!-- ListView at bottom -->
+    <ListView Id="_listView" Y="{AnchorEnd}" Height="{Auto}" Width="{Auto}" />
+    
+</Window>

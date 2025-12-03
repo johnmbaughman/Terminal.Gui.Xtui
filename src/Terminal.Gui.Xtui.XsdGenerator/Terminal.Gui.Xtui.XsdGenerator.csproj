@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Terminal.Gui" Version="2.0.0" />
+  </ItemGroup>
+
+  <!-- Copy Terminal.Gui.xml from the local build to output directory -->
+  <Target Name="CopyTerminalGuiXmlDocs" AfterTargets="Build">
+    <Copy SourceFiles="..\Terminal.Gui\Terminal.Gui\bin\Debug\net8.0\Terminal.Gui.xml" 
+          DestinationFolder="$(OutputPath)" 
+          SkipUnchangedFiles="true"
+          Condition="Exists('..\Terminal.Gui\Terminal.Gui\bin\Debug\net8.0\Terminal.Gui.xml')" />
+  </Target>
+
+</Project>

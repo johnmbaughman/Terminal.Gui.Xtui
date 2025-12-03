@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Toplevel xmlns="http://schemas.terminal.gui/xtui">
+    <MenuBar Title="menuBar" Id="menuBar">
+        <MenuBarItems>
+            <MenuBarItem Title="_File">
+                <MenuItems>
+                    <MenuItem Title="_Quit" HelpText="Quit UI Catalog" Key="Application.QuitKey" Command="Quit"/>
+                </MenuItems>
+            </MenuBarItem>
+            <!-- <MenuBarItem Title = "_Themes" 
+                MenuBarItems ="{Binding CreateThemesMenuItems}" />                
+            <MenuBarItem Title="Diag_nostics" 
+                MenuBarItems="{Binding CreateDiagnosticsMenuItems}" />
+            <MenuBarItem Title="_Logging" 
+                MenuBarItems="{Binding CreateLoggingMenuItems}" /> -->
+            <!-- <MenuBarItem Title="_Help">
+                <MenuItems>
+                    <MenuItem Title="_Documentation" HelpText="API Docs"
+                        Key="F1" Action="{Binding OpenApiDocUrl}"/>
+                    <MenuItem Title="_README" HelpText="Project readme"
+                        Key="F2" Action="{Binding OpenReadMeUrl}"/>
+                    <MenuItem Title="_About..." HelpText="About UI Catalog"
+                        Key="A" KeyModifiers="Ctrl"/>
+                </MenuItems>
+            </MenuBarItem> -->
+        </MenuBarItems>
+    </MenuBar>
+</Toplevel>

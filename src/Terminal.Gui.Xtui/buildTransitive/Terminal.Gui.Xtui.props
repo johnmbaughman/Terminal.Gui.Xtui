@@ -1,0 +1,23 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This file is imported by consuming projects to configure XTUI file associations -->
+  
+  <!-- Associate .xtui files with the XML editor and schema -->
+  <PropertyGroup>
+    <XtuiSchemaFile Condition="'$(XtuiSchemaFile)'==''">$(MSBuildThisFileDirectory)..\schemas\Terminal.Gui.Xtui.xsd</XtuiSchemaFile>
+  </PropertyGroup>
+
+  <!-- Configure .xtui files to use XML editor in Visual Studio -->
+  <ItemGroup>
+    <AvailableItemName Include="XtuiFile">
+      <Visible>true</Visible>
+    </AvailableItemName>
+  </ItemGroup>
+
+  <!-- For Rider/IntelliJ: Add schema mapping hint -->
+  <ItemGroup>
+    <None Update="**\*.xtui">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+
+</Project>
