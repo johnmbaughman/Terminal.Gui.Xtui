@@ -54,6 +54,11 @@ internal static class ObjectParsingHelpers
         
         // Button-specific properties
         { "IsDefault", "bool" },
+        
+        // MenuItem/MenuBarItem/Shortcut properties
+        { "HelpText", "string" },
+        { "Key", "Key" },
+        { "Command", "Command" },
     };
 
     /// <summary>
@@ -123,12 +128,42 @@ internal static class ObjectParsingHelpers
             case "Dim":
                 return ParseDimExpression (value, propertyName);
 
+
             case "CheckState":
             case "TextAlignment":
             case "BorderStyle":
                 // Use EnumMapper to resolve enum values
                 string enumExpression = Terminal.Gui.Xtui.Mappers.EnumMapper.GetEnumValue (expectedType, value);
                 return ParseExpression (enumExpression);
+
+            case "Command":
+                // Command is an enum; map to fully-qualified member expression (e.g. Terminal.Gui.Input.Command.Quit)
+                string cmdExpression = Terminal.Gui.Xtui.Mappers.EnumMapper.GetEnumValue ("Command", value);
+                return ParseExpression (cmdExpression);
+
+            case "Key":
+                // Support two common formats for Key:
+                // - A string representation like "Ctrl+Q" which should be passed to the Key(string) ctor
+                // - A symbolic expression / constant reference like `Application.QuitKey`, `Key.F1`, or `Key.A.WithCtrl`
+                // If the value looks like a dotted identifier or contains method/property-style tokens, treat it
+                // as a C# expression and emit it directly. Otherwise, fall back to `new Key("...")`.
+                string trimmedKey = value.Trim();
+                bool looksLikeExpression = trimmedKey.Contains(".") || trimmedKey.Contains("With") || trimmedKey.StartsWith("Key") || trimmedKey.StartsWith("Application");
+                if (looksLikeExpression)
+                {
+                    return ParseExpression (trimmedKey);
+                }
+
+                // Generate: new Key("value")
+                return ObjectCreationExpression (
+                    IdentifierName ("Key"))
+                    .WithArgumentList (
+                        ArgumentList (
+                            SingletonSeparatedList (
+                                Argument (
+                                    LiteralExpression (
+                                        SyntaxKind.StringLiteralExpression,
+                                        Literal (trimmedKey))))));
 
             default:
                 throw new InvalidOperationException (

@@ -76,9 +76,9 @@ public class GeneratorBenchmarks
         _label10Properties = CreateLabelWithManyProperties ();
         _label50Batch = CreateLabelBatch (50);
         
-        // TopLevel benchmarks
+        // Toplevel benchmarks
         _topLevelGenerator = new TopLevelGenerator ();
-        _topLevelEmpty = new ElementNode { ElementTypeName = "TopLevel" };
+        _topLevelEmpty = new ElementNode { ElementTypeName = "Toplevel" };
         _topLevelEmpty.Attributes ["Modal"] = "false";
         // Toplevel with 50 children for benchmarks
         _topLevel50Children = CreateWindowWithChildren (50);
@@ -114,13 +114,13 @@ public class GeneratorBenchmarks
         return _windowGenerator.GenerateClass (_window100Children, "Benchmark", "Window100", _factory);
     }
 
-    [Benchmark (Description = "TopLevel Empty")]
+    [Benchmark (Description = "Toplevel Empty")]
     public string GenerateTopLevelEmpty ()
     {
         return _topLevelGenerator.GenerateClass (_topLevelEmpty, "Benchmark", "EmptyTopLevel", _factory);
     }
 
-    [Benchmark (Description = "TopLevel 50 Children")]
+    [Benchmark (Description = "Toplevel 50 Children")]
     public string GenerateTopLevel50Children ()
     {
         return _topLevelGenerator.GenerateClass (_topLevel50Children, "Benchmark", "TopLevel50", _factory);
@@ -363,5 +363,485 @@ public class GeneratorBenchmarks
         return label;
     }
 }
+
+/// <summary>
+/// Benchmarks for MenuBar code generation performance.
+/// Tests MenuBarGenerator with varying numbers of MenuBarItems and properties.
+/// </summary>
+[MemoryDiagnoser]
+[SimpleJob (RuntimeMoniker.Net80)]
+public class MenuBarGeneratorBenchmarks
+{
+    private ElementNode _menuBarEmpty = null!;
+    private ElementNode _menuBar1Item = null!;
+    private ElementNode _menuBar5Items = null!;
+    private ElementNode _menuBar10Items = null!;
+    private ElementNode _menuBarWithProperties = null!;
+    private MenuBarGenerator _menuBarGenerator = null!;
+    private GeneratorFactory _factory = null!;
+
+    [GlobalSetup]
+    public void Setup ()
+    {
+        _menuBarGenerator = new MenuBarGenerator ();
+        _factory = new GeneratorFactory ();
+
+        // Empty MenuBar
+        _menuBarEmpty = new ElementNode { ElementTypeName = "MenuBar" };
+        _menuBarEmpty.Attributes ["Id"] = "menuBar";
+
+        // MenuBar with 1 item
+        _menuBar1Item = CreateMenuBarWithItems (1);
+
+        // MenuBar with 5 items
+        _menuBar5Items = CreateMenuBarWithItems (5);
+
+        // MenuBar with 10 items
+        _menuBar10Items = CreateMenuBarWithItems (10);
+
+        // MenuBar with many properties
+        _menuBarWithProperties = CreateMenuBarWithManyProperties ();
+    }
+
+    [Benchmark (Baseline = true, Description = "MenuBar Empty")]
+    public string GenerateMenuBarEmpty ()
+    {
+        return _menuBarGenerator.GenerateClass (_menuBarEmpty, "Benchmark", "EmptyMenuBar", _factory);
+    }
+
+    [Benchmark (Description = "MenuBar 1 Item")]
+    public string GenerateMenuBar1Item ()
+    {
+        return _menuBarGenerator.GenerateClass (_menuBar1Item, "Benchmark", "MenuBar1", _factory);
+    }
+
+    [Benchmark (Description = "MenuBar 5 Items")]
+    public string GenerateMenuBar5Items ()
+    {
+        return _menuBarGenerator.GenerateClass (_menuBar5Items, "Benchmark", "MenuBar5", _factory);
+    }
+
+    [Benchmark (Description = "MenuBar 10 Items")]
+    public string GenerateMenuBar10Items ()
+    {
+        return _menuBarGenerator.GenerateClass (_menuBar10Items, "Benchmark", "MenuBar10", _factory);
+    }
+
+    [Benchmark (Description = "MenuBar With Properties")]
+    public string GenerateMenuBarWithProperties ()
+    {
+        return _menuBarGenerator.GenerateClass (_menuBarWithProperties, "Benchmark", "MenuBarProps", _factory);
+    }
+
+    [Benchmark (Description = "MenuBar Statements Only")]
+    public object GenerateMenuBarStatementsOnly ()
+    {
+        return _menuBarGenerator.GenerateStatements (_menuBar5Items, "menuBar", _factory);
+    }
+
+    /// <summary>
+    /// Creates a MenuBar ElementNode with specified number of MenuBarItem children.
+    /// </summary>
+    private static ElementNode CreateMenuBarWithItems (int count)
+    {
+        var menuBar = new ElementNode { ElementTypeName = "MenuBar" };
+        menuBar.Attributes ["Title"] = "Main Menu";
+        menuBar.Attributes ["Id"] = "menuBar";
+
+        for (int i = 0; i < count; i++)
+        {
+            var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
+            menuBarItem.Attributes ["Title"] = $"_Menu{i}";
+            menuBar.Children.Add (menuBarItem);
+        }
+
+        return menuBar;
+    }
+
+    /// <summary>
+    /// Creates a MenuBar ElementNode with many properties.
+    /// </summary>
+    private static ElementNode CreateMenuBarWithManyProperties ()
+    {
+        var menuBar = new ElementNode { ElementTypeName = "MenuBar" };
+        menuBar.Attributes ["Title"] = "Application Menu";
+        menuBar.Attributes ["Id"] = "mainMenuBar";
+        menuBar.Attributes ["X"] = "0";
+        menuBar.Attributes ["Y"] = "0";
+        menuBar.Attributes ["Width"] = "{Fill}";
+        menuBar.Attributes ["Height"] = "1";
+        menuBar.Attributes ["Enabled"] = "true";
+        menuBar.Attributes ["Visible"] = "true";
+        menuBar.Attributes ["CanFocus"] = "true";
+
+        // Add a few items
+        for (int i = 0; i < 3; i++)
+        {
+            var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
+            menuBarItem.Attributes ["Title"] = $"_Item{i}";
+            menuBar.Children.Add (menuBarItem);
+        }
+
+        return menuBar;
+    }
+}
+
+/// <summary>
+/// Benchmarks for TextField code generation performance.
+/// Tests TextFieldGenerator with varying properties including Secret property.
+/// </summary>
+[MemoryDiagnoser]
+[SimpleJob (RuntimeMoniker.Net80)]
+public class TextFieldGeneratorBenchmarks
+{
+    private ElementNode _textFieldSimple = null!;
+    private ElementNode _textFieldWithSecret = null!;
+    private ElementNode _textFieldWithManyProperties = null!;
+    private ElementNode _textFieldBatch50 = null!;
+    private TextFieldGenerator _textFieldGenerator = null!;
+    private GeneratorFactory _factory = null!;
+
+    [GlobalSetup]
+    public void Setup ()
+    {
+        _textFieldGenerator = new TextFieldGenerator ();
+        _factory = new GeneratorFactory ();
+
+        // Simple TextField
+        _textFieldSimple = new ElementNode { ElementTypeName = "TextField" };
+        _textFieldSimple.Attributes ["Text"] = "Default Value";
+
+        // TextField with Secret property
+        _textFieldWithSecret = new ElementNode { ElementTypeName = "TextField" };
+        _textFieldWithSecret.Attributes ["Id"] = "_passwordField";
+        _textFieldWithSecret.Attributes ["Secret"] = "true";
+        _textFieldWithSecret.Attributes ["X"] = "10";
+        _textFieldWithSecret.Attributes ["Y"] = "5";
+
+        // TextField with many properties
+        _textFieldWithManyProperties = new ElementNode { ElementTypeName = "TextField" };
+        _textFieldWithManyProperties.Attributes ["Id"] = "_usernameField";
+        _textFieldWithManyProperties.Attributes ["Text"] = "Initial";
+        _textFieldWithManyProperties.Attributes ["X"] = "{Right _label + 2}";
+        _textFieldWithManyProperties.Attributes ["Y"] = "0";
+        _textFieldWithManyProperties.Attributes ["Width"] = "30";
+        _textFieldWithManyProperties.Attributes ["Height"] = "1";
+        _textFieldWithManyProperties.Attributes ["Enabled"] = "true";
+        _textFieldWithManyProperties.Attributes ["CanFocus"] = "true";
+
+        // TextField for batch testing
+        _textFieldBatch50 = new ElementNode { ElementTypeName = "TextField" };
+        _textFieldBatch50.Attributes ["Text"] = "Input";
+    }
+
+    [Benchmark (Baseline = true, Description = "TextField Simple")]
+    public object GenerateTextFieldSimple ()
+    {
+        return _textFieldGenerator.GenerateStatements (_textFieldSimple, "field1", _factory);
+    }
+
+    [Benchmark (Description = "TextField With Secret")]
+    public object GenerateTextFieldWithSecret ()
+    {
+        return _textFieldGenerator.GenerateStatements (_textFieldWithSecret, "_passwordField", _factory);
+    }
+
+    [Benchmark (Description = "TextField With Many Properties")]
+    public object GenerateTextFieldWithManyProperties ()
+    {
+        return _textFieldGenerator.GenerateStatements (_textFieldWithManyProperties, "_usernameField", _factory);
+    }
+
+    [Benchmark (Description = "TextField Batch (50 fields)")]
+    public string GenerateTextFieldBatch ()
+    {
+        string result = "";
+        for (int i = 0; i < 50; i++)
+        {
+            var statements = _textFieldGenerator.GenerateStatements (_textFieldBatch50, $"field{i}", _factory);
+            result = string.Concat (statements.Select (s => s.ToString ()));
+        }
+        return result;
+    }
+}
+
+/// <summary>
+/// Benchmarks for ListView code generation performance.
+/// Tests ListViewGenerator with varying properties.
+/// </summary>
+[MemoryDiagnoser]
+[SimpleJob (RuntimeMoniker.Net80)]
+public class ListViewGeneratorBenchmarks
+{
+    private ElementNode _listViewSimple = null!;
+    private ElementNode _listViewWithDimensions = null!;
+    private ElementNode _listViewWithManyProperties = null!;
+    private ElementNode _listViewBatch20 = null!;
+    private ListViewGenerator _listViewGenerator = null!;
+    private GeneratorFactory _factory = null!;
+
+    [GlobalSetup]
+    public void Setup ()
+    {
+        _listViewGenerator = new ListViewGenerator ();
+        _factory = new GeneratorFactory ();
+
+        // Simple ListView
+        _listViewSimple = new ElementNode { ElementTypeName = "ListView" };
+        _listViewSimple.Attributes ["Id"] = "_listView";
+
+        // ListView with dimensions
+        _listViewWithDimensions = new ElementNode { ElementTypeName = "ListView" };
+        _listViewWithDimensions.Attributes ["Id"] = "_listView";
+        _listViewWithDimensions.Attributes ["Width"] = "40";
+        _listViewWithDimensions.Attributes ["Height"] = "10";
+        _listViewWithDimensions.Attributes ["X"] = "0";
+        _listViewWithDimensions.Attributes ["Y"] = "0";
+
+        // ListView with many properties
+        _listViewWithManyProperties = new ElementNode { ElementTypeName = "ListView" };
+        _listViewWithManyProperties.Attributes ["Id"] = "_itemsListView";
+        _listViewWithManyProperties.Attributes ["X"] = "{Center}";
+        _listViewWithManyProperties.Attributes ["Y"] = "2";
+        _listViewWithManyProperties.Attributes ["Width"] = "{Fill - 5}";
+        _listViewWithManyProperties.Attributes ["Height"] = "{Fill - 3}";
+        _listViewWithManyProperties.Attributes ["Enabled"] = "true";
+        _listViewWithManyProperties.Attributes ["CanFocus"] = "true";
+        _listViewWithManyProperties.Attributes ["Visible"] = "true";
+
+        // ListView for batch testing
+        _listViewBatch20 = new ElementNode { ElementTypeName = "ListView" };
+        _listViewBatch20.Attributes ["Width"] = "30";
+        _listViewBatch20.Attributes ["Height"] = "8";
+    }
+
+    [Benchmark (Baseline = true, Description = "ListView Simple")]
+    public object GenerateListViewSimple ()
+    {
+        return _listViewGenerator.GenerateStatements (_listViewSimple, "_listView", _factory);
+    }
+
+    [Benchmark (Description = "ListView With Dimensions")]
+    public object GenerateListViewWithDimensions ()
+    {
+        return _listViewGenerator.GenerateStatements (_listViewWithDimensions, "_listView", _factory);
+    }
+
+    [Benchmark (Description = "ListView With Many Properties")]
+    public object GenerateListViewWithManyProperties ()
+    {
+        return _listViewGenerator.GenerateStatements (_listViewWithManyProperties, "_itemsListView", _factory);
+    }
+
+    [Benchmark (Description = "ListView Batch (20 lists)")]
+    public string GenerateListViewBatch ()
+    {
+        string result = "";
+        for (int i = 0; i < 20; i++)
+        {
+            var statements = _listViewGenerator.GenerateStatements (_listViewBatch20, $"list{i}", _factory);
+            result = string.Concat (statements.Select (s => s.ToString ()));
+        }
+        return result;
+    }
+}
+
+/// <summary>
+/// Benchmarks for MenuBarItem and MenuItem code generation performance.
+/// Tests MenuBarItemGenerator and MenuItemGenerator with varying numbers of children and properties.
+/// </summary>
+[MemoryDiagnoser]
+[SimpleJob (RuntimeMoniker.Net80)]
+public class MenuItemGeneratorBenchmarks
+{
+    private ElementNode _menuItemSimple = null!;
+    private ElementNode _menuItemWithProperties = null!;
+    private ElementNode _menuItemBatch30 = null!;
+    private ElementNode _menuBarItemEmpty = null!;
+    private ElementNode _menuBarItemWith5MenuItems = null!;
+    private ElementNode _menuBarItemWith10MenuItems = null!;
+    private MenuItemGenerator _menuItemGenerator = null!;
+    private MenuBarItemGenerator _menuBarItemGenerator = null!;
+    private GeneratorFactory _factory = null!;
+
+    [GlobalSetup]
+    public void Setup ()
+    {
+        _menuItemGenerator = new MenuItemGenerator ();
+        _menuBarItemGenerator = new MenuBarItemGenerator ();
+        _factory = new GeneratorFactory ();
+
+        // Simple MenuItem
+        _menuItemSimple = new ElementNode { ElementTypeName = "MenuItem" };
+        _menuItemSimple.Attributes ["Title"] = "_Open";
+
+        // MenuItem with properties
+        _menuItemWithProperties = new ElementNode { ElementTypeName = "MenuItem" };
+        _menuItemWithProperties.Attributes ["Title"] = "_Save As...";
+        _menuItemWithProperties.Attributes ["HelpText"] = "Save file with new name";
+        _menuItemWithProperties.Attributes ["Enabled"] = "true";
+
+        // MenuItem for batch testing
+        _menuItemBatch30 = new ElementNode { ElementTypeName = "MenuItem" };
+        _menuItemBatch30.Attributes ["Title"] = "_Action";
+
+        // Empty MenuBarItem
+        _menuBarItemEmpty = new ElementNode { ElementTypeName = "MenuBarItem" };
+        _menuBarItemEmpty.Attributes ["Title"] = "_File";
+
+        // MenuBarItem with 5 MenuItems
+        _menuBarItemWith5MenuItems = CreateMenuBarItemWithMenuItems (5);
+
+        // MenuBarItem with 10 MenuItems
+        _menuBarItemWith10MenuItems = CreateMenuBarItemWithMenuItems (10);
+    }
+
+    [Benchmark (Baseline = true, Description = "MenuItem Simple")]
+    public object GenerateMenuItemSimple ()
+    {
+        return _menuItemGenerator.GenerateStatements (_menuItemSimple, "menuItem1", _factory);
+    }
+
+    [Benchmark (Description = "MenuItem With Properties")]
+    public object GenerateMenuItemWithProperties ()
+    {
+        return _menuItemGenerator.GenerateStatements (_menuItemWithProperties, "saveAsItem", _factory);
+    }
+
+    [Benchmark (Description = "MenuItem Batch (30 items)")]
+    public string GenerateMenuItemBatch ()
+    {
+        string result = "";
+        for (int i = 0; i < 30; i++)
+        {
+            var statements = _menuItemGenerator.GenerateStatements (_menuItemBatch30, $"item{i}", _factory);
+            result = string.Concat (statements.Select (s => s.ToString ()));
+        }
+        return result;
+    }
+
+    [Benchmark (Description = "MenuBarItem Empty")]
+    public object GenerateMenuBarItemEmpty ()
+    {
+        return _menuBarItemGenerator.GenerateStatements (_menuBarItemEmpty, "fileMenu", _factory);
+    }
+
+    [Benchmark (Description = "MenuBarItem With 5 MenuItems")]
+    public object GenerateMenuBarItemWith5MenuItems ()
+    {
+        return _menuBarItemGenerator.GenerateStatements (_menuBarItemWith5MenuItems, "editMenu", _factory);
+    }
+
+    [Benchmark (Description = "MenuBarItem With 10 MenuItems")]
+    public object GenerateMenuBarItemWith10MenuItems ()
+    {
+        return _menuBarItemGenerator.GenerateStatements (_menuBarItemWith10MenuItems, "viewMenu", _factory);
+    }
+
+    /// <summary>
+    /// Creates a MenuBarItem ElementNode with specified number of MenuItem children.
+    /// </summary>
+    private static ElementNode CreateMenuBarItemWithMenuItems (int count)
+    {
+        var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
+        menuBarItem.Attributes ["Title"] = $"_Menu ({count} items)";
+
+        for (int i = 0; i < count; i++)
+        {
+            var menuItem = new ElementNode { ElementTypeName = "MenuItem" };
+            menuItem.Attributes ["Title"] = $"_Item{i}";
+            if (i % 3 == 0)
+            {
+                menuItem.Attributes ["HelpText"] = $"Help for item {i}";
+            }
+            menuBarItem.Children.Add (menuItem);
+        }
+
+        return menuBarItem;
+    }
+}
+
+/// <summary>
+/// Benchmarks for GenericGenerator code generation performance.
+/// Tests GenericGenerator with unknown control types and varying properties.
+/// </summary>
+[MemoryDiagnoser]
+[SimpleJob (RuntimeMoniker.Net80)]
+public class GenericGeneratorBenchmarks
+{
+    private ElementNode _customControlSimple = null!;
+    private ElementNode _customControlWithProperties = null!;
+    private ElementNode _customControlWithChildren = null!;
+    private ElementNode _customControlBatch25 = null!;
+    private GenericGenerator _genericGenerator = null!;
+    private GeneratorFactory _factory = null!;
+
+    [GlobalSetup]
+    public void Setup ()
+    {
+        _genericGenerator = new GenericGenerator ();
+        _factory = new GeneratorFactory ();
+
+        // Simple custom control
+        _customControlSimple = new ElementNode { ElementTypeName = "CustomView" };
+        _customControlSimple.Attributes ["Title"] = "My Custom View";
+
+        // Custom control with properties
+        _customControlWithProperties = new ElementNode { ElementTypeName = "AdvancedWidget" };
+        _customControlWithProperties.Attributes ["Id"] = "_widget";
+        _customControlWithProperties.Attributes ["X"] = "{Center}";
+        _customControlWithProperties.Attributes ["Y"] = "5";
+        _customControlWithProperties.Attributes ["Width"] = "{Fill - 10}";
+        _customControlWithProperties.Attributes ["Height"] = "20";
+        _customControlWithProperties.Attributes ["Enabled"] = "true";
+        _customControlWithProperties.Attributes ["Visible"] = "true";
+        _customControlWithProperties.Attributes ["CanFocus"] = "true";
+
+        // Custom control with children
+        _customControlWithChildren = new ElementNode { ElementTypeName = "ContainerControl" };
+        _customControlWithChildren.Attributes ["Title"] = "Container";
+        for (int i = 0; i < 5; i++)
+        {
+            var child = new ElementNode { ElementTypeName = "ChildControl" };
+            child.Attributes ["Text"] = $"Child {i}";
+            _customControlWithChildren.Children.Add (child);
+        }
+
+        // Custom control for batch testing
+        _customControlBatch25 = new ElementNode { ElementTypeName = "SimpleCustomControl" };
+        _customControlBatch25.Attributes ["Name"] = "Control";
+    }
+
+    [Benchmark (Baseline = true, Description = "Generic Simple")]
+    public object GenerateGenericSimple ()
+    {
+        return _genericGenerator.GenerateStatements (_customControlSimple, "custom1", _factory);
+    }
+
+    [Benchmark (Description = "Generic With Properties")]
+    public object GenerateGenericWithProperties ()
+    {
+        return _genericGenerator.GenerateStatements (_customControlWithProperties, "_widget", _factory);
+    }
+
+    [Benchmark (Description = "Generic With Children")]
+    public object GenerateGenericWithChildren ()
+    {
+        return _genericGenerator.GenerateStatements (_customControlWithChildren, "container", _factory);
+    }
+
+    [Benchmark (Description = "Generic Batch (25 controls)")]
+    public string GenerateGenericBatch ()
+    {
+        string result = "";
+        for (int i = 0; i < 25; i++)
+        {
+            var statements = _genericGenerator.GenerateStatements (_customControlBatch25, $"control{i}", _factory);
+            result = string.Concat (statements.Select (s => s.ToString ()));
+        }
+        return result;
+    }
+}
+
 
 

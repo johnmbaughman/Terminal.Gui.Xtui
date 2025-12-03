@@ -72,15 +72,18 @@ internal sealed class TopLevelGenerator : Generator
                 ElementNode child = node.Children[i];
 
                 string? controlId = child.Attributes.TryGetValue("Id", out string? id) ? id : null;
+                string childVarName = !string.IsNullOrEmpty(controlId) ? controlId! : $"{child.ElementTypeName.ToLower()}{i}";
 
-                Dictionary<string, string> attributesWithoutId = child.Attributes
-                    .Where(kvp => kvp.Key != "Id")
-                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                // Get the appropriate generator for this child type and generate statements
+                Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
+                StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
-                ObjectCreationExpressionSyntax childObjectCreation = CreateObjectWithInitializer(child.ElementTypeName, attributesWithoutId);
+                // Add all the child's generation statements to InitializeComponent
+                initializeComponentStatements.AddRange(childStatements);
 
                 if (!string.IsNullOrEmpty(controlId))
                 {
+                    // Declare a private field for this child control
                     string fieldName = controlId!;
                     fieldDeclarations.Add(
                         FieldDeclaration(
@@ -90,39 +93,36 @@ internal sealed class TopLevelGenerator : Generator
                                 SingletonSeparatedList(
                                     VariableDeclarator(Identifier(fieldName)))))
                         .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
-
+                    
+                    // Assign the local variable to the field: this.fieldName = childVarName;
                     initializeComponentStatements.Add(
                         ExpressionStatement(
                             AssignmentExpression(
                                 SyntaxKind.SimpleAssignmentExpression,
-                                IdentifierName(fieldName),
-                                childObjectCreation)));
-
-                    initializeComponentStatements.Add(
-                        ExpressionStatement(
-                            InvocationExpression(
                                 MemberAccessExpression(
                                     SyntaxKind.SimpleMemberAccessExpression,
                                     ThisExpression(),
-                                    IdentifierName("Add")))
-                            .WithArgumentList(
-                                ArgumentList(
-                                    SingletonSeparatedList(
-                                        Argument(IdentifierName(fieldName)))))));
+                                    IdentifierName(fieldName)),
+                                IdentifierName(childVarName))));
                 }
-                else
+
+                // If the child is a MenuBar, emit an Add call so the menu bar is added to
+                // the Toplevel even when the caller constructor does not explicitly add it.
+                // This mirrors the expected behavior when `CreateMenuBar()` is used (the
+                // generator should ensure the MenuBar is present in the view hierarchy).
+                if (string.Equals(child.ElementTypeName, "MenuBar", StringComparison.Ordinal))
                 {
                     initializeComponentStatements.Add(
                         ExpressionStatement(
                             InvocationExpression(
-                                MemberAccessExpression(
-                                    SyntaxKind.SimpleMemberAccessExpression,
-                                    ThisExpression(),
-                                    IdentifierName("Add")))
-                            .WithArgumentList(
-                                ArgumentList(
-                                    SingletonSeparatedList(
-                                        Argument(childObjectCreation))))));
+                                    MemberAccessExpression(
+                                        SyntaxKind.SimpleMemberAccessExpression,
+                                        ThisExpression(),
+                                        IdentifierName("Add")))
+                                .WithArgumentList(
+                                    ArgumentList(
+                                        SingletonSeparatedList(
+                                            Argument(IdentifierName(childVarName)))))));
                 }
             }
         }

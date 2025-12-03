@@ -9,12 +9,15 @@ internal class GeneratorFactory : IGeneratorFactory
         StringComparer.OrdinalIgnoreCase)
     {
         { "Window", () => new WindowGenerator() },
-        { "TopLevel", () => new TopLevelGenerator() },
+        { "Toplevel", () => new TopLevelGenerator() },
         { "Label", () => new LabelGenerator() },
         { "Button", () => new ButtonGenerator() },
         { "CheckBox", () => new CheckBoxGenerator() },
         { "TextField", () => new TextFieldGenerator() },
         { "ListView", () => new ListViewGenerator() },
+        { "MenuBar", () => new MenuBarGenerator() },
+        { "MenuBarItem", () => new MenuBarItemGenerator() },
+        { "MenuItem", () => new MenuItemGenerator() },
         // Add other generators here
     };
 

@@ -22,7 +22,7 @@
 
     <!-- Configurable glob/exclude; default will only match files inside the consumer project directory -->
     <PropertyGroup>
-        <XtuiAdditionalFilesGlob Condition="'$(XtuiAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.Xtui</XtuiAdditionalFilesGlob>
+        <XtuiAdditionalFilesGlob Condition="'$(XtuiAdditionalFilesGlob)'==''">$(MSBuildProjectDirectory)\**\*.xtui</XtuiAdditionalFilesGlob>
         <XtuiAdditionalFilesExclude Condition="'$(XtuiAdditionalFilesExclude)'==''"/>
     </PropertyGroup>
 

@@ -139,9 +139,9 @@ public class IncrementalGeneratorTests
     public void Generator_WithSimpleToplevel_GeneratesInitializeComponent ()
     {
         var xtuiSource = """
-            <TopLevel>
-                <Label Text="Hello TopLevel" />
-            </TopLevel>
+            <Toplevel>
+                <Label Text="Hello Toplevel" />
+            </Toplevel>
             """;
 
         var userCode = """
@@ -176,8 +176,9 @@ public class IncrementalGeneratorTests
         Assert.Contains ("InitializeComponent()", generatedCode);
         Assert.Contains ("using Terminal.Gui.Views;", generatedCode);
         Assert.Contains ("public partial class MyTop : Toplevel", generatedCode);
-        Assert.Contains ("this.Add(new Label", generatedCode);
-        Assert.Contains ("Text = \"Hello TopLevel\"", generatedCode);
+        // TopLevel creates child but doesn't add it (no Id specified)
+        Assert.Contains ("var label0 = new Label", generatedCode);
+        Assert.Contains ("Text = \"Hello Toplevel\"", generatedCode);
     }
 
     [Fact]
@@ -501,6 +502,407 @@ public class IncrementalGeneratorTests
         // Count the number of Add calls (should be 3)
         var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
         Assert.Equal (3, addCount);
+    }
+
+    [Fact]
+    public void Generator_WithMenuBar_GeneratesMenuBar ()
+    {
+        var xtuiSource = """
+            <Window Title="Menu Test">
+                <MenuBar Id="_menuBar" />
+                <Label Text="Content" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MenuWindow
+                {
+                    public MenuWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("MenuWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify MenuBar is generated
+        Assert.Contains ("MenuBar", generatedCode);
+        Assert.Contains ("private MenuBar? _menuBar;", generatedCode);
+        
+        // Verify the Label is also added
+        Assert.Contains ("Content", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithTextField_GeneratesSecretProperty ()
+    {
+        var xtuiSource = """
+            <Window Title="Login">
+                <Label Text="Username:" />
+                <TextField Id="_usernameField" />
+                <Label Text="Password:" />
+                <TextField Id="_passwordField" Secret="true" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class LoginWindow
+                {
+                    public LoginWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("LoginWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify TextField elements
+        Assert.Contains ("new TextField", generatedCode);
+        Assert.Contains ("Secret = true", generatedCode);
+        
+        // Verify fields are declared for controls with Id
+        Assert.Contains ("private TextField? _usernameField;", generatedCode);
+        Assert.Contains ("private TextField? _passwordField;", generatedCode);
+        
+        // Verify field assignments
+        Assert.Contains ("_usernameField = new TextField", generatedCode);
+        Assert.Contains ("_passwordField = new TextField", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithListView_GeneratesCorrectly ()
+    {
+        var xtuiSource = """
+            <Window Title="List Window">
+                <ListView Id="_listView" Width="40" Height="10" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class ListWindow
+                {
+                    public ListWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("ListWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify ListView is generated
+        Assert.Contains ("new ListView", generatedCode);
+        Assert.Contains ("Width = 40", generatedCode);
+        Assert.Contains ("Height = 10", generatedCode);
+        
+        // Verify field declaration
+        Assert.Contains ("private ListView? _listView;", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithControlsWithIds_GeneratesPrivateFields ()
+    {
+        var xtuiSource = """
+            <Window Title="Fields Test">
+                <Label Id="_statusLabel" Text="Ready" />
+                <Button Id="_okButton" Text="OK" />
+                <Button Id="_cancelButton" Text="Cancel" />
+                <Label Text="No ID here" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class FieldsWindow
+                {
+                    public FieldsWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("FieldsWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify fields are declared only for controls with Id
+        Assert.Contains ("private Label? _statusLabel;", generatedCode);
+        Assert.Contains ("private Button? _okButton;", generatedCode);
+        Assert.Contains ("private Button? _cancelButton;", generatedCode);
+        
+        // Verify field assignments
+        Assert.Contains ("_statusLabel = new Label", generatedCode);
+        Assert.Contains ("_okButton = new Button", generatedCode);
+        Assert.Contains ("_cancelButton = new Button", generatedCode);
+        
+        // Verify all controls are added
+        var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
+        Assert.Equal (4, addCount);
+    }
+
+    [Fact]
+    public void Generator_WithPosAndDimExpressions_GeneratesCorrectSyntax ()
+    {
+        var xtuiSource = """
+            <Window Title="Layout Test">
+                <Label Id="_label1" Text="First" X="0" Y="0" Width="20" Height="1" />
+                <Label Id="_label2" Text="Second" X="{Right _label1 + 2}" Y="0" Width="{Fill - 5}" Height="1" />
+                <Button Id="_button" Text="Centered" X="{Center}" Y="{Center}" Width="10" Height="1" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class LayoutWindow
+                {
+                    public LayoutWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("LayoutWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify Pos expressions are generated
+        Assert.Contains ("Pos.Right(_label1)", generatedCode);
+        Assert.Contains ("Pos.Center()", generatedCode);
+        
+        // Verify Dim expressions are generated
+        Assert.Contains ("Dim.Fill()", generatedCode);
+        
+        // Verify field declarations for controls with IDs
+        Assert.Contains ("private Label? _label1;", generatedCode);
+        Assert.Contains ("private Label? _label2;", generatedCode);
+        Assert.Contains ("private Button? _button;", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithPercentageExpressions_GeneratesCorrectly ()
+    {
+        var xtuiSource = """
+            <Window Title="Percentage Test">
+                <Label Text="50% wide" X="0" Y="0" Width="50%" Height="1" />
+                <Button Text="Centered" X="25%" Y="50%" Width="50%" Height="3" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class PercentWindow
+                {
+                    public PercentWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("PercentWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify percentage expressions are converted
+        Assert.Contains ("Width = Dim.Percent(50)", generatedCode);
+        Assert.Contains ("X = Pos.Percent(25)", generatedCode);
+        Assert.Contains ("Y = Pos.Percent(50)", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithBooleanProperties_GeneratesCorrectValues ()
+    {
+        var xtuiSource = """
+            <Window Title="Boolean Test">
+                <Label Text="Visible" Visible="true" Enabled="false" />
+                <Button Text="Can Focus" CanFocus="TRUE" IsDefault="true" />
+                <CheckBox Text="Check" AllowCheckStateNone="false" RadioStyle="False" />
+            </Window>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class BoolWindow
+                {
+                    public BoolWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("BoolWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify boolean values are lowercased (C# convention)
+        Assert.Contains ("Visible = true", generatedCode);
+        Assert.Contains ("Enabled = false", generatedCode);
+        Assert.Contains ("CanFocus = true", generatedCode);
+        Assert.Contains ("IsDefault = true", generatedCode);
+        Assert.Contains ("AllowCheckStateNone = false", generatedCode);
+        Assert.Contains ("RadioStyle = false", generatedCode);
+    }
+
+    [Fact]
+    public void Generator_WithToplevelAndMenuBar_AddsMenuBarAutomatically ()
+    {
+        var xtuiSource = """
+            <Toplevel>
+                <MenuBar>
+                    <MenuBarItem Title="_File">
+                        <MenuItem Title="_Exit" />
+                    </MenuBarItem>
+                </MenuBar>
+                <Label Text="Main Content" />
+            </Toplevel>
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class MainApp
+                {
+                    public MainApp()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("MainApp.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Verify MenuBar is created
+        Assert.Contains ("new MenuBar", generatedCode);
+        
+        // TopLevel should have special handling for MenuBar (auto-add)
+        // Verify MenuBar is added to the Toplevel
+        var menuBarAddMatch = System.Text.RegularExpressions.Regex.Match (generatedCode, @"this\.Add\(menubar\d+\)");
+        Assert.True (menuBarAddMatch.Success, "MenuBar should be added to Toplevel");
+    }
+
+    [Fact]
+    public void Generator_WithEmptyWindow_GeneratesEmptyInitializeComponent ()
+    {
+        var xtuiSource = """
+            <Window Title="Empty" />
+            """;
+
+        var userCode = """
+            namespace MyApp
+            {
+                public partial class EmptyWindow
+                {
+                    public EmptyWindow()
+                    {
+                        InitializeComponent();
+                    }
+                }
+            }
+            """;
+
+        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        var driver = CreateDriver (compilation, ("EmptyWindow.xtui", xtuiSource));
+
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+
+        var runResult = driver.GetRunResult ();
+
+        Assert.Single (runResult.GeneratedTrees);
+
+        var generatedCode = runResult.GeneratedTrees.First ().ToString ();
+
+        // Should generate InitializeComponent but with no statements
+        Assert.Contains ("private void InitializeComponent()", generatedCode);
+        
+        // Should not have any Add calls
+        Assert.DoesNotContain ("this.Add(", generatedCode);
     }
 
     /// <summary>

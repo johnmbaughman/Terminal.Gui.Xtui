@@ -53,6 +53,9 @@ dotnet build src/Terminal.Gui.Xtui.sln
 # Run the best example - a complete login form
 dotnet run --project src/Examples/ExampleLogin
 
+# Try the comprehensive UI catalog showcase
+dotnet run --project src/Examples/UICatalogXtui
+
 # Or try the basic example
 dotnet run --project src/Examples/Xtui
 ```
@@ -91,6 +94,11 @@ Terminal.Gui.Xtui/
 │   │   |   ├── ExampleLogin.cs             # Partial class with constructor
 │   │   |   |── Program.cs                  # Application entry point
 │   │   │   └── ExampleLogin.csproj
+│   │   |── UICatalogXtui/                  # Comprehensive Terminal.Gui showcase
+│   │   |   ├── Scenario.cs                 # Base class for UI scenarios
+│   │   |   ├── UICatalog.cs                # Main catalog application
+│   │   |   |── Program.cs                  # Application entry point
+│   │   │   └── UICatalogXtui.csproj
 │   │   ├── Xtui/                           # Generator working dump project
 │   │   │   ├── MyWindow.xtui               # XTUI UI definition
 │   │   │   ├── MyWindow.cs                 # Partial class with constructor
@@ -101,17 +109,33 @@ Terminal.Gui.Xtui/
 │   │       ├── MyWindow.cs
 │   │       |── Program.cs                  # Includes MainViewModel
 │   │       └── Xtui.Mvvm.csproj
-│   ├── Terminal.Gui.Xtui.Tests/            # Unit tests for components
-│   │   ├── CodeGeneratorTests.cs           # XtuiLoader, GeneratorFactory, etc.
+│   ├── Terminal.Gui.Xtui.Tests/            # Unit tests (142 tests)
+│   │   ├── ButtonGeneratorTests.cs         # Button generator tests
+│   │   ├── CheckBoxGeneratorTests.cs       # CheckBox generator tests
+│   │   ├── GenericGeneratorTests.cs        # Generic fallback generator tests
+│   │   ├── LabelGeneratorTests.cs          # Label generator tests
+│   │   ├── ListViewGeneratorTests.cs       # ListView generator tests
+│   │   ├── MenuBarGeneratorTests.cs        # MenuBar generator tests
+│   │   ├── MenuBarItemGeneratorTests.cs    # MenuBarItem generator tests
+│   │   ├── MenuItemGeneratorTests.cs       # MenuItem generator tests
+│   │   ├── TextFieldGeneratorTests.cs      # TextField generator tests
+│   ├── Terminal.Gui.Xtui.RoslynTests/      # Roslyn integration tests (23 tests)
+│   │   ├── IncrementalGeneratorTests.cs    # Full pipeline tests
+│   │   ├── SmokeTests.cs                   # Infrastructure validation
+│   │   └── Terminal.Gui.Xtui.RoslynTests.csprojre generator tests
 │   │   └── Terminal.Gui.Xtui.Tests.csproj
 │   ├── Terminal.Gui.Xtui.RoslynTests/      # Roslyn integration tests
 │   │   ├── IncrementalGeneratorTests.cs    # Full pipeline tests
 │   │   ├── SmokeTests.cs                   # Infrastructure validation
 │   │   └── Terminal.Gui.Xtui.RoslynTests.csproj
-│   └── Terminal.Gui.Xtui.Benchmarks/       # Performance benchmarks
+│   └── Terminal.Gui.Xtui.Benchmarks/       # Performance benchmarks (40+ scenarios)
 │       ├── XtuiLoaderBenchmarks.cs         # XTUI parsing benchmarks
 │       ├── ExpressionParsingBenchmarks.cs  # Pos/Dim expression benchmarks
-│       ├── GeneratorBenchmarks.cs          # Code generation benchmarks
+│       ├── BookkeepingBenchmarks.cs        # File tracking benchmarks
+│       ├── GeneratorBenchmarks.cs          # All generator benchmarks (9 classes):
+│       │                                   #   - Window/TopLevel/Button/Label/CheckBox
+│       │                                   #   - MenuBar, TextField, ListView
+│       │                                   #   - MenuItem/MenuBarItem, Generic
 │       ├── Program.cs                      # BenchmarkRunner entry point
 │       └── Terminal.Gui.Xtui.Benchmarks.csproj
 ├── .gitignore
@@ -124,11 +148,12 @@ Terminal.Gui.Xtui/
 
 ### Example Projects
 
-The repository includes three example projects demonstrating different aspects of XTUI:
+The repository includes four example projects demonstrating different aspects of XTUI:
 
 | Project | Description | Best For |
 |---------|-------------|----------|
 | [ExampleLogin](src/Examples/ExampleLogin) | Complete login form with view references, event handling, and Terminal.Gui integration | **Best starting point** - Real-world example |
+| [UICatalogXtui](src/Examples/UICatalogXtui) | Comprehensive Terminal.Gui showcase with multiple scenarios | Exploring Terminal.Gui features |
 | [Xtui](src/Examples/Xtui) | Basic window with various Pos/Dim expressions | Learning Pos/Dim syntax |
 | [Xtui.Mvvm](src/Examples/Xtui.Mvvm) | MVVM pattern with CommunityToolkit.Mvvm | MVVM architecture |
 
@@ -576,11 +601,13 @@ XTUI comments are automatically stripped during parsing:
 Currently supported Terminal.Gui controls with dedicated generators:
 
 - **Window** - Top-level window with title bar and border
+- **Toplevel** - Root container for applications
 - **Label** - Text display control
 - **Button** - Clickable button with `IsDefault` property support
 - **CheckBox** - Checkbox control with `CheckState` enum support
 - **TextField** - Text input control with `Secret` property for password fields
 - **ListView** - List view control for displaying items
+- **MenuBar** - Top-level menu bar with nested menu items
 
 All other Terminal.Gui controls (51 total View-derived types) are supported via the XSD schema for IntelliSense and will use the GenericGenerator for code generation.
 
@@ -654,9 +681,10 @@ dotnet build src/Terminal.Gui.Xtui.sln
 dotnet build src/Terminal.Gui.Xtui.sln -c Release
 
 # Run example applications
-dotnet run --project src/Examples/ExampleLogin  # Complete login form (best example)
-dotnet run --project src/Examples/Xtui          # Basic Pos/Dim demo
-dotnet run --project src/Examples/Xtui.Mvvm     # MVVM pattern demo
+dotnet run --project src/Examples/ExampleLogin     # Complete login form (best example)
+dotnet run --project src/Examples/UICatalogXtui    # Comprehensive UI catalog showcase
+dotnet run --project src/Examples/Xtui             # Basic Pos/Dim demo
+dotnet run --project src/Examples/Xtui.Mvvm        # MVVM pattern demo
 ```
 
 ### Submodule Management
@@ -723,10 +751,9 @@ The project includes comprehensive test coverage with two test projects, providi
 
 ### Overview
 
-**Test Status:** ✅ **14 tests, all passing**
-- ✅ 4 unit tests (Terminal.Gui.Xtui.Tests)
-- ✅ 4 smoke tests (infrastructure validation)
-- ✅ 6 integration tests (full pipeline with GeneratorDriver)
+**Test Status:** ✅ **All tests passing (165 total)**
+- ✅ Unit tests covering all generators (Terminal.Gui.Xtui.Tests) - 142 tests
+- ✅ Roslyn smoke tests and integration tests (Terminal.Gui.Xtui.RoslynTests) - 23 tests
 
 **Test Infrastructure:**
 - **xUnit** - Test framework
@@ -739,19 +766,29 @@ The project includes comprehensive test coverage with two test projects, providi
 #### 1. Terminal.Gui.Xtui.Tests (Unit Tests)
 **Location:** `src/Terminal.Gui.Xtui.Tests/`
 
-**Purpose:** Basic unit tests for core generator components without full Roslyn pipeline overhead.
+**Purpose:** Comprehensive unit tests for all generator components without full Roslyn pipeline overhead.
 
-**Key Tests:**
-- `XtuiLoader.LoadFromString()` - Validates XTUI XML parsing into ElementNode trees
-- `GeneratorFactory.GetGenerator()` - Verifies correct generator selection for control types
-- `WindowGenerator.GenerateClass()` - Validates C# code generation with InitializeComponent pattern
+**Test Files:**
+- `ButtonGeneratorTests.cs` - Button generator with IsDefault property
+- `CheckBoxGeneratorTests.cs` - CheckBox generator with CheckedState enum
+- `LabelGeneratorTests.cs` - Label generator tests
+- `ListViewGeneratorTests.cs` - ListView generator tests
+- `MenuBarGeneratorTests.cs` - MenuBar generator tests
+- `MenuBarItemGeneratorTests.cs` - MenuBarItem generator with nested menus
+- `MenuItemGeneratorTests.cs` - MenuItem generator with properties
+- `TextFieldGeneratorTests.cs` - TextField generator with Secret property
+- `TopLevelGeneratorTests.cs` - TopLevel generator with special child handling
+- `WindowGeneratorTests.cs` - Window generator with InitializeComponent pattern
+- `GenericGeneratorTests.cs` - Generic fallback generator for custom controls
+- `ObjectParsingHelpersTests.cs` - Pos/Dim expression parsing tests
+- `XtuiGeneratorTests.cs` - Core generator infrastructure tests
 
 **Configuration:**
 - Made generator internals visible via `[assembly: InternalsVisibleTo("Terminal.Gui.Xtui.Tests")]`
 - Added in `src/Terminal.Gui.Xtui/Properties/InternalsVisibleTo.cs`
 
-**Status:** ✅ All 4 tests passing  
-**Execution Time:** < 2 seconds
+**Status:** ✅ All 142 tests passing  
+**Execution Time:** < 3 seconds
 
 #### 2. Terminal.Gui.Xtui.RoslynTests (Integration Tests)
 **Location:** `src/Terminal.Gui.Xtui.RoslynTests/`
@@ -779,8 +816,18 @@ The project includes comprehensive test coverage with two test projects, providi
 - ✅ Error reporting for invalid XTUI (diagnostic XTUI001)
 - ✅ Default namespace handling when no partial class exists
 - ✅ Behavior without Terminal.Gui reference (negative test)
+- ✅ MenuBar generation with field declarations
+- ✅ TextField with Secret property and ID-based fields
+- ✅ ListView with Width/Height properties
+- ✅ Controls with IDs generating private fields
+- ✅ Pos/Dim expressions (Pos.Right(), Pos.Center(), Dim.Fill())
+- ✅ Percentage expressions (50%, 25%)
+- ✅ Boolean properties (case-insensitive parsing)
+- ✅ TopLevel special MenuBar handling
+- ✅ Empty window generation
+- ✅ TopLevel behavior (children without IDs not auto-added)
 
-**Status:** ✅ All 10 tests passing  
+**Status:** ✅ All 23 tests passing  
 **Execution Time:** < 5 seconds
 
 ### Implementation: Local Assembly Reference Approach
@@ -883,11 +930,10 @@ dotnet test src/Terminal.Gui.Xtui.RoslynTests/ --filter "FullyQualifiedName~Gene
 ### Expected Test Results
 
 When Terminal.Gui.dll is available (built):
-- ✅ **4 unit tests** should PASS (Terminal.Gui.Xtui.Tests)
-- ✅ **5 integration tests** should PASS (with Terminal.Gui reference)
-- ✅ **1 negative test** should PASS (without Terminal.Gui reference)
-- ✅ **4 smoke tests** should PASS (infrastructure validation)
-- **Total: 14 tests, all passing**
+- ✅ **Unit tests** should PASS (Terminal.Gui.Xtui.Tests)
+- ✅ **Integration tests** should PASS (with Terminal.Gui reference)
+- ✅ **Negative tests** should PASS (without Terminal.Gui reference)
+- ✅ **Smoke tests** should PASS (infrastructure validation)
 
 ### Test Coverage Summary
 
@@ -900,6 +946,20 @@ When Terminal.Gui.dll is available (built):
 - ✅ InitializeComponent pattern compliance
 - ✅ Using directives generation
 - ✅ Namespace extraction from partial classes
+- ✅ Private field generation for controls with IDs
+
+**All Generator Types:**
+- ✅ WindowGenerator - Windows with children and field declarations
+- ✅ TopLevelGenerator - TopLevel containers with special MenuBar handling
+- ✅ ButtonGenerator - Buttons with IsDefault property
+- ✅ LabelGenerator - Labels with text and positioning
+- ✅ CheckBoxGenerator - CheckBoxes with CheckedState enum
+- ✅ TextFieldGenerator - TextFields with Secret property for passwords
+- ✅ ListViewGenerator - ListViews with dimensions
+- ✅ MenuBarGenerator - MenuBars with nested MenuBarItems
+- ✅ MenuBarItemGenerator - MenuBarItems with MenuItems containers
+- ✅ MenuItemGenerator - MenuItems with Title, HelpText, Enabled
+- ✅ GenericGenerator - Fallback for custom control types
 
 **Pipeline Integration:**
 - ✅ Full generator pipeline via GeneratorDriver
@@ -912,31 +972,51 @@ When Terminal.Gui.dll is available (built):
 - ✅ Invalid XTUI error reporting
 - ✅ Missing Terminal.Gui reference handling
 
+**Pos/Dim Expression Parsing:**
+- ✅ Absolute positioning (X="10", Y="5")
+- ✅ Percentage positioning (X="50%", Y="25%")
+- ✅ Named methods (Center, AnchorEnd, Fill, Auto)
+- ✅ Methods with arguments (AnchorEnd 5)
+- ✅ Operator expressions (Center + 10, Fill - 5)
+- ✅ View references (Right _viewName + 1, Bottom _viewName)
+
+**Property Type Handling:**
+- ✅ String properties (Text, Title)
+- ✅ Boolean properties (Visible, Enabled, Secret, IsDefault)
+- ✅ Integer properties (Width, Height as absolute values)
+- ✅ Enum properties (CheckedState)
+- ✅ Pos properties (X, Y with all expression types)
+- ✅ Dim properties (Width, Height with Fill/Auto/expressions)
+
 **Features:**
 - ✅ XML comment handling and filtering
 - ✅ Multiple children generation
 - ✅ Default namespace fallback behavior
 - ✅ Partial class matching
+- ✅ Control IDs generating private fields
+- ✅ Object initializer syntax generation
+- ✅ Nested view hierarchies (MenuBar → MenuBarItem → MenuItem)
 
 **Edge Cases:**
-- ✅ Empty windows
+- ✅ Empty windows and TopLevels
 - ✅ Windows without Terminal.Gui reference
 - ✅ Missing partial class declarations
+- ✅ TopLevel children without IDs (not auto-added)
+- ✅ Controls with no properties (minimal generation)
+- ✅ Boolean case-insensitive parsing (true/True/TRUE)
 
 #### Future Test Enhancements 🎯
 
 **Planned Coverage:**
-- [ ] Pos/Dim expression parsing (e.g., `{Center + 5}`, `{Fill - 10}`)
-- [ ] Operator expressions validation
-- [ ] Attribute type coercion (string, int, bool, enum)
-- [ ] Nested view hierarchies
-- [ ] Complex property types
 - [ ] Event handler generation (when implemented)
 - [ ] Data binding scenarios (when MVVM support added)
 - [ ] Multiple .xtui files in one compilation
-- [ ] Incremental generation scenarios
-- [ ] Performance regression tests
-- [ ] Large file handling (100+ controls)
+- [ ] Incremental generation scenarios (caching behavior)
+- [ ] Performance regression tests (integration with benchmarks)
+- [ ] Large file handling (100+ controls) stress tests
+- [ ] Custom control type discovery and generation
+- [ ] Advanced Pos/Dim combinations (nested expressions)
+- [ ] Error recovery scenarios (partial generation on errors)
 
 ### Troubleshooting Tests
 
@@ -1003,10 +1083,16 @@ The project includes comprehensive performance benchmarks using [BenchmarkDotNet
 
 Performance benchmarks for key generator operations:
 - **XtuiLoaderBenchmarks** - XTUI parsing performance with various file sizes (5-500 elements)
+Performance benchmarks for key generator operations:
+- **XtuiLoaderBenchmarks** - XTUI parsing performance with various file sizes (5-500 elements)
 - **ExpressionParsingBenchmarks** - Pos/Dim expression parsing (literals, percentages, operators)
-- **GeneratorBenchmarks** - Code generation with varying child counts (0-100 children)
-
-### Running Benchmarks
+- **BookkeepingBenchmarks** - Generated file tracking and bookkeeping overhead
+- **GeneratorBenchmarks** - Window, TopLevel, Button, Label, CheckBox code generation (0-100 children)
+- **MenuBarGeneratorBenchmarks** - MenuBar with nested MenuBarItems and MenuItems
+- **TextFieldGeneratorBenchmarks** - TextField with simple, Secret property, many properties, and batch (50 fields)
+- **ListViewGeneratorBenchmarks** - ListView with simple, dimensions, many properties, and batch (20 lists)
+- **MenuItemGeneratorBenchmarks** - MenuItem and MenuBarItem with various configurations
+- **GenericGeneratorBenchmarks** - Generic fallback generator for custom controls
 
 ```bash
 # Run all benchmarks
@@ -1056,14 +1142,50 @@ Measures `ObjectParsingHelpers.ParseValueWithType()` performance:
 
 #### 3. GeneratorBenchmarks
 
-Measures `WindowGenerator.GenerateClass()` performance:
+Measures code generation performance for all dedicated generators:
 
+**Window/TopLevel/Button/Label/CheckBox Benchmarks:**
 | Benchmark | Children | Description |
 |-----------|----------|-------------|
 | Empty | 0 | Baseline overhead |
 | 1 Child | 1 | Single control |
 | 10 Children | 10 | Small dialog |
 | 50 Children | 50 | Typical window |
+| 100 Children | 100 | Complex form |
+
+**MenuBar Benchmarks:**
+- MenuBar with 5 MenuBarItems
+- MenuBar with 10 nested items
+- Deep nesting (MenuBarItem → MenuItem)
+
+**TextField Benchmarks:**
+- Simple TextField
+- TextField with Secret property (password masking)
+- TextField with many properties (Pos expressions, dimensions)
+- Batch generation (50 TextFields)
+
+**ListView Benchmarks:**
+- Simple ListView
+- ListView with dimensions
+- ListView with many properties (Center, Fill expressions)
+- Batch generation (20 ListViews)
+
+**MenuItem Benchmarks:**
+- Simple MenuItem with properties (Title, HelpText)
+- MenuBarItem with nested MenuItems (5 and 10 items)
+- Batch generation (30 MenuItems)
+
+**Generic Generator Benchmarks:**
+- Simple unknown control types
+- Generic controls with properties and Pos/Dim expressions
+- Generic controls with children
+- Batch generation (25 generic controls)
+
+**Analyzes:**
+- Code generation time per control type
+- Memory allocations (Gen0, Gen1, Gen2 collections)
+- Scaling characteristics (linear vs sub-linear)
+- Per-control overhead costscal window |
 | 100 Children | 100 | Complex form |
 
 **Analyzes:**
@@ -1231,13 +1353,16 @@ For complete benchmark analysis and detailed results, see [`BenchmarkResults_202
 
 ### Recently Completed (December 2025) ✅
 - [x] **View reference positioning** - Position controls relative to other controls using `{Right _viewName + 1}` syntax
+- [x] **MenuBar generator** - Dedicated generator for MenuBar, MenuBarItem, and MenuItem controls
+- [x] **Toplevel generator** - Dedicated generator for Toplevel/Toplevel root containers
 - [x] **TextField generator** - Dedicated generator with `Secret` property support for password fields
 - [x] **ListView generator** - Dedicated generator for list views
 - [x] **CheckBox generator** - Dedicated generator with `CheckState` enum support
 - [x] **Button enhancements** - Added `IsDefault` property support
+- [x] **UICatalogXtui** - Comprehensive showcase example demonstrating Terminal.Gui scenarios
 - [x] **Automated XSD generation** - Roslyn-based XSD generator that reflects over Terminal.Gui assembly
 - [x] **XML documentation in XSD** - Property descriptions extracted from Terminal.Gui XML docs for IntelliSense tooltips
-- [x] **Comprehensive test coverage** - 96 tests covering all generators and view reference positioning
+- [x] **Comprehensive test coverage** - Unit and integration tests covering all generators
 - [x] **Build integration** - XSD automatically regenerates before each build
 
 ### Short Term
@@ -1586,6 +1711,7 @@ After building the project, reload your IDE to pick up the updated schema and se
 - **Discussions**: Ask questions or share ideas in [GitHub Discussions](https://github.com/johnmbaughman/Terminal.Gui.Xtui/discussions)
 - **Examples**: Check the `src/Examples/` folder for working examples:
   - [ExampleLogin](src/Examples/ExampleLogin) - Complete login form (recommended starting point)
+  - [UICatalogXtui](src/Examples/UICatalogXtui) - Comprehensive Terminal.Gui showcase
   - [Xtui](src/Examples/Xtui) - Basic Pos/Dim expressions demo
   - [Xtui.Mvvm](src/Examples/Xtui.Mvvm) - MVVM pattern demo
 

@@ -14,7 +14,7 @@ namespace UICatalogXtui;
 ///     This is the main UI Catalog app view. It is run fresh when the app loads (if a Scenario has not been passed on
 ///     the command line) and each time a Scenario ends.
 /// </summary>
-public class UICatalogTop : Toplevel
+public partial class UICatalogTop : Toplevel
 {
     // When a scenario is run, the main app is killed. The static
     // members are cached so that when the scenario exits the
@@ -32,12 +32,13 @@ public class UICatalogTop : Toplevel
     {
         _diagnosticFlags = Diagnostics;
 
-        _menuBar = CreateMenuBar ();
+        //menuBar = CreateMenuBar ();
+        InitializeComponent ();
         _statusBar = CreateStatusBar ();
         _categoryList = CreateCategoryList ();
         _scenarioList = CreateScenarioList ();
 
-        Add (_menuBar, _categoryList, _scenarioList, _statusBar);
+        Add (_categoryList, _scenarioList, _statusBar);
 
         Loaded += LoadedHandler;
         Unloaded += UnloadedHandler;
@@ -98,7 +99,7 @@ public class UICatalogTop : Toplevel
 
     #region MenuBar
 
-    private readonly MenuBar? _menuBar;
+    //private MenuBar? menuBar;
     private CheckBox? _force16ColorsMenuItemCb;
     private OptionSelector? _themesSelector;
     private OptionSelector? _topSchemesSelector;
@@ -159,8 +160,9 @@ public class UICatalogTop : Toplevel
         };
 
         return menuBar;
+    }
 
-        View [] CreateThemeMenuItems ()
+        View[] CreateThemeMenuItems ()
         {
             List<View> menuItems = [];
 
@@ -214,7 +216,7 @@ public class UICatalogTop : Toplevel
                                                      {
                                                          return;
                                                      }
-                                                     ThemeManager.Theme = ThemeManager.GetThemeNames () [(int)args.Value];
+                                                     ThemeManager.Theme = ThemeManager.GetThemeNames ()[(int)args.Value];
 
                                                  };
 
@@ -239,7 +241,7 @@ public class UICatalogTop : Toplevel
                                                         {
                                                             return;
                                                         }
-                                                        CachedTopLevelScheme = SchemeManager.GetSchemesForCurrentTheme ()!.Keys.ToArray () [(int)args.Value];
+                                                        CachedTopLevelScheme = SchemeManager.GetSchemesForCurrentTheme ()!.Keys.ToArray ()[(int)args.Value];
                                                         SchemeName = CachedTopLevelScheme;
                                                         SetNeedsDraw ();
                                                     };
@@ -365,7 +367,7 @@ public class UICatalogTop : Toplevel
             return menuItems.ToArray ()!;
         }
 
-    }
+    //}
 
     private void UpdateThemesMenu ()
     {
@@ -425,7 +427,7 @@ public class UICatalogTop : Toplevel
         TableView scenarioList = new ()
         {
             X = Pos.Right (_categoryList!) - 1,
-            Y = Pos.Bottom (_menuBar!),
+            Y = Pos.Bottom (menuBar!),
             Width = Dim.Fill (),
             Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, _statusBar)),
             //AllowsMarking = false,
@@ -523,7 +525,7 @@ public class UICatalogTop : Toplevel
         ListView categoryList = new ()
         {
             X = 0,
-            Y = Pos.Bottom (_menuBar!),
+            Y = Pos.Bottom (menuBar!),
             Width = Dim.Auto (),
             Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, _statusBar)),
             AllowsMarking = false,

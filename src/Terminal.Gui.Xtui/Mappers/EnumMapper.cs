@@ -56,7 +56,14 @@ internal static class EnumMapper
             return enumValue;
         }
 
-        // Fallback: assume fully qualified name
+        // Special-case a few enums that live in different namespaces or have
+        // non-standard naming. For example, `Command` lives in `Terminal.Gui.Input`.
+        if (string.Equals (enumType, "Command", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"Terminal.Gui.Input.Command.{value}";
+        }
+
+        // Fallback: assume fully qualified name in the `Terminal.Gui` root namespace
         return $"Terminal.Gui.{enumType}.{value}";
     }
 

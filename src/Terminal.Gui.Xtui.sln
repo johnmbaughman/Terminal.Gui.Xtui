@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui", "Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj", "{C599913C-C8DF-4604-B130-37DC45C999BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Analyzers", "Terminal.Gui\Terminal.Gui.Analyzers\Terminal.Gui.Analyzers.csproj", "{A3730277-B175-4A1C-8366-F16534A5F780}"
@@ -21,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xtui.RoslynTests", "Terminal.Gui.Xtui.RoslynTests\Terminal.Gui.Xtui.RoslynTests.csproj", "{3C676E89-8DB5-4A51-B881-CFA2E71CB035}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xtui.XsdGenerator", "Terminal.Gui.Xtui.XsdGenerator\Terminal.Gui.Xtui.XsdGenerator.csproj", "{7951BF36-0634-488B-9B77-EB09C97A254A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UICatalogXtui", "Examples\UICatalogXtui\UICatalogXtui.csproj", "{2DE6B594-9106-E7BA-4D86-0E2838E6487C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +145,18 @@ Global
 		{7951BF36-0634-488B-9B77-EB09C97A254A}.Release|x64.Build.0 = Release|Any CPU
 		{7951BF36-0634-488B-9B77-EB09C97A254A}.Release|x86.ActiveCfg = Release|Any CPU
 		{7951BF36-0634-488B-9B77-EB09C97A254A}.Release|x86.Build.0 = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|x64.Build.0 = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|x64.ActiveCfg = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|x64.Build.0 = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,5 +166,9 @@ Global
 		{A3730277-B175-4A1C-8366-F16534A5F780} = {0A6BE1FB-EB19-4699-BA84-CE11ACF964BE}
 		{8A3735C5-15E7-4E0B-B7C9-1D3563EC19DF} = {8FD2D6DB-570F-49C0-AAEC-58F6522FF836}
 		{7F568946-AA17-4CB9-89E4-7D2EE55D3D0E} = {8FD2D6DB-570F-49C0-AAEC-58F6522FF836}
+		{2DE6B594-9106-E7BA-4D86-0E2838E6487C} = {8FD2D6DB-570F-49C0-AAEC-58F6522FF836}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2EF694B-C3B3-4167-B2B1-276DEE3344FE}
 	EndGlobalSection
 EndGlobal
