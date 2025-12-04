@@ -8,6 +8,8 @@ A Roslyn source generator that enables XML-based UI design, similar to XAML, for
 
 Terminal.Gui.Xtui brings declarative UI design to Terminal.Gui through a compile-time source generator. Inspired by Microsoft's XAML implementation, this project allows you to define terminal-based user interfaces using familiar XML syntax while maintaining Terminal.Gui's performance characteristics.
 
+> **Note:** Terminal.Gui.Xtui is in constant development. While the core features are stable, new controls and capabilities are regularly added. Or changed. Concepts are being defined and refined. Any ideas and feedback are welcome. Please report any issues or feature requests on the [GitHub repository](https://github.com/johnmbaughman/Terminal.Gui.Xtui/issues).
+
 ### Key Features
 
 - **Compile-Time Code Generation**: `.xtui` files are transformed into C# code during compilation using Roslyn incremental source generators
