@@ -36,15 +36,17 @@ internal sealed class MenuBarGenerator : Generator
         if (node.Children.Count > 0)
         {
             // Check if there's a MenuBarItems container element
-            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => c.ElementTypeName == "MenuBarItems");
+            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItems");
             List<ElementNode> itemsToProcess = menuBarItemsContainer != null 
                 ? menuBarItemsContainer.Children 
-                : node.Children.Where(c => c.ElementTypeName == "MenuBarItem").ToList();
+                : node.Children.Where(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
 
             for (int i = 0; i < itemsToProcess.Count; i++)
             {
                 ElementNode child = itemsToProcess[i];
-                string childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+                // Extract local type name for variable naming
+                string localTypeName = GetLocalTypeName(child.ElementTypeName);
+                string childVarName = $"{localTypeName.ToLower()}{i}";
                 Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
                 StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
@@ -83,7 +85,10 @@ internal sealed class MenuBarGenerator : Generator
             foreach (var attr in node.Attributes)
             {
                 // Skip Id attribute - it's not a settable property
-                if (attr.Key == "Id") continue;
+                if (attr.Key == "Id")
+                {
+                    continue;
+                }
 
                 // this.PropertyName = value;
                 initializeComponentStatements.Add(
@@ -102,10 +107,10 @@ internal sealed class MenuBarGenerator : Generator
         if (node.Children.Count > 0)
         {
             // Check if there's a MenuBarItems container element
-            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => c.ElementTypeName == "MenuBarItems");
+            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItems");
             List<ElementNode> itemsToProcess = menuBarItemsContainer != null 
                 ? menuBarItemsContainer.Children 
-                : node.Children.Where(c => c.ElementTypeName == "MenuBarItem").ToList();
+                : node.Children.Where(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
 
             for (int i = 0; i < itemsToProcess.Count; i++)
             {
@@ -160,15 +165,32 @@ internal sealed class MenuBarGenerator : Generator
                 IdentifierName(namespaceName))
             .WithMembers(SingletonList<MemberDeclarationSyntax>(classDeclaration));
 
+        // Collect using directives
+        var usings = new List<UsingDirectiveSyntax>
+        {
+            UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("Views"))),
+            UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("ViewBase")))
+        };
+
+        // Collect all namespaces from the element tree
+        var allNamespaces = CollectAllNamespaces(node);
+
+        // Add usings for all collected namespaces
+        foreach (var ns in allNamespaces.Where(ns => !string.IsNullOrEmpty(ns) && ns != "Terminal.Gui.Views"))
+        {
+            // Parse the namespace into qualified name
+            var parts = ns.Split('.');
+            NameSyntax qualifiedName = IdentifierName(parts[0]);
+            for (int i = 1; i < parts.Length; i++)
+            {
+                qualifiedName = QualifiedName(qualifiedName, IdentifierName(parts[i]));
+            }
+            usings.Add(UsingDirective(qualifiedName));
+        }
+
         // Build the compilation unit with usings
         CompilationUnitSyntax compilationUnit = CompilationUnit()
-            .WithUsings(
-                List(
-                    new[]
-                    {
-                        UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("Views"))),
-                        UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("ViewBase")))
-                    }))
+            .WithUsings(List(usings))
             .WithMembers(SingletonList<MemberDeclarationSyntax>(namespaceDeclaration))
             .NormalizeWhitespace();
 
@@ -176,9 +198,11 @@ internal sealed class MenuBarGenerator : Generator
     }
 
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string typeName,
+        string fullTypeName,
         Dictionary<string, string> attributes)
     {
+        // Extract local type name for object creation
+        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
         ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
             .WithArgumentList(ArgumentList());
 
@@ -200,5 +224,77 @@ internal sealed class MenuBarGenerator : Generator
         }
 
         return objectCreation;
+    }
+
+    /// <summary>
+    /// Extracts the local type name from a qualified type name.
+    /// </summary>
+    private static string GetLocalTypeName(string qualifiedTypeName)
+    {
+        int lastDot = qualifiedTypeName.LastIndexOf('.');
+        return lastDot >= 0 ? qualifiedTypeName.Substring(lastDot + 1) : qualifiedTypeName;
+    }
+
+    /// <summary>
+    /// Recursively collects all C# namespaces from the element tree.
+    /// Maps XML namespace URIs to C# namespaces and filters out XML schema namespaces.
+    /// </summary>
+    private static HashSet<string> CollectAllNamespaces(ElementNode node)
+    {
+        var namespaces = new HashSet<string>();
+
+        // Add C# namespaces from current node (filter out XML schema namespaces)
+        foreach (var nsUri in node.Namespaces.Values)
+        {
+            if (!string.IsNullOrEmpty(nsUri) && 
+                !nsUri.StartsWith("http://www.w3.org/") && 
+                !nsUri.StartsWith("http://schemas.microsoft.com/"))
+            {
+                // Map XML namespace URI to C# namespace
+                string csNamespace = MapXmlNamespaceUriToCSharp(nsUri);
+                namespaces.Add(csNamespace);
+            }
+        }
+
+        // Recursively collect from children
+        foreach (var child in node.Children)
+        {
+            var childNamespaces = CollectAllNamespaces(child);
+            foreach (var ns in childNamespaces)
+            {
+                namespaces.Add(ns);
+            }
+        }
+
+        return namespaces;
+    }
+
+    /// <summary>
+    /// Maps an XML namespace URI to a C# namespace.
+    /// Supports XAML-style clr-namespace syntax: clr-namespace:Namespace.Name or clr-namespace:Namespace.Name;assembly=AssemblyName
+    /// </summary>
+    private static string MapXmlNamespaceUriToCSharp(string uri)
+    {
+        if (uri == "http://schemas.terminal.gui/xtui")
+        {
+            return "Terminal.Gui.Views";
+        }
+        
+        // Parse XAML-style clr-namespace declarations
+        // Format: clr-namespace:MyApp.ViewModels or clr-namespace:MyApp.ViewModels;assembly=MyAssembly
+        if (uri.StartsWith("clr-namespace:"))
+        {
+            string nsDeclaration = uri.Substring("clr-namespace:".Length);
+            int assemblyIndex = nsDeclaration.IndexOf(";");
+            if (assemblyIndex > 0)
+            {
+                // Extract namespace before assembly reference
+                return nsDeclaration.Substring(0, assemblyIndex);
+            }
+            return nsDeclaration;
+        }
+        
+        // Legacy support: plain namespace strings are used as-is
+        return uri;
     }
 }

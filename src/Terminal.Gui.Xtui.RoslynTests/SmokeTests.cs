@@ -35,10 +35,10 @@ public class SmokeTests
         var xml = "<Window Title=\"Test\"><Label Text=\"Hello\" /></Window>";
         var node = XtuiLoader.LoadFromString (xml);
 
-        Assert.Equal ("Window", node.ElementTypeName);
+        Assert.Equal ("Terminal.Gui.Views.Window", node.ElementTypeName);
         Assert.Equal ("Test", node.Attributes ["Title"]);
         Assert.Single (node.Children);
-        Assert.Equal ("Label", node.Children [0].ElementTypeName);
+        Assert.Equal ("Terminal.Gui.Views.Label", node.Children [0].ElementTypeName);
     }
 
     [Fact]

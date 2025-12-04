@@ -36,7 +36,9 @@ internal sealed class CheckBoxGenerator : Generator
         for (int i = 0; i < node.Children.Count; i++)
         {
             ElementNode child = node.Children[i];
-            string childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+            // Extract local type name for variable naming
+            string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
+            string childVarName = $"{localTypeName.ToLower()}{i}";
             Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
             StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
@@ -64,9 +66,11 @@ internal sealed class CheckBoxGenerator : Generator
     /// Example: new CheckBox { Text = "Hello", CheckedState = Terminal.Gui.CheckState.Checked }
     /// </summary>
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string typeName,
+        string fullTypeName,
         Dictionary<string, string> attributes)
     {
+        // Extract local type name for object creation
+        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
         ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
             .WithArgumentList(ArgumentList());
 

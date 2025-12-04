@@ -206,4 +206,17 @@ public class MenuBarGeneratorTests
         Assert.Contains("Width=Dim.Fill()", generated);
         Assert.Contains("Height=1", generated);
     }
+
+    [Fact]
+    public void MenuBarGenerator_GeneratesClassWithGivenName()
+    {
+        var node = new ElementNode { ElementTypeName = "MenuBar" };
+
+        var generator = new MenuBarGenerator();
+        var factory = new GeneratorFactory();
+
+        var code = generator.GenerateClass(node, "MyNamespace", "CustomMenuBarClass", factory);
+
+        Assert.Contains("public partial class CustomMenuBarClass", code);
+    }
 }
