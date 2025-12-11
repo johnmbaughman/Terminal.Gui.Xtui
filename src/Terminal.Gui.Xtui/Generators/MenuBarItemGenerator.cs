@@ -35,11 +35,16 @@ internal sealed class MenuBarItemGenerator : Generator
         // Process children - looking for MenuItems container or direct MenuItem elements
         if (node.Children.Count > 0)
         {
+            // Extract local type names (handle both simple names and fully-qualified names)
+            static string GetLocalTypeName(string typeName) => typeName.Contains('.') ? typeName.Split('.').Last() : typeName;
+            
             // Check if there's a MenuItems container element
-            ElementNode? menuItemsContainer = node.Children.FirstOrDefault(c => c.ElementTypeName == "MenuItems");
+            ElementNode? menuItemsContainer = node.Children.FirstOrDefault(c => 
+                string.Equals(GetLocalTypeName(c.ElementTypeName), "MenuItems", StringComparison.Ordinal));
             List<ElementNode> itemsToProcess = menuItemsContainer != null 
                 ? menuItemsContainer.Children 
-                : node.Children.Where(c => c.ElementTypeName == "MenuItem").ToList();
+                : node.Children.Where(c => 
+                    string.Equals(GetLocalTypeName(c.ElementTypeName), "MenuItem", StringComparison.Ordinal)).ToList();
 
             if (itemsToProcess.Count > 0)
             {

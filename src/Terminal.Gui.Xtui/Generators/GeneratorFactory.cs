@@ -16,6 +16,7 @@ internal class GeneratorFactory : IGeneratorFactory
         { "TextField", () => new TextFieldGenerator() },
         { "ListView", () => new ListViewGenerator() },
         { "MenuBar", () => new MenuBarGenerator() },
+        { "StatusBar", () => new StatusBarGenerator() },
         { "MenuBarItem", () => new MenuBarItemGenerator() },
         { "MenuItem", () => new MenuItemGenerator() },
         // Add other generators here

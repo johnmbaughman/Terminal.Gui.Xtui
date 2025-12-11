@@ -46,6 +46,15 @@
         <Message Text="XTUI files added as AdditionalFiles: @(AdditionalFiles)" Importance="high"/>
     </Target>
 
+    <!-- Clean generated source files from XTUI source generators -->
+    <!-- Only removes files in the Generated subfolder to avoid deleting SDK-generated files -->
+    <Target Name="CleanGeneratedFiles" BeforeTargets="Clean;CoreCompile">
+        <ItemGroup>
+            <GeneratedXtuiFiles Include="$(BaseIntermediateOutputPath)Generated\**\*.g.cs" />
+        </ItemGroup>
+        <Delete Files="@(GeneratedXtuiFiles)" />
+    </Target>
+
     <!-- Inject the MSBuild-controlled analyzer option into the generated editorconfig so
          Roslyn's AnalyzerConfigOptionsProvider exposes it to the source generator. This
          runs after the SDK-generated editorconfig is created and before CoreCompile. -->

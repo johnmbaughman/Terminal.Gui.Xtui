@@ -114,7 +114,9 @@ internal sealed class TopLevelGenerator : Generator
                 // the Toplevel even when the caller constructor does not explicitly add it.
                 // This mirrors the expected behavior when `CreateMenuBar()` is used (the
                 // generator should ensure the MenuBar is present in the view hierarchy).
-                if (string.Equals(localTypeName, "MenuBar", StringComparison.Ordinal))
+                // Same applies to StatusBar.
+                if (string.Equals(localTypeName, "MenuBar", StringComparison.Ordinal) ||
+                    string.Equals(localTypeName, "StatusBar", StringComparison.Ordinal))
                 {
                     initializeComponentStatements.Add(
                         ExpressionStatement(

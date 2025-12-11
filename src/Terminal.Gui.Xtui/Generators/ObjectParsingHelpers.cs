@@ -59,6 +59,9 @@ internal static class ObjectParsingHelpers
         { "HelpText", "string" },
         { "Key", "Key" },
         { "Command", "Command" },
+        
+        // StatusBar/MenuBar/Bar properties
+        { "AlignmentModes", "AlignmentModes" },
     };
 
     /// <summary>
@@ -71,6 +74,55 @@ internal static class ObjectParsingHelpers
         if (string.IsNullOrEmpty (value))
         {
             return LiteralExpression (SyntaxKind.StringLiteralExpression, Literal (string.Empty));
+        }
+
+        // Check for binding directive: {Binding PropertyName}
+        if (value.StartsWith("{Binding ", StringComparison.OrdinalIgnoreCase) && value.EndsWith("}"))
+        {
+            // Extract the property path from {Binding PropertyName}
+            string bindingPath = value.Substring(9, value.Length - 10).Trim();
+            // Generate code like: this.PropertyName or whatever the binding path is
+            return ParseExpression(bindingPath);
+        }
+
+        // Check for other directive syntax: {expression}
+        // For Pos and Dim properties, let the specialized parsers handle ALL {...} expressions
+        // For other properties, check if it's a known Pos/Dim method (which would indicate the property type is wrong)
+        if (value.StartsWith("{") && value.EndsWith("}"))
+        {
+            string trimmed = value.Substring(1, value.Length - 2).Trim();
+            
+            // If the property type is Pos or Dim, always defer to the specialized parser
+            // (It will validate the method name and throw appropriate exceptions)
+            if (!string.IsNullOrWhiteSpace(propertyName) && 
+                PropertyTypes.TryGetValue(propertyName, out string? propertyType) &&
+                (propertyType == "Pos" || propertyType == "Dim"))
+            {
+                // Fall through to the property type handling below
+            }
+            // For non-Pos/Dim properties, check if this looks like a Pos/Dim expression
+            // (This helps catch cases where the wrong property type is being used)
+            else if (trimmed.StartsWith("Dim ", StringComparison.OrdinalIgnoreCase) || 
+                     trimmed.StartsWith("Pos ", StringComparison.OrdinalIgnoreCase))
+            {
+                // Explicit Dim/Pos prefix - fall through to property type handling
+            }
+            else
+            {
+                // Not a Pos/Dim property and not an explicit Pos/Dim expression
+                // Extract method name to check if it's accidentally using Pos/Dim syntax
+                string methodName = trimmed.Split(new[] { ' ', '=', '{', '+', '-' }, StringSplitOptions.RemoveEmptyEntries)[0].Trim();
+                if (IsValidPosMethod(methodName) || IsValidDimMethod(methodName))
+                {
+                    // Looks like a Pos/Dim method but property isn't Pos/Dim type
+                    // Fall through to property type handling which will likely fail with a better error
+                }
+                else
+                {
+                    // Generic expression - not related to Pos/Dim
+                    return ParseExpression(trimmed);
+                }
+            }
         }
 
         // Property name must be provided and must exist in the dictionary
@@ -132,6 +184,7 @@ internal static class ObjectParsingHelpers
             case "CheckState":
             case "TextAlignment":
             case "BorderStyle":
+            case "AlignmentModes":
                 // Use EnumMapper to resolve enum values
                 string enumExpression = Terminal.Gui.Xtui.Mappers.EnumMapper.GetEnumValue (expectedType, value);
                 return ParseExpression (enumExpression);
@@ -375,37 +428,178 @@ internal static class ObjectParsingHelpers
             return binaryExpression;
         }
 
+        // Note: simple {MethodName ...} parsing handled after complex `{Dim ...}` branch
+
+        // Support complex Dim expressions with key/value parameters using
+        // the form: {Dim Auto={style=Auto;minimumContentDim={Dim Func={_ => ...}};maximumContentDim=...}}
+        // This allows specifying named parameters for Dim.Auto in XTUI.
+        Match complexDimMatch = Regex.Match(value, @"^\{\s*Dim\s+(\w+)\s*=\s*(\{.*\}|.+)\s*\}$", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+        if (complexDimMatch.Success)
+        {
+            string methodName = complexDimMatch.Groups[1].Value;
+            string argsText = complexDimMatch.Groups[2].Value.Trim();
+
+            // Handle Dim.Func specially when it is embedded: {Dim Func={_ => ...}}
+            if (string.Equals(methodName, "Func", StringComparison.OrdinalIgnoreCase))
+            {
+                // argsText may be a braced lambda: {_ => ...} or a plain lambda
+                string lambdaText = argsText;
+                if (lambdaText.StartsWith("{") && lambdaText.EndsWith("}"))
+                {
+                    lambdaText = lambdaText.Substring(1, lambdaText.Length - 2).Trim();
+                }
+
+                // Emit: Dim.Func(_ => ...)
+                ExpressionSyntax lambdaExpr = ParseExpression(lambdaText);
+                return InvocationExpression(
+                    MemberAccessExpression(
+                        SyntaxKind.SimpleMemberAccessExpression,
+                        IdentifierName("Dim"),
+                        IdentifierName("Func")))
+                    .WithArgumentList(ArgumentList(SingletonSeparatedList(Argument(lambdaExpr))));
+            }
+
+            // For Dim.Auto and similar, argsText is often a braced set of key=value pairs
+            if (argsText.StartsWith("{") && argsText.EndsWith("}"))
+            {
+                string inner = argsText.Substring(1, argsText.Length - 2);
+                // Split into top-level ';' separated key=value pairs, respecting nested braces
+                var pairs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                int depth = 0;
+                int start = 0;
+                for (int i = 0; i < inner.Length; i++)
+                {
+                    char c = inner[i];
+                    if (c == '{') depth++;
+                    else if (c == '}') depth--;
+                    else if (c == ';' && depth == 0)
+                    {
+                        string part = inner.Substring(start, i - start);
+                        int eq = part.IndexOf('=');
+                        if (eq >= 0)
+                        {
+                            string k = part.Substring(0, eq).Trim();
+                            string v = part.Substring(eq + 1).Trim();
+                            pairs[k] = v;
+                        }
+                        start = i + 1;
+                    }
+                }
+                // last part
+                if (start < inner.Length)
+                {
+                    string part = inner.Substring(start).Trim();
+                    int eq = part.IndexOf('=');
+                    if (eq >= 0)
+                    {
+                        string k = part.Substring(0, eq).Trim();
+                        string v = part.Substring(eq + 1).Trim();
+                        pairs[k] = v;
+                    }
+                }
+
+                // Build arguments for known named parameters (style, minimumContentDim, maximumContentDim)
+                var args = new List<ArgumentSyntax>();
+
+                if (pairs.TryGetValue("style", out string? styleVal) && !string.IsNullOrEmpty(styleVal))
+                {
+                    // Map style token to the DimAutoStyle enum in Terminal.Gui.ViewBase
+                    string enumExpr = $"Terminal.Gui.ViewBase.DimAutoStyle.{styleVal.Trim()}";
+                    args.Add(Argument(ParseExpression(enumExpr)).WithNameColon(NameColon(IdentifierName("style"))));
+                }
+
+                if (pairs.TryGetValue("minimumContentDim", out string? minVal) && !string.IsNullOrEmpty(minVal))
+                {
+                    ExpressionSyntax minExpr;
+                    // If this is a nested Dim expression, parse recursively
+                    if (Regex.IsMatch(minVal, "^\\{\\s*Dim", RegexOptions.IgnoreCase))
+                    {
+                        minExpr = ParseDimExpression(minVal, propertyName);
+                    }
+                    else if (minVal.StartsWith("{") && minVal.EndsWith("}"))
+                    {
+                        // Possibly a bare lambda: {_ => ...}
+                        string lambdaInner = minVal.Substring(1, minVal.Length - 2).Trim();
+                        minExpr = InvocationExpression(
+                            MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                IdentifierName("Dim"),
+                                IdentifierName("Func")))
+                            .WithArgumentList(ArgumentList(SingletonSeparatedList(Argument(ParseExpression(lambdaInner)))));
+                    }
+                    else
+                    {
+                        minExpr = ParseDimExpression(minVal, propertyName);
+                    }
+
+                    args.Add(Argument(minExpr).WithNameColon(NameColon(IdentifierName("minimumContentDim"))));
+                }
+
+                if (pairs.TryGetValue("maximumContentDim", out string? maxVal) && !string.IsNullOrEmpty(maxVal))
+                {
+                    ExpressionSyntax maxExpr;
+                    if (Regex.IsMatch(maxVal, "^\\{\\s*Dim", RegexOptions.IgnoreCase))
+                    {
+                        maxExpr = ParseDimExpression(maxVal, propertyName);
+                    }
+                    else if (maxVal.StartsWith("{") && maxVal.EndsWith("}"))
+                    {
+                        string lambdaInner = maxVal.Substring(1, maxVal.Length - 2).Trim();
+                        maxExpr = InvocationExpression(
+                            MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                IdentifierName("Dim"),
+                                IdentifierName("Func")))
+                            .WithArgumentList(ArgumentList(SingletonSeparatedList(Argument(ParseExpression(lambdaInner)))));
+                    }
+                    else
+                    {
+                        maxExpr = ParseDimExpression(maxVal, propertyName);
+                    }
+
+                    args.Add(Argument(maxExpr).WithNameColon(NameColon(IdentifierName("maximumContentDim"))));
+                }
+
+                // Build invocation: Dim.{methodName}(...)
+                InvocationExpressionSyntax invocation = InvocationExpression(
+                    MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, IdentifierName("Dim"), IdentifierName(methodName)))
+                    .WithArgumentList(ArgumentList(SeparatedList(args)));
+
+                return invocation;
+            }
+        }
+
         // Try parsing as expression syntax: {MethodName} or {MethodName arg} or {MethodName "arg"}
         Match expressionMatch = Regex.Match (value, @"^\{\s*(\w+)(?:\s+(.+?))?\s*\}$");
         if (expressionMatch.Success)
         {
-            string methodName = expressionMatch.Groups [1].Value;
-            string args = expressionMatch.Groups [2].Success ? expressionMatch.Groups [2].Value.Trim () : string.Empty;
+            string methodName = expressionMatch.Groups[1].Value;
+            string args = expressionMatch.Groups[2].Success ? expressionMatch.Groups[2].Value.Trim() : string.Empty;
 
             // Validate method name is a valid Dim factory method
-            if (!IsValidDimMethod (methodName))
+            if (!IsValidDimMethod(methodName))
             {
-                throw new InvalidOperationException (
+                throw new InvalidOperationException(
                     $"Invalid Dim method '{methodName}' for property '{propertyName}'. " +
                     $"Valid methods: Absolute, Percent, Fill, Auto, Width, Height, Func.");
             }
 
             // Build invocation: Dim.{methodName}({args})
-            InvocationExpressionSyntax invocation = InvocationExpression (
-                MemberAccessExpression (
+            InvocationExpressionSyntax invocation = InvocationExpression(
+                MemberAccessExpression(
                     SyntaxKind.SimpleMemberAccessExpression,
-                    IdentifierName ("Dim"),
-                    IdentifierName (methodName)));
+                    IdentifierName("Dim"),
+                    IdentifierName(methodName)));
 
             // Parse arguments if any
-            if (!string.IsNullOrEmpty (args))
+            if (!string.IsNullOrEmpty(args))
             {
-                ArgumentListSyntax argumentList = ParseDimMethodArguments (args, methodName);
-                invocation = invocation.WithArgumentList (argumentList);
+                ArgumentListSyntax argumentList = ParseDimMethodArguments(args, methodName);
+                invocation = invocation.WithArgumentList(argumentList);
             }
             else
             {
-                invocation = invocation.WithArgumentList (ArgumentList ());
+                invocation = invocation.WithArgumentList(ArgumentList());
             }
 
             return invocation;
