@@ -23,6 +23,13 @@
                         Key="A" KeyModifiers="Ctrl"/>
                 </MenuItems>
             </MenuBarItem> -->
-        </MenuBarItems>
+        </MenuBarItems>        
     </MenuBar>
+    <StatusBar 
+        Visible="{Binding ShowStatusBar}" 
+        Id="statusBar" 
+        AlignmentModes="IgnoreFirstOrLast"
+        CanFocus="false"
+        Height="{Dim Auto={style=Auto;minimumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}};maximumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}}}}"
+    />
 </Toplevel>

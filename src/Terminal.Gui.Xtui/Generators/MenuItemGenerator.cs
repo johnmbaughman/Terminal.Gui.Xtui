@@ -35,9 +35,11 @@ internal sealed class MenuItemGenerator : Generator
     }
 
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string typeName,
+        string fullTypeName,
         Dictionary<string, string> attributes)
     {
+        // Extract local type name for object creation
+        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
         ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
             .WithArgumentList(ArgumentList());
 

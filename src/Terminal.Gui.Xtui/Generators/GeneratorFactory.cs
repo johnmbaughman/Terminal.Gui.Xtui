@@ -16,6 +16,7 @@ internal class GeneratorFactory : IGeneratorFactory
         { "TextField", () => new TextFieldGenerator() },
         { "ListView", () => new ListViewGenerator() },
         { "MenuBar", () => new MenuBarGenerator() },
+        { "StatusBar", () => new StatusBarGenerator() },
         { "MenuBarItem", () => new MenuBarItemGenerator() },
         { "MenuItem", () => new MenuItemGenerator() },
         // Add other generators here
@@ -23,7 +24,11 @@ internal class GeneratorFactory : IGeneratorFactory
 
     public Generator GetGenerator (string elementName)
     {
-        return _generators.TryGetValue (elementName, out Func<Generator>? generatorFactory)
+        // Extract the local type name (after the last dot) to find the generator
+        int lastDot = elementName.LastIndexOf('.');
+        string localName = lastDot >= 0 ? elementName.Substring(lastDot + 1) : elementName;
+
+        return _generators.TryGetValue (localName, out Func<Generator>? generatorFactory)
             ? generatorFactory ()
             : new GenericGenerator ();
     }

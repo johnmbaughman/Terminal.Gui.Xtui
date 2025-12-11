@@ -141,4 +141,17 @@ public class TopLevelGeneratorTests
         Assert.IsType<TopLevelGenerator>(generator1);
         Assert.IsType<TopLevelGenerator>(generator2);
     }
+
+    [Fact]
+    public void TopLevelGenerator_GeneratesClassWithGivenName()
+    {
+        var node = new ElementNode { ElementTypeName = "Toplevel" };
+
+        var generator = new TopLevelGenerator();
+        var factory = new GeneratorFactory();
+
+        var code = generator.GenerateClass(node, "MyNamespace", "CustomTopLevelClass", factory);
+
+        Assert.Contains("public partial class CustomTopLevelClass", code);
+    }
 }

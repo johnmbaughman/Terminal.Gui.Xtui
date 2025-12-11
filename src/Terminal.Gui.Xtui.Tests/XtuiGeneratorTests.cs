@@ -14,11 +14,11 @@ public class XtuiGeneratorTests
 
         var root = XtuiLoader.LoadFromString (xtui);
 
-        Assert.Equal ("Window", root.ElementTypeName);
+        Assert.Equal ("Terminal.Gui.Views.Window", root.ElementTypeName);
         Assert.True (root.Attributes.ContainsKey ("Title"));
         Assert.Equal ("Main", root.Attributes ["Title"]);
         Assert.Single (root.Children);
-        Assert.Equal ("Label", root.Children [0].ElementTypeName);
+        Assert.Equal ("Terminal.Gui.Views.Label", root.Children [0].ElementTypeName);
         Assert.Equal ("Hello", root.Children [0].Attributes ["Text"]);
     }
 
@@ -66,6 +66,22 @@ public class XtuiGeneratorTests
         Assert.Contains ("using Terminal.Gui.Views;", code);
         Assert.Contains ("using Terminal.Gui.ViewBase;", code);
         Assert.Contains ("public partial class MyWindow : Window", code);
-        Assert.Contains ("this.Add(new Label", code);
+        Assert.Contains ("var label0 = new Label", code);
+        Assert.Contains ("this.Add(label0)", code);
+    }
+
+    [Fact]
+    public void XtuiLoader_Parses_Xmlns_And_Resolves_Namespaces ()
+    {
+        var xtui = "<Window xmlns:my=\"MyNamespace\" Title=\"Main\"><my:CustomControl Text=\"Hello\" /></Window>";
+
+        var root = XtuiLoader.LoadFromString (xtui);
+
+        Assert.Equal ("Terminal.Gui.Views.Window", root.ElementTypeName);
+        Assert.True (root.Namespaces.ContainsKey ("my"));
+        Assert.Equal ("MyNamespace", root.Namespaces ["my"]);
+        Assert.Single (root.Children);
+        Assert.Equal ("MyNamespace.CustomControl", root.Children [0].ElementTypeName);
+        Assert.Equal ("Hello", root.Children [0].Attributes ["Text"]);
     }
 }

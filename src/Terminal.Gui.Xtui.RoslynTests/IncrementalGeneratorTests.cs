@@ -131,7 +131,8 @@ public class IncrementalGeneratorTests
         Assert.Contains ("using Terminal.Gui.Views;", generatedCode);
         Assert.Contains ("using Terminal.Gui.ViewBase;", generatedCode);
         Assert.Contains ("public partial class MyWindow : Window", generatedCode);
-        Assert.Contains ("this.Add(new Label", generatedCode);
+        Assert.Contains ("var label0 = new Label", generatedCode);
+        Assert.Contains ("this.Add(label0)", generatedCode);
         Assert.Contains ("Text = \"Hello World\"", generatedCode);
     }
 
@@ -380,10 +381,14 @@ public class IncrementalGeneratorTests
         var generatedCode = runResult.GeneratedTrees.First ().ToString ();
 
         // Verify all three children are added
-        Assert.Contains ("this.Add(new Label", generatedCode);
+        Assert.Contains ("var label0 = new Label", generatedCode);
+        Assert.Contains ("this.Add(label0)", generatedCode);
         Assert.Contains ("Text = \"First\"", generatedCode);
-        Assert.Contains ("this.Add(new Button", generatedCode);
+        Assert.Contains ("var button1 = new Button", generatedCode);
+        Assert.Contains ("this.Add(button1)", generatedCode);
         Assert.Contains ("Text = \"Click Me\"", generatedCode);
+        Assert.Contains ("var label2 = new Label", generatedCode);
+        Assert.Contains ("this.Add(label2)", generatedCode);
         Assert.Contains ("Text = \"Second\"", generatedCode);
 
         // Count the number of Add calls (should be 3)
@@ -591,8 +596,8 @@ public class IncrementalGeneratorTests
         Assert.Contains ("private TextField? _passwordField;", generatedCode);
         
         // Verify field assignments
-        Assert.Contains ("_usernameField = new TextField", generatedCode);
-        Assert.Contains ("_passwordField = new TextField", generatedCode);
+        Assert.Contains ("_usernameField = textfield0;", generatedCode);
+        Assert.Contains ("_passwordField = textfield1;", generatedCode);
     }
 
     [Fact]
@@ -679,9 +684,9 @@ public class IncrementalGeneratorTests
         Assert.Contains ("private Button? _cancelButton;", generatedCode);
         
         // Verify field assignments
-        Assert.Contains ("_statusLabel = new Label", generatedCode);
-        Assert.Contains ("_okButton = new Button", generatedCode);
-        Assert.Contains ("_cancelButton = new Button", generatedCode);
+        Assert.Contains ("_statusLabel = label0;", generatedCode);
+        Assert.Contains ("_okButton = button0;", generatedCode);
+        Assert.Contains ("_cancelButton = button1;", generatedCode);
         
         // Verify all controls are added
         var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;

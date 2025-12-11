@@ -28,4 +28,10 @@ public class ElementNode
     /// Optional inner text of the element (trimmed). Null when not present.
     /// </summary>
     public string? InnerText { get; set; }
+
+    /// <summary>
+    /// XML namespaces defined in this element or ancestors.
+    /// Key is prefix (empty string for default namespace), value is the namespace URI (used as C# namespace).
+    /// </summary>
+    public Dictionary<string, string> Namespaces { get; set; } = new Dictionary<string, string>();
 }

@@ -9,15 +9,15 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 namespace Terminal.Gui.Xtui.Generators;
 
 /// <summary>
-/// Generator for MenuBar controls. MenuBars are horizontal menus that can contain MenuBarItems.
+/// Generator for StatusBar controls. StatusBars display shortcuts at the bottom of a Toplevel.
 /// </summary>
-internal sealed class MenuBarGenerator : Generator
+internal sealed class StatusBarGenerator : Generator
 {
     /// <inheritdoc />
     public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
-        // Create MenuBar with object initializer: var {variableName} = new MenuBar { ... };
-        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("MenuBar", node.Attributes);
+        // Create StatusBar with object initializer: var {variableName} = new StatusBar { ... };
+        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("StatusBar", node.Attributes);
 
         List<StatementSyntax> statements = new List<StatementSyntax>
         {
@@ -30,21 +30,15 @@ internal sealed class MenuBarGenerator : Generator
                                     Identifier(variableName))
                                 .WithInitializer(
                                     EqualsValueClause(objectCreation)))))
+                .NormalizeWhitespace()
         };
 
-        // Process children - looking for MenuBarItems container or direct MenuBarItem elements
+        // Process children (typically Shortcut elements)
         if (node.Children.Count > 0)
         {
-            // Check if there's a MenuBarItems container element
-            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItems");
-            List<ElementNode> itemsToProcess = menuBarItemsContainer != null 
-                ? menuBarItemsContainer.Children 
-                : node.Children.Where(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
-
-            for (int i = 0; i < itemsToProcess.Count; i++)
+            for (int i = 0; i < node.Children.Count; i++)
             {
-                ElementNode child = itemsToProcess[i];
-                // Extract local type name for variable naming
+                ElementNode child = node.Children[i];
                 string localTypeName = GetLocalTypeName(child.ElementTypeName);
                 string childVarName = $"{localTypeName.ToLower()}{i}";
                 Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
@@ -73,9 +67,8 @@ internal sealed class MenuBarGenerator : Generator
     /// <inheritdoc />
     public override string GenerateClass(ElementNode node, string namespaceName, string className, IGeneratorFactory generators)
     {
-        // MenuBar can be a top-level element, so generate a partial class
-        // The pattern is: partial class inherits from MenuBar with InitializeComponent method
-        // Since the class inherits from MenuBar, we set properties on 'this' and add MenuBarItems to 'this'
+        // StatusBar can be a top-level element, so generate a partial class
+        // The pattern is: partial class inherits from StatusBar with InitializeComponent method
         
         List<StatementSyntax> initializeComponentStatements = new List<StatementSyntax>();
 
@@ -103,20 +96,14 @@ internal sealed class MenuBarGenerator : Generator
             }
         }
 
-        // Process children - looking for MenuBarItems container or direct MenuBarItem elements
+        // Process children
         if (node.Children.Count > 0)
         {
-            // Check if there's a MenuBarItems container element
-            ElementNode? menuBarItemsContainer = node.Children.FirstOrDefault(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItems");
-            List<ElementNode> itemsToProcess = menuBarItemsContainer != null 
-                ? menuBarItemsContainer.Children 
-                : node.Children.Where(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
-
-            for (int i = 0; i < itemsToProcess.Count; i++)
+            for (int i = 0; i < node.Children.Count; i++)
             {
-                ElementNode child = itemsToProcess[i];
+                ElementNode child = node.Children[i];
                 
-                // Create the child object inline: this.Add(new MenuBarItem { ... });
+                // Create the child object inline: this.Add(new Shortcut { ... });
                 Dictionary<string, string> attributesWithoutId = child.Attributes
                     .Where(kvp => kvp.Key != "Id")
                     .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -157,7 +144,7 @@ internal sealed class MenuBarGenerator : Generator
             .WithBaseList(
                 BaseList(
                     SingletonSeparatedList<BaseTypeSyntax>(
-                        SimpleBaseType(IdentifierName("MenuBar")))))
+                        SimpleBaseType(IdentifierName("StatusBar")))))
             .WithMembers(SingletonList<MemberDeclarationSyntax>(initMethod));
 
         // Build the namespace
@@ -168,8 +155,7 @@ internal sealed class MenuBarGenerator : Generator
         // Collect using directives
         var usings = new List<UsingDirectiveSyntax>
         {
-            UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("Views"))),
-            UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("ViewBase")))
+            UsingDirective(QualifiedName(QualifiedName(IdentifierName("Terminal"), IdentifierName("Gui")), IdentifierName("Views")))
         };
 
         // Collect all namespaces from the element tree

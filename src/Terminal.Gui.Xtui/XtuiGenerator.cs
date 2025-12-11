@@ -114,8 +114,16 @@ public class XtuiGenerator : IIncrementalGenerator
                 ElementNode root = XtuiLoader.LoadFromString (file.Content);
                 string fileName = Path.GetFileNameWithoutExtension (file.Path) ?? "XtuiGenerated";
 
+                // Check for 'class' attribute on root element and use it as class name (similar to x:Class in XAML)
+                string className = root.Attributes.TryGetValue("class", out string? classAttr) && !string.IsNullOrEmpty(classAttr)
+                    ? classAttr
+                    : fileName;
+
+                // Remove the 'class' attribute so it's not treated as a property
+                root.Attributes.Remove("class");
+
                 // Try to find the partial class in the compilation to get the actual namespace and class name
-                (string namespaceName, string className) = FindPartialClass (compilation, fileName);
+                (string namespaceName, string actualClassName) = FindPartialClass (compilation, className);
 
                 GeneratorFactory generatorFactory = new GeneratorFactory ();
                 Generator generator = generatorFactory.GetGenerator (root.ElementTypeName);

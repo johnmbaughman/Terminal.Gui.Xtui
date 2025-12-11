@@ -28,7 +28,7 @@
     <!-- Testing Dim operator expressions: Auto + 2 -->
     <Label Text="Auto Plus" X="5" Y="18" Width="{Auto + 2}" Height="1" />
     
-    <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd 5}" Width="{Auto}" Height="{Fill}" />
+    <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd + 5}" Width="{Auto}" Height="{Fill}" />
     
     <!-- CheckBox examples -->
     <CheckBox Text="Accept Terms" CheckedState="UnChecked" X="5" Y="20" />

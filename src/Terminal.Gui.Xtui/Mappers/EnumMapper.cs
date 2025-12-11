@@ -63,6 +63,12 @@ internal static class EnumMapper
             return $"Terminal.Gui.Input.Command.{value}";
         }
 
+        // AlignmentModes lives in Terminal.Gui.ViewBase
+        if (string.Equals (enumType, "AlignmentModes", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"Terminal.Gui.ViewBase.AlignmentModes.{value}";
+        }
+
         // Fallback: assume fully qualified name in the `Terminal.Gui` root namespace
         return $"Terminal.Gui.{enumType}.{value}";
     }

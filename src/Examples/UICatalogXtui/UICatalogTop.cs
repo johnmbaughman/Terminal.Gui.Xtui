@@ -33,12 +33,12 @@ public partial class UICatalogTop : Toplevel
         _diagnosticFlags = Diagnostics;
 
         //menuBar = CreateMenuBar ();
-        InitializeComponent ();
-        _statusBar = CreateStatusBar ();
+        //statusBar = CreateStatusBar ();
+        InitializeComponent ();        
         _categoryList = CreateCategoryList ();
         _scenarioList = CreateScenarioList ();
 
-        Add (_categoryList, _scenarioList, _statusBar);
+        Add (_categoryList, _scenarioList);
 
         Loaded += LoadedHandler;
         Unloaded += UnloadedHandler;
@@ -81,9 +81,9 @@ public partial class UICatalogTop : Toplevel
             _scenarioList.SetFocus ();
         }
 
-        if (_statusBar is { })
+        if (statusBar is { })
         {
-            _statusBar.VisibleChanged += (s, e) => { ShowStatusBar = _statusBar.Visible; };
+            statusBar.VisibleChanged += (s, e) => { ShowStatusBar = statusBar.Visible; };
         }
 
         Loaded -= LoadedHandler;
@@ -429,7 +429,7 @@ public partial class UICatalogTop : Toplevel
             X = Pos.Right (_categoryList!) - 1,
             Y = Pos.Bottom (menuBar!),
             Width = Dim.Fill (),
-            Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, _statusBar)),
+            Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, statusBar)),
             //AllowsMarking = false,
             CanFocus = true,
             Title = "_Scenarios",
@@ -527,7 +527,7 @@ public partial class UICatalogTop : Toplevel
             X = 0,
             Y = Pos.Bottom (menuBar!),
             Width = Dim.Auto (),
-            Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, _statusBar)),
+            Height = Dim.Fill (Dim.Func (v => v!.Frame.Height, statusBar)),
             AllowsMarking = false,
             CanFocus = true,
             Title = "_Categories",
@@ -577,7 +577,7 @@ public partial class UICatalogTop : Toplevel
 
     #region StatusBar
 
-    private readonly StatusBar? _statusBar;
+    // statusBar field is now generated from UICatalogTop.xtui
 
     [ConfigurationProperty (Scope = typeof (AppSettingsScope), OmitClassName = true)]
     [JsonPropertyName ("UICatalog.StatusBar")]
@@ -625,7 +625,7 @@ public partial class UICatalogTop : Toplevel
 
         statusBarShortcut.Accepting += (sender, args) =>
         {
-            statusBar.Visible = !_statusBar!.Visible;
+            statusBar.Visible = !statusBar!.Visible;
             args.Handled = true;
         };
 
@@ -694,9 +694,9 @@ public partial class UICatalogTop : Toplevel
             _shQuit.Key = Application.QuitKey;
         }
 
-        if (_statusBar is { })
+        if (statusBar is { })
         {
-            _statusBar.Visible = ShowStatusBar;
+            statusBar.Visible = ShowStatusBar;
         }
 
         _disableMouseCb!.CheckedState = Application.IsMouseDisabled ? CheckState.Checked : CheckState.UnChecked;

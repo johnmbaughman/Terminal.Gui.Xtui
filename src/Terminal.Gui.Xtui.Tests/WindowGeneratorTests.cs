@@ -92,7 +92,8 @@ public class WindowGeneratorTests
         Assert.Contains("using Terminal.Gui.ViewBase;", code);
         Assert.Contains("public partial class MainWindow : Window", code);
         Assert.Contains("private Button? _okButton;", code);
-        Assert.Contains("_okButton = new Button()", code);
+        Assert.Contains("var button0 = new Button", code);
+        Assert.Contains("_okButton = button0;", code);
         Assert.Contains("this.Add(_okButton);", code);
     }
 
@@ -111,7 +112,8 @@ public class WindowGeneratorTests
 
         Assert.Contains("InitializeComponent()", code);
         Assert.Contains("public partial class StatusWindow : Window", code);
-        Assert.Contains("this.Add(new Label()", code); // Window adds children inline when no Id
+        Assert.Contains("var label0 = new Label", code); // Window generates local variables for all children
+        Assert.Contains("this.Add(label0)", code); // Window adds children via local variables
         Assert.DoesNotContain("private Label?", code); // No field since no Id
     }
 
@@ -174,9 +176,24 @@ public class WindowGeneratorTests
 
         Assert.Contains("private Label? _label1;", code);
         Assert.Contains("private Label? _label2;", code);
-        Assert.Contains("_label1 = new Label()", code);
-        Assert.Contains("_label2 = new Label()", code);
+        Assert.Contains("var label0 = new Label", code);
+        Assert.Contains("var label1 = new Label", code);
+        Assert.Contains("_label1 = label0;", code);
+        Assert.Contains("_label2 = label1;", code);
         Assert.Contains("this.Add(_label1);", code);
         Assert.Contains("this.Add(_label2);", code);
+    }
+
+    [Fact]
+    public void WindowGenerator_GeneratesClassWithGivenName()
+    {
+        var node = new ElementNode { ElementTypeName = "Window" };
+
+        var generator = new WindowGenerator();
+        var factory = new GeneratorFactory();
+
+        var code = generator.GenerateClass(node, "MyNamespace", "CustomWindowClass", factory);
+
+        Assert.Contains("public partial class CustomWindowClass", code);
     }
 }

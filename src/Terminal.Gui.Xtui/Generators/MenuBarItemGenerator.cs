@@ -35,11 +35,16 @@ internal sealed class MenuBarItemGenerator : Generator
         // Process children - looking for MenuItems container or direct MenuItem elements
         if (node.Children.Count > 0)
         {
+            // Extract local type names (handle both simple names and fully-qualified names)
+            static string GetLocalTypeName(string typeName) => typeName.Contains('.') ? typeName.Split('.').Last() : typeName;
+            
             // Check if there's a MenuItems container element
-            ElementNode? menuItemsContainer = node.Children.FirstOrDefault(c => c.ElementTypeName == "MenuItems");
+            ElementNode? menuItemsContainer = node.Children.FirstOrDefault(c => 
+                string.Equals(GetLocalTypeName(c.ElementTypeName), "MenuItems", StringComparison.Ordinal));
             List<ElementNode> itemsToProcess = menuItemsContainer != null 
                 ? menuItemsContainer.Children 
-                : node.Children.Where(c => c.ElementTypeName == "MenuItem").ToList();
+                : node.Children.Where(c => 
+                    string.Equals(GetLocalTypeName(c.ElementTypeName), "MenuItem", StringComparison.Ordinal)).ToList();
 
             if (itemsToProcess.Count > 0)
             {
@@ -66,7 +71,9 @@ internal sealed class MenuBarItemGenerator : Generator
                 for (int i = 0; i < itemsToProcess.Count; i++)
                 {
                     ElementNode child = itemsToProcess[i];
-                    string childVarName = $"{child.ElementTypeName.ToLower()}{i}";
+                    // Extract local type name for variable naming
+                    string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
+                    string childVarName = $"{localTypeName.ToLower()}{i}";
                     Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
                     StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
@@ -98,9 +105,11 @@ internal sealed class MenuBarItemGenerator : Generator
     }
 
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string typeName,
+        string fullTypeName,
         Dictionary<string, string> attributes)
     {
+        // Extract local type name for object creation
+        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
         ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
             .WithArgumentList(ArgumentList());
 
