@@ -48,6 +48,7 @@ internal static class ObjectParsingHelpers
         { "CheckedState", "CheckState" },
         { "AllowCheckStateNone", "bool" },
         { "RadioStyle", "bool" },
+        { "HighlightStates", "MouseState" },
         
         // TextField-specific properties
         { "Secret", "bool" },
@@ -59,6 +60,7 @@ internal static class ObjectParsingHelpers
         { "HelpText", "string" },
         { "Key", "Key" },
         { "Command", "Command" },
+        { "BindKeyToApplication", "bool" },
         
         // StatusBar/MenuBar/Bar properties
         { "AlignmentModes", "AlignmentModes" },
@@ -185,6 +187,7 @@ internal static class ObjectParsingHelpers
             case "TextAlignment":
             case "BorderStyle":
             case "AlignmentModes":
+            case "MouseState":
                 // Use EnumMapper to resolve enum values
                 string enumExpression = Terminal.Gui.Xtui.Mappers.EnumMapper.GetEnumValue (expectedType, value);
                 return ParseExpression (enumExpression);
@@ -195,19 +198,43 @@ internal static class ObjectParsingHelpers
                 return ParseExpression (cmdExpression);
 
             case "Key":
-                // Support two common formats for Key:
-                // - A string representation like "Ctrl+Q" which should be passed to the Key(string) ctor
-                // - A symbolic expression / constant reference like `Application.QuitKey`, `Key.F1`, or `Key.A.WithCtrl`
-                // If the value looks like a dotted identifier or contains method/property-style tokens, treat it
-                // as a C# expression and emit it directly. Otherwise, fall back to `new Key("...")`.
+                // Support multiple formats for Key:
+                // 1. Special symbolic names: "QuitKey" -> Application.QuitKey
+                // 2. Simple enum names: "F10", "A", "Enter" -> Key.F10, Key.A, Key.Enter
+                // 3. Fully-qualified: "Key.F1", "Application.QuitKey" -> use as-is
+                // 4. Method calls: "Key.A.WithCtrl" -> use as-is
+                // 5. String representations: "Ctrl+Q" -> new Key("Ctrl+Q")
                 string trimmedKey = value.Trim();
-                bool looksLikeExpression = trimmedKey.Contains(".") || trimmedKey.Contains("With") || trimmedKey.StartsWith("Key") || trimmedKey.StartsWith("Application");
+                
+                // Check for fully-qualified or method-style expressions
+                bool looksLikeExpression = trimmedKey.Contains(".") || trimmedKey.Contains("With");
                 if (looksLikeExpression)
                 {
                     return ParseExpression (trimmedKey);
                 }
+                
+                // Check for special Application keys
+                if (trimmedKey == "QuitKey")
+                {
+                    return ParseExpression("Application.QuitKey");
+                }
+                
+                // Check if it looks like a simple Key enum member name (alphanumeric, possibly with underscore)
+                // Common examples: F1-F12, A-Z, Enter, Escape, Tab, Space, etc.
+                bool looksLikeEnumMember = System.Text.RegularExpressions.Regex.IsMatch(
+                    trimmedKey, 
+                    @"^[A-Z][a-zA-Z0-9_]*$");
+                    
+                if (looksLikeEnumMember)
+                {
+                    // Generate: Key.{value}
+                    return MemberAccessExpression(
+                        SyntaxKind.SimpleMemberAccessExpression,
+                        IdentifierName("Key"),
+                        IdentifierName(trimmedKey));
+                }
 
-                // Generate: new Key("value")
+                // Fall back to string representation: new Key("value")
                 return ObjectCreationExpression (
                     IdentifierName ("Key"))
                     .WithArgumentList (

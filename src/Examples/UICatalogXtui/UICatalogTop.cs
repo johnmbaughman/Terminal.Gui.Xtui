@@ -107,6 +107,8 @@ public partial class UICatalogTop : Toplevel
     private FlagSelector<ViewDiagnosticFlags>? _diagnosticFlagsSelector;
     private CheckBox? _disableMouseCb;
 
+    private CheckState Is16ColorMode => Application.Force16Colors ? CheckState.Checked : CheckState.UnChecked;
+
     private MenuBar CreateMenuBar ()
     {
         MenuBar menuBar = new (

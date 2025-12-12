@@ -41,6 +41,8 @@ internal sealed class MenuBarGenerator : Generator
                 ? menuBarItemsContainer.Children 
                 : node.Children.Where(c => GetLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
 
+            List<string> childVariableNames = new List<string>();
+
             for (int i = 0; i < itemsToProcess.Count; i++)
             {
                 ElementNode child = itemsToProcess[i];
@@ -51,8 +53,12 @@ internal sealed class MenuBarGenerator : Generator
                 StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
                 statements.AddRange(childStatements);
+                childVariableNames.Add(childVarName);
+            }
 
-                // {variableName}.Add({childVarName});
+            // Generate single param array Add call: {variableName}.Add(menubaritem0, menubaritem1, ...);
+            if (childVariableNames.Count > 0)
+            {
                 statements.Add(
                     ExpressionStatement(
                         InvocationExpression(
@@ -62,8 +68,9 @@ internal sealed class MenuBarGenerator : Generator
                                     IdentifierName("Add")))
                             .WithArgumentList(
                                 ArgumentList(
-                                    SingletonSeparatedList(
-                                        Argument(IdentifierName(childVarName)))))));
+                                    SeparatedList(
+                                        childVariableNames.Select(varName => 
+                                            Argument(IdentifierName(varName))))))));
             }
         }
 
@@ -78,6 +85,7 @@ internal sealed class MenuBarGenerator : Generator
         // Since the class inherits from MenuBar, we set properties on 'this' and add MenuBarItems to 'this'
         
         List<StatementSyntax> initializeComponentStatements = new List<StatementSyntax>();
+        List<FieldDeclarationSyntax> fieldDeclarations = new List<FieldDeclarationSyntax>();
 
         // Set properties on 'this' from node attributes
         if (node.Attributes.Count > 0)
@@ -104,6 +112,8 @@ internal sealed class MenuBarGenerator : Generator
         }
 
         // Process children - looking for MenuBarItems container or direct MenuBarItem elements
+        List<string> childVariableNames = new List<string>();
+        
         if (node.Children.Count > 0)
         {
             // Check if there's a MenuBarItems container element
@@ -116,15 +126,47 @@ internal sealed class MenuBarGenerator : Generator
             {
                 ElementNode child = itemsToProcess[i];
                 
-                // Create the child object inline: this.Add(new MenuBarItem { ... });
-                Dictionary<string, string> attributesWithoutId = child.Attributes
-                    .Where(kvp => kvp.Key != "Id")
-                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                string? controlId = child.Attributes.TryGetValue("Id", out string? id) ? id : null;
+                string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
+                string childVarName = !string.IsNullOrEmpty(controlId) ? controlId! : $"{localTypeName.ToLower()}{i}";
 
-                ObjectCreationExpressionSyntax childObjectCreation = CreateObjectWithInitializer(
-                    child.ElementTypeName,
-                    attributesWithoutId);
+                // Get the appropriate generator for this child type and generate statements
+                Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
+                StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
+                // Add all the child's generation statements to InitializeComponent
+                initializeComponentStatements.AddRange(childStatements);
+
+                // Declare a private field for this child control
+                // Use the Id value for the field name if provided, otherwise use the generated var name
+                string fieldName = !string.IsNullOrEmpty(controlId) ? controlId! : childVarName;
+                fieldDeclarations.Add(
+                    FieldDeclaration(
+                        VariableDeclaration(
+                            NullableType(IdentifierName(localTypeName)))
+                        .WithVariables(
+                            SingletonSeparatedList(
+                                VariableDeclarator(Identifier(fieldName)))))
+                    .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
+                
+                // Assign the local variable to the field: this.fieldName = childVarName;
+                initializeComponentStatements.Add(
+                    ExpressionStatement(
+                        AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                ThisExpression(),
+                                    IdentifierName(fieldName)),
+                                IdentifierName(childVarName))));
+
+                // Track child variable names for param array Add call
+                childVariableNames.Add(childVarName);
+            }
+
+            // Add all menu bar items in a single param array call: this.Add(item0, item1, item2, ...);
+            if (childVariableNames.Count > 0)
+            {
                 initializeComponentStatements.Add(
                     ExpressionStatement(
                         InvocationExpression(
@@ -134,8 +176,9 @@ internal sealed class MenuBarGenerator : Generator
                                 IdentifierName("Add")))
                         .WithArgumentList(
                             ArgumentList(
-                                SingletonSeparatedList(
-                                    Argument(childObjectCreation))))));
+                                SeparatedList(
+                                    childVariableNames.Select(varName => 
+                                        Argument(IdentifierName(varName))))))));
             }
         }
 
@@ -148,6 +191,11 @@ internal sealed class MenuBarGenerator : Generator
             .WithBody(
                 Block(initializeComponentStatements));
 
+        // Build the list of class members (fields + initMethod)
+        List<MemberDeclarationSyntax> members = new List<MemberDeclarationSyntax>();
+        members.AddRange(fieldDeclarations);
+        members.Add(initMethod);
+
         // Build the partial class
         ClassDeclarationSyntax classDeclaration = ClassDeclaration(className)
             .WithModifiers(
@@ -158,7 +206,7 @@ internal sealed class MenuBarGenerator : Generator
                 BaseList(
                     SingletonSeparatedList<BaseTypeSyntax>(
                         SimpleBaseType(IdentifierName("MenuBar")))))
-            .WithMembers(SingletonList<MemberDeclarationSyntax>(initMethod));
+            .WithMembers(List(members));
 
         // Build the namespace
         NamespaceDeclarationSyntax namespaceDeclaration = NamespaceDeclaration(

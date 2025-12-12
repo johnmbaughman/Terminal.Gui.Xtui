@@ -19,6 +19,7 @@ internal class GeneratorFactory : IGeneratorFactory
         { "StatusBar", () => new StatusBarGenerator() },
         { "MenuBarItem", () => new MenuBarItemGenerator() },
         { "MenuItem", () => new MenuItemGenerator() },
+        { "Shortcut", () => new ShortcutGenerator() },
         // Add other generators here
     };
 

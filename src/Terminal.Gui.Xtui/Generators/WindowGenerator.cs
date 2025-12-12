@@ -103,30 +103,30 @@ internal sealed class WindowGenerator : Generator
                                         .WithInitializer(
                                             EqualsValueClause(childObjectCreation))))));
 
-                if (!string.IsNullOrEmpty(controlId))
-                {
-                    // Use the Id as-is for the field name (user controls the naming convention)
-                    // controlId is guaranteed non-null here due to !string.IsNullOrEmpty check
-                    string fieldName = controlId!;
-                    fieldDeclarations.Add(
-                        FieldDeclaration(
-                            VariableDeclaration(
-                                NullableType(IdentifierName(localTypeName)))
-                            .WithVariables(
-                                SingletonSeparatedList(
-                                    VariableDeclarator(Identifier(fieldName)))))
-                        .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
+                // Declare a private field for this child control
+                // Use the Id value for the field name if provided, otherwise use the generated var name
+                string fieldName = !string.IsNullOrEmpty(controlId) ? controlId! : childVarName;
+                fieldDeclarations.Add(
+                    FieldDeclaration(
+                        VariableDeclaration(
+                            NullableType(IdentifierName(localTypeName)))
+                        .WithVariables(
+                            SingletonSeparatedList(
+                                VariableDeclarator(Identifier(fieldName)))))
+                    .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
 
-                    // Generate: _fieldName = label0;
-                    initializeComponentStatements.Add(
-                        ExpressionStatement(
-                            AssignmentExpression(
-                                SyntaxKind.SimpleAssignmentExpression,
-                                IdentifierName(fieldName),
-                                IdentifierName(childVarName))));
-                }
-                // this.Add(childVarName or fieldName);
-                string addTarget = !string.IsNullOrEmpty(controlId) ? controlId : childVarName;
+                // Assign the local variable to the field: this.fieldName = childVarName;
+                initializeComponentStatements.Add(
+                    ExpressionStatement(
+                        AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                ThisExpression(),
+                                IdentifierName(fieldName)),
+                            IdentifierName(childVarName))));
+
+                // this.Add(childVarName);
                 initializeComponentStatements.Add (
                     ExpressionStatement (
                         InvocationExpression (
@@ -137,7 +137,7 @@ internal sealed class WindowGenerator : Generator
                         .WithArgumentList (
                             ArgumentList (
                                 SingletonSeparatedList (
-                                    Argument (IdentifierName (addTarget)))))));
+                                    Argument (IdentifierName (childVarName)))))));
             }
         }
 

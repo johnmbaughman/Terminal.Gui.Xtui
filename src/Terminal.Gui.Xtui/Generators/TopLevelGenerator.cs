@@ -66,6 +66,8 @@ internal sealed class TopLevelGenerator : Generator
     {
         List<StatementSyntax> initializeComponentStatements = new List<StatementSyntax>();
         List<FieldDeclarationSyntax> fieldDeclarations = new List<FieldDeclarationSyntax>();
+        Dictionary<string, string> variableToFieldMap = new Dictionary<string, string>(); // Maps local var names to field names
+        HashSet<string> processedFields = new HashSet<string>(); // Track which fields have been declared
 
         if (node.Children.Count > 0)
         {
@@ -82,42 +84,24 @@ internal sealed class TopLevelGenerator : Generator
                 Generator childGenerator = generators.GetGenerator(child.ElementTypeName);
                 StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
-                // Add all the child's generation statements to InitializeComponent
-                initializeComponentStatements.AddRange(childStatements);
-
-                if (!string.IsNullOrEmpty(controlId))
+                // Process statements: convert local variable declarations to field assignments
+                // and collect field declarations
+                foreach (var statement in childStatements)
                 {
-                    // Declare a private field for this child control
-                    string fieldName = controlId!;
-                    fieldDeclarations.Add(
-                        FieldDeclaration(
-                            VariableDeclaration(
-                                NullableType(IdentifierName(localTypeName)))
-                            .WithVariables(
-                                SingletonSeparatedList(
-                                    VariableDeclarator(Identifier(fieldName)))))
-                        .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
-                    
-                    // Assign the local variable to the field: this.fieldName = childVarName;
-                    initializeComponentStatements.Add(
-                        ExpressionStatement(
-                            AssignmentExpression(
-                                SyntaxKind.SimpleAssignmentExpression,
-                                MemberAccessExpression(
-                                    SyntaxKind.SimpleMemberAccessExpression,
-                                    ThisExpression(),
-                                    IdentifierName(fieldName)),
-                                IdentifierName(childVarName))));
+                    var processedStatement = ProcessStatement(statement, fieldDeclarations, variableToFieldMap, processedFields);
+                    if (processedStatement != null)
+                    {
+                        initializeComponentStatements.Add(processedStatement);
+                    }
                 }
 
-                // If the child is a MenuBar, emit an Add call so the menu bar is added to
+                // If the child is a MenuBar or StatusBar, emit an Add call so it's added to
                 // the Toplevel even when the caller constructor does not explicitly add it.
-                // This mirrors the expected behavior when `CreateMenuBar()` is used (the
-                // generator should ensure the MenuBar is present in the view hierarchy).
-                // Same applies to StatusBar.
                 if (string.Equals(localTypeName, "MenuBar", StringComparison.Ordinal) ||
                     string.Equals(localTypeName, "StatusBar", StringComparison.Ordinal))
                 {
+                    // Use field reference since the variable is now a field
+                    string fieldName = !string.IsNullOrEmpty(controlId) ? controlId! : childVarName;
                     initializeComponentStatements.Add(
                         ExpressionStatement(
                             InvocationExpression(
@@ -128,7 +112,11 @@ internal sealed class TopLevelGenerator : Generator
                                 .WithArgumentList(
                                     ArgumentList(
                                         SingletonSeparatedList(
-                                            Argument(IdentifierName(childVarName)))))));
+                                            Argument(
+                                                MemberAccessExpression(
+                                                    SyntaxKind.SimpleMemberAccessExpression,
+                                                    ThisExpression(),
+                                                    IdentifierName(fieldName))))))));
                 }
             }
         }
@@ -189,6 +177,136 @@ internal sealed class TopLevelGenerator : Generator
         return "#nullable enable\n" + compilationUnit.ToFullString();
     }
 
+    /// <summary>
+    /// Process a statement from a child generator, transforming local variable declarations
+    /// to field assignments and collecting field declarations.
+    /// </summary>
+    private static StatementSyntax? ProcessStatement(
+        StatementSyntax statement,
+        List<FieldDeclarationSyntax> fieldDeclarations,
+        Dictionary<string, string> variableToFieldMap,
+        HashSet<string> processedFields)
+    {
+        // If this is a local variable declaration, transform it to a field assignment
+        if (statement is LocalDeclarationStatementSyntax localDecl)
+        {
+            var variable = localDecl.Declaration.Variables.FirstOrDefault();
+            if (variable != null && variable.Initializer != null)
+            {
+                string varName = variable.Identifier.Text;
+                string fieldName = varName; // Use same name for field
+                
+                // Only create field if not already processed
+                if (!processedFields.Contains(fieldName))
+                {
+                    variableToFieldMap[varName] = fieldName;
+
+                    // Extract type from the initializer (ObjectCreationExpression)
+                    string typeName;
+                    if (variable.Initializer.Value is ObjectCreationExpressionSyntax objCreation)
+                    {
+                        // Get the type from the object creation expression
+                        typeName = objCreation.Type.ToString();
+                    }
+                    else
+                    {
+                        // Fallback: try to get it from the declaration type if it's not 'var'
+                        var declType = localDecl.Declaration.Type.ToString();
+                        if (declType != "var" && declType != "var?")
+                        {
+                            typeName = declType.TrimEnd('?');
+                        }
+                        else
+                        {
+                            // Can't determine type, skip
+                            return statement;
+                        }
+                    }
+
+                    // Create field declaration
+                    fieldDeclarations.Add(
+                        FieldDeclaration(
+                            VariableDeclaration(
+                                NullableType(IdentifierName(typeName)))
+                            .WithVariables(
+                                SingletonSeparatedList(
+                                    VariableDeclarator(Identifier(fieldName)))))
+                        .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
+
+                    processedFields.Add(fieldName);
+                }
+
+                // Transform to field assignment: this.fieldName = initializer;
+                return ExpressionStatement(
+                    AssignmentExpression(
+                        SyntaxKind.SimpleAssignmentExpression,
+                        MemberAccessExpression(
+                            SyntaxKind.SimpleMemberAccessExpression,
+                            ThisExpression(),
+                            IdentifierName(fieldName)),
+                        variable.Initializer.Value));
+            }
+        }
+
+        // For non-declaration statements, replace any references to mapped variables
+        // with field references (this.fieldName)
+        return ReplaceVariableReferences(statement, variableToFieldMap);
+    }
+
+    /// <summary>
+    /// Replace variable references with field references in a statement.
+    /// </summary>
+    private static StatementSyntax ReplaceVariableReferences(
+        StatementSyntax statement,
+        Dictionary<string, string> variableToFieldMap)
+    {
+        if (variableToFieldMap.Count == 0)
+        {
+            return statement;
+        }
+
+        // Use a syntax rewriter to replace identifier names
+        var rewriter = new VariableToFieldRewriter(variableToFieldMap);
+        return (StatementSyntax)rewriter.Visit(statement);
+    }
+
+    /// <summary>
+    /// Syntax rewriter that replaces variable identifiers with field access expressions.
+    /// </summary>
+    private class VariableToFieldRewriter : CSharpSyntaxRewriter
+    {
+        private readonly Dictionary<string, string> _variableToFieldMap;
+
+        public VariableToFieldRewriter(Dictionary<string, string> variableToFieldMap)
+        {
+            _variableToFieldMap = variableToFieldMap;
+        }
+
+        public override SyntaxNode? VisitIdentifierName(IdentifierNameSyntax node)
+        {
+            string identifier = node.Identifier.Text;
+            
+            // If this identifier is a mapped variable, replace with this.fieldName
+            if (_variableToFieldMap.ContainsKey(identifier))
+            {
+                // Check if this is already part of a member access (to avoid this.this.field)
+                if (node.Parent is MemberAccessExpressionSyntax memberAccess &&
+                    memberAccess.Expression == node)
+                {
+                    // Don't replace if it's the left side of a member access
+                    return base.VisitIdentifierName(node);
+                }
+
+                return MemberAccessExpression(
+                    SyntaxKind.SimpleMemberAccessExpression,
+                    ThisExpression(),
+                    IdentifierName(_variableToFieldMap[identifier]));
+            }
+
+            return base.VisitIdentifierName(node);
+        }
+    }
+
     private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
         string fullTypeName,
         Dictionary<string, string> attributes)
@@ -223,6 +341,51 @@ internal sealed class TopLevelGenerator : Generator
     {
         int lastDot = qualifiedTypeName.LastIndexOf('.');
         return lastDot >= 0 ? qualifiedTypeName.Substring(lastDot + 1) : qualifiedTypeName;
+    }
+
+    /// <summary>
+    /// Recursively collects all descendant ElementNodes from the tree, including nested children.
+    /// Used to create private fields for ALL controls in the hierarchy, not just direct children.
+    /// </summary>
+    private static List<(ElementNode node, string varName, string fieldName, string typeName)> CollectAllDescendants(ElementNode parent, IGeneratorFactory generators)
+    {
+        var descendants = new List<(ElementNode, string, string, string)>();
+        CollectDescendantsRecursive(parent, generators, descendants, new Dictionary<ElementNode, string>());
+        return descendants;
+    }
+
+    /// <summary>
+    /// Recursive helper that walks the element tree depth-first and collects all nodes with their variable names.
+    /// Skips container elements like MenuBarItems, MenuItems, and Shortcuts which are organizational wrappers.
+    /// </summary>
+    private static void CollectDescendantsRecursive(ElementNode node, IGeneratorFactory generators, List<(ElementNode, string, string, string)> descendants, Dictionary<ElementNode, string> nodeToVarName)
+    {
+        // List of container element types that don't generate actual controls
+        var containerTypes = new HashSet<string> { "MenuBarItems", "MenuItems", "Shortcuts" };
+        
+        for (int i = 0; i < node.Children.Count; i++)
+        {
+            ElementNode child = node.Children[i];
+            string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
+            
+            // Skip container elements - they don't generate actual control instances
+            if (containerTypes.Contains(localTypeName))
+            {
+                // But still recursively process their children
+                CollectDescendantsRecursive(child, generators, descendants, nodeToVarName);
+                continue;
+            }
+            
+            string? controlId = child.Attributes.TryGetValue("Id", out string? id) ? id : null;
+            string childVarName = !string.IsNullOrEmpty(controlId) ? controlId! : $"{localTypeName.ToLower()}{i}";
+            string fieldName = !string.IsNullOrEmpty(controlId) ? controlId! : childVarName;
+            
+            descendants.Add((child, childVarName, fieldName, localTypeName));
+            nodeToVarName[child] = childVarName;
+            
+            // Recursively collect grandchildren
+            CollectDescendantsRecursive(child, generators, descendants, nodeToVarName);
+        }
     }
 
     /// <summary>
