@@ -161,8 +161,8 @@ public class StatusBarGeneratorTests
 
         Assert.Contains("var shortcut0", generated);
         Assert.Contains("var shortcut1", generated);
-        Assert.Contains("statusBar.Add(shortcut0)", generated);
-        Assert.Contains("statusBar.Add(shortcut1)", generated);
+        Assert.Contains("statusBar.Add(shortcut0, shortcut1)", generated);
+        
     }
 
     [Fact]
