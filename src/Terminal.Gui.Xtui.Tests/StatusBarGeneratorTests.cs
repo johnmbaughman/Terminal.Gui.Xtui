@@ -183,8 +183,9 @@ public class StatusBarGeneratorTests
 
         var code = generator.GenerateClass(node, "TestNamespace", "TestStatusBar", factory);
 
-        Assert.Contains("this.Add(new Shortcut", code);
-        Assert.Contains("Title = \"Quit\"", code);
-        Assert.Contains("Key = Key.F10", code);
+        Assert.Contains("var shortcut0", code);
+        Assert.Contains("shortcut0.Title = \"Quit\"", code);
+        Assert.Contains("shortcut0.Key = Key.F10", code);
+        Assert.Contains("this.Add(shortcut0)", code);
     }
 }
