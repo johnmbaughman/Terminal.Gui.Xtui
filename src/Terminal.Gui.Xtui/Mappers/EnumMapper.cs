@@ -69,6 +69,12 @@ internal static class EnumMapper
             return $"Terminal.Gui.ViewBase.AlignmentModes.{value}";
         }
 
+        // MouseState lives in Terminal.Gui.ViewBase
+        if (string.Equals (enumType, "MouseState", StringComparison.OrdinalIgnoreCase))
+        {
+            return $"Terminal.Gui.ViewBase.MouseState.{value}";
+        }
+
         // Fallback: assume fully qualified name in the `Terminal.Gui` root namespace
         return $"Terminal.Gui.{enumType}.{value}";
     }
