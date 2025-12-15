@@ -2,10 +2,19 @@
 
 Phase 1: Setup
 
+**Infrastructure Setup (Test-First Exemption)**: Tasks T001, T002, T013, T028–T031 are infrastructure/scaffolding tasks and exempt from the test-first workflow (Constitution Principle II applies to production code, not CI YAML or governance docs). These tasks MUST complete before TDD implementation tasks (T003–T012) begin.
+
 - [ ] T001 [P] Create helpers directory at `src/Terminal.Gui.Xtui/Generators/Helpers/` (acceptance: directory exists, committed in small PR)
 - [ ] T002 [P] Create tests skeleton for helpers at `src/Terminal.Gui.Xtui.Tests/Generators.Helpers.Tests/` (acceptance: test project compiles, contains placeholder test that fails)
 
-- [ ] T013 [US1] Capture benchmark baseline: run `Terminal.Gui.Xtui.Benchmarks` `GeneratorBenchmarks` and store results in CI artifacts (acceptance: benchmark output saved)
+- [ ] T013 [US1] Capture benchmark baseline: run `Terminal.Gui.Xtui.Benchmarks` `GeneratorBenchmarks` N=5 times (see plan.md methodology), compute median, store results in CI artifacts as `artifacts/benchmarks/summary.json` (acceptance: benchmark summary artifact uploaded with median_ms and run_id)
+
+- [ ] T028 Create GitHub Actions workflows: add `.github/workflows/ci-tests.yml` and `.github/workflows/benchmarks.yml` implementing unit tests, baseline diff, and benchmark artifact upload (acceptance: workflows committed to feature root branch `001-refactor-generators` and run at least once)
+- [ ] T029 Validate CI workflows on feature root branch: ensure workflows run successfully and upload artifacts to `artifacts/generated/` and `artifacts/benchmarks/`; record run URLs in the feature tracking doc (acceptance: at least one successful `ci-tests` run and one `benchmarks` run with artifacts)
+
+- [ ] T030 Constitution compliance check: add `specs/001-refactor-generators/CONSTITUTION_CHECK.md` listing all 7 constitution principles and documenting how this feature addresses each (with task/requirement references). Add CI step to verify file exists (acceptance: file created with principle enumeration; CI check added)
+
+- [ ] T031 Enforce public generator API outputs are strings: add unit test in `src/Terminal.Gui.Xtui.Tests/` asserting public generator methods (e.g., `GenerateClass`) return `string` type. Add CI step to run this test (acceptance: test added to test project; CI job includes test execution).
 
 Branching & PR workflow (stacked PRs)
 
@@ -18,20 +27,22 @@ The implementation will use iterative, small branches and stacked PRs. Additions
 
 Test-First (TDD) pattern — implement each helper via a failing test then implementation
 
+**TDD Commit Convention**: Each helper PR must include separate commits: (1) commit adding failing tests, (2) commit with implementation that makes tests pass. Do not squash until review complete. Target >90% code coverage per helper.
+
 - [ ] T003 [P] Add failing unit tests for `TypeNameHelpers` (test-first; acceptance: tests added and fail)
 - [ ] T004 [P] Implement `TypeNameHelpers` to satisfy tests (acceptance: tests pass)
 
 - [ ] T005 [P] Add failing unit tests for `SyntaxHelpers` (test-first; acceptance: tests added and fail)
 - [ ] T006 [P] Implement `SyntaxHelpers` to satisfy tests (acceptance: tests pass)
 
-- [ ] T007 [P] Add failing unit tests for `NamespaceHelpers` (test-first)
-- [ ] T008 [P] Implement `NamespaceHelpers` to satisfy tests
+- [ ] T007 [P] Add failing unit tests for `NamespaceHelpers` (test-first; acceptance: tests added and fail)
+- [ ] T008 [P] Implement `NamespaceHelpers` to satisfy tests (acceptance: tests pass)
 
-- [ ] T009 [P] Add failing unit tests for `ChildProcessingHelpers` (test-first)
-- [ ] T010 [P] Implement `ChildProcessingHelpers` to satisfy tests
+- [ ] T009 [P] Add failing unit tests for `ChildProcessingHelpers` (test-first; acceptance: tests added and fail)
+- [ ] T010 [P] Implement `ChildProcessingHelpers` to satisfy tests (acceptance: tests pass)
 
-- [ ] T011 [P] Add failing unit tests for `ClassGenerationHelpers` (test-first)
-- [ ] T012 [P] Implement `ClassGenerationHelpers` to satisfy tests
+- [ ] T011 [P] Add failing unit tests for `ClassGenerationHelpers` (test-first; acceptance: tests added and fail)
+- [ ] T012 [P] Implement `ClassGenerationHelpers` to satisfy tests (acceptance: tests pass)
 
 Integration & Validation (baseline parity, CI, benchmarks)
 
@@ -65,6 +76,9 @@ Dependencies & Execution Order
 - `T021` (specify script update) should run early (can be done in parallel with setup) so prereq scripts work.
 
 - Important: `T013` (benchmark baseline capture) is a *blocker* that must be completed before any helper implementation tasks (`T004`, `T006`, `T008`, `T010`, `T012`) and before any generator refactor (`T017`–`T020`). This ensures you have a performance baseline to compare against before code changes.
+
+
+- Important: `T028`/`T029`/`T030` (GitHub Actions workflows creation and validation, and Constitution compliance check) are HARD prerequisites and must be completed *before any implementation tasks begin* (this includes helper implementations `T004`, `T006`, `T008`, `T010`, `T012` and any generator refactors `T017`–`T020`). Do not open implementation child branches until the workflows exist and have at least one successful run on a parent branch and the constitution check file is present.
 
 - Branching note: Each helper implementation (`T004`, `T006`, `T008`, `T010`, `T012`) must be implemented on its own child branch and opened as a stacked PR per `T024`/`T025`. Do not implement multiple helpers in a single monolithic PR.
 

@@ -11,13 +11,15 @@ Extract common Roslyn syntax construction and generator helper logic into a smal
 
 ## Deliverables (Phase 1)
 
-- `src/Generators/Helpers/SyntaxHelpers.cs`
-- `src/Generators/Helpers/TypeNameHelpers.cs`
-- `src/Generators/Helpers/NamespaceHelpers.cs`
-- `src/Generators/Helpers/ChildProcessingHelpers.cs`
-- `src/Generators/Helpers/ClassGenerationHelpers.cs`
-- Unit tests under `Tests/Generators.Helpers.Tests/` (one test class per helper)
+- `src/Terminal.Gui.Xtui/Generators/Helpers/SyntaxHelpers.cs`
+- `src/Terminal.Gui.Xtui/Generators/Helpers/TypeNameHelpers.cs`
+- `src/Terminal.Gui.Xtui/Generators/Helpers/NamespaceHelpers.cs`
+- `src/Terminal.Gui.Xtui/Generators/Helpers/ChildProcessingHelpers.cs`
+- `src/Terminal.Gui.Xtui/Generators/Helpers/ClassGenerationHelpers.cs`
+- Unit tests under `src/Terminal.Gui.Xtui.Tests/Generators.Helpers.Tests/` (one test class per helper, target >90% coverage)
 - A CI job step to run helper unit tests and run baseline generation diff
+
+**Note**: `BaseControlGenerator`, `BaseContainerGenerator`, and `FieldTransformationHelpers` are deferred to Phase 2.
 
 ## Tasks
 
@@ -97,5 +99,59 @@ All work in Phase 1 (and subsequent phases) must follow the iterative-branching,
 - CI gates: every stacked PR must pass unit tests and the baseline diff check (if the PR touches generation code or helper APIs). Rebaseline changes require explicit feature-owner approval and a detailed diff explanation.
 
 This approach keeps changes incremental, simplifies review, and ensures child PRs remain a truthful, test-backed progression from skeleton → helpers → generator refactors.
+
+## CI / GitHub Actions requirement
+
+The presence of GitHub Actions workflows that implement the CI tasks required by this refactor is a hard prerequisite before any implementation work begins. Workflows MUST be committed to the feature root branch `001-refactor-generators` and validated with at least one successful run before opening child implementation branches. Child branches and stacked PRs will inherit CI coverage from the feature root.
+
+Minimum required workflows and behavior:
+
+- `.github/workflows/ci-tests.yml` — runs on `push` and `pull_request` and must:
+   - Restore, build and run unit tests for changed projects.
+   - Run the generator to produce the baseline output to a canonical artifact path: `artifacts/generated/generated-baseline.cs`.
+   - Run the baseline diff step comparing the source baseline against the generated artifact:
+   ```powershell
+   git --no-pager diff --no-index --ignore-cr-at-eol refactor\generated-baseline.cs artifacts\generated\generated-baseline.cs
+   ```
+   - Fail the job if the diff reports differences and upload the generated file and the diff output as CI artifacts (use `actions/upload-artifact`).
+   - Benchmark artifacts MUST be uploaded under `artifacts/benchmarks/` with a predictable filename, e.g. `artifacts/benchmarks/GeneratorBenchmarks-<run-id>.json`.
+   - Provide a small summary JSON `artifacts/benchmarks/summary.json` with the structure: `{ "benchmark": "GeneratorBenchmarks", "median_ms": <number>, "runs": <number>, "run_id": "<id>" }` so PR reviewers and bots can compare before/after.
+
+- `.github/workflows/benchmarks.yml` — runs on `workflow_dispatch` and on `push` to benchmark/CI branches and must:
+   - Build and run `Terminal.Gui.Xtui.Benchmarks` (e.g. `dotnet run -p Terminal.Gui.Xtui.Benchmarks --framework net7.0` or the appropriate target framework in CI).
+   - Capture benchmark output (stdout and any produced result files) and upload as artifacts.
+   - Optionally publish a simple JSON summary artifact used by PR reviewers / bots to compare before/after values.
+
+Benchmark measurement methodology (required)
+
+- Run-count: perform N=5 independent runs per benchmark job and collect elapsed times (wall-clock milliseconds). Use the median of the N runs as the canonical metric to reduce noise.
+- Runner/environment: CI will use `ubuntu-latest` for benchmark consistency. Document OS/runtime used in benchmark artifact metadata.
+- Command (example):
+   ```powershell
+   # Run the benchmark N=5 times and capture elapsed ms
+   $results = @()
+   for ($i = 1; $i -le 5; $i++) {
+      $start = [DateTime]::UtcNow
+      dotnet run -p Terminal.Gui.Xtui.Benchmarks --framework net8.0 --no-build
+      $end = [DateTime]::UtcNow
+      $results += ([math]::Round(($end - $start).TotalMilliseconds,0))
+   }
+   $median = ($results | Sort-Object)[int]([math]::Floor($results.Count/2))
+   $summary = @{ benchmark = 'GeneratorBenchmarks'; median_ms = $median; runs = 5; run_id = (Get-Date -Format 'yyyyMMddHHmmss') }
+   $summary | ConvertTo-Json | Out-File artifacts\benchmarks\summary.json -Encoding utf8
+   $results | ConvertTo-Json | Out-File artifacts\benchmarks\raw-runs.json -Encoding utf8
+   ```
+
+- Artifact names: upload `artifacts/generated/generated-baseline.cs`, `artifacts/benchmarks/GeneratorBenchmarks-<run-id>.json`, and `artifacts/benchmarks/summary.json` for each run. PR descriptions should link these artifacts.
+
+- Interpretation: PRs must compare `summary.json` median_ms values between parent and child runs; regressions >10% require justification or rollback.
+
+Guidance and gating rules:
+
+- Workflows must be present and green on a parent branch before child implementation branches begin. That means either workflows are already in `main` or they are added early on the feature root branch and validated by at least one successful run.
+- Each stacked PR must run these workflows in CI. PR descriptions should include links to the workflow run(s) and any benchmark artifacts when relevant.
+- Rebaseline PRs or PRs that intentionally change generated output require explicit feature-owner approval and must include the CI run links and a clear diff explanation in the PR body.
+
+Why this is required: having CI coverage (tests, baseline diff, and benchmarks) in place before implementation prevents wasted effort on local changes that cannot be validated in CI and ensures every stacked PR is verifiable by reviewers.
 
 ```

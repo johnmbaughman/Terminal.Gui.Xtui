@@ -86,7 +86,7 @@ Perform refactoring in small, verifiable phases with targeted tests and validati
 - **FR-005**: Add `Generators/Helpers/ChildProcessingHelpers.cs` and `ClassGenerationHelpers.cs` to encapsulate child processing and class/InitializeComponent assembly.
 - **FR-006**: Implement `BaseControlGenerator` and `BaseContainerGenerator` to reduce duplicate generator code and enforce a template method pattern for common workflows.
 - **FR-007**: Provide `FieldTransformationHelpers.cs` to encapsulate TopLevelGenerator's complex variable→field transformation and ensure semantic parity.
-- **FR-008**: Add comprehensive unit tests for every helper method and integration tests for each generator to validate behavior.
+- **FR-008**: Add comprehensive unit tests for every helper method (target: >90% code coverage per helper, minimum 2 test scenarios per public method) and integration tests for each generator to validate behavior.
 - **FR-009**: After each refactoring phase, run the full test suite and the baseline-generation diff; no differences and all tests must pass before merging.
 - **FR-010**: Maintain clear rollback points (separate branches for each phase) and a CI gate that prevents merge on mismatch.
 
@@ -124,9 +124,18 @@ Perform refactoring in small, verifiable phases with targeted tests and validati
 
 - **Branching & PR strategy:** All refactor work will follow an iterative-branching and stacked PRs approach. Implement each phase or helper in a small child branch and open a focused PR against the previous phase's branch (stacked PRs). Fixes to earlier branches should be made in their respective branches and propagated to child branches by rebasing or merging so child PRs reflect those fixes. Each stacked PR must be individually reviewable, include failing→passing tests for its scope, include benchmark comparisons when performance-relevant, and pass the baseline diff CI check before merging into the parent branch.
 
+- **CI / GitHub Actions requirement:** GitHub Actions workflows will be created to run the CI tasks required by this refactor: unit tests, the baseline-generation diff, and benchmark capture/upload. The presence of these workflows (in `.github/workflows/`) is a hard prerequisite: no implementation tasks (helper implementations or generator refactors) may begin until the required GitHub Actions workflows are present and configured on a parent branch or mainline branch. Workflows must:
+	- Run unit tests for changed projects.
+	- Produce and upload benchmark artifacts for `Terminal.Gui.Xtui.Benchmarks` when requested (T013/T016).
+	- Run the baseline diff step and fail the job on mismatch.
+	- Expose artifact links in PRs (or upload artifacts to the run) so reviewers can inspect benchmark outputs and diff results.
+
+	Put simply: creating and validating the GitHub Actions workflows that implement T013–T016 is required before starting T004/T006/T008/T010/T012 or any generator refactor. This reduces wasted work and ensures CI coverage is present for all incremental PRs.
+
 ## Deliverables
 
-- `src/Generators/Helpers/` with helper classes (SyntaxHelpers, TypeNameHelpers, NamespaceHelpers, ChildProcessingHelpers, ClassGenerationHelpers, FieldTransformationHelpers)
+- `src/Terminal.Gui.Xtui/Generators/Helpers/` with Phase 1 helper classes (SyntaxHelpers, TypeNameHelpers, NamespaceHelpers, ChildProcessingHelpers, ClassGenerationHelpers)
+- Phase 2 (deferred): `BaseControlGenerator`, `BaseContainerGenerator`, `FieldTransformationHelpers`
 - Refactored generator implementations using helpers and base classes
 - Unit tests for each helper and integration tests for generators
 - `specs/001-refactor-generators/spec.md` (this file)
