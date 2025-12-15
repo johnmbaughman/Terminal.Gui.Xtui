@@ -85,4 +85,17 @@ Approximately 9–14 developer-hours (split across small PRs). Time estimates as
 
 - Proceed to Phase 2: create `BaseControlGenerator` and `BaseContainerGenerator`, refactor multiple simple generators to extend them, and run validations per Phase 2 plan.
 
+## Branching & Stacked PRs (how to apply the plan)
+
+All work in Phase 1 (and subsequent phases) must follow the iterative-branching, stacked-PRs strategy described in the spec. Practical guidance:
+
+- Create a small child branch for each logical step (e.g., `001-refactor-generators/phase1/helpers-skeleton`, `.../type-name-helpers`, `.../syntax-helpers`).
+- Open a focused PR from each child branch targeting the previous phase's branch (not `main`) so reviewers can see incremental changes in order. Name and describe the PR with the phase and small scope (e.g., "Phase 1.1: Add TypeNameHelpers tests + skeleton").
+- Each PR must be test-first: include failing tests that express the contract, then the implementation commit that makes tests pass within the same PR (or as two ordered commits). Prefer small, easily-reviewable commits.
+- Before implementing functional helpers, ensure `T013` (benchmark baseline capture) is completed and artifacts are available; include benchmark output links in PR description when a change can affect performance.
+- If a parent branch receives fixes after child branches are opened, update child branches by rebasing onto the parent or merging the parent's branch so child PRs reflect fixes. Document rebases/merges in PR comments.
+- CI gates: every stacked PR must pass unit tests and the baseline diff check (if the PR touches generation code or helper APIs). Rebaseline changes require explicit feature-owner approval and a detailed diff explanation.
+
+This approach keeps changes incremental, simplifies review, and ensures child PRs remain a truthful, test-backed progression from skeleton → helpers → generator refactors.
+
 ```

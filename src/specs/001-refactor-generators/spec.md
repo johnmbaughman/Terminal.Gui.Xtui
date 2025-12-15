@@ -122,6 +122,8 @@ Perform refactoring in small, verifiable phases with targeted tests and validati
 
 - **Governance:** Pull requests that change generator output MUST include green CI and an explicit approval from the feature owner before merge. Rebaseline PRs must include a clear explanation of the diff and updated baseline files.
 
+- **Branching & PR strategy:** All refactor work will follow an iterative-branching and stacked PRs approach. Implement each phase or helper in a small child branch and open a focused PR against the previous phase's branch (stacked PRs). Fixes to earlier branches should be made in their respective branches and propagated to child branches by rebasing or merging so child PRs reflect those fixes. Each stacked PR must be individually reviewable, include failing→passing tests for its scope, include benchmark comparisons when performance-relevant, and pass the baseline diff CI check before merging into the parent branch.
+
 ## Deliverables
 
 - `src/Generators/Helpers/` with helper classes (SyntaxHelpers, TypeNameHelpers, NamespaceHelpers, ChildProcessingHelpers, ClassGenerationHelpers, FieldTransformationHelpers)
