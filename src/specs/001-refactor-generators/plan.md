@@ -52,12 +52,17 @@ Extract common Roslyn syntax construction and generator helper logic into a smal
    - Estimated: 1–2 hours
 
 7. CI and baseline diff integration
-   - Add a CI job (or augment existing test job) to run helper tests and generate the baseline target using the current generator, then run a byte-for-byte diff against `refactor/generated-baseline.cs`.
+    - Add a CI job (or augment existing test job) to run helper tests and generate the baseline target using the current generator, then run a byte-for-byte diff against `refactor/generated-baseline.cs`.
+    - Use this command for diff (ignores CR/EOL differences):
+       ```powershell
+       git --no-pager diff --no-index --ignore-cr-at-eol refactor\generated-baseline.cs path\to\generated\file.cs
+       ```
    - This step must run on each PR touching `src/Generators/Helpers/*` or generator files.
    - Estimated: 1–2 hours
 
 8. Refactor one low-risk generator to use helpers (validation step)
    - Pick `ButtonGenerator` (or `GenericGenerator`) and replace duplicated patterns with helper calls. Keep generator logic functionally identical.
+   - Before making changes, run generator benchmarks to capture baseline performance; after changes, run benchmarks again and compare. Use `dotnet run -p Terminal.Gui.Xtui.Benchmarks --framework net7.0` (or CI benchmark job) and capture results. PRs must include benchmark comparison and explanation for any regression >10%.
    - Run tests and baseline diff.
    - Estimated: 1–2 hours
 

@@ -32,7 +32,8 @@ Date: 2025-12-13
 **Generator Code MUST meet these standards:**
 
 - Roslyn incremental generators MUST use proper caching and change detection
-- All generator logic MUST be pure functions accepting `ElementNode` and returning code strings
+ - All generator logic MUST be pure functions accepting `ElementNode` and returning code strings for public-facing APIs
+ - INTERNAL IMPLEMENTATION EXCEPTION: Generator implementations are permitted to use Roslyn `Syntax` node types internally for performance, correctness, and to avoid repeated string parsing. Any use of `Syntax` nodes must be encapsulated and must not be exposed through public APIs: public generator outputs (what other projects consume) MUST be plain string source code. See Amendment 1 below for rationale and governance.
 - Magic strings MUST be eliminated—use constants, nameof, or reflection where appropriate
 - Code generation MUST produce properly indented, formatted C# following project conventions
 - Complex expression parsing (Pos/Dim) MUST be isolated in dedicated helper classes
@@ -180,6 +181,16 @@ Before any release:
 - MINOR version bump: Adding new principles or expanding existing guidance
 - PATCH version bump: Clarifications, typos, non-semantic improvements
 - All amendments MUST include Sync Impact Report documenting template changes
+
+### Amendment 1 (2025-12-15)
+
+Rationale: To allow practical, high-performance generator implementation while preserving the constitution's original intent of public string outputs, we permit internal use of Roslyn `Syntax` node APIs with constraints.
+
+Rules:
+- Internal generator code MAY manipulate and construct `Syntax` nodes to build code. 
+- Public-facing generator contracts and produced artifacts MUST be strings (e.g., the final `GenerateClass` return value or files written to disk).
+- Any `Syntax` usage MUST be isolated behind helper modules and covered by unit tests demonstrating that the final string output is identical to expected baselines.
+- This amendment follows the project's amendment process and is recorded here for traceability.
 
 ### Compliance Verification
 

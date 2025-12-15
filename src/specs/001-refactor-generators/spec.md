@@ -13,6 +13,14 @@
 
 - Q: What approval policy should govern rebaseline/merge decisions? → A: Option B - Feature owner approval plus CI sign-off required before merging rebaseline changes.
 
+### Session 2025-12-15 - Implementation Clarifications
+
+- Item 1: Internal implementation MAY use Roslyn `Syntax` node types for performance and fidelity. Public-facing generator APIs or outputs (what producers or downstream consumers call) MUST NOT return `Syntax` nodes and MUST return string source only. This preserves data safety and public contracts.
+- Item 2: Follow the plan's recommendations (test-first, incremental phases); Phase 1 will be implemented test-first.
+- Item 3: Diff command: use `git --no-pager diff --no-index --ignore-cr-at-eol <baseline> <generated>` for byte-for-byte comparison while ignoring CR/EOL differences. Files are UTF-8 encoded; line-ending normalization is ignored for now.
+- Item 4: Benchmarks: a benchmark baseline MUST be captured before any functional code changes and captured again after the refactor; see Plan tasks for commands and CI integration.
+- Item 5: `.specify` helper scripts updated to accept specs under `specs/` or `src/specs/` (script change recorded in repo). 
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Preserve Generated Output (Priority: P1)
