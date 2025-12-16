@@ -4,17 +4,17 @@ Phase 1: Setup
 
 **Infrastructure Setup (Test-First Exemption)**: Tasks T001, T002, T013, T028–T031 are infrastructure/scaffolding tasks and exempt from the test-first workflow (Constitution Principle II applies to production code, not CI YAML or governance docs). These tasks MUST complete before TDD implementation tasks (T003–T012) begin.
 
-- [ ] T001 [P] Create helpers directory at `src/Terminal.Gui.Xtui/Generators/Helpers/` (acceptance: directory exists, committed in small PR)
-- [ ] T002 [P] Create tests skeleton for helpers at `src/Terminal.Gui.Xtui.Tests/Generators.Helpers.Tests/` (acceptance: test project compiles, contains placeholder test that fails)
+- [X] T001 [P] Create helpers directory at `src/Terminal.Gui.Xtui/Generators/Helpers/` (acceptance: directory exists, committed in small PR)
+- [X] T002 [P] Create tests skeleton for helpers at `src/Terminal.Gui.Xtui.Tests/Generators.Helpers.Tests/` (acceptance: test project compiles, contains placeholder test that fails)
 
-- [ ] T013 [US1] Capture benchmark baseline: run `Terminal.Gui.Xtui.Benchmarks` `GeneratorBenchmarks` N=5 times (see plan.md methodology), compute median, analyze code metrics (LOC), store results in CI artifacts as `artifacts/benchmarks/summary.json` with both performance and code metrics data (acceptance: benchmark summary artifact uploaded with median_ms, code_metrics.generators, code_metrics.helpers, and run_id)
+- [X] T013 [US1] Capture benchmark baseline: run `Terminal.Gui.Xtui.Benchmarks` `GeneratorBenchmarks` N=5 times (see plan.md methodology), compute median, analyze code metrics (LOC), store results in CI artifacts as `artifacts/benchmarks/summary.json` with both performance and code metrics data (acceptance: benchmark summary artifact uploaded with median_ms, code_metrics.generators, code_metrics.helpers, and run_id)
 
-- [ ] T028 Create GitHub Actions workflows: add `.github/workflows/ci-tests.yml` and `.github/workflows/benchmarks.yml` implementing unit tests, baseline diff, and benchmark artifact upload (acceptance: workflows committed to feature root branch `001-refactor-generators` and run at least once)
-- [ ] T029 Validate CI workflows on feature root branch: ensure workflows run successfully and upload artifacts to `artifacts/generated/` and `artifacts/benchmarks/`; record run URLs in the feature tracking doc (acceptance: at least one successful `ci-tests` run and one `benchmarks` run with artifacts)
+- [X] T028 Create GitHub Actions workflows: add `.github/workflows/ci-tests.yml` and `.github/workflows/benchmarks.yml` implementing unit tests, baseline diff, and benchmark artifact upload (acceptance: workflows committed to feature root branch `001-refactor-generators` and run at least once)
+- [X] T029 Validate CI workflows on feature root branch: ensure workflows run successfully and upload artifacts to `artifacts/generated/` and `artifacts/benchmarks/`; record run URLs in the feature tracking doc (acceptance: at least one successful `ci-tests` run and one `benchmarks` run with artifacts)
 
-- [ ] T030 Constitution compliance check: add `specs/001-refactor-generators/CONSTITUTION_CHECK.md` listing all 7 constitution principles and documenting how this feature addresses each (with task/requirement references). Add CI step to verify file exists (acceptance: file created with principle enumeration; CI check added)
+- [X] T030 Constitution compliance check: add `specs/001-refactor-generators/CONSTITUTION_CHECK.md` listing all 7 constitution principles and documenting how this feature addresses each (with task/requirement references). Add CI step to verify file exists (acceptance: file created with principle enumeration; CI check added)
 
-- [ ] T031 Enforce public generator API outputs are strings: add unit test in `src/Terminal.Gui.Xtui.Tests/` asserting public generator methods (e.g., `GenerateClass`) return `string` type. Add CI step to run this test (acceptance: test added to test project; CI job includes test execution).
+- [X] T031 Enforce public generator API outputs are strings: add unit test in `src/Terminal.Gui.Xtui.Tests/` asserting public generator methods (e.g., `GenerateClass`) return `string` type. Add CI step to run this test (acceptance: test added to test project; CI job includes test execution).
 
 Branching & PR workflow (stacked PRs)
 

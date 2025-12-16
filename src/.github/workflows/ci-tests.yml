@@ -23,6 +23,14 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         
+    - name: Verify Constitution compliance check exists
+      run: |
+        if [ ! -f "specs/001-refactor-generators/CONSTITUTION_CHECK.md" ]; then
+          echo "::error::Constitution compliance check file not found"
+          exit 1
+        fi
+        echo "✓ Constitution compliance check verified"
+        
     - name: Restore dependencies
       run: dotnet restore Terminal.Gui.Xtui.sln
       
@@ -31,6 +39,9 @@ jobs:
       
     - name: Run unit tests
       run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --verbosity normal
+      
+    - name: Run public generator API contract tests (T031)
+      run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --filter "FullyQualifiedName~PublicGeneratorApiTests" --verbosity normal
       
     - name: Create artifacts directory
       run: mkdir -p artifacts/generated
