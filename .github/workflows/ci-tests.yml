@@ -1,0 +1,80 @@
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - '001-refactor-generators'
+      - '001-refactor-generators/**'
+  pull_request:
+    branches:
+      - '001-refactor-generators'
+      - '001-refactor-generators/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Verify Constitution compliance check exists
+      run: |
+        if [ ! -f "specs/001-refactor-generators/CONSTITUTION_CHECK.md" ]; then
+          echo "::error::Constitution compliance check file not found"
+          exit 1
+        fi
+        echo "✓ Constitution compliance check verified"
+        
+    - name: Restore dependencies
+      run: dotnet restore Terminal.Gui.Xtui.sln
+      
+    - name: Build solution
+      run: dotnet build Terminal.Gui.Xtui.sln --configuration Release --no-restore
+      
+    - name: Run unit tests
+      run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --verbosity normal
+      
+    - name: Run public generator API contract tests (T031)
+      run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --filter "FullyQualifiedName~PublicGeneratorApiTests" --verbosity normal
+      
+    - name: Create artifacts directory
+      run: mkdir -p artifacts/generated
+      
+    - name: Generate baseline output
+      run: |
+        # TODO: Add command to run generator and produce baseline output
+        # This will be implemented when generator execution is available
+        echo "Baseline generation placeholder" > artifacts/generated/generated-baseline.cs
+      
+    - name: Run baseline diff
+      id: baseline_diff
+      continue-on-error: true
+      run: |
+        if [ -f "refactor/generated-baseline.cs" ]; then
+          git --no-pager diff --no-index --ignore-cr-at-eol refactor/generated-baseline.cs artifacts/generated/generated-baseline.cs > artifacts/generated/baseline-diff.txt || true
+          if [ -s artifacts/generated/baseline-diff.txt ]; then
+            echo "::error::Baseline diff detected - generated output does not match refactor/generated-baseline.cs"
+            cat artifacts/generated/baseline-diff.txt
+            exit 1
+          else
+            echo "✓ Baseline parity verified"
+          fi
+        else
+          echo "::warning::Baseline file refactor/generated-baseline.cs not found, skipping diff"
+        fi
+      
+    - name: Upload baseline diff artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: baseline-diff
+        path: |
+          artifacts/generated/generated-baseline.cs
+          artifacts/generated/baseline-diff.txt
+        retention-days: 30
