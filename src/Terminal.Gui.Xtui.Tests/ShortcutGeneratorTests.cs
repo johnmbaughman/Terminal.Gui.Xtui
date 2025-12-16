@@ -26,10 +26,10 @@ public class ShortcutGeneratorTests
         Assert.Single(statements); // Should only create the variable declaration
         
         var code = statements[0].ToFullString();
-        Assert.Contains("varshortcut0", code);
-        Assert.Contains("newShortcut", code);
-        Assert.Contains("Title=\"Quit\"", code);
-        Assert.Contains("CanFocus=false", code);
+        Assert.Contains("var shortcut0", code);
+        Assert.Contains("new Shortcut", code);
+        Assert.Contains("Title = \"Quit\"", code);
+        Assert.Contains("CanFocus = false", code);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class ShortcutGeneratorTests
 
         // Assert
         var code = statements[0].ToFullString();
-        Assert.Contains("Key=Key.F10", code);
+        Assert.Contains("Key = Key.F10", code);
     }
 
     [Fact]
@@ -65,7 +65,7 @@ public class ShortcutGeneratorTests
 
         // Assert
         var code = statements[0].ToFullString();
-        Assert.Contains("Key=Application.QuitKey", code);
+        Assert.Contains("Key = Application.QuitKey", code);
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class ShortcutGeneratorTests
 
         // Assert
         var code = statements[0].ToFullString();
-        Assert.Contains("Key=Key.C.WithCtrl", code);
+        Assert.Contains("Key = Key.C.WithCtrl", code);
     }
 
     [Fact]
@@ -102,9 +102,9 @@ public class ShortcutGeneratorTests
 
         // Assert
         var code = statements[0].ToFullString();
-        Assert.Contains("Title=\"Version Info\"", code);
-        Assert.Contains("CanFocus=false", code);
-        Assert.Contains("HelpText=\"Show version\"", code);
+        Assert.Contains("Title = \"Version Info\"", code);
+        Assert.Contains("CanFocus = false", code);
+        Assert.Contains("HelpText = \"Show version\"", code);
     }
 
     [Fact]
@@ -123,7 +123,7 @@ public class ShortcutGeneratorTests
         Assert.Single(statements);
         
         var code = statements[0].ToFullString();
-        Assert.Contains("varshortcut0", code);
-        Assert.Contains("newShortcut()", code);
+        Assert.Contains("var shortcut0", code);
+        Assert.Contains("new Shortcut()", code);
     }
 }
