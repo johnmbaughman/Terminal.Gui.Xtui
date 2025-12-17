@@ -71,12 +71,6 @@ internal sealed class TopLevelGenerator : Generator
 
         if (node.Children.Count > 0)
         {
-            // Precompute which variable names should be converted to fields (those with explicit Ids)
-            var allDescendants = CollectAllDescendants(node, generators);
-            var varsToField = new HashSet<string>(allDescendants
-                .Where(t => t.node.Attributes.TryGetValue("Id", out var id) && !string.IsNullOrEmpty(id))
-                .Select(t => t.varName));
-
             for (int i = 0; i < node.Children.Count; i++)
             {
                 ElementNode child = node.Children[i];
@@ -91,10 +85,10 @@ internal sealed class TopLevelGenerator : Generator
                 StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
                 // Process statements: convert local variable declarations to field assignments
-                // and collect field declarations. Only convert to fields for vars listed in varsToField.
+                // and collect field declarations
                 foreach (var statement in childStatements)
                 {
-                    var processedStatement = ProcessStatement(statement, fieldDeclarations, variableToFieldMap, processedFields, varsToField);
+                    var processedStatement = ProcessStatement(statement, fieldDeclarations, variableToFieldMap, processedFields);
                     if (processedStatement != null)
                     {
                         initializeComponentStatements.Add(processedStatement);
@@ -106,7 +100,7 @@ internal sealed class TopLevelGenerator : Generator
                 if (string.Equals(localTypeName, "MenuBar", StringComparison.Ordinal) ||
                     string.Equals(localTypeName, "StatusBar", StringComparison.Ordinal))
                 {
-                    // Use field reference since the variable may be a field
+                    // Use field reference since the variable is now a field
                     string fieldName = !string.IsNullOrEmpty(controlId) ? controlId! : childVarName;
                     initializeComponentStatements.Add(
                         ExpressionStatement(
@@ -122,7 +116,7 @@ internal sealed class TopLevelGenerator : Generator
                                                 MemberAccessExpression(
                                                     SyntaxKind.SimpleMemberAccessExpression,
                                                     ThisExpression(),
-                                                    IdentifierName(fieldName)))))))));
+                                                    IdentifierName(fieldName))))))));
                 }
             }
         }
@@ -191,8 +185,7 @@ internal sealed class TopLevelGenerator : Generator
         StatementSyntax statement,
         List<FieldDeclarationSyntax> fieldDeclarations,
         Dictionary<string, string> variableToFieldMap,
-        HashSet<string> processedFields,
-        HashSet<string> varsToField)
+        HashSet<string> processedFields)
     {
         // If this is a local variable declaration, transform it to a field assignment
         if (statement is LocalDeclarationStatementSyntax localDecl)
@@ -202,68 +195,56 @@ internal sealed class TopLevelGenerator : Generator
             {
                 string varName = variable.Identifier.Text;
                 string fieldName = varName; // Use same name for field
-
-                // Only convert to field if the var is listed in varsToField (i.e., element had an Id)
-                if (varsToField.Contains(varName))
+                
+                // Only create field if not already processed
+                if (!processedFields.Contains(fieldName))
                 {
-                    // Only create field if not already processed
-                    if (!processedFields.Contains(fieldName))
-                    {
-                        variableToFieldMap[varName] = fieldName;
+                    variableToFieldMap[varName] = fieldName;
 
-                        // Extract type from the initializer (ObjectCreationExpression)
-                        string typeName;
-                        if (variable.Initializer.Value is ObjectCreationExpressionSyntax objCreation)
+                    // Extract type from the initializer (ObjectCreationExpression)
+                    string typeName;
+                    if (variable.Initializer.Value is ObjectCreationExpressionSyntax objCreation)
+                    {
+                        // Get the type from the object creation expression
+                        typeName = objCreation.Type.ToString();
+                    }
+                    else
+                    {
+                        // Fallback: try to get it from the declaration type if it's not 'var'
+                        var declType = localDecl.Declaration.Type.ToString();
+                        if (declType != "var" && declType != "var?")
                         {
-                            // Get the type from the object creation expression
-                            typeName = objCreation.Type.ToString();
+                            typeName = declType.TrimEnd('?');
                         }
                         else
                         {
-                            // Fallback: try to get it from the declaration type if it's not 'var'
-                            var declType = localDecl.Declaration.Type.ToString();
-                            if (declType != "var" && declType != "var?")
-                            {
-                                typeName = declType.TrimEnd('?');
-                            }
-                            else
-                            {
-                                // Can't determine type, skip
-                                return statement;
-                            }
+                            // Can't determine type, skip
+                            return statement;
                         }
-
-                        // Create field declaration
-                        fieldDeclarations.Add(
-                            FieldDeclaration(
-                                VariableDeclaration(
-                                    NullableType(IdentifierName(typeName)))
-                                .WithVariables(
-                                    SingletonSeparatedList(
-                                        VariableDeclarator(Identifier(fieldName)))))
-                            .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
-
-                        processedFields.Add(fieldName);
                     }
 
-                    // Build assignment: this.fieldName = initializer;
-                    var assignment = ExpressionStatement(
-                        AssignmentExpression(
-                            SyntaxKind.SimpleAssignmentExpression,
-                            MemberAccessExpression(
-                                SyntaxKind.SimpleMemberAccessExpression,
-                                ThisExpression(),
-                                IdentifierName(fieldName)),
-                            variable.Initializer.Value));
+                    // Create field declaration
+                    fieldDeclarations.Add(
+                        FieldDeclaration(
+                            VariableDeclaration(
+                                NullableType(IdentifierName(typeName)))
+                            .WithVariables(
+                                SingletonSeparatedList(
+                                    VariableDeclarator(Identifier(fieldName)))))
+                        .WithModifiers(TokenList(Token(SyntaxKind.PrivateKeyword))));
 
-                    // Return a block that contains the original local declaration followed by the assignment
-                    return Block(localDecl, assignment);
+                    processedFields.Add(fieldName);
                 }
-                else
-                {
-                    // Not a field-targeted var; preserve the local declaration as-is
-                    return localDecl;
-                }
+
+                // Transform to field assignment: this.fieldName = initializer;
+                return ExpressionStatement(
+                    AssignmentExpression(
+                        SyntaxKind.SimpleAssignmentExpression,
+                        MemberAccessExpression(
+                            SyntaxKind.SimpleMemberAccessExpression,
+                            ThisExpression(),
+                            IdentifierName(fieldName)),
+                        variable.Initializer.Value));
             }
         }
 

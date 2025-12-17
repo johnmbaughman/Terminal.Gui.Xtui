@@ -210,4 +210,51 @@ internal static class SyntaxHelpers
                 TokenList(Token(SyntaxKind.PrivateKeyword)))
             .NormalizeWhitespace();
     }
+
+    /// <summary>
+    /// Creates an object creation expression with an object initializer for the given attributes.
+    /// Example: new Button { Text = "Click Me", Enabled = true }
+    /// </summary>
+    /// <param name="fullTypeName">The full type name (may contain namespace)</param>
+    /// <param name="attributes">Dictionary of attribute name-value pairs</param>
+    /// <returns>An ObjectCreationExpressionSyntax with property initializers</returns>
+    /// <exception cref="ArgumentNullException">Thrown when fullTypeName or attributes is null</exception>
+    public static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
+        string fullTypeName,
+        System.Collections.Generic.Dictionary<string, string> attributes)
+    {
+        if (fullTypeName == null)
+        {
+            throw new ArgumentNullException(nameof(fullTypeName));
+        }
+
+        if (attributes == null)
+        {
+            throw new ArgumentNullException(nameof(attributes));
+        }
+
+        // Extract local type name for object creation
+        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
+        ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
+            .WithArgumentList(ArgumentList());
+
+        if (attributes.Count > 0)
+        {
+            // Create property assignments for the object initializer
+            var assignments = attributes.Select(attr =>
+                AssignmentExpression(
+                    SyntaxKind.SimpleAssignmentExpression,
+                    IdentifierName(attr.Key),
+                    ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
+
+            // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
+            InitializerExpressionSyntax initializer = InitializerExpression(
+                SyntaxKind.ObjectInitializerExpression,
+                SeparatedList<ExpressionSyntax>(assignments));
+
+            objectCreation = objectCreation.WithInitializer(initializer);
+        }
+
+        return objectCreation;
+    }
 }
