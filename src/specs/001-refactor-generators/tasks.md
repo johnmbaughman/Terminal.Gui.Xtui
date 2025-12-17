@@ -38,8 +38,8 @@ Test-First (TDD) pattern — implement each helper via a failing test then imple
 - [X] T007 [P] Add failing unit tests for `NamespaceHelpers` (test-first; acceptance: tests added and fail)
 - [X] T008 [P] Implement `NamespaceHelpers` to satisfy tests (acceptance: tests pass)
 
-- [ ] T009 [P] Add failing unit tests for `ChildProcessingHelpers` (test-first; acceptance: tests added and fail)
-- [ ] T010 [P] Implement `ChildProcessingHelpers` to satisfy tests (acceptance: tests pass)
+- [X] T009 [P] Add failing unit tests for `ChildProcessingHelpers` (test-first; acceptance: tests added and fail)
+- [X] T010 [P] Implement `ChildProcessingHelpers` to satisfy tests (acceptance: tests pass)
 
 - [ ] T011 [P] Add failing unit tests for `ClassGenerationHelpers` (test-first; acceptance: tests added and fail)
 - [ ] T012 [P] Implement `ClassGenerationHelpers` to satisfy tests (acceptance: tests pass)
