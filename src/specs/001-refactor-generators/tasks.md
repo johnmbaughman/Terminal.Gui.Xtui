@@ -29,8 +29,8 @@ Test-First (TDD) pattern — implement each helper via a failing test then imple
 
 **TDD Commit Convention**: Each helper PR must include separate commits: (1) commit adding failing tests, (2) commit with implementation that makes tests pass. Do not squash until review complete. Target >90% code coverage per helper.
 
-- [ ] T003 [P] Add failing unit tests for `TypeNameHelpers` (test-first; acceptance: tests added and fail)
-- [ ] T004 [P] Implement `TypeNameHelpers` to satisfy tests (acceptance: tests pass)
+- [X] T003 [P] Add failing unit tests for `TypeNameHelpers` (test-first; acceptance: tests added and fail)
+- [X] T004 [P] Implement `TypeNameHelpers` to satisfy tests (acceptance: tests pass)
 
 - [ ] T005 [P] Add failing unit tests for `SyntaxHelpers` (test-first; acceptance: tests added and fail)
 - [ ] T006 [P] Implement `SyntaxHelpers` to satisfy tests (acceptance: tests pass)
