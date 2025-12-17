@@ -13,53 +13,30 @@ internal sealed class ButtonGenerator : Generator
         IGeneratorFactory generators)
     {
         // Create Button with object initializer: var {variableName} = new Button { ... };
-        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer ("Button", node.Attributes);
+        var statements = new List<StatementSyntax>();
 
-        List<StatementSyntax> statements = new List<StatementSyntax>
-        {
-            LocalDeclarationStatement(
-                VariableDeclaration(
-                        IdentifierName("var"))
+        // Build object creation with initializer using existing helper in this file
+        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("Button", node.Attributes);
+
+        // Create local variable declaration: var {variableName} = new Button { ... };
+        var declaration = LocalDeclarationStatement(
+                VariableDeclaration(IdentifierName("var"))
                     .WithVariables(
                         SingletonSeparatedList(
-                            VariableDeclarator(
-                                    Identifier(variableName))
-                                .WithInitializer(
-                                    EqualsValueClause(objectCreation)))))
-        };
+                            VariableDeclarator(Identifier(variableName))
+                                .WithInitializer(EqualsValueClause(objectCreation)))))
+            .NormalizeWhitespace();
 
-        // Process children if any
-        if (node.Children.Count <= 0)
+        statements.Add(declaration);
+
+        // Use ChildProcessingHelpers to process children and append their statements
+        var childStatements = Helpers.ChildProcessingHelpers.ProcessChildElements(node, variableName, generators);
+        if (childStatements != null && childStatements.Count > 0)
         {
-            return [.. statements];
+            statements.AddRange(childStatements);
         }
 
-        for (int i = 0; i < node.Children.Count; i++)
-        {
-            ElementNode child = node.Children [i];
-            // Extract local type name for variable naming
-            string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-            string childVarName = $"{localTypeName.ToLower ()}{i}";
-            Generator childGenerator = generators.GetGenerator (child.ElementTypeName);
-            StatementSyntax [] childStatements = childGenerator.GenerateStatements (child, childVarName, generators);
-
-            statements.AddRange (childStatements);
-
-            // {variableName}.Add({childVarName});
-            statements.Add (
-                ExpressionStatement (
-                    InvocationExpression (
-                            MemberAccessExpression (
-                                SyntaxKind.SimpleMemberAccessExpression,
-                                IdentifierName (variableName),
-                                IdentifierName ("Add")))
-                        .WithArgumentList (
-                            ArgumentList (
-                                SingletonSeparatedList (
-                                    Argument (IdentifierName (childVarName)))))));
-        }
-
-        return [.. statements];
+        return statements.ToArray();
     }
 
     /// <summary>
