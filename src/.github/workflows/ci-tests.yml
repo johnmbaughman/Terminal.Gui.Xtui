@@ -43,16 +43,16 @@ jobs:
     - name: Run public generator API contract tests (T031)
       run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --filter "FullyQualifiedName~PublicGeneratorApiTests" --verbosity normal
       
+    - name: Run baseline generation integration tests (T015)
+      run: dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --filter "FullyQualifiedName~BaselineGenerationTests" --verbosity normal
+      
     - name: Create artifacts directory
       run: mkdir -p artifacts/generated
       
-    - name: Generate baseline output
-      run: |
-        # TODO: Add command to run generator and produce baseline output
-        # This will be implemented when generator execution is available
-        echo "Baseline generation placeholder" > artifacts/generated/generated-baseline.cs
+    - name: Generate baseline output (T014)
+      run: GENERATE_BASELINE=true dotnet test Terminal.Gui.Xtui.Tests/Terminal.Gui.Xtui.Tests.csproj --configuration Release --no-build --filter "FullyQualifiedName~BaselineGenerationTests.GenerateBaseline_ForCI" --verbosity normal
       
-    - name: Run baseline diff
+    - name: Run baseline diff (T014)
       id: baseline_diff
       continue-on-error: true
       run: |
