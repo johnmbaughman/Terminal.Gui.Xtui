@@ -62,7 +62,7 @@ Refactor validation steps (incremental, low-risk)
 - [X] T017 [P] [US2] Refactor `src/Terminal.Gui.Xtui/Generators/ButtonGenerator.cs` to use helper APIs (follow T003/T004 test-first pattern for generator-level tests). Acceptance: baseline parity preserved and unit/integration tests pass.
 - [X] T018 [P] [US2] Refactor remaining simple generators to use helpers: `CheckBoxGenerator.cs`, `LabelGenerator.cs`, `TextFieldGenerator.cs`, `ListViewGenerator.cs`, `GenericGenerator.cs` (each follows test-first pattern and preserves baseline parity)
 
-- [ ] T019 [US3] Implement `BaseControlGenerator` and `BaseContainerGenerator` and refactor container generators (`MenuBarGenerator.cs`, `StatusBarGenerator.cs`, `WindowGenerator.cs`) to extend them (test-first, acceptance: parity preserved)
+- [X] T019 [US3] Implement `BaseControlGenerator` and `BaseContainerGenerator` and refactor container generators (`MenuBarGenerator.cs`, `StatusBarGenerator.cs`, `WindowGenerator.cs`) to extend them (test-first, acceptance: parity preserved)
 
 Cross-cutting & Governance
 

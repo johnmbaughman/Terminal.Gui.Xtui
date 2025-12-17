@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Terminal.Gui.Xtui.Generators.Helpers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Generators;
@@ -17,7 +18,7 @@ internal sealed class MenuBarGenerator : Generator
     internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create MenuBar with object initializer: var {variableName} = new MenuBar { ... };
-        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("MenuBar", node.Attributes);
+        ObjectCreationExpressionSyntax objectCreation = SyntaxHelpers.CreateObjectWithInitializer("MenuBar", node.Attributes);
 
         List<StatementSyntax> statements = new List<StatementSyntax>
         {
@@ -243,35 +244,6 @@ internal sealed class MenuBarGenerator : Generator
             .NormalizeWhitespace();
 
         return compilationUnit.ToFullString();
-    }
-
-    private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string fullTypeName,
-        Dictionary<string, string> attributes)
-    {
-        // Extract local type name for object creation
-        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
-        ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
-            .WithArgumentList(ArgumentList());
-
-        if (attributes.Count > 0)
-        {
-            // Create property assignments for the object initializer
-            IEnumerable<AssignmentExpressionSyntax> assignments = attributes.Select(attr =>
-                AssignmentExpression(
-                    SyntaxKind.SimpleAssignmentExpression,
-                    IdentifierName(attr.Key),
-                    ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
-
-            // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
-            InitializerExpressionSyntax initializer = InitializerExpression(
-                SyntaxKind.ObjectInitializerExpression,
-                SeparatedList<ExpressionSyntax>(assignments));
-
-            objectCreation = objectCreation.WithInitializer(initializer);
-        }
-
-        return objectCreation;
     }
 
     /// <summary>
