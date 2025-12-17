@@ -343,7 +343,7 @@ public class ChildProcessingHelpersTests
     /// </summary>
     private class MockGenerator : Generator
     {
-        public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+        internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
         {
             // Return a simple variable declaration for testing
             // var {variableName} = new Type();

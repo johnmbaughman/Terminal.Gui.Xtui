@@ -21,7 +21,8 @@ public class PublicGeneratorApiTests
             .Where(t => t.Namespace != null && 
                        (t.Namespace.Contains("Generators") || t.Name.Contains("Generator")) &&
                        t.IsClass && 
-                       !t.IsAbstract)
+                       !t.IsAbstract &&
+                       t.DeclaringType == null) // ignore nested helper types
             .ToList();
 
         Assert.NotEmpty(generatorTypes); // Ensure we found generator classes
