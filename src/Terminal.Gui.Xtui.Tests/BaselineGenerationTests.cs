@@ -156,4 +156,44 @@ public class BaselineGenerationTests
         throw new InvalidOperationException(
             $"Could not find repository root from assembly location: {assemblyDir}");
     }
+
+    /// <summary>
+    /// Generates baseline code for CI validation.
+    /// This test is designed to be called from CI to regenerate the baseline output.
+    /// Set environment variable GENERATE_BASELINE=true to enable output generation.
+    /// </summary>
+    [Fact]
+    public void GenerateBaseline_ForCI()
+    {
+        // Only run if explicitly requested via environment variable
+        var shouldGenerate = Environment.GetEnvironmentVariable("GENERATE_BASELINE");
+        if (shouldGenerate != "true")
+        {
+            return; // Skip silently
+        }
+
+        var srcRoot = GetRepositoryRoot();
+        var repoRoot = Path.GetDirectoryName(srcRoot) ?? throw new InvalidOperationException("Cannot determine repo root");
+        
+        var xtuiPath = Path.Combine(srcRoot, "Examples", "UICatalogXtui", "Views", "UICatalogTop.xtui");
+        Assert.True(File.Exists(xtuiPath), $"XTUI file not found: {xtuiPath}");
+
+        var xtuiContent = File.ReadAllText(xtuiPath);
+        var rootNode = XtuiLoader.LoadFromString(xtuiContent);
+        Assert.NotNull(rootNode);
+
+        var generator = new GeneratorFactory().GetGenerator(rootNode.ElementTypeName);
+        Assert.NotNull(generator);
+
+        var generated = generator.GenerateClass(rootNode, "Terminal.Gui.UICatalogXtui", "UICatalogTop", new GeneratorFactory());
+
+        // Write to artifacts directory (repo root level)
+        var artifactsDir = Path.Combine(repoRoot, "artifacts", "generated");
+        Directory.CreateDirectory(artifactsDir);
+        var outputPath = Path.Combine(artifactsDir, "generated-baseline.cs");
+        File.WriteAllText(outputPath, generated);
+
+        Console.WriteLine($"Generated baseline written to: {outputPath}");
+    }
 }
+
