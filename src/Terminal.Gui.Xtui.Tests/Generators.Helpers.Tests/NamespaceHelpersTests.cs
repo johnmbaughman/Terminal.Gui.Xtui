@@ -1,4 +1,5 @@
 using System;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Terminal.Gui.Xtui.Generators.Helpers;
@@ -88,7 +89,7 @@ public class NamespaceHelpersTests
         UsingDirectiveSyntax result = NamespaceHelpers.CreateUsingDirective(namespaceName);
 
         // Assert
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("using System;", code);
     }
 
@@ -102,7 +103,7 @@ public class NamespaceHelpersTests
         UsingDirectiveSyntax result = NamespaceHelpers.CreateUsingDirective(namespaceName);
 
         // Assert
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("using System.Collections.Generic;", code);
     }
 
@@ -116,7 +117,7 @@ public class NamespaceHelpersTests
         UsingDirectiveSyntax result = NamespaceHelpers.CreateUsingDirective(namespaceName);
 
         // Assert
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("using Terminal.Gui.Views;", code);
     }
 
@@ -163,7 +164,7 @@ public class NamespaceHelpersTests
 
         // Assert
         Assert.IsType<QualifiedNameSyntax>(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("System.Text", code);
     }
 
@@ -178,7 +179,7 @@ public class NamespaceHelpersTests
 
         // Assert
         Assert.IsType<QualifiedNameSyntax>(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("Terminal.Gui.Views", code);
     }
 
@@ -193,7 +194,7 @@ public class NamespaceHelpersTests
 
         // Assert
         Assert.IsType<QualifiedNameSyntax>(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Equal("System.Collections.Generic.List", code);
     }
 
@@ -222,7 +223,7 @@ public class NamespaceHelpersTests
         CompilationUnitSyntax result = NamespaceHelpers.CreateCompilationUnit();
 
         // Assert
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.NotNull(code);
         Assert.Empty(result.Usings);
         Assert.Empty(result.Members);
@@ -243,7 +244,7 @@ public class NamespaceHelpersTests
 
         // Assert
         Assert.Equal(2, result.Usings.Count);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("using System;", code);
         Assert.Contains("using System.Linq;", code);
     }
@@ -259,7 +260,7 @@ public class NamespaceHelpersTests
 
         // Assert
         Assert.Single(result.Members);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("namespace MyApp", code);
     }
 
@@ -277,7 +278,7 @@ public class NamespaceHelpersTests
         CompilationUnitSyntax result = NamespaceHelpers.CreateCompilationUnit(usings, new[] { ns });
 
         // Assert
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("using System;", code);
         Assert.Contains("namespace MyApp", code);
     }
