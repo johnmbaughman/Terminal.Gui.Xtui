@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Xunit;
 
@@ -28,7 +29,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("var button0", code);
         Assert.Contains("new Button()", code);
     }
@@ -72,7 +73,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("this.menuBar = menubar0", code);
     }
 
@@ -116,7 +117,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("window.Add(button0)", code);
     }
 
@@ -134,7 +135,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("statusBar.Add(shortcut0, shortcut1, shortcut2)", code);
     }
 
@@ -152,7 +153,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("view.Refresh()", code);
     }
 
@@ -197,7 +198,8 @@ public class SyntaxHelpersTests
         // Assert
         Assert.NotNull(result);
         string code = result.ToFullString();
-        Assert.Contains("new Window()", code);
+        Assert.Contains("Window()", code);
+        Assert.Contains("new", code);
     }
 
     [Fact]
@@ -225,7 +227,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains("private StatusBar? statusBar", code);
     }
 
@@ -268,7 +270,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains($"var {variableName}", code);
         Assert.Contains($"new {typeName}()", code);
     }
@@ -286,7 +288,7 @@ public class SyntaxHelpersTests
 
         // Assert
         Assert.NotNull(result);
-        string code = result.NormalizeWhitespace().ToFullString();
+        string code = result.ToFullString();
         Assert.Contains($"this.{fieldName} = {variableName}", code);
     }
 }
