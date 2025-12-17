@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Terminal.Gui.Xtui.Generators;
 using Terminal.Gui.Xtui.Generators.Helpers;
 using Xunit;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -137,7 +139,7 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithNoChildren_ReturnsEmptyList()
     {
         // Arrange
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var node = new ElementNode { ElementTypeName = "Window" };
         string parentVarName = "window";
         var mockFactory = new MockGeneratorFactory();
 
@@ -152,8 +154,9 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithSingleChild_GeneratesStatementsAndAddCall()
     {
         // Arrange
-        var child = new ElementNode("Label", new Dictionary<string, string> { { "Text", "Hello" } });
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var child = new ElementNode { ElementTypeName = "Label" };
+        child.Attributes["Text"] = "Hello";
+        var node = new ElementNode { ElementTypeName = "Window" };
         node.Children.Add(child);
         
         string parentVarName = "window";
@@ -173,9 +176,9 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithMultipleChildren_GeneratesCorrectSequence()
     {
         // Arrange
-        var child1 = new ElementNode("Label", new Dictionary<string, string>());
-        var child2 = new ElementNode("Button", new Dictionary<string, string>());
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var child1 = new ElementNode { ElementTypeName = "Label" };
+        var child2 = new ElementNode { ElementTypeName = "Button" };
+        var node = new ElementNode { ElementTypeName = "Window" };
         node.Children.Add(child1);
         node.Children.Add(child2);
         
@@ -198,8 +201,8 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithQualifiedTypeNames_ExtractsLocalNames()
     {
         // Arrange
-        var child = new ElementNode("Terminal.Gui.Views.Label", new Dictionary<string, string>());
-        var node = new ElementNode("Terminal.Gui.Views.Window", new Dictionary<string, string>());
+        var child = new ElementNode { ElementTypeName = "Terminal.Gui.Views.Label" };
+        var node = new ElementNode { ElementTypeName = "Terminal.Gui.Views.Window" };
         node.Children.Add(child);
         
         string parentVarName = "window";
@@ -228,7 +231,7 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithNullParentVarName_ThrowsArgumentNullException()
     {
         // Arrange
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var node = new ElementNode { ElementTypeName = "Window" };
         var mockFactory = new MockGeneratorFactory();
 
         // Act & Assert
@@ -240,7 +243,7 @@ public class ChildProcessingHelpersTests
     public void ProcessChildElements_WithNullGeneratorFactory_ThrowsArgumentNullException()
     {
         // Arrange
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var node = new ElementNode { ElementTypeName = "Window" };
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() => 
@@ -255,7 +258,7 @@ public class ChildProcessingHelpersTests
     public void HasChildren_WithNoChildren_ReturnsFalse()
     {
         // Arrange
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var node = new ElementNode { ElementTypeName = "Window" };
 
         // Act
         bool result = ChildProcessingHelpers.HasChildren(node);
@@ -268,8 +271,8 @@ public class ChildProcessingHelpersTests
     public void HasChildren_WithChildren_ReturnsTrue()
     {
         // Arrange
-        var child = new ElementNode("Label", new Dictionary<string, string>());
-        var node = new ElementNode("Window", new Dictionary<string, string>());
+        var child = new ElementNode { ElementTypeName = "Label" };
+        var node = new ElementNode { ElementTypeName = "Window" };
         node.Children.Add(child);
 
         // Act
@@ -296,9 +299,9 @@ public class ChildProcessingHelpersTests
     {
         // This test verifies that ChildProcessingHelpers can reproduce the pattern from GenericGenerator
         // Arrange
-        var child1 = new ElementNode("Terminal.Gui.Label", new Dictionary<string, string>());
-        var child2 = new ElementNode("Terminal.Gui.Button", new Dictionary<string, string>());
-        var parent = new ElementNode("Terminal.Gui.Window", new Dictionary<string, string>());
+        var child1 = new ElementNode { ElementTypeName = "Terminal.Gui.Label" };
+        var child2 = new ElementNode { ElementTypeName = "Terminal.Gui.Button" };
+        var parent = new ElementNode { ElementTypeName = "Terminal.Gui.Window" };
         parent.Children.Add(child1);
         parent.Children.Add(child2);
         
