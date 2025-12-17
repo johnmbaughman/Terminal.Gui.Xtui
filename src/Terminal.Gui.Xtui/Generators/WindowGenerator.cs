@@ -11,7 +11,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class WindowGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements (ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create Window with object initializer: var {variableName} = new Window { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer ("Window", node.Attributes);

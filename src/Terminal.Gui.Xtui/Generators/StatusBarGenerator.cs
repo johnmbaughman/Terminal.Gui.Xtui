@@ -14,7 +14,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class StatusBarGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create StatusBar with object initializer: var {variableName} = new StatusBar { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("StatusBar", node.Attributes);

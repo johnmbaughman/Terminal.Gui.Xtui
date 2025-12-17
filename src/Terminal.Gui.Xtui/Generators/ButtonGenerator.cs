@@ -10,7 +10,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class ButtonGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName,
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName,
         IGeneratorFactory generators)
     {
         // Create Button with object initializer: var {variableName} = new Button { ... };
@@ -36,7 +36,7 @@ internal sealed class ButtonGenerator : Generator
             statements.AddRange(childStatements);
         }
 
-        return statements.ToArray();
+        return [.. statements];
     }
 
     /// <summary>

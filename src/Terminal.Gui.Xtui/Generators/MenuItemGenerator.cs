@@ -13,7 +13,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class MenuItemGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create MenuItem with object initializer: var {variableName} = new MenuItem { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("MenuItem", node.Attributes);

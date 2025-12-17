@@ -9,7 +9,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class TextFieldGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName,
+    internal override StatementSyntax[] GenerateStatements (ElementNode node, string variableName,
         IGeneratorFactory generators)
     {
         // Create TextField with object initializer: var {variableName} = new TextField { ... };

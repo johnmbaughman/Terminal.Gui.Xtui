@@ -9,7 +9,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class CheckBoxGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create CheckBox with object initializer: var {variableName} = new CheckBox { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("CheckBox", node.Attributes);

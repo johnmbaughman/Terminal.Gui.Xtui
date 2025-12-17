@@ -9,7 +9,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class GenericGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create object with object initializer: var {variableName} = new {node.ElementTypeName} { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer (node.ElementTypeName, node.Attributes);

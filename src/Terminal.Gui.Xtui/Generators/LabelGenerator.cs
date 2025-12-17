@@ -9,7 +9,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class LabelGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax [] GenerateStatements (ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create Label with object initializer: var {variableName} = new Label { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer ("Label", node.Attributes);
