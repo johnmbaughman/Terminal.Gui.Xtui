@@ -30,6 +30,7 @@ internal sealed class ShortcutGenerator : Generator
                                     Identifier(variableName))
                                 .WithInitializer(
                                     EqualsValueClause(objectCreation)))))
+                .NormalizeWhitespace()
         };
 
         // Process children if any - assign to CommandView property

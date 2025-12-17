@@ -5,10 +5,14 @@ on:
     branches:
       - '001-refactor-generators'
       - '001-refactor-generators/**'
+      - '001-refactor-generators-*'
+      - '001-refactor-generators-**'
   pull_request:
     branches:
       - '001-refactor-generators'
       - '001-refactor-generators/**'
+      - '001-refactor-generators-*'
+      - '001-refactor-generators-**'
 
 jobs:
   test:
