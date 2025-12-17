@@ -5,10 +5,19 @@ namespace Terminal.Gui.Xtui.Tests.Generators
     public class ButtonGeneratorTests
     {
         [Fact]
-        public void GenerateButton_ShouldFail_Placeholder()
+        public void GenerateButton_CreatesVariableAndInitializer()
         {
-            // Test-first placeholder: this test must fail until ButtonGenerator is implemented to use helpers.
-            Assert.True(false, "T017: placeholder failing test for ButtonGenerator (test-first)");
+            var node = new ElementNode { ElementTypeName = "Button" };
+            node.Attributes["Text"] = "Click Me";
+
+            var generator = new ButtonGenerator();
+            var factory = new GeneratorFactory();
+
+            var statements = generator.GenerateStatements(node, "button0", factory);
+            var generated = string.Concat(statements.Select(s => s.ToString()));
+
+            Assert.Contains("new Button", generated);
+            Assert.Contains("Text=\"Click Me\"", generated);
         }
     }
 }
