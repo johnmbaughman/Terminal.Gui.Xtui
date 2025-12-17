@@ -1,0 +1,25 @@
+{
+  "run_id": "20251216213041",
+  "timestamp": "2025-12-16T22:22:54.7697759-06:00",
+  "code_metrics": {
+    "helpers": {
+      "total_lines": 1106,
+      "code_lines": 610,
+      "files": 6,
+      "avg_lines_per_file": 184.3,
+      "comment_lines": 376,
+      "blank_lines": 120
+    },
+    "generators": {
+      "total_lines": 4272,
+      "code_lines": 2882,
+      "files": 23,
+      "avg_lines_per_file": 185.7,
+      "comment_lines": 872,
+      "blank_lines": 518
+    }
+  },
+  "runs": 3,
+  "median_ms": 941220.0,
+  "benchmark": "GeneratorBenchmarks"
+}
