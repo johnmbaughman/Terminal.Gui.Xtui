@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Terminal.Gui.Xtui.Generators.Helpers;
 
 namespace Terminal.Gui.Xtui.Generators;
 
@@ -24,13 +25,12 @@ internal sealed class ButtonGenerator : Generator
                     .WithVariables(
                         SingletonSeparatedList(
                             VariableDeclarator(Identifier(variableName))
-                                .WithInitializer(EqualsValueClause(objectCreation)))))
-            .NormalizeWhitespace();
+                                .WithInitializer(EqualsValueClause(objectCreation)))));
 
         statements.Add(declaration);
 
         // Use ChildProcessingHelpers to process children and append their statements
-        var childStatements = Helpers.ChildProcessingHelpers.ProcessChildElements(node, variableName, generators);
+        var childStatements = ChildProcessingHelpers.ProcessChildElements(node, variableName, generators);
         if (childStatements != null && childStatements.Count > 0)
         {
             statements.AddRange(childStatements);
