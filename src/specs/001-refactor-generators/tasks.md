@@ -49,13 +49,13 @@ Test-First (TDD) pattern — implement each helper via a failing test then imple
 
 Integration & Validation (baseline parity, CI, benchmarks)
 
-- [ ] T014 [US1] Add CI job step to run helper tests, run generator to produce the baseline target, and perform a diff against `refactor/generated-baseline.cs` using:
+- [X] T014 [US1] Add CI job step to run helper tests, run generator to produce the baseline target, and perform a diff against `refactor/generated-baseline.cs` using:
 	```powershell
 	git --no-pager diff --no-index --ignore-cr-at-eol refactor\generated-baseline.cs path\to\generated\file.cs
 	```
 
-- [ ] T015 [US1] Add integration test `src/Terminal.Gui.Xtui.Tests/BaselineGenerationTests.cs` that runs the generator for the baseline input and asserts exact match with `refactor/generated-baseline.cs` (acceptance: test added and initially fails until generator produces expected output)
-- [ ] T016 [US1] Capture benchmark after changes and include comparison in PR (measure mean generation time in milliseconds; CI fails if regression >10% vs baseline median; include code metrics comparison to demonstrate progress toward SC-004 code size reduction target)
+- [X] T015 [US1] Add integration test `src/Terminal.Gui.Xtui.Tests/BaselineGenerationTests.cs` that runs the generator for the baseline input and asserts exact match with `refactor/generated-baseline.cs` (acceptance: test added and initially fails until generator produces expected output)
+- [X] T016 [US1] Capture benchmark after changes and include comparison in PR (measure mean generation time in milliseconds; CI fails if regression >10% vs baseline median; include code metrics comparison to demonstrate progress toward SC-004 code size reduction target)
 
 Refactor validation steps (incremental, low-risk)
 
