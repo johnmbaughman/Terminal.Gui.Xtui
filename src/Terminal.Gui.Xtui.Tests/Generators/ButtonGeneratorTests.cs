@@ -19,8 +19,9 @@ namespace Terminal.Gui.Xtui.Tests.Generators
             var statements = generator.GenerateStatements(node, "button0", factory);
             var generated = string.Concat(statements.Select(s => s.ToString()));
 
-            Assert.Contains("new Button", generated);
+            Assert.Contains("newButton", generated);
             Assert.Contains("Text=\"Click Me\"", generated);
+            Assert.Contains("varbutton0", generated);
         }
     }
 }
