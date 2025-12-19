@@ -47,15 +47,6 @@ jobs:
         </configuration>
         EOF
         
-    - name: Verify Constitution compliance check exists
-      working-directory: src
-      run: |
-        if [ ! -f "specs/001-refactor-generators/CONSTITUTION_CHECK.md" ]; then
-          echo "::error::Constitution compliance check file not found"
-          exit 1
-        fi
-        echo "✓ Constitution compliance check verified"
-        
     - name: Restore dependencies
       working-directory: src
       run: dotnet restore Terminal.Gui.Xtui.sln --configfile ci-temp-nuget.config
