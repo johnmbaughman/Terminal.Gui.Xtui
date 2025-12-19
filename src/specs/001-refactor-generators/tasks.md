@@ -66,9 +66,9 @@ Refactor validation steps (incremental, low-risk)
 
 Cross-cutting & Governance
 
-- [ ] T021 Update `.specify` scripts and docs so `check-prerequisites` accepts `specs/` or `src/specs/` locations (acceptance: prereq script succeeds from repo root and `src` layouts)
-- [ ] T022 Create `specs/001-refactor-generators/checklists/merge_guidelines.md` documenting branch/PR/zero-tolerance rebaseline policy and CI requirements (acceptance: file created, documents that baseline diffs are bugs not rebaseline scenarios, and referenced in PR template)
-- [ ] T023 Update `README.md` or project docs with new helper API usage notes at `docs/REFACTORING.md` (acceptance: docs added)
+- [X] T021 Update `.specify` scripts and docs so `check-prerequisites` accepts `specs/` or `src/specs/` locations (acceptance: prereq script succeeds from repo root and `src` layouts)
+- [X] T022 Create `specs/001-refactor-generators/checklists/merge_guidelines.md` documenting branch/PR/zero-tolerance rebaseline policy and CI requirements (acceptance: file created, documents that baseline diffs are bugs not rebaseline scenarios, and referenced in PR template)
+- [X] T023 Update `README.md` or project docs with new helper API usage notes at `docs/REFACTORING.md` (acceptance: docs added)
 
 Dependencies & Execution Order
 
