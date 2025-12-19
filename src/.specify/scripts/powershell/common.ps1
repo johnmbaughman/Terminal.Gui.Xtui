@@ -89,6 +89,9 @@ function Test-FeatureBranch {
 
 function Get-FeatureDir {
     param([string]$RepoRoot, [string]$Branch)
+    
+    # Support both specs/ and src/specs/ layouts (T0021)
+    # This allows the script to work from both repo root and src directory structures
     $primary = Join-Path $RepoRoot "specs/$Branch"
     if (Test-Path $primary) { return $primary }
 
