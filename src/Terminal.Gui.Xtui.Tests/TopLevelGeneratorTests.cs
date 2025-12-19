@@ -87,8 +87,8 @@ public class TopLevelGeneratorTests
         
         Assert.Contains("InitializeComponent()", code);
         Assert.Contains("private Button? _myButton;", code);
-        Assert.Contains("var _myButton = new Button()", code);
-        Assert.Contains("this._myButton = _myButton;", code);
+        Assert.DoesNotContain("var _myButton", code);
+        Assert.Contains("this._myButton = new Button()", code);
         Assert.DoesNotContain("this.Add(", code); // TopLevel doesn't auto-add children with Id
     }
 
@@ -106,9 +106,10 @@ public class TopLevelGeneratorTests
         var code = generator.GenerateClass(node, "MyApp", "MainWindow", factory);
 
         Assert.Contains("InitializeComponent()", code);
-        Assert.Contains("var label0", code);
+        Assert.DoesNotContain("var label0", code);
         Assert.Contains("new Label()", code);
-        Assert.DoesNotContain("private Label?", code); // No field since no Id
+        Assert.Contains("private Label?", code); // Field is declared for children (generator now declares fields)
+        Assert.Contains("this.label0 = new Label()", code);
         Assert.DoesNotContain("this.Add(", code); // No Add since child has no Id
     }
 

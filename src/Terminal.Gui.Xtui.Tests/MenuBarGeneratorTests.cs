@@ -160,8 +160,8 @@ public class MenuBarGeneratorTests
         var statements = generator.GenerateStatements(node, "menuBar", factory);
         var generated = string.Concat(statements.Select(s => s.ToString()));
 
-        // Should have 3 Add statements
-        Assert.Equal(3, generated.Split(new[] { ".Add(" }, System.StringSplitOptions.None).Length - 1);
+        // MenuBar now emits a single param-array Add call containing all items
+        Assert.Equal(1, generated.Split(new[] { ".Add(" }, System.StringSplitOptions.None).Length - 1);
         Assert.Contains("menubaritem0", generated);
         Assert.Contains("menubaritem1", generated);
         Assert.Contains("menubaritem2", generated);
