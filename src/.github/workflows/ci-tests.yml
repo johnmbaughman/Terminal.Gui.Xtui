@@ -9,13 +9,12 @@ name: CI Tests
 on:
   push:
     branches:
-      - '001-refactor-generators'
-      - '001-refactor-generators/**'
+      - 'v0.0.0.1'
+      - 'v0.0.0.1/**'
   pull_request:
     branches:
-      - '001-refactor-generators'
-      - '001-refactor-generators/**'
-
+      - 'v0.0.0.1'
+      - 'v0.0.0.1/**'
 jobs:
   test:
     runs-on: ubuntu-latest
