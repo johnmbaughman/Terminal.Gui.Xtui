@@ -9,8 +9,8 @@ on:
         default: '5'
   push:
     branches:
-      - '001-refactor-generators'
-      - '001-refactor-generators/**'
+      - 'v0.0.0.1'
+      - 'v0.0.0.1/**'
     paths:
       - 'Terminal.Gui.Xtui/Generators/**'
       - 'Terminal.Gui.Xtui.Benchmarks/**'
@@ -48,7 +48,7 @@ jobs:
         fi
         
         # Run benchmark script
-        pwsh -File scripts/run-benchmarks.ps1 -RunCount ${{ github.event.inputs.run_count || 5 }}
+        pwsh -File scripts/run-benchmarks.ps1 -RunCount ${{ github.event.inputs.run_count || '5' }}
       
     - name: Upload benchmark artifacts
       uses: actions/upload-artifact@v4
