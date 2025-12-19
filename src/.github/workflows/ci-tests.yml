@@ -1,5 +1,11 @@
 name: CI Tests
 
+# WORKFLOW PATTERN: Update branch filters when creating new feature branches
+# For a feature branch 'XXX-feature-name', use:
+#   - 'XXX-feature-name'         (parent branch)
+#   - 'XXX-feature-name/**'      (all child branches)
+# This allows CI to run on both the parent and any nested child branches
+
 on:
   push:
     branches:
