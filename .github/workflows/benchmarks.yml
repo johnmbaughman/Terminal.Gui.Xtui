@@ -28,7 +28,13 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         
+    - name: Add NuGet sources
+      working-directory: src
+      run: |
+        dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org || true
+        
     - name: Restore dependencies
+      working-directory: src
       run: dotnet restore Terminal.Gui.Xtui.sln
       
     - name: Build benchmark project

@@ -25,6 +25,11 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         
+    - name: Add NuGet sources
+      working-directory: src
+      run: |
+        dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org || true
+        
     - name: Verify Constitution compliance check exists
       working-directory: src
       run: |
