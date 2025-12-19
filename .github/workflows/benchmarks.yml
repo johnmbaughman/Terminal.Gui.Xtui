@@ -48,10 +48,27 @@ jobs:
         fi
         echo "=== Running diagnostic restore (non-fatal) ==="
         dotnet restore Terminal.Gui.Xtui.sln -v diag || true
+
+    - name: Create temporary NuGet.Config for CI restore
+      working-directory: src
+      run: |
+        cat > ci-temp-nuget.config <<'EOF'
+        <?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+          <packageSources>
+            <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+          </packageSources>
+          <packageSourceMapping>
+            <packageSource key="nuget.org">
+              <package pattern="*" />
+            </packageSource>
+          </packageSourceMapping>
+        </configuration>
+        EOF
         
     - name: Restore dependencies
       working-directory: src
-      run: dotnet restore Terminal.Gui.Xtui.sln
+      run: dotnet restore Terminal.Gui.Xtui.sln --configfile ci-temp-nuget.config
       
     - name: Build benchmark project
       run: dotnet build Terminal.Gui.Xtui.Benchmarks/Terminal.Gui.Xtui.Benchmarks.csproj --configuration Release --no-restore
