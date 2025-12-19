@@ -28,7 +28,11 @@ jobs:
     - name: Add NuGet sources
       working-directory: src
       run: |
-        dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org || true
+        if dotnet nuget list source | grep -q "nuget.org"; then
+          echo "nuget.org source already registered"
+        else
+          dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
+        fi
 
     - name: Create temporary NuGet.Config for CI restore
       working-directory: src
