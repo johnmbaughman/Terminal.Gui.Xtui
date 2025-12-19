@@ -185,7 +185,7 @@ public class BaselineGenerationTests
         var generator = new GeneratorFactory().GetGenerator(rootNode.ElementTypeName);
         Assert.NotNull(generator);
 
-        var generated = generator.GenerateClass(rootNode, "Terminal.Gui.UICatalogXtui", "UICatalogTop", new GeneratorFactory());
+        var generated = generator.GenerateClass(rootNode, "UICatalogXtui", "UICatalogTop", new GeneratorFactory());
 
         // Write to artifacts directory (repo root level)
         var artifactsDir = Path.Combine(repoRoot, "artifacts", "generated");
