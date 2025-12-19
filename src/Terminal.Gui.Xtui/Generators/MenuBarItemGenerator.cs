@@ -14,7 +14,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class MenuBarItemGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create MenuBarItem with object initializer: var {variableName} = new MenuBarItem { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("MenuBarItem", node.Attributes);

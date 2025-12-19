@@ -14,7 +14,7 @@ namespace Terminal.Gui.Xtui.Generators;
 internal sealed class ShortcutGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create Shortcut with object initializer: var {variableName} = new Shortcut { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("Shortcut", node.Attributes);
@@ -30,6 +30,7 @@ internal sealed class ShortcutGenerator : Generator
                                     Identifier(variableName))
                                 .WithInitializer(
                                     EqualsValueClause(objectCreation)))))
+                .NormalizeWhitespace()
         };
 
         // Process children if any - assign to CommandView property

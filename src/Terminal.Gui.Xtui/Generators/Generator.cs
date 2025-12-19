@@ -29,10 +29,23 @@ internal abstract class Generator
     /// An array of <see cref="StatementSyntax"/> representing the statements
     /// required to create and initialize the control.
     /// </returns>
-    public virtual StatementSyntax[] GenerateStatements(ElementNode node, string variableName,
+    internal virtual StatementSyntax[] GenerateStatements(ElementNode node, string variableName,
         IGeneratorFactory generators)
     {
         return Array.Empty<StatementSyntax>();
+    }
+
+    /// <summary>
+    /// Public wrapper that returns the generated statements as formatted C# source.
+    /// This preserves the internal use of Roslyn <see cref="StatementSyntax"/>
+    /// while exposing a string-based API suitable for public consumers and tests.
+    /// </summary>
+    public string GenerateStatementsAsString(ElementNode node, string variableName, IGeneratorFactory generators)
+    {
+        var stmts = GenerateStatements(node, variableName, generators);
+        // Create a temporary block to get formatted source for the statements
+        var block = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.Block(stmts);
+        return block.ToFullString();
     }
 
     /// <summary>

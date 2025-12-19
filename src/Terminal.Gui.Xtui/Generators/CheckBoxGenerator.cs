@@ -3,16 +3,17 @@ using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Terminal.Gui.Xtui.Generators.Helpers;
 
 namespace Terminal.Gui.Xtui.Generators;
 
 internal sealed class CheckBoxGenerator : Generator
 {
     /// <inheritdoc />
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
-        // Create CheckBox with object initializer: var {variableName} = new CheckBox { ... };
-        ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("CheckBox", node.Attributes);
+        // Create CheckBox with object initializer using shared helper
+        ObjectCreationExpressionSyntax objectCreation = SyntaxHelpers.CreateObjectWithInitializer("CheckBox", node.Attributes);
 
         List<StatementSyntax> statements = new List<StatementSyntax>
         {
@@ -59,36 +60,5 @@ internal sealed class CheckBoxGenerator : Generator
         }
 
         return statements.ToArray();
-    }
-
-    /// <summary>
-    /// Creates an object creation expression with an object initializer for the given attributes.
-    /// Example: new CheckBox { Text = "Hello", CheckedState = Terminal.Gui.CheckState.Checked }
-    /// </summary>
-    private static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
-        string fullTypeName,
-        Dictionary<string, string> attributes)
-    {
-        // Extract local type name for object creation
-        string typeName = fullTypeName.Contains('.') ? fullTypeName.Split('.').Last() : fullTypeName;
-        ObjectCreationExpressionSyntax objectCreation = ObjectCreationExpression(IdentifierName(typeName))
-            .WithArgumentList(ArgumentList());
-
-        if (attributes.Count > 0)
-        {
-            IEnumerable<AssignmentExpressionSyntax> assignments = attributes.Select(attr =>
-                AssignmentExpression(
-                    SyntaxKind.SimpleAssignmentExpression,
-                    IdentifierName(attr.Key),
-                    ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
-
-            InitializerExpressionSyntax initializer = InitializerExpression(
-                SyntaxKind.ObjectInitializerExpression,
-                SeparatedList<ExpressionSyntax>(assignments));
-
-            objectCreation = objectCreation.WithInitializer(initializer);
-        }
-
-        return objectCreation;
     }
 }

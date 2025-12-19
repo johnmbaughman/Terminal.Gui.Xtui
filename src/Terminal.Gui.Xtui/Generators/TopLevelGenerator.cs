@@ -10,7 +10,7 @@ namespace Terminal.Gui.Xtui.Generators;
 
 internal sealed class TopLevelGenerator : Generator
 {
-    public override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
+    internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
     {
         // Create Toplevel with object initializer: var {variableName} = new Toplevel { ... };
         ObjectCreationExpressionSyntax objectCreation = CreateObjectWithInitializer("Toplevel", node.Attributes);
