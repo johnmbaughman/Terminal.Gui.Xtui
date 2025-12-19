@@ -29,6 +29,22 @@ jobs:
       working-directory: src
       run: |
         dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org || true
+
+    - name: Debug NuGet configuration and sources
+      working-directory: src
+      continue-on-error: true
+      run: |
+        echo "=== dotnet nuget list source ==="
+        dotnet nuget list source --format short || true
+        echo "=== Listing src/NuGet.Config if present ==="
+        if [ -f NuGet.Config ]; then
+          echo "--- src/NuGet.Config ---"
+          sed -n '1,200p' NuGet.Config || cat NuGet.Config
+        else
+          echo "(no src/NuGet.Config found)"
+        fi
+        echo "=== Running diagnostic restore (non-fatal) ==="
+        dotnet restore Terminal.Gui.Xtui.sln -v diag || true
         
     - name: Verify Constitution compliance check exists
       working-directory: src
