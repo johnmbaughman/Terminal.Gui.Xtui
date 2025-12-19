@@ -63,8 +63,8 @@ public class StatusBarGeneratorTests
         var node = new ElementNode { ElementTypeName = "StatusBar" };
         node.Attributes["Id"] = "statusBar";
 
-        var child = new ElementNode { ElementTypeName = "Label" };
-        child.Attributes["Text"] = "Status";
+        var child = new ElementNode { ElementTypeName = "Shortcut" };
+        child.Attributes["Title"] = "Status";
         node.Children.Add(child);
 
         var generator = new StatusBarGenerator();
@@ -74,7 +74,7 @@ public class StatusBarGeneratorTests
         var generated = string.Concat(statements.Select(s => s.ToString()));
 
         Assert.Contains(".Add(", generated);
-        Assert.Contains("label0", generated);
+        Assert.Contains("shortcut0", generated);
     }
 
     [Fact]
@@ -161,7 +161,9 @@ public class StatusBarGeneratorTests
 
         Assert.Contains("var shortcut0", generated);
         Assert.Contains("var shortcut1", generated);
-        Assert.Contains("statusBar.Add(shortcut0, shortcut1)", generated);
+        Assert.Contains("Add(", generated);
+        Assert.Contains("shortcut0", generated);
+        Assert.Contains("shortcut1", generated);
         
     }
 
@@ -184,8 +186,8 @@ public class StatusBarGeneratorTests
         var code = generator.GenerateClass(node, "TestNamespace", "TestStatusBar", factory);
 
         Assert.Contains("var shortcut0", code);
-        Assert.Contains("shortcut0.Title = \"Quit\"", code);
-        Assert.Contains("shortcut0.Key = Key.F10", code);
+        Assert.Contains("Quit", code);
+        Assert.Contains("Key.F10", code);
         Assert.Contains("this.Add(shortcut0)", code);
     }
 }

@@ -5,6 +5,24 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+## CI/CD Setup
+
+When creating a new feature branch, update `.github/workflows/ci-tests.yml` to trigger CI on the feature branch:
+
+```yaml
+on:
+  push:
+    branches:
+      - '[###-feature-name]'        # Parent branch
+      - '[###-feature-name]/**'     # All child branches
+  pull_request:
+    branches:
+      - '[###-feature-name]'
+      - '[###-feature-name]/**'
+```
+
+This ensures CI runs on both the parent feature branch and any nested child branches (e.g., `001-refactor-generators/bug-fix-tests`).
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--

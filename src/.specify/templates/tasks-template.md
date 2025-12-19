@@ -51,6 +51,7 @@ description: "Task list template for feature implementation"
 - [ ] T001 Create project structure per implementation plan
 - [ ] T002 Initialize [language] project with [framework] dependencies
 - [ ] T003 [P] Configure linting and formatting tools
+- [ ] T004 [P] Update CI workflow triggers in `.github/workflows/ci-tests.yml` to include feature branch name (pattern: `'[###-feature-name]'` and `'[###-feature-name]/**'` in both `on.push.branches` and `on.pull_request.branches`)
 
 ---
 
