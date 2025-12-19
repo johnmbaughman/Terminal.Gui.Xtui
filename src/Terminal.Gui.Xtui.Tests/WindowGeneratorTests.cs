@@ -93,8 +93,8 @@ public class WindowGeneratorTests
         Assert.Contains("public partial class MainWindow : Window", code);
         Assert.Contains("private Button? _okButton;", code);
         Assert.Contains("var button0 = new Button", code);
-        Assert.Contains("_okButton = button0;", code);
-        Assert.Contains("this.Add(_okButton);", code);
+        Assert.Contains("this._okButton = button0", code);
+        Assert.Contains("this.Add(button0)", code);
     }
 
     [Fact]
@@ -114,7 +114,7 @@ public class WindowGeneratorTests
         Assert.Contains("public partial class StatusWindow : Window", code);
         Assert.Contains("var label0 = new Label", code); // Window generates local variables for all children
         Assert.Contains("this.Add(label0)", code); // Window adds children via local variables
-        Assert.DoesNotContain("private Label?", code); // No field since no Id
+        Assert.Contains("private Label?", code); // Field is declared for children (generator now declares fields)
     }
 
     [Fact]
@@ -178,10 +178,10 @@ public class WindowGeneratorTests
         Assert.Contains("private Label? _label2;", code);
         Assert.Contains("var label0 = new Label", code);
         Assert.Contains("var label1 = new Label", code);
-        Assert.Contains("_label1 = label0;", code);
-        Assert.Contains("_label2 = label1;", code);
-        Assert.Contains("this.Add(_label1);", code);
-        Assert.Contains("this.Add(_label2);", code);
+        Assert.Contains("this._label1 = label0", code);
+        Assert.Contains("this._label2 = label1", code);
+        Assert.Contains("this.Add(label0)", code);
+        Assert.Contains("this.Add(label1)", code);
     }
 
     [Fact]

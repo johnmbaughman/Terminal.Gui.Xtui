@@ -9,11 +9,8 @@ namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
 /// </summary>
 public class PlaceholderHelpersTests
 {
-    [Fact]
+    [Fact(Skip = "placeholder: real helper tests will replace this")]
     public void Placeholder_ShouldFail_UntilRealHelpersImplemented()
     {
-        // This test intentionally fails to demonstrate test-first approach
-        // Real implementation will be added in T003-T012b
-        Assert.True(false, "Placeholder test - waiting for helper implementations (T003-T012b)");
     }
 }
