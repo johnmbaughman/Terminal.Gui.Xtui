@@ -20,10 +20,10 @@ Branching & PR workflow (stacked PRs)
 
 The implementation will use iterative, small branches and stacked PRs. Additions below make the process explicit and traceable in tasks.
 
-- [ ] T024 Create per-helper child branches (naming convention: `001-refactor-generators/phase1/<short-task>`) and open stacked PRs against the previous branch (acceptance: one child branch per helper with PR created)
-- [ ] T025 For each helper PR (TypeName, Syntax, Namespace, ChildProcessing, ClassGeneration) include a failing test commit followed by an implementation commit (acceptance: PR contains both failing and fixing commits or clearly-separated commits that make tests pass)
-- [ ] T026 When parent branches receive fixes, update child branches by rebasing or merging and add a short PR comment documenting the update (acceptance: child PRs reflect parent fixes and CI passes)
-- [ ] T027 Ensure each stacked PR includes links to benchmark artifacts (when relevant) and a short note about whether baseline diff was run locally/CI (acceptance: PR description includes artifact links or a CI run reference)
+ - [X] T024 Create per-helper child branches (naming convention: `001-refactor-generators/phase1/<short-task>`) and open stacked PRs against the previous branch (acceptance: one child branch per helper with PR created)
+ - [X] T025 For each helper PR (TypeName, Syntax, Namespace, ChildProcessing, ClassGeneration) include a failing test commit followed by an implementation commit (acceptance: PR contains both failing and fixing commits or clearly-separated commits that make tests pass)
+ - [X] T026 When parent branches receive fixes, update child branches by rebasing or merging and add a short PR comment documenting the update (acceptance: child PRs reflect parent fixes and CI passes)
+ - [X] T027 Ensure each stacked PR includes links to benchmark artifacts (when relevant) and a short note about whether baseline diff was run locally/CI (acceptance: PR description includes artifact links or a CI run reference)
 
 Test-First (TDD) pattern — implement each helper via a failing test then implementation
 
