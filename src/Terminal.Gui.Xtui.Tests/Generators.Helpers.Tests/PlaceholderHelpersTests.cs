@@ -1,5 +1,3 @@
-using Xunit;
-
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
 
 /// <summary>

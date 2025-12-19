@@ -1,9 +1,6 @@
-﻿using System;
-using Terminal.Gui.Xtui;
-using Terminal.Gui.Xtui.Generators;
-using Xunit;
+﻿using Terminal.Gui.Xtui.Generators;
 
-namespace Terminal.Gui.Xtui.Tests;
+namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
 public class XtuiGeneratorTests
 {

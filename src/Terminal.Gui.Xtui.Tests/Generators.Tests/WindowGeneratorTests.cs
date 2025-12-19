@@ -1,9 +1,6 @@
-using System.Linq;
-using Terminal.Gui.Xtui;
 using Terminal.Gui.Xtui.Generators;
-using Xunit;
 
-namespace Terminal.Gui.Xtui.Tests;
+namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
 public class WindowGeneratorTests
 {

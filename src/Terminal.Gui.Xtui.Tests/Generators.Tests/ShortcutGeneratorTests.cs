@@ -1,8 +1,6 @@
-using Xunit;
 using Terminal.Gui.Xtui.Generators;
-using System.Collections.Generic;
 
-namespace Terminal.Gui.Xtui.Tests;
+namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
 public class ShortcutGeneratorTests
 {

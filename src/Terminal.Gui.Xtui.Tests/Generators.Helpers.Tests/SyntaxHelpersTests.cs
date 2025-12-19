@@ -1,7 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Xunit;
-
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
 
 /// <summary>

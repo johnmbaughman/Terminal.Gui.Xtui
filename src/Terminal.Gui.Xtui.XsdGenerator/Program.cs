@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Terminal.Gui;
+using Terminal.Gui.ViewBase;
 
 namespace Terminal.Gui.Xtui.XsdGenerator;
 

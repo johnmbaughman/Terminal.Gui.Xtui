@@ -1,8 +1,5 @@
-using System;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Terminal.Gui.Xtui.Generators;
-using Xunit;
 
 namespace Terminal.Gui.Xtui.Tests;
 

@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using System.Reflection;
-using Xunit;
 
 namespace Terminal.Gui.Xtui.Tests;
 
@@ -28,7 +25,7 @@ public class PublicGeneratorApiTests
         Assert.NotEmpty(generatorTypes); // Ensure we found generator classes
 
         // Act & Assert: Check public methods return string, not Syntax types
-        var violations = new System.Collections.Generic.List<string>();
+        var violations = new List<string>();
 
         foreach (var generatorType in generatorTypes)
         {
@@ -57,7 +54,7 @@ public class PublicGeneratorApiTests
                 {
                     // If it's not a string, it might be a Syntax type (which we flag above)
                     // or another type we should document
-                    if (!returnType.FullName.Contains("Microsoft.CodeAnalysis"))
+                    if (returnType.FullName == null || !returnType.FullName.Contains("Microsoft.CodeAnalysis"))
                     {
                         violations.Add($"{generatorType.Name}.{method.Name}() returns {returnType.Name} (expected string for generation methods)");
                     }

@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Terminal.Gui" Version="2.0.0" />
+    <!-- Use the local Terminal.Gui project during development to ensure types like `View` are available -->
+    <ProjectReference Include="..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
   </ItemGroup>
 
   <!-- Copy Terminal.Gui.xml from the local build to output directory -->
