@@ -18,6 +18,11 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0"/>
     </ItemGroup>
 
+    <!-- Make sure the XamlX dependency flows to consumers when this project is referenced as an analyzer -->
+    <ItemGroup>
+        <Analyzer Include="$(XamlXPath)\src\XamlX\bin\$(Configuration)\netstandard2.0\XamlX.dll" Condition="Exists('$(XamlXPath)\src\XamlX\bin\$(Configuration)\netstandard2.0\XamlX.dll')" />
+    </ItemGroup>
+
     <PropertyGroup>
         <XamlXPath>$(MSBuildThisFileDirectory)..\XamlX</XamlXPath>
     </PropertyGroup>
@@ -47,10 +52,16 @@
     <Target Name="PrepareAnalyzerForPack" AfterTargets="Build">
         <ItemGroup>
             <_AnalyzerToPack Include="$(OutputPath)$(AssemblyName).dll"/>
+            <!-- Ensure XamlX dependency is colocated with the analyzer so Roslyn can load it -->
+            <_AnalyzerDependency Include="$(XamlXPath)\src\XamlX\bin\$(Configuration)\netstandard2.0\XamlX.dll" />
         </ItemGroup>
         <Copy SourceFiles="@(_AnalyzerToPack)" DestinationFolder="$(ProjectDir)analyzers\dotnet\cs\" SkipUnchangedFiles="true"/>
+        <!-- Ensure consumers using project/solution analyzers get XamlX.dll next to the analyzer output -->
+        <Copy SourceFiles="@(_AnalyzerDependency)" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true" Condition="Exists('%(_AnalyzerDependency.Identity)')" />
+        <Copy SourceFiles="@(_AnalyzerDependency)" DestinationFolder="$(ProjectDir)analyzers\dotnet\cs\" SkipUnchangedFiles="true" Condition="Exists('%(_AnalyzerDependency.Identity)')" />
         <ItemGroup>
             <None Include="analyzers\dotnet\cs\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs/"/>
+            <None Include="analyzers\dotnet\cs\XamlX.dll" Pack="true" PackagePath="analyzers/dotnet/cs/" Condition="Exists('analyzers\dotnet\cs\XamlX.dll')" />
         </ItemGroup>
     </Target>
 

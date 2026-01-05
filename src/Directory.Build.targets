@@ -1,8 +1,4 @@
 <Project>
-  <PropertyGroup Condition="'$(MSBuildProjectName)'=='XamlX' OR '$(MSBuildProjectName)'=='XamlX.Parser.GuiLabs' OR '$(MSBuildProjectName)'=='XamlX.Runtime' OR '$(MSBuildProjectName)'=='XamlX.IL.Cecil'">
-    <LangVersion>12.0</LangVersion>
-    <TargetFramework>net8.0</TargetFramework>
-    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
-    <ExcludeTargetFrameworks>net10.0</ExcludeTargetFrameworks>
-  </PropertyGroup>
+  <!-- Import post-project overrides for XamlX without modifying the submodule -->
+  <Import Project="$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.targets" Condition="Exists('$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.targets')" />
 </Project>
