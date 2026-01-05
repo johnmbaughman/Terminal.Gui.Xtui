@@ -18,6 +18,10 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\submodules\XamlX\src\XamlX\XamlX.csproj" />
+    </ItemGroup>
+
     <!-- Include the buildTransitive files and schema in the nupkg so consuming projects automatically import them -->
     <ItemGroup>
         <None Include="buildTransitive\Terminal.Gui.Xtui.targets" Pack="true" PackagePath="buildTransitive\"/>
