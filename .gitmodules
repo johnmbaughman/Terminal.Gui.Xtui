@@ -2,7 +2,3 @@
 	path = src/Terminal.Gui
 	url = https://github.com/gui-cs/Terminal.Gui.git
 	branch = v2_develop
-[submodule "submodules/XamlX"]
-	path = src/XamlX
-	url = https://github.com/kekekeks/XamlX.git
-    branch = master

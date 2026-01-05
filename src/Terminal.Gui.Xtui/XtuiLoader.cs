@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using XamlX;
 using XamlX.Ast;
 using XamlX.Parsers;
@@ -34,10 +35,20 @@ public static class XtuiLoader
             throw new InvalidOperationException("XTUI document has no root object.");
         }
 
-        var namespaces = new Dictionary<string, string>(doc.NamespaceAliases);
-        if (!namespaces.ContainsKey(string.Empty))
+        var namespaces = new Dictionary<string, string>();
+        var xmlRoot = XDocument.Parse(xaml).Root;
+        if (xmlRoot is not null)
         {
-            namespaces[string.Empty] = "http://schemas.terminal.gui/xtui";
+            foreach (var attr in xmlRoot.Attributes())
+            {
+                if (!attr.IsNamespaceDeclaration)
+                {
+                    continue;
+                }
+
+                var prefix = attr.Name.LocalName == "xmlns" ? string.Empty : attr.Name.LocalName;
+                namespaces[prefix] = attr.Value;
+            }
         }
 
         return ToElementNode(root, namespaces);
@@ -98,17 +109,54 @@ public static class XtuiLoader
                     node.Attributes[propertyName] = text.Text;
                     break;
                 case XamlAstObjectNode objNode:
-                    node.Children.Add(ToElementNode(objNode, namespaces));
+                    if (TryConvertMarkupExtension(objNode, out var markupText))
+                    {
+                        node.Attributes[propertyName] = markupText;
+                    }
+                    else
+                    {
+                        node.Children.Add(ToElementNode(objNode, namespaces));
+                    }
                     break;
             }
         }
+    }
+
+    private static bool TryConvertMarkupExtension(XamlAstObjectNode objNode, out string markup)
+    {
+        markup = string.Empty;
+
+        if (objNode.Type is not XamlAstXmlTypeReference xmlType)
+        {
+            return false;
+        }
+
+        var parts = new List<string> { xmlType.Name };
+        IEnumerable<IXamlAstValueNode> args = objNode.Arguments != null
+            ? objNode.Arguments
+            : Array.Empty<IXamlAstValueNode>();
+
+        foreach (var arg in args)
+        {
+            switch (arg)
+            {
+                case XamlAstTextNode textArg:
+                    parts.Add(textArg.Text);
+                    break;
+                default:
+                    return false;
+            }
+        }
+
+        markup = "{" + string.Join(" ", parts) + "}";
+        return true;
     }
 
     private static string ResolveTypeName(IXamlAstTypeReference typeReference, Dictionary<string, string> namespaces)
     {
         if (typeReference is XamlAstXmlTypeReference xmlType)
         {
-            var ns = xmlType.XmlNamespace ?? namespaces.GetValueOrDefault(string.Empty) ?? string.Empty;
+            var ns = xmlType.XmlNamespace ?? (namespaces.TryGetValue(string.Empty, out var defaultNs) ? defaultNs : string.Empty);
             var mapped = MapNamespaceUri(ns);
             return mapped + "." + xmlType.Name;
         }
@@ -127,14 +175,16 @@ public static class XtuiLoader
             return "Terminal.Gui.Views";
         }
 
-        if (uri == "http://schemas.terminal.gui/xtui")
+        var nonNullUri = uri!;
+
+        if (nonNullUri == "http://schemas.terminal.gui/xtui")
         {
             return "Terminal.Gui.Views";
         }
 
-        if (uri.StartsWith("clr-namespace:", StringComparison.Ordinal))
+        if (nonNullUri.StartsWith("clr-namespace:", StringComparison.Ordinal))
         {
-            var nsDeclaration = uri.Substring("clr-namespace:".Length);
+            var nsDeclaration = nonNullUri.Substring("clr-namespace:".Length);
             var assemblyIndex = nsDeclaration.IndexOf(';');
             if (assemblyIndex > 0)
             {
@@ -143,6 +193,6 @@ public static class XtuiLoader
             return nsDeclaration;
         }
 
-        return uri;
+        return nonNullUri;
     }
 }

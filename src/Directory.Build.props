@@ -1,0 +1,4 @@
+<Project>
+  <!-- Centralized import to keep XamlX overrides inside the Xtui project (buildTransitive) -->
+  <Import Project="$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.props" Condition="Exists('$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.props')" />
+</Project>

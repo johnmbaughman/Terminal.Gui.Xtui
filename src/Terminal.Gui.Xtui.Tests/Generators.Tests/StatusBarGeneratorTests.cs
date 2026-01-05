@@ -1,3 +1,5 @@
+using System.Linq;
+using Terminal.Gui.Xtui;
 using Terminal.Gui.Xtui.Generators;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
@@ -95,7 +97,6 @@ public class StatusBarGeneratorTests
     public void StatusBarGenerator_WithBindingDirective_PreservesBindingSyntax()
     {
         string xtui = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<StatusBar xmlns=\"http://schemas.terminal.gui/xtui\" Id=\"statusBar\" Visible=\"{Binding ShowStatusBar}\" />";
-
         var root = XtuiLoader.LoadFromString(xtui);
         var generator = new StatusBarGenerator();
         var factory = new GeneratorFactory();

@@ -18,8 +18,12 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0"/>
     </ItemGroup>
 
+    <PropertyGroup>
+        <XamlXPath>$(MSBuildThisFileDirectory)..\XamlX</XamlXPath>
+    </PropertyGroup>
+
     <ItemGroup>
-        <ProjectReference Include="..\submodules\XamlX\src\XamlX\XamlX.csproj" />
+        <ProjectReference Include="$(XamlXPath)\src\XamlX\XamlX.csproj" AdditionalProperties="TargetFramework=netstandard2.0" />
     </ItemGroup>
 
     <!-- Include the buildTransitive files and schema in the nupkg so consuming projects automatically import them -->
