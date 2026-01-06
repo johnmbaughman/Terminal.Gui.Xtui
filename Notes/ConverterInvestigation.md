@@ -146,6 +146,181 @@ namespace MyApp.Views
 }
 ```
 
+Where `SetBinding` is defined
+
+`TextBlock` (and many runtime views) may not provide a built-in `SetBinding` API. For generator-emitted code to call `SetBinding` the generator should emit a small, in-assembly binding helper surface (one-per-assembly or per-file) that provides:
+
+- a lightweight `Binding` type (path, `Converter`, optional `Source`/`Mode`), and
+- an extension/helper `SetBinding` method that attaches the binding to the target `View` and updates the target property when the source changes.
+
+This keeps all binding/runtime wiring inside the user's assembly (no generator runtime dependency) and lets the generator emit strongly-typed calls like `tb1.SetBinding("Text", binding)` or `tb1.SetBinding(TextBlock.TextProperty, binding)` if you prefer a token-based property identifier.
+
+Minimal example sketches the generator can emit into the generated `.g.cs`:
+
+```csharp
+// Lightweight binding model the generator can reference
+public sealed class Binding
+{
+    public string Path { get; }
+    public IValueConverter? Converter { get; set; }
+    public object? Source { get; set; }
+
+    public Binding(string path) => Path = path;
+}
+
+// Extension helper stored in generated code (uses ConditionalWeakTable to avoid leaks)
+internal static class __XtuiBindingHelpers
+{
+    private class Holder { public Dictionary<string, Binding>? Bindings; }
+    private static readonly ConditionalWeakTable<object, Holder> s_table = new();
+
+    // Attach binding to target and perform initial value push.
+    public static void SetBinding(this object target, string targetPropertyName, Binding binding)
+    {
+        var h = s_table.GetOrCreateValue(target);
+        (h.Bindings ??= new())[targetPropertyName] = binding;
+
+        // Resolve source value (simple form: binding.Source or DataContext-like property)
+        var source = binding.Source ?? GetDataContext(target);
+        var value = EvaluatePath(source, binding.Path);
+
+        if (binding.Converter != null)
+            value = binding.Converter.Convert(value, typeof(object), null, null);
+
+        // Set target property via cached PropertyInfo or setter delegate emitted by generator
+        SetTargetProperty(target, targetPropertyName, value);
+
+        // Subscribe to change notifications if the source supports INotifyPropertyChanged
+        if (source is System.ComponentModel.INotifyPropertyChanged inpc)
+            inpc.PropertyChanged += (s, e) => { if (e.PropertyName == binding.Path) {
+                var v = EvaluatePath(source, binding.Path);
+                if (binding.Converter != null) v = binding.Converter.Convert(v, typeof(object), null, null);
+                SetTargetProperty(target, targetPropertyName, v);
+            }};
+    }
+
+    // Generator can emit optimized implementations for these helpers using cached delegates
+    private static object? GetDataContext(object target) =>
+        // naive: reflect for `DataContext` property if present; generator can emit direct access when known
+        target.GetType().GetProperty("DataContext")?.GetValue(target);
+
+    private static object? EvaluatePath(object? source, string path)
+    {
+        if (source == null) return null;
+        // very small evaluator: single-property paths
+        var pi = source.GetType().GetProperty(path);
+        return pi?.GetValue(source);
+    }
+
+    private static void SetTargetProperty(object target, string propertyName, object? value)
+    {
+        // generator should prefer to emit a cached PropertyInfo or direct setter delegate for performance
+        var pi = target.GetType().GetProperty(propertyName);
+        pi?.SetValue(target, value);
+    }
+}
+```
+
+Notes and trade-offs
+
+- Performance: reflection above is intentionally simple; the generator can emit cached `PropertyInfo` instances or direct delegates to avoid runtime reflection overhead.
+- Strong typing: if the generator can resolve the target property symbol, emit calls that use a compile-time token (e.g., `TextBlock.TextProperty`) and generator-emitted setter delegates for best performance.
+- Lifecycle: ensure the helper does not retain strong references to targets (use `ConditionalWeakTable`) and unsubscribe listeners if needed (advanced: track subscriptions in holder and remove on unload).
+
+With this pattern, generated XAML code can safely call `SetBinding` even when the runtime view types don't provide a built-in binding API.
+
+Implementing MVVM
+
+The generator should support two common patterns for MVVM-style data binding: (A) emitting a `DataContext` property on the generated partial view type (works when `x:Class` is in the user's assembly), and (B) using an attached-data approach when the view type cannot be extended (external `View` assembly). Both approaches rely on the same binding helpers described earlier; they only differ in how the view's data context is stored and how a change is announced to attached bindings.
+
+A) `DataContext` via generated partial class
+
+When the `x:Class` declared in XAML maps to a type the generator can emit a partial for, the generator should add a `DataContext` property to that partial class. This is the simplest and most typesafe approach.
+
+```csharp
+partial class MainView
+{
+    // Backing store can be simple; delegate change handling to the binding helper.
+    private object? _dataContext;
+
+    public object? DataContext
+    {
+        get => _dataContext;
+        set
+        {
+            if (ReferenceEquals(_dataContext, value)) return;
+            _dataContext = value;
+            // Notify binding helper to refresh any bindings attached to this view
+            __XtuiBindingHelpers.NotifyDataContextChanged(this, value);
+        }
+    }
+}
+```
+
+The generator-emitted `InitializeComponent` should avoid overwriting an existing `DataContext` value so user-assigned view models are preserved. `__XtuiBindingHelpers.NotifyDataContextChanged` triggers evaluation of stored bindings for the target and sets target properties accordingly (see helper sketch below).
+
+B) `DataContext` via attached helper (for external view types)
+
+When the view type cannot be partialed (it lives in another assembly), the generator should emit `SetDataContext/GetDataContext` helpers inside the same `__XtuiGeneratedHelpers` used for resources/attached properties. These helpers store the data context in the per-instance `Holder` and notify bindings the same way.
+
+```csharp
+// inside __XtuiGeneratedHelpers (per-file or deduplicated per-assembly)
+public static void SetDataContext(View v, object? dataContext)
+{
+    var h = s_table.GetOrCreateValue(v);
+    h.DataContext = dataContext;
+    // notify binding helpers to refresh any bindings on this view instance
+    __XtuiBindingHelpers.NotifyDataContextChanged(v, dataContext);
+}
+
+public static object? GetDataContext(View v) => s_table.GetOrCreateValue(v).DataContext;
+```
+
+Example `Holder` additions
+
+```csharp
+private class Holder
+{
+    public IDictionary<string, object>? Resources;
+    public string? XtuiTag;
+    public object? DataContext; // added for attached DataContext
+}
+```
+
+Helper: `NotifyDataContextChanged` (binding helper sketch)
+
+```csharp
+internal static class __XtuiBindingHelpers
+{
+    // existing ConditionalWeakTable/object holder mapping used for SetBinding
+
+    // Called by generated views or helpers when the view's DataContext changes
+    public static void NotifyDataContextChanged(object target, object? newDataContext)
+    {
+        var h = s_table.GetOrCreateValue(target);
+        if (h.Bindings == null) return;
+
+        foreach (var kv in h.Bindings)
+        {
+            var propName = kv.Key;
+            var binding = kv.Value;
+
+            // Determine source value for this binding
+            var source = binding.Source ?? newDataContext;
+            var v = EvaluatePath(source, binding.Path);
+            if (binding.Converter != null) v = binding.Converter.Convert(v, typeof(object), null, null);
+            SetTargetProperty(target, propName, v);
+        }
+    }
+}
+```
+
+Notes
+
+- `InitializeComponent` should not overwrite an explicitly set `DataContext` on the generated partial class. If a user sets the `DataContext` in code-behind or receives it from dependency injection, generator-emitted wiring should respect that.
+- The attached-data approach is less intrusive for consumers of external view types and works universally, but partial class properties are simpler and slightly more efficient.
+- In both approaches the generator can emit optimized setter delegates and cached metadata to avoid reflection at runtime.
+
 Generator emission sketch (pseudo-code)
 
 - Input: parsed XAML model with discovered bindings, resources, x:Class, and resolved type/member names from semantic model.
