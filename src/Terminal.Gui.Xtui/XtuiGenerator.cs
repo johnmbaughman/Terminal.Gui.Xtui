@@ -27,6 +27,9 @@ public class XtuiGenerator : IIncrementalGenerator
     {
         // find additional files that end with .xtui
         var xamlFiles = context.AdditionalTextsProvider
+            // Reference: https://github.com/AvaloniaUI/Avalonia/blob/66af66e609e7dc3501df836145002a80cca0dc72/src/tools/Avalonia.Generators/NameGenerator/AvaloniaNameIncrementalGenerator.cs#L31
+            // Reference: https://github.com/AvaloniaUI/Avalonia/blob/66af66e609e7dc3501df836145002a80cca0dc72/src/tools/Avalonia.Generators/NameGenerator/AvaloniaNameIncrementalGenerator.cs#L44
+            // Reference: https://github.com/AvaloniaUI/Avalonia/blob/66af66e609e7dc3501df836145002a80cca0dc72/src/tools/Avalonia.Generators/NameGenerator/AvaloniaNameIncrementalGenerator.cs#L49
             .Where (at => at.Path.EndsWith (".xtui", StringComparison.OrdinalIgnoreCase))
             .Select ((additionalText, cancellationToken) =>
             {
