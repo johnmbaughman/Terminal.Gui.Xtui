@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Terminal.Gui.Xtui.Generators;
+namespace Terminal.Gui.Xtui.Helpers;
 
 /// <summary>
 /// Base class for code generators that produce C# syntax to create and

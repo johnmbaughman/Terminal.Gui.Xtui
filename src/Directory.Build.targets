@@ -1,4 +1,0 @@
-<Project>
-  <!-- Import post-project overrides for XamlX without modifying the submodule -->
-  <Import Project="$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.targets" Condition="Exists('$(MSBuildThisFileDirectory)Terminal.Gui.Xtui\buildTransitive\XamlX.Override.targets')" />
-</Project>

@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Jobs;
 using Terminal.Gui.Xtui;
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Benchmarks;
 

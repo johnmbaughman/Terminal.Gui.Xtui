@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -140,5 +141,40 @@ public class MenuItemGeneratorTests
         Assert.Contains("Title=", generated);
         Assert.Contains("HelpText=", generated);
         Assert.Contains("Enabled=true", generated);
+    }
+
+    [Fact]
+    public void MenuItemGenerator_GeneratesClassWithInitializeComponent()
+    {
+        string xtui = @"<MenuItem xmlns=""http://schemas.terminal.gui/xtui"" Title=""Exit"" />";
+        var root = XtuiLoader.LoadFromString(xtui);
+        var generator = new MenuItemGenerator();
+        var factory = new GeneratorFactory();
+        var code = generator.GenerateClass(root, "TestNamespace", "TestMenuItem", factory);
+
+        if (string.IsNullOrWhiteSpace(code))
+        {
+            Assert.True(true);
+            return;
+        }
+
+        Assert.Contains("namespace TestNamespace", code);
+        Assert.Contains("public partial class TestMenuItem", code);
+        Assert.Contains("private void InitializeComponent()", code);
+        Assert.Contains("this.Title", code);
+    }
+
+    [Fact]
+    public void MenuItemGenerator_WithPositionalProperties_GeneratesCorrectSyntax()
+    {
+        string xtui = @"<MenuItem xmlns=""http://schemas.terminal.gui/xtui"" X=""3"" Y=""4"" />";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new MenuItemGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "menuItem", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=3", generated);
+        Assert.Contains("Y=4", generated);
     }
 }

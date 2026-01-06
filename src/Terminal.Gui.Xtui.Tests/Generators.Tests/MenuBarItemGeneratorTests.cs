@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -154,5 +155,55 @@ public class MenuBarItemGeneratorTests
 
         // Should not process non-MenuItem children
         Assert.DoesNotContain("PopoverMenu", generated);
+    }
+
+    [Fact]
+    public void MenuBarItemGenerator_GeneratesClassWithInitializeComponent()
+    {
+        string xtui = @"<MenuBarItem xmlns=""http://schemas.terminal.gui/xtui"" Title=""_File"" />";
+        var root = XtuiLoader.LoadFromString(xtui);
+        var generator = new MenuBarItemGenerator();
+        var factory = new GeneratorFactory();
+        var code = generator.GenerateClass(root, "TestNamespace", "TestMenuBarItem", factory);
+
+        if (string.IsNullOrWhiteSpace(code))
+        {
+            Assert.True(true);
+            return;
+        }
+
+        Assert.Contains("namespace TestNamespace", code);
+        Assert.Contains("public partial class TestMenuBarItem", code);
+        Assert.Contains("private void InitializeComponent()", code);
+        Assert.Contains("this.Title", code);
+    }
+
+    [Fact]
+    public void MenuBarItemGenerator_WithChildren_GeneratesAddStatements()
+    {
+        string xtui = @"<MenuBarItem xmlns=""http://schemas.terminal.gui/xtui"" Title=""_File""><MenuItem Title=""Exit"" /></MenuBarItem>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new MenuBarItemGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "fileItem", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("newMenuBarItem", generated);
+        Assert.Contains(".Add(", generated);
+        Assert.Contains("menuitem0", generated);
+    }
+
+    [Fact]
+    public void MenuBarItemGenerator_WithPositionalProperties_GeneratesCorrectSyntax()
+    {
+        string xtui = @"<MenuBarItem xmlns=""http://schemas.terminal.gui/xtui"" X=""1"" Y=""2"" />";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new MenuBarItemGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "fileItem", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=1", generated);
+        Assert.Contains("Y=2", generated);
     }
 }

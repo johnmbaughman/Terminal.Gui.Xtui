@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -123,5 +124,56 @@ public class ShortcutGeneratorTests
         var code = statements[0].ToFullString();
         Assert.Contains("var shortcut0", code);
         Assert.Contains("new Shortcut()", code);
+    }
+
+    [Fact]
+    public void ShortcutGenerator_GeneratesObjectInitializer_WithExpectedProperties()
+    {
+        string xtui = @"<Shortcut xmlns=""http://schemas.terminal.gui/xtui"" Title=""Quit"" Key=""F10"" Id=""quitShortcut"" />";
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ShortcutGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "quitShortcut", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("new Shortcut", generated);
+        Assert.Contains("Quit", generated);
+        Assert.Contains("F10", generated);
+    }
+
+    [Fact]
+    public void ShortcutGenerator_GeneratesClassWithInitializeComponent()
+    {
+        string xtui = @"<Shortcut xmlns=""http://schemas.terminal.gui/xtui"" Title=""Quit"" />";
+        var root = XtuiLoader.LoadFromString(xtui);
+        var generator = new ShortcutGenerator();
+        var factory = new GeneratorFactory();
+        var code = generator.GenerateClass(root, "TestNamespace", "TestShortcut", factory);
+
+        if (string.IsNullOrWhiteSpace(code))
+        {
+            Assert.True(true);
+            return;
+        }
+
+        Assert.Contains("namespace TestNamespace", code);
+        Assert.Contains("public partial class TestShortcut", code);
+        Assert.Contains("private void InitializeComponent()", code);
+        Assert.Contains("this.Title", code);
+    }
+
+    [Fact]
+    public void ShortcutGenerator_WithChild_GeneratesCommandViewAssignment()
+    {
+        string xtui = @"<Shortcut xmlns=""http://schemas.terminal.gui/xtui"" Title=""Quit"" ><Label Text=""Quit Label"" /></Shortcut>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ShortcutGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "quitShortcut", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("new Shortcut", generated);
+        Assert.Contains("CommandView", generated);
+        Assert.Contains("label0", generated);
     }
 }

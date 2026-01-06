@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -123,5 +124,41 @@ public class ButtonGeneratorTests
 
         Assert.Contains ("X=Pos.Right(_usernameLabel)+1", generated);
         Assert.Contains ("Y=Pos.Center()", generated);
+    }
+
+    [Fact]
+    public void ButtonGenerator_WithDimExpressions_GeneratesDimCode()
+    {
+        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui"" 
+                                Text=""Full Width Button"" 
+                                Width=""{Fill}"" 
+                                Height=""{Auto}"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ButtonGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "button1", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("Width=Dim.Fill()", generated);
+        Assert.Contains("Height=Dim.Auto()", generated);
+    }
+
+    [Fact]
+    public void ButtonGenerator_WithComplexPosExpressions_GeneratesPosCode()
+    {
+        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui"" 
+                                Text=""Cancel"" 
+                                X=""{AnchorEnd - 10}"" 
+                                Y=""{Bottom _okButton}"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ButtonGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "cancelButton", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=Pos.AnchorEnd()-10", generated);
+        Assert.Contains("Y=Pos.Bottom(_okButton)", generated);
     }
 }

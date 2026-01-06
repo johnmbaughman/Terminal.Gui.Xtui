@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui;
 
@@ -111,33 +111,8 @@ public class XtuiGenerator : IIncrementalGenerator
                     return;
                 }
 
-                // Parse with the legacy XML loader for code generation
-                ElementNode xmlRoot = XtuiLoaderXml.LoadFromString (file.Content);
-
-                // Also parse with the XamlX-backed loader for compatibility testing, but never use its output for generation
-                try
-                {
-                    _ = XtuiLoader.LoadFromString (file.Content);
-                }
-                catch (Exception ex)
-                {
-                    // Informational only: XamlX parser failures should not block generation
-                    var descriptor = new DiagnosticDescriptor (
-                        id: "XTUI004",
-                        title: "XamlX parser failed (non-blocking)",
-                        messageFormat: "XamlX parser failed for '{0}': {1}. Code generation uses XtuiLoaderXml.",
-                        category: "Terminal.Gui.Xtui",
-                        defaultSeverity: DiagnosticSeverity.Info,
-                        isEnabledByDefault: true);
-
-                    Diagnostic diagnostic = Diagnostic.Create (
-                        descriptor,
-                        Location.None,
-                        file.Path,
-                        ex.Message);
-
-                    spc.ReportDiagnostic (diagnostic);
-                }
+                // Parse with XamlX-backed loader (XamlX source is embedded in the analyzer)
+                ElementNode xmlRoot = XtuiLoader.LoadFromString (file.Content);
                 string fileName = Path.GetFileNameWithoutExtension (file.Path) ?? "XtuiGenerated";
 
                 // Check for 'class' attribute on root element and use it as class name (similar to x:Class in XAML)

@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -164,5 +165,38 @@ public class CheckBoxGeneratorTests
 
         Assert.Contains ("X=Pos.Right(_label)+2", generated);
         Assert.Contains ("Y=Pos.Bottom(_prevControl)-1", generated);
+    }
+
+    [Fact]
+    public void CheckBoxGenerator_WithPosExpressions_GeneratesPosCode()
+    {
+        string xtui = @"<CheckBox xmlns=""http://schemas.terminal.gui/xtui"" 
+                                 Text=""Positioned CheckBox"" 
+                                 X=""{Center}"" 
+                                 Y=""{AnchorEnd - 3}"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new CheckBoxGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "checkbox1", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=Pos.Center()", generated);
+        Assert.Contains("Y=Pos.AnchorEnd()-3", generated);
+    }
+
+    [Fact]
+    public void CheckBoxGenerator_WithNoAttributes_GeneratesEmptyInitializer()
+    {
+        string xtui = @"<CheckBox xmlns=""http://schemas.terminal.gui/xtui"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new CheckBoxGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "emptyCheckBox", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("newCheckBox()", generated);
+        Assert.Single(statements);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-namespace Terminal.Gui.Xtui.Generators.Helpers;
+namespace Terminal.Gui.Xtui.Helpers;
 
 /// <summary>
 /// Helper methods for generating class declarations, method declarations,
@@ -73,7 +73,7 @@ internal static class ClassGenerationHelpers
             classDecl = classDecl.WithBaseList(
                 BaseList(
                     SingletonSeparatedList<BaseTypeSyntax>(
-                        SimpleBaseType(IdentifierName(baseTypeName)))));
+                        SimpleBaseType(IdentifierName(baseTypeName!)))));
         }
 
         // Add members if specified

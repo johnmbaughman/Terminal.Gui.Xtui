@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Terminal.Gui.Xtui.Generators.Helpers;
+namespace Terminal.Gui.Xtui.Helpers;
 
 /// <summary>
 /// Helper methods for manipulating type names in code generation.

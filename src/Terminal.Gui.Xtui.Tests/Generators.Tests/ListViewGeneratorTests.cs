@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -119,5 +120,43 @@ public class ListViewGeneratorTests
         Assert.Contains ("Y=Pos.Bottom(_header)+1", generated);
         Assert.Contains ("Width=Dim.Fill()-2", generated);
         Assert.Contains ("Height=Dim.Fill()-3", generated);
+    }
+
+    [Fact]
+    public void ListViewGenerator_WithFillDimensions_GeneratesFillCode()
+    {
+        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui"" 
+                                  Width=""{Fill}"" 
+                                  Height=""{Fill}"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ListViewGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "listView1", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("Width=Dim.Fill()", generated);
+        Assert.Contains("Height=Dim.Fill()", generated);
+    }
+
+    [Fact]
+    public void ListViewGenerator_WithPositioning_GeneratesAllCode()
+    {
+        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui"" 
+                                  X=""5"" 
+                                  Y=""10"" 
+                                  Width=""40"" 
+                                  Height=""15"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new ListViewGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "listView1", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=5", generated);
+        Assert.Contains("Y=10", generated);
+        Assert.Contains("Width=40", generated);
+        Assert.Contains("Height=15", generated);
     }
 }
