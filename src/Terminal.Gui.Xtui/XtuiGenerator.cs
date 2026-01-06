@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui;
 
@@ -111,23 +111,24 @@ public class XtuiGenerator : IIncrementalGenerator
                     return;
                 }
 
-                ElementNode root = XtuiLoader.LoadFromString (file.Content);
+                // Parse with XamlX-backed loader (XamlX source is embedded in the analyzer)
+                ElementNode xmlRoot = XtuiLoader.LoadFromString (file.Content);
                 string fileName = Path.GetFileNameWithoutExtension (file.Path) ?? "XtuiGenerated";
 
                 // Check for 'class' attribute on root element and use it as class name (similar to x:Class in XAML)
-                string className = root.Attributes.TryGetValue("class", out string? classAttr) && !string.IsNullOrEmpty(classAttr)
+                string className = xmlRoot.Attributes.TryGetValue("class", out string? classAttr) && !string.IsNullOrEmpty(classAttr)
                     ? classAttr
                     : fileName;
 
                 // Remove the 'class' attribute so it's not treated as a property
-                root.Attributes.Remove("class");
+                xmlRoot.Attributes.Remove("class");
 
                 // Try to find the partial class in the compilation to get the actual namespace and class name
                 (string namespaceName, string actualClassName) = FindPartialClass (compilation, className);
 
                 GeneratorFactory generatorFactory = new GeneratorFactory ();
-                Generator generator = generatorFactory.GetGenerator (root.ElementTypeName);
-                string code = generator.GenerateClass (root, namespaceName, className, generatorFactory);
+                Generator generator = generatorFactory.GetGenerator (xmlRoot.ElementTypeName);
+                string code = generator.GenerateClass (xmlRoot, namespaceName, className, generatorFactory);
 
                 // Create a unique hint name that includes a hash of the full path to avoid collisions
                 // when multiple .xtui files have the same filename in different directories

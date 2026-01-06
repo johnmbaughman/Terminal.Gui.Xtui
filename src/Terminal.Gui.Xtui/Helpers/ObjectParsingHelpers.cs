@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-namespace Terminal.Gui.Xtui.Generators;
+namespace Terminal.Gui.Xtui.Helpers;
 
 /// <summary>
 /// Helper methods for parsing XTUI attribute values and generating appropriate C# expressions.
@@ -497,8 +497,14 @@ internal static class ObjectParsingHelpers
                 for (int i = 0; i < inner.Length; i++)
                 {
                     char c = inner[i];
-                    if (c == '{') depth++;
-                    else if (c == '}') depth--;
+                    if (c == '{')
+                    {
+                        depth++;
+                    }
+                    else if (c == '}')
+                    {
+                        depth--;
+                    }
                     else if (c == ';' && depth == 0)
                     {
                         string part = inner.Substring(start, i - start);

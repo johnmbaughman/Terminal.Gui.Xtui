@@ -1,6 +1,5 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Generators.Helpers;
+using Terminal.Gui.Xtui.Helpers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;

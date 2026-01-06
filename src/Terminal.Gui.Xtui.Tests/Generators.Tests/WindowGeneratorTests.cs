@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -192,5 +193,49 @@ public class WindowGeneratorTests
         var code = generator.GenerateClass(node, "MyNamespace", "CustomWindowClass", factory);
 
         Assert.Contains("public partial class CustomWindowClass", code);
+    }
+
+    [Fact]
+    public void WindowGenerator_WithPosExpressions_GeneratesPosCode()
+    {
+        string xtui = @"<Window xmlns=""http://schemas.terminal.gui/xtui"" 
+                                X=""{Center}"" 
+                                Y=""{Center}"" 
+                                Width=""50"" 
+                                Height=""20"" />";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new WindowGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "window1", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("X=Pos.Center()", generated);
+        Assert.Contains("Y=Pos.Center()", generated);
+        Assert.Contains("Width=50", generated);
+        Assert.Contains("Height=20", generated);
+    }
+
+    [Fact]
+    public void WindowGenerator_WithMultipleChildren_GeneratesAllChildren()
+    {
+        string xtui = @"<Window xmlns=""http://schemas.terminal.gui/xtui"" Title=""Form"">
+                            <Label Text=""Username:"" />
+                            <TextField Text="""" />
+                            <Button Text=""Submit"" />
+                        </Window>";
+        
+        ElementNode node = XtuiLoader.LoadFromString(xtui);
+        var generator = new WindowGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "window0", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("newLabel", generated);
+        Assert.Contains("newTextField", generated);
+        Assert.Contains("newButton", generated);
+        Assert.Contains("window0.Add(label0)", generated);
+        Assert.Contains("window0.Add(textfield1)", generated);
+        Assert.Contains("window0.Add(button2)", generated);
     }
 }

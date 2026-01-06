@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -151,5 +152,34 @@ public class TopLevelGeneratorTests
         var code = generator.GenerateClass(node, "MyNamespace", "CustomTopLevelClass", factory);
 
         Assert.Contains("public partial class CustomTopLevelClass", code);
+    }
+
+    [Fact]
+    public void TopLevelGenerator_WithChildren_GeneratesAddStatements()
+    {
+        string xtui = @"<Toplevel xmlns=""http://schemas.terminal.gui/xtui""><Label Text=""Hi"" /></Toplevel>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new TopLevelGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "mainTop", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("Toplevel", generated);
+        Assert.Contains("label0", generated);
+    }
+
+    [Fact]
+    public void TopLevelGenerator_GenerateClass_IncludesInitializeComponentAndFields()
+    {
+        string xtui = @"<Toplevel xmlns=""http://schemas.terminal.gui/xtui""><Label Id=""lbl1"" Text=""Hello"" /></Toplevel>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new TopLevelGenerator();
+        var factory = new GeneratorFactory();
+        var code = generator.GenerateClass(node, "TestNamespace", "TestTopLevel", factory);
+
+        Assert.Contains("namespace TestNamespace", code);
+        Assert.Contains("public partial class TestTopLevel : Toplevel", code);
+        Assert.Contains("private void InitializeComponent()", code);
+        Assert.Contains("lbl1", code);
     }
 }

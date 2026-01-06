@@ -1,4 +1,4 @@
-using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 

@@ -3,6 +3,7 @@ using BenchmarkDotNet.Jobs;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Terminal.Gui.Xtui;
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Benchmarks;
 

@@ -29,8 +29,8 @@
         Visible="{Binding ShowStatusBar}" 
         Id="statusBar" 
         AlignmentModes="IgnoreFirstOrLast"
-        CanFocus="false"
-        Height="{Dim Auto={style=Auto;minimumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}};maximumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}}}}">
+        CanFocus="false">
+        <!--Height="{Dim Auto={style=Auto;minimumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}};maximumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}}}}"-->        
         <Shortcuts>
             <Shortcut CanFocus="false" Title="Quit" Key="QuitKey" />            
             <Shortcut CanFocus="false" Title="Show/Hide Status Bar" Key="F10" />            

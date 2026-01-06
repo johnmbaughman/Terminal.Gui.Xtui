@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-namespace Terminal.Gui.Xtui.Generators.Helpers;
+namespace Terminal.Gui.Xtui.Helpers;
 
 /// <summary>
 /// Helper methods for processing child elements in generators.

@@ -20,7 +20,7 @@ public class SyntaxHelpersTests
         string typeName = "Button";
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateVariableDeclaration(variableName, typeName);
 
         // Assert
@@ -39,7 +39,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateVariableDeclaration(variableName!, typeName));
     }
 
@@ -52,7 +52,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateVariableDeclaration(variableName, typeName!));
     }
 
@@ -64,7 +64,7 @@ public class SyntaxHelpersTests
         string variableName = "menubar0";
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateFieldAssignment(fieldName, variableName);
 
         // Assert
@@ -82,7 +82,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateFieldAssignment(fieldName!, variableName));
     }
 
@@ -95,7 +95,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateFieldAssignment(fieldName, variableName!));
     }
 
@@ -108,7 +108,7 @@ public class SyntaxHelpersTests
         string argumentVariable = "button0";
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateMethodCall(targetVariable, methodName, argumentVariable);
 
         // Assert
@@ -126,7 +126,7 @@ public class SyntaxHelpersTests
         string[] arguments = new[] { "shortcut0", "shortcut1", "shortcut2" };
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateMethodCall(targetVariable, methodName, arguments);
 
         // Assert
@@ -144,7 +144,7 @@ public class SyntaxHelpersTests
         string[] arguments = Array.Empty<string>();
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateMethodCall(targetVariable, methodName, arguments);
 
         // Assert
@@ -163,7 +163,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateMethodCall(targetVariable!, methodName, argumentVariable));
     }
 
@@ -177,7 +177,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateMethodCall(targetVariable, methodName!, argumentVariable));
     }
 
@@ -188,7 +188,7 @@ public class SyntaxHelpersTests
         string typeName = "Window";
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateObjectCreation(typeName);
 
         // Assert
@@ -206,7 +206,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateObjectCreation(typeName!));
     }
 
@@ -218,7 +218,7 @@ public class SyntaxHelpersTests
         string typeName = "StatusBar";
 
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateThisFieldDeclaration(fieldName, typeName);
 
         // Assert
@@ -236,7 +236,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateThisFieldDeclaration(fieldName!, typeName));
     }
 
@@ -249,7 +249,7 @@ public class SyntaxHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() =>
-            Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+            Terminal.Gui.Xtui.Helpers.SyntaxHelpers
                 .CreateThisFieldDeclaration(fieldName, typeName!));
     }
 
@@ -261,7 +261,7 @@ public class SyntaxHelpersTests
         string variableName, string typeName)
     {
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateVariableDeclaration(variableName, typeName);
 
         // Assert
@@ -279,7 +279,7 @@ public class SyntaxHelpersTests
         string fieldName, string variableName)
     {
         // Act
-        var result = Terminal.Gui.Xtui.Generators.Helpers.SyntaxHelpers
+        var result = Terminal.Gui.Xtui.Helpers.SyntaxHelpers
             .CreateFieldAssignment(fieldName, variableName);
 
         // Assert

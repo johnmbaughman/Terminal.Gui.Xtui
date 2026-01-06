@@ -1,5 +1,6 @@
 using BenchmarkDotNet.Attributes;
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 using System.Collections.Generic;
 
 namespace Terminal.Gui.Xtui.Benchmarks;

@@ -6,6 +6,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
+using Terminal.Gui.Xtui.Helpers;
+
 namespace Terminal.Gui.Xtui.Generators;
 
 internal sealed class TopLevelGenerator : Generator
@@ -451,3 +453,4 @@ internal sealed class TopLevelGenerator : Generator
         return uri;
     }
 }
+

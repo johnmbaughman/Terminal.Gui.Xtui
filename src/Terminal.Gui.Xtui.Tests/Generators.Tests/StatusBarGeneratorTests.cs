@@ -1,4 +1,5 @@
 using Terminal.Gui.Xtui.Generators;
+using Terminal.Gui.Xtui.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -95,7 +96,6 @@ public class StatusBarGeneratorTests
     public void StatusBarGenerator_WithBindingDirective_PreservesBindingSyntax()
     {
         string xtui = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<StatusBar xmlns=\"http://schemas.terminal.gui/xtui\" Id=\"statusBar\" Visible=\"{Binding ShowStatusBar}\" />";
-
         var root = XtuiLoader.LoadFromString(xtui);
         var generator = new StatusBarGenerator();
         var factory = new GeneratorFactory();
@@ -160,8 +160,7 @@ public class StatusBarGeneratorTests
         Assert.Contains("var shortcut1", generated);
         Assert.Contains("Add(", generated);
         Assert.Contains("shortcut0", generated);
-        Assert.Contains("shortcut1", generated);
-        
+        Assert.Contains("shortcut1", generated);        
     }
 
     [Fact]
@@ -186,5 +185,36 @@ public class StatusBarGeneratorTests
         Assert.Contains("Quit", code);
         Assert.Contains("Key.F10", code);
         Assert.Contains("this.Add(shortcut0)", code);
+    }
+
+    [Fact]
+    public void StatusBarGenerator_WithShortcutsContainer_GeneratesAddStatements()
+    {
+        string xtui = @"<StatusBar xmlns=""http://schemas.terminal.gui/xtui""><Shortcuts><Shortcut Title=""Quit"" Key=""F10"" /></Shortcuts></StatusBar>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new StatusBarGenerator();
+        var factory = new GeneratorFactory();
+        var statements = generator.GenerateStatements(node, "status", factory);
+        var generated = string.Concat(statements.Select(s => s.ToString()));
+
+        Assert.Contains("new StatusBar", generated);
+        Assert.Contains("shortcut0", generated);
+        Assert.Contains("Add(", generated);
+    }
+
+    [Fact]
+    public void StatusBarGenerator_GenerateClass_IncludesInitializeComponentAndFields()
+    {
+        string xtui = @"<StatusBar xmlns=""http://schemas.terminal.gui/xtui""><Shortcut Id=""quitShortcut"" Title=""Quit"" /></StatusBar>";
+        var node = XtuiLoader.LoadFromString(xtui);
+        var generator = new StatusBarGenerator();
+        var factory = new GeneratorFactory();
+        var code = generator.GenerateClass(node, "TestNamespace", "TestStatusBar", factory);
+
+        Assert.Contains("namespace TestNamespace", code);
+        Assert.Contains("public partial class TestStatusBar : StatusBar", code);
+        Assert.Contains("private void InitializeComponent()", code);
+        Assert.Contains("quitShortcut", code);
+        Assert.Contains("Add(", code);
     }
 }
