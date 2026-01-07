@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtui", "Examples\Xtui\Xtui.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtui.Mvvm", "Examples\Xtui.Mvvm\Xtui.Mvvm.csproj", "{7F568946-AA17-4CB9-89E4-7D2EE55D3D0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xtui", "Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj", "{F6E5B72A-39FC-487A-9C66-C4F40EC7C5BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xtui.Generator", "Terminal.Gui.Xtui.Generator\Terminal.Gui.Xtui.Generator.csproj", "{F6E5B72A-39FC-487A-9C66-C4F40EC7C5BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Gui.Xtui", "Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj", "{12345678-1234-1234-1234-123456789ABC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Terminal.Gui", "Terminal.Gui", "{0A6BE1FB-EB19-4699-BA84-CE11ACF964BE}"
 EndProject
@@ -97,6 +99,18 @@ Global
 		{F6E5B72A-39FC-487A-9C66-C4F40EC7C5BC}.Release|x64.Build.0 = Release|Any CPU
 		{F6E5B72A-39FC-487A-9C66-C4F40EC7C5BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{F6E5B72A-39FC-487A-9C66-C4F40EC7C5BC}.Release|x86.Build.0 = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|x64.Build.0 = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|x86.Build.0 = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|x64.ActiveCfg = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|x64.Build.0 = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|x86.ActiveCfg = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|x86.Build.0 = Release|Any CPU
 		{9198517C-EB13-4528-BF76-89512AEC6889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9198517C-EB13-4528-BF76-89512AEC6889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9198517C-EB13-4528-BF76-89512AEC6889}.Debug|x64.ActiveCfg = Debug|Any CPU

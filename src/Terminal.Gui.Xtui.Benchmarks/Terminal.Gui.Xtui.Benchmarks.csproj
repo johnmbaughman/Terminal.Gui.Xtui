@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj" />
+        <ProjectReference Include="..\Terminal.Gui.Xtui.Generator\Terminal.Gui.Xtui.Generator.csproj" />
     </ItemGroup>
 
 </Project>

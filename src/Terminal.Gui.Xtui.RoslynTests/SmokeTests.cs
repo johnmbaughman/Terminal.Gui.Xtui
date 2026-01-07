@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Terminal.Gui.Xtui.Generator;
 using Xunit.Abstractions;
 
 namespace Terminal.Gui.Xtui.RoslynTests;

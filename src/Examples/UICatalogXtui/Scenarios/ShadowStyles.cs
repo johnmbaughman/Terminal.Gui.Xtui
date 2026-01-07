@@ -15,7 +15,7 @@ public class ShadowStyles : Scenario
     {
         Application.Init ();
 
-        Window app = new ()
+        Window window = new ()
         {
             Id = "app",
             Title = GetQuitKeyAndName ()
@@ -30,7 +30,7 @@ public class ShadowStyles : Scenario
         };
         editor.Initialized += (sender, args) => editor.MarginEditor.ExpanderButton.Collapsed = false;
 
-        app.Add (editor);
+        window.Add (editor);
 
         Window shadowWindow = new ()
         {
@@ -46,9 +46,9 @@ public class ShadowStyles : Scenario
             ShadowStyle = ShadowStyle.Transparent,
         };
 
-        app.DrawingContent += (s, e) =>
+        window.DrawingContent += (s, e) =>
                            {
-                               app!.FillRect (app!.Viewport, Glyphs.Dot);
+                               window!.FillRect (window!.Viewport, Glyphs.Dot);
                                e.Cancel = true;
                            };
 
@@ -60,7 +60,23 @@ public class ShadowStyles : Scenario
             ShadowStyle = ShadowStyle.Opaque
         };
         shadowWindow.Add (buttonInWin);
-        app.Add (shadowWindow);
+        window.Add (shadowWindow);
+
+        Window shadowWindow2 = new ()
+        {
+
+            Id = "shadowWindow2",
+            X = Pos.Right (editor) + 10,
+            Y = 10,
+            Width = Dim.Percent (30),
+            Height = Dim.Percent (30),
+            Title = "Shadow Window #2",
+            Arrangement = ViewArrangement.Movable | ViewArrangement.Overlapped,
+            BorderStyle = LineStyle.Double,
+            ShadowStyle = ShadowStyle.Transparent,
+        };
+        window.Add (shadowWindow2);
+
 
         var button = new Button
         {
@@ -69,6 +85,7 @@ public class ShadowStyles : Scenario
             Y = Pos.Center (), Text = "Button",
             ShadowStyle = ShadowStyle.Opaque
         };
+        button.Accepting += ButtonOnAccepting;
 
         ColorPicker colorPicker = new ()
         {
@@ -77,23 +94,29 @@ public class ShadowStyles : Scenario
             Id = "colorPicker16",
             X = Pos.Center (),
             Y = Pos.AnchorEnd (),
-            Width = Dim.Percent(80),
+            Width = Dim.Percent (80),
         };
         colorPicker.ColorChanged += (sender, args) =>
                                     {
-                                        var normal = app.GetScheme ().Normal;
-                                        app.SetScheme (app.GetScheme() with {Normal = new Attribute(normal.Foreground, args.Result)});
+                                        var normal = window.GetScheme ().Normal;
+                                        window.SetScheme (window.GetScheme () with { Normal = new Attribute (normal.Foreground, args.Result) });
                                     };
-        app.Add (button, colorPicker);
+        window.Add (button, colorPicker);
 
         editor.AutoSelectViewToEdit = true;
-        editor.AutoSelectSuperView = app;
+        editor.AutoSelectSuperView = window;
         editor.AutoSelectAdornments = false;
 
-        Application.Run (app);
-        app.Dispose ();
+        Application.Run (window);
+        window.Dispose ();
 
         Application.Shutdown ();
 
+    }
+
+    private void ButtonOnAccepting (object sender, CommandEventArgs e)
+    {
+        MessageBox.Query ((sender as View)?.App, "Hello", "You pushed the button!");
+        e.Handled = true;
     }
 }

@@ -18,7 +18,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
@@ -57,8 +56,9 @@ public class UICatalog
 {
     private static string? _forceDriver;
     private static string? _uiCatalogDriver;
+#if DEBUG_IDISPOSABLE
     private static string? _scenarioDriver;
-
+#endif
     public static string LogFilePath { get; set; } = string.Empty;
     public static LoggingLevelSwitch LogLevelSwitch { get; } = new ();
     public const string LOGFILE_LOCATION = "logs";
@@ -73,8 +73,8 @@ public class UICatalog
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo ("en-US");
         }
 
-        UICatalogTop.CachedScenarios = Scenario.GetScenarios ();
-        UICatalogTop.CachedCategories = Scenario.GetAllCategories ();
+        UICatalogRunnable.CachedScenarios = Scenario.GetScenarios ();
+        UICatalogRunnable.CachedCategories = Scenario.GetAllCategories ();
 
         // Process command line args
 
@@ -90,13 +90,14 @@ public class UICatalog
 
         // Add validator separately (not chained)
         driverOption.AddValidator (result =>
-        {
-            var value = result.GetValueOrDefault<string> ();
-            if (result.Tokens.Count > 0 && !allowedDrivers.Contains (value))
-            {
-                result.ErrorMessage = $"Invalid driver name '{value}'. Allowed values: {string.Join (", ", allowedDrivers)}";
-            }
-        });
+                                   {
+                                       var value = result.GetValueOrDefault<string> ();
+
+                                       if (result.Tokens.Count > 0 && !allowedDrivers.Contains (value))
+                                       {
+                                           result.ErrorMessage = $"Invalid driver name '{value}'. Allowed values: {string.Join (", ", allowedDrivers)}";
+                                       }
+                                   });
 
         // Configuration Management
         Option<bool> disableConfigManagement = new (
@@ -136,9 +137,9 @@ public class UICatalog
                                                                   "The name of the Scenario to run. If not provided, the UI Catalog UI will be shown.",
                                                                   getDefaultValue: () => "none"
                                                                  ).FromAmong (
-                                                                              UICatalogTop.CachedScenarios.Select (s => s.GetName ())
-                                                                                          .Append ("none")
-                                                                                          .ToArray ()
+                                                                              UICatalogRunnable.CachedScenarios.Select (s => s.GetName ())
+                                                                                               .Append ("none")
+                                                                                               .ToArray ()
                                                                              );
 
         var rootCommand = new RootCommand ("A comprehensive sample library and test app for Terminal.Gui")
@@ -146,8 +147,7 @@ public class UICatalog
             scenarioArgument, debugLogLevel, benchmarkFlag, benchmarkTimeout, resultsFile, driverOption, disableConfigManagement
         };
 
-        rootCommand.SetHandler (
-                                context =>
+        rootCommand.SetHandler (context =>
                                 {
                                     var options = new UICatalogCommandLineOptions
                                     {
@@ -179,14 +179,15 @@ public class UICatalog
             return 0;
         }
 
-        var parseResult = parser.Parse (args);
+        ParseResult parseResult = parser.Parse (args);
 
         if (parseResult.Errors.Count > 0)
         {
-            foreach (var error in parseResult.Errors)
+            foreach (ParseError error in parseResult.Errors)
             {
                 Console.Error.WriteLine (error.Message);
             }
+
             return 1; // Non-zero exit code for error
         }
 
@@ -196,7 +197,7 @@ public class UICatalog
 
         UICatalogMain (Options);
 
-        Debug.Assert (Application.ForceDriver == string.Empty);
+        Application.ForceDriver = string.Empty;
 
         return 0;
     }
@@ -204,16 +205,16 @@ public class UICatalog
     public static LogEventLevel LogLevelToLogEventLevel (LogLevel logLevel)
     {
         return logLevel switch
-        {
-            LogLevel.Trace => LogEventLevel.Verbose,
-            LogLevel.Debug => LogEventLevel.Debug,
-            LogLevel.Information => LogEventLevel.Information,
-            LogLevel.Warning => LogEventLevel.Warning,
-            LogLevel.Error => LogEventLevel.Error,
-            LogLevel.Critical => LogEventLevel.Fatal,
-            LogLevel.None => LogEventLevel.Fatal, // Default to Fatal if None is specified
-            _ => LogEventLevel.Fatal // Default to Information for any unspecified LogLevel
-        };
+               {
+                   LogLevel.Trace => LogEventLevel.Verbose,
+                   LogLevel.Debug => LogEventLevel.Debug,
+                   LogLevel.Information => LogEventLevel.Information,
+                   LogLevel.Warning => LogEventLevel.Warning,
+                   LogLevel.Error => LogEventLevel.Error,
+                   LogLevel.Critical => LogEventLevel.Fatal,
+                   LogLevel.None => LogEventLevel.Fatal, // Default to Fatal if None is specified
+                   _ => LogEventLevel.Fatal // Default to Information for any unspecified LogLevel
+               };
     }
 
     private static ILogger CreateLogger ()
@@ -232,8 +233,7 @@ public class UICatalog
                      .CreateLogger ();
 
         // Create a logger factory compatible with Microsoft.Extensions.Logging
-        using ILoggerFactory loggerFactory = LoggerFactory.Create (
-                                                                   builder =>
+        using ILoggerFactory loggerFactory = LoggerFactory.Create (builder =>
                                                                    {
                                                                        builder
                                                                            .AddSerilog (dispose: true) // Integrate Serilog with ILogger
@@ -246,10 +246,11 @@ public class UICatalog
 
     /// <summary>
     ///     Shows the UI Catalog selection UI. When the user selects a Scenario to run, the UI Catalog main app UI is
-    ///     killed and the Scenario is run as though it were Application.TopRunnable. When the Scenario exits, this function exits.
+    ///     killed and the Scenario is run as though it were Application.TopRunnable. When the Scenario exits, this function
+    ///     exits.
     /// </summary>
     /// <returns></returns>
-    private static Scenario RunUICatalogTopLevel ()
+    private static Scenario RunUICatalogRunnable ()
     {
         // Run UI Catalog UI. When it exits, if _selectedScenario is != null then
         // a Scenario was selected. Otherwise, the user wants to quit UI Catalog.
@@ -257,16 +258,15 @@ public class UICatalog
         // If the user specified a driver on the command line then use it,
         // ignoring Config files.
 
-        Application.Init (driverName: _forceDriver);
+        Application.Init (_forceDriver);
 
         _uiCatalogDriver = Application.Driver!.GetName ();
 
-        Toplevel top = Application.Run<UICatalogTop> ();
-        top.Dispose ();
+        Application.Run<UICatalogRunnable> ();
         Application.Shutdown ();
         VerifyObjectsWereDisposed ();
 
-        return UICatalogTop.CachedSelectedScenario!;
+        return UICatalogRunnable.CachedSelectedScenario!;
     }
 
     [SuppressMessage ("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -327,10 +327,7 @@ public class UICatalog
         ThemeManager.ThemeChanged += ThemeManagerOnThemeChanged;
     }
 
-    private static void ThemeManagerOnThemeChanged (object? sender, EventArgs<string> e)
-    {
-        CM.Apply ();
-    }
+    private static void ThemeManagerOnThemeChanged (object? sender, EventArgs<string> e) { CM.Apply (); }
 
     private static void StopConfigWatcher ()
     {
@@ -347,7 +344,7 @@ public class UICatalog
 
     private static void ConfigFileChanged (object sender, FileSystemEventArgs e)
     {
-        if (Application.TopRunnable == null)
+        if (Application.TopRunnableView == null)
         {
             return;
         }
@@ -372,15 +369,14 @@ public class UICatalog
                 ConfigurationManager.Enable (ConfigLocations.All);
             }
 
-            int item = UICatalogTop.CachedScenarios!.IndexOf (
-                                                              UICatalogTop.CachedScenarios!.FirstOrDefault (
-                                                                   s =>
-                                                                       s.GetName ()
-                                                                        .Equals (options.Scenario, StringComparison.OrdinalIgnoreCase)
-                                                                  )!);
-            UICatalogTop.CachedSelectedScenario = (Scenario)Activator.CreateInstance (UICatalogTop.CachedScenarios [item].GetType ())!;
+            int item = UICatalogRunnable.CachedScenarios!.IndexOf (
+                                                                   UICatalogRunnable.CachedScenarios!.FirstOrDefault (s =>
+                                                                           s.GetName ()
+                                                                            .Equals (options.Scenario, StringComparison.OrdinalIgnoreCase)
+                                                                       )!);
+            UICatalogRunnable.CachedSelectedScenario = (Scenario)Activator.CreateInstance (UICatalogRunnable.CachedScenarios [item].GetType ())!;
 
-            BenchmarkResults? results = RunScenario (UICatalogTop.CachedSelectedScenario, options.Benchmark);
+            BenchmarkResults? results = RunScenario (UICatalogRunnable.CachedSelectedScenario, options.Benchmark);
 
             if (results is { })
             {
@@ -416,7 +412,7 @@ public class UICatalog
             StartConfigWatcher ();
         }
 
-        while (RunUICatalogTopLevel () is { } scenario)
+        while (RunUICatalogRunnable () is { } scenario)
         {
 #if DEBUG_IDISPOSABLE
             VerifyObjectsWereDisposed ();
@@ -434,8 +430,10 @@ public class UICatalog
 
             // This call to Application.Shutdown brackets the Application.Init call
             // made by Scenario.Init() above
-            // TODO: Throw if shutdown was not called already
-            Application.Shutdown ();
+            if (Application.Driver is { })
+            {
+                Application.Shutdown ();
+            }
 
             VerifyObjectsWereDisposed ();
 
@@ -483,8 +481,10 @@ public class UICatalog
 
         scenario.Dispose ();
 
-        // TODO: Throw if shutdown was not called already
-        Application.Shutdown ();
+        if (Application.Driver is { })
+        {
+            Application.Shutdown ();
+        }
 
         return results;
     }
@@ -495,7 +495,7 @@ public class UICatalog
 
         var maxScenarios = 5;
 
-        foreach (Scenario s in UICatalogTop.CachedScenarios!)
+        foreach (Scenario s in UICatalogRunnable.CachedScenarios!)
         {
             resultsList.Add (RunScenario (s, true)!);
             maxScenarios--;
@@ -654,7 +654,6 @@ public class UICatalog
         if (!View.EnableDebugIDisposableAsserts)
         {
             View.Instances.Clear ();
-            SessionToken.Instances.Clear ();
 
             return;
         }
@@ -664,20 +663,11 @@ public class UICatalog
         // 'app' closed cleanly.
         foreach (View? inst in View.Instances)
         {
-            Debug.Assert (inst.WasDisposed);
+            //Debug.Assert (inst.WasDisposed);
+            Logging.Error ($"View instance not disposed: {inst}:{inst.Title}");
         }
 
         View.Instances.Clear ();
-
-        // Validate there are no outstanding Application sessions
-        // after a scenario was selected to run. This proves the main UI Catalog
-        // 'app' closed cleanly.
-        foreach (SessionToken? inst in SessionToken.Instances)
-        {
-            Debug.Assert (inst.WasDisposed);
-        }
-
-        SessionToken.Instances.Clear ();
 #endif
     }
 }

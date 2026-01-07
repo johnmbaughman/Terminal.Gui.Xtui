@@ -1,4 +1,5 @@
 using System.Reflection;
+using Terminal.Gui.Xtui.Generator;
 
 namespace Terminal.Gui.Xtui.Tests;
 

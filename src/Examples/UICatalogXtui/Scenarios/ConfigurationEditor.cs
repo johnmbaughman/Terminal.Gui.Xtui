@@ -60,7 +60,7 @@ public class ConfigurationEditor : Scenario
 
         win.Add (_tabView, statusBar);
 
-        win.Loaded += (s, a) =>
+        win.IsModalChanged += (s, a) =>
                       {
                           Open ();
                       };
@@ -75,7 +75,7 @@ public class ConfigurationEditor : Scenario
 
         void ConfigurationManagerOnApplied (object? sender, ConfigurationManagerEventArgs e)
         {
-            Application.TopRunnable?.SetNeedsDraw ();
+            Application.TopRunnableView?.SetNeedsDraw ();
         }
     }
     public void Save ()
@@ -153,26 +153,21 @@ public class ConfigurationEditor : Scenario
                 continue;
             }
 
-            int result = MessageBox.Query (
+            int? result = MessageBox.Query (editor?.App!,
                                            "Save Changes",
-                                           $"Save changes to {editor.FileInfo!.Name}",
-                                           "_Yes",
+                                           $"Save changes to {editor?.FileInfo!.Name}",
                                            "_No",
-                                           "_Cancel"
-                                          );
+                                           "_Yes");
 
             switch (result)
             {
-                case 0:
-                    editor.Save ();
-
-                    break;
-
                 case 1:
-                    // user decided not save changes
+                    editor?.Save ();
+
                     break;
-                case -1 or 2:
-                    // user cancelled
+
+                case 0:
+                    // user decided not save changes
                     return;
             }
         }

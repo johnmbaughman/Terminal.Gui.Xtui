@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
+using Terminal.Gui.Xtui.Generator;
 
 namespace Terminal.Gui.Xtui.RoslynTests;
 

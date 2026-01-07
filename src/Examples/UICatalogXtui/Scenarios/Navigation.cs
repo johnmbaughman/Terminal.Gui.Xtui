@@ -15,7 +15,7 @@ public class Navigation : Scenario
     {
         Application.Init ();
 
-        Window app = new ()
+        Window window = new ()
         {
             Title = GetQuitKeyAndName (),
             TabStop = TabBehavior.TabGroup
@@ -29,7 +29,7 @@ public class Navigation : Scenario
             ShowViewIdentifier = true,
             TabStop = TabBehavior.NoStop
         };
-        app.Add (adornmentsEditor);
+        window.Add (adornmentsEditor);
 
         var arrangementEditor = new ArrangementEditor ()
         {
@@ -39,7 +39,7 @@ public class Navigation : Scenario
             AutoSelectViewToEdit = true,
             TabStop = TabBehavior.NoStop
         };
-        app.Add (arrangementEditor);
+        window.Add (arrangementEditor);
 
         FrameView testFrame = new ()
         {
@@ -51,7 +51,7 @@ public class Navigation : Scenario
         };
 
 
-        app.Add (testFrame);
+        window.Add (testFrame);
 
         Button button = new ()
         {
@@ -59,7 +59,7 @@ public class Navigation : Scenario
             Y = 0,
             Title = $"TopButton _{GetNextHotKey ()}"
         };
-        button.Accepting += (sender, args) => MessageBox.Query ("hi", button.Title, "_Ok");
+        button.Accepting += (sender, args) => MessageBox.Query (Application.Instance, "hi", button.Title, "_Ok");
 
         testFrame.Add (button);
 
@@ -180,7 +180,7 @@ public class Navigation : Scenario
             X = 1,
             Y = 7,
             Id = "datePicker",
-            SchemeName = "TopLevel",
+            SchemeName = "Runnable",
             ShadowStyle = ShadowStyle.Transparent,
             BorderStyle = LineStyle.Double,
             CanFocus = true, // Can't drag without this? BUGBUG
@@ -202,15 +202,15 @@ public class Navigation : Scenario
         arrangementEditor.AutoSelectSuperView = testFrame;
 
         testFrame.SetFocus ();
-        Application.Run (app);
+        Application.Run (window);
         Application.Iteration -= OnApplicationIteration;
         // timer.Close ();
-        app.Dispose ();
+        window.Dispose ();
         Application.Shutdown ();
 
         return;
 
-        void OnApplicationIteration (object sender, IterationEventArgs args)
+        void OnApplicationIteration (object sender, EventArgs<IApplication> args)
         {
             if (progressBar.Fraction == 1.0)
             {
@@ -237,7 +237,7 @@ public class Navigation : Scenario
             Height = Dim.Auto (),
             Width = Dim.Auto (),
             Title = $"Overlapped{id} _{GetNextHotKey ()}",
-            SchemeName = "TopLevel",
+            SchemeName = "Runnable",
             Id = $"Overlapped{id}",
             ShadowStyle = ShadowStyle.Transparent,
             BorderStyle = LineStyle.Double,

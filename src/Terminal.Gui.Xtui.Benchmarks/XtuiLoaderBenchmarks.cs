@@ -1,6 +1,6 @@
-﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using Terminal.Gui.Xtui;
+using Terminal.Gui.Xtui.Generator;
 
 namespace Terminal.Gui.Xtui.Benchmarks;
 

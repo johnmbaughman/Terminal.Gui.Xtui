@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
+using Generator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
@@ -325,7 +326,7 @@ public class ChildProcessingHelpersTests
     /// </summary>
     private class MockGeneratorFactory : IGeneratorFactory
     {
-        public Generator GetGenerator(string elementTypeName)
+        public Terminal.Gui.Xtui.Generator.Helpers.Generator GetGenerator(string elementTypeName)
         {
             return new MockGenerator();
         }
@@ -334,7 +335,7 @@ public class ChildProcessingHelpersTests
     /// <summary>
     /// Mock generator that returns simple variable declaration statements
     /// </summary>
-    private class MockGenerator : Generator
+    private class MockGenerator : Terminal.Gui.Xtui.Generator.Helpers.Generator
     {
         internal override StatementSyntax[] GenerateStatements(ElementNode node, string variableName, IGeneratorFactory generators)
         {

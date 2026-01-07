@@ -11,14 +11,14 @@ public class WindowsAndFrameViews : Scenario
     {
         Application.Init ();
 
-        Window app = new ()
+        Window window = new ()
         {
             Title = GetQuitKeyAndName ()
         };
 
-        static int About ()
+        static int? About ()
         {
-            return MessageBox.Query (
+            return MessageBox.Query (Application.Instance,
                                      "About UI Catalog",
                                      "UI Catalog is a comprehensive sample library for Terminal.Gui",
                                      "Ok"
@@ -64,7 +64,7 @@ public class WindowsAndFrameViews : Scenario
                      Text = "Press ME! (Y = Pos.AnchorEnd(1))"
                  }
                 );
-        app.Add (win);
+        window.Add (win);
 
         // add it to our list
         listWin.Add (win);
@@ -99,7 +99,7 @@ public class WindowsAndFrameViews : Scenario
             };
 
             pressMeButton.Accepting += (s, e) =>
-                                        MessageBox.ErrorQuery (loopWin.Title, "Neat?", "Yes", "No");
+                                        MessageBox.ErrorQuery ((s as View)?.App, loopWin.Title, "Neat?", "_No", "_Yes");
             loopWin.Add (pressMeButton);
 
             var subWin = new Window
@@ -136,7 +136,7 @@ public class WindowsAndFrameViews : Scenario
                           );
             loopWin.Add (frameView);
 
-            app.Add (loopWin);
+            window.Add (loopWin);
             listWin.Add (loopWin);
         }
 
@@ -205,13 +205,13 @@ public class WindowsAndFrameViews : Scenario
 
         frame.Add (subFrameViewofFV);
 
-        app.Add (frame);
+        window.Add (frame);
         listWin.Add (frame);
 
-        app.SchemeName = "Base";
+        window.SchemeName = "Base";
 
-        Application.Run (app);
-        app.Dispose ();
+        Application.Run (window);
+        window.Dispose ();
         Application.Shutdown ();
     }
 }
