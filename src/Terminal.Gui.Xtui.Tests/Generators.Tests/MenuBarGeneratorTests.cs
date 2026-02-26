@@ -143,7 +143,7 @@ public class MenuBarGeneratorTests
     public void MenuBarGenerator_WithMultipleChildren_GeneratesMultipleAddStatements()
     {
         var node = new ElementNode { ElementTypeName = "MenuBar" };
-        
+
         // Add multiple child MenuBarItems
         for (int i = 0; i < 3; i++)
         {

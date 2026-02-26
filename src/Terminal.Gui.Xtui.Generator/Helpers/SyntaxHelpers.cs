@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -124,7 +125,7 @@ internal static class SyntaxHelpers
     public static StatementSyntax CreateMethodCall(
         string targetVariable,
         string methodName,
-        params string[] argumentVariables)
+        params string[]? argumentVariables)
     {
         if (targetVariable == null)
         {
@@ -221,7 +222,7 @@ internal static class SyntaxHelpers
     /// <exception cref="ArgumentNullException">Thrown when fullTypeName or attributes is null</exception>
     public static ObjectCreationExpressionSyntax CreateObjectWithInitializer(
         string fullTypeName,
-        System.Collections.Generic.Dictionary<string, string> attributes)
+        Dictionary<string, string> attributes)
     {
         if (fullTypeName == null)
         {
@@ -241,11 +242,11 @@ internal static class SyntaxHelpers
         if (attributes.Count > 0)
         {
             // Create property assignments for the object initializer
-            var assignments = attributes.Select(attr =>
-                AssignmentExpression(
-                    SyntaxKind.SimpleAssignmentExpression,
-                    IdentifierName(attr.Key),
-                    ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
+            IEnumerable<AssignmentExpressionSyntax> assignments = attributes.Select(attr =>
+                                                                                        AssignmentExpression(
+                                                                                                             SyntaxKind.SimpleAssignmentExpression,
+                                                                                                             IdentifierName(attr.Key),
+                                                                                                             ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
 
             // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
             InitializerExpressionSyntax initializer = InitializerExpression(

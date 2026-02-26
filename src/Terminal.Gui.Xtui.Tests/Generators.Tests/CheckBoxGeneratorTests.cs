@@ -46,7 +46,7 @@ public class CheckBoxGeneratorTests
         var factory = new GeneratorFactory ();
 
         var statements = generator.GenerateStatements (node, "myCheckBox", factory);
-        
+
         Assert.Single (statements);
         var generated = statements[0].ToString ();
         Assert.Contains ("varmyCheckBox", generated);
@@ -170,11 +170,11 @@ public class CheckBoxGeneratorTests
     [Fact]
     public void CheckBoxGenerator_WithPosExpressions_GeneratesPosCode()
     {
-        string xtui = @"<CheckBox xmlns=""http://schemas.terminal.gui/xtui"" 
-                                 Text=""Positioned CheckBox"" 
-                                 X=""{Center}"" 
+        string xtui = @"<CheckBox xmlns=""http://schemas.terminal.gui/xtui""
+                                 Text=""Positioned CheckBox""
+                                 X=""{Center}""
                                  Y=""{AnchorEnd - 3}"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new CheckBoxGenerator();
         var factory = new GeneratorFactory();
@@ -189,7 +189,7 @@ public class CheckBoxGeneratorTests
     public void CheckBoxGenerator_WithNoAttributes_GeneratesEmptyInitializer()
     {
         string xtui = @"<CheckBox xmlns=""http://schemas.terminal.gui/xtui"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new CheckBoxGenerator();
         var factory = new GeneratorFactory();

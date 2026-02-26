@@ -1,7 +1,5 @@
 using System;
-using System.Linq;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -29,7 +27,7 @@ internal static class NamespaceHelpers
     /// </example>
     public static NamespaceDeclarationSyntax CreateNamespaceDeclaration(
         string namespaceName,
-        params MemberDeclarationSyntax[] members)
+        params MemberDeclarationSyntax[]? members)
     {
         if (namespaceName == null)
         {

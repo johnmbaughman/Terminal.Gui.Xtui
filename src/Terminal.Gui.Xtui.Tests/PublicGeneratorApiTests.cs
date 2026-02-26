@@ -16,9 +16,9 @@ public class PublicGeneratorApiTests
         // Arrange: Get all generator types from the Terminal.Gui.Xtui assembly
         var assembly = typeof(XtuiGenerator).Assembly;
         var generatorTypes = assembly.GetTypes()
-            .Where(t => t.Namespace != null && 
+            .Where(t => t.Namespace != null &&
                        (t.Namespace.Contains("Generators") || t.Name.Contains("Generator")) &&
-                       t.IsClass && 
+                       t.IsClass &&
                        !t.IsAbstract &&
                        t.DeclaringType == null) // ignore nested helper types
             .ToList();
@@ -37,9 +37,9 @@ public class PublicGeneratorApiTests
             foreach (var method in publicMethods)
             {
                 var returnType = method.ReturnType;
-                
+
                 // Check if return type is a Roslyn Syntax type
-                if (returnType.FullName != null && 
+                if (returnType.FullName != null &&
                     (returnType.FullName.Contains("Microsoft.CodeAnalysis.CSharp.Syntax") ||
                      returnType.FullName.Contains("Microsoft.CodeAnalysis.SyntaxNode")))
                 {
@@ -49,8 +49,8 @@ public class PublicGeneratorApiTests
                 // Public API methods should return string for generated code
                 // Allow void, bool, and collection types for non-generation methods
                 // Flag non-string generation methods
-                if (method.Name.Contains("Generate") && 
-                    returnType != typeof(string) && 
+                if (method.Name.Contains("Generate") &&
+                    returnType != typeof(string) &&
                     returnType != typeof(void))
                 {
                     // If it's not a string, it might be a Syntax type (which we flag above)
@@ -87,7 +87,7 @@ public class PublicGeneratorApiTests
         {
             var method = type.GetMethod("GenerateClass", BindingFlags.Public | BindingFlags.Instance);
             Assert.NotNull(method);
-            
+
             Assert.True(
                 method.ReturnType == typeof(string),
                 $"{type.Name}.GenerateClass() must return string, but returns {method.ReturnType.Name}"

@@ -17,12 +17,12 @@ public class ElementNode
     /// <summary>
     /// The attributes present on the element as a dictionary of name → value.
     /// </summary>
-    public Dictionary<string, string> Attributes { get; } = new Dictionary<string, string>();
+    public Dictionary<string, string> Attributes { get; } = new ();
 
     /// <summary>
     /// Child elements of this node.
     /// </summary>
-    public List<ElementNode> Children { get; } = new List<ElementNode>();
+    public List<ElementNode> Children { get; } = [];
 
     /// <summary>
     /// Optional inner text of the element (trimmed). Null when not present.
@@ -33,5 +33,5 @@ public class ElementNode
     /// XML namespaces defined in this element or ancestors.
     /// Key is prefix (empty string for default namespace), value is the namespace URI (used as C# namespace).
     /// </summary>
-    public Dictionary<string, string> Namespaces { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> Namespaces { get; set; } = new ();
 }

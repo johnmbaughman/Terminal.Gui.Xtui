@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -58,7 +57,7 @@ internal static class FieldTransformationHelpers
         // If this is a local variable declaration, transform it to a field assignment
         if (statement is LocalDeclarationStatementSyntax localDecl)
         {
-            var variable = localDecl.Declaration.Variables.FirstOrDefault();
+            VariableDeclaratorSyntax? variable = localDecl.Declaration.Variables.FirstOrDefault();
             if (variable != null && variable.Initializer != null)
             {
                 string varName = variable.Identifier.Text;
@@ -79,7 +78,7 @@ internal static class FieldTransformationHelpers
                     else
                     {
                         // Fallback: try to get it from the declaration type if it's not 'var'
-                        var declType = localDecl.Declaration.Type.ToString();
+                        string declType = localDecl.Declaration.Type.ToString();
                         if (declType != "var" && declType != "var?")
                         {
                             typeName = declType.TrimEnd('?');
@@ -153,8 +152,8 @@ internal static class FieldTransformationHelpers
         }
 
         // Use a syntax rewriter to replace identifier names
-        var rewriter = new VariableToFieldRewriter(variableToFieldMap);
-        var transformed = (StatementSyntax)rewriter.Visit(statement);
+        VariableToFieldRewriter rewriter = new (variableToFieldMap);
+        StatementSyntax transformed = (StatementSyntax)rewriter.Visit(statement);
         return transformed.NormalizeWhitespace();
     }
 
@@ -181,14 +180,9 @@ internal static class FieldTransformationHelpers
     /// <summary>
     /// Syntax rewriter that replaces variable identifiers with field access expressions.
     /// </summary>
-    private sealed class VariableToFieldRewriter : CSharpSyntaxRewriter
+    private sealed class VariableToFieldRewriter (Dictionary<string, string> variableToFieldMap) : CSharpSyntaxRewriter
     {
-        private readonly Dictionary<string, string> _variableToFieldMap;
-
-        public VariableToFieldRewriter(Dictionary<string, string> variableToFieldMap)
-        {
-            _variableToFieldMap = variableToFieldMap ?? throw new ArgumentNullException(nameof(variableToFieldMap));
-        }
+        private readonly Dictionary<string, string> _variableToFieldMap = variableToFieldMap ?? throw new ArgumentNullException(nameof(variableToFieldMap));
 
         public override SyntaxNode? VisitMemberAccessExpression(MemberAccessExpressionSyntax node)
         {

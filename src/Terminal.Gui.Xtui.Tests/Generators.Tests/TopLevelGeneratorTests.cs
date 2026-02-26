@@ -82,7 +82,7 @@ public class TopLevelGeneratorTests
         var factory = new GeneratorFactory();
 
         var code = generator.GenerateClass(node, "MyApp", "MainWindow", factory);
-        
+
         Assert.Contains("InitializeComponent()", code);
         Assert.Contains("private Button? _myButton;", code);
         Assert.DoesNotContain("var _myButton", code);
@@ -131,7 +131,7 @@ public class TopLevelGeneratorTests
     public void TopLevelGenerator_CaseInsensitiveTypeName()
     {
         var factory = new GeneratorFactory();
-        
+
         var generator1 = factory.GetGenerator("Toplevel");
         var generator2 = factory.GetGenerator("TopLevel");
 

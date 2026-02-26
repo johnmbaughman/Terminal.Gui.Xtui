@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
 using XamlX;
 using XamlX.Ast;
@@ -35,20 +34,23 @@ public static class XtuiLoader
             throw new InvalidOperationException("XTUI document has no root object.");
         }
 
-        var namespaces = new Dictionary<string, string>();
-        var xmlRoot = XDocument.Parse(xaml).Root;
-        if (xmlRoot is not null)
-        {
-            foreach (var attr in xmlRoot.Attributes())
-            {
-                if (!attr.IsNamespaceDeclaration)
-                {
-                    continue;
-                }
+        Dictionary<string, string> namespaces = new ();
+        XElement? xmlRoot = XDocument.Parse(xaml).Root;
 
-                var prefix = attr.Name.LocalName == "xmlns" ? string.Empty : attr.Name.LocalName;
-                namespaces[prefix] = attr.Value;
+        if (xmlRoot is null)
+        {
+            return ToElementNode (root, namespaces);
+        }
+
+        foreach (XAttribute? attr in xmlRoot.Attributes())
+        {
+            if (!attr.IsNamespaceDeclaration)
+            {
+                continue;
             }
+
+            string prefix = attr.Name.LocalName == "xmlns" ? string.Empty : attr.Name.LocalName;
+            namespaces[prefix] = attr.Value;
         }
 
         return ToElementNode(root, namespaces);
@@ -56,15 +58,15 @@ public static class XtuiLoader
 
     private static ElementNode ToElementNode(XamlAstObjectNode obj, Dictionary<string, string> namespaces)
     {
-        var node = new ElementNode
+        ElementNode node = new()
         {
             Namespaces = namespaces,
             ElementTypeName = ResolveTypeName(obj.Type, namespaces)
         };
 
-        var textBuffer = new List<string>();
+        List<string> textBuffer = new List<string>();
 
-        foreach (var child in obj.Children)
+        foreach (IXamlAstNode? child in obj.Children)
         {
             switch (child)
             {
@@ -84,7 +86,7 @@ public static class XtuiLoader
             }
         }
 
-        var innerText = string.Concat(textBuffer).Trim();
+        string innerText = string.Concat(textBuffer).Trim();
         if (!string.IsNullOrEmpty(innerText))
         {
             node.InnerText = innerText;
@@ -100,9 +102,9 @@ public static class XtuiLoader
             return;
         }
 
-        var propertyName = nameProp.Name;
+        string propertyName = nameProp.Name;
 
-        foreach (var value in propNode.Values)
+        foreach (IXamlAstValueNode? value in propNode.Values)
         {
             switch (value)
             {
@@ -111,7 +113,7 @@ public static class XtuiLoader
                     break;
                 case XamlAstObjectNode objNode:
                     // Don't convert Resources to markup extensions - they should be children
-                    if (propertyName != "Resources" && TryConvertMarkupExtension(objNode, out var markupText))
+                    if (propertyName != "Resources" && TryConvertMarkupExtension(objNode, out string markupText))
                     {
                         node.Attributes[propertyName] = markupText;
                     }
@@ -143,7 +145,7 @@ public static class XtuiLoader
         }
         
         // Get the directive value
-        foreach (var value in directive.Values)
+        foreach (IXamlAstValueNode? value in directive.Values)
         {
             switch (value)
             {
@@ -163,12 +165,12 @@ public static class XtuiLoader
             return false;
         }
 
-        var parts = new List<string> { xmlType.Name };
+        List<string> parts = new List<string> { xmlType.Name };
         IEnumerable<IXamlAstValueNode> args = objNode.Arguments != null
             ? objNode.Arguments
             : Array.Empty<IXamlAstValueNode>();
 
-        foreach (var arg in args)
+        foreach (IXamlAstValueNode? arg in args)
         {
             switch (arg)
             {
@@ -188,8 +190,8 @@ public static class XtuiLoader
     {
         if (typeReference is XamlAstXmlTypeReference xmlType)
         {
-            var ns = xmlType.XmlNamespace ?? (namespaces.TryGetValue(string.Empty, out var defaultNs) ? defaultNs : string.Empty);
-            var mapped = MapNamespaceUri(ns);
+            string? ns = xmlType.XmlNamespace ?? (namespaces.TryGetValue(string.Empty, out string? defaultNs) ? defaultNs : string.Empty);
+            string mapped = MapNamespaceUri(ns);
             return mapped + "." + xmlType.Name;
         }
 
@@ -207,7 +209,7 @@ public static class XtuiLoader
             return "Terminal.Gui.Views";
         }
 
-        var nonNullUri = uri!;
+        string nonNullUri = uri!;
 
         if (nonNullUri == "http://schemas.terminal.gui/xtui")
         {
@@ -216,8 +218,8 @@ public static class XtuiLoader
 
         if (nonNullUri.StartsWith("clr-namespace:", StringComparison.Ordinal))
         {
-            var nsDeclaration = nonNullUri.Substring("clr-namespace:".Length);
-            var assemblyIndex = nsDeclaration.IndexOf(';');
+            string nsDeclaration = nonNullUri.Substring("clr-namespace:".Length);
+            int assemblyIndex = nsDeclaration.IndexOf(';');
             if (assemblyIndex > 0)
             {
                 return nsDeclaration.Substring(0, assemblyIndex);

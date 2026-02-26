@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Generator.Helpers;using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
+using Terminal.Gui.Xtui.Generator.Helpers;
+using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Generator.Generators;
@@ -15,8 +16,8 @@ internal sealed class LabelGenerator : BaseGenerator
         // Create Label with object initializer: var {variableName} = new Label { ... };
         ObjectCreationExpressionSyntax objectCreation = SyntaxHelpers.CreateObjectWithInitializer ("Label", node.Attributes);
 
-        List<StatementSyntax> statements = new List<StatementSyntax>
-        {
+        List<StatementSyntax> statements =
+        [
             LocalDeclarationStatement(
                 VariableDeclaration(
                         IdentifierName("var"))
@@ -26,7 +27,7 @@ internal sealed class LabelGenerator : BaseGenerator
                                     Identifier(variableName))
                                 .WithInitializer(
                                     EqualsValueClause(objectCreation)))))
-        };
+        ];
 
         // Labels typically don't have children, but handle them just in case
         if (node.Children.Count <= 0)
@@ -40,7 +41,7 @@ internal sealed class LabelGenerator : BaseGenerator
             // Extract local type name for variable naming
             string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
             string childVarName = $"{localTypeName.ToLower ()}{i}";
-            Terminal.Gui.Xtui.Generator.Helpers.Generator childGenerator = generators.GetGenerator (child.ElementTypeName);
+            BaseGenerator childGenerator = generators.GetGenerator (child.ElementTypeName);
             StatementSyntax [] childStatements = childGenerator.GenerateStatements (child, childVarName, generators);
 
             statements.AddRange (childStatements);

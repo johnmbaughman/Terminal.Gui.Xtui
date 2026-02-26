@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -48,7 +47,7 @@ internal static class ClassGenerationHelpers
         }
 
         // Build modifiers list
-        var modifiers = new List<SyntaxToken>();
+        List<SyntaxToken> modifiers = new List<SyntaxToken>();
         if (isPublic)
         {
             modifiers.Add(Token(SyntaxKind.PublicKeyword));
@@ -59,7 +58,7 @@ internal static class ClassGenerationHelpers
         }
 
         // Create base class declaration
-        var classDecl = ClassDeclaration(className);
+        ClassDeclarationSyntax classDecl = ClassDeclaration(className);
 
         // Add modifiers if any
         if (modifiers.Count > 0)
@@ -120,7 +119,7 @@ internal static class ClassGenerationHelpers
             : IdentifierName(returnTypeName);
 
         // Create method declaration
-        var methodDecl = MethodDeclaration(returnType, Identifier(methodName));
+        MethodDeclarationSyntax methodDecl = MethodDeclaration(returnType, Identifier(methodName));
 
         // Add private modifier if specified
         if (isPrivate)

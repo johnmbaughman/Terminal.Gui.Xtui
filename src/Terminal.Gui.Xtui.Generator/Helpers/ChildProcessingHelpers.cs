@@ -121,7 +121,7 @@ internal static class ChildProcessingHelpers
             throw new ArgumentNullException(nameof(generatorFactory));
         }
 
-        var statements = new List<StatementSyntax>();
+        List<StatementSyntax> statements = new List<StatementSyntax>();
 
         // Early return if no children
         if (node.Children.Count == 0)

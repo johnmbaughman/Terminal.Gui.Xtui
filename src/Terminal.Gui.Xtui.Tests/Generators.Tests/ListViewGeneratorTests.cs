@@ -125,10 +125,10 @@ public class ListViewGeneratorTests
     [Fact]
     public void ListViewGenerator_WithFillDimensions_GeneratesFillCode()
     {
-        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui"" 
-                                  Width=""{Fill}"" 
+        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui""
+                                  Width=""{Fill}""
                                   Height=""{Fill}"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new ListViewGenerator();
         var factory = new GeneratorFactory();
@@ -142,12 +142,12 @@ public class ListViewGeneratorTests
     [Fact]
     public void ListViewGenerator_WithPositioning_GeneratesAllCode()
     {
-        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui"" 
-                                  X=""5"" 
-                                  Y=""10"" 
-                                  Width=""40"" 
+        string xtui = @"<ListView xmlns=""http://schemas.terminal.gui/xtui""
+                                  X=""5""
+                                  Y=""10""
+                                  Width=""40""
                                   Height=""15"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new ListViewGenerator();
         var factory = new GeneratorFactory();

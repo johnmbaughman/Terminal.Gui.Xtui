@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
 
 
@@ -6,14 +7,9 @@ namespace Terminal.Gui.Xtui.Generator;
 
 // Small, immutable key describing an input .xtui file
 // Use a readonly struct with value equality to avoid requiring C# record support on older TFMs
-internal readonly struct GeneratedFileKey : System.IEquatable<GeneratedFileKey>
+internal readonly struct GeneratedFileKey (string inputPath) : System.IEquatable<GeneratedFileKey>
 {
-    public readonly string InputPath;
-
-    public GeneratedFileKey(string inputPath)
-    {
-        InputPath = inputPath;
-    }
+    public readonly string InputPath = inputPath;
 
     public bool Equals(GeneratedFileKey other) => string.Equals(InputPath, other.InputPath, System.StringComparison.OrdinalIgnoreCase);
 
@@ -23,31 +19,18 @@ internal readonly struct GeneratedFileKey : System.IEquatable<GeneratedFileKey>
 }
 
 // Metadata for a generated file
-internal sealed class GeneratedFileInfo
+internal sealed class GeneratedFileInfo (string generatedFileName, string ns, string className)
 {
-    public string GeneratedFileName { get; }
-    public string Namespace { get; }
-    public string ClassName { get; }
-
-    public GeneratedFileInfo(string generatedFileName, string @namespace, string className)
-    {
-        GeneratedFileName = generatedFileName;
-        Namespace = @namespace;
-        ClassName = className;
-    }
+    public string GeneratedFileName { get; } = generatedFileName;
+    public string Namespace { get; } = ns;
+    public string ClassName { get; } = className;
 }
 
 // Small identity describing the generated symbol (namespace + class)
-internal readonly struct GeneratedIdentity : System.IEquatable<GeneratedIdentity>
+internal readonly struct GeneratedIdentity (string? ns, string? className) : System.IEquatable<GeneratedIdentity>
 {
-    public readonly string Namespace;
-    public readonly string ClassName;
-
-    public GeneratedIdentity(string ns, string className)
-    {
-        Namespace = ns ?? string.Empty;
-        ClassName = className ?? string.Empty;
-    }
+    public readonly string Namespace = ns ?? string.Empty;
+    public readonly string ClassName = className ?? string.Empty;
 
     public bool Equals(GeneratedIdentity other) =>
         string.Equals(Namespace, other.Namespace, System.StringComparison.Ordinal) &&
@@ -61,22 +44,22 @@ internal readonly struct GeneratedIdentity : System.IEquatable<GeneratedIdentity
 // accidental reference-equality issues and provide value semantics.
 internal static class GeneratedFileBookkeeping
 {
-    private static readonly ConcurrentDictionary<GeneratedFileKey, GeneratedFileInfo> s_generatedFiles = new();
+    private static readonly ConcurrentDictionary<GeneratedFileKey, GeneratedFileInfo> SGeneratedFiles = new();
     // Reverse map from generated identity -> input path that produced it
-    private static readonly ConcurrentDictionary<GeneratedIdentity, string> s_identityToInput = new();
+    private static readonly ConcurrentDictionary<GeneratedIdentity, string> SIdentityToInput = new();
 
     /// <summary>
     /// Record a generated file mapping without reporting diagnostics.
     /// </summary>
     public static void Record(string inputPath, string generatedFileName, string @namespace, string className)
     {
-        var key = new GeneratedFileKey(inputPath);
-        var info = new GeneratedFileInfo(generatedFileName, @namespace, className);
-        s_generatedFiles[key] = info;
+        GeneratedFileKey key = new (inputPath);
+        GeneratedFileInfo info = new (generatedFileName, @namespace, className);
+        SGeneratedFiles[key] = info;
 
-        var identity = new GeneratedIdentity(@namespace ?? string.Empty, className ?? string.Empty);
+        GeneratedIdentity identity = new (@namespace, className);
         // Best-effort reverse mapping; do not attempt to report diagnostics from this path.
-        s_identityToInput.TryAdd(identity, inputPath);
+        SIdentityToInput.TryAdd(identity, inputPath);
     }
 
     /// <summary>
@@ -84,25 +67,25 @@ internal static class GeneratedFileBookkeeping
     /// </summary>
     public static void Record(string inputPath, string generatedFileName, string @namespace, string className, SourceProductionContext spc)
     {
-        var key = new GeneratedFileKey(inputPath);
-        var info = new GeneratedFileInfo(generatedFileName, @namespace, className);
-        s_generatedFiles[key] = info;
+        GeneratedFileKey key = new (inputPath);
+        GeneratedFileInfo info = new (generatedFileName, @namespace, className);
+        SGeneratedFiles[key] = info;
 
-        var identity = new GeneratedIdentity(@namespace ?? string.Empty, className ?? string.Empty);
-        if (!s_identityToInput.TryAdd(identity, inputPath))
+        GeneratedIdentity identity = new (@namespace, className);
+        if (!SIdentityToInput.TryAdd(identity, inputPath))
         {
             // Already exists - check if it's a different input
-            if (s_identityToInput.TryGetValue(identity, out var existingInput) && !string.Equals(existingInput, inputPath, System.StringComparison.OrdinalIgnoreCase))
+            if (SIdentityToInput.TryGetValue(identity, out string? existingInput) && !string.Equals(existingInput, inputPath, System.StringComparison.OrdinalIgnoreCase))
             {
-                var descriptor = new DiagnosticDescriptor(
-                    id: "XTUI003",
-                    title: "XTUI Generated Class Name Collision",
-                    messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
-                    category: "Terminal.Gui.Xtui",
-                    defaultSeverity: DiagnosticSeverity.Warning,
-                    isEnabledByDefault: true);
+                DiagnosticDescriptor descriptor = new (
+                                                       id: "XTUI003",
+                                                       title: "XTUI Generated Class Name Collision",
+                                                       messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
+                                                       category: "Terminal.Gui.Xtui",
+                                                       defaultSeverity: DiagnosticSeverity.Warning,
+                                                       isEnabledByDefault: true);
 
-                var diagnostic = Diagnostic.Create(descriptor, Location.None, existingInput, inputPath, @namespace, className);
+                Diagnostic diagnostic = Diagnostic.Create(descriptor, Location.None, existingInput, inputPath, @namespace, className);
                 spc.ReportDiagnostic(diagnostic);
             }
         }
@@ -111,23 +94,23 @@ internal static class GeneratedFileBookkeeping
             // Fallback: if the identity map succeeded but there's another recorded generated file
             // with the same namespace+class name from a different input (possible due to race or key mismatch),
             // enumerate the known generated files to double-check and report a diagnostic if found.
-            foreach (var kvp in s_generatedFiles)
+            foreach (KeyValuePair<GeneratedFileKey, GeneratedFileInfo> kvp in SGeneratedFiles)
             {
-                var otherKey = kvp.Key;
-                var otherInfo = kvp.Value;
+                GeneratedFileKey otherKey = kvp.Key;
+                GeneratedFileInfo? otherInfo = kvp.Value;
                 if (!string.Equals(otherKey.InputPath, inputPath, System.StringComparison.OrdinalIgnoreCase) &&
                     string.Equals(otherInfo.Namespace, @namespace, System.StringComparison.Ordinal) &&
                     string.Equals(otherInfo.ClassName, className, System.StringComparison.Ordinal))
                 {
-                    var descriptor = new DiagnosticDescriptor(
-                        id: "XTUI003",
-                        title: "XTUI Generated Class Name Collision",
-                        messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
-                        category: "Terminal.Gui.Xtui",
-                        defaultSeverity: DiagnosticSeverity.Warning,
-                        isEnabledByDefault: true);
+                    DiagnosticDescriptor descriptor = new (
+                                                           id: "XTUI003",
+                                                           title: "XTUI Generated Class Name Collision",
+                                                           messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
+                                                           category: "Terminal.Gui.Xtui",
+                                                           defaultSeverity: DiagnosticSeverity.Warning,
+                                                           isEnabledByDefault: true);
 
-                    var diagnostic = Diagnostic.Create(descriptor, Location.None, otherKey.InputPath, inputPath, @namespace, className);
+                    Diagnostic diagnostic = Diagnostic.Create(descriptor, Location.None, otherKey.InputPath, inputPath, @namespace, className);
                     spc.ReportDiagnostic(diagnostic);
                     break;
                 }
@@ -152,15 +135,15 @@ internal static class GeneratedFileBookkeeping
 
     public static bool TryGet(string inputPath, out GeneratedFileInfo? info)
     {
-        return s_generatedFiles.TryGetValue(new GeneratedFileKey(inputPath), out info);
+        return SGeneratedFiles.TryGetValue(new GeneratedFileKey(inputPath), out info);
     }
 
     public static GeneratedFileInfo? Get(string inputPath)
     {
-        return s_generatedFiles.TryGetValue(new GeneratedFileKey(inputPath), out var info) ? info : null;
+        return SGeneratedFiles.TryGetValue(new GeneratedFileKey(inputPath), out GeneratedFileInfo? info) ? info : null;
     }
 
-    public static int Count => s_generatedFiles.Count;
+    public static int Count => SGeneratedFiles.Count;
 
-    public static void Clear() => s_generatedFiles.Clear();
+    public static void Clear() => SGeneratedFiles.Clear();
 }

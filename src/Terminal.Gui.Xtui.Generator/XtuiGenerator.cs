@@ -61,15 +61,15 @@ public class XtuiGenerator : IIncrementalGenerator
                 var first = group.First();
                 foreach (var other in group.Skip(1))
                 {
-                    var descriptor = new DiagnosticDescriptor(
-                        id: "XTUI003",
-                        title: "XTUI Generated Class Name Collision",
-                        messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
-                        category: "Terminal.Gui.Xtui",
-                        defaultSeverity: DiagnosticSeverity.Warning,
-                        isEnabledByDefault: true);
+                    DiagnosticDescriptor descriptor = new (
+                                                           id: "XTUI003",
+                                                           title: "XTUI Generated Class Name Collision",
+                                                           messageFormat: "XTUI files '{0}' and '{1}' generate the same class '{2}.{3}'. Rename one input or change class-name resolution.",
+                                                           category: "Terminal.Gui.Xtui",
+                                                           defaultSeverity: DiagnosticSeverity.Warning,
+                                                           isEnabledByDefault: true);
 
-                    var diagnostic = Diagnostic.Create(descriptor, Location.None, first.Path, other.Path, first.FileName, first.FileName);
+                    Diagnostic diagnostic = Diagnostic.Create(descriptor, Location.None, first.Path, other.Path, first.FileName, first.FileName);
                     spc.ReportDiagnostic(diagnostic);
                 }
             }
@@ -77,12 +77,12 @@ public class XtuiGenerator : IIncrementalGenerator
 
         // Check if Terminal.Gui is referenced in the compilation
         // We check for multiple core types to ensure Terminal.Gui is properly referenced
-        string [] requiredTypes = new []
-        {
+        string [] requiredTypes =
+        [
             "Terminal.Gui.App.Application",
             "Terminal.Gui.Views.Window",
             "Terminal.Gui.Views.View"
-        };
+        ];
 
         IncrementalValueProvider<bool> hasTerminalGuiReference = context.CompilationProvider
             .Select ((compilation, _) =>
@@ -129,7 +129,7 @@ public class XtuiGenerator : IIncrementalGenerator
                 // Try to find the partial class in the compilation to get the actual namespace and class name
                 (string namespaceName, string actualClassName) = FindPartialClass (compilation, className);
 
-                GeneratorFactory generatorFactory = new GeneratorFactory ();
+                GeneratorFactory generatorFactory = new ();
                 Terminal.Gui.Xtui.Generator.Helpers.Generator generator = generatorFactory.GetGenerator (xmlRoot.ElementTypeName);
                 string code = generator.GenerateClass (xmlRoot, namespaceName, className, generatorFactory);
 
@@ -170,7 +170,7 @@ public class XtuiGenerator : IIncrementalGenerator
 
                 // Also generate a comment file so the error appears in generated files list
                 string hint = fileName + "_Error";
-                StringBuilder errorComment = new StringBuilder ();
+                StringBuilder errorComment = new ();
                 errorComment.AppendLine ("// XTUI Parsing Error");
                 errorComment.AppendLine ($"// File: {file.Path}");
                 errorComment.AppendLine ($"// Error: {EscapeForComment (ex.Message)}");
@@ -200,7 +200,7 @@ public class XtuiGenerator : IIncrementalGenerator
 
                 // Also generate a comment file so the error appears in generated files list
                 string hint = fileName + "_Error";
-                StringBuilder errorComment = new StringBuilder ();
+                StringBuilder errorComment = new ();
                 errorComment.AppendLine ("// XTUI Parsing Error");
                 errorComment.AppendLine ($"// File: {file.Path}");
                 errorComment.AppendLine ($"// Error: {EscapeForComment (ex.Message)}");
@@ -241,7 +241,7 @@ public class XtuiGenerator : IIncrementalGenerator
 
                     // Also generate a comment file so the error appears in generated files list
                     string hint = fileName + "_Error";
-                    StringBuilder errorComment = new StringBuilder ();
+                    StringBuilder errorComment = new ();
                     errorComment.AppendLine ("// XTUI Parsing Error");
                     errorComment.AppendLine ($"// File: {file.Path}");
                     errorComment.AppendLine ($"// Error: {EscapeForComment (root.Message)}");
@@ -271,7 +271,7 @@ public class XtuiGenerator : IIncrementalGenerator
 
                     // Generate detailed error comment file
                     string hint = fileName + "_Error";
-                    StringBuilder errorComment = new StringBuilder ();
+                    StringBuilder errorComment = new ();
                     errorComment.AppendLine ("// XTUI Generation Error");
                     errorComment.AppendLine ($"// File: {file.Path}");
                     errorComment.AppendLine ($"// Error: {EscapeForComment (ex.Message)}");

@@ -23,7 +23,7 @@ public class ShortcutGeneratorTests
         // Assert
         Assert.NotNull(statements);
         Assert.Single(statements); // Should only create the variable declaration
-        
+
         var code = statements[0].ToFullString();
         Assert.Contains("var shortcut0", code);
         Assert.Contains("new Shortcut", code);
@@ -120,7 +120,7 @@ public class ShortcutGeneratorTests
         // Assert
         Assert.NotNull(statements);
         Assert.Single(statements);
-        
+
         var code = statements[0].ToFullString();
         Assert.Contains("var shortcut0", code);
         Assert.Contains("new Shortcut()", code);

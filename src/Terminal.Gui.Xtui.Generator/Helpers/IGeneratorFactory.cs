@@ -12,5 +12,5 @@ internal interface IGeneratorFactory
     /// <param name="elementName">The name of the element to generate code for</param>
     /// <param name="elementName">The name of the element to generate code for</param>
     /// <returns>A generator instance capable of generating code for the specified element</returns>
-    Terminal.Gui.Xtui.Generator.Helpers.Generator GetGenerator(string elementName);
+    Generator GetGenerator(string elementName);
 }

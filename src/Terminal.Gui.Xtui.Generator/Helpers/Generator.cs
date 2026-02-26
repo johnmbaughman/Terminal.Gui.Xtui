@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Terminal.Gui.Xtui.Generator.Helpers;
@@ -32,7 +34,7 @@ internal abstract class Generator
     internal virtual StatementSyntax[] GenerateStatements(ElementNode node, string variableName,
         IGeneratorFactory generators)
     {
-        return Array.Empty<StatementSyntax>();
+        return [];
     }
 
     /// <summary>
@@ -42,9 +44,9 @@ internal abstract class Generator
     /// </summary>
     public string GenerateStatementsAsString(ElementNode node, string variableName, IGeneratorFactory generators)
     {
-        var stmts = GenerateStatements(node, variableName, generators);
+        StatementSyntax[] statements = GenerateStatements(node, variableName, generators);
         // Create a temporary block to get formatted source for the statements
-        var block = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.Block(stmts);
+        BlockSyntax block = Microsoft.CodeAnalysis.CSharp.SyntaxFactory.Block(statements);
         return block.ToFullString();
     }
 
@@ -68,5 +70,63 @@ internal abstract class Generator
         IGeneratorFactory generators)
     {
         return string.Empty;
+    }
+
+    /// <summary>
+    /// Maps an XML namespace URI to a C# namespace.
+    /// Supports XAML-style clr-namespace syntax: clr-namespace:Namespace.Name or clr-namespace:Namespace.Name;assembly=AssemblyName
+    /// </summary>
+    public static string MapXmlNamespaceUriToCSharp (string uri)
+    {
+        if (uri == "http://schemas.terminal.gui/xtui")
+        {
+            return "Terminal.Gui.Views";
+        }
+
+        // Parse XAML-style clr-namespace declarations
+        // Format: clr-namespace:MyApp.ViewModels or clr-namespace:MyApp.ViewModels;assembly=MyAssembly
+        if (!uri.StartsWith ("clr-namespace:"))
+        {
+            return uri;
+        }
+
+        string nsDeclaration = uri.Substring ("clr-namespace:".Length);
+        int assemblyIndex = nsDeclaration.IndexOf (";", StringComparison.Ordinal);
+        if (assemblyIndex > 0)
+        {
+            // Extract namespace before assembly reference
+            return nsDeclaration.Substring (0, assemblyIndex);
+        }
+        return nsDeclaration;
+
+        // Legacy support: plain namespace strings are used as-is
+    }
+
+    /// <summary>
+    /// Recursively collects all C# namespaces from the element tree.
+    /// Maps XML namespace URIs to C# namespaces and filters out XML schema namespaces.
+    /// </summary>
+    public static HashSet<string> CollectAllNamespaces (ElementNode node)
+    {
+        HashSet<string> namespaces = [];
+
+        // Add C# namespaces from current node (filter out XML schema namespaces)
+        foreach (string? csNamespace in
+                 from nsUri in node.Namespaces.Values
+                 where !string.IsNullOrEmpty (nsUri) &&
+                       !nsUri.StartsWith ("http://www.w3.org/") &&
+                       !nsUri.StartsWith ("http://schemas.microsoft.com/")
+                 select MapXmlNamespaceUriToCSharp (nsUri))
+        {
+            namespaces.Add (csNamespace);
+        }
+
+        // Recursively collect from children
+        foreach (string? ns in node.Children.Select (CollectAllNamespaces).SelectMany (childNamespaces => childNamespaces))
+        {
+            namespaces.Add (ns);
+        }
+
+        return namespaces;
     }
 }

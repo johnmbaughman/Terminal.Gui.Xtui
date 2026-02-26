@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Generator.Helpers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Generator.Helpers;
@@ -15,18 +14,18 @@ internal sealed class GenericGenerator : Generator
         // Create object with object initializer: var {variableName} = new {node.ElementTypeName} { ... };
         ObjectCreationExpressionSyntax objectCreation = SyntaxHelpers.CreateObjectWithInitializer (node.ElementTypeName, node.Attributes);
 
-        List<StatementSyntax> statements = new List<StatementSyntax>
-        {
-            LocalDeclarationStatement(
-                VariableDeclaration(
-                        IdentifierName("var"))
-                    .WithVariables(
-                        SingletonSeparatedList(
-                            VariableDeclarator(
-                                    Identifier(variableName))
-                                .WithInitializer(
-                                    EqualsValueClause(objectCreation)))))
-        };
+        List<StatementSyntax> statements =
+        [
+            LocalDeclarationStatement (
+                                       VariableDeclaration (
+                                                            IdentifierName ("var"))
+                                           .WithVariables (
+                                                           SingletonSeparatedList (
+                                                                                   VariableDeclarator (
+                                                                                                       Identifier (variableName))
+                                                                                       .WithInitializer (
+                                                                                                         EqualsValueClause (objectCreation)))))
+        ];
 
         // Process children
         if (node.Children.Count <= 0)

@@ -24,7 +24,7 @@ internal class GeneratorFactory : IGeneratorFactory
         // Add other generators here
     };
 
-    public Terminal.Gui.Xtui.Generator.Helpers.Generator GetGenerator (string elementName)
+    public Generator GetGenerator (string elementName)
     {
         // Extract the local type name (after the last dot) to find the generator
         int lastDot = elementName.LastIndexOf('.');

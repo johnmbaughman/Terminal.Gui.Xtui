@@ -16,18 +16,18 @@ internal sealed class TextFieldGenerator : BaseGenerator
         // Create TextField with object initializer: var {variableName} = new TextField { ... };
         ObjectCreationExpressionSyntax objectCreation = SyntaxHelpers.CreateObjectWithInitializer ("TextField", node.Attributes);
 
-        List<StatementSyntax> statements = new List<StatementSyntax>
-        {
-            LocalDeclarationStatement(
-                VariableDeclaration(
-                        IdentifierName("var"))
-                    .WithVariables(
-                        SingletonSeparatedList(
-                            VariableDeclarator(
-                                    Identifier(variableName))
-                                .WithInitializer(
-                                    EqualsValueClause(objectCreation)))))
-        };
+        List<StatementSyntax> statements =
+        [
+            LocalDeclarationStatement (
+                VariableDeclaration (
+                    IdentifierName ("var"))
+                    .WithVariables (
+                        SingletonSeparatedList (
+                            VariableDeclarator (
+                                Identifier (variableName))
+                                .WithInitializer (
+                                    EqualsValueClause (objectCreation)))))
+        ];
 
         // Process children if any
         if (node.Children.Count <= 0)

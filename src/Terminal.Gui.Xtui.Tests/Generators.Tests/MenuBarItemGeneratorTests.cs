@@ -120,10 +120,10 @@ public class MenuBarItemGeneratorTests
 
         var openItem = new ElementNode { ElementTypeName = "MenuItem" };
         openItem.Attributes["Title"] = "Open";
-        
+
         var saveItem = new ElementNode { ElementTypeName = "MenuItem" };
         saveItem.Attributes["Title"] = "Save";
-        
+
         node.Children.Add(openItem);
         node.Children.Add(saveItem);
 

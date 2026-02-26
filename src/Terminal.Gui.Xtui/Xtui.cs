@@ -119,24 +119,15 @@ public static class Xtui
     /// <summary>
     /// Gets the application helpers.
     /// </summary>
-    public static IXtuiAppHelpers App
-    {
-        get => throw new NotImplementedException();
-    }
+    public static IXtuiAppHelpers App => throw new NotImplementedException();
 
     /// <summary>
     /// Gets the view helpers.
     /// </summary>
-    public static IXtuiViewHelpers View
-    {
-        get => throw new NotImplementedException();
-    }
+    public static IXtuiViewHelpers View => throw new NotImplementedException();
 
     /// <summary>
     /// Gets the binding helpers.
     /// </summary>
-    public static IXtuiBindingHelpers Binding
-    {
-        get => throw new NotImplementedException();
-    }
+    public static IXtuiBindingHelpers Binding => throw new NotImplementedException();
 }

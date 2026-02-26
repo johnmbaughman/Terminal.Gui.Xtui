@@ -13,8 +13,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        string outputPath = args.Length > 0 
-            ? args[0] 
+        string outputPath = args.Length > 0
+            ? args[0]
             : Path.Combine("..", "Terminal.Gui.Xtui", "Terminal.Gui.Xtui.xsd");
 
         Console.WriteLine("Terminal.Gui XTUI XSD Generator");
@@ -56,7 +56,7 @@ class XsdGenerator
             // Try to find the XML documentation file next to the Terminal.Gui assembly
             var assemblyLocation = _terminalGuiAssembly.Location;
             var xmlPath = Path.ChangeExtension(assemblyLocation, ".xml");
-            
+
             if (File.Exists(xmlPath))
             {
                 _xmlDocumentation = XDocument.Load(xmlPath);
@@ -76,8 +76,8 @@ class XsdGenerator
     private void DiscoverViewTypes()
     {
         var types = _terminalGuiAssembly.GetExportedTypes()
-            .Where(t => t.IsClass 
-                && !t.IsAbstract 
+            .Where(t => t.IsClass
+                && !t.IsAbstract
                 && !t.IsGenericType // Exclude generic types like NumericUpDown<T>
                 && _viewBaseType.IsAssignableFrom(t))
             .OrderBy(t => t.Name);
@@ -105,7 +105,7 @@ class XsdGenerator
         {
             xsd.Save(xmlWriter);
         }
-        
+
         return Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 
@@ -213,7 +213,7 @@ class XsdGenerator
         );
 
         var complexType = new XElement(xs + "complexType");
-        
+
         // Allow child elements for container types
         if (IsContainerType(viewType))
         {
@@ -291,8 +291,8 @@ class XsdGenerator
 
     private bool IsCommonAttribute(string propertyName)
     {
-        return propertyName is "X" or "Y" or "Width" or "Height" or 
-               "Visible" or "Enabled" or "CanFocus" or "TabIndex" or 
+        return propertyName is "X" or "Y" or "Width" or "Height" or
+               "Visible" or "Enabled" or "CanFocus" or "TabIndex" or
                "TabStop" or "Text" or "Id";
     }
 
@@ -302,7 +302,7 @@ class XsdGenerator
         if (propertyType == typeof(int)) return "xs:int";
         if (propertyType == typeof(string)) return "xs:string";
         if (propertyType == typeof(double) || propertyType == typeof(float)) return "xs:decimal";
-        
+
         // Handle enums
         if (propertyType.IsEnum)
         {
@@ -343,11 +343,11 @@ class XsdGenerator
             {
                 var memberName = $"P:{typeFullName}.{property.Name}";
                 var memberElement = _xmlDocumentation.XPathSelectElement($"//member[@name='{memberName}']");
-                
+
                 if (memberElement != null)
                 {
                     var summaryElement = memberElement.Element("summary");
-                    
+
                     if (summaryElement != null)
                     {
                         // Get the raw XML content (not just .Value which strips tags)
@@ -392,10 +392,10 @@ class XsdGenerator
 
         // Remove any remaining XML tags
         cleaned = Regex.Replace(cleaned, @"<[^>]+>", string.Empty);
-        
+
         // Final cleanup - normalize whitespace again
         cleaned = Regex.Replace(cleaned, @"\s+", " ");
-        
+
         return cleaned.Trim();
     }
 }

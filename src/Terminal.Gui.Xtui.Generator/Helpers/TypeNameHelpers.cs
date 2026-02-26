@@ -34,8 +34,8 @@ internal static class TypeNameHelpers
             return string.Empty;
         }
 
-        return fullTypeName.Contains('.') 
-            ? fullTypeName.Split('.').Last() 
+        return fullTypeName.Contains('.')
+            ? fullTypeName.Split('.').Last()
             : fullTypeName;
     }
 

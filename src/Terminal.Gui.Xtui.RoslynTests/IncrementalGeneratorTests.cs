@@ -1,34 +1,42 @@
 ﻿using System.Collections.Immutable;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using Terminal.Gui.Xtui.Generator;
+using Xunit.Abstractions;
 
 namespace Terminal.Gui.Xtui.RoslynTests;
 
-public class IncrementalGeneratorTests
+public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
 {
     private static CSharpCompilation CreateCompilation (string source, bool includeTerminalGui = false, params MetadataReference [] references)
     {
-        var syntaxTree = CSharpSyntaxTree.ParseText (source);
+        SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText (source);
 
-        var defaultReferences = new List<MetadataReference>
-        {
+        List<MetadataReference> defaultReferences =
+        [
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Console).Assembly.Location),
             MetadataReference.CreateFromFile(Assembly.Load("System.Runtime").Location),
-        };
+        ];
 
         // Add Terminal.Gui reference if requested
-        if (includeTerminalGui)
+        if (!includeTerminalGui)
         {
-            var terminalGuiReference = GetTerminalGuiReference ();
-            if (terminalGuiReference != null)
-            {
-                defaultReferences.Add (terminalGuiReference);
-            }
+            return CSharpCompilation.Create (
+                "TestCompilation",
+                new[] { syntaxTree },
+                defaultReferences.Concat (references),
+                new CSharpCompilationOptions (OutputKind.DynamicallyLinkedLibrary));
+        }
+
+        MetadataReference? terminalGuiReference = GetTerminalGuiReference ();
+        if (terminalGuiReference != null)
+        {
+            defaultReferences.Add (terminalGuiReference);
         }
 
         return CSharpCompilation.Create (
@@ -42,10 +50,10 @@ public class IncrementalGeneratorTests
     {
         // Try to locate Terminal.Gui.dll from the solution
         // Start from the test project directory and navigate up to find Terminal.Gui project
-        var testProjectDir = Directory.GetCurrentDirectory ();
+        string testProjectDir = Directory.GetCurrentDirectory ();
 
         // Navigate up to src directory
-        var srcDir = testProjectDir;
+        string? srcDir = testProjectDir;
         while (!string.IsNullOrEmpty (srcDir) && Path.GetFileName (srcDir) != "src")
         {
             srcDir = Path.GetDirectoryName (srcDir);
@@ -58,34 +66,28 @@ public class IncrementalGeneratorTests
 
         // Look for Terminal.Gui assembly in the Terminal.Gui project's bin directory
         // Try multiple potential paths (different configurations and frameworks)
-        var potentialPaths = new []
-        {
+        string[] potentialPaths =
+        [
             Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Debug", "net8.0", "Terminal.Gui.dll"),
             Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net8.0", "Terminal.Gui.dll"),
             Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Debug", "net9.0", "Terminal.Gui.dll"),
-            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net9.0", "Terminal.Gui.dll"),
-        };
+            Path.Combine(srcDir, "Terminal.Gui", "Terminal.Gui", "bin", "Release", "net9.0", "Terminal.Gui.dll")
+        ];
 
-        foreach (var path in potentialPaths)
-        {
-            if (File.Exists (path))
-            {
-                return MetadataReference.CreateFromFile (path);
-            }
-        }
-
-        return null;
+        return (from path in potentialPaths
+                where File.Exists (path)
+                select MetadataReference.CreateFromFile (path)).FirstOrDefault ();
     }
 
     private static GeneratorDriver CreateDriver (CSharpCompilation compilation, params (string fileName, string content) [] additionalTexts)
     {
-        var generator = new XtuiGenerator ().AsSourceGenerator ();
+        ISourceGenerator generator = new XtuiGenerator ().AsSourceGenerator ();
 
-        var driver = CSharpGeneratorDriver.Create (
-            generators: new [] { generator },
-            additionalTexts: additionalTexts.Select (t =>
-                (AdditionalText)new InMemoryAdditionalText (t.fileName, t.content)).ToImmutableArray (),
-            parseOptions: (CSharpParseOptions)compilation.SyntaxTrees.First ().Options);
+        CSharpGeneratorDriver driver = CSharpGeneratorDriver.Create (
+                                                                     generators: new [] { generator },
+                                                                     additionalTexts: additionalTexts.Select (AdditionalText (t) =>
+                                                                         new InMemoryAdditionalText (t.fileName, t.content)).ToImmutableArray (),
+                                                                     parseOptions: (CSharpParseOptions)compilation.SyntaxTrees.First ().Options);
 
         return driver;
     }
@@ -93,31 +95,31 @@ public class IncrementalGeneratorTests
     [Fact]
     public void Generator_WithSimpleWindow_GeneratesInitializeComponent ()
     {
-        var xtuiSource = """
-            <Window Title="Main Window">
-                <Label Text="Hello World" />
-            </Window>
-            """;
+        const string xtuiSource = """
+                                  <Window Title="Main Window">
+                                      <Label Text="Hello World" />
+                                  </Window>
+                                  """;
 
-        var userCode = """
-            namespace MyApp
-            {
-                public partial class MyWindow
-                {
-                    public MyWindow()
-                    {
-                        InitializeComponent();
-                    }
-                }
-            }
-            """;
+        const string userCode = """
+                                namespace MyApp
+                                {
+                                    public partial class MyWindow
+                                    {
+                                        public MyWindow()
+                                        {
+                                            InitializeComponent();
+                                        }
+                                    }
+                                }
+                                """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> diagnostics);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // Should have no errors
         Assert.Empty (diagnostics.Where (d => d.Severity == DiagnosticSeverity.Error));
@@ -140,31 +142,31 @@ public class IncrementalGeneratorTests
     [Fact]
     public void Generator_WithSimpleToplevel_GeneratesInitializeComponent ()
     {
-        var xtuiSource = """
-            <Toplevel>
-                <Label Text="Hello Toplevel" />
-            </Toplevel>
-            """;
+        const string xtuiSource = """
+                                  <Toplevel>
+                                      <Label Text="Hello Toplevel" />
+                                  </Toplevel>
+                                  """;
 
-        var userCode = """
-            namespace MyApp
-            {
-                public partial class MyTop
-                {
-                    public MyTop()
-                    {
-                        InitializeComponent();
-                    }
-                }
-            }
-            """;
+        const string userCode = """
+                                namespace MyApp
+                                {
+                                    public partial class MyTop
+                                    {
+                                        public MyTop()
+                                        {
+                                            InitializeComponent();
+                                        }
+                                    }
+                                }
+                                """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MyTop.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MyTop.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> diagnostics);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // Should have no errors
         Assert.Empty (diagnostics.Where (d => d.Severity == DiagnosticSeverity.Error));
@@ -188,54 +190,54 @@ public class IncrementalGeneratorTests
     [Fact]
     public void Generator_RecordsGeneratedFileBookkeeping ()
     {
-        var xtuiSource = """
-            <Window Title="Main Window">
-                <Label Text="Hello World" />
-            </Window>
-            """;
+        const string xtuiSource = """
+                                  <Window Title="Main Window">
+                                      <Label Text="Hello World" />
+                                  </Window>
+                                  """;
 
-        var userCode = """
-            namespace MyApp
-            {
-                public partial class MyWindow
-                {
-                    public MyWindow()
-                    {
-                        InitializeComponent();
-                    }
-                }
-            }
-            """;
+        const string userCode = """
+                                namespace MyApp
+                                {
+                                    public partial class MyWindow
+                                    {
+                                        public MyWindow()
+                                        {
+                                            InitializeComponent();
+                                        }
+                                    }
+                                }
+                                """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // Ensure generation ran
         Assert.Single (runResult.GeneratedTrees);
 
         // Use reflection to inspect the bookkeeping helper
-        var genAssembly = typeof (XtuiGenerator).Assembly;
-        var bookkeepingType = genAssembly.GetType ("Terminal.Gui.Xtui.GeneratedFileBookkeeping");
+        Assembly genAssembly = typeof (XtuiGenerator).Assembly;
+        Type? bookkeepingType = genAssembly.GetType ("Terminal.Gui.Xtui.GeneratedFileBookkeeping");
         Assert.NotNull (bookkeepingType);
 
-        var countProp = bookkeepingType.GetProperty ("Count", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        PropertyInfo? countProp = bookkeepingType.GetProperty ("Count", BindingFlags.Public | BindingFlags.Static);
         Assert.NotNull (countProp);
 
-        int count = (int)countProp.GetValue (null)!;
+        var count = (int)countProp.GetValue (null)!;
         Assert.True (count >= 1, "Bookkeeping should contain at least one recorded generated file");
 
-        var getMethod = bookkeepingType.GetMethod ("Get", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        MethodInfo? getMethod = bookkeepingType.GetMethod ("Get", BindingFlags.Public | BindingFlags.Static);
         Assert.NotNull (getMethod);
 
-        var info = getMethod.Invoke (null, new object?[] { "MyWindow.xtui" });
+        object? info = getMethod.Invoke (null, ["MyWindow.xtui"]);
         Assert.NotNull (info);
 
-        var infoType = info.GetType ();
-        var classNameProp = infoType.GetProperty ("ClassName");
+        Type infoType = info.GetType ();
+        PropertyInfo? classNameProp = infoType.GetProperty ("ClassName");
         Assert.NotNull (classNameProp);
 
         var className = (string)classNameProp.GetValue (info)!;
@@ -246,44 +248,44 @@ public class IncrementalGeneratorTests
     public void Generator_EmitsCollisionDiagnostic_ForDuplicateGeneratedIdentity ()
     {
         // Two different input paths with the same filename will generate the same class name
-        var xtuiSourceA = """
-            <Window Title="A">
-                <Label Text="A" />
-            </Window>
-            """;
+        const string xtuiSourceA = """
+                                   <Window Title="A">
+                                       <Label Text="A" />
+                                   </Window>
+                                   """;
 
-        var xtuiSourceB = """
-            <Window Title="B">
-                <Label Text="B" />
-            </Window>
-            """;
+        const string xtuiSourceB = """
+                                   <Window Title="B">
+                                       <Label Text="B" />
+                                   </Window>
+                                   """;
 
-        var userCode = """
-            namespace MyApp
-            {
-                public partial class MyWindow
-                {
-                    public MyWindow()
-                    {
-                        InitializeComponent();
-                    }
-                }
-            }
-            """;
+        const string userCode = """
+                                namespace MyApp
+                                {
+                                    public partial class MyWindow
+                                    {
+                                        public MyWindow()
+                                        {
+                                            InitializeComponent();
+                                        }
+                                    }
+                                }
+                                """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
 
         // Provide two additional texts with same filename but different directories
-        var driver = CreateDriver (compilation,
-            ("dirA/MyWindow.xtui", xtuiSourceA),
-            ("dirB/MyWindow.xtui", xtuiSourceB));
+        GeneratorDriver driver = CreateDriver (compilation,
+                                               ("dirA/MyWindow.xtui", xtuiSourceA),
+                                               ("dirB/MyWindow.xtui", xtuiSourceB));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // There should be a diagnostic with id XTUI003
-        var diag = runResult.Diagnostics.FirstOrDefault (d => d.Id == "XTUI003");
+        Diagnostic? diag = runResult.Diagnostics.FirstOrDefault (d => d.Id == "XTUI003");
         Assert.NotNull (diag);
         Assert.Equal (DiagnosticSeverity.Warning, diag.Severity);
     }
@@ -306,12 +308,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode); // No Terminal.Gui reference
-        var driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode); // No Terminal.Gui reference
+        GeneratorDriver driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // Should not generate any files (no Terminal.Gui reference)
         Assert.Empty (runResult.GeneratedTrees);
@@ -335,15 +337,15 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MyWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         // Should have a diagnostic error
-        var generatorDiagnostics = runResult.Diagnostics;
+        ImmutableArray<Diagnostic> generatorDiagnostics = runResult.Diagnostics;
         // The generator should report at least one diagnostic for the invalid XTUI input.
         Assert.NotEmpty (generatorDiagnostics);
     }
@@ -372,12 +374,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MultiWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MultiWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -395,7 +397,7 @@ public class IncrementalGeneratorTests
         Assert.Contains ("Text = \"Second\"", generatedCode);
 
         // Count the number of Add calls (should be 3)
-        var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
+        int addCount = Regex.Matches (generatedCode, @"this\.Add\(").Count;
         Assert.Equal (3, addCount);
     }
 
@@ -408,12 +410,12 @@ public class IncrementalGeneratorTests
             """;
 
         // No user code with partial class - just empty compilation
-        var compilation = CreateCompilation ("// empty", includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("Standalone.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation ("// empty", includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("Standalone.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -444,12 +446,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("CommentTest.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("CommentTest.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -460,7 +462,7 @@ public class IncrementalGeneratorTests
         Assert.DoesNotContain ("Text = \"Commented Out\"", generatedCode);
         Assert.DoesNotContain ("This is a comment", generatedCode);
 
-        var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
+        int addCount = Regex.Matches (generatedCode, @"this\.Add\(").Count;
         Assert.Equal (1, addCount);
     }
 
@@ -488,12 +490,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("CheckBoxWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("CheckBoxWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -508,7 +510,7 @@ public class IncrementalGeneratorTests
         Assert.Contains ("RadioStyle = true", generatedCode);
 
         // Count the number of Add calls (should be 3)
-        var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
+        int addCount = Regex.Matches (generatedCode, @"this\.Add\(").Count;
         Assert.Equal (3, addCount);
     }
 
@@ -535,12 +537,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MenuWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MenuWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -549,7 +551,7 @@ public class IncrementalGeneratorTests
         // Verify MenuBar is generated
         Assert.Contains ("MenuBar", generatedCode);
         Assert.Contains ("private MenuBar? _menuBar;", generatedCode);
-        
+
         // Verify the Label is also added
         Assert.Contains ("Content", generatedCode);
     }
@@ -579,19 +581,19 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("LoginWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("LoginWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
         var generatedCode = runResult.GeneratedTrees.First ().ToString ();
 
         // Debug output for investigation
-        System.Console.WriteLine(generatedCode);
+        testOutputHelper.WriteLine(generatedCode);
 
         // Verify TextField elements
         Assert.Contains ("new TextField", generatedCode);
@@ -628,12 +630,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("ListWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("ListWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -643,7 +645,7 @@ public class IncrementalGeneratorTests
         Assert.Contains ("new ListView", generatedCode);
         Assert.Contains ("Width = 40", generatedCode);
         Assert.Contains ("Height = 10", generatedCode);
-        
+
         // Verify field declaration
         Assert.Contains ("private ListView? _listView;", generatedCode);
     }
@@ -673,12 +675,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("FieldsWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("FieldsWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -688,13 +690,13 @@ public class IncrementalGeneratorTests
         Assert.Contains ("private Label? _statusLabel;", generatedCode);
         Assert.Contains ("private Button? _okButton;", generatedCode);
         Assert.Contains ("private Button? _cancelButton;", generatedCode);
-        
+
         // Verify field- and variable identifiers are present (names may vary)
         Assert.Contains("label", generatedCode);
         Assert.Contains("button", generatedCode);
-        
+
         // Verify all controls are added
-        var addCount = System.Text.RegularExpressions.Regex.Matches (generatedCode, @"this\.Add\(").Count;
+        int addCount = Regex.Matches (generatedCode, @"this\.Add\(").Count;
         Assert.Equal (4, addCount);
     }
 
@@ -722,12 +724,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("LayoutWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("LayoutWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -736,10 +738,10 @@ public class IncrementalGeneratorTests
         // Verify Pos expressions are generated
         Assert.Contains ("Pos.Right(_label1)", generatedCode);
         Assert.Contains ("Pos.Center()", generatedCode);
-        
+
         // Verify Dim expressions are generated
         Assert.Contains ("Dim.Fill()", generatedCode);
-        
+
         // Verify field declarations for controls with IDs
         Assert.Contains ("private Label? _label1;", generatedCode);
         Assert.Contains ("private Label? _label2;", generatedCode);
@@ -769,12 +771,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("PercentWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("PercentWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -810,12 +812,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("BoolWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("BoolWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -857,12 +859,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("MainApp.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("MainApp.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -870,10 +872,10 @@ public class IncrementalGeneratorTests
 
         // Verify MenuBar is created
         Assert.Contains ("new MenuBar", generatedCode);
-        
+
         // TopLevel should have special handling for MenuBar (auto-add)
         // Verify MenuBar is added to the Toplevel
-        var menuBarAddMatch = System.Text.RegularExpressions.Regex.Match (generatedCode, @"this\.Add\((?:this\.)?menubar\d+\)");
+        Match menuBarAddMatch = Regex.Match (generatedCode, @"this\.Add\((?:this\.)?menubar\d+\)");
         Assert.True (menuBarAddMatch.Success, "MenuBar should be added to Toplevel");
     }
 
@@ -897,12 +899,12 @@ public class IncrementalGeneratorTests
             }
             """;
 
-        var compilation = CreateCompilation (userCode, includeTerminalGui: true);
-        var driver = CreateDriver (compilation, ("EmptyWindow.xtui", xtuiSource));
+        CSharpCompilation compilation = CreateCompilation (userCode, includeTerminalGui: true);
+        GeneratorDriver driver = CreateDriver (compilation, ("EmptyWindow.xtui", xtuiSource));
 
-        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out var outputCompilation, out var diagnostics);
+        driver = driver.RunGeneratorsAndUpdateCompilation (compilation, out Compilation _, out ImmutableArray<Diagnostic> _);
 
-        var runResult = driver.GetRunResult ();
+        GeneratorDriverRunResult runResult = driver.GetRunResult ();
 
         Assert.Single (runResult.GeneratedTrees);
 
@@ -910,7 +912,7 @@ public class IncrementalGeneratorTests
 
         // Should generate InitializeComponent but with no statements
         Assert.Contains ("private void InitializeComponent()", generatedCode);
-        
+
         // Should not have any Add calls
         Assert.DoesNotContain ("this.Add(", generatedCode);
     }
@@ -918,21 +920,13 @@ public class IncrementalGeneratorTests
     /// <summary>
     /// Helper class for providing additional text files to the generator during testing.
     /// </summary>
-    private class InMemoryAdditionalText : AdditionalText
+    private class InMemoryAdditionalText (string path, string text) : AdditionalText
     {
-        private readonly string _text;
-
-        public InMemoryAdditionalText (string path, string text)
-        {
-            Path = path;
-            _text = text;
-        }
-
-        public override string Path { get; }
+        public override string Path { get; } = path;
 
         public override SourceText GetText (CancellationToken cancellationToken = default)
         {
-            return SourceText.From (_text, Encoding.UTF8);
+            return SourceText.From (text, Encoding.UTF8);
         }
     }
 }
