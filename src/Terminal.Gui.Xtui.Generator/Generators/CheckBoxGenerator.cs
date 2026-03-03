@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Terminal.Gui.Xtui.Generator.Helpers;
+using static Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers;
 using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
 
 namespace Terminal.Gui.Xtui.Generator.Generators;
@@ -35,12 +35,12 @@ internal sealed class CheckBoxGenerator : BaseGenerator
             return statements.ToArray();
         }
 
-        for (int i = 0; i < node.Children.Count; i++)
+        for (var i = 0; i < node.Children.Count; i++)
         {
             ElementNode child = node.Children[i];
             // Extract local type name for variable naming
-            string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-            string childVarName = $"{localTypeName.ToLower()}{i}";
+            string localTypeName = ExtractLocalTypeName (child.ElementTypeName);
+            var childVarName = $"{localTypeName.ToLower()}{i}";
             BaseGenerator childGenerator = generators.GetGenerator(child.ElementTypeName);
             StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 

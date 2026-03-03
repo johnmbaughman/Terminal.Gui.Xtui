@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Terminal.Gui.Xtui.Generator.Helpers;
+using static Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers;
 using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
@@ -35,12 +36,12 @@ internal sealed class WindowGenerator : BaseGenerator
             return [.. statements];
         }
 
-        for (int i = 0; i < node.Children.Count; i++)
+        for (var i = 0; i < node.Children.Count; i++)
         {
             ElementNode child = node.Children [i];
             // Extract local type name for variable naming
-            string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-            string childVarName = $"{localTypeName.ToLower ()}{i}";
+            string localTypeName = ExtractLocalTypeName (child.ElementTypeName);
+            var childVarName = $"{localTypeName.ToLower ()}{i}";
             BaseGenerator childGenerator = generators.GetGenerator (child.ElementTypeName);
             StatementSyntax [] childStatements = childGenerator.GenerateStatements (child, childVarName, generators);
 
@@ -72,7 +73,7 @@ internal sealed class WindowGenerator : BaseGenerator
 
         if (node.Children.Count > 0)
         {
-            for (int i = 0; i < node.Children.Count; i++)
+            for (var i = 0; i < node.Children.Count; i++)
             {
                 ElementNode child = node.Children [i];
 
@@ -89,7 +90,7 @@ internal sealed class WindowGenerator : BaseGenerator
 
                 // Extract local type name for variable naming
                 string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-                string childVarName = $"{localTypeName.ToLower ()}{i}";
+                var childVarName = $"{localTypeName.ToLower ()}{i}";
 
                 // Always generate local variable declaration
                 initializeComponentStatements.Add(
@@ -189,7 +190,7 @@ internal sealed class WindowGenerator : BaseGenerator
             // Parse the namespace into qualified name
             string[] parts = ns.Split('.');
             NameSyntax qualifiedName = IdentifierName(parts[0]);
-            for (int i = 1; i < parts.Length; i++)
+            for (var i = 1; i < parts.Length; i++)
             {
                 qualifiedName = QualifiedName(qualifiedName, IdentifierName(parts[i]));
             }

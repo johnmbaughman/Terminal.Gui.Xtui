@@ -1189,22 +1189,22 @@
       <xs:anyAttribute processContents="lax" />
     </xs:complexType>
   </xs:element>
-  <xs:element name="Toplevel">
+  <xs:element name="Runnable">
     <xs:complexType>
       <xs:attributeGroup ref="ViewAttributes" />
       <xs:attribute name="Modal" type="xs:boolean">
         <xs:annotation>
-          <xs:documentation>Determines whether the Toplevel is modal or not. If set to false (the default): events will propagate keys upwards.The Toplevel will act as an embedded view (not a modal/pop-up). If set to true: events will NOT propagate keys upwards.The Toplevel will and look like a modal (pop-up) (e.g. see Dialog.</xs:documentation>
+          <xs:documentation>Determines whether the Runnable is modal or not. If set to false (the default): events will propagate keys upwards. The Runnable will act as an embedded view (not a modal/pop-up). If set to true: events will NOT propagate keys upwards. The Runnable will look like a modal (pop-up) (e.g. see Dialog).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="Running" type="xs:boolean">
         <xs:annotation>
-          <xs:documentation>Gets or sets whether the main loop for this Toplevel is running or not.</xs:documentation>
+          <xs:documentation>Gets or sets whether the main loop for this Runnable is running or not.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:attribute name="IsLoaded" type="xs:boolean">
         <xs:annotation>
-          <xs:documentation>true if was already loaded by the false, otherwise.</xs:documentation>
+          <xs:documentation>true if was already loaded by the application, false otherwise.</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute processContents="lax" />
@@ -1444,7 +1444,7 @@
       </xs:attribute>
       <xs:attribute name="Modal" type="xs:boolean">
         <xs:annotation>
-          <xs:documentation>Determines whether the Wizard is displayed as modal pop-up or not. The default is true. The Wizard will be shown with a frame and title and will behave like any Toplevel window. If set to false the Wizard will have no frame and will behave like any embedded View. To use Wizard as an embedded View Set Modal to false.Add the Wizard to a containing view with . If a non-Modal Wizard is added to the application after has been called the first step must be explicitly set by setting CurrentStep to GetNextStep: wizard.CurrentStep = wizard.GetNextStep();</xs:documentation>
+          <xs:documentation>Determines whether the Wizard is displayed as modal pop-up or not. The default is true. The Wizard will be shown with a frame and title and will behave like any Runnable window. If set to false the Wizard will have no frame and will behave like any embedded View. To use Wizard as an embedded View Set Modal to false. Add the Wizard to a containing view with . If a non-Modal Wizard is added to the application after has been called the first step must be explicitly set by setting CurrentStep to GetNextStep: wizard.CurrentStep = wizard.GetNextStep();</xs:documentation>
         </xs:annotation>
       </xs:attribute>
       <xs:anyAttribute processContents="lax" />

@@ -12,7 +12,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 namespace Terminal.Gui.Xtui.Generator.Generators;
 
 /// <summary>
-/// Terminal.Gui.Xtui.Generator.Helpers.Generator for StatusBar controls. StatusBars display shortcuts at the bottom of a Toplevel.
+/// Terminal.Gui.Xtui.Generator.Helpers.Generator for StatusBar controls. StatusBars display shortcuts at the bottom of a Runnable.
 /// </summary>
 internal sealed class StatusBarGenerator : BaseGenerator
 {
@@ -50,11 +50,11 @@ internal sealed class StatusBarGenerator : BaseGenerator
 
         List<string> childVariableNames = [];
 
-        for (int i = 0; i < itemsToProcess.Count; i++)
+        for (var i = 0; i < itemsToProcess.Count; i++)
         {
             ElementNode child = itemsToProcess[i];
             string localTypeName = ExtractLocalTypeName(child.ElementTypeName);
-            string childVarName = $"{localTypeName.ToLower()}{i}";
+            var childVarName = $"{localTypeName.ToLower()}{i}";
             BaseGenerator childGenerator = generators.GetGenerator(child.ElementTypeName);
             StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
@@ -118,7 +118,7 @@ internal sealed class StatusBarGenerator : BaseGenerator
                 ? shortcutsContainer.Children
                 : node.Children.Where(c => ExtractLocalTypeName(c.ElementTypeName) == "Shortcut").ToList();
 
-            for (int i = 0; i < itemsToProcess.Count; i++)
+            for (var i = 0; i < itemsToProcess.Count; i++)
             {
                 ElementNode child = itemsToProcess[i];
 
@@ -222,7 +222,7 @@ internal sealed class StatusBarGenerator : BaseGenerator
             // Parse the namespace into qualified name
             string[] parts = ns.Split('.');
             NameSyntax qualifiedName = IdentifierName(parts[0]);
-            for (int i = 1; i < parts.Length; i++)
+            for (var i = 1; i < parts.Length; i++)
             {
                 qualifiedName = QualifiedName(qualifiedName, IdentifierName(parts[i]));
             }

@@ -25,10 +25,9 @@ class Program
         var vm = new MainViewModel ();
         var app = Application.Create ();
         app.Init ();
-        var top = new Toplevel ();
+        var top = new Runnable();
         top.Add (new MyWindow (vm));
         app.Run (top);
         top.Dispose ();
-        app.Shutdown ();
     }
 }

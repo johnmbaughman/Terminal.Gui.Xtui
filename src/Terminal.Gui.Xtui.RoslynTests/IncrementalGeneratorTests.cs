@@ -143,9 +143,9 @@ public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
     public void Generator_WithSimpleToplevel_GeneratesInitializeComponent ()
     {
         const string xtuiSource = """
-                                  <Toplevel>
-                                      <Label Text="Hello Toplevel" />
-                                  </Toplevel>
+                                  <Runnable>
+                                      <Label Text="Hello Runnable" />
+                                  </Runnable>
                                   """;
 
         const string userCode = """
@@ -179,12 +179,12 @@ public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
         // Verify key elements in generated code
         Assert.Contains ("InitializeComponent()", generatedCode);
         Assert.Contains ("using Terminal.Gui.Views;", generatedCode);
-        Assert.Contains ("public partial class MyTop : Toplevel", generatedCode);
-        // TopLevel transforms local child declarations into private fields + assignments
+        Assert.Contains ("public partial class MyTop : Runnable", generatedCode);
+        // Runnable transforms local child declarations into private fields + assignments
         Assert.DoesNotContain ("var label0", generatedCode);
         Assert.Contains ("private Label?", generatedCode);
         Assert.Contains ("this.label0 = new Label", generatedCode);
-        Assert.Contains ("Text = \"Hello Toplevel\"", generatedCode);
+        Assert.Contains ("Text = \"Hello Runnable\"", generatedCode);
     }
 
     [Fact]
@@ -221,7 +221,8 @@ public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
 
         // Use reflection to inspect the bookkeeping helper
         Assembly genAssembly = typeof (XtuiGenerator).Assembly;
-        Type? bookkeepingType = genAssembly.GetType ("Terminal.Gui.Xtui.GeneratedFileBookkeeping");
+        // Bookkeeping implementation lives in the Generator namespace
+        Type? bookkeepingType = genAssembly.GetType ("Terminal.Gui.Xtui.Generator.GeneratedFileBookkeeping");
         Assert.NotNull (bookkeepingType);
 
         PropertyInfo? countProp = bookkeepingType.GetProperty ("Count", BindingFlags.Public | BindingFlags.Static);
@@ -836,14 +837,14 @@ public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
     public void Generator_WithToplevelAndMenuBar_AddsMenuBarAutomatically ()
     {
         var xtuiSource = """
-            <Toplevel>
+            <Runnable>
                 <MenuBar>
                     <MenuBarItem Title="_File">
                         <MenuItem Title="_Exit" />
                     </MenuBarItem>
                 </MenuBar>
                 <Label Text="Main Content" />
-            </Toplevel>
+            </Runnable>
             """;
 
         var userCode = """
@@ -873,10 +874,10 @@ public class IncrementalGeneratorTests (ITestOutputHelper testOutputHelper)
         // Verify MenuBar is created
         Assert.Contains ("new MenuBar", generatedCode);
 
-        // TopLevel should have special handling for MenuBar (auto-add)
-        // Verify MenuBar is added to the Toplevel
+        // Runnable should have special handling for MenuBar (auto-add)
+        // Verify MenuBar is added to the Runnable
         Match menuBarAddMatch = Regex.Match (generatedCode, @"this\.Add\((?:this\.)?menubar\d+\)");
-        Assert.True (menuBarAddMatch.Success, "MenuBar should be added to Toplevel");
+        Assert.True (menuBarAddMatch.Success, "MenuBar should be added to Runnable");
     }
 
     [Fact]

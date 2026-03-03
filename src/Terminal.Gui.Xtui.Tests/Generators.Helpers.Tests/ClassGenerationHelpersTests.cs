@@ -86,7 +86,7 @@ public class ClassGenerationHelpersTests
     {
         // Arrange
         string className = "MyWindow";
-        string baseType = "Toplevel";
+        string baseType = "Runnable";
 
         // Act
         ClassDeclarationSyntax result = ClassGenerationHelpers.CreateClass(
@@ -96,7 +96,7 @@ public class ClassGenerationHelpersTests
         // Assert
         string code = result.ToFullString();
         Assert.Contains("class MyWindow", code);
-        Assert.Contains(": Toplevel", code);
+        Assert.Contains(": Runnable", code);
     }
 
     [Fact]
@@ -329,9 +329,9 @@ public class ClassGenerationHelpersTests
     }
 
     [Fact]
-    public void Integration_CreateClass_MatchesTopLevelGeneratorPattern()
+    public void Integration_CreateClass_MatchesRunnableGeneratorPattern()
     {
-        // This test verifies that ClassGenerationHelpers can reproduce the pattern from TopLevelGenerator
+        // This test verifies that ClassGenerationHelpers can reproduce the pattern from RunnableGenerator
         // Arrange
         string className = "MyApp";
 
@@ -346,12 +346,12 @@ public class ClassGenerationHelpersTests
             className, 
             isPublic: true, 
             isPartial: true, 
-            baseTypeName: "Toplevel",
+            baseTypeName: "Runnable",
             members: new MemberDeclarationSyntax[] { method });
 
         // Assert
         string code = classDecl.ToFullString();
-        Assert.Contains("public partial class MyApp : Toplevel", code);
+        Assert.Contains("public partial class MyApp : Runnable", code);
         Assert.Contains("private void InitializeComponent", code);
     }
 

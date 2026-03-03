@@ -35,12 +35,12 @@ internal sealed class TextFieldGenerator : BaseGenerator
             return [.. statements];
         }
 
-        for (int i = 0; i < node.Children.Count; i++)
+        for (var i = 0; i < node.Children.Count; i++)
         {
             ElementNode child = node.Children [i];
             // Extract local type name for variable naming
             string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-            string childVarName = $"{localTypeName.ToLower ()}{i}";
+            var childVarName = $"{localTypeName.ToLower ()}{i}";
             Terminal.Gui.Xtui.Generator.Helpers.Generator childGenerator = generators.GetGenerator (child.ElementTypeName);
             StatementSyntax [] childStatements = childGenerator.GenerateStatements (child, childVarName, generators);
 

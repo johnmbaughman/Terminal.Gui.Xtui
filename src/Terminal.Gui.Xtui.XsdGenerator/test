@@ -528,7 +528,7 @@
       <xs:anyAttribute processContents="lax" />
     </xs:complexType>
   </xs:element>
-  <xs:element name="Toplevel">
+  <xs:element name="Runnable">
     <xs:complexType>
       <xs:attributeGroup ref="ViewAttributes" />
       <xs:attribute name="Modal" type="xs:boolean" />

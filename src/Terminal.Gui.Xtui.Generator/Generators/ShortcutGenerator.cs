@@ -1,12 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-using Terminal.Gui.Xtui.Generator.Helpers;using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
+using Terminal.Gui.Xtui.Generator.Helpers;
+using static Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers;
+using BaseGenerator = Terminal.Gui.Xtui.Generator.Helpers.Generator;
 
 namespace Terminal.Gui.Xtui.Generator.Generators;
 
@@ -43,8 +43,8 @@ internal sealed class ShortcutGenerator : BaseGenerator
 
         // Shortcut supports one child element assigned to CommandView
         ElementNode child = node.Children[0];
-        string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-        string childVarName = $"{localTypeName.ToLower()}0";
+        string localTypeName = ExtractLocalTypeName (child.ElementTypeName);
+        var childVarName = $"{localTypeName.ToLower()}0";
         BaseGenerator childGenerator = generators.GetGenerator(child.ElementTypeName);
         StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 

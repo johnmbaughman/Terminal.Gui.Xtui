@@ -9,7 +9,7 @@ namespace Terminal.Gui.Xtui.Generator.Helpers;
 
 /// <summary>
 /// Helper methods for transforming local variable declarations to private field assignments.
-/// Extracted from TopLevelGenerator to support variable→field transformation pattern.
+/// Extracted from RunnableGenerator to support variable→field transformation pattern.
 /// This helper enables class-level field declarations with proper initialization in methods.
 /// </summary>
 internal static class FieldTransformationHelpers

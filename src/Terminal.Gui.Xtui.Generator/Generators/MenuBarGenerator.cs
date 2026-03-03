@@ -49,12 +49,12 @@ internal sealed class MenuBarGenerator : BaseGenerator
 
         List<string> childVariableNames = [];
 
-        for (int i = 0; i < itemsToProcess.Count; i++)
+        for (var i = 0; i < itemsToProcess.Count; i++)
         {
             ElementNode child = itemsToProcess[i];
             // Extract local type name for variable naming
             string localTypeName = ExtractLocalTypeName(child.ElementTypeName);
-            string childVarName = $"{localTypeName.ToLower()}{i}";
+            var childVarName = $"{localTypeName.ToLower()}{i}";
             BaseGenerator childGenerator = generators.GetGenerator(child.ElementTypeName);
             StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 
@@ -119,7 +119,7 @@ internal sealed class MenuBarGenerator : BaseGenerator
                 ? menuBarItemsContainer.Children
                 : node.Children.Where(c => ExtractLocalTypeName(c.ElementTypeName) == "MenuBarItem").ToList();
 
-            for (int i = 0; i < itemsToProcess.Count; i++)
+            for (var i = 0; i < itemsToProcess.Count; i++)
             {
                 ElementNode child = itemsToProcess[i];
 
@@ -236,7 +236,7 @@ internal sealed class MenuBarGenerator : BaseGenerator
             // Parse the namespace into qualified name
             string[] parts = ns.Split('.');
             NameSyntax qualifiedName = IdentifierName(parts[0]);
-            for (int i = 1; i < parts.Length; i++)
+            for (var i = 1; i < parts.Length; i++)
             {
                 qualifiedName = QualifiedName(qualifiedName, IdentifierName(parts[i]));
             }

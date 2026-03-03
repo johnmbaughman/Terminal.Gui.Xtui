@@ -74,12 +74,12 @@ internal sealed class MenuBarItemGenerator : BaseGenerator
                                                 IdentifierName("Menu"))
                                                 .WithArgumentList(ArgumentList()))))))));
 
-        for (int i = 0; i < itemsToProcess.Count; i++)
+        for (var i = 0; i < itemsToProcess.Count; i++)
         {
             ElementNode child = itemsToProcess[i];
             // Extract local type name for variable naming
             string localTypeName = child.ElementTypeName.Contains('.') ? child.ElementTypeName.Split('.').Last() : child.ElementTypeName;
-            string childVarName = $"{localTypeName.ToLower()}{i}";
+            var childVarName = $"{localTypeName.ToLower()}{i}";
             BaseGenerator childGenerator = generators.GetGenerator(child.ElementTypeName);
             StatementSyntax[] childStatements = childGenerator.GenerateStatements(child, childVarName, generators);
 

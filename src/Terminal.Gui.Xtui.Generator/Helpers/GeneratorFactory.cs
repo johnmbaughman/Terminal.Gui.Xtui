@@ -9,8 +9,7 @@ internal class GeneratorFactory : IGeneratorFactory
         StringComparer.OrdinalIgnoreCase)
     {
         { "Window", () => new Generators.WindowGenerator() },
-        { "Toplevel", () => new Generators.TopLevelGenerator() },
-        { "Runnable", () => new Generators.TopLevelGenerator() },
+        { "Runnable", () => new Generators.RunnableGenerator() },
         { "Label", () => new Generators.LabelGenerator() },
         { "Button", () => new Generators.ButtonGenerator() },
         { "CheckBox", () => new Generators.CheckBoxGenerator() },
