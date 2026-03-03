@@ -21,13 +21,13 @@ public partial class MainViewModel : ObservableObject
 class Program
 {
     static void Main ()
-    {
-        var vm = new MainViewModel ();
-        var app = Application.Create ();
-        app.Init ();
+    {        
+        Application.Init ();
         var top = new Runnable();
+        var vm = new MainViewModel ();
         top.Add (new MyWindow (vm));
-        app.Run (top);
+        Application.Run (top);
         top.Dispose ();
+        Application.Shutdown ();
     }
 }

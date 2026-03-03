@@ -31,10 +31,10 @@
     <Label Text="Anchored" X="{AnchorEnd}" Y="{AnchorEnd + 5}" Width="{Auto}" Height="{Fill}" />
     
     <!-- CheckBox examples -->
-    <CheckBox Text="Accept Terms" CheckedState="UnChecked" X="5" Y="20" />
-    <CheckBox Text="Enable Notifications" CheckedState="Checked" X="5" Y="22" />
-    <CheckBox Text="Tristate Option" CheckedState="None" AllowCheckStateNone="true" X="5" Y="24" />
-    <CheckBox Text="Radio Style" CheckedState="Checked" RadioStyle="true" X="5" Y="26" />
+    <CheckBox Text="Accept Terms" Value="UnChecked" X="5" Y="20" />
+    <CheckBox Text="Enable Notifications" Value="Checked" X="5" Y="22" />
+    <CheckBox Text="Tristate Option" Value="None" AllowCheckStateNone="true" X="5" Y="24" />
+    <CheckBox Text="Radio Style" Value="Checked" RadioStyle="true" X="5" Y="26" />
     
     <!-- End of window content -->
 </Window>

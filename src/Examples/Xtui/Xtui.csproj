@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <Reference Include="Terminal.Gui">
-      <HintPath>..\..\Terminal.Gui\Terminal.Gui\bin\Debug\net10.0\Terminal.Gui.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
+    <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
     <ProjectReference Include="..\..\Terminal.Gui.Xtui.Generator\Terminal.Gui.Xtui.Generator.csproj"
                       OutputItemType="Analyzer" ReferenceOutputAssembly="false" />    
   </ItemGroup>

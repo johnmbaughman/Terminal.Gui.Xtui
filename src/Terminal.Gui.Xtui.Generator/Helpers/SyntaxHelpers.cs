@@ -241,17 +241,33 @@ internal static class SyntaxHelpers
 
         if (attributes.Count > 0)
         {
-            // Create property assignments for the object initializer
-            IEnumerable<AssignmentExpressionSyntax> assignments = attributes.Select(attr =>
-                                                                                        AssignmentExpression(
-                                                                                                             SyntaxKind.SimpleAssignmentExpression,
-                                                                                                             IdentifierName(attr.Key),
-                                                                                                             ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key)));
+            // Create property assignments for the object initializer. If the RHS is a
+            // lambda (e.g. an event handler), use '+=' so event handlers are attached
+            // rather than attempting invalid assignment to events.
+            IEnumerable<ExpressionSyntax> expressions = attributes.Select(attr =>
+            {
+                string propertyName = attr.Key;
+                ExpressionSyntax rhs = ObjectParsingHelpers.ParseValueWithType(attr.Value, attr.Key);
+
+                // If RHS is a lambda or anonymous method, generate an add-assignment (+=)
+                if (rhs is Microsoft.CodeAnalysis.CSharp.Syntax.LambdaExpressionSyntax || rhs is Microsoft.CodeAnalysis.CSharp.Syntax.AnonymousMethodExpressionSyntax)
+                {
+                    return (ExpressionSyntax)AssignmentExpression(
+                        SyntaxKind.AddAssignmentExpression,
+                        IdentifierName(propertyName),
+                        rhs);
+                }
+
+                return (ExpressionSyntax)AssignmentExpression(
+                    SyntaxKind.SimpleAssignmentExpression,
+                    IdentifierName(propertyName),
+                    rhs);
+            });
 
             // Create the initializer: { Property1 = "value1", Property2 = 123, Property3 = true }
             InitializerExpressionSyntax initializer = InitializerExpression(
                 SyntaxKind.ObjectInitializerExpression,
-                SeparatedList<ExpressionSyntax>(assignments));
+                SeparatedList<ExpressionSyntax>(expressions));
 
             objectCreation = objectCreation.WithInitializer(initializer);
         }

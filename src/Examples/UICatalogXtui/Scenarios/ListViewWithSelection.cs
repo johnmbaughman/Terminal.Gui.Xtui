@@ -228,6 +228,7 @@ public class ListViewWithSelection : Scenario
 
         public int Count => Scenarios?.Count ?? 0;
         public int Length { get; private set; }
+        public int MaxItemLength => Length;
         public bool SuspendCollectionChangedEvent { get => throw new System.NotImplementedException (); set => throw new System.NotImplementedException (); }
 
         public void Render (

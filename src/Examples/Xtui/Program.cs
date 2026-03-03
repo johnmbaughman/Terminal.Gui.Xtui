@@ -7,11 +7,11 @@ class Program
 {
     static void Main ()
     {
-        var app = Application.Create ();
-        app.Init ();
-        var top = new Runnable ();
-        top.Add (new MyWindow ());
-        app.Run (top);
-        top.Dispose ();
+        Application.Init();
+        var top = new Runnable();
+        top.Add(new MyWindow());
+        Application.Run(top);
+        top.Dispose();
+        Application.Shutdown();
     }
 }

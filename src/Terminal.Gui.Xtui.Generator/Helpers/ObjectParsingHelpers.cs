@@ -22,6 +22,7 @@ internal static class ObjectParsingHelpers
         { "Text", "string" },      // View, Window, Label, Button
         { "Title", "string" },     // View, Window
         { "Id", "string" },        // View, Window, Label, Button
+        { "x:Key", "string" },
 
         // Boolean properties
         { "Visible", "bool" },                      // View, Window, Label, Button
@@ -44,8 +45,8 @@ internal static class ObjectParsingHelpers
         { "Width", "Dim" },        // View, Window, Label, Button
         { "Height", "Dim" },       // View, Window, Label, Button
 
-        // CheckBox-specific properties
-        { "CheckedState", "CheckState" },
+        // CheckBox-specific properties        
+        { "Value", "CheckState" },
         { "AllowCheckStateNone", "bool" },
         { "RadioStyle", "bool" },
         { "HighlightStates", "MouseState" },
@@ -83,8 +84,22 @@ internal static class ObjectParsingHelpers
         {
             // Extract the property path from {Binding PropertyName}
             string bindingPath = value.Substring (9, value.Length - 10).Trim ();
-            // Generate code like: this.PropertyName or whatever the binding path is
-            return ParseExpression (bindingPath);
+
+            // If the binding is being used for an event (e.g. Accepting), generate a
+            // lambda that will invoke the view-model's command at runtime. Otherwise
+            // reference the injected `_viewModel` field directly.
+            // TODO: PRIORITY 1: Update control properties dictionary to indicate which properties 
+            // TODO: are events and which are simple bindings, rather than relying on 
+            // TODO: property name heuristics.
+            if (string.Equals (propertyName, "Accepting", StringComparison.OrdinalIgnoreCase))
+            {
+                // Generate: (s, e) => { var cmd = _viewModel.ClickCommand; if (cmd is not null) cmd.Execute(null); e.Handled = true; }
+                string lambda = $"(s, e) => {{ var cmd = _viewModel.{bindingPath}; if (cmd is not null) cmd.Execute(null); e.Handled = true; }}";
+                return ParseExpression (lambda);
+            }
+
+            // Default: reference view-model member
+            return ParseExpression ("_viewModel." + bindingPath);
         }
 
         // Check for other directive syntax: {expression}
