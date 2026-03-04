@@ -31,7 +31,21 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+| # | Principle | Status | Notes |
+|---|-----------|--------|-------|
+| I | Code Quality & Maintainability | ⬜ | Pure-function public APIs; no magic strings; secrets-free; nullable enabled |
+| II | Test-First Development | ⬜ | Tests written and failing before implementation begins |
+| III | Integration Testing Over Mocks | ⬜ | Generated code validated against real Terminal.Gui controls |
+| IV | Generated Code Quality | ⬜ | Compiles warning-free; readable; XML docs on public partials |
+| V | Performance & Efficiency | ⬜ | Incremental pipeline; benchmarks run; no >10% regression |
+| VI | User Experience Consistency | ⬜ | XSD autocomplete; actionable diagnostics; XAML conventions |
+| VII | Modularity & Separation of Concerns | ⬜ | Loader/Generator/Mapper boundaries enforced |
+| VIII | Living Documentation | ⬜ | README and XML docs updated; no undocumented public surface |
+| IX | Defensive Error Handling | ⬜ | Typed exceptions; Diagnostics with line/col; no silent swallow |
+| X | Structured Logging | ⬜ | MEL abstractions injected; N/A for pure-generator components |
+| XI | External-Only Mocking | ⬜ | NSubstitute for external deps only; internal fakes hand-authored |
+
+> Mark each ✅ satisfied / ❌ violation (document in PR) / N/A with justification.
 
 ## Project Structure
 
