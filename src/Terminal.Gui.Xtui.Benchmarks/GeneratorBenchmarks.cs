@@ -1,8 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using Terminal.Gui.Xtui;
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Benchmarks;
 
@@ -21,8 +21,8 @@ public class GeneratorBenchmarks
     private ElementNode _window100Children = null!;
     private ElementNode _checkBoxWindow = null!;
     private ElementNode _mixedControlWindow = null!;
-    private ElementNode _topLevelEmpty = null!;
-    private ElementNode _topLevel50Children = null!;
+    private ElementNode _runnableEmpty = null!;
+    private ElementNode _runnable50Children = null!;
     private ElementNode _button1 = null!;
     private ElementNode _button10Properties = null!;
     private ElementNode _button50Batch = null!;
@@ -33,7 +33,7 @@ public class GeneratorBenchmarks
     private CheckBoxGenerator _checkBoxGenerator = null!;
     private ButtonGenerator _buttonGenerator = null!;
     private LabelGenerator _labelGenerator = null!;
-    private TopLevelGenerator _topLevelGenerator = null!;
+    private RunnableGenerator _runnableGenerator = null!;
     private GeneratorFactory _factory = null!;
 
     [GlobalSetup]
@@ -47,7 +47,7 @@ public class GeneratorBenchmarks
 
         // Empty window
         _windowEmpty = new ElementNode { ElementTypeName = "Window" };
-        _windowEmpty.Attributes ["Title"] = "Empty";
+        _windowEmpty.Attributes["Title"] = "Empty";
 
         // Window with 1 child
         _window1Child = CreateWindowWithChildren (1);
@@ -76,13 +76,14 @@ public class GeneratorBenchmarks
         _label1 = CreateLabel ("Username:", 0, 5);
         _label10Properties = CreateLabelWithManyProperties ();
         _label50Batch = CreateLabelBatch (50);
-        
-        // Toplevel benchmarks
-        _topLevelGenerator = new TopLevelGenerator ();
-        _topLevelEmpty = new ElementNode { ElementTypeName = "Toplevel" };
-        _topLevelEmpty.Attributes ["Modal"] = "false";
-        // Toplevel with 50 children for benchmarks
-        _topLevel50Children = CreateWindowWithChildren (50);
+
+        // Runnable benchmarks
+        _runnableGenerator = new RunnableGenerator ();
+        _runnableEmpty = new ElementNode { ElementTypeName = "Runnable" };
+        _runnableEmpty.Attributes["Modal"] = "false";
+        // Runnable with 50 children for benchmarks
+        _runnable50Children = CreateWindowWithChildren (50);
+        // Update element type names in children set if necessary (already uses Window children)
     }
 
     [Benchmark (Baseline = true, Description = "Window Empty")]
@@ -115,16 +116,16 @@ public class GeneratorBenchmarks
         return _windowGenerator.GenerateClass (_window100Children, "Benchmark", "Window100", _factory);
     }
 
-    [Benchmark (Description = "Toplevel Empty")]
-    public string GenerateTopLevelEmpty ()
+    [Benchmark (Description = "Runnable Empty")]
+    public string GenerateRunnableEmpty ()
     {
-        return _topLevelGenerator.GenerateClass (_topLevelEmpty, "Benchmark", "EmptyTopLevel", _factory);
+        return _runnableGenerator.GenerateClass (_runnableEmpty, "Benchmark", "EmptyRunnable", _factory);
     }
 
-    [Benchmark (Description = "Toplevel 50 Children")]
-    public string GenerateTopLevel50Children ()
+    [Benchmark (Description = "Runnable 50 Children")]
+    public string GenerateRunnable50Children ()
     {
-        return _topLevelGenerator.GenerateClass (_topLevel50Children, "Benchmark", "TopLevel50", _factory);
+        return _runnableGenerator.GenerateClass (_runnable50Children, "Benchmark", "Runnable50", _factory);
     }
 
     [Benchmark (Description = "CheckBox Window (50 CheckBoxes)")]
@@ -197,16 +198,16 @@ public class GeneratorBenchmarks
     private static ElementNode CreateWindowWithChildren (int childCount)
     {
         var window = new ElementNode { ElementTypeName = "Window" };
-        window.Attributes ["Title"] = $"Window with {childCount} children";
+        window.Attributes["Title"] = $"Window with {childCount} children";
 
         for (int i = 0; i < childCount; i++)
         {
             var label = new ElementNode { ElementTypeName = "Label" };
-            label.Attributes ["Text"] = $"Label {i}";
-            label.Attributes ["X"] = (i % 10).ToString ();
-            label.Attributes ["Y"] = (i / 10).ToString ();
-            label.Attributes ["Width"] = "20";
-            label.Attributes ["Height"] = "1";
+            label.Attributes["Text"] = $"Label {i}";
+            label.Attributes["X"] = (i % 10).ToString ();
+            label.Attributes["Y"] = (i / 10).ToString ();
+            label.Attributes["Width"] = "20";
+            label.Attributes["Height"] = "1";
             window.Children.Add (label);
         }
 
@@ -219,26 +220,26 @@ public class GeneratorBenchmarks
     private static ElementNode CreateCheckBoxWindow (int childCount)
     {
         var window = new ElementNode { ElementTypeName = "Window" };
-        window.Attributes ["Title"] = $"CheckBox Window with {childCount} checkboxes";
+        window.Attributes["Title"] = $"CheckBox Window with {childCount} checkboxes";
 
         for (int i = 0; i < childCount; i++)
         {
             var checkBox = new ElementNode { ElementTypeName = "CheckBox" };
-            checkBox.Attributes ["Text"] = $"Option {i}";
-            checkBox.Attributes ["CheckedState"] = (i % 2) == 0 ? "Checked" : "UnChecked";
-            checkBox.Attributes ["X"] = (i % 10).ToString ();
-            checkBox.Attributes ["Y"] = (i / 10).ToString ();
-            
+            checkBox.Attributes["Text"] = $"Option {i}";
+            checkBox.Attributes["CheckedState"] = (i % 2) == 0 ? "Checked" : "UnChecked";
+            checkBox.Attributes["X"] = (i % 10).ToString ();
+            checkBox.Attributes["Y"] = (i / 10).ToString ();
+
             if (i % 3 == 0)
             {
-                checkBox.Attributes ["AllowCheckStateNone"] = "true";
+                checkBox.Attributes["AllowCheckStateNone"] = "true";
             }
-            
+
             if (i % 5 == 0)
             {
-                checkBox.Attributes ["RadioStyle"] = "true";
+                checkBox.Attributes["RadioStyle"] = "true";
             }
-            
+
             window.Children.Add (checkBox);
         }
 
@@ -251,31 +252,31 @@ public class GeneratorBenchmarks
     private static ElementNode CreateMixedControlWindow (int childCount)
     {
         var window = new ElementNode { ElementTypeName = "Window" };
-        window.Attributes ["Title"] = $"Mixed Window with {childCount} controls";
+        window.Attributes["Title"] = $"Mixed Window with {childCount} controls";
 
         for (int i = 0; i < childCount; i++)
         {
             ElementNode control;
-            
+
             switch (i % 3)
             {
                 case 0:
                     control = new ElementNode { ElementTypeName = "Label" };
-                    control.Attributes ["Text"] = $"Label {i}";
+                    control.Attributes["Text"] = $"Label {i}";
                     break;
                 case 1:
                     control = new ElementNode { ElementTypeName = "Button" };
-                    control.Attributes ["Text"] = $"Button {i}";
+                    control.Attributes["Text"] = $"Button {i}";
                     break;
                 default:
                     control = new ElementNode { ElementTypeName = "CheckBox" };
-                    control.Attributes ["Text"] = $"CheckBox {i}";
-                    control.Attributes ["CheckedState"] = (i % 2) == 0 ? "Checked" : "UnChecked";
+                    control.Attributes["Text"] = $"CheckBox {i}";
+                    control.Attributes["CheckedState"] = (i % 2) == 0 ? "Checked" : "UnChecked";
                     break;
             }
-            
-            control.Attributes ["X"] = (i % 10).ToString ();
-            control.Attributes ["Y"] = (i / 10).ToString ();
+
+            control.Attributes["X"] = (i % 10).ToString ();
+            control.Attributes["Y"] = (i / 10).ToString ();
             window.Children.Add (control);
         }
 
@@ -288,9 +289,9 @@ public class GeneratorBenchmarks
     private static ElementNode CreateButton (string text, int x, int y)
     {
         var button = new ElementNode { ElementTypeName = "Button" };
-        button.Attributes ["Text"] = text;
-        button.Attributes ["X"] = x.ToString ();
-        button.Attributes ["Y"] = y.ToString ();
+        button.Attributes["Text"] = text;
+        button.Attributes["X"] = x.ToString ();
+        button.Attributes["Y"] = y.ToString ();
         return button;
     }
 
@@ -300,14 +301,14 @@ public class GeneratorBenchmarks
     private static ElementNode CreateButtonWithManyProperties ()
     {
         var button = new ElementNode { ElementTypeName = "Button" };
-        button.Attributes ["Text"] = "Submit Form";
-        button.Attributes ["X"] = "10";
-        button.Attributes ["Y"] = "20";
-        button.Attributes ["Width"] = "25";
-        button.Attributes ["Height"] = "3";
-        button.Attributes ["Enabled"] = "true";
-        button.Attributes ["Visible"] = "true";
-        button.Attributes ["CanFocus"] = "true";
+        button.Attributes["Text"] = "Submit Form";
+        button.Attributes["X"] = "10";
+        button.Attributes["Y"] = "20";
+        button.Attributes["Width"] = "25";
+        button.Attributes["Height"] = "3";
+        button.Attributes["Enabled"] = "true";
+        button.Attributes["Visible"] = "true";
+        button.Attributes["CanFocus"] = "true";
         return button;
     }
 
@@ -317,9 +318,9 @@ public class GeneratorBenchmarks
     private static ElementNode CreateButtonBatch (int count)
     {
         var button = new ElementNode { ElementTypeName = "Button" };
-        button.Attributes ["Text"] = "Action";
-        button.Attributes ["X"] = "5";
-        button.Attributes ["Y"] = "5";
+        button.Attributes["Text"] = "Action";
+        button.Attributes["X"] = "5";
+        button.Attributes["Y"] = "5";
         return button;
     }
 
@@ -329,9 +330,9 @@ public class GeneratorBenchmarks
     private static ElementNode CreateLabel (string text, int x, int y)
     {
         var label = new ElementNode { ElementTypeName = "Label" };
-        label.Attributes ["Text"] = text;
-        label.Attributes ["X"] = x.ToString ();
-        label.Attributes ["Y"] = y.ToString ();
+        label.Attributes["Text"] = text;
+        label.Attributes["X"] = x.ToString ();
+        label.Attributes["Y"] = y.ToString ();
         return label;
     }
 
@@ -341,14 +342,14 @@ public class GeneratorBenchmarks
     private static ElementNode CreateLabelWithManyProperties ()
     {
         var label = new ElementNode { ElementTypeName = "Label" };
-        label.Attributes ["Text"] = "Form Label:";
-        label.Attributes ["X"] = "0";
-        label.Attributes ["Y"] = "10";
-        label.Attributes ["Width"] = "{Fill}";
-        label.Attributes ["Height"] = "{Auto}";
-        label.Attributes ["Enabled"] = "true";
-        label.Attributes ["Visible"] = "true";
-        label.Attributes ["CanFocus"] = "false";
+        label.Attributes["Text"] = "Form Label:";
+        label.Attributes["X"] = "0";
+        label.Attributes["Y"] = "10";
+        label.Attributes["Width"] = "{Fill}";
+        label.Attributes["Height"] = "{Auto}";
+        label.Attributes["Enabled"] = "true";
+        label.Attributes["Visible"] = "true";
+        label.Attributes["CanFocus"] = "false";
         return label;
     }
 
@@ -358,9 +359,9 @@ public class GeneratorBenchmarks
     private static ElementNode CreateLabelBatch (int count)
     {
         var label = new ElementNode { ElementTypeName = "Label" };
-        label.Attributes ["Text"] = "Item";
-        label.Attributes ["X"] = "0";
-        label.Attributes ["Y"] = "0";
+        label.Attributes["Text"] = "Item";
+        label.Attributes["X"] = "0";
+        label.Attributes["Y"] = "0";
         return label;
     }
 }
@@ -389,7 +390,7 @@ public class MenuBarGeneratorBenchmarks
 
         // Empty MenuBar
         _menuBarEmpty = new ElementNode { ElementTypeName = "MenuBar" };
-        _menuBarEmpty.Attributes ["Id"] = "menuBar";
+        _menuBarEmpty.Attributes["Id"] = "menuBar";
 
         // MenuBar with 1 item
         _menuBar1Item = CreateMenuBarWithItems (1);
@@ -446,13 +447,13 @@ public class MenuBarGeneratorBenchmarks
     private static ElementNode CreateMenuBarWithItems (int count)
     {
         var menuBar = new ElementNode { ElementTypeName = "MenuBar" };
-        menuBar.Attributes ["Title"] = "Main Menu";
-        menuBar.Attributes ["Id"] = "menuBar";
+        menuBar.Attributes["Title"] = "Main Menu";
+        menuBar.Attributes["Id"] = "menuBar";
 
         for (int i = 0; i < count; i++)
         {
             var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
-            menuBarItem.Attributes ["Title"] = $"_Menu{i}";
+            menuBarItem.Attributes["Title"] = $"_Menu{i}";
             menuBar.Children.Add (menuBarItem);
         }
 
@@ -465,21 +466,21 @@ public class MenuBarGeneratorBenchmarks
     private static ElementNode CreateMenuBarWithManyProperties ()
     {
         var menuBar = new ElementNode { ElementTypeName = "MenuBar" };
-        menuBar.Attributes ["Title"] = "Application Menu";
-        menuBar.Attributes ["Id"] = "mainMenuBar";
-        menuBar.Attributes ["X"] = "0";
-        menuBar.Attributes ["Y"] = "0";
-        menuBar.Attributes ["Width"] = "{Fill}";
-        menuBar.Attributes ["Height"] = "1";
-        menuBar.Attributes ["Enabled"] = "true";
-        menuBar.Attributes ["Visible"] = "true";
-        menuBar.Attributes ["CanFocus"] = "true";
+        menuBar.Attributes["Title"] = "Application Menu";
+        menuBar.Attributes["Id"] = "mainMenuBar";
+        menuBar.Attributes["X"] = "0";
+        menuBar.Attributes["Y"] = "0";
+        menuBar.Attributes["Width"] = "{Fill}";
+        menuBar.Attributes["Height"] = "1";
+        menuBar.Attributes["Enabled"] = "true";
+        menuBar.Attributes["Visible"] = "true";
+        menuBar.Attributes["CanFocus"] = "true";
 
         // Add a few items
         for (int i = 0; i < 3; i++)
         {
             var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
-            menuBarItem.Attributes ["Title"] = $"_Item{i}";
+            menuBarItem.Attributes["Title"] = $"_Item{i}";
             menuBar.Children.Add (menuBarItem);
         }
 
@@ -510,29 +511,29 @@ public class TextFieldGeneratorBenchmarks
 
         // Simple TextField
         _textFieldSimple = new ElementNode { ElementTypeName = "TextField" };
-        _textFieldSimple.Attributes ["Text"] = "Default Value";
+        _textFieldSimple.Attributes["Text"] = "Default Value";
 
         // TextField with Secret property
         _textFieldWithSecret = new ElementNode { ElementTypeName = "TextField" };
-        _textFieldWithSecret.Attributes ["Id"] = "_passwordField";
-        _textFieldWithSecret.Attributes ["Secret"] = "true";
-        _textFieldWithSecret.Attributes ["X"] = "10";
-        _textFieldWithSecret.Attributes ["Y"] = "5";
+        _textFieldWithSecret.Attributes["Id"] = "_passwordField";
+        _textFieldWithSecret.Attributes["Secret"] = "true";
+        _textFieldWithSecret.Attributes["X"] = "10";
+        _textFieldWithSecret.Attributes["Y"] = "5";
 
         // TextField with many properties
         _textFieldWithManyProperties = new ElementNode { ElementTypeName = "TextField" };
-        _textFieldWithManyProperties.Attributes ["Id"] = "_usernameField";
-        _textFieldWithManyProperties.Attributes ["Text"] = "Initial";
-        _textFieldWithManyProperties.Attributes ["X"] = "{Right _label + 2}";
-        _textFieldWithManyProperties.Attributes ["Y"] = "0";
-        _textFieldWithManyProperties.Attributes ["Width"] = "30";
-        _textFieldWithManyProperties.Attributes ["Height"] = "1";
-        _textFieldWithManyProperties.Attributes ["Enabled"] = "true";
-        _textFieldWithManyProperties.Attributes ["CanFocus"] = "true";
+        _textFieldWithManyProperties.Attributes["Id"] = "_usernameField";
+        _textFieldWithManyProperties.Attributes["Text"] = "Initial";
+        _textFieldWithManyProperties.Attributes["X"] = "{Right _label + 2}";
+        _textFieldWithManyProperties.Attributes["Y"] = "0";
+        _textFieldWithManyProperties.Attributes["Width"] = "30";
+        _textFieldWithManyProperties.Attributes["Height"] = "1";
+        _textFieldWithManyProperties.Attributes["Enabled"] = "true";
+        _textFieldWithManyProperties.Attributes["CanFocus"] = "true";
 
         // TextField for batch testing
         _textFieldBatch50 = new ElementNode { ElementTypeName = "TextField" };
-        _textFieldBatch50.Attributes ["Text"] = "Input";
+        _textFieldBatch50.Attributes["Text"] = "Input";
     }
 
     [Benchmark (Baseline = true, Description = "TextField Simple")]
@@ -589,31 +590,31 @@ public class ListViewGeneratorBenchmarks
 
         // Simple ListView
         _listViewSimple = new ElementNode { ElementTypeName = "ListView" };
-        _listViewSimple.Attributes ["Id"] = "_listView";
+        _listViewSimple.Attributes["Id"] = "_listView";
 
         // ListView with dimensions
         _listViewWithDimensions = new ElementNode { ElementTypeName = "ListView" };
-        _listViewWithDimensions.Attributes ["Id"] = "_listView";
-        _listViewWithDimensions.Attributes ["Width"] = "40";
-        _listViewWithDimensions.Attributes ["Height"] = "10";
-        _listViewWithDimensions.Attributes ["X"] = "0";
-        _listViewWithDimensions.Attributes ["Y"] = "0";
+        _listViewWithDimensions.Attributes["Id"] = "_listView";
+        _listViewWithDimensions.Attributes["Width"] = "40";
+        _listViewWithDimensions.Attributes["Height"] = "10";
+        _listViewWithDimensions.Attributes["X"] = "0";
+        _listViewWithDimensions.Attributes["Y"] = "0";
 
         // ListView with many properties
         _listViewWithManyProperties = new ElementNode { ElementTypeName = "ListView" };
-        _listViewWithManyProperties.Attributes ["Id"] = "_itemsListView";
-        _listViewWithManyProperties.Attributes ["X"] = "{Center}";
-        _listViewWithManyProperties.Attributes ["Y"] = "2";
-        _listViewWithManyProperties.Attributes ["Width"] = "{Fill - 5}";
-        _listViewWithManyProperties.Attributes ["Height"] = "{Fill - 3}";
-        _listViewWithManyProperties.Attributes ["Enabled"] = "true";
-        _listViewWithManyProperties.Attributes ["CanFocus"] = "true";
-        _listViewWithManyProperties.Attributes ["Visible"] = "true";
+        _listViewWithManyProperties.Attributes["Id"] = "_itemsListView";
+        _listViewWithManyProperties.Attributes["X"] = "{Center}";
+        _listViewWithManyProperties.Attributes["Y"] = "2";
+        _listViewWithManyProperties.Attributes["Width"] = "{Fill - 5}";
+        _listViewWithManyProperties.Attributes["Height"] = "{Fill - 3}";
+        _listViewWithManyProperties.Attributes["Enabled"] = "true";
+        _listViewWithManyProperties.Attributes["CanFocus"] = "true";
+        _listViewWithManyProperties.Attributes["Visible"] = "true";
 
         // ListView for batch testing
         _listViewBatch20 = new ElementNode { ElementTypeName = "ListView" };
-        _listViewBatch20.Attributes ["Width"] = "30";
-        _listViewBatch20.Attributes ["Height"] = "8";
+        _listViewBatch20.Attributes["Width"] = "30";
+        _listViewBatch20.Attributes["Height"] = "8";
     }
 
     [Benchmark (Baseline = true, Description = "ListView Simple")]
@@ -674,21 +675,21 @@ public class MenuItemGeneratorBenchmarks
 
         // Simple MenuItem
         _menuItemSimple = new ElementNode { ElementTypeName = "MenuItem" };
-        _menuItemSimple.Attributes ["Title"] = "_Open";
+        _menuItemSimple.Attributes["Title"] = "_Open";
 
         // MenuItem with properties
         _menuItemWithProperties = new ElementNode { ElementTypeName = "MenuItem" };
-        _menuItemWithProperties.Attributes ["Title"] = "_Save As...";
-        _menuItemWithProperties.Attributes ["HelpText"] = "Save file with new name";
-        _menuItemWithProperties.Attributes ["Enabled"] = "true";
+        _menuItemWithProperties.Attributes["Title"] = "_Save As...";
+        _menuItemWithProperties.Attributes["HelpText"] = "Save file with new name";
+        _menuItemWithProperties.Attributes["Enabled"] = "true";
 
         // MenuItem for batch testing
         _menuItemBatch30 = new ElementNode { ElementTypeName = "MenuItem" };
-        _menuItemBatch30.Attributes ["Title"] = "_Action";
+        _menuItemBatch30.Attributes["Title"] = "_Action";
 
         // Empty MenuBarItem
         _menuBarItemEmpty = new ElementNode { ElementTypeName = "MenuBarItem" };
-        _menuBarItemEmpty.Attributes ["Title"] = "_File";
+        _menuBarItemEmpty.Attributes["Title"] = "_File";
 
         // MenuBarItem with 5 MenuItems
         _menuBarItemWith5MenuItems = CreateMenuBarItemWithMenuItems (5);
@@ -745,15 +746,15 @@ public class MenuItemGeneratorBenchmarks
     private static ElementNode CreateMenuBarItemWithMenuItems (int count)
     {
         var menuBarItem = new ElementNode { ElementTypeName = "MenuBarItem" };
-        menuBarItem.Attributes ["Title"] = $"_Menu ({count} items)";
+        menuBarItem.Attributes["Title"] = $"_Menu ({count} items)";
 
         for (int i = 0; i < count; i++)
         {
             var menuItem = new ElementNode { ElementTypeName = "MenuItem" };
-            menuItem.Attributes ["Title"] = $"_Item{i}";
+            menuItem.Attributes["Title"] = $"_Item{i}";
             if (i % 3 == 0)
             {
-                menuItem.Attributes ["HelpText"] = $"Help for item {i}";
+                menuItem.Attributes["HelpText"] = $"Help for item {i}";
             }
             menuBarItem.Children.Add (menuItem);
         }
@@ -785,32 +786,32 @@ public class GenericGeneratorBenchmarks
 
         // Simple custom control
         _customControlSimple = new ElementNode { ElementTypeName = "CustomView" };
-        _customControlSimple.Attributes ["Title"] = "My Custom View";
+        _customControlSimple.Attributes["Title"] = "My Custom View";
 
         // Custom control with properties
         _customControlWithProperties = new ElementNode { ElementTypeName = "AdvancedWidget" };
-        _customControlWithProperties.Attributes ["Id"] = "_widget";
-        _customControlWithProperties.Attributes ["X"] = "{Center}";
-        _customControlWithProperties.Attributes ["Y"] = "5";
-        _customControlWithProperties.Attributes ["Width"] = "{Fill - 10}";
-        _customControlWithProperties.Attributes ["Height"] = "20";
-        _customControlWithProperties.Attributes ["Enabled"] = "true";
-        _customControlWithProperties.Attributes ["Visible"] = "true";
-        _customControlWithProperties.Attributes ["CanFocus"] = "true";
+        _customControlWithProperties.Attributes["Id"] = "_widget";
+        _customControlWithProperties.Attributes["X"] = "{Center}";
+        _customControlWithProperties.Attributes["Y"] = "5";
+        _customControlWithProperties.Attributes["Width"] = "{Fill - 10}";
+        _customControlWithProperties.Attributes["Height"] = "20";
+        _customControlWithProperties.Attributes["Enabled"] = "true";
+        _customControlWithProperties.Attributes["Visible"] = "true";
+        _customControlWithProperties.Attributes["CanFocus"] = "true";
 
         // Custom control with children
         _customControlWithChildren = new ElementNode { ElementTypeName = "ContainerControl" };
-        _customControlWithChildren.Attributes ["Title"] = "Container";
+        _customControlWithChildren.Attributes["Title"] = "Container";
         for (int i = 0; i < 5; i++)
         {
             var child = new ElementNode { ElementTypeName = "ChildControl" };
-            child.Attributes ["Text"] = $"Child {i}";
+            child.Attributes["Text"] = $"Child {i}";
             _customControlWithChildren.Children.Add (child);
         }
 
         // Custom control for batch testing
         _customControlBatch25 = new ElementNode { ElementTypeName = "SimpleCustomControl" };
-        _customControlBatch25.Attributes ["Name"] = "Control";
+        _customControlBatch25.Attributes["Name"] = "Control";
     }
 
     [Benchmark (Baseline = true, Description = "Generic Simple")]

@@ -90,7 +90,7 @@ public class Images : Scenario
         };
         _win.Add (cbSupportsTrueColor);
 
-        _cbSupportsSixel = new()
+        _cbSupportsSixel = new ()
         {
             X = Pos.Right (lblDriverName) + 2,
             Y = 1,
@@ -122,11 +122,11 @@ public class Images : Scenario
         {
             X = Pos.Right (cbSupportsTrueColor) + 2,
             Y = 0,
-            CheckedState = !Application.Force16Colors ? CheckState.Checked : CheckState.UnChecked,
+            CheckedState = !Driver.Force16Colors ? CheckState.Checked : CheckState.UnChecked,
             Enabled = canTrueColor,
             Text = "Use true color"
         };
-        cbUseTrueColor.CheckedStateChanging += (_, evt) => Application.Force16Colors = evt.Result == CheckState.UnChecked;
+        cbUseTrueColor.CheckedStateChanging += (_, evt) => Driver.Force16Colors = evt.Result == CheckState.UnChecked;
         _win.Add (cbUseTrueColor);
 
         var btnOpenImage = new Button { X = Pos.Right (cbUseTrueColor) + 2, Y = 0, Text = "Open Image" };
@@ -183,7 +183,7 @@ public class Images : Scenario
 
         if (!_sixelSupportResult.SupportsTransparency)
         {
-            if (MessageBox.Query (
+            if (MessageBox.Query (Application.Instance,
                                   "Transparency Not Supported",
                                   "It looks like your terminal does not support transparent sixel backgrounds. Do you want to try anyway?",
                                   "Yes",
@@ -219,18 +219,21 @@ public class Images : Scenario
         Color [,] bmp = _fire.GetFirePixels ();
 
         // TODO: Static way of doing this, suboptimal
-        if (_fireSixel != null)
+        // ConcurrentQueue doesn't support Remove, so we update the existing object
+        if (_fireSixel == null)
         {
-            Application.Sixel.Remove (_fireSixel);
+            _fireSixel = new ()
+            {
+                SixelData = _fireEncoder.EncodeSixel (bmp),
+                ScreenPosition = new (0, 0)
+            };
+            Application.GetSixels ().Enqueue (_fireSixel);
         }
-
-        _fireSixel = new ()
+        else
         {
-            SixelData = _fireEncoder.EncodeSixel (bmp),
-            ScreenPosition = new (0, 0)
-        };
-
-        Application.Sixel.Add (_fireSixel);
+            _fireSixel.SixelData = _fireEncoder.EncodeSixel (bmp);
+            _fireSixel.ScreenPosition = new (0, 0);
+        }
 
         _win.SetNeedsDraw ();
 
@@ -245,8 +248,6 @@ public class Images : Scenario
         _sixelNotSupported.Dispose ();
         _sixelSupported.Dispose ();
         _isDisposed = true;
-
-        Application.Sixel.Clear ();
     }
 
     private void OpenImage (object sender, CommandEventArgs e)
@@ -288,7 +289,7 @@ public class Images : Scenario
         }
         catch (Exception ex)
         {
-            MessageBox.ErrorQuery ("Could not open file", ex.Message, "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "Could not open file", ex.Message, "Ok");
 
             return;
         }
@@ -492,7 +493,7 @@ public class Images : Scenario
     {
         if (_imageView.FullResImage == null)
         {
-            MessageBox.Query ("No Image Loaded", "You must first open an image.  Use the 'Open Image' button above.", "Ok");
+            MessageBox.Query (Application.Instance, "No Image Loaded", "You must first open an image.  Use the 'Open Image' button above.", "Ok");
 
             return;
         }
@@ -513,7 +514,7 @@ public class Images : Scenario
                 ScreenPosition = _screenLocationForSixel
             };
 
-            Application.Sixel.Add (_sixelImage);
+            Application.GetSixels ().Enqueue (_sixelImage);
         }
         else
         {
@@ -568,22 +569,15 @@ public class Images : Scenario
 
         var pv = new PaletteView (encoder.Quantizer.Palette.ToList ());
 
-        var dlg = new Dialog
+        Dialog dlg = new ()
         {
-            Title = "Palette (Esc to close)",
-            Width = Dim.Fill (2),
-            Height = Dim.Fill (1)
+            Title = "Palette",
+            Buttons = [new () { Title = "_Cancel" }]
         };
 
-        var btn = new Button
-        {
-            Text = "Ok"
-        };
-
-        btn.Accepting += (s, e) => Application.RequestStop ();
         dlg.Add (pv);
-        dlg.AddButton (btn);
         Application.Run (dlg);
+
         dlg.Dispose ();
 
         return encoded;
@@ -631,7 +625,7 @@ public class Images : Scenario
         public Image<Rgba32> FullResImage;
         private Image<Rgba32> _matchSize;
 
-        protected override bool OnDrawingContent ()
+        protected override bool OnDrawingContent (DrawContext context)
         {
             if (FullResImage == null)
             {
@@ -681,8 +675,8 @@ public class Images : Scenario
         public PaletteView (List<Color> palette)
         {
             _palette = palette ?? new List<Color> ();
-            Width = Dim.Fill ();
-            Height = Dim.Fill ();
+            Width = Dim.Fill (0, minimumContentDim: 50);
+            Height = Dim.Fill (0, minimumContentDim: 10);
         }
 
         // Automatically calculates rows and columns based on the available bounds
@@ -708,7 +702,7 @@ public class Images : Scenario
             return (columns, rows);
         }
 
-        protected override bool OnDrawingContent ()
+        protected override bool OnDrawingContent (DrawContext context)
         {
             if (_palette == null || _palette.Count == 0)
             {

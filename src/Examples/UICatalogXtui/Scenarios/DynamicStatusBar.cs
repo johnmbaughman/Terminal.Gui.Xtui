@@ -15,7 +15,7 @@ public class DynamicStatusBar : Scenario
     public override void Main ()
     {
         Application.Init ();
-        Application.Run<DynamicStatusBarSample> ().Dispose ();
+        Application.Run<DynamicStatusBarSample> ();
         Application.Shutdown ();
     }
 
@@ -79,7 +79,7 @@ public class DynamicStatusBar : Scenario
             }
             catch (Exception ex)
             {
-                MessageBox.ErrorQuery ("Binding Error", $"Binding failed: {ex}.", "Ok");
+                MessageBox.ErrorQuery (Application.Instance, "Binding Error", $"Binding failed: {ex}.", "Ok");
             }
         }
     }
@@ -140,7 +140,7 @@ public class DynamicStatusBar : Scenario
         public TextView TextAction { get; }
         public TextField TextShortcut { get; }
         public TextField TextTitle { get; }
-        public Action CreateAction (DynamicStatusItem item) { return () => MessageBox.ErrorQuery (item.Title, item.Action, "Ok"); }
+        public Action CreateAction (DynamicStatusItem item) { return () => MessageBox.ErrorQuery (Application.Instance, item.Title, item.Action, "Ok"); }
 
         public void EditStatusItem (Shortcut statusItem)
         {
@@ -184,7 +184,7 @@ public class DynamicStatusBar : Scenario
                               {
                                   if (string.IsNullOrEmpty (TextTitle.Text))
                                   {
-                                      MessageBox.ErrorQuery ("Invalid title", "Must enter a valid title!.", "Ok");
+                                      MessageBox.ErrorQuery (App, "Invalid title", "Must enter a valid title!.", "Ok");
                                   }
                                   else
                                   {
@@ -200,10 +200,10 @@ public class DynamicStatusBar : Scenario
                                       TextTitle.Text = string.Empty;
                                       Application.RequestStop ();
                                   };
-            var dialog = new Dialog { Title = "Enter the menu details.", Buttons = [btnOk, btnCancel], Height = Dim.Auto (DimAutoStyle.Content, 17, Application.Screen.Height) };
+            var dialog = new Dialog { Title = "Enter the menu details.", Buttons = [btnOk, btnCancel] };
 
-            Width = Dim.Fill ();
-            Height = Dim.Fill () - 2;
+            Width = Dim.Fill (0, minimumContentDim: 50);
+            Height = Dim.Fill (0, minimumContentDim: 10) - 2;
             dialog.Add (this);
             TextTitle.SetFocus ();
             TextTitle.CursorPosition = TextTitle.Text.Length;
@@ -382,7 +382,7 @@ public class DynamicStatusBar : Scenario
                               {
                                   if (string.IsNullOrEmpty (frmStatusBarDetails.TextTitle.Text) && _currentEditStatusItem != null)
                                   {
-                                      MessageBox.ErrorQuery ("Invalid title", "Must enter a valid title!.", "Ok");
+                                      MessageBox.ErrorQuery (App, "Invalid title", "Must enter a valid title!.", "Ok");
                                   }
                                   else if (_currentEditStatusItem != null)
                                   {

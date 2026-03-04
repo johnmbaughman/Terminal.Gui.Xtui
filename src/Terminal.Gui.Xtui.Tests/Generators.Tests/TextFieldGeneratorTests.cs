@@ -1,5 +1,5 @@
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -122,10 +122,10 @@ public class TextFieldGeneratorTests
     [Fact]
     public void TextFieldGenerator_WithDimExpressions_GeneratesDimCode()
     {
-        string xtui = @"<TextField xmlns=""http://schemas.terminal.gui/xtui"" 
-                                   Width=""{Fill}"" 
+        string xtui = @"<TextField xmlns=""http://schemas.terminal.gui/xtui""
+                                   Width=""{Fill}""
                                    Height=""{Auto}"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new TextFieldGenerator();
         var factory = new GeneratorFactory();
@@ -139,13 +139,13 @@ public class TextFieldGeneratorTests
     [Fact]
     public void TextFieldGenerator_WithPositioning_GeneratesAllCode()
     {
-        string xtui = @"<TextField xmlns=""http://schemas.terminal.gui/xtui"" 
-                                   Text=""Enter password"" 
-                                   Secret=""true"" 
-                                   X=""5"" 
-                                   Y=""10"" 
+        string xtui = @"<TextField xmlns=""http://schemas.terminal.gui/xtui""
+                                   Text=""Enter password""
+                                   Secret=""true""
+                                   X=""5""
+                                   Y=""10""
                                    Width=""30"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new TextFieldGenerator();
         var factory = new GeneratorFactory();

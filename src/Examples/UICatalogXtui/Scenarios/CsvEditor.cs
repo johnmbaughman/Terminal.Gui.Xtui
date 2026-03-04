@@ -215,7 +215,7 @@ public class CsvEditor : Scenario
                                       _tableView.Table.Columns
                                      );
 
-            int result = MessageBox.Query (
+            int? result = MessageBox.Query (Application.Instance,
                                            "Column Type",
                                            "Pick a data type for the column",
                                            "Date",
@@ -225,7 +225,7 @@ public class CsvEditor : Scenario
                                            "Cancel"
                                           );
 
-            if (result <= -1 || result >= 4)
+            if (result is null || result >= 4)
             {
                 return;
             }
@@ -308,7 +308,7 @@ public class CsvEditor : Scenario
 
         if (_tableView.SelectedColumn == -1)
         {
-            MessageBox.ErrorQuery ("No Column", "No column selected", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No Column", "No column selected", "Ok");
 
             return;
         }
@@ -320,7 +320,7 @@ public class CsvEditor : Scenario
         }
         catch (Exception ex)
         {
-            MessageBox.ErrorQuery ("Could not remove column", ex.Message, "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "Could not remove column", ex.Message, "Ok");
         }
     }
 
@@ -342,7 +342,7 @@ public class CsvEditor : Scenario
             }
             catch (Exception ex)
             {
-                MessageBox.ErrorQuery (60, 20, "Failed to set text", ex.Message, "Ok");
+                MessageBox.ErrorQuery (Application.Instance, "Failed to set text", ex.Message, "Ok");
             }
 
             _tableView.Update ();
@@ -366,7 +366,7 @@ public class CsvEditor : Scenario
 
         Label lbl = new () { X = 0, Y = 1, Text = label };
 
-        TextField tf = new () { Text = initialText, X = 0, Y = 2, Width = Dim.Fill () };
+        TextField tf = new () { Text = initialText, X = 0, Y = 2, Width = Dim.Fill (0, minimumContentDim: 50) };
 
         d.Add (lbl, tf);
         tf.SetFocus ();
@@ -388,7 +388,7 @@ public class CsvEditor : Scenario
 
         if (_tableView.SelectedColumn == -1)
         {
-            MessageBox.ErrorQuery ("No Column", "No column selected", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No Column", "No column selected", "Ok");
 
             return;
         }
@@ -413,7 +413,7 @@ public class CsvEditor : Scenario
         }
         catch (Exception ex)
         {
-            MessageBox.ErrorQuery ("Error moving column", ex.Message, "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "Error moving column", ex.Message, "Ok");
         }
     }
 
@@ -426,7 +426,7 @@ public class CsvEditor : Scenario
 
         if (_tableView.SelectedRow == -1)
         {
-            MessageBox.ErrorQuery ("No Rows", "No row selected", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No Rows", "No row selected", "Ok");
 
             return;
         }
@@ -446,7 +446,7 @@ public class CsvEditor : Scenario
                     return;
                 }
 
-                object?[] arrayItems = currentRow.ItemArray;
+                object? [] arrayItems = currentRow.ItemArray;
                 _currentTable.Rows.Remove (currentRow);
 
                 // Removing and Inserting the same DataRow seems to result in it loosing its values so we have to create a new instance
@@ -462,7 +462,7 @@ public class CsvEditor : Scenario
         }
         catch (Exception ex)
         {
-            MessageBox.ErrorQuery ("Error moving column", ex.Message, "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "Error moving column", ex.Message, "Ok");
         }
     }
 
@@ -470,7 +470,7 @@ public class CsvEditor : Scenario
     {
         if (_tableView?.Table is null)
         {
-            MessageBox.ErrorQuery ("No Table Loaded", "No table has currently be opened", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No Table Loaded", "No table has currently be opened", "Ok");
 
             return true;
         }
@@ -575,14 +575,14 @@ public class CsvEditor : Scenario
                 _selectedCellTextField.SuperView.Enabled = true;
             }
 
-            if (Application.TopRunnable is { })
+            if (Application.TopRunnableView is { })
             {
-                Application.TopRunnable.Title = $"{GetName ()} - {Path.GetFileName (_currentFile)}";
+                Application.TopRunnableView.Title = $"{GetName ()} - {Path.GetFileName (_currentFile)}";
             }
         }
         catch (Exception ex)
         {
-            MessageBox.ErrorQuery (
+            MessageBox.ErrorQuery (Application.Instance,
                                    "Open Failed",
                                    $"Error on line {lineNumber}{Environment.NewLine}{ex.Message}",
                                    "Ok"
@@ -612,7 +612,7 @@ public class CsvEditor : Scenario
     {
         if (_tableView?.Table is null || string.IsNullOrWhiteSpace (_currentFile) || _currentTable is null)
         {
-            MessageBox.ErrorQuery ("No file loaded", "No file is currently loaded", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No file loaded", "No file is currently loaded", "Ok");
 
             return;
         }
@@ -674,7 +674,7 @@ public class CsvEditor : Scenario
 
         if (col.DataType == typeof (string))
         {
-            MessageBox.ErrorQuery (
+            MessageBox.ErrorQuery (Application.Instance,
                                    "Cannot Format Column",
                                    "String columns cannot be Formatted, try adding a new column to the table with a date/numerical Type",
                                    "Ok"
@@ -711,7 +711,7 @@ public class CsvEditor : Scenario
 
         if (_tableView.SelectedColumn == -1)
         {
-            MessageBox.ErrorQuery ("No Column", "No column selected", "Ok");
+            MessageBox.ErrorQuery (Application.Instance, "No Column", "No column selected", "Ok");
 
             return;
         }

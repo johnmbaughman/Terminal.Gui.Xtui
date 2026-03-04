@@ -1,13 +1,13 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Helpers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
 
 /// <summary>
 /// Comprehensive test suite for FieldTransformationHelpers (>95% coverage target).
-/// Tests the variable→field transformation logic extracted from TopLevelGenerator.
+/// Tests the variable→field transformation logic extracted from RunnableGenerator.
 /// </summary>
 public class FieldTransformationHelpersTests
 {
@@ -428,12 +428,12 @@ public class FieldTransformationHelpersTests
 
     #endregion
 
-    #region Integration Tests (Matching TopLevelGenerator Pattern)
+    #region Integration Tests (Matching RunnableGenerator Pattern)
 
     [Fact]
-    public void Integration_ProcessMultipleStatements_MatchesTopLevelGeneratorBehavior()
+    public void Integration_ProcessMultipleStatements_MatchesRunnableGeneratorBehavior()
     {
-        // Arrange: Simulate TopLevelGenerator child processing
+        // Arrange: Simulate RunnableGenerator child processing
         // var button0 = new Button { ... };
         // var label0 = new Label { ... };
         // button0.Add(label0);
@@ -471,7 +471,7 @@ public class FieldTransformationHelpersTests
         var processedFields = new HashSet<string>();
         var transformedStatements = new List<StatementSyntax>();
 
-        // Act - Process each statement like TopLevelGenerator does
+        // Act - Process each statement like RunnableGenerator does
         foreach (var stmt in statements)
         {
             var processed = FieldTransformationHelpers.ProcessStatement(
@@ -507,7 +507,7 @@ public class FieldTransformationHelpersTests
     [Fact]
     public void Integration_WithIdAttribute_PreservesVariableName()
     {
-        // Arrange: When TopLevelGenerator uses controlId from Id attribute
+        // Arrange: When RunnableGenerator uses controlId from Id attribute
         // var myButton = new Button { ... };
         
         var localDecl = LocalDeclarationStatement(
@@ -538,7 +538,7 @@ public class FieldTransformationHelpersTests
     [Fact]
     public void Integration_ComplexScenario_MenuBarAndStatusBar()
     {
-        // Arrange: Simulate TopLevelGenerator handling MenuBar and StatusBar
+        // Arrange: Simulate RunnableGenerator handling MenuBar and StatusBar
         // var menuBar = new MenuBar { ... };
         // var statusBar = new StatusBar { ... };
         // this.Add(this.menuBar);

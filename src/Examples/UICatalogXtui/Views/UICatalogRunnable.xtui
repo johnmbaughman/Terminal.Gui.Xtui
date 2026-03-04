@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Runnable xmlns="http://schemas.terminal.gui/xtui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:UICatalogXtui.Converters;assembly=UICatalogXtui"
+    Title="UI Catalog Xtui">
+    <!-- TODO: Move resource generation to a separate helper 
+        file so that all Bindings can reference them 
+    -->
+    <Runnable.Resources>
+        <Converters:DimToHeightConverter x:Key="DimToHeightConverter" />
+    </Runnable.Resources>
+    <MenuBar Title="menuBar" Id="_menuBar">
+        <MenuBarItems>
+            <MenuBarItem Title="_File">
+                <MenuItems>
+                    <MenuItem Title="_Quit" HelpText="Quit UI Catalog" Key="QuitKey" Command="Quit"/>
+                </MenuItems>
+            </MenuBarItem>
+            <!-- <MenuBarItem Title = "_Themes" 
+                MenuBarItems ="{Binding CreateThemesMenuItems}" />                
+            <MenuBarItem Title="Diag_nostics" MenuBarItems="{Binding CreateDiagnosticsMenuItems}" />
+            <MenuBarItem Title="_Logging" MenuBarItems="{Binding CreateLoggingMenuItems}" /> -->
+            <!-- <MenuBarItem Title="_Help">
+                <MenuItems>
+                    <MenuItem Title="_Documentation" HelpText="API Docs" Key="F1" Action="{Binding OpenApiDocUrl}"/>
+                    <MenuItem Title="_README" HelpText="Project readme" Key="F2" Action="{Binding OpenReadMeUrl}"/>
+                    <MenuItem Title="_About..." HelpText="About UI Catalog" Key="A" KeyModifiers="Ctrl"/>
+                </MenuItems>
+            </MenuBarItem> -->
+        </MenuBarItems>
+    </MenuBar>
+    <StatusBar Visible="true" Id="_statusBar" AlignmentModes="IgnoreFirstOrLast" CanFocus="false">
+        <!--Bindings temporarily commented out: Visible="{Binding ShowStatusBar}" Height="{Binding ., Converter={StaticResource DimToHeightConverter}}"-->
+        <!--Height="{Dim Auto={style=Auto;minimumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}};maximumContentDim={Dim Func={_ => ShowStatusBar ? 1 : 0}}}}"-->
+        <Shortcuts>
+            <Shortcut CanFocus="false" Title="Quit" Key="QuitKey" />
+            <!-- BUG: Shortcut is not defining Id as the field name -->
+            <Shortcut Id="_statusBarShortcut" CanFocus="false" Title="Show/Hide Status Bar" Key="F10" />
+            <Shortcut CanFocus="false" HelpText="" BindKeyToApplication="true" Key="F7">
+                <CheckBox CanFocus="false" Title="16 color mode" />
+                <!--Binding temporarily commented out: CheckedState="{Binding Is16ColorMode}"-->
+            </Shortcut>
+            <Shortcut CanFocus="false" Title="Version Info" />
+        </Shortcuts>
+    </StatusBar>
+</Runnable>

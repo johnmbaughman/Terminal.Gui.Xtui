@@ -1,5 +1,5 @@
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -120,10 +120,10 @@ public class MenuBarItemGeneratorTests
 
         var openItem = new ElementNode { ElementTypeName = "MenuItem" };
         openItem.Attributes["Title"] = "Open";
-        
+
         var saveItem = new ElementNode { ElementTypeName = "MenuItem" };
         saveItem.Attributes["Title"] = "Save";
-        
+
         node.Children.Add(openItem);
         node.Children.Add(saveItem);
 

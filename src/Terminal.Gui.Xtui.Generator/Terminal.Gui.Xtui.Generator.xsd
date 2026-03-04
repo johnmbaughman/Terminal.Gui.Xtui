@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.terminal.gui/xtui" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.terminal.gui/xtui">
+  <xs:simpleType name="PosExpression">
+    <xs:annotation>
+      <xs:documentation>Position expression: integer, percentage (50%), or method call like {Center}, {AnchorEnd}, {Right _viewName + 1}</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="DimExpression">
+    <xs:annotation>
+      <xs:documentation>Dimension expression: integer, percentage (50%), or method call like {Fill}, {Auto}, {Percent 75}</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="CheckState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UnChecked" />
+      <xs:enumeration value="Checked" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextAlignment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Left" />
+      <xs:enumeration value="Right" />
+      <xs:enumeration value="Centered" />
+      <xs:enumeration value="Justified" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="ViewAttributes">
+    <xs:attribute name="Id" type="xs:string" />
+    <xs:attribute name="X" type="PosExpression" />
+    <xs:attribute name="Y" type="PosExpression" />
+    <xs:attribute name="Width" type="DimExpression" />
+    <xs:attribute name="Height" type="DimExpression" />
+    <xs:attribute name="Visible" type="xs:boolean" />
+    <xs:attribute name="Enabled" type="xs:boolean" />
+    <xs:attribute name="CanFocus" type="xs:boolean" />
+    <xs:attribute name="TabIndex" type="xs:int" />
+    <xs:attribute name="TabStop" type="xs:boolean" />
+    <xs:attribute name="Text" type="xs:string" />
+  </xs:attributeGroup>
+  <xs:element name="Adornment">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Parent" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Parent of this Adornment (the View this Adornment surrounds).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Diagnostics" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the Adornment will draw diagnostic information. This is a bit-field of ViewDiagnosticFlags.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Thickness" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Defines the rectangle that the Adornment will use to draw its content.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Viewport" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the rectangle that describes the area of the Adornment. The Location is always (0,0). The size is the size of the Frame.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SuperViewRendersLineCanvas" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Adornments only render to their Parent's or Parent's SuperView's LineCanvas, so setting this property throws an InvalidOperationException.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Bar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Orientation for this Bar. The default is Horizontal.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AlignmentModes" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the AlignmentModes for this Bar. The default is StartToEnd.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Border">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="LineStyle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets the style of the border by changing the Thickness. This is a helper API for setting the Thickness to (1,1,1,1) and setting the line style of the views that comprise the border. If set to None no border will be drawn.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Settings" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the settings for the border.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="DrawIndicator" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the subview used to render DrawIndicator.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Button">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:attribute name="IsDefault" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the Button will act as the default handler for Accept commands on the SuperView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NoDecorations" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the Button will show decorations or not. If true the glyphs that normally bracket the Button Title and the IsDefault indicator will not be shown.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NoPadding" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the Button will include padding on each side of the Title.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CharMap">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SelectedCodePoint" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the currently selected codepoint. Causes the Viewport to scroll to make the selected code point visible.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ShowGlyphWidths" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the number of columns each glyph is displayed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="StartCodePoint" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Specifies the starting offset for the character map. The default is 0x2500 which is the Box Drawing characters.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ShowUnicodeCategory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>When set, only glyphs whose UnicodeCategory matches the value are rendered. If null (default), all glyphs are rendered.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckBox">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:attribute name="AllowCheckStateNone" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If true allows CheckedState to be None. The default is false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CheckedState" type="CheckState">
+        <xs:annotation>
+          <xs:documentation>The state of the CheckBox.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RadioStyle" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If true, the CheckBox will display radio button style glyphs (●) instead of checkbox style glyphs (☑).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ColorPicker">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SelectedColor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The color selected in the picker</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Style" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Style settings for the color picker. After making changes ensure you call ApplyStyleChanges.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ColorPicker16">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="BoxHeight" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Height of a color box</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BoxWidth" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Width of a color box</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Cursor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Cursor for the selected color.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedColor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Selected color.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboBox">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HideDropdownListOnClick" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets if the drop-down list can be hide with a button click event.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IsShow" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets the drop-down list state, expanded or collapsed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ReadOnly" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If set to true, no changes to the text will be allowed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SearchText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Current search text</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedItem" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets the index of the currently selected item in the Source</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Source" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the IListDataSource backing this ComboBox, enabling custom rendering.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Culture" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>CultureInfo for date. The default is CultureInfo.CurrentCulture.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CursorPosition" type="xs:int" />
+      <xs:attribute name="Date" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the date of the DateField.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatePicker">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Culture" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>CultureInfo for date. The default is CultureInfo.CurrentCulture.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Date" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Get or set the date.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dialog">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ButtonAlignment" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Determines how the DialogButtons are aligned along the bottom of the dialog.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ButtonAlignmentModes" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the alignment modes for the dialog's buttons.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Buttons" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Optional buttons to lay out at the bottom of the dialog.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Canceled" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets a value indicating whether the Dialog was canceled.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowedTypes" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or Sets a collection of file types that the user can/must select. Only applies when OpenMode is File or Mixed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AllowsMultipleSelection" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or Sets a value indicating whether to allow selecting multiple existing files/directories. Defaults to false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CurrentFilter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The UI selected IAllowedType from combo box. May be null.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="FileOperationsHandler" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets behavior of the FileDialog when the user attempts to delete a selected file(s). Set to null to prevent deleting.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MultiSelected" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets all files/directories selected or an empty collection AllowsMultipleSelection is false or CancelSearch.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MustExist" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>True if the file/folder must exist already to be selected. This prevents user from entering the name of something that doesn't exist. Defaults to false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OpenMode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or Sets which FileSystemInfo type can be selected. Defaults to Mixed (i.e. DirectoryInfo or FileInfo).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Path" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or Sets the selected path in the dialog. This is the result that should be used if AllowsMultipleSelection is off and CancelSearch is true.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SearchMatcher" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Defines how the dialog matches files/folders when using the search box. Provide a custom implementation if you want to tailor how matching is performed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FlagSelector">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the value of the selected flags.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FrameView">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GraphView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AxisX" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Horizontal axis.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AxisY" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Vertical axis.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CellSize" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Translates console width/height into graph space. Defaults to 1 row/col of console space being 1 unit of graph space.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="GraphColor" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The color of the background of the graph and axis/labels.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MarginBottom" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Amount of space to leave on bottom of the graph. Graph content (Series) will not be rendered in margins but axis labels may be. Use Padding to add a margin outside of the GraphView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MarginLeft" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Amount of space to leave on left of the graph. Graph content (Series) will not be rendered in margins but axis labels may be. Use Padding to add a margin outside of the GraphView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ScrollOffset" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The graph space position of the bottom left of the graph. Changing this scrolls the viewport around in the graph.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HexView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ReadOnly" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether this HexView allows editing of the Stream of the underlying Stream. The default is false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Source" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets or gets the Stream the HexView is operating on; the stream must support seeking ( CanSeek == true).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BytesPerLine" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The bytes length per line.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Address" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the current byte position in the Stream.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AddressWidth" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the width of the Address column on the left. Set to 0 to hide. The default is 8.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Label">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="HotKeySpecifier" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LegendAnnotation">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Line">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Length" type="DimExpression">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the length of the line along its orientation.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Style" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the style of the line. This controls the visual appearance of the line.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Orientation" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The direction of the line.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowsMarking" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether this ListView allows items to be marked.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AllowsMultipleSelection" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If set to true more than one item can be selected. If false selecting an item will cause all others to be un-selected. The default is false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="LeftItem" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the leftmost column that is currently visible (when scrolling horizontally).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedItem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the index of the currently selected item.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Source" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the IListDataSource backing this ListView, enabling custom rendering.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TopItem" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the index of the item that will appear at the top of the Viewport.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Margin">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="ShadowStyle" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Menu">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SuperMenuItem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the menu item that opened this menu as a sub-menu.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedMenuItem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or set the currently selected menu item. This is a helper that tracks Focused.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MenuBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Key" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the key that will activate the context menu.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Menus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets the Menu Bar Items for this Menu Bar. This will replace any existing Menu Bar Items.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Active" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the menu bar is active or not. When active, the MenuBar can focus and moving the mouse over a MenuBarItem will switch focus to that item. Use IsOpen to determine if a PopoverMenu of a MenuBarItem is open.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MenuBarItem">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="SubMenu" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Do not use this property. MenuBarItem does not support SubMenu. Use PopoverMenu instead.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PopoverMenu" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Popover Menu that will be displayed when this item is selected.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PopoverMenuOpen" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the MenuBarItem is active. This is used to determine if the MenuBarItem should be</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MenuItem">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="TargetView" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the target View that the Command will be invoked on.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Command" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the Command that will be invoked on TargetView when the MenuItem is selected.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SubMenu" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The submenu to display when the user selects this menu item.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumericUpDown">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="OpenMode" type="xs:string" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OptionSelector">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Cursor" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Labels index for the cursor. The cursor may or may not be the selected RadioItem.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Padding">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopoverMenu">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Key" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the key that will activate the context menu.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MouseFlags" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The mouse flags that will cause the popover menu to be visible. The default is Button3Clicked which is typically the right mouse button.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Root" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Menu that is the root of the Popover Menu.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProgressBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="BidirectionalMarquee" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Specifies if the MarqueeBlocks or the MarqueeContinuous styles is unidirectional or bidirectional.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Fraction" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the ProgressBar fraction to display, must be a value between 0 and 1.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ProgressBarFormat" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Specifies the format that a ProgressBar uses to indicate the visual presentation.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ProgressBarStyle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets/Sets the progress bar style based on the ProgressBarStyle</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SegmentCharacter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Segment indicator for meter views.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveDialog">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScrollBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="Increment" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the amount each mouse wheel event, or click on the increment/decrement buttons, will incremenet/decrement the Position.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AutoShow" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether Visible will be set to true if the dimension of the scroll bar is less than ScrollableContentSize and false if greater than or equal to.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="VisibleContentSize" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the size of the visible viewport into the content being scrolled, bounded by ScrollableContentSize.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ScrollableContentSize" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the size of the content that can be scrolled. This is typically set to GetContentSize.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Position" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the position of the slider relative to ScrollableContentSize.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScrollSlider">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Orientation" type="xs:string" />
+      <xs:attribute name="Size" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the size of the ScrollSlider. This is a helper that gets or sets Width or Height depending on Orientation. The size will be clamped between 1 and the dimension of the SuperView's Viewport.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="VisibleContentSize" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the size of the viewport into the content being scrolled. If not explicitly set, will be the greater of 1 and the dimension of the SuperView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Position" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the position of the ScrollSlider relative to the size of the ScrollSlider's Frame. The position will be constrained such that the ScrollSlider will not go outside the Viewport of the SuperView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SliderPadding" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the amount to pad the start and end of the scroll slider. The default is 0.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Shortcut">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AlignmentModes" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the AlignmentModes for this Shortcut.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Action" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the action to be invoked when the shortcut key is pressed or the shortcut is clicked on with the mouse.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Orientation" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Orientation for this Bar. The default is Horizontal.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CommandView" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the View that displays the command text and hotkey.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HelpText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the help text displayed in the middle of the Shortcut.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Key" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Key that will be bound to the Accept command.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BindKeyToApplication" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether Key is bound to Command via HotKeyBindings or KeyBindings.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MinimumKeyTextSize" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the minimum size of the key text. Useful for aligning the key text with other Shortcuts.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ForceFocusColors" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>TODO: IS this needed?</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Slider">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpinnerView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AutoSpin" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether spinning should occur automatically or be manually triggered (e.g. from a background task).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Sequence" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the animation frames used to animate the spinner.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SpinBounce" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether spinner should go back and forth through the frames rather than going to the end and starting again at the beginning.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SpinDelay" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the number of milliseconds to wait between characters in the animation.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SpinReverse" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether spinner should go through the frames in reverse order. If SpinBounce is true, this sets the starting order.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Style" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the Style used to animate the spinner.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StatusBar">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Tab">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="DisplayText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The text to display in a TabView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="View" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The control to display when the tab is selected.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TableView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="CellActivationKey" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The key which when pressed should trigger event. Defaults to Enter.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CollectionNavigator" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Navigator for cycling the selected item in the table by typing. Set to null to disable this feature.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ColumnOffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Horizontal scroll offset. The index of the first column in Table to display when when rendering the view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="FullRowSelect" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>True to select the entire row at once. False to select individual cells. Defaults to false</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MaxCellWidth" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The maximum number of characters to render in any given column. This prevents one long column from pushing out all the others</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MinCellWidth" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The minimum number of characters to render in any given column.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MultiSelect" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>True to allow regions to be selected</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NullSymbol" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The text representation that should be rendered for cells with the value Value</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="RowOffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Vertical scroll offset. The index of the first row in Table to display in the first non header line of the control when rendering the view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedColumn" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The index of Columns in Table that the user has currently selected</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedRow" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The index of Rows in Table that the user has currently selected</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SeparatorSymbol" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The symbol to add after each cell value and header value to visually separate values (if not using vertical gridlines)</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Style" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Contains options for changing how the table is rendered</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Table" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The data table to render in the view. Setting this property automatically updates and redraws the control.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TabView">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="MaxTabTextWidth" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The maximum number of characters to render in a Tab header. This prevents one long tab from pushing out all the others.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedTab" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The currently selected member of Tabs chosen by the user.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Style" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Render choices for how to display tabs. After making changes, call ApplyStyleChanges.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TabScrollOffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>When there are too many tabs to render, this indicates the first tab to render on the screen.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Autocomplete" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Provides autocomplete context menu based on suggestions at the current cursor position. Configure ISuggestionGenerator to enable this feature.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ContextMenu" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Get the Context Menu for this view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CursorPosition" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Sets or gets the current cursor position.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ReadOnly" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If set to true its not allow any changes in the text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ScrollOffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets the left offset position.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Secret" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Sets the secret property. This makes the text entry suitable for entering passwords.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedLength" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Length of the selected text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedStart" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Start position of the selected text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectedText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The selected text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Used" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Tracks whether the text field should be considered "used", that is, that the user has moved in the entry, so new input should be appended at the cursor position, rather than clearing the entry</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="UseSameRuneTypeForWords" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the word forward and word backward navigation should use the same or equivalent rune type. Default is false meaning using equivalent rune type.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectWordOnlyOnDoubleClick" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the word navigation should select only the word itself without spaces around it or with the spaces at right. Default is false meaning that the spaces at right are included in the selection.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextValidateField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Provider" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Provider</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TextView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="AllowsReturn" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether pressing ENTER in a TextView creates a new line of text in the view or invokes the event.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AllowsTab" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the TextView inserts a tab character into the text or ignores tab input. If set to `false` and the user presses the tab key (or shift-tab) the focus will move to the next view (or previous with shift-tab). The default is `true`; if the user presses the tab key, a tab character will be inserted into the text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Autocomplete" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Provides autocomplete context menu based on suggestions at the current cursor position. Configure SuggestionGenerator to enable this feature</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ContextMenu" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Get the Context Menu.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CurrentColumn" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets the cursor column.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CurrentRow" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets the current cursor row.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CursorPosition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets or gets the current cursor position.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="InheritsPreviousAttribute" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If true and the current Attribute is null will inherit from the previous, otherwise if false (default) do nothing. If the text is load with this property is automatically sets to true.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IsDirty" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whatever the text was changed or not. true if the text was changed false otherwise.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="LeftColumn" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the left column.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Multiline" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets a value indicating whether this TextView is a multiline text view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ReadOnly" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the TextView is in read-only mode or not</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IsSelecting" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Get or sets whether the user is currently selecting text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectionStartColumn" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Start column position of the selected text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectionStartRow" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Start row position of the selected text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TabWidth" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets a value indicating the number of whitespace when pressing the TAB key.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TopRow" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the top row.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Used" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Tracks whether the text view should be considered "used", that is, that the user has moved in the entry, so new input should be appended at the cursor position, rather than clearing the entry</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="WordWrap" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Allows word wrap the to fit the available container width.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="UseSameRuneTypeForWords" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the word forward and word backward navigation should use the same or equivalent rune type. Default is false meaning using equivalent rune type.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SelectWordOnlyOnDoubleClick" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the word navigation should select only the word itself without spaces around it or with the spaces at right. Default is false meaning that the spaces at right are included in the selection.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TimeField">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="CursorPosition" type="xs:int" />
+      <xs:attribute name="IsShortFormat" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Get or sets whether TimeField uses the short or long time format.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Time" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the time of the TimeField.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Runnable">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Modal" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Determines whether the Runnable is modal or not. If set to false (the default): events will propagate keys upwards. The Runnable will act as an embedded view (not a modal/pop-up). If set to true: events will NOT propagate keys upwards. The Runnable will look like a modal (pop-up) (e.g. see Dialog).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Running" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the main loop for this Runnable is running or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IsLoaded" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>true if was already loaded by the application, false otherwise.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeView">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="View">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="Margin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Adornment that enables separation of a View from other SubViews of the same SuperView. The margin offsets the Viewport from the Frame.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ShadowStyle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the View is shown with a shadow effect. The shadow is drawn on the right and bottom sides of the Margin.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Border" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Adornment that offsets the Viewport from the Margin. The Border provides the space for a visual border (drawn using line-drawing glyphs) and the Title. The Border expands inward; in other words if `Border.Thickness.Top == 2` the border and title will take up the first row and the second row will be filled with spaces. The Border provides the UI for mouse and keyboard arrangement of the View. See Arrangement.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BorderStyle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the view has a one row/col thick border.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Padding" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Adornment inside of the view that offsets the Viewport from the Border.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Arrangement" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the user actions that are enabled for the arranging this view within it's SuperView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ContentSizeTracksViewport" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets a value indicating whether the view's content size tracks the Viewport's size or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ViewportSettings" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets how scrolling the Viewport on the View's Content Area is handled.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Viewport" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the rectangle describing the portion of the View's content that is visible to the user. The viewport Location is relative to the top-left corner of the inner rectangle of Padding. If the viewport Size is the same as GetContentSize, or GetContentSize is null the Location will be 0, 0.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Data" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets arbitrary data for the view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="App" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the IApplication instance this view is running in. If this view is at the top of the view hierarchy, returns null.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="IsInitialized" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Get or sets if the View has been initialized (via BeginInit and EndInit).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Title" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The title to be displayed for this View. The title will be displayed if Border. Top is greater than 0. The title can be used to set the HotKey for the view by prefixing character with HotKeySpecifier (e.g. "T_itle").</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="WasDisposed" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets whether Dispose was called on this view or not. For debug purposes to verify objects are being disposed properly. Only valid when DEBUG_IDISPOSABLE is defined.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="DisposedCount" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Gets the number of times Dispose was called on this view. For debug purposes to verify objects are being disposed properly. Only valid when DEBUG_IDISPOSABLE is defined.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CursorVisibility" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the cursor style to be used when the view is focused. The default is Invisible.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SuperViewRendersLineCanvas" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether this View will use it's SuperView's LineCanvas for rendering any lines. If true the rendering of any borders drawn by this Frame will be done by its parent's SuperView. If false (the default) this View's OnDrawingAdornments method will be called to render the borders.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NeedsDraw" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the view needs to be redrawn.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SubViewNeedsDraw" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets whether any SubViews need to be redrawn.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SchemeName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the name of the scheme to use for this View. If set, it overrides the scheme inherited from the SuperView. If a scheme was explicitly set (HasScheme is true), this property is ignored.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="SuperView" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets this Views SuperView (the View's container), or null if this view has not been added as a SubView.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HotKey" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the hot key defined for this view. Pressing the hot key on the keyboard while this view has focus will invoke HotKey. By default, the HotKey is set to the first character of Text that is prefixed with HotKeySpecifier. A HotKey is a keypress that causes a visible UI item to perform an action. For example, in a Dialog, with a Button with the text of "_Text" Alt+T will cause the button to gain focus and to raise its event. Or, in a Menu with "_File _Edit", Alt+F will select (show) the "_File" menu. If the "_File" menu has a sub-menu of "_New" Alt+N or N will ONLY select the "_New" sub-menu if the "_File" menu is already opened. View subclasses can use to define the behavior of the hot key.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HotKeySpecifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the specifier character for the hot key (e.g. '_'). Set to '\xffff' to disable automatic hot key setting support for this View instance. The default is '\xffff'.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="KeyBindings" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the bindings for this view that will be invoked only if this view has focus.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HotKeyBindings" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the bindings for this view that will be invoked regardless of whether this view has focus or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Frame" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the absolute location and dimension of the view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NeedsLayout" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates the View's Frame or the layout of the View's subviews (including Adornments) have changed since the last time the View was laid out.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ValidatePosDim" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether validation of Pos and Dim occurs.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MouseHeldDown" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Handles WantContinuousButtonPressed, we have detected a button down in the view and have grabbed the mouse.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MouseBindings" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the mouse bindings for this view.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="WantContinuousButtonPressed" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the View wants continuous button pressed events. When set to true, and the user presses and holds the mouse button, will be repeatedly called with the same MouseFlags for as long as the mouse button remains pressed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="WantMousePositionReports" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether the View wants mouse position reports.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MouseState" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets the state of the mouse relative to the View. When changed, the / event will be raised.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HighlightStates" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets which MouseState changes should cause the View to change its appearance.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HasFocus" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether this view has focus.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PreserveTrailingSpaces" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Gets or sets whether trailing spaces at the end of word-wrapped lines are preserved or not when WordWrap is enabled. If true trailing spaces at the end of wrapped lines will be removed when Text is formatted for display. The default is false.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TextAlignment" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets how the View's Text is aligned horizontally when drawn. Changing this property will redisplay the View.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TextDirection" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the direction of the View's Text. Changing this property will redisplay the View.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TextFormatter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the TextFormatter used to format Text.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="VerticalTextAlignment" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets how the View's Text is aligned vertically when drawn. Changing this property will redisplay the View.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Window">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="lax" />
+      </xs:choice>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Wizard">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="CurrentStep" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Gets or sets the currently active WizardStep.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Modal" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Determines whether the Wizard is displayed as modal pop-up or not. The default is true. The Wizard will be shown with a frame and title and will behave like any Runnable window. If set to false the Wizard will have no frame and will behave like any embedded View. To use Wizard as an embedded View Set Modal to false. Add the Wizard to a containing view with . If a non-Modal Wizard is added to the application after has been called the first step must be explicitly set by setting CurrentStep to GetNextStep: wizard.CurrentStep = wizard.GetNextStep();</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WizardStep">
+    <xs:complexType>
+      <xs:attributeGroup ref="ViewAttributes" />
+      <xs:attribute name="BackButtonText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets or gets the text for the back button. The back button will only be visible on steps after the first step.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="HelpText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets or gets help text for the WizardStep.If HelpText is empty the help pane will not be visible and the content will fill the entire WizardStep.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NextButtonText" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sets or gets the text for the next/finish button.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

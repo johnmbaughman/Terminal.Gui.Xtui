@@ -1,57 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <IsRoslynComponent>true</IsRoslynComponent>
-        <!-- Path to XamlX source (following Avalonia pattern of embedding source) -->
-        <XamlXSourcePath>$(MSBuildThisFileDirectory)..\XamlX\src\XamlX</XamlXSourcePath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Terminal.Gui.Xtui</AssemblyName>
+    <RootNamespace>Terminal.Gui.Xtui</RootNamespace>
+    <PackageId>Terminal.Gui.Xtui</PackageId>
+    <Description>Interfaces and types for Terminal.Gui Xtui markup generation.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0"/>
-    </ItemGroup>
-
-    <!-- Include XamlX source directly into the analyzer (following Avalonia pattern).
-         This avoids the assembly loading issue where Roslyn can't find dependent DLLs for analyzers. -->
-    <ItemGroup>
-        <Compile Include="$(XamlXSourcePath)/**/*.cs"
-                 Exclude="$(XamlXSourcePath)/obj/**/*.cs;$(XamlXSourcePath)/IL/SreTypeSystem.cs"
-                 LinkBase="XamlX" />
-    </ItemGroup>
-
-    <!-- Include the buildTransitive files and schema in the nupkg so consuming projects automatically import them -->
-    <ItemGroup>
-        <None Include="buildTransitive\Terminal.Gui.Xtui.targets" Pack="true" PackagePath="buildTransitive\"/>
-        <None Include="buildTransitive\Terminal.Gui.Xtui.props" Pack="true" PackagePath="buildTransitive\"/>
-        <None Include="Terminal.Gui.Xtui.xsd" Pack="true" PackagePath="schemas\"/>
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="analyzers\dotnet\cs\"/>
-        <Folder Include="obj\" />
-    </ItemGroup>
-
-    <!-- Regenerate XSD schema from Terminal.Gui metadata before build -->
-    <Target Name="RegenerateXsdSchema" BeforeTargets="BeforeBuild">
-        <Message Text="Regenerating Terminal.Gui.Xtui.xsd from Terminal.Gui metadata..." Importance="high" />
-        <Exec Command="dotnet run --project &quot;$(ProjectDir)..\Terminal.Gui.Xtui.XsdGenerator\Terminal.Gui.Xtui.XsdGenerator.csproj&quot; &quot;$(ProjectDir)Terminal.Gui.Xtui.xsd&quot;" />
-    </Target>
-
-    <!-- Ensure the built generator DLL is packed into analyzers/dotnet/cs/ in the nupkg -->
-    <Target Name="PrepareAnalyzerForPack" AfterTargets="Build">
-        <ItemGroup>
-            <_AnalyzerToPack Include="$(OutputPath)$(AssemblyName).dll"/>
-        </ItemGroup>
-        <Copy SourceFiles="@(_AnalyzerToPack)" DestinationFolder="$(ProjectDir)analyzers\dotnet\cs\" SkipUnchangedFiles="true"/>
-        <ItemGroup>
-            <None Include="analyzers\dotnet\cs\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs/"/>
-        </ItemGroup>
-    </Target>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>

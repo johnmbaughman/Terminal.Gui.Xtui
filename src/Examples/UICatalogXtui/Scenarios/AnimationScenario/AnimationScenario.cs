@@ -78,7 +78,7 @@ public class AnimationScenario : Scenario
         if (!f.Exists)
         {
             Debug.WriteLine ($"Could not find {f.FullName}");
-            MessageBox.ErrorQuery ("Could not find gif", $"Could not find\n{f.FullName}", "Ok");
+            MessageBox.ErrorQuery (_imageView?.App!, "Could not find gif", $"Could not find\n{f.FullName}", "Ok");
 
             return;
         }
@@ -173,7 +173,7 @@ public class AnimationScenario : Scenario
         private Rectangle _oldSize = Rectangle.Empty;
         public void NextFrame () { _currentFrame = (_currentFrame + 1) % _frameCount; }
 
-        protected override bool OnDrawingContent ()
+        protected override bool OnDrawingContent (DrawContext? context)
         {
             if (_frameCount == 0)
             {

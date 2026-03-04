@@ -1,4 +1,4 @@
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -54,7 +54,7 @@ public class GenericGeneratorTests
     {
         var node = new ElementNode { ElementTypeName = "FrameView" };
         node.Attributes["Title"] = "Container";
-        
+
         var childLabel = new ElementNode { ElementTypeName = "Label" };
         childLabel.Attributes["Text"] = "Inside Frame";
         node.Children.Add(childLabel);
@@ -90,13 +90,13 @@ public class GenericGeneratorTests
     public void GenericGenerator_GeneratesMultipleChildren()
     {
         var node = new ElementNode { ElementTypeName = "Dialog" };
-        
+
         var button1 = new ElementNode { ElementTypeName = "Button" };
         button1.Attributes["Text"] = "OK";
-        
+
         var button2 = new ElementNode { ElementTypeName = "Button" };
         button2.Attributes["Text"] = "Cancel";
-        
+
         node.Children.Add(button1);
         node.Children.Add(button2);
 
@@ -131,7 +131,7 @@ public class GenericGeneratorTests
     public void GenericGenerator_HandlesNestedChildren()
     {
         var node = new ElementNode { ElementTypeName = "Container" };
-        
+
         var child1 = new ElementNode { ElementTypeName = "Panel" };
         var grandchild = new ElementNode { ElementTypeName = "Label" };
         grandchild.Attributes["Text"] = "Nested";

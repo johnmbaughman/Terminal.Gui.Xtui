@@ -19,7 +19,7 @@ public class TypeNameHelpersTests
     public void ExtractLocalTypeName_WithSimpleTypeName_ReturnsUnchanged(string fullTypeName, string expected)
     {
         // Arrange & Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -34,7 +34,7 @@ public class TypeNameHelpersTests
     public void ExtractLocalTypeName_WithFullyQualifiedTypeName_ReturnsLastSegment(string fullTypeName, string expected)
     {
         // Arrange & Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -46,7 +46,7 @@ public class TypeNameHelpersTests
     public void ExtractLocalTypeName_WithMultipleDots_ReturnsLastSegment(string fullTypeName, string expected)
     {
         // Arrange & Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -59,7 +59,7 @@ public class TypeNameHelpersTests
         string fullTypeName = string.Empty;
 
         // Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName);
 
         // Assert
         Assert.Equal(string.Empty, result);
@@ -73,7 +73,7 @@ public class TypeNameHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() => 
-            Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName!));
+            Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ExtractLocalTypeName(fullTypeName!));
     }
 
     [Theory]
@@ -86,7 +86,7 @@ public class TypeNameHelpersTests
     public void ToVariableName_WithTypeName_ReturnsCamelCase(string typeName, string expected)
     {
         // Arrange & Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ToVariableName(typeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ToVariableName(typeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -99,7 +99,7 @@ public class TypeNameHelpersTests
         string typeName = string.Empty;
 
         // Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ToVariableName(typeName);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ToVariableName(typeName);
 
         // Assert
         Assert.Equal(string.Empty, result);
@@ -113,7 +113,7 @@ public class TypeNameHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() => 
-            Terminal.Gui.Xtui.Helpers.TypeNameHelpers.ToVariableName(typeName!));
+            Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.ToVariableName(typeName!));
     }
 
     [Theory]
@@ -124,7 +124,7 @@ public class TypeNameHelpersTests
     public void CreateIndexedVariableName_WithTypeNameAndIndex_ReturnsCamelCaseWithIndex(string fullTypeName, int index, string expected)
     {
         // Arrange & Act
-        string result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.CreateIndexedVariableName(fullTypeName, index);
+        string result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.CreateIndexedVariableName(fullTypeName, index);
 
         // Assert
         Assert.Equal(expected, result);
@@ -139,7 +139,7 @@ public class TypeNameHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentOutOfRangeException>(() => 
-            Terminal.Gui.Xtui.Helpers.TypeNameHelpers.CreateIndexedVariableName(fullTypeName, index));
+            Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.CreateIndexedVariableName(fullTypeName, index));
     }
 
     [Theory]
@@ -150,7 +150,7 @@ public class TypeNameHelpersTests
     public void IsSimpleTypeName_WithVariousInputs_ReturnsExpectedResult(string typeName, bool expected)
     {
         // Arrange & Act
-        bool result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName);
+        bool result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -162,7 +162,7 @@ public class TypeNameHelpersTests
     public void IsSimpleTypeName_WithQualifiedNames_ReturnsFalse(string typeName, bool expected)
     {
         // Arrange & Act
-        bool result = Terminal.Gui.Xtui.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName);
+        bool result = Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName);
 
         // Assert
         Assert.Equal(expected, result);
@@ -176,6 +176,6 @@ public class TypeNameHelpersTests
 
         // Act & Assert
         Assert.Throws<ArgumentNullException>(() => 
-            Terminal.Gui.Xtui.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName!));
+            Terminal.Gui.Xtui.Generator.Helpers.TypeNameHelpers.IsSimpleTypeName(typeName!));
     }
 }

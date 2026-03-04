@@ -1,5 +1,5 @@
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -160,7 +160,7 @@ public class StatusBarGeneratorTests
         Assert.Contains("var shortcut1", generated);
         Assert.Contains("Add(", generated);
         Assert.Contains("shortcut0", generated);
-        Assert.Contains("shortcut1", generated);        
+        Assert.Contains("shortcut1", generated);
     }
 
     [Fact]

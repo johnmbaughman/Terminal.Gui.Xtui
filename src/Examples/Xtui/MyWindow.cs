@@ -20,13 +20,13 @@ public partial class MyWindow
     private void OnCloseButtonAccepting (object? sender, CommandEventArgs e)
     {
         e.Handled = true;
-        // Find the Toplevel in the SuperView chain and request stop
+        // Find the Runnable in the SuperView chain and request stop
         var view = this.SuperView;
         while (view != null)
         {
-            if (view is Toplevel toplevel)
+            if (view is Runnable runnable)
             {
-                Application.RequestStop (toplevel);
+                Application.RequestStop (runnable);
                 return;
             }
             view = view.SuperView;

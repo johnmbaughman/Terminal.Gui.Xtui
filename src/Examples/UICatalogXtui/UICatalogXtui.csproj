@@ -2,7 +2,7 @@
     <PropertyGroup>
         <StartupObject>UICatalogXtui.UICatalog</StartupObject>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <!-- Version numbers are automatically updated by gitversion when a release is released -->
@@ -43,7 +43,8 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
-        <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj"
+        <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj" />
+        <ProjectReference Include="..\..\Terminal.Gui.Xtui.Generator\Terminal.Gui.Xtui.Generator.csproj"
                           OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
     <!-- Xtui analyzer & generator import removed temporarily to match the original UICatalog project.
@@ -56,6 +57,6 @@
         <Using Include="System.Drawing.Size" Alias="Size" />
         <Using Include="System.Drawing.SizeF" Alias="SizeF" />
     </ItemGroup>
-    <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" Condition="Exists('..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets')" />
+    <Import Project="..\..\Terminal.Gui.Xtui.Generator\buildTransitive\Terminal.Gui.Xtui.Generator.targets" Condition="Exists('..\..\Terminal.Gui.Xtui.Generator\buildTransitive\Terminal.Gui.Xtui.Generator.targets')" />
     <ProjectExtensions><VisualStudio><UserProperties resources_4config_1json__JsonSchema="..\..\..\docfx\schemas\tui-config-schema.json" /></VisualStudio></ProjectExtensions>
 </Project>

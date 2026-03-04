@@ -1,5 +1,5 @@
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -84,7 +84,7 @@ public class WindowGeneratorTests
         var factory = new GeneratorFactory();
 
         var code = generator.GenerateClass(node, "MyApp", "MainWindow", factory);
-        
+
         Assert.Contains("InitializeComponent()", code);
         Assert.Contains("using Terminal.Gui.Views;", code);
         Assert.Contains("using Terminal.Gui.ViewBase;", code);
@@ -155,15 +155,15 @@ public class WindowGeneratorTests
     public void WindowGenerator_GeneratesMultipleChildren()
     {
         var node = new ElementNode { ElementTypeName = "Window" };
-        
+
         var label1 = new ElementNode { ElementTypeName = "Label" };
         label1.Attributes["Text"] = "First";
         label1.Attributes["Id"] = "_label1";
-        
+
         var label2 = new ElementNode { ElementTypeName = "Label" };
         label2.Attributes["Text"] = "Second";
         label2.Attributes["Id"] = "_label2";
-        
+
         node.Children.Add(label1);
         node.Children.Add(label2);
 
@@ -198,12 +198,12 @@ public class WindowGeneratorTests
     [Fact]
     public void WindowGenerator_WithPosExpressions_GeneratesPosCode()
     {
-        string xtui = @"<Window xmlns=""http://schemas.terminal.gui/xtui"" 
-                                X=""{Center}"" 
-                                Y=""{Center}"" 
-                                Width=""50"" 
+        string xtui = @"<Window xmlns=""http://schemas.terminal.gui/xtui""
+                                X=""{Center}""
+                                Y=""{Center}""
+                                Width=""50""
                                 Height=""20"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new WindowGenerator();
         var factory = new GeneratorFactory();
@@ -224,7 +224,7 @@ public class WindowGeneratorTests
                             <TextField Text="""" />
                             <Button Text=""Submit"" />
                         </Window>";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new WindowGenerator();
         var factory = new GeneratorFactory();

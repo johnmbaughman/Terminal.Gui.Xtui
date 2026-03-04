@@ -13,7 +13,7 @@ public class ViewExperiments : Scenario
     {
         Application.Init ();
 
-        Window app = new ()
+        Window window = new ()
         {
             Title = GetQuitKeyAndName (),
             TabStop = TabBehavior.TabGroup
@@ -27,7 +27,7 @@ public class ViewExperiments : Scenario
             AutoSelectViewToEdit = true,
             ShowViewIdentifier = true
         };
-        app.Add (editor);
+        window.Add (editor);
 
         FrameView testFrame = new ()
         {
@@ -37,7 +37,7 @@ public class ViewExperiments : Scenario
             Height = Dim.Fill (),
         };
 
-        app.Add (testFrame);
+        window.Add (testFrame);
 
         Button button = new ()
         {
@@ -86,18 +86,19 @@ public class ViewExperiments : Scenario
             //App?.Popover!.Visible = true;
         }
 
-        testFrame.MouseClick += TestFrameOnMouseClick;
-
-        void TestFrameOnMouseClick (object sender, MouseEventArgs e)
+        testFrame.Activating += (sender, e) =>
         {
-            if (e.Flags == MouseFlags.Button3Clicked)
+            if (e.Context is CommandContext<MouseBinding> { Binding.MouseEventArgs: { } mouseArgs })
             {
-                popoverView.X = e.ScreenPosition.X;
-                popoverView.Y = e.ScreenPosition.Y;
-                //App?.Popover = popoverView;
-                //App?.Popover!.Visible = true;
+                if (mouseArgs.Flags == MouseFlags.RightButtonClicked)
+                {
+                    popoverView.X = mouseArgs.ScreenPosition.X;
+                    popoverView.Y = mouseArgs.ScreenPosition.Y;
+                    //App?.Popover = popoverView;
+                    //App?.Popover!.Visible = true;
+                }
             }
-        }
+        };
 
         testFrame.Add (button);
 
@@ -105,9 +106,9 @@ public class ViewExperiments : Scenario
         editor.AutoSelectSuperView = testFrame;
         editor.AutoSelectAdornments = true;
 
-        Application.Run (app);
+        Application.Run (window);
         popoverView.Dispose ();
-        app.Dispose ();
+        window.Dispose ();
 
         Application.Shutdown ();
 

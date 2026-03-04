@@ -1,5 +1,5 @@
-using Terminal.Gui.Xtui.Generators;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Generators;
+using Terminal.Gui.Xtui.Generator;using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Tests;
 
@@ -46,7 +46,7 @@ public class ButtonGeneratorTests
         var factory = new GeneratorFactory ();
 
         var statements = generator.GenerateStatements (node, "myButton", factory);
-        
+
         Assert.Single (statements);
         var generated = statements[0].ToString ();
         Assert.Contains ("varmyButton", generated);
@@ -129,11 +129,11 @@ public class ButtonGeneratorTests
     [Fact]
     public void ButtonGenerator_WithDimExpressions_GeneratesDimCode()
     {
-        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui"" 
-                                Text=""Full Width Button"" 
-                                Width=""{Fill}"" 
+        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui""
+                                Text=""Full Width Button""
+                                Width=""{Fill}""
                                 Height=""{Auto}"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new ButtonGenerator();
         var factory = new GeneratorFactory();
@@ -147,11 +147,11 @@ public class ButtonGeneratorTests
     [Fact]
     public void ButtonGenerator_WithComplexPosExpressions_GeneratesPosCode()
     {
-        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui"" 
-                                Text=""Cancel"" 
-                                X=""{AnchorEnd - 10}"" 
+        string xtui = @"<Button xmlns=""http://schemas.terminal.gui/xtui""
+                                Text=""Cancel""
+                                X=""{AnchorEnd - 10}""
                                 Y=""{Bottom _okButton}"" />";
-        
+
         ElementNode node = XtuiLoader.LoadFromString(xtui);
         var generator = new ButtonGenerator();
         var factory = new GeneratorFactory();

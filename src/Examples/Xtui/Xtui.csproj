@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Terminal.Gui\Terminal.Gui\Terminal.Gui.csproj" />
-    <ProjectReference Include="..\..\Terminal.Gui.Xtui\Terminal.Gui.Xtui.csproj"
+    <ProjectReference Include="..\..\Terminal.Gui.Xtui.Generator\Terminal.Gui.Xtui.Generator.csproj"
                       OutputItemType="Analyzer" ReferenceOutputAssembly="false" />    
   </ItemGroup>
 
@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <!-- Import generator targets manually since we're using ProjectReference -->
-  <Import Project="..\..\Terminal.Gui.Xtui\buildTransitive\Terminal.Gui.Xtui.targets" />
+  <Import Project="..\..\Terminal.Gui.Xtui.Generator\buildTransitive\Terminal.Gui.Xtui.Generator.targets" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>  

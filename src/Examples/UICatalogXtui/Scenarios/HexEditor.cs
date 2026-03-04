@@ -181,7 +181,7 @@ public class HexEditor : Scenario
         }
     }
 
-    private void Copy () { MessageBox.ErrorQuery ("Not Implemented", "Functionality not yet implemented.", "Ok"); }
+    private void Copy () { MessageBox.ErrorQuery (Application.Instance, "Not Implemented", "Functionality not yet implemented.", "Ok"); }
 
     private void CreateDemoFile (string fileName)
     {
@@ -208,7 +208,7 @@ public class HexEditor : Scenario
         ms.Close ();
     }
 
-    private void Cut () { MessageBox.ErrorQuery ("Not Implemented", "Functionality not yet implemented.", "Ok"); }
+    private void Cut () { MessageBox.ErrorQuery (Application.Instance, "Not Implemented", "Functionality not yet implemented.", "Ok"); }
 
     private Stream LoadFile ()
     {
@@ -216,13 +216,13 @@ public class HexEditor : Scenario
 
         if (!_saved && _hexView!.Edits.Count > 0 && _hexView.Source is {})
         {
-            if (MessageBox.ErrorQuery (
+            if (MessageBox.ErrorQuery (Application.Instance,
                                        "Save",
                                        "The changes were not saved. Want to open without saving?",
-                                       "_Yes",
-                                       "_No"
+                                       "_No",
+                                       "_Yes"
                                       )
-                == 1)
+                == 0)
             {
                 return _hexView.Source;
             }
@@ -267,7 +267,7 @@ public class HexEditor : Scenario
         d.Dispose ();
     }
 
-    private void Paste () { MessageBox.ErrorQuery ("Not Implemented", "Functionality not yet implemented.", "_Ok"); }
+    private void Paste () { MessageBox.ErrorQuery (Application.Instance, "Not Implemented", "Functionality not yet implemented.", "_Ok"); }
     private void Quit () { Application.RequestStop (); }
 
     private void Save ()

@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Helpers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Terminal.Gui.Xtui.Tests.Generators.Helpers.Tests;
@@ -351,9 +351,9 @@ public class NamespaceHelpersTests
     }
 
     [Fact]
-    public void Integration_MatchesTopLevelGeneratorPattern()
+    public void Integration_MatchesRunnableGeneratorPattern()
     {
-        // This test verifies that NamespaceHelpers can reproduce the pattern from TopLevelGenerator
+        // This test verifies that NamespaceHelpers can reproduce the pattern from RunnableGenerator
         // Arrange
         string namespaceName = "MyApp";
 

@@ -1,5 +1,5 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terminal.Gui.Xtui.Helpers;
+using Terminal.Gui.Xtui.Generator.Helpers;
 
 namespace Terminal.Gui.Xtui.Tests;
 
@@ -13,7 +13,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesBooleanValues(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var literal = Assert.IsType<LiteralExpressionSyntax>(result);
         Assert.Contains(expected, literal.ToString());
     }
@@ -24,7 +24,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesStringValues(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var literal = Assert.IsType<LiteralExpressionSyntax>(result);
         Assert.Equal(expected, literal.ToString());
     }
@@ -36,7 +36,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesIntegerPosValues(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var literal = Assert.IsType<LiteralExpressionSyntax>(result);
         Assert.Equal(expected, literal.ToString());
     }
@@ -47,7 +47,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesPercentagePosValues(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var invocation = Assert.IsType<InvocationExpressionSyntax>(result);
         Assert.Equal(expected, invocation.ToString());
     }
@@ -58,7 +58,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesSimplePosExpressions(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var invocation = Assert.IsType<InvocationExpressionSyntax>(result);
         Assert.Equal(expected, invocation.ToString());
     }
@@ -72,7 +72,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesPosExpressionsWithOperators(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var binary = Assert.IsType<BinaryExpressionSyntax>(result);
         Assert.Equal(expected, binary.ToString());
     }
@@ -86,7 +86,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesPosExpressionsWithViewReferences(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var binary = Assert.IsType<BinaryExpressionSyntax>(result);
         Assert.Equal(expected, binary.ToString());
     }
@@ -97,7 +97,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesPosExpressionsWithViewReferencesNoOperator(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var invocation = Assert.IsType<InvocationExpressionSyntax>(result);
         Assert.Equal(expected, invocation.ToString());
     }
@@ -108,7 +108,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesSimpleDimExpressions(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var invocation = Assert.IsType<InvocationExpressionSyntax>(result);
         Assert.Equal(expected, invocation.ToString());
     }
@@ -121,7 +121,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesDimExpressionsWithOperators(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var binary = Assert.IsType<BinaryExpressionSyntax>(result);
         Assert.Equal(expected, binary.ToString());
     }
@@ -132,7 +132,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesPercentageDimValues(string value, string propertyName, string expected)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var invocation = Assert.IsType<InvocationExpressionSyntax>(result);
         Assert.Equal(expected, invocation.ToString());
     }
@@ -144,7 +144,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_ParsesEnumValues(string value, string propertyName)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         Assert.NotNull(result);
         Assert.Contains("Terminal.Gui.Views.CheckState", result.ToString());
     }
@@ -154,7 +154,7 @@ public class ObjectParsingHelpersTests
     {
         var ex = Assert.Throws<InvalidOperationException>(() =>
             ObjectParsingHelpers.ParseValueWithType("value", "UnknownProperty"));
-        
+
         Assert.Contains("Unknown property 'UnknownProperty'", ex.Message);
     }
 
@@ -163,7 +163,7 @@ public class ObjectParsingHelpersTests
     {
         var ex = Assert.Throws<InvalidOperationException>(() =>
             ObjectParsingHelpers.ParseValueWithType("notabool", "Enabled"));
-        
+
         Assert.Contains("Cannot parse value 'notabool' as bool", ex.Message);
     }
 
@@ -172,7 +172,7 @@ public class ObjectParsingHelpersTests
     {
         var ex = Assert.Throws<InvalidOperationException>(() =>
             ObjectParsingHelpers.ParseValueWithType("{InvalidMethod}", "X"));
-        
+
         Assert.Contains("Invalid Pos method 'InvalidMethod'", ex.Message);
     }
 
@@ -181,7 +181,7 @@ public class ObjectParsingHelpersTests
     {
         var ex = Assert.Throws<InvalidOperationException>(() =>
             ObjectParsingHelpers.ParseValueWithType("{InvalidMethod}", "Width"));
-        
+
         Assert.Contains("Invalid Dim method 'InvalidMethod'", ex.Message);
     }
 
@@ -190,7 +190,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_HandlesEmptyStrings(string value, string propertyName)
     {
         var result = ObjectParsingHelpers.ParseValueWithType(value, propertyName);
-        
+
         var literal = Assert.IsType<LiteralExpressionSyntax>(result);
         Assert.Equal("\"\"", literal.ToString());
     }
@@ -199,7 +199,7 @@ public class ObjectParsingHelpersTests
     public void ParseValueWithType_HandlesNullString()
     {
         var result = ObjectParsingHelpers.ParseValueWithType(null!, "Text");
-        
+
         var literal = Assert.IsType<LiteralExpressionSyntax>(result);
         Assert.Equal("\"\"", literal.ToString());
     }
@@ -209,7 +209,7 @@ public class ObjectParsingHelpersTests
     {
         var ex = Assert.Throws<InvalidOperationException>(() =>
             ObjectParsingHelpers.ParseValueWithType("value", ""));
-        
+
         Assert.Contains("Property name is required", ex.Message);
     }
 }
