@@ -1,5 +1,7 @@
 # Terminal.Gui.Xtui
 
+## Terminal.Gui.Xtui has moved to [](https://gitlab.com/vmaxxer09/Terminal-Gui-Xtui). Please visit for the latest mirrored code!
+
 ![XTUI Logo](XTUI.png)
 
 A Roslyn source generator that enables XML-based UI design, similar to XAML, for [Terminal.Gui v2](https://github.com/gui-cs/Terminal.Gui) applications. Write your terminal UIs declaratively using XTUI (XAML Terminal User Interface) syntax, and let the generator produce clean, efficient C# code at compile time.
