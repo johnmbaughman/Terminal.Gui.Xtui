@@ -1,6 +1,6 @@
 # Terminal.Gui.Xtui
 
-## Terminal.Gui.Xtui has moved to [](https://gitlab.com/vmaxxer09/Terminal-Gui-Xtui). Please visit for the latest mirrored code!
+## Terminal.Gui.Xtui has moved to [https://gitlab.com/vmaxxer09/Terminal-Gui-Xtui](https://gitlab.com/vmaxxer09/Terminal-Gui-Xtui). Please visit for the latest mirrored code!
 
 ![XTUI Logo](XTUI.png)
 
